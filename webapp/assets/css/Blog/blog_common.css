@@ -2,7 +2,7 @@
 
 /********** 초기화 **********/
 body, div, ul, li, dl, dt, ol, h1, h2, h3, h4,
-h5, h6, input, fieldset, legend, p, select, table, 
+h5, h6, input, fieldset, legend, p, select, table,
 th, td, tr, textarea, button, form {
   margin: 0px 0px 0px 0px;
   padding: 0px 0px 0px 0px;
@@ -58,7 +58,7 @@ a:active {text-decoration: none; color: black;}
 .row {
   width: 100%;
   }
-  
+
 
 /** live_logo **/
 .live_logo {
@@ -180,7 +180,7 @@ a:active {text-decoration: none; color: black;}
   height: 40px;
   float: right;
   margin-top: -80px;
-  margin-right: 8px; 
+  margin-right: 8px;
   background:#9A30AE;
   color:#fff;
   border:none;
@@ -246,7 +246,7 @@ a:active {text-decoration: none; color: black;}
 .profile_intr, .profile_his {
   float: left;
   margin-top: 20px;
-  margin-right: 80px;
+  margin-right: 50px;
 }
 
 /** 메인 장르 **/
@@ -285,7 +285,7 @@ a:active {text-decoration: none; color: black;}
 
 .history2 {
   padding: 0px 10px 0px 10px;
-  width: 200px;
+  width: 180px;
   font-size: 12px;
 }
 
@@ -293,7 +293,6 @@ a:active {text-decoration: none; color: black;}
 .like_box {
   float: right;
   margin-top: 35px;
-  margin-right: 8px; 
 }
 
 /** 좋아요 **/
@@ -331,7 +330,7 @@ a:active {text-decoration: none; color: black;}
   margin: 0px;
   display: flex;
   list-style: none;
-  
+
 }
 
 /** nav_menu **/
@@ -352,65 +351,4 @@ a:active {text-decoration: none; color: black;}
 .home a{
   font-weight: bold;
   color: #000;
-}
-
-/* Welcome pic/word */
-#welcome {
-  margin-top: 50px;
-  text-align: center;
-}
-
-#welcomepicture{
-  height: 300px;
-}
-
-#welcomeword{
-  font-size: 20px;
-  color: gray;
-}
-
-#notice{
-  float: left;
-  width: 40%;
-  margin-left: 9%;
-  margin-top: 30px;
-  background-color: #F9F9F9;
-  text-align: center;
-  padding: 25px 0px 25px 0px;
-  border-radius: 5px;
-}
-
-#guestbook{
-  float: right;
-  width: 40%;
-  margin-right: 9%;
-  margin-top: 30px;
-  background-color: #F9F9F9;
-  text-align: center;
-  padding: 25px 0px 25px 0px;
-  border-radius: 5px;
-}
-
-#gallery{
-  text-align: center;
-  width: 82%;
-  margin: 18px 9% 0px 9%;
-  background-color: #F9F9F9;
-  padding: 30px 0px 30px 0px;
-  border-radius: 5px;
-  margin-bottom: 100px;
-}
-
-button {
-  background-color: lightgray;
-  margin-top: 40px;
-  height: 30px;
-  width: 95px;
-  font-weight: bold;
-  border: none;
-  padding: 2px;
-}
-
-h5{
-  font-weight: bold;
 }
