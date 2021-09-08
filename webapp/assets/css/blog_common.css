@@ -1,0 +1,416 @@
+@charset "UTF-8";
+
+/********** 초기화 **********/
+body, div, ul, li, dl, dt, ol, h1, h2, h3, h4,
+h5, h6, input, fieldset, legend, p, select, table, 
+th, td, tr, textarea, button, form {
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+}
+
+body {font-family: "맑은 고딕", 돋음; font-size: 12px;}
+ol, ul {list-style: none;}
+a:link {text-decoration: none; color: black;}
+a:visited {text-decoration: none; color: black;}
+a:hover {text-decoration: none; color: black;}
+a:active {text-decoration: none; color: black;}
+
+/* clearfix */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.logo_title {
+  list-style-type: none;
+  padding: 0;
+  margin:  0;
+  position: fixed;
+  height: 80%;
+  overflow: auto;
+}
+
+.list {
+  list-style-type: none;
+  padding: 0;
+  margin:  0;
+  margin-top: 90px;
+  position: fixed;
+  height: 69%;
+  overflow: auto;
+}
+
+.footer {
+  padding: 0;
+  margin:  0;
+  margin-top: 800px;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+#sidebar {
+  background-color: #efefef;
+}
+
+/** 폭 설정 **/
+.row {
+  width: 100%;
+  }
+  
+
+/** live_logo **/
+.live_logo {
+  margin-bottom: 8px;
+  padding-top: 8px;
+  font-family: 'Pacifico';
+  font-size: 30px;
+}
+
+/** panel-title **/
+.panel-title {
+  margin: 10px 0px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/** table **/
+.list>li>table {
+  margin: 10px;
+  margin-left: 10px;
+  margin-bottom: 23px;
+}
+
+/** 프로필 **/
+.profile {
+  width: 75px;
+  height: 75px;
+  overflow: hidden;
+  border-radius: 70%;
+  text-align: center;
+}
+
+/** 프로필 사진 **/
+.profile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/** 활동명 **/
+.name {
+  padding: 10px 10px 0px 10px;
+  width: 140px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/** 장르 **/
+.genre {
+  padding: 0px 10px 10px 10px;
+  width: 130px;
+  font-size: 14px;
+  text-align: center;
+}
+
+/** 라이브 **/
+.live {
+  width: 60px;
+  text-align: center;
+  overflow: hidden;
+}
+
+/** 라이브 사진 **/
+.live img {
+  width: 100%;
+}
+
+/** footer **/
+#footerbox {
+  position: relative;
+  margin-top: auto;
+  font-size: 13px;
+}
+
+/** 배너 **/
+.banner {
+  margin: 30px 30px 0px 30px;
+  border: 2px solid #000;
+  height: 200px;
+}
+
+/** 블로그 관리 **/
+.setting {
+  width: 20px;
+  margin: 10px;
+  float: right;
+}
+
+/** 배너 안 컨텐츠 **/
+.banner_in {
+  padding: 0px;
+  margin: 0px;
+  margin-left: 320px;
+  display: flex;
+  list-style: none;
+}
+
+.banner_in li {
+  padding-left: 10px;
+  padding-top: 9px;
+  font-size: 14px;
+}
+
+.stream_box {
+  width: 335px;
+  height: 180px;
+  overflow: hidden;
+}
+
+.stream_box img {
+  max-width: 100%;
+  height: auto;
+}
+
+/** 공연시작 버튼 **/
+#form button{
+  width: 120px;
+  height: 40px;
+  float: right;
+  margin-top: -80px;
+  margin-right: 8px; 
+  background:#9A30AE;
+  color:#fff;
+  border:none;
+  border-radius: 20px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition:800ms ease all;
+  outline:none;
+}
+
+#form button:hover{
+  background:#fff;
+  color:#9A30AE;
+  font-weight: bold;
+}
+
+/** sns 버튼 **/
+.facebook {
+  width: 25px;
+  float: right;
+  margin-top: -26px;
+  margin-right: 10px;
+}
+
+.instagram {
+  width: 26px;
+  float: right;
+  margin-top: -26px;
+  margin-right: 49px;
+}
+
+.youtube {
+  width: 33px;
+  float: right;
+  margin-top: -30px;
+  margin-right: 89px;
+}
+
+/** 프로필 박스 **/
+.profile_box {
+  margin: 20px 30px 0px 30px;
+  height: 150px;
+}
+
+/** 메인 프로필 **/
+.main_profile {
+  width: 120px;
+  height: 120px;
+  overflow: hidden;
+  border-radius: 70%;
+  text-align: center;
+  float: left;
+}
+
+/** 프로필 사진 **/
+.main_profile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile_intr, .profile_his {
+  float: left;
+  margin-top: 20px;
+  margin-right: 80px;
+}
+
+/** 메인 장르 **/
+.main_genre {
+  padding: 0px 10px 0px 20px;
+  width: 450px;
+  font-size: 14px;
+}
+
+/** 활동명 **/
+.main_name {
+  padding: 0px 10px 0px 20px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+
+/** 소개 **/
+.main_intr {
+  padding: 0px 10px 10px 20px;
+  font-size: 12px;
+}
+
+/** 이력사항 **/
+.history {
+  padding-left: 10px;
+  width: 200px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.history1 {
+  padding: 0px 10px 0px 10px;
+  font-size: 12px;
+}
+
+.history2 {
+  padding: 0px 10px 0px 10px;
+  width: 200px;
+  font-size: 12px;
+}
+
+/** 좋아요 및 팬 되기 박스 **/
+.like_box {
+  float: right;
+  margin-top: 35px;
+  margin-right: 8px; 
+}
+
+/** 좋아요 **/
+.heart {
+  width: 30px;
+  margin-right: 20px;
+}
+
+.heart_count {
+  padding-right: 28px;
+  text-align: right;
+}
+
+/** 팬 되기 **/
+.like {
+  width: 30px;
+}
+
+.like_count {
+  padding-right: 8px;
+  text-align: right;
+}
+
+/** nav **/
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  margin-left: 30px;
+}
+
+.navbar_menu {
+  padding: 0px;
+  margin: 0px;
+  display: flex;
+  list-style: none;
+  
+}
+
+/** nav_menu **/
+.navbar_menu li {
+  padding: 0px 40px;
+  font-size: 20px;
+}
+
+.navbar_menu a {
+  color: #bfbfbf;
+}
+
+.navbar_menu a:hover {
+  color: #59007e;
+  font-weight: bold;
+}
+
+.home a{
+  font-weight: bold;
+  color: #000;
+}
+
+/* Welcome pic/word */
+#welcome {
+  margin-top: 50px;
+  text-align: center;
+}
+
+#welcomepicture{
+  height: 300px;
+}
+
+#welcomeword{
+  font-size: 20px;
+  color: gray;
+}
+
+#notice{
+  float: left;
+  width: 40%;
+  margin-left: 9%;
+  margin-top: 30px;
+  background-color: #F9F9F9;
+  text-align: center;
+  padding: 25px 0px 25px 0px;
+  border-radius: 5px;
+}
+
+#guestbook{
+  float: right;
+  width: 40%;
+  margin-right: 9%;
+  margin-top: 30px;
+  background-color: #F9F9F9;
+  text-align: center;
+  padding: 25px 0px 25px 0px;
+  border-radius: 5px;
+}
+
+#gallery{
+  text-align: center;
+  width: 82%;
+  margin: 18px 9% 0px 9%;
+  background-color: #F9F9F9;
+  padding: 30px 0px 30px 0px;
+  border-radius: 5px;
+  margin-bottom: 100px;
+}
+
+button {
+  background-color: lightgray;
+  margin-top: 40px;
+  height: 30px;
+  width: 95px;
+  font-weight: bold;
+  border: none;
+  padding: 2px;
+}
+
+h5{
+  font-weight: bold;
+}
