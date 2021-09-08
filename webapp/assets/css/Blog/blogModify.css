@@ -1,0 +1,193 @@
+@charset "UTF-8";
+
+/********** 초기화 **********/
+body, div, ul, li, dl, dt, ol, h1, h2, h3, h4,
+h5, h6, input, fieldset, legend, p, select, table, 
+th, td, tr, textarea, button, form {
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+}
+body {font-family: "맑은 고딕", 돋음; font-size: 12px;}
+ol, ul {list-style: none;}
+a:link {text-decoration: none; color: black;}
+a:visited {text-decoration: none; color: black;}
+a:hover {text-decoration: none; color: black;}
+a:active {text-decoration: none; color: black;}
+
+/* clearfix */
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.modify-header {
+    margin: 10px 270px 30px 100px;
+    border-bottom: lightgray solid 2px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+}
+
+.modify-header h5 {
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+/* Table */
+
+.modify-form table {
+    border-collapse: collapse;
+    width: 70%;
+    margin-left: 100px;
+}
+
+.modify-form table td {
+    border: 1px solid #E5E5E5;
+    padding: 20px 10px 20px 10px;
+}
+
+.input {
+    margin-left: 10px;
+    padding: 4px 4px 4px 4px;
+    width: 90%;
+}
+
+.sns-input {
+    padding: 4px 4px 4px 4px;
+    width: 75%;
+    margin: 10px 0px 10px 0px;
+}
+
+#profilepicturechange {
+    font-weight: bold;
+    width: 50px;
+    padding: 3px;
+    margin-left: 24px;
+    margin-top: 5px;
+}
+
+#profilepicturedelete {
+    font-weight: bold;
+    width: 50px;
+    padding: 3px;
+    margin-top: 5px;
+}
+
+.modify-form table tr td:first-child {
+    border-left: 0;
+}
+
+.modify-form table tr td:last-child,
+.modify-form .modify-formtable tr th:last-child {
+  border-right: 0;
+}
+
+.table-head {
+    background-color:#F9F9F9;
+    width: 25%;
+}
+
+.table-head label {
+    margin-left: 30px;
+}
+
+.modify-form label {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+#profilepicture {
+    border-radius: 8px;
+    width: 150px;
+    height: 150px;
+}
+
+#profilesubmit {
+    font-weight: bold;
+    border: none;
+    width: 50px;
+    height: 30px;
+    padding: 2px;
+    border-radius: 5px;
+    margin-top: 20px;
+    margin-right: 10px;
+}
+
+#profilecancel {
+    font-weight: bold;
+    border: none;
+    width: 50px;
+    height: 30px;
+    padding: 2px;
+    border-radius: 5px;
+    margin-top: 20px;
+    margin-right: 300px;
+    margin-bottom: 50px;
+}
+
+.active {
+    font-weight: bold;
+}
+
+.radio {
+    margin-left: 10px;
+}
+
+.radiolabel {
+    position: relative;
+    padding-right: 35px;
+    padding-left: 3px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.required:after {
+    content:" *";
+    color: red;
+  }
+
+  /* Banner */
+.modify-form img {
+    margin-left: 10px;
+    width: 570px;
+    height: 95px;
+}
+
+#banner span {
+    padding-left: 10px;
+    font-size: 12px;
+    color: gray;
+}
+
+#banner-changebutton {
+    float: right;
+    font-weight: bold;
+    border: none;
+    width: 50px;
+    height: 30px;
+    padding: 2px;
+    border-radius: 5px;
+    margin-top: 5px;
+    margin-right: 10px;
+}   
+
+#banner-deletebutton {
+    float: right;
+    font-weight: bold;
+    border: none;
+    width: 50px;
+    height: 30px;
+    padding: 2px;
+    border-radius: 5px;
+    margin-top: 5px;
+    margin-right: 50px;
+}
+
+.label-width label {
+    width: 90px;
+}
+
+textarea{
+    resize:none;
+}

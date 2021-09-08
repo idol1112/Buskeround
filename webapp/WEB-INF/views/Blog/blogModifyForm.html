@@ -24,8 +24,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 
     <!-- css -->
-    <link rel="stylesheet" href="../assets/css/blog_common.css">
-    <link rel="stylesheet" href="../assets/css/blogmain.css">
+    <link rel="stylesheet" href="../assets/css/blogcommon.css">
+    <link rel="stylesheet" href="../assets/css/blogModify.css">
+    <link rel="stylesheet" href="../assets/css/blogcss">
+</head>
 </head>
 
 <body>
@@ -163,7 +165,7 @@
             </div>
         </div>
 
-        <div class="col-xl-8"">
+        <div class="col-xl-8">
             <!---- 배너 ---->
             <div class=" banner">
             <!-- 블로그 관리 버튼 -->
@@ -203,7 +205,7 @@
                 </tr>
                 <tr>
                     <td class="main_intr"> 안녕하세요. 깊은 밤 이야기를 노래하는 아티스트 입니다. :)</td>
-                </tr>
+                </tr>   
             </table>
 
             <table class="profile_his">
@@ -239,17 +241,58 @@
                 </tr>
             </table>
         </div>
+        <!-- 컨텐트 (프로필 수정) -->
+        <div class="modify-header">
+            <h5>블로그 관리</h5>
+        </div>
 
-
-        <!-- nav_menu -->
-        <div class="navbar">
-            <ul class="navbar_menu">
-                <li class="home"><a href="">홈</a></li>
-                <li><a href="">공지사항</a></li>
-                <li><a href="">타임라인</a></li>
-                <li><a href="">갤러리</a></li>
-                <li><a href="">방명록</a></li>
-            </ul>
+        <div class="modify-form">
+            <form action="" method="POST">
+                <table>
+                    <tr>
+                        <td class="table-head"><label for="artistname">활동명</label></td>
+                        <td><input class="input" type="text" id="artistname" name="artistname" placeholder="활동명을 입력해주세요."></td>
+                    </tr>
+                    <tr>
+                        <td class="table-head"><label for="introduce">자기소개</label></td>
+                        <td><textarea class="input" placeholder="자기소개를 입력해주세요."></textarea></td>
+                    </tr>
+                    <tr>
+                        <td class="table-head"><label for="record">이력사항</label></td>
+                        <td><input class="input" type="text" id="record" name="record" placeholder="이력사항을 입력해주세요"></td>
+                    </tr>
+                    <tr id="banner">
+                        <td class="table-head"><label>대문이미지</label></td>
+                        <td>
+                            <img src="../assets/img/banner.jpg"><br>
+                            <span> 1200 x 200</span>
+                            <button id="banner-deletebutton">삭제</button>
+                            <button id="banner-changebutton">변경</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="table-head"><label>SNS 링크</label></td>
+                        <td class="label-width">
+                            <div>
+                                <div>
+                                    <label>유튜브</label>
+                                    <input class="sns-input" type="text">
+                                </div>
+                                <div>
+                                    <label>페이스북</label>
+                                    <input class="sns-input" type="text">
+                                </div>
+                                <div>
+                                    <label>인스타그램</label>
+                                    <input class="sns-input" type="text">
+                                </div>
+                            </div>
+                            
+                        </td>
+                    </tr>
+                </table>
+                <button class="float-end" id="profilecancel">취소</button>
+                <button class="float-end" id="profilesubmit">수정</button>
         </div>
 
         
