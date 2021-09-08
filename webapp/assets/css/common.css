@@ -1,0 +1,83 @@
+@charset "UTF-8";
+
+/********** 초기화 **********/
+body, div, ul, li, dl, dt, ol, h1, h2, h3, h4,
+h5, h6, input, fieldset, legend, p, select, table, 
+th, td, tr, textarea, button, form {
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+}
+body {font-family: "맑은 고딕", 돋음; font-size: 12px;}
+ol, ul {list-style: none;}
+a:link {text-decoration: none; color: black;}
+a:visited {text-decoration: none; color: black;}
+a:hover {text-decoration: none; color: black;}
+a:active {text-decoration: none; color: black;}
+
+/** footer 하단 고정 **/
+body {
+  min-height: 90vh;     /* 최소 높이를 지정 */
+  display: flex;
+  flex-direction: column;
+  margin: 0px;
+}
+
+/** 폭 설정 **/
+.row {
+width: 100%;
+}
+
+/** nav **/
+#navbox {
+  border-bottom: 2px solid #59007e; 
+  margin-bottom: 20px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+}
+
+.navbar_menu, .navbar_login {
+  padding: 0px;
+  margin: 0px;
+  display: flex;
+  list-style: none;
+}
+
+/** nav_logo **/
+.navbar_logo {
+  padding-top: 8px;
+  font-family: 'Pacifico';
+  font-size: 50px;
+}
+
+/** nav_menu **/
+.navbar_menu li {
+  padding: 0px 40px;
+  padding-top: 20px;
+  font-size: 23px;
+}
+
+.navbar_menu a:hover {
+  color: #59007e;
+  font-weight: bold;
+}
+
+/** nav_login **/
+.navbar_login li {
+  padding: 8px 5px;
+  padding-top: 25px;
+  font-size: 14px;
+}
+
+/** footer **/
+#footerbox {
+  height: 60px;
+  position: relative;
+  border-top: 1px solid #bfbfbf; 
+  margin-top: 20px;
+  font-size: 13px;
+}

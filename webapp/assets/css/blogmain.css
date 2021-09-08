@@ -1,0 +1,81 @@
+@charset "UTF-8";
+
+/********** 초기화 **********/
+body, div, ul, li, dl, dt, ol, h1, h2, h3, h4,
+h5, h6, input, fieldset, legend, p, select, table, 
+th, td, tr, textarea, button, form {
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+}
+body {font-family: "맑은 고딕", 돋음; font-size: 12px;}
+ol, ul {list-style: none;}
+a:link {text-decoration: none; color: black;}
+a:visited {text-decoration: none; color: black;}
+a:hover {text-decoration: none; color: black;}
+a:active {text-decoration: none; color: black;}
+
+/* clearfix */
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* Welcome pic/word */
+#welcome {
+    text-align: center;
+}
+
+#welcomepicture{
+    height: 300px;
+}
+
+#welcomeword{
+    font-size: 20px;
+    color: gray;
+}
+
+#notice{
+    float: left;
+    width: 40%;
+    margin-left: 9%;
+    margin-top: 30px;
+    background-color: #F9F9F9;
+    text-align: center;
+    padding: 25px 0px 25px 0px;
+    border-radius: 5px;
+}
+
+#guestbook{
+    float: right;
+    width: 40%;
+    margin-right: 9%;
+    margin-top: 30px;
+    background-color: #F9F9F9;
+    text-align: center;
+    padding: 25px 0px 25px 0px;
+    border-radius: 5px;
+}
+
+#gallery{
+    text-align: center;
+    width: 82%;
+    margin: 18px 9% 0px 9%;
+    background-color: #F9F9F9;
+    padding: 30px 0px 30px 0px;
+    border-radius: 5px;
+}
+
+button {
+    background-color: lightgray;
+    margin-top: 40px;
+    height: 30px;
+    width: 95px;
+    font-weight: bold;
+    border: none;
+    padding: 2px;
+}
+
+h5{
+    font-weight: bold;
+}
