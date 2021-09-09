@@ -22,123 +22,112 @@ a:active {text-decoration: none; color: black;}
   display: table;
 }
 
-.logo_title {
-  list-style-type: none;
-  padding: 0;
-  margin:  0;
-  position: fixed;
-  height: 80%;
-  overflow: auto;
+#br_container {
+  width: 1400px;
+  margin: 0px auto;
 }
 
-.list {
-  list-style-type: none;
-  padding: 0;
-  margin:  0;
-  margin-top: 90px;
-  position: fixed;
-  height: 69%;
-  overflow: auto;
-}
-
-.footer {
-  padding: 0;
-  margin:  0;
-  margin-top: 45.5%;
-  position: fixed;
+#br_sidebar {
+  width: 240px;
+  padding: 0px;
+  margin: 0px;
   height: 100%;
   overflow: auto;
-}
-
-#sidebar {
+  position: fixed;
   background-color: #efefef;
 }
 
-/** 폭 설정 **/
-.row {
-  width: 100%;
-  }
-
+#br_content {
+  width: 1158px;
+  padding: 15px;
+  margin-bottom: 20px;
+  margin-left: 240px;
+  float: left;
+}
 
 /** live_logo **/
 .live_logo {
-  margin-bottom: 8px;
-  padding-top: 8px;
+  margin: 0px 10px;
   font-family: 'Pacifico';
   font-size: 30px;
 }
 
-/** panel-title **/
-.panel-title {
-  margin: 10px 0px;
+/** live_title **/
+.live_title {
+  margin: 0px 10px 5px 10px;
   font-size: 18px;
   font-weight: bold;
 }
 
-/** table **/
-.list>li>table {
-  margin: 10px;
-  margin-left: 6px;
-  margin-bottom: 23px;
-}
-
-/** 프로필 **/
-.profile {
-  width: 75px;
+/** 사이드 네비 **/
+.side_nav {
+  width: 225px;
   height: 75px;
-  overflow: hidden;
-  border-radius: 70%;
-  text-align: center;
+  padding: 5px 10px;
+  margin-left: 10px;
+  margin-bottom: 15px;
 }
 
 /** 프로필 사진 **/
-.profile img {
+.profile_img {
+  width: 60px;
+  height: 60px;
+  border-radius: 70%;
+  overflow: hidden;
+  float: left;
+}
+
+.profile_user_img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
 /** 활동명 **/
-.name {
-  padding: 10px 10px 0px 10px;
-  width: 140px;
-  font-size: 18px;
+.profile_name {
+  float: left;
+  width: auto;
+  margin-top: 7px;
+  padding: 0px 15px 0px 8px;
+  font-size: 15px;
   font-weight: bold;
-  text-align: center;
 }
 
 /** 장르 **/
-.genre {
-  padding: 0px 10px 10px 10px;
-  width: 130px;
-  font-size: 14px;
-  text-align: center;
+.profile_genre {
+  width: 80px;
+  position: absolute;
+  margin-top: 30px;
+  margin-left: 60px;
+  padding-left: 8px;
 }
 
-/** 라이브 **/
-.live {
+.profile_genre img {
   width: 60px;
-  text-align: center;
-  overflow: hidden;
 }
 
-/** 라이브 사진 **/
-.live img {
-  width: 100%;
+/** 라이브 이미지 **/
+.live_on {
+  float: left;
+  width: 10px;
+  height: 10px;
+  margin-top: 14.3px;
+  background-color: #ff0000;
+  border: 2px solid #ff0000;
+  border-radius: 100%;
 }
 
 /** footer **/
-#footerbox {
-  position: relative;
-  margin-top: auto;
-  font-size: 13px;
+.footer {
+  margin-top: 140px;
+  padding: 0px 25px;
 }
 
 /** 배너 **/
 .banner {
-  margin: 30px 30px 0px 30px;
-  border: 2px solid #000;
+  width: auto;
   height: 200px;
+  border: 2px solid #000;
 }
 
 /** 블로그 관리 **/
@@ -159,7 +148,7 @@ a:active {text-decoration: none; color: black;}
 
 .banner_in li {
   padding-left: 10px;
-  padding-top: 9px;
+  padding-top: 8px;
   font-size: 14px;
 }
 
@@ -243,30 +232,38 @@ a:active {text-decoration: none; color: black;}
   object-fit: cover;
 }
 
-.profile_intr, .profile_his {
+/** 프로필 테이블 **/
+.profile_intr {
   float: left;
-  margin-top: 20px;
-  margin-right: 50px;
+  margin-top: 23px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+/** 이력사항 테이블 **/
+.profile_his {
+  float: left;
+  margin-top: 23px;
+  margin-right: 10px;
 }
 
 /** 메인 장르 **/
 .main_genre {
-  padding: 0px 10px 0px 20px;
-  width: 450px;
-  font-size: 14px;
+  width: 440px;
+}
+
+.main_genre img {
+  width: 60px;
 }
 
 /** 활동명 **/
 .main_name {
-  padding: 0px 10px 0px 20px;
   font-size: 18px;
   font-weight: bold;
 }
 
-
 /** 소개 **/
 .main_intr {
-  padding: 0px 10px 10px 20px;
   font-size: 12px;
 }
 
@@ -274,8 +271,10 @@ a:active {text-decoration: none; color: black;}
 .history {
   padding-left: 10px;
   width: 200px;
-  font-size: 14px;
-  font-weight: bold;
+}
+
+.history img {
+  width: 60px;
 }
 
 .history1 {
