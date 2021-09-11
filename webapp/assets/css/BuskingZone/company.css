@@ -1,0 +1,334 @@
+@charset "UTF-8";
+
+/********** 초기화 **********/
+body, div, ul, li, dl, dt, ol, h1, h2, h3, h4,
+h5, h6, input, fieldset, legend, p, select, table, 
+th, td, tr, textarea, button, form {
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+}
+body {font-family: "맑은 고딕", 돋음; font-size: 12px;}
+ol, ul {list-style: none;}
+a:link {text-decoration: none; color: black;}
+a:visited {text-decoration: none; color: black;}
+a:hover {text-decoration: none; color: black;}
+a:active {text-decoration: none; color: black;}
+
+/* clearfix */
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.img-btn {
+    border: 0px none;
+    background-color: #ffffff;
+}
+
+.btn-img {
+    width: 26px;
+}
+
+#profile-btn {
+    margin-top: 5px;
+    padding-right: 22px;
+    
+}
+
+/** mypage **/
+#mypage {
+    padding-bottom: 10px;
+}
+
+
+#mypage-left {
+    width: 18%;
+    float: left;
+    height: 100%;
+    padding-top: 30px;
+    padding-left: 30px;
+    border-right: 1px solid #bfbfbf;
+}
+
+#mypage-left ul>li {
+    padding-top: 15px;
+}
+
+#mypage-left ul>h4 {
+    padding-bottom: 10px;
+}
+
+#mypage-right {
+    margin-left: 20px;
+    margin-top: 40px;
+    float: left;
+    width: 72%;
+    text-align: center;
+}
+
+#mypage-right .btn-area {
+    display: block;
+    margin-top: 130px;
+}
+
+#mypage-right .content-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 45px;
+}
+
+#mypage-right-header {
+    padding-bottom: 7px;
+    border-bottom: 2px solid #bfbfbf;
+    text-align: left;
+}
+
+#mypage-left-content {
+    width: 50%;
+    margin-top: 80px;
+    padding-left: 30px;
+    float: left;
+}
+
+#mypage-right #calendar {
+    width: 250px;
+}
+
+/** stageManage **/
+#mypage-left-content .place-list-group {
+    padding-left: 80px;
+}
+#mypage-left-content .place-add {
+    margin-left: 5px;
+    margin-bottom: 38px;
+}
+
+#mypage-left-content .place-add input {
+    width: 230px;
+    height: 25px;
+}
+
+#mypage-left-content>ul>.place-list {
+    display: block;
+    width: 260px;
+    height: 26px;
+    font-size: 14px;
+    text-align: center;
+    background-color: #ebebeb;
+    margin-top: 10px;
+    margin-left: 5px;
+}
+
+#mypage-left-content>ul>.place-list button {
+    float: right;
+}
+#mypage-right-content {
+    width: 50%;
+    margin-top: 80px;
+    margin-bottom: 87px;
+    padding-left: 30px;
+    float: left;
+}
+
+#mypage-right-content .condition-state {
+    width: 40%;
+    display: inline-block;
+    font-size: 15px;
+    margin-bottom: 40px;
+}
+
+#mypage-right-content .radio-inline {
+    margin-right: 30px;
+}
+
+/** /stageManage/ **/
+
+/** buskingZoneManage **/
+#mypage-right .select-box {
+    width: 250px;
+    height: 26px;
+}
+
+#mypage-left-content .form-group {
+    margin-bottom: 15px;
+}
+
+
+#mypage-left-content .input-time {
+    width: 100px;
+    height: 26px;
+}
+
+#mypage-left-content .from-img {
+    width: 25px;
+}
+
+#mypage-left-content .list-time {
+    display: inline-block;
+    width: 100px;
+    height: 26px;
+    text-align: center;
+    background-color: #f1f0f0;
+    font-size: 15px;
+}
+
+#mypage-right-content .availability {
+    display: inline-block;
+    width: 150px;
+    font-size: 14px;
+}
+
+#mypage-right-content .title-content {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+#mypage-right-content .requirement {
+    text-align: left;
+}
+
+#mypage-right-content textarea {
+    width: 400px;
+    margin-top: 8px;
+    margin-left: 3px;
+}
+
+
+/** /buskingZoneManage/ **/
+
+/** applyManage **/
+#mypage-main-content .content-filter {
+    display: inline-block;
+    vertical-align: bottom;
+}
+
+#mypage-main-content .content-filter #calendar {
+    width: 240px;
+}
+
+#mypage-main-content .content-filter select {
+    width: 210px;
+    height: 30px;
+    text-align: center;
+    font-size: 14px;
+}
+
+#mypage-main-content #content-filter-area {
+    margin: 20px 0px;
+}
+
+#mypage-main-content table {
+        margin: auto;
+        text-align: center;
+}
+
+
+/** /applyManage/ **/
+
+#mypage-main-content {
+    text-align: center;
+}
+
+
+#mypage-category li {
+    font-size: 14px;
+}
+/** /mypage/ **/
+
+/** Table **/
+table {
+    border-collapse: collapse;
+    width: 95%;
+    margin-left: 10px;
+}
+
+table td {
+    border: 1px solid #E5E5E5;
+    padding: 20px 10px 20px 10px;
+}
+
+.input {
+    margin-left: 10px;
+    padding: 4px 4px 4px 4px;
+    width: 70%;
+}
+
+#profilepicturechange {
+    font-weight: bold;
+    width: 50px;
+    padding: 3px;
+    margin-left: 24px;
+    margin-top: 5px;
+}
+
+#profilepicturedelete {
+    font-weight: bold;
+    width: 50px;
+    padding: 3px;
+    margin-top: 5px;
+}
+
+table tr td:first-child {
+    border-left: 0;
+}
+
+table tr td:last-child,
+table tr th:last-child {
+    border-right: 0;
+}
+
+.table-head {
+    background-color:#F9F9F9;
+    width: 30%;
+}
+
+.table-head label {
+    margin-left: 30px;
+}
+
+label {
+    font-weight: bold;
+    font-size: 14px;
+}
+/** /Table/ **/
+
+
+#profilepicture {
+    border-radius: 8px;
+    width: 150px;
+    height: 150px;
+}
+
+#profilesubmit {
+    font-weight: bold;
+    border: none;
+    width: 50px;
+    height: 30px;
+    padding: 2px;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-right: 22px;
+}
+
+.active {
+    font-weight: bold;
+}
+
+.radio {
+    margin-left: 10px;
+}
+
+.radiolabel {
+    position: relative;
+    padding-right: 35px;
+    padding-left: 3px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.required:after {
+    content:" *";
+    color: red;
+}

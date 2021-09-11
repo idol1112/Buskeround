@@ -1,0 +1,119 @@
+@charset "UTF-8";
+body {
+    font-size: 15px;
+}
+
+/**************** buskingApp *****************/
+
+#companyInfo {
+    border-right: 2px solid #a8a8a8;
+    padding: 50px 50px 50px 0px;
+    
+}
+
+#companyInfo #com-img {
+    margin-left: 75px;
+    width: 300px;
+    height: 200px;
+}
+
+#companyInfo .title-area {
+    margin-left: 20px;
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+#companyInfo #infoArea {
+    display: inline-block;
+    width: 330px;
+    margin-left: 75px;
+}
+
+#companyInfo #infoArea .infoGroup {
+    margin: 20px 0px 60px 0px;
+    padding-left: 15px;
+}
+
+#companyInfo #infoArea .infoGroup .content-area {
+    font-size: 13px;
+}
+#companyInfo #infoArea .infoGroup .content-area #companyNum {
+    color: #00751d;
+}
+
+#companyInfo #infoArea .infoGroup .condition-title {
+    width: 200px;
+    text-align: left;
+    font-weight: bold;
+}
+#companyInfo #infoArea .infoGroup .required-area #requiredContent {
+    margin: 5px 0px 20px 0px;
+}
+
+
+
+
+
+#applyInfo {
+    padding: 50px 0px 20px 0px;
+    margin-left: 50px;
+}
+#applyInfo .form-group {
+    padding: 20px 0px 20px 0px;
+    text-align: left;
+    
+}
+
+#applyInfo .form-group .form-text {
+    display: inline-block;  /* 인라인 요소 가로폭을 주려고 */
+    width: 100px;
+    
+    color: #000000;
+    font-weight: bold;
+    font-size: 15px;
+    margin-right: 70px;
+    margin-left: 50px;
+}
+
+#applyInfo .form-group select {
+    width: 210px;
+    text-align: center;
+}
+
+#applyInfo .form-group #detailInfo {
+    width: 400px;
+    height: 150px;
+}
+
+#applyInfo .form-group #inputDetail {
+    margin-top: 5px;
+    margin-left: 43px;
+}
+
+#applyInfo .button-area {
+    padding: 5px 0px 5px 395px;
+    
+}
+
+#applyInfo .button-area #btn-submit {
+    width: 50px;
+    height: 30px;
+}
+
+
+/**************** /buskingApp/ *****************/
+
+/**************** applyList *****************/
+#content #main {
+    margin: 100px 0px 370px 0px;
+}
+
+  /** applyList table **/
+  .table {
+    margin: auto;
+    width: 1100px;
+    text-align: center;
+}
+
+/**************** /applyList/ *****************/
