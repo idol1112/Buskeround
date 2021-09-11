@@ -2,7 +2,7 @@
 
 /********** 초기화 **********/
 body, div, ul, li, dl, dt, ol, h1, h2, h3, h4,
-h5, h6, input, fieldset, legend, p, select, table,
+h5, h6, input, fieldset, legend, p, select, table, 
 th, td, tr, textarea, button, form {
   margin: 0px 0px 0px 0px;
   padding: 0px 0px 0px 0px;
@@ -95,7 +95,8 @@ a:active {text-decoration: none; color: black;}
 
 /** 장르 **/
 .profile_genre {
-  width: 80px;
+  width: 100px;
+  height: 40px;
   position: absolute;
   margin-top: 30px;
   margin-left: 60px;
@@ -347,7 +348,13 @@ a:active {text-decoration: none; color: black;}
   font-weight: bold;
 }
 
-.home a{
+.bold a{
   font-weight: bold;
   color: #000;
+}
+
+.profile_genre img, .main_genre img, .history img {
+  image-rendering: -webkit-optimize-contrast;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
