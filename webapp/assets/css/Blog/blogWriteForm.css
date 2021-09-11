@@ -1,0 +1,102 @@
+@charset "UTF-8";
+
+/********** 초기화 **********/
+body, div, ul, li, dl, dt, ol, h1, h2, h3, h4,
+h5, h6, input, fieldset, legend, p, select, table, 
+th, td, tr, textarea, button, form {
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+}
+body {font-family: "맑은 고딕", 돋음; font-size: 12px;}
+ol, ul {list-style: none;}
+a:link {text-decoration: none; color: black;}
+a:visited {text-decoration: none; color: black;}
+a:hover {text-decoration: none; color: black;}
+a:active {text-decoration: none; color: black;}
+
+/* clearfix */
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* 메인 */
+#content{
+  margin: 20px 263px 30px 75px;
+}
+
+.modify-header {
+  border-bottom: lightgray solid 2px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+}
+
+.modify-header h5 {
+  font-weight: bolder;
+  font-size: 20px;
+}
+
+/* WriteFormContent */
+.editormargin {
+  margin: 10px 0px 10px 0px;
+}
+
+/* 카테고리 */
+#content select {
+  width: 200px;
+  padding: 10px 0px 10px 8px;
+  font-family: inherit;
+  background: url(https://farm1.staticflickr.com/379/19928272501_4ef877c265_t.jpg) no-repeat 98% 50%;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 1px solid #999;
+  border-radius: 0px;
+  margin: 10px 5px 0px 0px;
+}
+
+/* 제목 */
+#title {
+  width:580px;
+  padding: 10px 0px 10px 8px;
+  font-family: inherit;
+  border: 1px solid #999;
+  border-radius: 0px;
+  margin-bottom: 10px;
+} 
+
+#textarea{
+  margin-top: 10px;
+  padding: 10px;
+  width: 790px;
+  min-height: 300px;
+  resize: none;
+}
+
+/* 페북 등록 */
+#facebookupload{
+  width: 18px;
+  height: 18px;
+  padding: 8px 12px;
+  margin-top: 5px;
+}
+
+label[for=facebookupload]{
+  font-size: 14px;
+  padding-left: 5px;
+}
+
+/* 등록버튼 */
+#uploadbutton{
+  float: right;
+  padding: 8px 12px;
+  margin: 0px 0px 5px 0px;
+  border: none;
+  font-weight: bold;  
+  background: #FAFAFA;
+  border: 1px solid #DDDDDD;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 5px;
+}

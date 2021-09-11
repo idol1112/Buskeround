@@ -1,0 +1,213 @@
+@charset "UTF-8";
+
+/********** 초기화 **********/
+body, div, ul, li, dl, dt, ol, h1, h2, h3, h4,
+h5, h6, input, fieldset, legend, p, select, table, 
+th, td, tr, textarea, button, form {
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+}
+body {font-family: "맑은 고딕", 돋음; font-size: 12px;}
+ol, ul {list-style: none;}
+a:link {text-decoration: none; color: black;}
+a:visited {text-decoration: none; color: black;}
+a:hover {text-decoration: none; color: black;}
+a:active {text-decoration: none; color: black;}
+
+/* clearfix */
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* 게시판 */
+#board table {
+    margin: 0px 50px 0px 75px;
+    width: 1017px;
+    border-collapse: collapse; 
+}
+
+/* 글쓰기 버튼 */
+
+#writebutton img {
+    display: inline-block;
+    width: 15px;
+    padding-bottom: 3px;
+    margin-right: 5px;
+}
+
+#writebutton{
+    float: right;
+    padding: 8px 12px;
+    margin: 8px 37px 10px 0px;
+    border: none;
+    font-weight: bold;
+    background: #FAFAFA;
+    border: 1px solid #DDDDDD;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* 게시판 table */
+
+#board table>thead>tr {
+    border-top: 2px solid #808080; 
+    border-bottom: 2px solid #808080;
+    background-color: #E8E8E8; 
+    padding: 0px;
+}
+
+#board table>thead>tr>th {
+    padding: 10px 0px 10px 0px;
+    font-weight: bold; 
+    font-size: 14px;
+    text-align: center;
+}
+
+#board table>tbody>tr { 
+    border-bottom: 1px solid #808080;
+    text-align: center;
+}
+
+
+#board table>tbody>tr>td {
+    padding: 10px 0px 10px 0px;
+}
+
+#board tbody tr:first-child{
+    color: red;
+    background-color: #F5F5F5;
+    font-weight: bold;
+}
+#board tbody tr:nth-child(2){
+    color: red;
+    background-color: #F5F5F5;
+    font-weight: bold;
+}
+#board tbody tr:nth-child(3){
+    color: red;
+    background-color: #F5F5F5;
+    font-weight: bold;
+}
+
+/* 검색기능 */
+.topnav {
+    overflow: hidden;
+    margin-right: 20px;
+  }
+  
+  .topnav a {
+    float: left;
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+
+  .topnav a.active {
+    background-color: #2196F3;
+    color: white;
+  }
+  
+  .topnav .search-container {
+    float: right;
+  }
+  
+  .topnav input[type=text] {
+    padding: 5px;
+    margin-top: 8px;
+    font-size: 14px;
+    border: 1px solid lightgray;
+  }
+  
+  .topnav .search-container button {
+    float: right;
+    padding: 6px 10px;
+    margin-top: 8px;
+    margin-right: 16px;
+    background: #ddd;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .topnav .search-container button:hover {
+    background: #ccc;
+  }
+  
+  @media screen and (max-width: 600px) {
+    .topnav .search-container {
+      float: none;
+    }
+    .topnav a, .topnav input[type=text], .topnav .search-container button {
+      float: none;
+      display: block;
+      text-align: left;
+      width: 100%;
+      margin: 0;
+      padding: 14px;
+    }
+    .topnav input[type=text] {
+      border: 1px solid #ccc;  
+    }
+  }
+
+/* Paging */
+.container {
+    padding: 1rem;
+    margin: 10px 3rem 0px 3rem;
+    text-align: center;
+  }
+.container:after {
+    clear: both;
+    content: "";
+    display: table;
+  }
+.container ul {
+    width: 100%;
+  }
+  
+.xlarge {
+    width: 65rem;
+  }
+
+.pagination  ul, li {
+    list-style: none;
+    display: inline;
+    padding-left: 0px;
+    font-size: 12px;
+  }
+
+.pagination  li:hover a {
+    color: black;
+    background-color: #CCCCCC;
+    border: solid 1px #CCCCCC;
+  }
+.pagination li.active a {
+    color: black;
+    background-color: #CCCCCC;
+    border: solid 1px #CCCCCC;
+    font-weight: bold;
+  }
+.pagination li a {
+    border: solid 1px #d7d7d7;
+    border-radius: 0.2rem;
+    color: #7d7d7d;
+    text-decoration: none;
+    text-transform: uppercase;
+    display: inline-block;
+    text-align: center;
+    padding: 0.5rem 0.9rem;
+  }
+
+.pagination  li:first-child {
+    margin-right: 5px;
+  }
+.pagination  li:last-child {
+    margin-left: 5px;
+  }
+
