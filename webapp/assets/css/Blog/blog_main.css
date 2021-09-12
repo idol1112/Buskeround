@@ -3,6 +3,7 @@
 .main_title {
   display: block;
   margin: 10px;
+  margin-left: 30px;
 }
 
 .main_title img {
@@ -61,7 +62,7 @@
   height: 30px;
   margin: 20px 0px 0px 20px;
   float: left;
-  
+
 }
 
 h1 {
@@ -193,9 +194,9 @@ h1 {
 
 /* 게시판 */
 #board table {
-  margin: 0px 50px 0px 28px;
-  width: 1068px;
-  border-collapse: collapse; 
+  margin: 0px 0px 0px 30px;
+  width: 1055px;
+  border-collapse: collapse;
 }
 
 #writebutton{
@@ -212,20 +213,20 @@ h1 {
 }
 
 #board table>thead>tr {
-  border-top: 2px solid #808080; 
+  border-top: 2px solid #808080;
   border-bottom: 2px solid #808080;
-  background-color: #E8E8E8; 
+  background-color: #E8E8E8;
   padding: 0px;
 }
 
 #board table>thead>tr>th {
   padding: 10px 0px 10px 0px;
-  font-weight: bold; 
+  font-weight: bold;
   font-size: 14px;
   text-align: center;
 }
 
-#board table>tbody>tr { 
+#board table>tbody>tr {
   border-bottom: 1px solid #808080;
   text-align: center;
 }
@@ -271,7 +272,7 @@ h1 {
   grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
   grid-gap: 15px;
   max-width: 1100px;
-  padding: 0px 15px 15px 15px; 
+  padding: 0px 29px 15px 15px;
   margin: 0 auto;
   box-sizing: border-box;
 }
