@@ -1,0 +1,234 @@
+@charset "UTF-8";
+
+/********** 초기화 **********/
+body, div, ul, li, dl, dt, ol, h1, h2, h3, h4,
+h5, h6, input, fieldset, legend, p, select, table, 
+th, td, tr, textarea, button, form {
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+}
+body {font-family: "맑은 고딕", 돋음; font-size: 12px;}
+ol, ul {list-style: none;}
+a:link {text-decoration: none; color: black;}
+a:visited {text-decoration: none; color: black;}
+a:hover {text-decoration: none; color: black;}
+a:active {text-decoration: none; color: black;}
+
+/** footer 하단 고정 **/
+body {
+  min-height: 90vh;     /* 최소 높이를 지정 */
+  display: flex;
+  flex-direction: column;
+  margin: 0px;
+}
+
+/** 폭 설정 **/
+.row {
+width: 100%;
+}
+
+/** nav **/
+#navbox {
+  border-bottom: 2px solid #59007e; 
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+}
+
+.navbar_menu, .navbar_login {
+  padding: 0px;
+  margin: 0px;
+  display: flex;
+  list-style: none;
+}
+
+/** nav_logo **/
+.navbar_logo {
+  padding-top: 8px;
+  font-family: 'Pacifico';
+  font-size: 50px;
+}
+
+/** nav_menu **/
+.navbar_menu li {
+  padding: 0px 45px;
+  padding-top: 20px;
+  font-size: 23px;
+}
+
+.navbar_menu a:hover {
+  color: #59007e;
+  font-weight: bold;
+}
+
+/** nav_login **/
+.navbar_login li {
+  padding: 8px 5px;
+  padding-top: 25px;
+  font-size: 14px;
+}
+
+
+/** artbox **/
+#artbox {
+  background-color: #f6f6f6;
+}
+
+.navbar_artmenu {	
+  font-size: 15px;
+  margin: 0px;
+  display: flex;
+  list-style: none;
+}
+
+.navbar_artmenu li {
+  padding: 0px 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.navbar_artmenu a:hover {
+  color: #000000;
+  font-weight: bold;
+}
+
+
+/**genre box**/
+#genrebox {
+  background-color: #f6f6f6;
+}
+
+.navbar_genremenu {	
+  font-size: 13px;
+  margin: 0px;
+  display: flex;
+  list-style: none;
+}
+
+.navbar_genremenu li {
+  padding: 0px 10px 0px 0px;
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+
+.navbar_genremenu a:hover {
+  background-color: #ffffff;
+  font-weight: bold;
+}
+
+
+/** section **/
+.section-01 {
+  display: flex;
+  justify-content: center;
+  margin-left:50px;
+}
+
+.leftsection {
+  padding: 0px 15px;
+}
+
+.leftsection-01 {
+  display: flex;
+  justify-content: space-between;
+  padding: 30px 0px;
+}
+.leftsection-01 div {
+  border-bottom: 1px solid #8b8b8b;
+  height: 0%;
+}
+.leftsection-01 div input {
+  text-align: center;
+  border: none;
+}
+
+.leftsection h2 {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+
+.leftsection-02 table {
+  border-collapse: collapse;
+  text-align: center;
+  font-size: 12px;
+}
+.leftsection-02 table thead tr td {
+  border-top: 1px solid #000122;
+  border-bottom: 1px solid #000122;
+  padding: 8px 20px;
+}
+
+.leftsection-02 tbody tr td {
+  border-bottom: 1px solid #595959;
+}
+
+.leftsection-02 table tbody tr td {
+  padding: 15px 15px;
+}
+.leftsection-02 table tbody tr td:nth-of-type(1) {
+  font-weight: bold;
+  font-size: 20px;
+}
+.leftsection-02 table tbody tr td:nth-of-type(5),
+.leftsection-02 table tbody tr td:nth-of-type(6),
+.leftsection-02 table tbody tr td:nth-of-type(7) {
+  font-size: 11px;
+  text-align: center;
+}
+
+.rightsection {
+  padding: 0px 10px;
+ 
+}
+.rightsection h3 {		
+  color:#59007e;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.rightsection-01 {
+  padding: 30px 0px 10px 0px;
+}
+.rightsection-01-01 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.rightsection-02 {
+  padding: 20px 0px;
+}
+.rightsection-02-01 {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 10px;
+}
+
+.rightsection-02 table tbody tr:nth-of-type(2n-1) td {
+  background-color: #cacaca;
+}
+.rightsection-02 table tbody tr td {
+  font-size: 15px;
+  padding: 5px 10px;
+  text-align: center;
+}
+
+
+
+
+
+
+
+
+/** footer **/
+#footerbox {
+  height: 60px;
+  position: relative;
+  border-top: 1px solid #bfbfbf; 
+  margin-top: auto;
+  font-size: 13px;
+}
