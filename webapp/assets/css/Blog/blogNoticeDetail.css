@@ -2,7 +2,7 @@
 
 /********** 초기화 **********/
 body, div, ul, li, dl, dt, ol, h1, h2, h3, h4,
-h5, h6, input, fieldset, legend, p, select, table, 
+h5, h6, input, fieldset, legend, p, select, table,
 th, td, tr, textarea, button, form {
   margin: 0px 0px 0px 0px;
   padding: 0px 0px 0px 0px;
@@ -94,7 +94,7 @@ a:active {text-decoration: none; color: black;}
 /* 게시판 */
 #board table {
   width: 1017px;
-  border-collapse: collapse; 
+  border-collapse: collapse;
 }
 
 /* 글쓰기 버튼 */
@@ -121,20 +121,20 @@ a:active {text-decoration: none; color: black;}
 /* 게시판 table */
 
 #board table>thead>tr {
-  border-top: 2px solid #808080; 
+  border-top: 2px solid #808080;
   border-bottom: 2px solid #808080;
-  background-color: #E8E8E8; 
+  background-color: #E8E8E8;
   padding: 0px;
 }
 
 #board table>thead>tr>th {
   padding: 10px 0px 10px 0px;
-  font-weight: bold; 
+  font-weight: bold;
   font-size: 14px;
   text-align: center;
 }
 
-#board table>tbody>tr { 
+#board table>tbody>tr {
   border-bottom: 1px solid #808080;
   text-align: center;
 }
