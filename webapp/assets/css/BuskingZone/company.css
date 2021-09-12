@@ -64,12 +64,12 @@ a:active {text-decoration: none; color: black;}
     margin-top: 40px;
     float: left;
     width: 72%;
-    text-align: center;
 }
 
 #mypage-right .btn-area {
     display: block;
     margin-top: 130px;
+    text-align: center;
 }
 
 #mypage-right .content-title {
@@ -96,12 +96,10 @@ a:active {text-decoration: none; color: black;}
 }
 
 /** stageManage **/
-#mypage-left-content .place-list-group {
-    padding-left: 80px;
-}
 #mypage-left-content .place-add {
     margin-left: 5px;
     margin-bottom: 38px;
+    text-align: left;
 }
 
 #mypage-left-content .place-add input {
@@ -109,8 +107,11 @@ a:active {text-decoration: none; color: black;}
     height: 25px;
 }
 
+#mypage-left-content .place-list-group {
+	text-align: left;
+}
+
 #mypage-left-content>ul>.place-list {
-    display: block;
     width: 260px;
     height: 26px;
     font-size: 14px;
@@ -135,11 +136,13 @@ a:active {text-decoration: none; color: black;}
     width: 40%;
     display: inline-block;
     font-size: 15px;
+    font-weight: bold;
     margin-bottom: 40px;
 }
 
 #mypage-right-content .radio-inline {
     margin-right: 30px;
+    font-weight: lighter;
 }
 
 /** /stageManage/ **/
@@ -181,7 +184,6 @@ a:active {text-decoration: none; color: black;}
 
 #mypage-right-content .title-content {
     font-size: 15px;
-    font-weight: bold;
 }
 
 #mypage-right-content .requirement {
@@ -215,7 +217,7 @@ a:active {text-decoration: none; color: black;}
 }
 
 #mypage-main-content #content-filter-area {
-    margin: 20px 0px;
+    margin: 75px 50px 15px 50px;
 }
 
 #mypage-main-content table {
