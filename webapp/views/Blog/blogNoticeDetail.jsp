@@ -50,8 +50,8 @@
           <span>2021-09-10</span>
           <span>조회 497</span>
 
-          <button id="deletebutton">삭제</button>
-          <button id="modifybutton">수정</button>
+          <button id="deletebutton" onclick="location.href=''">삭제</button>
+          <button id="modifybutton" onclick="location.href='blogWriteModifyForm.jsp'">수정</button>
         </div>
         <!-- 내용 -->
         <div class="detail-content">
@@ -62,7 +62,7 @@
         <div>
           <!-- 글쓰기 버튼 -->
           <div class="clearfix">
-            <button id="writebutton">목록</button>
+            <button id="writebutton" onclick="location.href='blogNoticeBoard.jsp'">목록</button>
           </div>
 
           <!-- 게시판 테이블 -->

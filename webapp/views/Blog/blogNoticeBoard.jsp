@@ -51,9 +51,9 @@
 			<div class="content clearfix">
 				<!-- 글쓰기 버튼 -->
 				<div class="clearfix main_title">
-					<img src="../../assets/image/blog/icon/landscape.png"> <span>공지사항</span>
-					<button id="writebutton">
-						<img src="../assets/img/write.png">글쓰기
+					<img src="../../assets/image/blog/icon/letter.png"> <span>공지사항</span>
+					<button id="writebutton" type="button" onClick="location.href='blogWriteForm.jsp'">
+						<img src="../../assets/image/blog/icon/write.png">글쓰기
 					</button>
 				</div>
 
@@ -72,7 +72,7 @@
 						<tbody>
 							<tr>
 								<td>1</td>
-								<td class="left-align">8월 29일 버스킹 공지사항</td>
+								<td class="left-align"><a href="blogNoticeDetail.jsp">8월 29일 버스킹 공지사항</a></td>
 								<td>우주 멋쟁이</td>
 								<td>2021-09-08</td>
 								<td>100</td>

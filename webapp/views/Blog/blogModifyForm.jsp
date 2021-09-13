@@ -59,7 +59,7 @@
 						</tr>
 						<tr id="banner">
 							<td class="table-head"><label>대문이미지</label></td>
-							<td><img src="../assets/img/banner.jpg"><br> <span> 1200 x 200</span>
+							<td><img src="../../assets/image/blog/img/profilebanner.jpg">
 								<button id="banner-deletebutton">삭제</button>
 								<button id="banner-changebutton">변경</button></td>
 						</tr>
@@ -81,8 +81,8 @@
 							</td>
 						</tr>
 					</table>
-					<button class="float-end" id="profilecancel">취소</button>
-					<button class="float-end" id="profilesubmit">수정</button>
+					<button class="float-end" id="profilecancel" onclick="location.href=''">취소</button>
+					<button class="float-end" id="profilesubmit" onclick="location.href=''">수정</button>
 			</div>
 		</div>
 	</div>

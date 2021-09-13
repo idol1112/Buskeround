@@ -71,7 +71,7 @@
   <!------ ////(br_container)//// ------>
 </body>
 
-<script src="../../assets/css/Blog/testEditor/build/ckeditor.js"></script>
+<script src="../../assets/css/Blog/textEditor/build/ckeditor.js"></script>
 <script>ClassicEditor
     .create( document.querySelector( '.editor' ), {
 

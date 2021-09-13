@@ -35,6 +35,7 @@ a:active {text-decoration: none; color: black;}
     width: 15px;
     padding-bottom: 3px;
     margin-right: 5px;
+    margin: 0px 5px 0px 0px;
 }
 
 #writebutton{
@@ -194,3 +195,17 @@ a:active {text-decoration: none; color: black;}
     margin-left: 5px;
   }
 
+
+.main_title img {
+  width: 25px;
+  margin-right: 3px;
+  margin-left: 30px;
+  margin-bottom: -25px;
+}
+
+.main_title span {
+  font-size: 20px;
+  font-weight: bold;
+  position: relative;
+  top: 18px;
+}
