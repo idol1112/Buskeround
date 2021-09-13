@@ -15,9 +15,9 @@
 
       <!-- nav_menu -->
       <ul class="navbar_menu">
-        <li><a href="">공연</a></li>
-        <li><a href="">아티스트</a></li>
-        <li><a href="">버스킹존</a></li>
+        <li><a href="../Map/map.jsp">공연</a></li>
+        <li><a href="../Artist/ArtistRenk.jsp">아티스트</a></li>
+        <li><a href="../Map/map.jsp">버스킹존</a></li>
         <li><a href="">고객센터</a></li>
       </ul>
 
