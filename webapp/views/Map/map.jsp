@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%-- <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> --%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
 <html>
@@ -27,7 +27,7 @@
     
 </head>
 <body>
-<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
+<c:import url="/views/includes/header.jsp"></c:import>
 <div id="map" style="width:100%;height:700px;"></div>
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=79c2ae6522e8e0df7b0592164f933676"></script>
@@ -103,5 +103,8 @@ kakao.maps.event.addListener(marker, 'click', function() {
 
 
 </script>
+
+<c:import url="/views/includes/footer.jsp"></c:import>
+
 </body>
 </html>
