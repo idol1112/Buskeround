@@ -1,0 +1,66 @@
+@charset "UTF-8";
+
+/** loginbox **/
+.joinbox {
+  width: 480px;
+  height: 510px;
+  padding: 20px 30px;
+  top: 45%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+}
+
+.text {
+  font-size: 24px;
+  margin-bottom: 40px;
+}
+
+form input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+form p {
+  padding-top: 10px;
+  padding-bottom: 20px;
+  color: #7a7878;
+}
+
+form label {
+  padding-bottom: 5px;
+  font-size: 16px;
+}
+
+.agreement {
+  border-top: 3px dotted rgb(146, 145, 145);
+}
+
+.agreement ul {
+  padding-top: 20px;
+}
+
+.agreement li {
+  margin-bottom: 10px;
+}
+
+.btn_agree {
+  text-align: center;
+}
+
+.btn_agree button{
+  margin-top: 40px;
+  width: 100px;
+  height: 30px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  font-weight: bold;
+  background: #a13dff;
+  color: #fff;
+  font-size: 14px;
+}
+
+
+
+

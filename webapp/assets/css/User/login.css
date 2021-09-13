@@ -1,0 +1,69 @@
+@charset "UTF-8";
+
+/** loginbox **/
+.loginbox {
+  width: 400px;
+  height: 440px;
+  padding: 20px 30px;
+  top: 45%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+}
+
+.navbar_logo {
+  margin-bottom: 20px;
+  text-align: center;
+  
+}
+
+.loginbox p {
+  font-weight: bold;
+  font-size: 16px; 
+}
+
+.loginbox input, button {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.loginbox input[type="text"], input[type="password"] {
+  height: 40px;
+  border: 1px solid #dddddd;
+  border-radius: 5px;
+  outline: none;
+  font-size: 14px;
+}
+
+.loginbox button {
+  margin-top: 20px;
+  border: none;
+  outline: none;
+  height: 40px;
+  border-radius: 5px;
+  background: #a13dff;
+  color: #fff;
+  font-size: 16px;
+}
+
+.menu_1 a {
+  float: left;
+}
+
+.menu_2 a {
+  float: right;
+}
+
+.login_menu {
+  margin: 5px 0px;
+}
+
+.sns_login {
+  text-align: center;
+  margin-top: 50px;
+}
+
+#facebook, #google, #instagram {
+  margin: 0px 15px;
+}

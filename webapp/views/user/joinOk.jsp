@@ -1,5 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="ko">
+<html>
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
@@ -16,15 +18,15 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"
         integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/"
         crossorigin="anonymous"></script>
-    
+
     <!-- font(Logo) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 
     <!-- css -->
-    <link rel="stylesheet" href="../assets/css/common.css">
-    <link rel="stylesheet" href="../assets/css/agreement.css">
+<link rel="stylesheet" href="../../assets/css/User/common.css">
+<link rel="stylesheet" href="../../assets/css/User/joinOk.css">
 </head>
 
 <body>
@@ -35,7 +37,7 @@
         <!-- nav -->
         <div class="col-xl-8">
             <div class="navbar">
-                
+
                 <!-- nav_logo -->
                 <div class="navbar_logo">
                     <a href="">Br.</a>
@@ -67,44 +69,23 @@
         <div class="col-xl-2"></div>
         <div class="col-xl-8">
             <div class="joinbox">
-                <p class="text">
-                    Buskeround <br>
-                    서비스 약관에 동의해주세요.
-                </p>
+                <center>
+                    <img src="../../assets/image/blog/icon/check.png" width="80px">
+                </center>
 
-                <form action="">
-                    <input type="checkbox" id="agree1">
-                    <label for="agree1">모두 동의합니다.</label>
-                
-                    <p>전체동의는 필수 및 선택정보에 대한 동의도 포함되어 있으며, <br>
-                        개별적으로도 동의를 선택하실 수 있습니다. <br>
-                        선택항목에 대한 동의를 거부하시는 경우에도 서비스는 이용이 가능합니다.
+                <p id="text1">환영합니다!</p>
+
+                <p>Maroban님, 회원가입을 축하합니다. <br>
+                    버스커라운드의 새로운 아이디는 <span class="id">Maroban207</span>입니다. </p>
+
+                    <p id="text2">회원님은 버스커라운드의 모든 기능을 사용하실 수 있습니다.
                     </p>
-                
-                    <div class="agreement">
-                        <ul>
-                            <li><input type="checkbox" id="agree2">
-                                <label for="agree2">[필수] 아티스트 계정 약관</label>
-                            </li>
-                            <li><input type="checkbox" id="agree3">
-                                <label for="agree3">[필수] 개인정보 수집 및 이용 동의</label>
-                            </li>
-                            <li><input type="checkbox" id="agree4">
-                                <label for="agree4">[선택] 위치정보 수집 및 이용 동의</label>
-                            </li>
-                            <li><input type="checkbox" id="agree5">
-                                <label for="agree5">[선택] 알림 및 광고메시지 수신</label>
-                            </li>
-                            <li><input type="checkbox" id="agree6">
-                                <label for="agree6">[선택] 프로필 정보 추가 수집 동의</label>
-                            </li>
-                        </ul>
 
-                        <div class="btn_agree">
-                            <button type="submit">동의</button>
-                        </div>
+                    <div class="btn_box">
+                        <button type="button" onclick="location.href='login.jsp'">로그인</button>
+                        <button type="button">메인으로</button>
+
                     </div>
-                </form>
             </div>
         </div>
         <div class="col-xl-2"></div>
