@@ -27,23 +27,8 @@
   <!-- header -->
   <c:import url="/views/includes/header.jsp"></c:import>
   
-   <!-- nav_artist  -->
-        <div class="row" id="artbox">
-        <div class="col-xl-3"></div>
-    
-        <div class="col-xl-7">
-             <ul class="navbar_artmenu">
-                <li><a href="ArtistRenk.html">종합랭킹</a></li>
-                <li><a href="ArtistFan.html">팬 많은 순</a></li>
-                <li><a href="ArtistNew.html">NEW 아티스트순</a></li>
-                <li><a href="ArtistGenre.html">장르별 순위</a></li>
-                <li><a href="ArtistFanList.html">팬 등록 리스트</a></li>
-             </ul>
-        </div>
-        </div>
-        
-        <div class="col-xl-3"></div>       
-    <!-- nav_artist  -->
+  <!-- nav_artist  -->
+  <c:import url="/views/Artist/includes/artbox.jsp"></c:import>
     
     
     
