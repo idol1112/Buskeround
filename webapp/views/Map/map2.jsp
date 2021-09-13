@@ -44,14 +44,17 @@
 	#pagination a {display:inline-block;margin-right:10px;}
 	#pagination .on {font-weight: bold; cursor: default;color:#777;}
 	</style>
-	
-	<link rel="stylesheet" href="../../assets/css/Common/common.css">
+<link rel="stylesheet" href="../../assets/css/Common/common.css">
 </head>
+
+
+
+
 
 <body>
 <c:import url="/views/includes/header.jsp"></c:import>
 <div class="map_wrap">
-    <div id="map" style="width:100%;height:600px;position:relative;overflow:hidden;"></div>
+    <div id="map" style="width:100%;height:700px;position:relative;overflow:hidden;"></div>
 
     <div id="menu_wrap" class="bg_white">
         <div class="option">
@@ -70,9 +73,6 @@
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=79c2ae6522e8e0df7b0592164f933676&libraries=services"></script>
 <script>
-
-
-
 // 마커를 담을 배열입니다
 var markers = [];
 
@@ -92,15 +92,6 @@ var ps = new kakao.maps.services.Places();
 // 키워드로 장소를 검색합니다
 searchPlaces();
 
-//데이터베이스 위치 가져오기
-var pposition = [];
-var num = -1;
-<c:forEach items="${mapList}" var="mapList">
-num += 1;
-pposition[num] = new kakao.maps.LatLng(${mapList.latitude}, ${mapList.longitude});
-</c:forEach>
-console.log(pposition);
-
 // 키워드 검색을 요청하는 함수입니다
 function searchPlaces() {
 
@@ -116,8 +107,9 @@ function searchPlaces() {
 }
 
 // 장소검색이 완료됐을 때 호출되는 콜백함수 입니다
-function placesSearchCB(data, status) {
+function placesSearchCB(data, status, pagination) {
     if (status === kakao.maps.services.Status.OK) {
+
         // 정상적으로 검색이 완료됐으면
         // 검색 목록과 마커를 표출합니다
         displayPlaces(data);
@@ -125,10 +117,12 @@ function placesSearchCB(data, status) {
   
 
     } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
+
         alert('검색 결과가 존재하지 않습니다.');
         return;
 
     } else if (status === kakao.maps.services.Status.ERROR) {
+
         alert('검색 결과 중 오류가 발생했습니다.');
         return;
 
@@ -137,22 +131,21 @@ function placesSearchCB(data, status) {
 
 // 검색 결과 목록과 마커를 표출하는 함수입니다
 function displayPlaces(places) {
-    var listEl = document.getElementById('placesList'), //리스트
-    menuEl = document.getElementById('menu_wrap'),		//검색창
+
+    var listEl = document.getElementById('placesList'), 
+    menuEl = document.getElementById('menu_wrap'),
     fragment = document.createDocumentFragment(), 
     bounds = new kakao.maps.LatLngBounds(), 
     listStr = '';
 
     
-    for ( var i=0; i<pposition.length; i++ ) {
+    for ( var i=0; i<places.length; i++ ) {
 
         // 마커를 생성하고 지도에 표시합니다
         var placePosition = new kakao.maps.LatLng(places[i].y, places[i].x),
-            marker = addMarker(pposition[i]), 
-            
-            
+            marker = addMarker(placePosition, i), 
             itemEl = getListItem(i, places[i]); // 검색 결과 항목 Element를 생성합니다
-			console.log(marker);
+
         // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
         // LatLngBounds 객체에 좌표를 추가합니다
         bounds.extend(placePosition);
@@ -162,7 +155,7 @@ function displayPlaces(places) {
     }
 
     // 검색결과 항목들을 검색결과 목록 Elemnet에 추가합니다
-    listEl.appendChild(fragment); //이걸 주석처리하면 리스트에 안뜨게 할수있다.
+    //listEl.appendChild(fragment); //이걸 주석처리하면 리스트에 안뜨게 할수있다.
     menuEl.scrollTop = 0;
 
     // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
