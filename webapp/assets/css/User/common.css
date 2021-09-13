@@ -2,7 +2,7 @@
 
 /********** 초기화 **********/
 body, div, ul, li, dl, dt, ol, h1, h2, h3, h4,
-h5, h6, input, fieldset, legend, p, select, table, 
+h5, h6, input, fieldset, legend, p, select, table,
 th, td, tr, textarea, button, form {
   margin: 0px 0px 0px 0px;
   padding: 0px 0px 0px 0px;
@@ -29,7 +29,7 @@ width: 100%;
 
 /** nav **/
 #navbox {
-  border-bottom: 2px solid #59007e; 
+  border-bottom: 2px solid #59007e;
 }
 
 .navbar {
@@ -76,7 +76,8 @@ width: 100%;
 #footerbox {
   height: 60px;
   position: relative;
-  border-top: 1px solid #bfbfbf; 
+  border-top: 1px solid #bfbfbf;
   margin-top: auto;
   font-size: 13px;
 }
+
