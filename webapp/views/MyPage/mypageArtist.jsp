@@ -74,6 +74,6 @@
 
 
 	<!-- Footer -->
-	<c:import url="/views/MyPage/includes/aside.jsp"></c:import>
+    <c:import url="/views/includes/footer.jsp"></c:import>
 </body>
 </html>
