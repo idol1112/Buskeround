@@ -13,6 +13,7 @@
 			<li><a href="mypageModify.jsp">프로필 수정</a></li>
 			<li><a href="mypageArtist.jsp">아티스트 등록</a></li>
 			<li><a href="mypageCompany.jsp">제휴사 등록</a></li>
+			<li><a href="applyList.jsp">공연신청 현황</a></li>
 		</ul>
 	</div>
 </body>
