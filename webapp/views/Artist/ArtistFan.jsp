@@ -20,6 +20,7 @@
 
 <!-- css -->
 <link rel="stylesheet" href="../../assets/css/Artist/common.css">
+<link rel="stylesheet" href="../../assets/css/Common/common.css">
 
 </head>
 
