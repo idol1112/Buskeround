@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -70,10 +72,10 @@
             <div id="mypage-left">
                 <ul id="mypage-category">
                     <h4>제휴사 관리</h4>
-                    <li><a class="active" href="./companyInfo.html">제휴사 정보</a></li>
-                    <li><a href="./stageManage.html">공연장 관리</a></li>
-                    <li><a href="./buskingZoneManage.html">버스킹존 등록</a></li>
-                    <li><a href="./applyManage.html">공연신청 관리</a></li>
+                    <li><a class="active" href="./companyInfo.jsp">제휴사 정보</a></li>
+                    <li><a href="./stageManage.jsp">공연장 관리</a></li>
+                    <li><a href="./buskingZoneManage.jsp">버스킹존 등록</a></li>
+                    <li><a href="./applyManage.jsp">공연신청 관리</a></li>
                 </ul>
             </div>
             <div id="mypage-right">
