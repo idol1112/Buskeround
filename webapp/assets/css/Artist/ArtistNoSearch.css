@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+/********** 초기화 **********/
+body, div, ul, li, dl, dt, ol, h1, h2, h3, h4,
+h5, h6, input, fieldset, legend, p, select, table, 
+th, td, tr, textarea, button, form {
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+}
+body {font-family: "맑은 고딕", 돋음; font-size: 12px;}
+ol, ul {list-style: none;}
+a:link {text-decoration: none; color: black;}
+a:visited {text-decoration: none; color: black;}
+a:hover {text-decoration: none; color: black;}
+a:active {text-decoration: none; color: black;}
+
+
+
+
+/** artbox **/
+#artbox {
+  background-color: #f6f6f6;
+}
+
+.navbar_artmenu {	
+  font-size: 15px;
+  margin: 0px;
+  display: flex;
+  list-style: none;
+}
+
+.navbar_artmenu li {
+  padding: 0px 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.navbar_artmenu a:hover {
+  color: #000000;
+  font-weight: bold;
+}

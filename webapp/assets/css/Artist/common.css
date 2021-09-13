@@ -30,6 +30,7 @@ width: 100%;
 /** nav **/
 #navbox {
   border-bottom: 2px solid #59007e; 
+  margin-bottom: 20px;
 }
 
 .navbar {
@@ -55,7 +56,7 @@ width: 100%;
 
 /** nav_menu **/
 .navbar_menu li {
-  padding: 0px 45px;
+  padding: 0px 40px;
   padding-top: 20px;
   font-size: 23px;
 }
@@ -71,6 +72,7 @@ width: 100%;
   padding-top: 25px;
   font-size: 14px;
 }
+
 
 
 /** artbox **/
@@ -97,7 +99,6 @@ width: 100%;
 }
 
 
-
 /** section **/
 .section-01 {
   display: flex;
@@ -106,8 +107,9 @@ width: 100%;
 }
 
 .leftsection {
-  padding: 0px 15px;
+  padding: 0px 15px 150px 0px;
 }
+
 
 .leftsection-01 {
   display: flex;
@@ -139,8 +141,12 @@ width: 100%;
   border-bottom: 1px solid #000122;
   padding: 8px 20px;
 }
-.leftsection-02 table tbody tr td {
+
+.leftsection-02 tbody tr td {
   border-bottom: 1px solid #595959;
+}
+
+.leftsection-02 table tbody tr td {
   padding: 15px 15px;
 }
 .leftsection-02 table tbody tr td:nth-of-type(1) {
@@ -190,18 +196,12 @@ width: 100%;
   text-align: center;
 }
 
-
-
-
-
-
-
-
 /** footer **/
 #footerbox {
   height: 60px;
   position: relative;
   border-top: 1px solid #bfbfbf; 
-  margin-top: auto;
+  margin-top: 20px;
   font-size: 13px;
 }
+
