@@ -10,7 +10,7 @@
 
       <!-- nav_logo -->
       <div class="navbar_logo">
-        <a href="">Br.</a>
+        <a href="../Main/Main.jsp">Br.</a>
       </div>
 
       <!-- nav_menu -->

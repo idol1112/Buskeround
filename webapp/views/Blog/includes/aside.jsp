@@ -5,7 +5,7 @@
   <div class="live_list">
     <!---- 로고 ---->
     <div class="live_logo">
-      <a href="">Br.</a>
+      <a href="../Main/Main.jsp">Br.</a>
     </div>
     <!---- 타이틀 ---->
     <div class="live_title">
