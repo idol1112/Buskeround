@@ -33,15 +33,7 @@
 	<div class="row" id="contentbox">
 		<div class="col-xl-2"></div>
 		<div class="col-xl-8" id="mypage">
-			<div id="mypage-left">
-				<ul id="mypage-category">
-					<h4>마이페이지</h4>
-					<li><a href="">프로필 수정</a></li>
-					<li><a href="">아티스트 등록</a></li>
-					<li><a href="">제휴사 등록</a></li>
-					<li><a class="active" href="">공연신청 현황</a></li>
-				</ul>
-			</div>
+			<c:import url="/views/MyPage/includes/aside.jsp"></c:import>
 			<div id="mypage-right">
 				<div id="mypage-right-header">
 					<h5>공연신청 현황</h5>

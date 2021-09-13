@@ -23,20 +23,23 @@
 
 			<!-- nav_login -->
 			<ul class="navbar_login">
-				<li><a href="../user/login.jsp">로그인</a></li>
-				<li><a href="../user/agreement.jsp">회원가입</a></li>
+			
+			<!-- 로그인 전 -->
+			<!--<li><a href="../user/login.jsp">로그인</a></li>
+				<li><a href="../user/agreement.jsp">회원가입</a></li> -->
 
 				<!-- 로그인 완료시 -->
-				<!-- <li><img id="main_profile" src="../assets/img/profile.jpg"></li>
+				<li><img id="main_profile" src="../../assets/image/blog/img/profile.jpg"></li>
                     <li><b>Maroban님</b></li>
                     <li><div class="dropdown">
-                        <button class="dropbtn"><img id="main_dropdown" src="../assets/img/dropdown.png"></button>
+                        <button class="dropbtn"><img id="main_dropdown" src="../../assets/image/common/dropdown.png"></button>
                         <div class="dropdown-content">
-                          <a href="">마이페이지</a>
-                          <a href="">내 블로그</a>
-                          <a href="">제휴사 관리</a>
+                          <a href="../MyPage/mypageModify.jsp">마이페이지</a>
+                          <a href="../Blog/blog_main.jsp">내 블로그</a>
+                          <a href="../CompanyManage/companyInfo.jsp">제휴사 관리</a>
                         </div>
-                    </div></li> -->
+                    	</div>
+                    </li>
 			</ul>
 		</div>
 	</div>
