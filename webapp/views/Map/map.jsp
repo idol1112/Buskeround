@@ -24,7 +24,7 @@
 	    .info .link {color: #5085BB;}
 	</style>
     
-    
+    <link rel="stylesheet" href="../../assets/css/MyPage/common.css">
 </head>
 <body>
 <c:import url="/views/includes/header.jsp"></c:import>
