@@ -24,87 +24,83 @@
 	    .info .link {color: #5085BB;}
 	</style>
     
-    <link rel="stylesheet" href="../../assets/css/MyPage/common.css">
+    <link rel="stylesheet" href="../../assets/css/Common/common.css">
 </head>
 <body>
 <c:import url="/views/includes/header.jsp"></c:import>
-<div id="map" style="width:100%;height:700px;"></div>
-
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=79c2ae6522e8e0df7b0592164f933676"></script>
 
+<div id="map" style="width:100%;height:600px;"></div>
 <script>
-var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
+var mapContainer = document.getElementById('map'), // 지도의 중심좌표
     mapOption = { 
-        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+        center: new kakao.maps.LatLng(33.451475, 126.570528), // 지도의 중심좌표
         level: 3 // 지도의 확대 레벨
-    };
+    }; 
 
 var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 
-
-
-// 마커 이미지의 이미지 주소입니다
-var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
-var num;
+var positions = [];
+var num = -1;
+//================================================================== 데이터베이스에서 가져온거 뺄것
 <c:forEach items="${mapList}" var="mapList">
-    
-    // 마커 이미지의 이미지 크기 입니다
-    var imageSize = new kakao.maps.Size(24, 35); 
-    
-    // 마커 이미지를 생성합니다    
-    var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
-    
-    //마커의 위도경고를 저장한다.
-    var position = new kakao.maps.LatLng(${mapList.latitude}, ${mapList.longitude});
+num += 1;
+positions[num] = new kakao.maps.LatLng(${mapList.latitude}, ${mapList.longitude});
+</c:forEach>
 
-    // 마커를 생성합니다
+//==================================================================
+
+for(let i=0; i < positions.length; i++){
+    var data = positions[i];
+    displayMarker(data);
+}
+
+// 지도에 마커를 표시하는 함수입니다    
+function displayMarker(data) { 
+	console.log(data)
     var marker = new kakao.maps.Marker({
-        map: map, // 마커를 표시할 지도
-        position: position, // 마커를 표시할 위치
-        title : ${mapList.no}, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-        image : markerImage // 마커 이미지 
+        map: map,
+        position: data
     });
-    num = ${mapList.no};
-    console.log(num);
-    var content = '<div class="wrap">' + 
+    var overlay = new kakao.maps.CustomOverlay({
+        yAnchor: 3,
+        position: marker.getPosition()
+    });
+    
+
+    
+/*     var content = document.createElement('div');
+    content.innerHTML =  '<div class="wrap">' + 
     '    <div class="info">' + 
     '        <div class="title">' + 
-    '            DB:${mapList.no}' + 
-    '            <div class="close" onclick="closeOverlay(num)" title="닫기"></div>' + 
+    '            카카오 스페이스닷원' + 
+    '            <div class="close" title="닫기"></div>' +
     '        </div>' + 
-    '        <div class="body">' + 
-    '            <div class="img">' +
-    '                <img src="${pageContext.request.contextPath}/assets/img/dame.jpg" width="73" height="70">' +
-    '           </div>' + 
     '            <div class="desc">' + 
-    '                <div class="ellipsis">제 노래를 들어주세요!</div>' + 
-    '                <div class="jibun ellipsis">장르/퍼포먼스:노래/R&B</div>' + 
-    '                <div><a href="https://www.naver.com/" target="_blank" class="link">아티스트홈(세련된걸로바꿔야할듯)</a></div>' + 
-    '            </div>' + 
+    '                <div class="ellipsis">제주특별자치도 제주시 첨단로 242</div>' + 
+    '                <div class="jibun ellipsis">(우) 63309 (지번) 영평동 2181</div>' + 
     '        </div>' + 
     '    </div>' +    
-    '</div>';
+    '</div>'; */
+    
+    var content = document.createElement('div');
+    content.innerHTML =  data;
+    content.style.cssText = 'background: white; border: 1px solid black';
+    
+    var closeBtn = document.createElement('button');
+    var a = closeBtn.innerHTML = '<div class="title">X</div>';
+    closeBtn.onclick = function () {
+        overlay.setMap(null);
+    };
+    
+    content.appendChild(closeBtn);
 
-    var overlay = new kakao.maps.CustomOverlay({
-        content: content,
-        map: map,
-        position: marker.getPosition()       
+    overlay.setContent(content);
+
+    kakao.maps.event.addListener(marker, 'click', function() {
+        overlay.setMap(map);
     });
-
-    
-
-    
-</c:forEach>
-kakao.maps.event.addListener(marker, 'click', function() {
-    overlay.setMap(map);
-});
-
-
-
-
+}
 </script>
-
-<c:import url="/views/includes/footer.jsp"></c:import>
-
 </body>
 </html>
