@@ -45,7 +45,7 @@
 	#pagination .on {font-weight: bold; cursor: default;color:#777;}
 	</style>
 	
-	<link rel="stylesheet" href="../../assets/css/MyPage/common.css">
+	<link rel="stylesheet" href="../../assets/css/Common/common.css">
 </head>
 
 <body>
