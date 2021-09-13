@@ -18,7 +18,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 
 <!-- css -->
-<link rel="stylesheet" href="../../assets/css/MyPage/common.css">
+<link rel="stylesheet" href="../../assets/css/Common/common.css">
 <link rel="stylesheet" href="../../assets/css/MyPage/mypage.css">
 </head>
 <body>
