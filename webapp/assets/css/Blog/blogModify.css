@@ -22,7 +22,7 @@ a:active {text-decoration: none; color: black;}
 }
 
 .modify-header {
-    margin: 20px 263px 30px 75px;
+    margin: 20px 41px 30px 28px;
     border-bottom: lightgray solid 2px;
     padding-bottom: 5px;
     padding-left: 5px;
@@ -37,8 +37,8 @@ a:active {text-decoration: none; color: black;}
 
 .modify-form table {
     border-collapse: collapse;
-    width: 70%;
-    margin-left: 75px;
+    width: 1060px;
+    margin-left: 28px;
 }
 
 .modify-form table td {
@@ -54,7 +54,7 @@ a:active {text-decoration: none; color: black;}
 
 .sns-input {
     padding: 4px 4px 4px 4px;
-    width: 75%;
+    width: 613px;
     margin: 10px 0px 10px 0px;
 }
 
@@ -121,7 +121,7 @@ a:active {text-decoration: none; color: black;}
     padding: 2px;
     border-radius: 5px;
     margin-top: 20px;
-    margin-right: 300px;
+    margin-right: 40px;
     margin-bottom: 50px;
 }
 
@@ -149,9 +149,10 @@ a:active {text-decoration: none; color: black;}
 
   /* Banner */
 .modify-form img {
+    display: block;
     margin-left: 10px;
-    width: 515px;
-    height: 80px;
+    width: 696px;
+    height: 100px;
 }
 
 #banner span {
@@ -168,8 +169,8 @@ a:active {text-decoration: none; color: black;}
     height: 30px;
     padding: 2px;
     border-radius: 5px;
-    margin-top: 5px;
     margin-right: 10px;
+    margin-top: -10px;
 }   
 
 #banner-deletebutton {
@@ -180,8 +181,10 @@ a:active {text-decoration: none; color: black;}
     height: 30px;
     padding: 2px;
     border-radius: 5px;
-    margin-top: 5px;
-    margin-right: 50px;
+    margin-right: 70px;
+    margin-top: -10px;
+    background-color: red;
+    color: white;
 }   
 
 .label-width label {

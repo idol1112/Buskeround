@@ -3,7 +3,9 @@
 <!---- 배너 ---->
 <div class=" banner">
   <!-- 블로그 관리 버튼 -->
+  <a href="blogModifyForm.jsp">
   <img class="setting" src="../../assets/image/blog/icon/settings.png">
+  </a>
 
   <!-- 배너 안 영상 -->
   <ul class="banner_in">
@@ -48,7 +50,7 @@
 
     <!-- 활동명 -->
     <tr>
-      <td class="main_name">우주 멋쟁이</td>
+      <td class="main_name"><a href="blog_main.jsp">우주 멋쟁이</a></td>
     </tr>
 
     <!-- 한 줄 소개 -->

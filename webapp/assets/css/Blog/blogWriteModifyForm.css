@@ -23,7 +23,7 @@ a:active {text-decoration: none; color: black;}
 
 /* 메인 */
 #content{
-  margin: 20px 263px 30px 75px;
+  margin: 20px 41px 30px 28px;
 }
 
 .modify-header {
@@ -44,13 +44,13 @@ a:active {text-decoration: none; color: black;}
 
 /* 제목 */
 #title {
-  width:790px;
-  padding: 10px 0px 10px 8px;
+  width:1060px;
   margin-top: 10px;
-  margin-bottom: 10px;
+  padding: 10px 0px 10px 8px;
   font-family: inherit;
   border: 1px solid #999;
   border-radius: 0px;
+  margin-bottom: 10px;
 } 
 
 #textarea{

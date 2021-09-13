@@ -23,8 +23,8 @@ a:active {text-decoration: none; color: black;}
 
 /* 게시판 */
 #board table {
-    margin: 0px 50px 0px 75px;
-    width: 1017px;
+    margin: 0px 50px 0px 28px;
+    width: 1064px;
     border-collapse: collapse; 
 }
 

@@ -13,7 +13,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
 
 <!-- 에디터 -->
-<link rel="stylesheet" type="text/css" href="../assets/textEditor/css/styles.css">
+<link rel="stylesheet" type="text/css" href="../../assets/css/Blog/textEditor/css/styles.css">
 
 <!-- font(Logo) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -56,8 +56,7 @@
           <input id="title" type="text" placeholder="제목을 입력해 주세요.">
 
           <!-- 에디터 -->
-          <div class="editor">Tlqkf</div>
-          <!-- <textarea id="textarea" placeholder="내용을 입력하세요."></textarea> -->
+          <div class="editor"></div>
           <input id="facebookupload" type="checkbox" value="facebook">
           <label for="facebookupload">페이스북 등록</label>
           <button id="uploadbutton">등록</button>
@@ -72,7 +71,7 @@
   <!------ ////(br_container)//// ------>
 </body>
 
-<script src="../assets/textEditor/build/ckeditor.js"></script>
+<script src="../../assets/css/Blog/testEditor/build/ckeditor.js"></script>
 <script>ClassicEditor
     .create( document.querySelector( '.editor' ), {
 

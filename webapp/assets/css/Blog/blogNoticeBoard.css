@@ -23,8 +23,8 @@ a:active {text-decoration: none; color: black;}
 
 /* 게시판 */
 #board table {
-    margin: 0px 50px 0px 75px;
-    width: 1017px;
+    margin: 0px 50px 0px 28px;
+    width: 1064px;
     border-collapse: collapse; 
 }
 
@@ -211,3 +211,16 @@ a:active {text-decoration: none; color: black;}
     margin-left: 5px;
   }
 
+.left-align {
+  text-align: left;
+}
+
+.main_title img {
+  width: 25px;
+  margin-right: 3px;
+}
+
+.main_title span {
+  font-size: 20px;
+  font-weight: bold;
+}

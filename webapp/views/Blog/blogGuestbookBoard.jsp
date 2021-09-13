@@ -51,8 +51,8 @@
       <div class="content clearfix">
         <!-- 글쓰기 버튼 -->
         <div class="clearfix">
-          <button id="writebutton">
-            <img src="../../assets/image/blog/img/write.png">글쓰기
+          <button id="writebutton" type="button" onClick="location.href='blogWriteForm.jsp'">
+            <img src="../../assets/image/blog/icon/write.png">글쓰기
           </button>
         </div>
 
