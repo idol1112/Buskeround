@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -24,37 +25,7 @@
 
 <body>
 	<!-- header -->
-	<div class="row" id="header">
-		<div class="col-xl-2"></div>
-
-		<!-- nav -->
-		<div class="col-xl-8">
-			<div class="navbar">
-
-				<!-- nav_logo -->
-				<div class="navbar_logo">
-					<a href="">Br.</a>
-				</div>
-
-				<!-- nav_menu -->
-				<ul class="navbar_menu">
-					<li><a href="">공연</a></li>
-					<li><a href="">아티스트</a></li>
-					<li><a href="">버스킹존</a></li>
-					<li><a href="">고객센터</a></li>
-				</ul>
-
-				<!-- nav_login -->
-				<ul class="navbar_login">
-					<li><a href="">로그인</a></li>
-					<li><a href="">회원가입</a></li>
-				</ul>
-			</div>
-		</div>
-		<!------- nav -------->
-
-		<div class="col-xl-2"></div>
-	</div>
+	<c:import url="/views/includes/header.jsp"></c:import>
 	<!------- header -------->
 
 	<!-- Content -->
@@ -123,17 +94,7 @@
 
 
 	<!-- footer -->
-	<div class="row" id="footerbox">
-		<div class="col-xl-2"></div>
-		<div class="col-xl-8">
-			<div class="footer">
-				<p style="text-align: center; padding-top: 47px;">
-					대표이사 김영기 | 주소 서울 강남구 테헤란로 415(L7 HOTELS 강남타워 6,7층) | 버스커라운드 주식회사<br> 사업자 등록번호 133-12-15979 | 문의전화 02-8732-4204 | 메일 HELP@buskeround.com<br> COPYRIGHT©BUSKEROUND CROP ALL RIGHTS RESERVED. <br>
-				</p>
-			</div>
-		</div>
-		<div class="col-xl-2"></div>
-	</div>
+	<c:import url="/views/includes/footer.jsp"></c:import>
 	<!------- footer -------->
 </body>
 </html>
