@@ -5,6 +5,8 @@
 /**genre box**/
 #genrebox {
   background-color: #f6f6f6;
+  margin: 0px;
+  padding: 0px;
 }
 
 .navbar_genremenu {	
@@ -14,9 +16,11 @@
   list-style: none;
 }
 
+
+
 .navbar_genremenu li {
   padding: 0px 10px 0px 0px;
-  padding-top: 20px;
+  padding-top: 10px;
   padding-bottom: 10px;
 }
 
@@ -25,4 +29,7 @@
   font-weight: bold;
 }
 
+.leftsection-02 {
+	padding-top: 30px;
+}
 
