@@ -41,8 +41,8 @@
 							<tr>
 								<td class="table-head"><label for="profilepicture">회사 로고</label></td>
 								<td><img id="profilepicture" src="../../assets/img/cgv.png"><br>
-									<button id="profilepicturechange" type="submit">변경</button>
-									<button id="profilepicturedelete" type="submit">삭제</button></td>
+									<button id="profilepicturechange" class="btn-success btn-sm" type="submit">변경</button>
+									<button id="profilepicturedelete" class="btn-delete btn-sm" type="submit">삭제</button></td>
 							</tr>
 							<tr>
 								<td class="table-head"><label class="required" for="buildingname">건물명</label></td>
@@ -65,7 +65,7 @@
 								<td><input class="input" type="text" id="businessnumber" name="businessnumber" placeholder="사업자번호를 입력해주세요"></td>
 							</tr>
 						</table>
-						<button type="submit" class="float-end" id="profilesubmit">등록</button>
+						<button type="submit" class="float-end btn-primary btn-sm" id="profilesubmit">등록</button>
 					</form>
 				</div>
 			</div>

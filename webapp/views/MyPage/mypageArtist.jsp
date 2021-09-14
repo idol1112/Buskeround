@@ -64,7 +64,7 @@
 								<td><input class="input" type="text" id="genretype" name="genretype" placeholder="장르유형을 입력해주세요"></td>
 							</tr>
 						</table>
-						<button type="submit" class="float-end" id="profilesubmit">등록</button>
+						<button type="submit" class="float-end btn-primary btn-sm" id="profilesubmit">등록</button>
 					</form>
 				</div>
 			</div>

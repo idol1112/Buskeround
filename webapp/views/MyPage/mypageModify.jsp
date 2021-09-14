@@ -42,8 +42,8 @@
 							<tr>
 								<td class="table-head"><label for="profilepicture">프로필 사진</label></td>
 								<td><img id="profilepicture" src="../../assets/img/profilepicture.jpg"><br>
-									<button id="profilepicturechange" type="submit">변경</button>
-									<button id="profilepicturedelete" type="submit">삭제</button></td>
+									<button id="profilepicturechange" class="btn-success btn-sm" type="submit">변경</button>
+									<button id="profilepicturedelete" class="btn-danger btn-sm" type="submit">삭제</button></td>
 							</tr>
 							<tr>
 								<td class="table-head"><label for="id">아이디</label></td>
@@ -62,7 +62,7 @@
 								<td><input class="input" type="text" id="nickname" name="nickname" placeholder="닉네임을 입력해주세요"></td>
 							</tr>
 						</table>
-						<button class="float-end" id="profilesubmit">수정</button>
+						<button class="float-end btn-primary btn-sm" id="profilesubmit">수정</button>
 					</form>
 				</div>
 			</div>

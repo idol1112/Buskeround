@@ -81,18 +81,12 @@ table td {
 }
 
 #profilepicturechange {
-    font-weight: bold;
-    width: 50px;
-    padding: 3px;
-    margin-left: 24px;
+    margin-left: 30px;
     margin-top: 5px;
     font-size: 12px;
 }
 
 #profilepicturedelete {
-    font-weight: bold;
-    width: 50px;
-    padding: 3px;
     margin-top: 5px;
     font-size: 12px;
 }
@@ -127,12 +121,7 @@ label {
 }
 
 #profilesubmit {
-    font-weight: bold;
     font-size: 12px;
-    border: none;
-    width: 50px;
-    height: 30px;
-    padding: 2px;
     border-radius: 5px;
     margin-top: 10px;
     margin-right: 22px;
