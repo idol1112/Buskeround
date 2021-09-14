@@ -45,10 +45,12 @@ a:active {text-decoration: none; color: black;}
 #mypage-left {
     width: 18%;
     float: left;
-    height: 100%;
+    height: 92%;
     padding-top: 30px;
     padding-left: 30px;
     border-right: 1px solid #bfbfbf;
+    margin: 20px 0px 0px 0px;
+    vertical-align: top;
 }
 
 #mypage-left ul>li {
