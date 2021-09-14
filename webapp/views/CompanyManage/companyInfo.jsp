@@ -52,7 +52,7 @@
                 <div id="mypage-right-header">
                     <h5>제휴사 정보</h5>
                 </div>
-                <div id="mypage-main-content">
+                <div id="mypage-right-content">
                     <form action="" method="POST">
                         <table>
                             <tr>

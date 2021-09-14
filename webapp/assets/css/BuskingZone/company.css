@@ -63,7 +63,7 @@ a:active {text-decoration: none; color: black;}
     margin-left: 20px;
     margin-top: 40px;
     float: left;
-    width: 72%;
+    width: 70%;
 }
 
 #mypage-right .btn-area {
@@ -82,6 +82,7 @@ a:active {text-decoration: none; color: black;}
     padding-bottom: 7px;
     border-bottom: 2px solid #bfbfbf;
     text-align: left;
+    
 }
 
 #mypage-left-content {
@@ -220,9 +221,12 @@ a:active {text-decoration: none; color: black;}
     margin: 75px 50px 15px 50px;
 }
 
-#mypage-main-content table {
-        margin: auto;
-        text-align: center;
+.table th {
+	background-color: #f9f9f9;
+}
+
+.table tr:first-child {
+	border-left: #ffffff;
 }
 
 

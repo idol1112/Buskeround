@@ -117,10 +117,18 @@ body {
 }
 
   /** applyList table **/
-  .table {
+.table {
     margin: auto;
     width: 850px;
     text-align: center;
+}
+
+.table th {
+	background-color: #f9f9f9;
+}
+
+.table tr:first-child {
+	border-left: #ffffff;
 }
 
 /**************** /applyList/ *****************/
