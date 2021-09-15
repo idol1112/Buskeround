@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,6 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
 <!-- css -->
 <link rel="stylesheet" href="../../assets/css/Blog/blog_common.css">
@@ -27,7 +29,6 @@
 </head>
 
 <body>
-
   <!------ br_container ------>
   <div class="clearfix" id="br_container">
     <c:import url="/views/Blog/includes/aside.jsp"></c:import>
@@ -47,41 +48,81 @@
         </ul>
       </div>
 
-      <!---- gallery ---->
-      <div class="gallery_box">
-        <div class="gallery_item">
-          <div class="gallery_item_caption">
-            <h2>홍대 거리</h2>
-            <p>2021. 09. 07</p>
-          </div>
-          <img id="img_item" src="../../assets/image/blog/img/buker.jpg" alt="" />
+      <div class="content clearfix">
+        <!-- 글쓰기 버튼 -->
+        <div class="clearfix main_title">
+          <img src="../../assets/image/blog/icon/landscape.png">
+          <span>갤러리</span>
+          <button id="writebutton" type="button" onClick="location.href='blogWriteForm.jsp'">
+            <img src="../../assets/image/blog/icon/write.png">사진 올리기
+          </button>
         </div>
 
-        <div class="gallery_item">
-          <div class="gallery_item_caption">
-            <h2>마로니에 공원</h2>
-            <p>2021. 09. 07</p>
+        <!---- gallery ---->
+        <div class="gallery_box">
+          <div class="gallery_item">
+            <div class="gallery_item_caption">
+              <h2>홍대 거리</h2>
+              <p>2021. 09. 07</p>
+            </div>
+            <img id="img_item" src="../../assets/image/blog/img/buker.jpg" alt="" />
           </div>
-          <img id="img_item" src="../../assets/image/blog/img/busker.jpg" alt="" />
+
+          <div class="gallery_item">
+            <div class="gallery_item_caption">
+              <h2>마로니에 공원</h2>
+              <p>2021. 09. 07</p>
+            </div>
+            <img id="img_item" src="../../assets/image/blog/img/busker.jpg" alt="" />
+          </div>
+
+          <div class="gallery_item">
+            <div class="gallery_item_caption">
+              <h2>마로니에 공원</h2>
+              <p>2021. 09. 05</p>
+            </div>
+            <img id="img_item" src="../../assets/image/blog/img/busker2.jpg" alt="" />
+          </div>
+
+          <div class="gallery_item">
+            <div class="gallery_item_caption">
+              <h2>이태원</h2>
+              <p>2021. 09. 03</p>
+            </div>
+            <img id="img_item" src="../../assets/image/blog/img/busker3.jpg" alt="" />
+          </div>
+        </div>
+        <!------ ////(gallery)//// ------>
+
+        <!-- 검색 기능 -->
+        <div class="topnav">
+          <div class="search-container">
+            <form action="/action_page.php">
+              <input type="text" placeholder="Search.." name="search">
+              <button type="submit">
+                <label class="icon fa fa-search" for="search"></label>
+              </button>
+            </form>
+          </div>
         </div>
 
-        <div class="gallery_item">
-          <div class="gallery_item_caption">
-            <h2>마로니에 공원</h2>
-            <p>2021. 09. 05</p>
+        <!-- 페이징 -->
+        <div class="container xlarge">
+          <div class="pagination">
+            <ul>
+              <!-- Add Button-->
+              <li><a href="#">&laquo;</a></li>
+              <li><a href="#">1</a></li>
+              <li><a href="#">2</a></li>
+              <li class="active"><a href="#">3</a></li>
+              <!-- for active button-->
+              <li><a href="#">4</a></li>
+              <li><a href="#">5</a></li>
+              <li><a href="#">&raquo;</a></li>
+            </ul>
           </div>
-          <img id="img_item" src="../../assets/image/blog/img/busker2.jpg" alt="" />
-        </div>
-
-        <div class="gallery_item">
-          <div class="gallery_item_caption">
-            <h2>이태원</h2>
-            <p>2021. 09. 03</p>
-          </div>
-          <img id="img_item" src="../../assets/image/blog/img/busker3.jpg" alt="" />
         </div>
       </div>
-      <!------ ////(gallery)//// ------>
     </div>
     <!------ ////(br_content)//// ------>
   </div>
