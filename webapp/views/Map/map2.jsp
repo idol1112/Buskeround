@@ -7,6 +7,7 @@
     <meta charset="utf-8">
     <title>키워드로 장소검색하고 목록으로 표출하기</title>
     <style>
+     body {overflow:hidden}
 	.map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
 	.map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
 	.map_wrap {position:relative;width:100%;height:500px;}
@@ -43,6 +44,20 @@
 	#pagination {margin:10px auto;text-align: center;}
 	#pagination a {display:inline-block;margin-right:10px;}
 	#pagination .on {font-weight: bold; cursor: default;color:#777;}
+	
+	#keyword{
+	border: 1px solid skyblue;
+	background-color: rgba(0,0,0,0);
+	color:black;
+	padding: 5px;
+	}
+		
+	#btn_sh{
+	border: 1px solid skyblue;
+	background-color: rgba(0,0,0,0);
+	color:skyblue;
+	padding: 5px;
+	}
 	</style>
 	<!-- 부트스트랩 -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
@@ -72,8 +87,8 @@
         <div class="option">
             <div>
                 <form onsubmit="searchPlaces(); return false;">
-                    키워드 : <input type="text" value="강남역" id="keyword" size="15"> 
-                    <button type="submit">검색하기</button> 
+                    <input type="text" value="강남역" id="keyword" size="15"> 
+                    <button type="submit" id="btn_sh">검색하기</button> 
                 </form>
             </div>
         </div>
