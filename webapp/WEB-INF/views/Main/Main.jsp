@@ -20,8 +20,8 @@
 <link rel="stylesheet" href="../../assets/css/Common/common.css">
 </head>
 <body>
-    <c:import url="/views/includes/header.jsp"></c:import>
+	<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
 
-    <c:import url="/views/includes/footer.jsp"></c:import>
+	<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
 </body>
 </html>
