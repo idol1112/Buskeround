@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="user">
+
+	<!-- 회원가입 -->
+	<insert id="join" parameterType="UserVo">
+		<![CDATA[
+			INSERT INTO users (
+			    user_no,
+			    id,
+			    password,
+			    email,
+			    nickname,
+			    user_img,
+			    user_type
+			) VALUES (
+			    seq_user_no.NEXTVAL,
+			    #{id},
+			    #{password},
+			    #{email},
+			    #{nickname},
+			    '/assets/image/blog/icon/user.png',
+			    1
+			)
+		]]>
+	</insert>
+
+	<!-- 유저 정보 가져오기(로그인) -->
+	<select id="getPerson" resultType="UserVo" parameterType="UserVo">
+		<![CDATA[
+			SELECT
+			    user_no,
+			    id,
+			    password,
+			    nickname,
+    			user_img,
+    			user_type
+			FROM
+			    users
+			WHERE
+			        id = #{id}
+			    AND password = #{password}
+		]]>
+	</select>
+
+	<!-- 아이디 중복체크 -->
+	<select id="idCheck" resultType="UserVo" parameterType="String">
+		<![CDATA[
+			SELECT
+			    id
+			FROM
+			    users
+			WHERE
+			    id = #{id}
+		]]>
+	</select>
+
+	<!-- 닉네임 중복체크 -->
+	<select id="nickCheck" resultType="UserVo" parameterType="String">
+		<![CDATA[
+			SELECT
+			    nickname
+			FROM
+			    users
+			WHERE
+			    nickname = #{nickname}
+		]]>
+	</select>
+
+
+</mapper>

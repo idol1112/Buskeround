@@ -19,13 +19,17 @@
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 
 <!-- css -->
-<link rel="stylesheet" href="../../assets/css/Common/common.css">
-<link rel="stylesheet" href="../../assets/css/User/agreement.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/Common/common.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/User/agreement.css">
+
+<!-- jquery -->
+<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+
 </head>
 
 <body>
   <!-- header -->
-  <c:import url="/views/includes/header.jsp"></c:import>
+  <c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
 
   <!-- login -->
   <div class="row">
@@ -35,24 +39,26 @@
         <p class="text">Buskeround <br> 서비스 약관에 동의해주세요.
         </p>
 
-        <form action="">
-          <input type="checkbox" id="agree1">
-          <label for="agree1">모두 동의합니다.</label>
+        <form id="agreeForm" method="post" action="${pageContext.request.contextPath}/user/joinForm">
+          <div class="checkbox_group">
+            <input type="checkbox" id="agree1">
+            <label for="agree1">모두 동의합니다.</label>
 
-          <p>전체동의는 필수 및 선택정보에 대한 동의도 포함되어 있으며, <br> 개별적으로도 동의를 선택하실 수 있습니다. <br> 선택항목에 대한 동의를 거부하시는 경우에도 서비스는 이용이 가능합니다.
-          </p>
+            <p>전체동의는 필수 및 선택정보에 대한 동의도 포함되어 있으며, <br> 개별적으로도 동의를 선택하실 수 있습니다. <br> 선택항목에 대한 동의를 거부하시는 경우에도 서비스는 이용이 가능합니다.
+            </p>
 
-          <div class="agreement">
-            <ul>
-              <li><input type="checkbox" id="agree2"> <label for="agree2">[필수] 아티스트 계정 약관</label></li>
-              <li><input type="checkbox" id="agree3"> <label for="agree3">[필수] 개인정보 수집 및 이용 동의</label></li>
-              <li><input type="checkbox" id="agree4"> <label for="agree4">[선택] 위치정보 수집 및 이용 동의</label></li>
-              <li><input type="checkbox" id="agree5"> <label for="agree5">[선택] 알림 및 광고메시지 수신</label></li>
-              <li><input type="checkbox" id="agree6"> <label for="agree6">[선택] 프로필 정보 추가 수집 동의</label></li>
-            </ul>
+            <div class="agreement">
+              <ul>
+                <li><input type="checkbox" id="agree2" class="normal"> <label for="agree2">[필수] 아티스트 계정 약관</label></li>
+                <li><input type="checkbox" id="agree3" class="normal"> <label for="agree3">[필수] 개인정보 수집 및 이용 동의</label></li>
+                <li><input type="checkbox" id="agree4" class="normal"> <label for="agree4">[선택] 위치정보 수집 및 이용 동의</label></li>
+                <li><input type="checkbox" id="agree5" class="normal"> <label for="agree5">[선택] 알림 및 광고메시지 수신</label></li>
+                <li><input type="checkbox" id="agree6" class="normal"> <label for="agree6">[선택] 프로필 정보 추가 수집 동의</label></li>
+              </ul>
+            </div>
 
             <div class="btn_agree">
-              <button type="button" onclick="location.href='join.jsp'">동의</button>
+              <button type="submit" id="btn_agree">동의</button>
             </div>
           </div>
         </form>
@@ -62,16 +68,51 @@
   </div>
 
   <!-- footer -->
-  <div class="row" id="footerbox">
-    <div class="col-xl-2"></div>
-    <div class="col-xl-8">
-      <div class="footer">
-        <p style="text-align: center; padding-top: 47px;">대표이사 김영기 | 주소 서울 강남구 테헤란로 415(L7 HOTELS 강남타워 6,7층) | 버스커라운드 주식회사<br> 사업자 등록번호 133-12-15979 | 문의전화 02-8732-4204 | 메일 HELP@buskeround.com<br> COPYRIGHT©BUSKEROUND CROP ALL RIGHTS RESERVED. <br>
-        </p>
-      </div>
-    </div>
-    <div class="col-xl-2"></div>
-  </div>
-  <!-------------- footer --------------->
+  <c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
 </body>
+
+<script type="text/javascript">
+
+  //체크박스 전체 선택
+    $(".checkbox_group").on("click", "#agree1", function () {
+      var checked = $(this).is(":checked");
+
+      if(checked){
+      	$(this).parents(".checkbox_group").find('input').prop("checked", true);
+      } else {
+      	$(this).parents(".checkbox_group").find('input').prop("checked", false);
+      }
+    });
+
+   // 체크박스 개별 선택
+    $(".checkbox_group").on("click", ".normal", function() {
+        var is_checked = true;
+
+        $(".checkbox_group .normal").each(function(){
+            is_checked = is_checked && $(this).is(":checked");
+        });
+
+        $("#agree1").prop("checked", is_checked);
+    });
+
+  // 동의 버튼 눌렀을 때
+    $("#agreeForm").on("submit", function() {
+
+  	if ($("#agree2").is(":checked") === false) {
+  		alert("필수 약관에 동의해주세요.");
+
+  		return false;
+  	}
+
+  	if ($("#agree3").is(":checked") === false) {
+  		alert("필수 약관에 동의해주세요.");
+
+  		return false;
+  	}
+
+    	return true;
+    });
+
+</script>
+
 </html>

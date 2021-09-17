@@ -19,13 +19,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 
 <!-- css -->
-<link rel="stylesheet" href="../../assets/css/Common/common.css">
-<link rel="stylesheet" href="../../assets/css/User/login.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/Common/common.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/User/login.css">
 </head>
 
 <body>
   <!-- header -->
-  <c:import url="/views/includes/header.jsp"></c:import>
+  <c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
 
   <!-- login -->
   <div class="row">
@@ -36,17 +36,19 @@
           <a href="">Br.</a>
         </div>
 
-        <form action="">
-          <input type="text" placeholder="  Id">
+        <form action="${pageContext.request.contextPath}/user/login" method="post">
+          <input type="text" placeholder="  Id" name="id">
 
-          <input type="password" placeholder="  Password">
-
+          <input type="password" placeholder="  Password" name="password">
+          <c:if test="${param.result == 'fail'}">
+            <span style="font: 14px; color: red; , font-weight: bold;">아이디 또는 비밀번호를 확인해 주세요.</span>
+          </c:if>
           <button type="submit">로그인</button>
           <br>
 
           <div class="login_menu">
             <span class="menu_1">
-              <a href="agreement.jsp">회원가입</a>
+              <a href="${pageContext.request.contextPath}/user/agreement">회원가입</a>
             </span>
             <span class="menu_2">
               <a href="">아이디 / 비밀번호 찾기</a>
@@ -56,16 +58,16 @@
 
           <div class="sns_login">
             <a href="" id="facebook">
-              <img src="../../assets/image/blog/icon/facebook.png" width="30px">
+              <img src="${pageContext.request.contextPath}/assets/image/blog/icon/facebook.png" width="30px">
             </a>
             <a href="" id="instagram">
-              <img src="../../assets/image/blog/icon/instagram.png" width="30px">
+              <img src="${pageContext.request.contextPath}/assets/image/blog/icon/instagram.png" width="30px">
             </a>
             <a href="" id="google">
-              <img src="../../assets/image/blog/icon/google.png" width="30px">
+              <img src="${pageContext.request.contextPath}/assets/image/blog/icon/google.png" width="30px">
             </a>
             <a href="" id="instagram">
-              <img src="../../assets/image/blog/icon/twitter.png" width="30px">
+              <img src="${pageContext.request.contextPath}/assets/image/blog/icon/twitter.png" width="30px">
             </a>
           </div>
         </form>
@@ -75,6 +77,6 @@
   </div>
 
   <!-- footer -->
-  <c:import url="/views/includes/footer.jsp"></c:import>
+  <c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
 </body>
 </html>

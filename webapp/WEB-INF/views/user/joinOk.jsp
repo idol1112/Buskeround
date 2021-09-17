@@ -19,13 +19,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 
 <!-- css -->
-<link rel="stylesheet" href="../../assets/css/Common/common.css">
-<link rel="stylesheet" href="../../assets/css/User/joinOk.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/Common/common.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/User/joinOk.css">
 </head>
 
 <body>
   <!-- header -->
-  <c:import url="/views/includes/header.jsp"></c:import>
+  <c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
 
   <!-- login -->
   <div class="row">
@@ -33,18 +33,18 @@
     <div class="col-xl-8">
       <div class="joinbox">
         <center>
-          <img src="../../assets/image/blog/icon/check.png" width="80px">
+          <img src="${pageContext.request.contextPath}/assets/image/blog/icon/check.png" width="80px">
         </center>
 
         <p id="text1">환영합니다!</p>
 
-        <p>Maroban님, 회원가입을 축하합니다. <br> 버스커라운드의 새로운 아이디는 <span class="id">Maroban207</span>입니다.
+        <p>${userVo.nickname}님, 회원가입을 축하합니다. <br> 버스커라운드의 새로운 아이디는 <span class="id">${userVo.id}</span>입니다.
         </p>
 
         <p id="text2">회원님은 버스커라운드의 모든 기능을 사용하실 수 있습니다.</p>
 
         <div class="btn_box">
-          <button type="button" onclick="location.href='login.jsp'">로그인</button>
+          <button type="button" onclick="location.href='${pageContext.request.contextPath}/user/loginForm'">로그인</button>
           <button type="button">메인으로</button>
 
         </div>
@@ -54,6 +54,6 @@
   </div>
 
   <!-- footer -->
-  <c:import url="/views/includes/footer.jsp"></c:import>
+  <c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
 </body>
 </html>

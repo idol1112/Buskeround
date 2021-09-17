@@ -19,13 +19,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 
 <!-- css -->
-<link rel="stylesheet" href="../../assets/css/Common/common.css">
-<link rel="stylesheet" href="../../assets/css/User/join.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/Common/common.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/User/join.css">
+
+<!-- jquery -->
+<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 </head>
 
 <body>
   <!-- header -->
-  <c:import url="/views/includes/header.jsp"></c:import>
+  <c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
 
   <!-- login -->
   <div class="row">
@@ -34,27 +37,28 @@
       <div class="joinbox">
         <h1>계정 정보를 입력해주세요.</h1>
 
-        <form action="">
+        <form action="${pageContext.request.contextPath}/user/join" id="joinForm">
           <p>아이디</p>
-          <input type="text">
-          <span>중복된 아이디가 있습니다.</span>
+          <input type="text" name="id">
+          <span id="id_chk">중복된 아이디가 있습니다.</span>
           <br>
           <span>아이디는 변경할 수 없으니, 유의하세요.</span>
 
           <p>비밀번호</p>
-          <input type="password">
+          <input type="password" name="password">
           <br>
-          <input type="password">
-          <span>비밀번호가 일치하지 않습니다.</span>
+          <input type="password" name="passwordChk">
+          <span id="pwChk">비밀번호가 일치하지 않습니다.</span>
 
           <p>이메일</p>
-          <input type="text">
+          <input type="text" name="email">
 
           <p>닉네임</p>
-          <input type="text">
+          <input type="text" name="nickname">
+          <span id="nick_chk">중복된 닉네임이 있습니다.</span>
 
           <div class="btn_agree">
-            <button type="button" onclick="location.href='joinOk.jsp'">확인</button>
+            <button type="submit" id="btn_join">확인</button>
           </div>
 
         </form>
@@ -64,6 +68,163 @@
   </div>
 
   <!-- footer -->
-  <c:import url="/views/includes/footer.jsp"></c:import>
+  <c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
 </body>
+
+<script type="text/javascript">
+	var id_flog = false;
+	var nick_flog = false;
+
+	// 텍스트 숨기기
+	$("#pwChk").hide();
+	$("#id_chk").hide();
+	$("#nick_chk").hide();
+
+	// 아이디 중복 체크
+	$("[name=id]").keyup(function() {
+
+		$.ajax({
+			// 컨트롤러에서 대기중인 URL 주소이다.
+			url : "${pageContext.request.contextPath}/api/user/idCheck",
+
+			// HTTP method type(GET, POST) 형식이다.
+			type : "get",
+
+			// Json 형태의 데이터로 보낸다.
+			contentType : "application/json",
+
+			// Json 형식의 데이터를 받는다.
+			dataType : "json",
+
+			data : {
+				id : $("[name=id]").val()
+			},
+
+			// 성공일 경우 success로 들어오며, 'result'는 응답받은 데이터이다.
+			success : function(result) {
+				/*성공시 처리해야될 코드 작성*/
+
+				console.log("id= " + result);
+
+				if (result === true) {
+					$("#id_chk").hide();
+					id_flog = true;
+					console.log("id_flog= " + id_flog);
+
+				} else if (result === false) {
+					$("#id_chk").show();
+					id_flog = false;
+					console.log("id_flog= " + id_flog);
+				}
+
+			},
+
+			// 실패할경우 error로 들어온다.
+			error : function(XHR, status, error) {
+				console.error(status + " : " + error);
+			}
+		});
+	});
+
+	// 닉네임 중복 체크
+	$("[name=nickname]").keyup(function() {
+
+		$.ajax({
+			// 컨트롤러에서 대기중인 URL 주소이다.
+			url : "${pageContext.request.contextPath}/api/user/nickCheck",
+
+			// HTTP method type(GET, POST) 형식이다.
+			type : "get",
+
+			// Json 형태의 데이터로 보낸다.
+			contentType : "application/json",
+
+			// Json 형식의 데이터를 받는다.
+			dataType : "json",
+
+			data : {
+				nickname : $("[name=nickname]").val()
+			},
+
+			// 성공일 경우 success로 들어오며, 'result'는 응답받은 데이터이다.
+			success : function(result) {
+				/*성공시 처리해야될 코드 작성*/
+
+				console.log("nick= " + result);
+
+				if (result === true) {
+					$("#nick_chk").hide();
+					nick_flog = true;
+					console.log("nick_flog= " + nick_flog);
+
+				} else if (result === false) {
+					nick_flog = false;
+					$("#nick_chk").show();
+				}
+
+			},
+
+			// 실패할경우 error로 들어온다.
+			error : function(XHR, status, error) {
+				console.error(status + " : " + error);
+			}
+		});
+	});
+
+	// 비밀번호 일치
+	$(function() {
+		$("[name=passwordChk]").keyup(function() {
+
+			if ($("[name=password]").val() != $("[name=passwordChk]").val()) {
+				$("#pwChk").show();
+
+			} else {
+				$("#pwChk").hide();
+			}
+		});
+	});
+
+	// 확인 버튼 눌렀을 때
+	$("#joinForm").on("submit", function() {
+
+		if (id_flog != true) {
+			alert("아이디 중복체크를 해주세요.");
+
+			return false;
+		}
+
+		if (nick_flog === false) {
+			alert("닉네임 중복체크를 해주세요.");
+
+			return false;
+		}
+
+		if ($("[name=id]").val().length < 1) {
+			alert("아이디를 입력해 주세요.");
+
+			return false;
+		}
+
+		if ($("[name=email]").val().length < 1) {
+			alert("이메일를 입력해 주세요.");
+
+			return false;
+		}
+
+		if ($("[name=nickname]").val().length < 1) {
+			alert("닉네임를 입력해 주세요.");
+
+			return false;
+		}
+
+		if ($("[name=password]").val() != $("[name=passwordChk]").val()) {
+			alert("비밀번호가 일치하는지 확인해주세요.");
+
+			return false;
+		}
+
+		return true;
+	});
+</script>
+
 </html>
