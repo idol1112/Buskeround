@@ -19,9 +19,9 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <!-- css -->
-<link rel="stylesheet" href="../../assets/css/Blog/blog_common.css">
-<link rel="stylesheet" href="../../assets/css/Blog/blogNoticeBoard.css">
-<link rel="stylesheet" href="../../assets/css/Blog/blogStart.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/Blog/blog_common.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/Blog/blogNoticeBoard.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/Blog/blogStart.css">
 
 <!-- jquery -->
 <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>

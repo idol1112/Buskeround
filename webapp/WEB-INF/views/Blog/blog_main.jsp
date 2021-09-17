@@ -18,9 +18,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 
 <!-- css -->
-<link rel="stylesheet" href="../../assets/css/Blog/blog_main.css">
-<link rel="stylesheet" href="../../assets/css/Blog/blog_common.css">
-<link rel="stylesheet" href="../../assets/css/Blog/blogStart.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/Blog/blog_main.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/Blog/blog_common.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/Blog/blogStart.css">
 
 <!-- jquery -->
 <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>

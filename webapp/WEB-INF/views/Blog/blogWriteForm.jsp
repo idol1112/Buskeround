@@ -21,9 +21,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 
 <!-- css -->
-<link rel="stylesheet" href="../../assets/css/Blog/blog_common.css">
-<link rel="stylesheet" href="../../assets/css/Blog/blogWriteForm.css">
-<link rel="stylesheet" href="../../assets/css/Blog/blogStart.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/Blog/blog_common.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/Blog/blogWriteForm.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/Blog/blogStart.css">
 
 
 </head>
