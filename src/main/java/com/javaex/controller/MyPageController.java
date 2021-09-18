@@ -27,17 +27,6 @@ public class MyPageController {
 	    
 		UserVo authUser = (UserVo)session.getAttribute("authUser");
 		
-		if(authUser != null) {
-			UserVo userVo = userService.getPerson(authUser.getUser_no());
-			model.addAttribute("userVo", userVo);
-			
-			return "/user/modifyForm";
-		} else {
-			
-			return "/user/loginForm";
-		}
-		
-		
 	    
 	    return "/MyPage/mypageModify";
 	}
