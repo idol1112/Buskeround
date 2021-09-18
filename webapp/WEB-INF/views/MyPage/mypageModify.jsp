@@ -23,14 +23,14 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/MyPage/mypage.css">
 </head>
 <body>
-	<c:import url="/views/includes/header.jsp"></c:import>
+	<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
 
 	<!-- Content -->
 	<div class="row" id="contentbox">
 		<div class="col-xl-2"></div>
 		<div class="col-xl-8" id="mypage">
 
-			<c:import url="/views/MyPage/includes/aside.jsp"></c:import>
+			<c:import url="/WEB-INF/views/MyPage/includes/aside.jsp"></c:import>
 
 			<div id="mypage-right">
 				<div id="mypage-right-header">
@@ -72,6 +72,6 @@
 
 
 	<!-- Footer -->
-    <c:import url="/views/includes/footer.jsp"></c:import>
+	<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
 </body>
 </html>
