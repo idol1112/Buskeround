@@ -4,20 +4,8 @@
 <div class=" banner">
   <!-- 블로그 관리 버튼 -->
   <a href="blogModifyForm.jsp">
-  <img class="setting" src="../../assets/image/blog/icon/settings.png">
+    <img class="setting" src="${pageContext.request.contextPath}/assets/image/blog/icon/settings.png">
   </a>
-
-  <!-- 배너 안 영상 -->
-  <ul class="banner_in">
-    <li><a href="">
-        2021. 09. 07 <br> 홍대 예술거리
-      </a></li>
-    <li>
-      <div class="stream_box">
-        <iframe width="335" height="180" src="https://www.youtube.com/embed/8UUDyQyuvwI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
-    </li>
-  </ul>
 
   <!-- 공연시작 버튼 -->
   <form id="form" action="">
@@ -26,26 +14,26 @@
 
   <!-- sns 버튼 -->
   <a href="">
-    <img class="facebook" src="../../assets/image/blog/icon/facebook.png" alt="">
+    <img class="facebook" src="${pageContext.request.contextPath}/assets/image/blog/icon/facebook.png" alt="">
   </a>
   <a href="">
-    <img class="instagram" src="../../assets/image/blog/icon/instagram.png" alt="">
+    <img class="instagram" src="${pageContext.request.contextPath}/assets/image/blog/icon/instagram.png" alt="">
   </a>
   <a href="">
-    <img class="youtube" src="../../assets/image/blog/icon/youtube.png" alt="">
+    <img class="youtube" src="${pageContext.request.contextPath}/assets/image/blog/icon/youtube.png" alt="">
   </a>
 </div>
 
 <!---- 프로필 박스 ---->
 <div class="profile_box">
   <div class="main_profile">
-    <img src="../../assets/image/blog/img/profile.jpg">
+    <img src="${pageContext.request.contextPath}/assets/image/blog/img/profile.jpg">
   </div>
 
   <table class="profile_intr">
     <!-- 장르 -->
     <tr>
-      <td class="main_genre"><img src="../../assets/image/blog/icon/hiphop.png"></td>
+      <td class="main_genre"><img src="${pageContext.request.contextPath}/assets/image/blog/icon/hiphop.png"></td>
     </tr>
 
     <!-- 활동명 -->
@@ -62,7 +50,7 @@
   <!---- 이력사항 ---->
   <table class="profile_his">
     <tr>
-      <td class="history"><img src="../../assets/image/blog/icon/resume.png"></td>
+      <td class="history"><img src="${pageContext.request.contextPath}/assets/image/blog/icon/resume.png"></td>
       <td></td>
     </tr>
     <tr>
@@ -83,8 +71,8 @@
   <table class="like_box">
     <!-- 좋아요&팬 버튼 -->
     <tr>
-      <td><img class="heart" src="../../assets/image/blog/icon/heart1.png"></td>
-      <td><img class="like" src="../../assets/image/blog/icon/fan2.png"></td>
+      <td><img class="heart" src="${pageContext.request.contextPath}/assets/image/blog/icon/heart1.png"></td>
+      <td><img class="like" src="${pageContext.request.contextPath}/assets/image/blog/icon/fan2.png"></td>
     </tr>
 
     <!-- 좋아요&팬 Count-->
@@ -102,18 +90,15 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">공연시작</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
       </div>
-      <div class="modal-body clear-fix">
+      <div class="modal-body clear-fix" id="modal_body">
         <div>
-          <label class="modal-label">장소명</label>
+          <label class="modal-label" id="modal_label">장소명</label>
           <input type="text" placeholder="장소명을 입력세주세요">
         </div>
 
         <div>
-          <label class="modal-label">위치</label>
+          <label class="modal-label" id="modal_label">위치</label>
           <input type="text" placeholder="위치를 입력세주세요">
         </div>
 
@@ -159,6 +144,38 @@
 		console.log("testing")
 
 		$("#exampleModal").modal('show');
+
+		$.ajax({
+			// 컨트롤러에서 대기중인 URL 주소이다.
+			url : "https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=UChlgI3UHCOnwUGzWzbJ3H5w&eventType=live&type=video&key=AIzaSyDTEc6Ma-ieVQBI8oQWgVxRXCHIOIMuFtk",
+
+			// HTTP method type(GET, POST) 형식이다.
+			type : "get",
+
+			// Json 형태의 데이터로 보낸다.
+			contentType : "application/json",
+
+			// Json 형식의 데이터를 받는다.
+			dataType : "json",
+
+			data : {
+
+			},
+
+			// 성공일 경우 success로 들어오며, 'result'는 응답받은 데이터이다.
+			success : function(result) {
+				/*성공시 처리해야될 코드 작성*/
+				console.log(result);
+				var first_key = Object.keys(result)[0];
+				console.log(first_key);
+
+			},
+
+			// 실패할경우 error로 들어온다.
+			error : function(XHR, status, error) {
+				console.error(status + " : " + error);
+			}
+		});
 	});
 
 	$(".close").on("click", function() {

@@ -138,39 +138,13 @@ a:active {text-decoration: none; color: black;}
   float: right;
 }
 
-/** 배너 안 컨텐츠 **/
-.banner_in {
-  padding: 0px;
-  margin: 0px;
-  margin-left: 320px;
-  display: flex;
-  list-style: none;
-}
-
-.banner_in li {
-  padding-left: 10px;
-  padding-top: 8px;
-  font-size: 14px;
-}
-
-.stream_box {
-  width: 335px;
-  height: 180px;
-  overflow: hidden;
-}
-
-.stream_box img {
-  max-width: 100%;
-  height: auto;
-}
-
 /** 공연시작 버튼 **/
 #form button{
   width: 120px;
   height: 40px;
   float: right;
-  margin-top: -80px;
-  margin-right: 8px;
+  margin-top: 115px;
+  margin-right: -30px;
   background:#9A30AE;
   color:#fff;
   border:none;
@@ -192,22 +166,22 @@ a:active {text-decoration: none; color: black;}
 .facebook {
   width: 25px;
   float: right;
-  margin-top: -26px;
-  margin-right: 10px;
+  margin-top: 165px;
+  margin-right: -115px;
 }
 
 .instagram {
   width: 26px;
   float: right;
-  margin-top: -26px;
-  margin-right: 49px;
+  margin-top: 165px;
+  margin-right: -78px;
 }
 
 .youtube {
   width: 33px;
   float: right;
-  margin-top: -30px;
-  margin-right: 89px;
+  margin-top: 160px;
+  margin-right: -40px;
 }
 
 /** 프로필 박스 **/

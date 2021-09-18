@@ -109,7 +109,7 @@
 	transform: translate3d(0, 0, 0);
 }
 
-.modal-dialog {
+#img_dialog {
 	width: auto;
 	display: table;
 }

@@ -36,13 +36,14 @@ input[type="checkbox"]:checked ~ .reveal-if-active {
   overflow: visible;
 }
 
-.modal-body input[type=text] {
+#modal_body input[type=text] {
   width: 100%;
   padding: 4px 8px;
   margin: 8px 0;
   box-sizing: border-box;
 }
-.modal-label{
+
+#modal_label {
   font-size: 14px;
   width: 50px;
 }
@@ -62,7 +63,7 @@ input[type="checkbox"]:checked ~ .reveal-if-active {
   padding: 4px 6px;
   margin: 0px 0px 5px 0px;
   border: none;
-  font-weight: bold;  
+  font-weight: bold;
   background: #FAFAFA;
   border: 1px solid #DDDDDD;
   font-size: 12px;

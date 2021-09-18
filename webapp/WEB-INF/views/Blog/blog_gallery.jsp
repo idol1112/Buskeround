@@ -31,30 +31,30 @@
 <body>
   <!------ br_container ------>
   <div class="clearfix" id="br_container">
-    <c:import url="/views/Blog/includes/aside.jsp"></c:import>
+    <c:import url="/WEB-INF/views/Blog/includes/aside.jsp"></c:import>
 
     <!------ br_content ------>
     <div id="br_content">
-      <c:import url="/views/Blog/includes/header.jsp"></c:import>
+      <c:import url="/WEB-INF/views/Blog/includes/header.jsp"></c:import>
 
       <!-- nav_menu -->
       <div class="navbar">
         <ul class="navbar_menu">
-          <li><a href="blog_main.jsp">홈</a></li>
+          <li><a href="${pageContext.request.contextPath}/blog_main">홈</a></li>
           <li><a href="blogNoticeBoard.jsp">공지사항</a></li>
-          <li><a href="blog_timeline.jsp">타임라인</a></li>
-          <li class="bold"><a href="blog_gallery.jsp">갤러리</a></li>
-          <li><a href="blogGuestbookBoard.jsp">방명록</a></li>
+          <li><a href="${pageContext.request.contextPath}/blog_timeline">타임라인</a></li>
+          <li class="bold"><a href="${pageContext.request.contextPath}/blog_gallery">갤러리</a></li>
+          <li><a href="${pageContext.request.contextPath}/blog_guestbook">방명록</a></li>
         </ul>
       </div>
 
       <div class="content clearfix">
         <!-- 글쓰기 버튼 -->
         <div class="clearfix main_title">
-          <img src="../../assets/image/blog/icon/landscape.png">
+          <img src="${pageContext.request.contextPath}/assets/image/blog/icon/landscape.png">
           <span>갤러리</span>
           <button id="writebutton" type="button" onClick="location.href='blogWriteForm.jsp'">
-            <img src="../../assets/image/blog/icon/write.png">사진 올리기
+            <img src="${pageContext.request.contextPath}/assets/image/blog/icon/write.png">사진 올리기
           </button>
         </div>
 
@@ -65,7 +65,7 @@
               <h2>홍대 거리</h2>
               <p>2021. 09. 07</p>
             </div>
-            <img id="img_item" src="../../assets/image/blog/img/buker.jpg" alt="" />
+            <img id="img_item" src="${pageContext.request.contextPath}/assets/image/blog/img/buker.jpg" alt="" />
           </div>
 
           <div class="gallery_item">
@@ -73,7 +73,7 @@
               <h2>마로니에 공원</h2>
               <p>2021. 09. 07</p>
             </div>
-            <img id="img_item" src="../../assets/image/blog/img/busker.jpg" alt="" />
+            <img id="img_item" src="${pageContext.request.contextPath}/assets/image/blog/img/busker.jpg" alt="" />
           </div>
 
           <div class="gallery_item">
@@ -81,7 +81,7 @@
               <h2>마로니에 공원</h2>
               <p>2021. 09. 05</p>
             </div>
-            <img id="img_item" src="../../assets/image/blog/img/busker2.jpg" alt="" />
+            <img id="img_item" src="${pageContext.request.contextPath}/assets/image/blog/img/busker2.jpg" alt="" />
           </div>
 
           <div class="gallery_item">
@@ -89,7 +89,7 @@
               <h2>이태원</h2>
               <p>2021. 09. 03</p>
             </div>
-            <img id="img_item" src="../../assets/image/blog/img/busker3.jpg" alt="" />
+            <img id="img_item" src="${pageContext.request.contextPath}/assets/image/blog/img/busker3.jpg" alt="" />
           </div>
         </div>
         <!------ ////(gallery)//// ------>
@@ -131,16 +131,16 @@
 
 <!-- modal -->
 <div class="modal fade" id="img_modal">
-  <div class="modal-dialog">
+  <div class="modal-dialog" id="img_dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Modal title</h4>
+        <h4 class="modal-title"></h4>
       </div>
       <div class="modal-body">
         <img id="modal_img" src="">
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" id="btn_close" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default" id="btn_close" data-dismiss="modal">닫기</button>
         <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
@@ -152,8 +152,12 @@
 
 <script type="text/javascript">
 	$(".gallery_item").on("click", "#img_item", function() {
+		var img_title = $(this).parents(".gallery_item").children("div").children("h2").text();
+		$(".modal-title").text(img_title);
+
 		var img_src = $(this).attr('src');
 		$("#modal_img").attr("src", img_src);
+
 		$("#img_modal").modal('show');
 	});
 

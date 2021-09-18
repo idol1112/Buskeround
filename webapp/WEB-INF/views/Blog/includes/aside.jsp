@@ -16,7 +16,7 @@
     <div class="side_nav">
       <!---- 프로필 사진 ---->
       <div class="profile_img">
-        <img src="../../assets/image/blog/img/profile.jpg" alt="profile_img" class="profile_user_img">
+        <img src="${pageContext.request.contextPath}/assets/image/blog/img/profile.jpg" alt="profile_img" class="profile_user_img">
       </div>
       <!---- 활동명 ---->
       <div class="profile_name">
@@ -26,7 +26,7 @@
       <div class="live_on"></div>
       <!---- 장르 ---->
       <div class="profile_genre">
-        <img src="../../assets/image/blog/icon/hiphop.png">
+        <img src="${pageContext.request.contextPath}/assets/image/blog/icon/hiphop.png">
       </div>
     </div>
 
@@ -34,7 +34,7 @@
     <div class="side_nav">
       <!---- 프로필 사진 ---->
       <div class="profile_img">
-        <img src="../../assets/image/blog/img/profile2.jpg" alt="profile_img" class="profile_user_img">
+        <img src="${pageContext.request.contextPath}/assets/image/blog/img/profile2.jpg" alt="profile_img" class="profile_user_img">
       </div>
       <!---- 활동명 ---->
       <div class="profile_name">
@@ -44,7 +44,7 @@
       <div class="live_on"></div>
       <!---- 장르 ---->
       <div class="profile_genre">
-        <img src="../../assets/image/blog/icon/soul.png">
+        <img src="${pageContext.request.contextPath}/assets/image/blog/icon/soul.png">
       </div>
     </div>
 
@@ -52,7 +52,7 @@
     <div class="side_nav">
       <!---- 프로필 사진 ---->
       <div class="profile_img">
-        <img src="../../assets/image/blog/img/profile3.jpg" alt="profile_img" class="profile_user_img">
+        <img src="${pageContext.request.contextPath}/assets/image/blog/img/profile3.jpg" alt="profile_img" class="profile_user_img">
       </div>
       <!---- 활동명 ---->
       <div class="profile_name">
@@ -62,7 +62,7 @@
       <div class="live_on"></div>
       <!---- 장르 ---->
       <div class="profile_genre">
-        <img src="../../assets/image/blog/icon/ballade.png">
+        <img src="${pageContext.request.contextPath}/assets/image/blog/icon/ballade.png">
       </div>
     </div>
 
@@ -70,7 +70,7 @@
     <div class="side_nav">
       <!---- 프로필 사진 ---->
       <div class="profile_img">
-        <img src="../../assets/image/blog/img/profile4.jpg" alt="profile_img" class="profile_user_img">
+        <img src="${pageContext.request.contextPath}/assets/image/blog/img/profile4.jpg" alt="profile_img" class="profile_user_img">
       </div>
       <!---- 활동명 ---->
       <div class="profile_name">
@@ -80,7 +80,7 @@
       <div class="live_on"></div>
       <!---- 장르 ---->
       <div class="profile_genre">
-        <img src="../../assets/image/blog/icon/musical.png">
+        <img src="${pageContext.request.contextPath}/assets/image/blog/icon/musical.png">
       </div>
     </div>
 
@@ -88,7 +88,7 @@
     <div class="side_nav">
       <!---- 프로필 사진 ---->
       <div class="profile_img">
-        <img src="../../assets/image/blog/img/profile5.jpg" alt="profile_img" class="profile_user_img">
+        <img src="${pageContext.request.contextPath}/assets/image/blog/img/profile5.jpg" alt="profile_img" class="profile_user_img">
       </div>
       <!---- 활동명 ---->
       <div class="profile_name">
@@ -98,7 +98,7 @@
       <div class="live_on"></div>
       <!---- 장르 ---->
       <div class="profile_genre">
-        <img src="../../assets/image/blog/icon/dance.png">
+        <img src="${pageContext.request.contextPath}/assets/image/blog/icon/dance.png">
       </div>
     </div>
 
@@ -106,7 +106,7 @@
     <div class="side_nav">
       <!---- 프로필 사진 ---->
       <div class="profile_img">
-        <img src="../../assets/image/blog/icon/user.png" alt="profile_img" class="profile_user_img">
+        <img src="${pageContext.request.contextPath}/assets/image/blog/icon/user.png" alt="profile_img" class="profile_user_img">
       </div>
       <!---- 활동명 ---->
       <div class="profile_name">
@@ -117,7 +117,7 @@
 
       <!---- 장르 ---->
       <div class="profile_genre">
-        <img src="../../assets/image/blog/icon/etc.png">
+        <img src="${pageContext.request.contextPath}/assets/image/blog/icon/etc.png">
       </div>
     </div>
   </div>
