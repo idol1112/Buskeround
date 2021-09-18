@@ -34,10 +34,10 @@
                 <img id="main_dropdown" src="${pageContext.request.contextPath}/assets/image/common/dropdown.png">
               </button>
               <div class="dropdown-content">
-                <a href="../MyPage/mypageModify.jsp">마이페이지</a>
+                <a href="${pageContext.request.contextPath}/MyPage/profileModify">마이페이지</a>
                 <!-- 아티스트일 때 -->
                 <c:if test="${authUser.user_type == 2}">
-                  <a href="../Blog/blog_main.jsp">내 블로그</a>
+                  <a href="${pageContext.request.contextPath}/Blog/blogMain">내 블로그</a>
                 </c:if>
 
                 <!-- 제휴자일 때 -->
