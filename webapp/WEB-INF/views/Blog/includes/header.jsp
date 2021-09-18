@@ -165,10 +165,13 @@
 			// 성공일 경우 success로 들어오며, 'result'는 응답받은 데이터이다.
 			success : function(result) {
 				/*성공시 처리해야될 코드 작성*/
-				console.log(result);
-				var first_key = Object.keys(result)[0];
-				console.log(first_key);
 
+				 for (var i = 0; i < result.items.length; i++) {
+				     var items = result.items[i];
+				     console.log("title : "+items.snippet.title);
+				     console.log("videoId : "+items.id.videoId);
+				     console.log("썸네일 : "+items.snippet.thumbnails.high.url);
+				 }
 			},
 
 			// 실패할경우 error로 들어온다.

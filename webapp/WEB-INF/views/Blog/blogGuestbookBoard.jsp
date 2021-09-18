@@ -40,11 +40,11 @@
       <!-- nav_menu -->
       <div class="navbar">
         <ul class="navbar_menu">
-          <li><a href="${pageContext.request.contextPath}/blog_main">홈</a></li>
+          <li><a href="${pageContext.request.contextPath}/blog/blog_main">홈</a></li>
           <li><a href="blogNoticeBoard.jsp">공지사항</a></li>
-          <li><a href="${pageContext.request.contextPath}/blog_timeline">타임라인</a></li>
-          <li><a href="${pageContext.request.contextPath}/blog_gallery">갤러리</a></li>
-          <li class="bold"><a href="${pageContext.request.contextPath}/blog_guestbook">방명록</a></li>
+          <li><a href="${pageContext.request.contextPath}/blog/blog_timeline">타임라인</a></li>
+          <li><a href="${pageContext.request.contextPath}/blog/blog_gallery">갤러리</a></li>
+          <li class="bold"><a href="${pageContext.request.contextPath}/blog/blog_guestbook">방명록</a></li>
         </ul>
       </div>
 
