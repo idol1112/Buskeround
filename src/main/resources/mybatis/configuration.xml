@@ -7,7 +7,7 @@
 	</typeAliases>
 
 	<mappers>
-		<mapper resource="mybatis/mappers/Empty.xml" />
+		<mapper resource="mybatis/mappers/MyPage.xml" />
 		<mapper resource="mybatis/mappers/User.xml" />
 	</mappers>
 </configuration>
