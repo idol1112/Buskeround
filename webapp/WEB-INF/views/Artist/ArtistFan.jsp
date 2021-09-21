@@ -19,18 +19,20 @@
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 
 <!-- css -->
-<link rel="stylesheet" href="../../assets/css/Artist/common.css">
-<link rel="stylesheet" href="../../assets/css/Common/common.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/Artist/common.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/Common/common.css">
+
+
 
 </head>
 
 <body>
   <!-- header -->
-  <c:import url="/views/includes/header.jsp"></c:import>
+  <c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
   
 
   <!-- nav_artist  -->
-  <c:import url="/views/Artist/includes/artbox.jsp"></c:import>
+  <c:import url="/WEB-INF/views/Artist/includes/artbox.jsp"></c:import>
     
      <div class="section-01">
         <div class="leftsection">
@@ -40,7 +42,7 @@
                 <!-- 아티스트 검색 -->
                 <div>
                     <input type="text" placeholder="아티스트 검색">
-                    <img src="../../assets/image/artist/icon/search.png" style="width:20px">
+                    <img src="${pageContext.request.contextPath}/assets/image/artist/icon/search.png" style="width:20px">
                 </div>
             </div>
 			<!-- 종합랭킹 표그래프 -->
@@ -62,29 +64,29 @@
                         <tr>
                             <td>1</td>
                             <td>
-                                <img src="../../assets/image/artist/img/18.PNG" style="width:80px">
+                                <img src="${pageContext.request.contextPath}/assets/image/artist/img/18.PNG" style="width:80px">
                             </td>
                             <td>
                                 <div>이지은</div>
                                 <div>
-                                	<img src="../../assets/image/artist/icon/youtube.png" style="width:20px">
-                                    <img src="../../assets/image/artist/icon/facebook.png" style="width:20px">
-                                    <img src="../../assets/image/artist/icon/insta.png" style="width:20px">
+                                	<img src="${pageContext.request.contextPath}/assets/image/artist/icon/youtube.png" style="width:20px">
+                                    <img src="${pageContext.request.contextPath}/assets/image/artist/icon/facebook.png" style="width:20px">
+                                    <img src="${pageContext.request.contextPath}/assets/image/artist/icon/insta.png" style="width:20px">
                                 </div>
                             </td>
                             <td>
-                                <img src="../../assets/image/artist/icon/dance.png" style="width:60px">
+                                <img src="${pageContext.request.contextPath}/assets/image/artist/icon/dance.png" style="width:60px">
                             </td>
                             <td>
                                 <div>활동유형 K-POP 댄스</div>
                                 <div>가입연도 2021년</div>
                             </td>
                             <td>
-                                <img src="../../assets/image/artist/icon/heart2.png" style="width:20px">
+                                <img src="${pageContext.request.contextPath}/assets/image/artist/icon/heart2.png" style="width:20px">
                                 <span>620</span>
                             </td>
                             <td>
-                                <img src="../../assets/image/artist/icon/fan1.png" style="width:20px">
+                                <img src="${pageContext.request.contextPath}/assets/image/artist/icon/fan1.png" style="width:20px">
                                 <span>409</span>
                             </td>
                         </tr>
@@ -92,28 +94,28 @@
                         <tr>
                             <td>2</td>
                             <td>
-                                <img src="../../assets/image/artist/img/14.PNG" style="width:80px">
+                                <img src="${pageContext.request.contextPath}/assets/image/artist/img/14.PNG" style="width:80px">
                             </td>
                             <td>
                                 <div>홀리뱅(HOLLYBANG)</div>
                                 <div>
-                                    <img src="../../assets/image/artist/icon/facebook.png" style="width:20px">
-                                    <img src="../../assets/image/artist/icon/insta.png" style="width:20px">
+                                    <img src="${pageContext.request.contextPath}/assets/image/artist/icon/facebook.png" style="width:20px">
+                                    <img src="${pageContext.request.contextPath}/assets/image/artist/icon/insta.png" style="width:20px">
                                 </div>
                             </td>
                             <td>
-                                <img src="../../assets/image/artist/icon/musical.png" style="width:60px">
+                                <img src="${pageContext.request.contextPath}/assets/image/artist/icon/musical.png" style="width:60px">
                             </td>
                             <td>
                                 <div>활동유형 베이스</div>
                                 <div>가입연도 2020년</div>
                             </td>
                             <td>
-                                <img src="../../assets/image/artist/icon/heart1.png" style="width:20px">
+                                <img src="${pageContext.request.contextPath}/assets/image/artist/icon/heart1.png" style="width:20px">
                                 <span>340</span>
                             </td>
                             <td>
-                                <img src="../../assets/image/artist/icon/fan2.png" style="width:20px">
+                                <img src="${pageContext.request.contextPath}/assets/image/artist/icon/fan2.png" style="width:20px">
                                 <span>321</span>
                             </td>
                         </tr>
@@ -121,28 +123,28 @@
                         <tr>
                             <td>3</td>
                             <td>
-                                <img src="../../assets/image/artist/img/6.PNG" style="width:80px">
+                                <img src="${pageContext.request.contextPath}/assets/image/artist/img/6.PNG" style="width:80px">
                             </td>
                             <td>
                                 <div>안다니엘</div>
                                 <div>
-                                    <img src="../../assets/image/artist/icon/youtube.png" style="width:20px">
-                                    <img src="../../assets/image/artist/icon/insta.png" style="width:20px">
+                                    <img src="${pageContext.request.contextPath}/assets/image/artist/icon/youtube.png" style="width:20px">
+                                    <img src="${pageContext.request.contextPath}/assets/image/artist/icon/insta.png" style="width:20px">
                                 </div>
                             </td>
                             <td>
-                                <img src="../../assets/image/artist/icon/hiphop.png" style="width:70px">
+                                <img src="${pageContext.request.contextPath}/assets/image/artist/icon/hiphop.png" style="width:70px">
                             </td>
                             <td>
                                 <div>활동유형 힙합</div>
                                 <div>가입연도 2020년</div>
                             </td>
                             <td>
-                                <img src="../../assets/image/artist/icon/heart2.png" style="width:20px">
+                                <img src="${pageContext.request.contextPath}/assets/image/artist/icon/heart2.png" style="width:20px">
                                 <span>400</span>
                             </td>
                             <td>
-                                <img src="../../assets/image/artist/icon/fan2.png" style="width:20px">
+                                <img src="${pageContext.request.contextPath}/assets/image/artist/icon/fan2.png" style="width:20px">
                                 <span>320</span>
                             </td>
                         </tr>
@@ -150,28 +152,28 @@
                         <tr>
                             <td>4</td>
                             <td>
-                                <img src="../../assets/image/artist/img/12.PNG" style="width:80px">
+                                <img src="${pageContext.request.contextPath}/assets/image/artist/img/12.PNG" style="width:80px">
                             </td>
                             <td>
                                 <div>악뮤(AKMU)</div>
                                 <div>
-                                    <img src="../../assets/image/artist/icon/youtube.png" style="width:20px">
-                                    <img src="../../assets/image/artist/icon/insta.png" style="width:20px">
+                                    <img src="${pageContext.request.contextPath}/assets/image/artist/icon/youtube.png" style="width:20px">
+                                    <img src="${pageContext.request.contextPath}/assets/image/artist/icon/insta.png" style="width:20px">
                                 </div>
                             </td>
                             <td>
-                                <img src="../../assets/image/artist/icon/soul.png" style="width:75px">
+                                <img src="${pageContext.request.contextPath}/assets/image/artist/icon/soul.png" style="width:75px">
                             </td>
                             <td>
                                 <div>활동유형 혼성그룹</div>
                                 <div>가입연도 2021년</div>
                             </td>
                             <td>
-                                <img src="../../assets/image/artist/icon/heart2.png" style="width:20px">
+                                <img src="${pageContext.request.contextPath}/assets/image/artist/icon/heart2.png" style="width:20px">
                                 <span>290</span>
                             </td>
                             <td>
-                                <img src="../../assets/image/artist/icon/fan1.png" style="width:20px">
+                                <img src="${pageContext.request.contextPath}/assets/image/artist/icon/fan1.png" style="width:20px">
                                 <span>300</span>
                             </td>
                         </tr>
@@ -179,29 +181,29 @@
                         <tr>
                             <td>5</td>
                             <td>
-                                <img src="../../assets/image/artist/img/4.PNG" style="width:80px">
+                                <img src="${pageContext.request.contextPath}/assets/image/artist/img/4.PNG" style="width:80px">
                             </td>
                             <td>
                                 <div>안진혁</div>
                                 <div>
-                                    <img src="../../assets/image/artist/icon/youtube.png" style="width:20px">
-                                    <img src="../../assets/image/artist/icon/facebook.png" style="width:20px">
-                                    <img src="../../assets/image/artist/icon/insta.png" style="width:20px">
+                                    <img src="${pageContext.request.contextPath}/assets/image/artist/icon/youtube.png" style="width:20px">
+                                    <img src="${pageContext.request.contextPath}/assets/image/artist/icon/facebook.png" style="width:20px">
+                                    <img src="${pageContext.request.contextPath}/assets/image/artist/icon/insta.png" style="width:20px">
                                 </div>
                             </td>
                             <td>
-                                <img src="../../assets/image/artist/icon/soul.png" style="width:75px">
+                                <img src="${pageContext.request.contextPath}/assets/image/artist/icon/soul.png" style="width:75px">
                             </td>
                             <td>
                                 <div>활동유형 솔로가수</div>
                                 <div>가입연도 2019년</div>
                             </td>
                             <td>
-                                <img src="../../assets/image/artist/icon/heart1.png" style="width:20px">
+                                <img src="${pageContext.request.contextPath}/assets/image/artist/icon/heart1.png" style="width:20px">
                                 <span>420</span>
                             </td>
                             <td>
-                                <img src="../../assets/image/artist/icon/fan1.png" style="width:20px">
+                                <img src="${pageContext.request.contextPath}/assets/image/artist/icon/fan1.png" style="width:20px">
                                 <span>205</span>
                             </td>
                         </tr>
@@ -209,29 +211,29 @@
                         <tr>
                             <td>6</td>
                             <td>
-                                <img src="../../assets/image/artist/img/21.PNG" style="width:80px">
+                                <img src="${pageContext.request.contextPath}/assets/image/artist/img/21.PNG" style="width:80px">
                             </td>
                             <td>
                                 <div>김진호</div>
                                 <div>
-                                    <img src="../../assets/image/artist/icon/youtube.png" style="width:20px">
-                                    <img src="../../assets/image/artist/icon/facebook.png" style="width:20px">
-                                    <img src="../../assets/image/artist/icon/insta.png" style="width:20px">
+                                    <img src="${pageContext.request.contextPath}/assets/image/artist/icon/youtube.png" style="width:20px">
+                                    <img src="${pageContext.request.contextPath}/assets/image/artist/icon/facebook.png" style="width:20px">
+                                    <img src="${pageContext.request.contextPath}/assets/image/artist/icon/insta.png" style="width:20px">
                                 </div>
                             </td>
                             <td>
-                                <img src="../../assets/image/artist/icon/ballade.png" style="width:75px">
+                                <img src="${pageContext.request.contextPath}/assets/image/artist/icon/ballade.png" style="width:75px">
                             </td>
                             <td>
                                 <div>활동유형 솔로가수</div>
                                 <div>가입연도 2019년</div>
                             </td>
                             <td>
-                                <img src="../../assets/image/artist/icon/heart1.png" style="width:20px">
+                                <img src="${pageContext.request.contextPath}/assets/image/artist/icon/heart1.png" style="width:20px">
                                 <span>297</span>
                             </td>
                             <td>
-                                <img src="../../assets/image/artist/icon/fan1.png" style="width:20px">
+                                <img src="${pageContext.request.contextPath}/assets/image/artist/icon/fan1.png" style="width:20px">
                                 <span>200</span>
                             </td>
                         </tr>
@@ -239,29 +241,29 @@
                         <tr>
                             <td>7</td>
                             <td>
-                                <img src="../../assets/image/artist/img/19.PNG" style="width:80px">
+                                <img src="${pageContext.request.contextPath}/assets/image/artist/img/19.PNG" style="width:80px">
                             </td>
                             <td>
                                 <div>YGXGIRL</div>
                                 <div>
-                                    <img src="../../assets/image/artist/icon/youtube.png" style="width:20px">
-                                    <img src="../../assets/image/artist/icon/facebook.png" style="width:20px">
-                                    <img src="../../assets/image/artist/icon/insta.png" style="width:20px">
+                                    <img src="${pageContext.request.contextPath}/assets/image/artist/icon/youtube.png" style="width:20px">
+                                    <img src="${pageContext.request.contextPath}/assets/image/artist/icon/facebook.png" style="width:20px">
+                                    <img src="${pageContext.request.contextPath}/assets/image/artist/icon/insta.png" style="width:20px">
                                 </div>
                             </td>
                             <td>
-                                <img src="../../assets/image/artist/icon/dance.png" style="width:60px">
+                                <img src="${pageContext.request.contextPath}/assets/image/artist/icon/dance.png" style="width:60px">
                             </td>
                             <td>
                                 <div>활동유형 비보잉</div>
                                 <div>가입연도 2020년</div>
                             </td>
                             <td>
-                                <img src="../../assets/image/artist/icon/heart2.png" style="width:20px">
+                                <img src="${pageContext.request.contextPath}/assets/image/artist/icon/heart2.png" style="width:20px">
                                 <span>233</span>
                             </td>
                             <td>
-                                <img src="../../assets/image/artist/icon/fan2.png" style="width:20px">
+                                <img src="${pageContext.request.contextPath}/assets/image/artist/icon/fan2.png" style="width:20px">
                                 <span>140</span>
                             </td>
                         </tr>
@@ -269,27 +271,27 @@
                         <tr>
                             <td>8</td>
                             <td>
-                                <img src="../../assets/image/artist/img/8.PNG" style="width:80px">
+                                <img src="${pageContext.request.contextPath}/assets/image/artist/img/8.PNG" style="width:80px">
                             </td>
                             <td>
                                 <div>태민</div>
                                 <div>
-                                    <img src="../../assets/image/artist/icon/youtube.png" style="width:20px">
+                                    <img src="${pageContext.request.contextPath}/assets/image/artist/icon/youtube.png" style="width:20px">
                                 </div>
                             </td>
                             <td>
-                                <img src="../../assets/image/artist/icon/dance.png" style="width:60px">
+                                <img src="${pageContext.request.contextPath}/assets/image/artist/icon/dance.png" style="width:60px">
                             </td>
                             <td>
                                 <div>활동유형 솔로댄서</div>
                                 <div>가입연도 2020년</div>
                             </td>
                             <td>
-                                <img src="../../assets/image/artist/icon/heart1.png" style="width:20px">
+                                <img src="${pageContext.request.contextPath}/assets/image/artist/icon/heart1.png" style="width:20px">
                                 <span>290</span>
                             </td>
                             <td>
-                                <img src="../../assets/image/artist/icon/fan1.png" style="width:20px">
+                                <img src="${pageContext.request.contextPath}/assets/image/artist/icon/fan1.png" style="width:20px">
                                 <span>120</span>
                             </td>
                         </tr>
@@ -297,29 +299,29 @@
                         <tr>
                             <td>9</td>
                             <td>
-                                <img src="../../assets/image/artist/img/13.PNG" style="width:80px">
+                                <img src="${pageContext.request.contextPath}/assets/image/artist/img/13.PNG" style="width:80px">
                             </td>
                             <td>
                                 <div>최정훈</div>
                                 <div>
-                                    <img src="../../assets/image/artist/icon/youtube.png" style="width:20px">
-                                    <img src="../../assets/image/artist/icon/facebook.png" style="width:20px">
-                                    <img src="../../assets/image/artist/icon/insta.png" style="width:20px">
+                                    <img src="${pageContext.request.contextPath}/assets/image/artist/icon/youtube.png" style="width:20px">
+                                    <img src="${pageContext.request.contextPath}/assets/image/artist/icon/facebook.png" style="width:20px">
+                                    <img src="${pageContext.request.contextPath}/assets/image/artist/icon/insta.png" style="width:20px">
                                 </div>
                             </td>
                             <td>
-                                <img src="../../assets/image/artist/icon/musical.png" style="width:60px">
+                                <img src="${pageContext.request.contextPath}/assets/image/artist/icon/musical.png" style="width:60px">
                             </td>
                             <td>
                                 <div>활동유형 베이스</div>
                                 <div>가입연도 2020년</div>
                             </td>
                             <td>
-                                <img src="../../assets/image/artist/icon/heart2.png" style="width:20px">
+                                <img src="${pageContext.request.contextPath}/assets/image/artist/icon/heart2.png" style="width:20px">
                                 <span>530</span>
                             </td>
                             <td>
-                                <img src="../../assets/image/artist/icon/fan1.png" style="width:20px">
+                                <img src="${pageContext.request.contextPath}/assets/image/artist/icon/fan1.png" style="width:20px">
                                 <span>114</span>
                             </td>
                         </tr>
@@ -327,28 +329,28 @@
                         <tr>
                             <td>10</td>
                             <td>
-                                <img src="../../assets/image/artist/img/16.PNG" style="width:80px">
+                                <img src="${pageContext.request.contextPath}/assets/image/artist/img/16.PNG" style="width:80px">
                             </td>
                             <td>
                                 <div>조이(JOY)</div>
                                 <div>
-                                    <img src="../../assets/image/artist/icon/youtube.png" style="width:20px">
-                                    <img src="../../assets/image/artist/icon/insta.png" style="width:20px">
+                                    <img src="${pageContext.request.contextPath}/assets/image/artist/icon/youtube.png" style="width:20px">
+                                    <img src="${pageContext.request.contextPath}/assets/image/artist/icon/insta.png" style="width:20px">
                                 </div>
                             </td>
                             <td>
-                                <img src="../../assets/image/artist/icon/soul.png" style="width:75px">
+                                <img src="${pageContext.request.contextPath}/assets/image/artist/icon/soul.png" style="width:75px">
                             </td>
                             <td>
                                 <div>활동유형 솔로가수</div>
                                 <div>가입연도 2021년</div>
                             </td>
                             <td>
-                                <img src="../../assets/image/artist/icon/heart1.png" style="width:20px">
+                                <img src="${pageContext.request.contextPath}/assets/image/artist/icon/heart1.png" style="width:20px">
                                 <span>300</span>
                             </td>
                             <td>
-                                <img src="../../assets/image/artist/icon/fan1.png" style="width:20px">
+                                <img src="${pageContext.request.contextPath}/assets/image/artist/icon/fan1.png" style="width:20px">
                                 <span>109</span>
                             </td>
                         </tr>
@@ -363,15 +365,15 @@
                 <div class="rightsection-01-01">
                     <h3>NEW ARTIST</h3>
                     <div>
-                        <img src="../../assets/image/artist/icon/circle1.png" style="width:8px">
-                        <img src="../../assets/image/artist/icon/circle1.png" style="width:8px">
-                        <img src="../../assets/image/artist/icon/circle2.png" style="width:8px">
-                        <img src="../../assets/image/artist/icon/circle1.png" style="width:8px">
-                        <img src="../../assets/image/artist/icon/circle1.png" style="width:8px">
+                        <img src="${pageContext.request.contextPath}/assets/image/artist/icon/circle1.png" style="width:8px">
+                        <img src=".${pageContext.request.contextPath}/assets/image/artist/icon/circle1.png" style="width:8px">
+                        <img src="${pageContext.request.contextPath}/assets/image/artist/icon/circle2.png" style="width:8px">
+                        <img src="${pageContext.request.contextPath}/assets/image/artist/icon/circle1.png" style="width:8px">
+                        <img src="${pageContext.request.contextPath}/assets/image/artist/icon/circle1.png" style="width:8px">
                     </div>
                 </div>
                 <div>
-                    <img src="../../assets/image/artist/img/22.PNG" style="width:285px">
+                    <img src="${pageContext.request.contextPath}/assets/image/artist/img/22.PNG" style="width:285px">
                 </div>
             </div>
             <div class="rightsection-02">
@@ -379,9 +381,9 @@
                 <div class="rightsection-02-01">
                     <h3>NOW LIVE</h3>
                     <div>
-                        <img src="../../assets/image/artist/icon/triangle1.png" style="width:20px">
+                        <img src="${pageContext.request.contextPath}/assets/image/artist/icon/triangle1.png" style="width:20px">
                         1/2
-                        <img src="../../assets/image/artist/icon/triangle2.png" style="width:20px">
+                        <img src="${pageContext.request.contextPath}/assets/image/artist/icon/triangle2.png" style="width:20px">
                     </div>
                 </div>
                 <table>
@@ -443,7 +445,7 @@
     </div>
     
   <!-- footer -->
-  <c:import url="/views/includes/footer.jsp"></c:import>
+  <c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
 
 </body>
 </html>    
