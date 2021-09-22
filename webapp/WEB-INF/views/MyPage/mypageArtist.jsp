@@ -19,6 +19,10 @@
 <!-- css -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/Common/common.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/MyPage/mypage.css">
+
+<!-- jquery -->
+<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+
 </head>
 <body>
 	<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
@@ -39,7 +43,7 @@
 					</c:choose>
 				</div>
 				<div id="mypage-right-content">
-					<form action="${pageContext.request.contextPath}/MyPage/artistModify" method="POST">
+					<form action="${pageContext.request.contextPath}/MyPage/artistModify" method="POST" id="artistModify">
 						<input type="hidden" name="user_type" value="2"> <input type="hidden" name="id" value="${sessionScope.authUser.id}">
 						<c:if test="${authUser.user_type == 1}">
 							<table>
@@ -89,9 +93,9 @@
 									<td><input class="input" type="text" id="hp" name="hp" placeholder="연락처를 입력해주세요." value="${requestScope.mypageVo.hp}"></td>
 								</tr>
 								<tr>
-									<td class="table-head"><label for="gender">성별</label></td>
-									<td><input class="radio" type="radio" name="gender" value="male" <c:if test="${requestScope.mypageVo.gender == male}">checked</c:if>><span class="radiolabel">남</span> 
-										<input type="radio" name="gender" value="female" <c:if test="${requestScope.mypageVo.gender == female}">checked</c:if>><span class="radiolabel">여</span>
+									<td class="table-head"><label class="required" for="gender">성별</label></td>
+									<td><input class="radio" type="radio" name="gender" value="male" <c:if test="${requestScope.mypageVo.gender == 'male'}">checked</c:if>><span class="radiolabel">남</span> 
+										<input type="radio" name="gender" value="female" <c:if test="${requestScope.mypageVo.gender == 'female'}">checked</c:if>><span class="radiolabel">여</span>
 									</td>
 								</tr>
 								<tr>
@@ -104,7 +108,7 @@
 										<input class="radio" type="radio" name="genre" value="1" <c:if test="${requestScope.mypageVo.genre == 1}">checked</c:if>><span class="radiolabel">발라드</span> 
 										<input class="radio" type="radio" name="genre" value="2" <c:if test="${requestScope.mypageVo.genre == 2}">checked</c:if>><span class="radiolabel">댄스</span> 
 										<input class="radio" type="radio" name="genre" value="3" <c:if test="${requestScope.mypageVo.genre == 3}">checked</c:if>><span class="radiolabel">랩/힙합</span> 
-										<input class="radio" type="radio" name="genre" value="4" <c:if test="${requestScope.mypageVo.genre == 4}">checked</c:if>><span class="radiolabel">R&B소울</span><br> <br> 
+										<input class="radio" type="radio" name="genre" value="4" <c:if test="${requestScope.mypageVo.genre == 4}">checked</c:if>><span class="radiolabel">R&B소울</span><br><br> 
 										<input class="radio" type="radio" name="genre" value="5" <c:if test="${requestScope.mypageVo.genre == 5}">checked</c:if>><span class="radiolabel">악기</span> 
 										<input class="radio" type="radio" name="genre" value="6" <c:if test="${requestScope.mypageVo.genre == 6}">checked</c:if>><span class="radiolabel">기타공연</span>
 									</td>
@@ -134,4 +138,47 @@
 	<!-- Footer -->
 	<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
 </body>
+
+<script type="text/javascript">
+
+// 등록/수정 클릭
+$("#artistModify").on("submit", function() {
+	console.log("서브밋")
+
+	if ($("[name=nickname]").val().length < 1) {
+		alert("활동명을 입력해 주세요.");
+
+		return false;
+	}
+
+	if ($("[name=name]").val().length < 1) {
+		alert("이름을 입력해 주세요.");
+
+		return false;
+	}
+
+	if ($("[name=hp]").val().length < 1) {
+		alert("연락처를 입력해 주세요.");
+
+		return false;
+	}
+
+	if ($("[name=gender]").val().length < 1) {
+		alert("성별을 선택해주세요.");
+
+		return false;
+	}
+	
+	if ($("[name=genre]").val().length < 1) {
+		alert("퍼포먼스/장르를 선택해주세요.");
+
+		return false;
+	}
+
+	return true;
+});
+
+</script>
+
+
 </html>

@@ -82,7 +82,6 @@ public class MyPageController {
 		authUser = userService.getPerson(userVo);
 		session.setAttribute("authUser", authUser);
 		
-		
 		return "redirect:/MyPage/mypageArtist";
 	}
 	

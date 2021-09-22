@@ -10,7 +10,7 @@ public class MypageVo {
 	private String gender;
 	private String birthday;
 	private int genre;
-	private int genre_type;
+	private String genre_type;
 	private int user_type;
 	
 	//Constructor
@@ -19,7 +19,7 @@ public class MypageVo {
 	}
 	
 	public MypageVo(String id, String nickname, String name, int hp, String gender, String birthday, int genre,
-			int genre_type, int user_type) {
+			String genre_type, int user_type) {
 		super();
 		this.id = id;
 		this.nickname = nickname;
@@ -31,7 +31,7 @@ public class MypageVo {
 		this.genre_type = genre_type;
 		this.user_type = user_type;
 	}
-
+	
 	//Method G/S
 	
 	public String getId() {
@@ -90,11 +90,11 @@ public class MypageVo {
 		this.genre = genre;
 	}
 
-	public int getGenre_type() {
+	public String getGenre_type() {
 		return genre_type;
 	}
 
-	public void setGenre_type(int genre_type) {
+	public void setGenre_type(String genre_type) {
 		this.genre_type = genre_type;
 	}
 
