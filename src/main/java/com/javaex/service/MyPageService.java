@@ -16,7 +16,12 @@ public class MyPageService {
 	public MypageVo getArtistInfo(String id) {
 		System.out.println("MyPageService.getArtistInfo()");
 		
-		MypageVo mypageVo = mypageDao.getArtistInfo(id);
-		return mypageVo;
+		return mypageDao.getArtistInfo(id);
+	}
+	
+	public int artistModify(MypageVo mypageVo) {
+		System.out.println("MyPageService.artistModify()");
+		
+		return mypageDao.artistModify(mypageVo);
 	}
 }

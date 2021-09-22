@@ -32,19 +32,20 @@
 					<h5>아티스트 등록</h5>
 				</div>
 				<div id="mypage-right-content">
-					<form action="" method="POST">
+					<form action="${pageContext.request.contextPath}/MyPage/artistModify" method="POST">
+					<input type="hidden" name="user_type" value="2">
 						<table>
 							<tr>
-								<td class="table-head"><label class="required" for="artistname">활동명</label></td>
-								<td><input class="input" type="text" id="artistname" name="artistname" placeholder="활동명을 입력해주세요"  value="${sessionScope.authUser.nickname}"></td>
+								<td class="table-head"><label class="required" for="nickname">활동명</label></td>
+								<td><input class="input" type="text" id="artistname" name="nickname" placeholder="활동명을 입력해주세요"  value="${sessionScope.authUser.nickname}"></td>
 							</tr>
 							<tr>
 								<td class="table-head"><label class="required" for="name">이름</label></td>
 								<td><input class="input" type="text" id="name" name="name" placeholder="이름을 입력해주세요."></td>
 							</tr>
 							<tr>
-								<td class="table-head"><label class="required" for="phone">연락처</label></td>
-								<td><input class="input" type="text" id="phone" name="phone" placeholder="연락처를 입력해주세요."></td>
+								<td class="table-head"><label class="required" for="hp">연락처</label></td>
+								<td><input class="input" type="text" id="hp" name="hp" placeholder="연락처를 입력해주세요."></td>
 							</tr>
 							<tr>
 								<td class="table-head"><label for="gender">성별</label></td>
@@ -60,8 +61,8 @@
 								<br> <input class="radio" type="radio" name="genre"><span class="radiolabel">악기</span> <input class="radio" type="radio" name="genre"><span class="radiolabel">기타공연</span></td>
 							</tr>
 							<tr>
-								<td class="table-head"><label for="genretype">장르유형</label></td>
-								<td><input class="input" type="text" id="genretype" name="genretype" placeholder="장르유형을 입력해주세요"></td>
+								<td class="table-head"><label for="genre_type">장르유형</label></td>
+								<td><input class="input" type="text" id="genre_type" name="genre_type" placeholder="장르유형을 입력해주세요"></td>
 							</tr>
 						</table>
 						<button type="submit" class="float-end btn-primary btn-sm" id="profilesubmit">등록</button>

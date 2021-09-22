@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -47,7 +48,7 @@ public class MyPageController {
 		
 		//유저 정보 가져오기
 		UserVo authUser = (UserVo)session.getAttribute("authUser");
-		
+		System.out.println("authUserType:" + authUser.getUser_type());
 		//아티스트인지 확인
 		if(authUser.getUser_type() == 2) {
 			
@@ -57,10 +58,21 @@ public class MyPageController {
 			return "/MyPage/mypageArtist";			
 		} else {
 			
-			return "/MyPage/mypageArtist";			
+			return "/MyPage/mypageArtist";
 		}
 		
 		
+	}
+	
+	//아티스트 등록
+	@RequestMapping(value = "/artistModify", method = {RequestMethod.GET, RequestMethod.POST})
+	public String artistModify(@ModelAttribute MypageVo mypageVo) {
+		System.out.println("[MyPageController.artistModify]");
+		System.out.println("ArtistData: " + mypageVo);
+		
+		mypageService.artistModify(mypageVo);
+		
+		return "redirect:/main";
 	}
 	
 	

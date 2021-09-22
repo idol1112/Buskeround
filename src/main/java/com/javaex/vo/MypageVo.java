@@ -3,6 +3,7 @@ package com.javaex.vo;
 public class MypageVo {
 	
 	//Field
+	private String id;
 	private String nickname;
 	private String name;
 	private int hp;
@@ -10,15 +11,17 @@ public class MypageVo {
 	private String birthday;
 	private int genre;
 	private int genre_type;
-
+	private int user_type;
 	
 	//Constructor
 	public MypageVo() {
 		super();
 	}
 	
-	public MypageVo(String nickname, String name, int hp, String gender, String birthday, int genre, int genre_type) {
+	public MypageVo(String id, String nickname, String name, int hp, String gender, String birthday, int genre,
+			int genre_type, int user_type) {
 		super();
+		this.id = id;
 		this.nickname = nickname;
 		this.name = name;
 		this.hp = hp;
@@ -26,9 +29,18 @@ public class MypageVo {
 		this.birthday = birthday;
 		this.genre = genre;
 		this.genre_type = genre_type;
+		this.user_type = user_type;
 	}
 
 	//Method G/S
+	
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
 	
 	public String getNickname() {
 		return nickname;
@@ -86,12 +98,20 @@ public class MypageVo {
 		this.genre_type = genre_type;
 	}
 
+	public int getUser_type() {
+		return user_type;
+	}
+
+	public void setUser_type(int user_type) {
+		this.user_type = user_type;
+	}
+
 	//Method - Ordinary
 	@Override
 	public String toString() {
-		return "MypageVo [nickname=" + nickname + ", name=" + name + ", hp=" + hp + ", gender=" + gender + ", birthday="
-				+ birthday + ", genre=" + genre + ", genre_type=" + genre_type + "]";
+		return "MypageVo [id=" + id + ", nickname=" + nickname + ", name=" + name + ", hp=" + hp + ", gender=" + gender
+				+ ", birthday=" + birthday + ", genre=" + genre + ", genre_type=" + genre_type + ", user_type="
+				+ user_type + "]";
 	}
-	
 
 }

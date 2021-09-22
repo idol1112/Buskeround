@@ -17,5 +17,11 @@ public class MyPageDao {
 	    
 	    return sqlSession.selectOne("mypage.getArtist", id);
 	}
+	
+	public int artistModify(MypageVo mypageVo) {
+		System.out.println("[MyPageDao.artistModify()]");
+		
+		return sqlSession.update("mypage.artistModify", mypageVo);
+	}
 
 }

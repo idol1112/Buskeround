@@ -3,4 +3,42 @@
 
 <mapper namespace="mypage">
 
+	<!-- GetArtistInfo -->
+	<select id="getArtist" resultType="MypageVo" parameterType="String">
+		<![CDATA[
+		SELECT
+		    nickname,
+		    name,
+		    hp,
+		    gender,
+		    birthday,
+		    genre,
+		    genre_type
+		FROM
+		    users
+		WHERE
+		    id = #{id}
+		]]>
+	</select>
+	
+	<!-- Artist Modify -->
+	<update id="artistModify" parameterType="MypageVo">
+		
+		<![CDATA[
+		UPDATE users 
+		SET 
+			nickname = #{nickname},
+			name = #{name},
+			hp = #{hp},
+			gender = #{gender},
+			birthday = #{birthday},
+			genre = #{genre},
+			genre_type = #{genre_type}, 
+			user_type = 2
+		WHERE 
+			id = #{id}
+		]]>
+		
+	</update>
+
 </mapper>
