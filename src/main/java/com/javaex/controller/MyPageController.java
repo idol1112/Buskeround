@@ -29,14 +29,11 @@ public class MyPageController {
 	    System.out.println("[MyPageController.profileModify()]");
 	    
 		UserVo authUser = (UserVo)session.getAttribute("authUser");
+//		UserVo getProfile = mypageService.getProfile(authUser.getUser_no());
 		
 	    
 	    return "/MyPage/mypageModify";
 	}
-
-	
-	
-	//로그인된 사람 정보 가져오기
 	
 	
 	
@@ -60,11 +57,9 @@ public class MyPageController {
 			
 			return "/MyPage/mypageArtist";
 		}
-		
-		
 	}
 	
-	//아티스트 등록
+	//아티스트 등록/수정
 	@RequestMapping(value = "/artistModify", method = {RequestMethod.GET, RequestMethod.POST})
 	public String artistModify(HttpSession session, @ModelAttribute MypageVo mypageVo) {
 		System.out.println("[MyPageController.artistModify]");

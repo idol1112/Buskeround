@@ -15,6 +15,13 @@ public class MyPageService {
 	@Autowired
 	UserDao userDao;
 	
+//	//회원 정보 가져오기
+//	public UserVo getProfile(int user_no) {
+//		System.out.println("MyPageService.getArtistInfo()");
+//		
+//		return mypageDao.getProfile(user_no);
+//	}
+	
 	//Artist 정보 가져오기
 	public MypageVo getArtistInfo(String id) {
 		System.out.println("MyPageService.getArtistInfo()");
