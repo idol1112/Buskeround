@@ -53,6 +53,7 @@ public class MyPageController {
 		if(authUser.getUser_type() == 2) {
 			
 			 MypageVo mypageVo = mypageService.getArtistInfo(authUser.getId());
+			 System.out.println("가져온 정보: " + mypageVo);
 			 model.addAttribute("mypageVo", mypageVo);
 			 
 			return "/MyPage/mypageArtist";			
@@ -66,13 +67,23 @@ public class MyPageController {
 	
 	//아티스트 등록
 	@RequestMapping(value = "/artistModify", method = {RequestMethod.GET, RequestMethod.POST})
-	public String artistModify(@ModelAttribute MypageVo mypageVo) {
+	public String artistModify(HttpSession session, @ModelAttribute MypageVo mypageVo) {
 		System.out.println("[MyPageController.artistModify]");
 		System.out.println("ArtistData: " + mypageVo);
 		
+		//Artist 등록 혹은 수정하기
 		mypageService.artistModify(mypageVo);
 		
-		return "redirect:/main";
+		//유저 정보 가져오기
+		UserVo authUser = (UserVo)session.getAttribute("authUser");
+		
+		//수정된 정보 AuthUser 덮어쓰기
+		UserVo userVo = new UserVo(authUser.getId(), authUser.getPassword());
+		authUser = userService.getPerson(userVo);
+		session.setAttribute("authUser", authUser);
+		
+		
+		return "redirect:/MyPage/mypageArtist";
 	}
 	
 	
