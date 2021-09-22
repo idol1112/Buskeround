@@ -26,13 +26,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 
     <!-- css -->
-    <link rel="stylesheet" href="../../assets/css/Common/common.css">
-    <link rel="stylesheet" href="../../assets/css/MyPage/mypage.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/Common/common.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/MyPage/mypage.css">
 </head>
 
 <body>
     <!-- header -->
-   	<c:import url="/views/includes/header.jsp"></c:import>
+   	<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
     <!------- header -------->
 
     <!-- Content -->
@@ -40,13 +40,9 @@
         <div class="col-xl-2"></div>
         <div class="col-xl-8" id="mypage">
             <div id="mypage-left">
-                <ul id="mypage-category">
-                    <h4>제휴사 관리</h4>
-                    <li><a class="active" href="./companyInfo.jsp">제휴사 정보</a></li>
-                    <li><a href="./stageManage.jsp">공연장 관리</a></li>
-                    <li><a href="./buskingZoneManage.jsp">버스킹존 등록</a></li>
-                    <li><a href="./applyManage.jsp">공연신청 관리</a></li>
-                </ul>
+            	<!-- aside -->
+                <c:import url="/WEB-INF/views/Company/includes/aside.jsp"></c:import>
+                <!-------- aside --------->
             </div>
             <div id="mypage-right">
                 <div id="mypage-right-header">
@@ -58,7 +54,7 @@
                             <tr>
                                 <td class="table-head"><label for="profilepicture">회사 로고</label></td>
                                 <td>
-                                        <img id="profilepicture" src="../../assets/image/buskingZone/cgv.png"><br>
+                                        <img id="profilepicture" src="${pageContext.request.contextPath}/assets/image/buskingZone/cgv.png"><br>
                                         <div id="profile-btn">
                                             <button id="profilepicturechange" class="btn btn-success btn-sm" type="submit">변경</button> 
                                             <button id="profilepicturedelete" class="btn btn-danger btn-sm" type="submit">삭제</button>
@@ -96,7 +92,7 @@
 
 
     <!-- footer -->
-    <c:import url="/views/includes/footer.jsp"></c:import>
+    <c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
     <!------- footer -------->
 </body>
 </html>

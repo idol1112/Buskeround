@@ -19,13 +19,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 
 <!-- css -->
-<link rel="stylesheet" href="../../assets/css/Common/common.css">
-<link rel="stylesheet" href="../../assets/css/BuskingZone/company.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/Common/common.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/BuskingZone/company.css">
 </head>
 
 <body>
 	<!-- header -->
-	<c:import url="/views/includes/header.jsp"></c:import>
+	<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
 	<!------- header -------->
 
 	<!-- Content -->
@@ -33,13 +33,9 @@
 		<div class="col-xl-2"></div>
 		<div class="col-xl-8" id="mypage">
 			<div id="mypage-left">
-				<ul id="mypage-category">
-					<h4>제휴사 관리</h4>
-					<li><a href="./companyInfo.jsp">제휴사 정보</a></li>
-					<li><a href="./stageManage.jsp">공연장 관리</a></li>
-					<li><a class="active" href="./buskingZoneManage.jsp">버스킹존 등록</a></li>
-					<li><a href="./applyManage.jsp">공연신청 관리</a></li>
-				</ul>
+				<!-- aside -->
+                <c:import url="/WEB-INF/views/Company/includes/aside.jsp"></c:import>
+                <!-------- aside --------->
 			</div>
 			<div id="mypage-right">
 				<div id="mypage-right-header">
@@ -54,25 +50,25 @@
 						</select>
 					</div>
 					<div class="form-group">
-						<img id="calendar" src="../../assets/image/buskingZone/calendar.png">
+						<img id="calendar" src="${pageContext.request.contextPath}/assets/image/buskingZone/calendar.png">
 					</div>
 					<div class="form-group">
 						<div class="time-table">
-							<input class="input-time" type="text" id="start-time" name="start-time" placeholder="시간 입력"> <img class="from-img" src="../../assets/image/buskingZone/icon/from.png"> <input class="input-time" type="text" id="start-time" name="start-time" placeholder="시간 입력">
+							<input class="input-time" type="text" id="start-time" name="start-time" placeholder="시간 입력"> <img class="from-img" src="${pageContext.request.contextPath}/assets/image/buskingZone/icon/from.png"> <input class="input-time" type="text" id="start-time" name="start-time" placeholder="시간 입력">
 							<button class="img-btn" type="submit">
-								<img class="btn-img" src="../../assets/image/buskingZone/icon/add.png">
+								<img class="btn-img" src="${pageContext.request.contextPath}/assets/image/buskingZone/icon/add.png">
 							</button>
 						</div>
 					</div>
 					<div class="form-group">
 						<ul>
-							<li class="time-list"><span class="list-time">18:00</span> <img class="from-img" src="../../assets/image/buskingZone/icon/from.png"> <span class="list-time">20:00</span>
+							<li class="time-list"><span class="list-time">18:00</span> <img class="from-img" src="${pageContext.request.contextPath}/assets/image/buskingZone/icon/from.png"> <span class="list-time">20:00</span>
 								<button class="img-btn" type="submit">
-									<img class="btn-img" src="../../assets/image/buskingZone/icon/delete.png">
+									<img class="btn-img" src="${pageContext.request.contextPath}/assets/image/buskingZone/icon/delete.png">
 								</button></li>
-							<li class="time-list"><span class="list-time">20:00</span> <img class="from-img" src="../../assets/image/buskingZone/icon/from.png"> <span class="list-time">22:00</span>
+							<li class="time-list"><span class="list-time">20:00</span> <img class="from-img" src="${pageContext.request.contextPath}/assets/image/buskingZone/icon/from.png"> <span class="list-time">22:00</span>
 								<button class="img-btn" type="submit">
-									<img class="btn-img" src="../../assets/image/buskingZone/icon/delete.png">
+									<img class="btn-img" src="${pageContext.request.contextPath}/assets/image/buskingZone/icon/delete.png">
 								</button></li>
 						</ul>
 					</div>
@@ -104,7 +100,7 @@
 
 
 	<!-- footer -->
-	<c:import url="/views/includes/footer.jsp"></c:import>
+	<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
 	<!------- footer -------->
 </body>
 </html>

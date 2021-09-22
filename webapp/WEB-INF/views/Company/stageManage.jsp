@@ -19,13 +19,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 
 <!-- css -->
-<link rel="stylesheet" href="../../assets/css/Common/common.css">
-<link rel="stylesheet" href="../../assets/css/BuskingZone/company.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/Common/common.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/BuskingZone/company.css">
 </head>
 
 <body>
 	<!-- header -->
-	<c:import url="/views/includes/header.jsp"></c:import>
+	<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
 	<!------- header -------->
 
 	<!-- Content -->
@@ -33,13 +33,9 @@
 		<div class="col-xl-2"></div>
 		<div class="col-xl-8" id="mypage">
 			<div id="mypage-left">
-				<ul id="mypage-category">
-					<h4>제휴사 관리</h4>
-					<li><a href="./companyInfo.jsp">제휴사 정보</a></li>
-					<li><a class="active" href="./stageManage.jsp">공연장 관리</a></li>
-					<li><a href="./buskingZoneManage.jsp">버스킹존 등록</a></li>
-					<li><a href="./applyManage.jsp">공연신청 관리</a></li>
-				</ul>
+				<!-- aside -->
+                <c:import url="/WEB-INF/views/Company/includes/aside.jsp"></c:import>
+                <!-------- aside --------->
 			</div>
 			<div id="mypage-right">
 				<div id="mypage-right-header">
@@ -51,18 +47,18 @@
 					<div class="place-add">
 						<input type="text" placeholder="공연 장소를 입력하세요" value="">
 						<button class="img-btn" type="submit">
-							<img class="btn-img" src="../../assets/image/buskingZone/icon/add.png">
+							<img class="btn-img" src="${pageContext.request.contextPath}/assets/image/buskingZone/icon/add.png">
 						</button>
 					</div>
 					<ul class="place-list-group">
 						<li class="place-list">7층 스테이지
 							<button class="img-btn" type="submit">
-								<img class="btn-img" src="../../assets/image/buskingZone/icon/delete.png">
+								<img class="btn-img" src="${pageContext.request.contextPath}/assets/image/buskingZone/icon/delete.png">
 							</button>
 						</li>
 						<li class="place-list">8층 카페
 							<button class="img-btn" type="submit">
-								<img class="btn-img" src="../../assets/image/buskingZone/icon/delete.png">
+								<img class="btn-img" src="${pageContext.request.contextPath}/assets/image/buskingZone/icon/delete.png">
 							</button>
 						</li>
 					</ul>
@@ -94,7 +90,7 @@
 
 
 	<!-- footer -->
-	<c:import url="/views/includes/footer.jsp"></c:import>
+	<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
 	<!------- footer -------->
 </body>
 </html>
