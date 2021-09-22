@@ -149,3 +149,9 @@ label {
     content:" *";
     color: red;
   }
+  
+#check_nickname{
+	margin-top: 3px;
+	padding-left: 11px;
+	color: red;
+}

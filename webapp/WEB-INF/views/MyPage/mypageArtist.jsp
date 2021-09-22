@@ -44,12 +44,15 @@
 				</div>
 				<div id="mypage-right-content">
 					<form action="${pageContext.request.contextPath}/MyPage/artistModify" method="POST" id="artistModify">
-						<input type="hidden" name="user_type" value="2"> <input type="hidden" name="id" value="${sessionScope.authUser.id}">
+						<input type="hidden" name="user_no" value="${sessionScope.authUser.user_no}">
+						<input type="hidden" name="user_type" value="2"> 
+						<input type="hidden" name="id" value="${sessionScope.authUser.id}">
 						<c:if test="${authUser.user_type == 1}">
 							<table>
 								<tr>
 									<td class="table-head"><label class="required" for="nickname">활동명</label></td>
-									<td><input class="input" type="text" id="artistname" name="nickname" placeholder="활동명을 입력해주세요" value="${sessionScope.authUser.nickname}"></td>
+									<td><input class="input" type="text" id="artistname" name="nickname" placeholder="활동명을 입력해주세요" value="${sessionScope.authUser.nickname}">
+									<span id="check_nickname">중복된 활동명입니다.</span></td>
 								</tr>
 								<tr>
 									<td class="table-head"><label class="required" for="name">이름</label></td>
@@ -82,7 +85,8 @@
 							<table>
 								<tr>
 									<td class="table-head"><label class="required" for="nickname">활동명</label></td>
-									<td><input class="input" type="text" id="artistname" name="nickname" placeholder="활동명을 입력해주세요" value="${sessionScope.authUser.nickname}"></td>
+									<td><input class="input" type="text" id="artistname" name="nickname" placeholder="활동명을 입력해주세요" value="${sessionScope.authUser.nickname}"><br>
+									<span id="check_nickname">중복된 활동명입니다.</span></td>
 								</tr>
 								<tr>
 									<td class="table-head"><label class="required" for="name">이름</label></td>
@@ -140,10 +144,65 @@
 </body>
 
 <script type="text/javascript">
+var nick_check = false;
+
+//활동명 중복
+$("#check_nickname").hide();
+
+//활동명 중복 체크
+$("[name=nickname]").keyup(function() {
+
+		$.ajax({
+			// 컨트롤러에서 대기중인 URL 주소이다.
+			url : "${pageContext.request.contextPath}/api/mypage/nickCheck",
+
+			// HTTP method type(GET, POST) 형식이다.
+			type : "get",
+
+			// Json 형태의 데이터로 보낸다.
+			contentType : "application/json",
+
+			// Json 형식의 데이터를 받는다.
+			dataType : "json",
+
+			data : {
+				nickname : $("[name=nickname]").val(),
+				user_no : $("[name=user_no]").val()
+			},
+
+			// 성공일 경우 success로 들어오며, 'result'는 응답받은 데이터이다.
+			success : function(result) {
+				/*성공시 처리해야될 코드 작성*/
+
+				console.log("nick= " + result);
+
+				if (result === true) {
+					$("#check_nickname").hide();
+					nick_check = true;
+					console.log("nick_check= " + nick_check);
+
+				} else if (result === false) {
+					nick_check = false;
+					$("#check_nickname").show();
+				}
+
+			},
+
+			// 실패할경우 error로 들어온다.
+			error : function(XHR, status, error) {
+				console.error(status + " : " + error);
+			}
+		});
+	});
 
 // 등록/수정 클릭
 $("#artistModify").on("submit", function() {
 	console.log("서브밋")
+	if (nick_check === false) {
+		alert("다른 활동명을 입력해주세요.");
+
+		return false;
+	}
 
 	if ($("[name=nickname]").val().length < 1) {
 		alert("활동명을 입력해 주세요.");

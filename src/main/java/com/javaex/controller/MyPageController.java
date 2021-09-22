@@ -48,7 +48,6 @@ public class MyPageController {
 		
 		//유저 정보 가져오기
 		UserVo authUser = (UserVo)session.getAttribute("authUser");
-		System.out.println("authUserType:" + authUser.getUser_type());
 		//아티스트인지 확인
 		if(authUser.getUser_type() == 2) {
 			

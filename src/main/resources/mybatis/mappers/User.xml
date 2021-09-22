@@ -67,6 +67,17 @@
 			    nickname = #{nickname}
 		]]>
 	</select>
-
+	
+	<!-- 닉네임 가져오기 -->
+	<select id="getNick" resultType="String" parameterType="int">
+		<![CDATA[
+			SELECT
+			    nickname
+			FROM
+			    users
+			WHERE
+			    user_no = #{user_no}
+		]]>
+	</select>
 
 </mapper>

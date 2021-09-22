@@ -42,5 +42,14 @@ public class UserDao {
     return sqlSession.selectOne("user.getPerson", userVo);
   }
 
+  //Get Nickname
+  public String getNick(int user_no) {
+	  System.out.println("[사용 메소드: UserDao.getNick()]");
+	  
+	  String nick = sqlSession.selectOne("user.getNick", user_no);
+	  System.out.println(nick);
+	  
+	  return nick;
+  }
 }
 
