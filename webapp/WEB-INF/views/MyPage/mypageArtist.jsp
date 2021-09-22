@@ -26,7 +26,7 @@
 	<div class="row" id="contentbox">
 		<div class="col-xl-2"></div>
 		<div class="col-xl-8" id="mypage">
-   			<c:import url="/WEB-INF/views/MyPage/includes/aside.jsp"></c:import>
+			<c:import url="/WEB-INF/views/MyPage/includes/aside.jsp"></c:import>
 			<div id="mypage-right">
 				<div id="mypage-right-header">
 					<h5>아티스트 등록</h5>
@@ -36,7 +36,7 @@
 						<table>
 							<tr>
 								<td class="table-head"><label class="required" for="artistname">활동명</label></td>
-								<td><input class="input" type="text" id="artistname" name="artistname" placeholder="활동명을 입력해주세요"></td>
+								<td><input class="input" type="text" id="artistname" name="artistname" placeholder="활동명을 입력해주세요"  value="${sessionScope.authUser.nickname}"></td>
 							</tr>
 							<tr>
 								<td class="table-head"><label class="required" for="name">이름</label></td>
@@ -74,6 +74,6 @@
 
 
 	<!-- Footer -->
-    <c:import url="/views/includes/footer.jsp"></c:import>
+	<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
 </body>
 </html>

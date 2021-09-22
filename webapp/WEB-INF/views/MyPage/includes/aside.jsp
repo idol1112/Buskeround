@@ -10,10 +10,10 @@
 	<div id="mypage-left">
 		<ul id="mypage-category">
 			<h4>마이페이지</h4>
-			<li><a href="mypageModify.jsp">프로필 수정</a></li>
-			<li><a href="mypageArtist.jsp">아티스트 등록</a></li>
-			<li><a href="mypageCompany.jsp">제휴사 등록</a></li>
-			<li><a href="applyList.jsp">공연신청 현황</a></li>
+			<li><a href="${pageContext.request.contextPath}/MyPage/profileModify">프로필 수정</a></li>
+			<li><a href="${pageContext.request.contextPath}/MyPage/mypageArtist">아티스트 등록</a></li>
+			<li><a href="${pageContext.request.contextPath}/MyPage/mypageCompany">제휴사 등록</a></li>
+			<li><a href="${pageContext.request.contextPath}/MyPage/applyList">공연신청 현황</a></li>
 		</ul>
 	</div>
 </body>

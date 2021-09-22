@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.javaex.service.MyPageService;
 import com.javaex.service.UserService;
+import com.javaex.vo.MypageVo;
 import com.javaex.vo.UserVo;
 
 @RequestMapping(value = "/MyPage")
@@ -18,6 +19,7 @@ public class MyPageController {
 	
 	@Autowired
 	MyPageService mypageService;
+	@Autowired
 	UserService userService;
 	
 	//프로필 수정 폼
@@ -39,6 +41,27 @@ public class MyPageController {
 	
 	
 	//아티스트 등록 폼
+	@RequestMapping(value = "/mypageArtist", method = {RequestMethod.GET, RequestMethod.POST})
+	public String mypageArtist(HttpSession session, Model model) {
+		System.out.println("[MyPageController.mypageArtist()]");
+		
+		//유저 정보 가져오기
+		UserVo authUser = (UserVo)session.getAttribute("authUser");
+		
+		//아티스트인지 확인
+		if(authUser.getUser_type() == 2) {
+			
+			 MypageVo mypageVo = mypageService.getArtistInfo(authUser.getId());
+			 model.addAttribute("mypageVo", mypageVo);
+			 
+			return "/MyPage/mypageArtist";			
+		} else {
+			
+			return "/MyPage/mypageArtist";			
+		}
+		
+		
+	}
 	
 	
 	
