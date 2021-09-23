@@ -59,7 +59,7 @@ public class CompanyController {
 		
 		
 		
-		return "";
+		return "redirect:/Company/companyInfo";
 	}
 	
 

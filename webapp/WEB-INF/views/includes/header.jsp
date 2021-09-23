@@ -41,8 +41,8 @@
                 </c:if>
 
                 <!-- 제휴자일 때 -->
-                <c:if test="${authUser.user_type == 3}">
-                  <a href="../CompanyManage/companyInfo.jsp">제휴사 관리</a>
+                <c:if test="${authUser.company_type == 2}">
+                  <a href="${pageContext.request.contextPath}/Company/companyInfo">제휴사 관리</a>
                 </c:if>
                 <a href="${pageContext.request.contextPath}/user/logout">로그아웃</a>
               </div>
