@@ -83,5 +83,14 @@
 			    user_no = #{user_no}
 		]]>
 	</select>
+	
+	<!-- companyType 바꾸기 -->
+	<update id="updateCompanyType" parameterType="UserVo">
+		<![CDATA[
+			update users
+			set company_type = #{company_type}
+			where user_no = #{user_no}
+		]]>
+	</update>
 
 </mapper>

@@ -19,8 +19,8 @@ public class UserVo {
   private int likes;
   private String live;
   private String artist_regdate;
-  private int user_type;
-  private int company_type;
+  private String user_type;
+  private String company_type;
   
 
   // 생성자
@@ -34,9 +34,15 @@ public class UserVo {
     this.password = password;
   }
   
+  public UserVo(int user_no, String company_type) {
+	super();
+	this.user_no = user_no;
+	this.company_type = company_type;
+}
+  
   public UserVo(int user_no, String id, String password, String email, String nickname, String user_img, String name,
 		String hp, String gender, String birthday, String genre, String genre_type, int fan, int likes, String live,
-		String artist_regdate, int user_type, int company_type) {
+		String artist_regdate, String user_type, String company_type) {
 	super();
 	this.user_no = user_no;
 	this.id = id;
@@ -187,19 +193,19 @@ public class UserVo {
 		this.artist_regdate = artist_regdate;
 	}
 
-	public int getUser_type() {
+	public String getUser_type() {
 		return user_type;
 	}
 
-	public void setUser_type(int user_type) {
+	public void setUser_type(String user_type) {
 		this.user_type = user_type;
 	}
 
-	public int getCompany_type() {
+	public String getCompany_type() {
 		return company_type;
 	}
 
-	public void setCompany_type(int company_type) {
+	public void setCompany_type(String company_type) {
 		this.company_type = company_type;
 	}
 
