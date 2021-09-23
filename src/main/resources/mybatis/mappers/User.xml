@@ -13,7 +13,8 @@
 			    email,
 			    nickname,
 			    user_img,
-			    user_type
+			    user_type,
+			    company_type
 			) VALUES (
 			    seq_user_no.NEXTVAL,
 			    #{id},
@@ -21,6 +22,7 @@
 			    #{email},
 			    #{nickname},
 			    '/assets/image/blog/icon/user.png',
+			    1,
 			    1
 			)
 		]]>
@@ -35,7 +37,8 @@
 			    password,
 			    nickname,
     			user_img,
-    			user_type
+    			user_type,
+    			company_type
 			FROM
 			    users
 			WHERE
@@ -67,7 +70,7 @@
 			    nickname = #{nickname}
 		]]>
 	</select>
-	
+
 	<!-- 닉네임 가져오기 -->
 	<select id="getNick" resultType="String" parameterType="int">
 		<![CDATA[
