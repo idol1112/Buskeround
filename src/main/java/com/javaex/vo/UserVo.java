@@ -10,19 +10,14 @@ public class UserVo {
   private String nickname;
   private String user_img;
   private int user_type;
+  private int company_type;
 
   // 생성자
   public UserVo() {
     super();
   }
-  
-  public UserVo(String id, String password) {
-	super();
-	this.id = id;
-	this.password = password;
-}
 
-public UserVo(int user_no, String id, String password, String email, String nickname, String user_img, int user_type) {
+  public UserVo(int user_no, String id, String password, String email, String nickname, String user_img, int user_type, int company_type) {
     super();
     this.user_no = user_no;
     this.id = id;
@@ -31,6 +26,7 @@ public UserVo(int user_no, String id, String password, String email, String nick
     this.nickname = nickname;
     this.user_img = user_img;
     this.user_type = user_type;
+    this.company_type = company_type;
   }
 
   // 메소드 - GS
@@ -90,11 +86,19 @@ public UserVo(int user_no, String id, String password, String email, String nick
     this.user_type = user_type;
   }
 
+  public int getCompany_type() {
+    return company_type;
+  }
+
+  public void setCompany_type(int company_type) {
+    this.company_type = company_type;
+  }
+
   // 메소드 - 일반
   @Override
   public String toString() {
     return "UserVo [user_no=" + user_no + ", id=" + id + ", password=" + password + ", email=" + email + ", nickname=" + nickname + ", user_img="
-        + user_img + ", user_type=" + user_type + "]";
+        + user_img + ", user_type=" + user_type + ", company_type=" + company_type + "]";
   }
 
 }
