@@ -5,10 +5,12 @@
 	<typeAliases>
 		<typeAlias alias="UserVo" type="com.javaex.vo.UserVo" />
 		<typeAlias alias="MypageVo" type="com.javaex.vo.MypageVo" />
+		<typeAlias alias="CompanyVo" type="com.javaex.vo.CompanyVo" />
 	</typeAliases>
 
 	<mappers>
 		<mapper resource="mybatis/mappers/MyPage.xml" />
 		<mapper resource="mybatis/mappers/User.xml" />
+		<mapper resource="mybatis/mappers/Company.xml" />
 	</mappers>
 </configuration>

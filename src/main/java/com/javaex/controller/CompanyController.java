@@ -1,12 +1,40 @@
 package com.javaex.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.javaex.service.CompanyService;
+import com.javaex.vo.CompanyVo;
 
 @RequestMapping(value ="/Company")
 @Controller
 public class CompanyController {
+	
+	@Autowired
+	CompanyService companyService;
+		
+	
+	//제휴사 등록 폼
+	@RequestMapping(value = "/mypageCompany", method = {RequestMethod.GET, RequestMethod.POST})
+	public String mypageCompany() {
+		System.out.println("[CompanyController.mypageCompany()]");
+		
+		return "/MyPage/mypageCompany";
+	}
+	
+	//제휴사 등록
+	@RequestMapping(value = "/companyInsert", method = {RequestMethod.GET, RequestMethod.POST})
+	public String companyInsert(@ModelAttribute CompanyVo companyVo) {
+		System.out.println("[CompanyController.companyInsert()]");
+		
+		companyService.companyInsert(companyVo);
+		
+		return "";
+	}
+	
 
 	//제휴사 수정 폼
 	@RequestMapping(value = "/companyInfo", method = {RequestMethod.GET, RequestMethod.POST})

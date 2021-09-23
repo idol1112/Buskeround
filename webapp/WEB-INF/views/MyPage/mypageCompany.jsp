@@ -22,49 +22,61 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/MyPage/mypage.css">
 </head>
 <body>
-	<c:import url="/views/includes/header.jsp"></c:import>
+	<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
 
 	<!-- Content -->
 	<div class="row" id="contentbox">
 		<div class="col-xl-2"></div>
 		<div class="col-xl-8" id="mypage">
 
-			<c:import url="/views/MyPage/includes/aside.jsp"></c:import>
+			<c:import url="/WEB-INF/views/MyPage/includes/aside.jsp"></c:import>
 
 			<div id="mypage-right">
 				<div id="mypage-right-header">
-					<h5>제휴사 등록</h5>
+					<c:choose>
+						<c:when test="${authUser.company_type == 1}">
+							<h5>제휴사 등록</h5>
+						</c:when>
+						<c:otherwise>
+							<h5>제휴사 수정</h5>
+						</c:otherwise>
+					</c:choose>
 				</div>
 				<div id="mypage-right-content">
-					<form action="" method="POST">
-						<table>
-							<tr>
-								<td class="table-head"><label for="profilepicture">회사 로고</label></td>
-								<td><img id="profilepicture" src="../../assets/img/cgv.png"><br>
-									<button id="profilepicturechange" class="btn-success btn-sm" type="submit">변경</button>
-									<button id="profilepicturedelete" class="btn-delete btn-sm" type="submit">삭제</button></td>
-							</tr>
-							<tr>
-								<td class="table-head"><label class="required" for="buildingname">건물명</label></td>
-								<td><input class="input" type="text" id="buildingname" name="buildingname" placeholder="건물명을 입력해주세요"></td>
-							</tr>
-							<tr>
-								<td class="table-head"><label class="required" for="address">주소</label></td>
-								<td><input class="input" type="text" id="address" name="address" placeholder="주소 입력해주세요."></td>
-							</tr>
-							<tr>
-								<td class="table-head"><label class="required" for="companycontact">연락처</label></td>
-								<td><input class="input" type="text" id="companycontact" name="companycontact" placeholder="연락처를 입력해주세요."></td>
-							</tr>
-							<tr>
-								<td class="table-head"><label class="required" for="representative">대표자명</label></td>
-								<td><input class="input" type="text" id="representative" name="representative" placeholder="대표자명 입력해주세요."></td>
-							</tr>
-							<tr>
-								<td class="table-head"><label class="required" for="businessnumber">사업자번호</label></td>
-								<td><input class="input" type="text" id="businessnumber" name="businessnumber" placeholder="사업자번호를 입력해주세요"></td>
-							</tr>
-						</table>
+					<form action="${pageContext.request.contextPath}/Company/companyInsert" method="POST">
+						<input type="hidden" name="user_no" value="${sessionScope.authUser.user_no}">
+						<input type="hidden" name="company_type" value="2"> 
+							<table>
+								<tr>
+									<td class="table-head"><label for="profilepicture">회사 로고</label></td>
+									<td><img id="profilepicture" src="${pageContext.request.contextPath}/assets/image/company/default.png"><br>
+										<label id="profilepicturechange" class="btn-success btn-sm">
+										    <input type="file" name="file"/>
+										    변경
+										</label>
+										<label id="profilepicturedelete" class="btn-danger btn-sm">삭제</label></td>
+								</tr>
+								<tr>
+									<td class="table-head"><label class="required" for="buildingname">건물명</label></td>
+									<td><input class="input" type="text" id="buildingname" name="buildingname" placeholder="건물명을 입력해주세요" value=""></td>
+								</tr>
+								<tr>
+									<td class="table-head"><label class="required" for="address">주소</label></td>
+									<td><input class="input" type="text" id="address" name="address" placeholder="주소 입력해주세요." value=""></td>
+								</tr>
+								<tr>
+									<td class="table-head"><label class="required" for="companycontact">연락처</label></td>
+									<td><input class="input" type="text" id="companycontact" name="companycontact" placeholder="연락처를 입력해주세요." value=""></td>
+								</tr>
+								<tr>
+									<td class="table-head"><label class="required" for="representative">대표자명</label></td>
+									<td><input class="input" type="text" id="representative" name="representative" placeholder="대표자명 입력해주세요." value=""></td>
+								</tr>
+								<tr>
+									<td class="table-head"><label class="required" for="businessnumber">사업자번호</label></td>
+									<td><input class="input" type="text" id="businessnumber" name="businessnumber" placeholder="사업자번호를 입력해주세요" value=""></td>
+								</tr>
+							</table>
 						<button type="submit" class="float-end btn-primary btn-sm" id="profilesubmit">등록</button>
 					</form>
 				</div>
@@ -74,6 +86,6 @@
 	</div>
 
 	<!-- Footer -->
-    <c:import url="/views/includes/footer.jsp"></c:import>
+    <c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
 </body>
 </html>
