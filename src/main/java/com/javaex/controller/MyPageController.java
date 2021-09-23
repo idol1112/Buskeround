@@ -39,7 +39,7 @@ public class MyPageController {
 		//유저 정보 가져오기
 		UserVo authUser = (UserVo)session.getAttribute("authUser");
 		//아티스트인지 확인
-		if(authUser.getUser_type() == 2) {
+		if(authUser.getUser_type().equals("2")) {
 			
 			 MypageVo mypageVo = mypageService.getArtistInfo(authUser.getId());
 			 System.out.println("가져온 정보: " + mypageVo);
