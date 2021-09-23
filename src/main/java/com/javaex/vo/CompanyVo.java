@@ -32,6 +32,19 @@ public class CompanyVo {
 	}
 	
 	
+	public CompanyVo(int user_no, String com_img, String com_name, String address, String com_number,
+			String ceo_name, String business_number) {
+		super();
+		this.user_no = user_no;
+		this.com_img = com_img;
+		this.com_name = com_name;
+		this.address = address;
+		this.com_number = com_number;
+		this.ceo_name = ceo_name;
+		this.business_number = business_number;
+	}
+
+
 	//메소드 gs
 	public int getCom_no() {
 		return com_no;

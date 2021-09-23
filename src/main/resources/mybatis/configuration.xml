@@ -14,5 +14,6 @@
 		<mapper resource="mybatis/mappers/User.xml" />
 		<mapper resource="mybatis/mappers/Company.xml" />
 		<mapper resource="mybatis/mappers/Blog.xml" />
+		<mapper resource="mybatis/mappers/Artist.xml" />
 	</mappers>
 </configuration>

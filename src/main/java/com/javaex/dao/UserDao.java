@@ -51,5 +51,10 @@ public class UserDao {
 	  
 	  return nick;
   }
+  
+  //companyType 바꾸기
+  public void companyType(UserVo userVo) {
+	  sqlSession.update("user.updateCompanyType",userVo);
+  }
 }
 
