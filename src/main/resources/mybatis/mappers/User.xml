@@ -38,6 +38,7 @@
 			    nickname,
     			user_img,
     			user_type,
+    			email,
     			company_type
 			FROM
 			    users
