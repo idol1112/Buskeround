@@ -3,4 +3,14 @@
 
 <mapper namespace="blog">
 
+	<!-- Create Blog -->
+	<insert id="createBlog" parameterType="int">
+	
+		<![CDATA[
+		insert into blog(user_no, intro)
+		values(#{user_no}, '자기소개를 입력해주세요')
+	 	]]>
+
+	</insert>
+
 </mapper>

@@ -11,9 +11,9 @@ public class BlogDao {
 	SqlSession sqlSession;
 	
 	//블로그 등록
-	public int createBlog(String id) {
+	public int createBlog(int user_no) {
 		System.out.println("BlogDao.createBlog()");
 	    
-	    return sqlSession.selectOne("mypage.getArtist", id);
+	    return sqlSession.insert("blog.createBlog", user_no);
 	}
 }

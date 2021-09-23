@@ -26,11 +26,20 @@ public class MyPageService {
 	}
 	
 	//아티스트 정보 등록
-	public int artistModify(MypageVo mypageVo) {
-		System.out.println("MyPageService.artistModify()");
+	public int artistInsert(MypageVo mypageVo) {
+		System.out.println("MyPageService.artistInsert()");
 		
 		//블로그 만들기
-		blogDao.createBlog(mypageVo.getId());
+		System.out.println("BlogDao");
+		
+		blogDao.createBlog(mypageVo.getUser_no());
+		
+		return mypageDao.artistModify(mypageVo);
+	}
+	
+	//아티스트 정보 수정
+	public int artistModify(MypageVo mypageVo) {
+		System.out.println("MyPageService.artistModify()");
 		
 		return mypageDao.artistModify(mypageVo);
 	}

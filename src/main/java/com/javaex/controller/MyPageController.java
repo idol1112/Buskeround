@@ -28,9 +28,6 @@ public class MyPageController {
 	public String profileModify(HttpSession session, Model model) {
 	    System.out.println("[MyPageController.profileModify()]");
 	    
-		UserVo authUser = (UserVo)session.getAttribute("authUser");
-		
-	    
 	    return "/MyPage/mypageModify";
 	}
 	
@@ -55,14 +52,14 @@ public class MyPageController {
 		}
 	}
 	
-	//아티스트 등록/수정
-	@RequestMapping(value = "/artistModify", method = {RequestMethod.GET, RequestMethod.POST})
-	public String artistModify(HttpSession session, @ModelAttribute MypageVo mypageVo) {
-		System.out.println("[MyPageController.artistModify]");
+	//아티스트 등록
+	@RequestMapping(value = "/artistInsert", method = {RequestMethod.GET, RequestMethod.POST})
+	public String artistInsert(HttpSession session, @ModelAttribute MypageVo mypageVo) {
+		System.out.println("[MyPageController.artistInsert]");
 		System.out.println("ArtistData: " + mypageVo);
 		
 		//Artist 등록 혹은 수정하기
-		mypageService.artistModify(mypageVo);
+		mypageService.artistInsert(mypageVo);
 		
 		//유저 정보 가져오기
 		UserVo authUser = (UserVo)session.getAttribute("authUser");
@@ -75,7 +72,23 @@ public class MyPageController {
 		return "redirect:/MyPage/profileModify";
 	}
 	
-	
-	
-
+	//아티스트 수정
+	@RequestMapping(value = "/artistModify", method = {RequestMethod.GET, RequestMethod.POST})
+	public String artistModify(HttpSession session, @ModelAttribute MypageVo mypageVo) {
+		System.out.println("[MyPageController.artistModify]");
+		System.out.println("ArtistData: " + mypageVo);
+		
+		//Artist 수정
+		mypageService.artistModify(mypageVo);
+		
+		//유저 정보 가져오기
+		UserVo authUser = (UserVo)session.getAttribute("authUser");
+		
+		//수정된 정보 AuthUser 덮어쓰기
+		UserVo userVo = new UserVo(authUser.getId(), authUser.getPassword());
+		authUser = userService.getPerson(userVo);
+		session.setAttribute("authUser", authUser);
+		
+		return "redirect:/MyPage/profileModify";
+	}
 }

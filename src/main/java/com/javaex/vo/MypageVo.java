@@ -3,6 +3,7 @@ package com.javaex.vo;
 public class MypageVo {
 	
 	//Field
+	private int user_no;
 	private String id;
 	private String nickname;
 	private String name;
@@ -18,9 +19,10 @@ public class MypageVo {
 		super();
 	}
 	
-	public MypageVo(String id, String nickname, String name, String hp, String gender, String birthday, int genre,
-			String genre_type, int user_type) {
+	public MypageVo(int user_no, String id, String nickname, String name, String hp, String gender, String birthday,
+			int genre, String genre_type, int user_type) {
 		super();
+		this.user_no = user_no;
 		this.id = id;
 		this.nickname = nickname;
 		this.name = name;
@@ -33,6 +35,14 @@ public class MypageVo {
 	}
 
 	//Method G/S
+
+	public int getUser_no() {
+		return user_no;
+	}
+
+	public void setUser_no(int user_no) {
+		this.user_no = user_no;
+	}
 	
 	public String getId() {
 		return id;
@@ -109,10 +119,8 @@ public class MypageVo {
 	//Method - Ordinary
 	@Override
 	public String toString() {
-		return "MypageVo [id=" + id + ", nickname=" + nickname + ", name=" + name + ", hp=" + hp + ", gender=" + gender
-				+ ", birthday=" + birthday + ", genre=" + genre + ", genre_type=" + genre_type + ", user_type="
-				+ user_type + "]";
+		return "MypageVo [user_no=" + user_no + ", id=" + id + ", nickname=" + nickname + ", name=" + name + ", hp="
+				+ hp + ", gender=" + gender + ", birthday=" + birthday + ", genre=" + genre + ", genre_type="
+				+ genre_type + ", user_type=" + user_type + "]";
 	}
-	
-
 }
