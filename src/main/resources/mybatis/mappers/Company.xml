@@ -2,5 +2,21 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="company">
-
+	<!-- 제휴사 정보 insert -->
+	<insert id="insertCompanyInfo" parameterType="CompanyVo">
+		<![CDATA[
+			insert into company
+			values( SEQ_COM_NO.nextval,
+			        #{user_no},
+			        #{com_img},
+			        #{com_name},
+			        #{address},
+			        #{com_number},
+			        #{ceo_name},
+			        #{business_number},
+			        0,
+			        0
+			        )
+		]]>
+	</insert>
 </mapper>

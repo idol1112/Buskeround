@@ -43,7 +43,7 @@
 					</c:choose>
 				</div>
 				<div id="mypage-right-content">
-					<form action="${pageContext.request.contextPath}/Company/companyInsert" method="POST">
+					<form action="${pageContext.request.contextPath}/Company/companyInsert" method="post" enctype="multipart/form-data">
 						<input type="hidden" name="user_no" value="${sessionScope.authUser.user_no}">
 						<input type="hidden" name="company_type" value="2"> 
 							<table>
@@ -51,30 +51,30 @@
 									<td class="table-head"><label for="profilepicture">회사 로고</label></td>
 									<td><img id="profilepicture" src="${pageContext.request.contextPath}/assets/image/company/default.png"><br>
 										<label id="profilepicturechange" class="btn-success btn-sm">
-										    <input type="file" name="file"/>
+										    <input type="file" name="com_img"/>
 										    변경
 										</label>
 										<label id="profilepicturedelete" class="btn-danger btn-sm">삭제</label></td>
 								</tr>
 								<tr>
-									<td class="table-head"><label class="required" for="buildingname">건물명</label></td>
-									<td><input class="input" type="text" id="buildingname" name="buildingname" placeholder="건물명을 입력해주세요" value=""></td>
+									<td class="table-head"><label class="required" for="com_name">건물명</label></td>
+									<td><input class="input" type="text" id="com_name" name="com_name" placeholder="건물명을 입력해주세요" value=""></td>
 								</tr>
 								<tr>
 									<td class="table-head"><label class="required" for="address">주소</label></td>
 									<td><input class="input" type="text" id="address" name="address" placeholder="주소 입력해주세요." value=""></td>
 								</tr>
 								<tr>
-									<td class="table-head"><label class="required" for="companycontact">연락처</label></td>
-									<td><input class="input" type="text" id="companycontact" name="companycontact" placeholder="연락처를 입력해주세요." value=""></td>
+									<td class="table-head"><label class="required" for="com_number">연락처</label></td>
+									<td><input class="input" type="text" id="com_number" name="com_number" placeholder="연락처를 입력해주세요." value=""></td>
 								</tr>
 								<tr>
-									<td class="table-head"><label class="required" for="representative">대표자명</label></td>
-									<td><input class="input" type="text" id="representative" name="representative" placeholder="대표자명 입력해주세요." value=""></td>
+									<td class="table-head"><label class="required" for="ceo_name">대표자명</label></td>
+									<td><input class="input" type="text" id="ceo_name" name="ceo_name" placeholder="대표자명 입력해주세요." value=""></td>
 								</tr>
 								<tr>
-									<td class="table-head"><label class="required" for="businessnumber">사업자번호</label></td>
-									<td><input class="input" type="text" id="businessnumber" name="businessnumber" placeholder="사업자번호를 입력해주세요" value=""></td>
+									<td class="table-head"><label class="required" for="business_number">사업자번호</label></td>
+									<td><input class="input" type="text" id="business_number" name="business_number" placeholder="사업자번호를 입력해주세요" value=""></td>
 								</tr>
 							</table>
 						<button type="submit" class="float-end btn-primary btn-sm" id="profilesubmit">등록</button>

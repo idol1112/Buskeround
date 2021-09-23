@@ -1,13 +1,16 @@
 package com.javaex.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.javaex.service.CompanyService;
-import com.javaex.vo.CompanyVo;
 
 @RequestMapping(value ="/Company")
 @Controller
@@ -27,10 +30,34 @@ public class CompanyController {
 	
 	//제휴사 등록
 	@RequestMapping(value = "/companyInsert", method = {RequestMethod.GET, RequestMethod.POST})
-	public String companyInsert(@ModelAttribute CompanyVo companyVo) {
+	public String companyInsert(@RequestParam ("com_img") MultipartFile file,
+								@RequestParam ("user_no") int user_no,
+								@RequestParam ("company_type") String company_type,
+								@RequestParam ("com_name") String com_name,
+								@RequestParam ("address") String address,
+								@RequestParam ("com_number") String com_number,
+								@RequestParam ("ceo_name") String ceo_name,
+								@RequestParam ("business_number") String business_number) {
 		System.out.println("[CompanyController.companyInsert()]");
 		
-		companyService.companyInsert(companyVo);
+		Map<String, Object> companyInsertMap = new HashMap<>();
+		
+		companyInsertMap.put("com_img", file);
+		companyInsertMap.put("user_no", user_no);
+		companyInsertMap.put("company_type", company_type);
+		companyInsertMap.put("com_name", com_name);
+		companyInsertMap.put("address", address);
+		companyInsertMap.put("com_number", com_number);
+		companyInsertMap.put("ceo_name", ceo_name);
+		companyInsertMap.put("business_number", business_number);
+		
+		System.out.println(companyInsertMap);
+		
+		int count = companyService.companyInsert(companyInsertMap);
+		
+		System.out.println("제휴사 ["+count+"]건 저장 완료");
+		
+		
 		
 		return "";
 	}
