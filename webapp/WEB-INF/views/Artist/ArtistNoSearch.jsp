@@ -19,17 +19,17 @@
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 
 <!-- css -->
-<link rel="stylesheet" href="../../assets/css/Artist/common.css">
-<link rel="stylesheet" href="../../assets/css/Common/common.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/Artist/common.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/Common/common.css">
 
 </head>
 
 <body>
   <!-- header -->
-  <c:import url="/views/includes/header.jsp"></c:import>
+  <c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
   
     <!-- nav_artist  -->
-    <c:import url="/views/Artist/includes/artbox.jsp"></c:import>
+    <c:import url="/WEB-INF/views/Artist/includes/artbox.jsp"></c:import>
 
     
      <div class="section-01">
@@ -40,7 +40,7 @@
                 <!-- 아티스트 검색 -->
                 <div>
                     <input type="text" placeholder="아티스트 검색">
-                    <img src="../../assets/image/artist/icon/search.png" style="width:20px">
+                    <img src="${pageContext.request.contextPath}/assets/image/artist/icon/search.png" style="width:20px">
                 </div>
             </div>
          </div>
@@ -48,7 +48,7 @@
   
   
   <!-- footer -->
-  <c:import url="/views/includes/footer.jsp"></c:import>
+  <c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
   
 </body>
 </html>  

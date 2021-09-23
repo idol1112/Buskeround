@@ -368,7 +368,7 @@
                     <h3>NEW ARTIST</h3>
                     <div>
                         <img src="${pageContext.request.contextPath}/assets/image/artist/icon/circle1.png" style="width:8px">
-                        <img src=".${pageContext.request.contextPath}/assets/image/artist/icon/circle1.png" style="width:8px">
+                        <img src="${pageContext.request.contextPath}/assets/image/artist/icon/circle1.png" style="width:8px">
                         <img src="${pageContext.request.contextPath}/assets/image/artist/icon/circle2.png" style="width:8px">
                         <img src="${pageContext.request.contextPath}/assets/image/artist/icon/circle1.png" style="width:8px">
                         <img src="${pageContext.request.contextPath}/assets/image/artist/icon/circle1.png" style="width:8px">
