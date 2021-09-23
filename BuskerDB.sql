@@ -1,4 +1,3 @@
-/** 테이블 삭제 **/
 /* 회원 */
 DROP TABLE users 
    CASCADE CONSTRAINTS;
@@ -47,12 +46,9 @@ DROP TABLE likes
 DROP TABLE resume 
    CASCADE CONSTRAINTS;
    
-/** 시퀀스 삭제 **/
+   /** 시퀀스 삭제 **/
 /* 회원 */
 drop sequence seq_user_no;
-
-/* 블로그 */
-drop sequence seq_blog_no;
 
 /* 제휴사 */
 drop sequence seq_com_no;
@@ -84,32 +80,82 @@ drop sequence seq_likes_no;
 /* 이력사항 */
 drop sequence seq_resume_no;
 
-/** 테이블 생성 **/
-/* 회원 */
-CREATE TABLE users (
-   user_no NUMBER NOT NULL, /* 회원번호 */
-   id VARCHAR2(20), /* 아이디 */
-   password VARCHAR2(50) NOT NULL, /* 비밀번호 */
-   email VARCHAR2(50) NOT NULL, /* 이메일 */
-   nickname VARCHAR2(10) NOT NULL, /* 닉네임(활동명) */
-   user_img VARCHAR2(100), /* 회원이미지 */
-   name VARCHAR2(10), /* 이름 */
-   hp NUMBER, /* 연락처 */
-   gender VARCHAR2(10), /* 성별 */
-   birthday VARCHAR2(20), /* 생년월일 */
-   genre CHAR(1), /* 퍼포먼스_장르 */
-   genre_type VARCHAR2(20), /* 활동유형 */
-   likes NUMBER, /* 좋아요 */
-   artist_regdate DATE, /* 아티스트등록일 */
-   user_type CHAR(1), /* 회원구분 */
-   company_type CHAR(1) /* 제휴사여부 */
-);
-
 /** 시퀀스 생성 **/
 create sequence seq_user_no
 increment by 1
 start with 1
 nocache;
+
+create sequence seq_com_no
+increment by 1
+start with 1
+nocache;
+
+create sequence seq_date_no
+increment by 1
+start with 1
+nocache;
+
+create sequence seq_post_no
+increment by 1
+start with 1
+nocache;
+
+create sequence seq_cate_no
+increment by 1
+start with 1
+nocache;
+
+create sequence seq_stage_no
+increment by 1
+start with 1
+nocache;
+
+create sequence seq_fan_no
+increment by 1
+start with 1
+nocache;
+
+create sequence seq_time_no
+increment by 1
+start with 1
+nocache;
+
+create sequence seq_app_no
+increment by 1
+start with 1
+nocache;
+
+create sequence seq_likes_no
+increment by 1
+start with 1
+nocache;
+
+create sequence seq_resume_no
+increment by 1
+start with 1
+nocache;
+
+/* 회원 */
+CREATE TABLE users (
+   user_no NUMBER NOT NULL, /* 회원번호 */
+   id VARCHAR2(20) NOT NULL, /* 아이디 */
+   password VARCHAR2(50) NOT NULL, /* 비밀번호 */
+   email VARCHAR2(50) NOT NULL, /* 이메일 */
+   nickname VARCHAR2(50) NOT NULL, /* 닉네임(활동명) */
+   user_img VARCHAR2(1000), /* 회원이미지 */
+   name VARCHAR2(50), /* 이름 */
+   hp VARCHAR2(50), /* 연락처 */
+   gender VARCHAR2(10), /* 성별 */
+   birthday VARCHAR2(20), /* 생년월일 */
+   genre CHAR(1), /* 퍼포먼스_장르 */
+   genre_type VARCHAR2(20), /* 활동유형 */
+   fan NUMBER, /* 팬되기 */
+   likes NUMBER, /* 좋아요 */
+   artist_regdate DATE, /* 아티스트등록일 */
+   user_type CHAR(1), /* 회원구분 */
+   company_type CHAR(1) /* 제휴사여부 */
+);
 
 COMMENT ON TABLE users IS '회원';
 
@@ -137,6 +183,8 @@ COMMENT ON COLUMN users.genre IS '퍼포먼스_장르';
 
 COMMENT ON COLUMN users.genre_type IS '활동유형';
 
+COMMENT ON COLUMN users.fan IS '팬되기';
+
 COMMENT ON COLUMN users.likes IS '좋아요';
 
 COMMENT ON COLUMN users.artist_regdate IS '아티스트등록일';
@@ -160,18 +208,12 @@ ALTER TABLE users
 /* 블로그 */
 CREATE TABLE blog (
    user_no NUMBER NOT NULL, /* 회원번호 */
-   intro VARCHAR2(50), /* 자기소개 */
-   banner VARCHAR2(50), /* 대문이미지 */
+   intro VARCHAR2(500), /* 자기소개 */
+   banner VARCHAR2(1000), /* 대문이미지 */
    y_url VARCHAR2(100), /* 유튜브주소 */
    f_url VARCHAR2(100), /* 페이스북주소 */
    i_url VARCHAR2(100) /* 인스타주소 */
 );
-
-/** 시퀀스 생성 **/
-create sequence seq_blog_no
-increment by 1
-start with 1
-nocache;
 
 COMMENT ON TABLE blog IS '블로그';
 
@@ -203,21 +245,15 @@ ALTER TABLE blog
 CREATE TABLE company (
    com_no NUMBER NOT NULL, /* 제휴사번호 */
    user_no NUMBER, /* 회원번호 */
-   com_img VARCHAR2(50), /* 회사이미지 */
-   com_name VARCHAR2(20), /* 회사명(건물) */
-   address VARCHAR2(50), /* 주소 */
-   com_number NUMBER, /* 연락처 */
-   ceo_name VARCHAR2(20), /* 대표명 */
-   business_number NUMBER, /* 사업자번호 */
+   com_img VARCHAR2(1000), /* 회사이미지 */
+   com_name VARCHAR2(1000), /* 회사명(건물) */
+   address VARCHAR2(1000) NOT NULL, /* 주소 */
+   com_number VARCHAR2(50), /* 연락처 */
+   ceo_name VARCHAR2(50), /* 대표명 */
+   business_number VARCHAR2(50), /* 사업자번호 */
    latitude NUMBER, /* 위도 */
    longitude NUMBER /* 경도 */
 );
-
-/** 시퀀스 생성 **/
-create sequence seq_com_no
-increment by 1
-start with 1
-nocache;
 
 COMMENT ON TABLE company IS '제휴사';
 
@@ -261,12 +297,6 @@ CREATE TABLE buskingDate (
    requirements VARCHAR2(200) /* 요구사항 */
 );
 
-/** 시퀀스 생성 **/
-create sequence seq_date_no
-increment by 1
-start with 1
-nocache;
-
 COMMENT ON TABLE buskingDate IS '공연날짜';
 
 COMMENT ON COLUMN buskingDate.date_no IS '날짜번호';
@@ -292,8 +322,8 @@ ALTER TABLE buskingDate
 /* 게시글 */
 CREATE TABLE post (
    post_no NUMBER NOT NULL, /* 게시글번호 */
-   user_no NUMBER NOT NULL, /* 회원번호 */
    category CHAR(1) NOT NULL, /* 카테고리(분류) */
+   user_no NUMBER NOT NULL, /* 회원번호 */
    title VARCHAR2(50), /* 제목(장소명) */
    content VARCHAR2(3000), /* 내용 */
    reg_date DATE, /* 작성일 */
@@ -301,26 +331,19 @@ CREATE TABLE post (
    longitude NUMBER, /* 경도 */
    p_start DATE, /* 공연시작일 */
    p_end DATE, /* 공연종료일 */
-   p_img VARCHAR2(100), /* 공연이미지 */
+   p_img VARCHAR2(1000), /* 공연이미지 */
    live CHAR(1), /* 라이브(방송상태) */
    live_url VARCHAR2(100), /* 라이브주소 */
-   hit NUMBER, /* 조회수 */
-   writer NUMBER /* 작성자 */
+   hit NUMBER /* 조회수 */
 );
-
-/** 시퀀스 생성 **/
-create sequence seq_post_no
-increment by 1
-start with 1
-nocache;
 
 COMMENT ON TABLE post IS '게시글';
 
 COMMENT ON COLUMN post.post_no IS '게시글번호';
 
-COMMENT ON COLUMN post.user_no IS '회원번호';
-
 COMMENT ON COLUMN post.category IS '카테고리(분류)';
+
+COMMENT ON COLUMN post.user_no IS '회원번호';
 
 COMMENT ON COLUMN post.title IS '제목(장소명)';
 
@@ -344,13 +367,11 @@ COMMENT ON COLUMN post.live_url IS '라이브주소';
 
 COMMENT ON COLUMN post.hit IS '조회수';
 
-COMMENT ON COLUMN post.writer IS '작성자';
-
 CREATE UNIQUE INDEX PK_post
    ON post (
       post_no ASC,
-      user_no ASC,
-      category ASC
+      category ASC,
+      user_no ASC
    );
 
 ALTER TABLE post
@@ -358,8 +379,8 @@ ALTER TABLE post
       CONSTRAINT PK_post
       PRIMARY KEY (
          post_no,
-         user_no,
-         category
+         category,
+         user_no
       );
 
 /* 카테고리 */
@@ -368,12 +389,6 @@ CREATE TABLE category (
    category CHAR(1) NOT NULL, /* 카테고리(분류) */
    category_name VARCHAR2(20) /* 카테고리명 */
 );
-
-/** 시퀀스 생성 **/
-create sequence seq_cate_no
-increment by 1
-start with 1
-nocache;
 
 COMMENT ON TABLE category IS '카테고리';
 
@@ -401,17 +416,11 @@ ALTER TABLE category
 CREATE TABLE stage (
    stage_no NUMBER NOT NULL, /* 공연장번호 */
    com_no NUMBER, /* 제휴사번호 */
-   stage_name VARCHAR2(20), /* 장소명 */
+   stage_name VARCHAR2(50), /* 장소명 */
    rain_progress CHAR(1), /* 우천시 진행 */
    stage_light CHAR(1), /* 무대조명 */
    parking CHAR(1) /* 주차 */
 );
-
-/** 시퀀스 생성 **/
-create sequence seq_stage_no
-increment by 1
-start with 1
-nocache;
 
 COMMENT ON TABLE stage IS '공연장';
 
@@ -446,12 +455,6 @@ CREATE TABLE fan (
    artist_no NUMBER /* 아티스트번호 */
 );
 
-/** 시퀀스 생성 **/
-create sequence seq_fan_no
-increment by 1
-start with 1
-nocache;
-
 COMMENT ON TABLE fan IS '팬되기';
 
 COMMENT ON COLUMN fan.fan_no IS '팬되기 일련번호';
@@ -479,12 +482,6 @@ CREATE TABLE buskingTime (
    start_time VARCHAR2(20), /* 시작시간 */
    end_time VARCHAR2(20) /* 종료시간 */
 );
-
-/** 시퀀스 생성 **/
-create sequence seq_time_no
-increment by 1
-start with 1
-nocache;
 
 COMMENT ON TABLE buskingTime IS '공연시간';
 
@@ -515,14 +512,8 @@ CREATE TABLE buskingApp (
    time_no NUMBER, /* 시간번호 */
    user_info VARCHAR2(100), /* 상세정보 */
    apply_date DATE, /* 신청일 */
-   status VARCHAR2(20) /* 상태 */
+   status CHAR(1) /* 상태 */
 );
-
-/** 시퀀스 생성 **/
-create sequence seq_app_no
-increment by 1
-start with 1
-nocache;
 
 COMMENT ON TABLE buskingApp IS '버스킹신청';
 
@@ -558,12 +549,6 @@ CREATE TABLE likes (
    regdate DATE /* 날짜 */
 );
 
-/** 시퀀스 생성 **/
-create sequence seq_likes_no
-increment by 1
-start with 1
-nocache;
-
 COMMENT ON TABLE likes IS '좋아요';
 
 COMMENT ON COLUMN likes.likes_no IS '좋어요번호';
@@ -589,23 +574,14 @@ ALTER TABLE likes
 /* 이력사항 */
 CREATE TABLE resume (
    resume_no NUMBER NOT NULL, /* 이력번호 */
-   resume_content VARCHAR2(50), /* 이력사항 */
-   user_no NUMBER /* 회원번호 */
+   resume_content VARCHAR2(500) /* 이력사항 */
 );
-
-/** 시퀀스 생성 **/
-create sequence seq_resume_no
-increment by 1
-start with 1
-nocache;
 
 COMMENT ON TABLE resume IS '이력사항';
 
 COMMENT ON COLUMN resume.resume_no IS '이력번호';
 
 COMMENT ON COLUMN resume.resume_content IS '이력사항';
-
-COMMENT ON COLUMN resume.user_no IS '회원번호';
 
 CREATE UNIQUE INDEX PK_resume
    ON resume (
@@ -647,16 +623,6 @@ ALTER TABLE buskingDate
       )
       REFERENCES stage (
          stage_no
-      );
-
-ALTER TABLE post
-   ADD
-      CONSTRAINT FK_users_TO_post
-      FOREIGN KEY (
-         writer
-      )
-      REFERENCES users (
-         user_no
       );
 
 ALTER TABLE post
@@ -713,16 +679,6 @@ ALTER TABLE buskingTime
 
 ALTER TABLE buskingApp
    ADD
-      CONSTRAINT FK_users_TO_buskingApp
-      FOREIGN KEY (
-         user_no
-      )
-      REFERENCES users (
-         user_no
-      );
-
-ALTER TABLE buskingApp
-   ADD
       CONSTRAINT FK_buskingTime_TO_buskingApp
       FOREIGN KEY (
          time_no
@@ -748,15 +704,5 @@ ALTER TABLE likes
          artist_no
       )
       REFERENCES users (
-         user_no
-      );
-
-ALTER TABLE resume
-   ADD
-      CONSTRAINT FK_blog_TO_resume
-      FOREIGN KEY (
-         user_no
-      )
-      REFERENCES blog (
          user_no
       );
