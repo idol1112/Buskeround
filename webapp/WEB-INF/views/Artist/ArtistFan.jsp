@@ -22,6 +22,8 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/Artist/common.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/Common/common.css">
 
+<!-- jquery -->
+<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 
 
 </head>
