@@ -188,7 +188,7 @@ COMMENT ON COLUMN users.fan IS '팬되기';
 
 COMMENT ON COLUMN users.likes IS '좋아요';
 
-COMMENT ON COLUMN post.live IS '라이브(방송상태)';
+COMMENT ON COLUMN users.live IS '라이브(방송상태)';
 
 COMMENT ON COLUMN users.artist_regdate IS '아티스트등록일';
 
