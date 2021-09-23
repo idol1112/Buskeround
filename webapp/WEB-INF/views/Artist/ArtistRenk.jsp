@@ -29,164 +29,148 @@
 </head>
 
 <body>
-  <!-- header -->
-  <c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
-  
-  <!-- nav_artist  -->
-  <c:import url="/WEB-INF/views/Artist/includes/artbox.jsp"></c:import>
-    
-    
-    
-      <div class="section-01">
-        <div class="leftsection">
-        	<!-- 종합랭킹 -->
-            <div class="leftsection-01">
-                <h2>종합랭킹</h2>
-                <!-- 아티스트 검색 -->
-                <div>
-                    <input type="text" placeholder="아티스트 검색">
-                    <img src="${pageContext.request.contextPath}/assets/image/artist/icon/search.png" style="width:20px">
-                </div>
-            </div>
-			<!-- 종합랭킹 표그래프 -->
-            <div class="leftsection-02">
-                <table>
-                    <thead>
-                        <tr>
-                            <td>NO</td>
-                            <td>    </td>
-                            <td>활동명</td>
-                            <td>주요장르</td>
-                            <td>아티스트 정보</td>
-                            <td>좋아요</td>
-                            <td>팬 되기</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!--1번-->
-                        <tr>
-                            <td>1</td>
-                            <td>
-                                <img src="${pageContext.request.contextPath}/assets/image/artist/img/13.PNG" style="width:80px">
-                            </td>
-                            <td>
-                                <div>최정훈</div>
-                                <div>
-                                    <img src="${pageContext.request.contextPath}/assets/image/artist/icon/facebook.png" style="width:20px">
-                                    <img src="${pageContext.request.contextPath}/assets/image/artist/icon/insta.png" style="width:20px">
-                                </div>
-                            </td>
-                            <td>
-                                <img src="${pageContext.request.contextPath}/assets/image/artist/icon/musical.png" style="width:60px">
-                            </td>
-                            <td>
-                                <div>활동유형 베이스</div>
-                                <div>가입연도 2020년</div>
-                            </td>
-                            <td>
-                                <img src="${pageContext.request.contextPath}/assets/image/artist/icon/heart2.png" style="width:20px">
-                                <span>530</span>
-                            </td>
-                            <td>
-                                <img src="${pageContext.request.contextPath}/assets/image/artist/icon/fan1.png" style="width:20px">
-                                <span>114</span>
-                            </td>
-                        </tr>
+	<!-- header -->
+	<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
 
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        
-        <div class="rightsection">
-            <div class="rightsection-01">
-            <!-- 뉴아티스트 배너 -->
-                <div class="rightsection-01-01">
-                    <h3>NEW ARTIST</h3>
-                    <div>
-                        <img src="${pageContext.request.contextPath}/assets/image/artist/icon/circle1.png" style="width:8px">
-                        <img src="${pageContext.request.contextPath}/assets/image/artist/icon/circle1.png" style="width:8px">
-                        <img src="${pageContext.request.contextPath}/assets/image/artist/icon/circle2.png" style="width:8px">
-                        <img src="${pageContext.request.contextPath}/assets/image/artist/icon/circle1.png" style="width:8px">
-                        <img src="${pageContext.request.contextPath}/assets/image/artist/icon/circle1.png" style="width:8px">
-                    </div>
-                </div>
-                <div>
-                    <img src="${pageContext.request.contextPath}/assets/image/artist/img/22.PNG" style="width:285px">
-                </div>
-            </div>
-            <div class="rightsection-02">
-            <!-- 라이브 표그래프 -->
-                <div class="rightsection-02-01">
-                    <h3>NOW LIVE</h3>
-                    <div>
-                        <img src="${pageContext.request.contextPath}/assets/image/artist/icon/triangle1.png" style="width:20px">
-                        1/2
-                        <img src="${pageContext.request.contextPath}/assets/image/artist/icon/triangle2.png" style="width:20px">
-                    </div>
-                </div>
-                <table>
-                    <tbody>
-                        <tr>
-                            <td>김진호</td>
-                            <td>오후 3:24~</td>
-                            <td> [위치 보기]</td>
-                        </tr>
-                        <tr>
-                            <td>나비</td>
-                            <td>오후 8:00~</td>
-                            <td> [위치 보기]</td>
-                        </tr>
-                        <tr>
-                            <td>이석훈</td>
-                            <td>오후 8:20~</td>
-                            <td> [위치 보기]</td>
-                        </tr>
-                        <tr>
-                            <td>지석진</td>
-                            <td>오후 8:40~</td>
-                            <td> [위치 보기]</td>
-                        </tr>
-                        <tr>
-                            <td>이지은</td>
-                            <td>오후 9:05~</td>
-                            <td> [위치 보기]</td>
-                        </tr>
-                        <tr>
-                            <td>홀리뱅</td>
-                            <td>오후 9:22~</td>
-                            <td> [위치 보기]</td>
-                        </tr>
-                        <tr>
-                            <td>하석훈</td>
-                            <td>오후 9:24~</td>
-                            <td> [위치 보기]</td>
-                        </tr>
-                        <tr>
-                            <td>YGXGIRL</td>
-                            <td>오후 10:00~</td>
-                            <td> [위치 보기]</td>
-                        </tr>
-                        <tr>
-                            <td>케이윌</td>
-                            <td>오후 11:09~</td>
-                            <td> [위치 보기]</td>
-                        </tr>
-                        <tr>
-                            <td>웨이비</td>
-                            <td>오후 11:25~</td>
-                            <td> [위치 보기]</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-  
-  
-  
-  <!-- footer -->
-  <c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
-  
-</body>  
+	<!-- nav_artist  -->
+	<c:import url="/WEB-INF/views/Artist/includes/artbox.jsp"></c:import>
+
+
+
+	<div class="section-01">
+		<div class="leftsection">
+			<!-- 종합랭킹 -->
+			<div class="leftsection-01">
+				<h2>종합랭킹</h2>
+				<!-- 아티스트 검색 -->
+				<div>
+					<input type="text" placeholder="아티스트 검색"> <img src="${pageContext.request.contextPath}/assets/image/artist/icon/search.png" style="width: 20px">
+				</div>
+			</div>
+			<!-- 종합랭킹 표그래프 -->
+			<div class="leftsection-02">
+				<table>
+					<thead>
+						<tr>
+							<td>NO</td>
+							<td></td>
+							<td>활동명</td>
+							<td>주요장르</td>
+							<td>아티스트 정보</td>
+							<td>좋아요</td>
+							<td>팬 되기</td>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach items="${artistRenkList}" var="aList">
+
+							<!--1번-->
+							<tr>
+								<td>1</td>
+								<td><img src="/Buskeround${aList.user_img}" style="width: 80px"></td>
+								<td>
+									<div>${aList.nickname}</div>
+									<div>
+										<img src="${pageContext.request.contextPath}/assets/image/artist/icon/facebook.png" style="width: 20px"> <img src="${pageContext.request.contextPath}/assets/image/artist/icon/insta.png" style="width: 20px">
+									</div>
+								</td>
+								<td><img src="${pageContext.request.contextPath}/assets/image/artist/icon/musical.png" style="width: 60px"></td>
+								<td>
+									<div>${aList.genre_type}</div>
+									<div>가입연도 ${aList.artist_regdate}년</div>
+								</td>
+								<td><img src="${pageContext.request.contextPath}/assets/image/artist/icon/heart2.png" style="width: 20px"> <span>530</span></td>
+								<td><img src="${pageContext.request.contextPath}/assets/image/artist/icon/fan1.png" style="width: 20px"> <span>114</span></td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<div class="rightsection">
+			<div class="rightsection-01">
+				<!-- 뉴아티스트 배너 -->
+				<div class="rightsection-01-01">
+					<h3>NEW ARTIST</h3>
+					<div>
+						<img src="${pageContext.request.contextPath}/assets/image/artist/icon/circle1.png" style="width: 8px"> <img src="${pageContext.request.contextPath}/assets/image/artist/icon/circle1.png" style="width: 8px"> <img src="${pageContext.request.contextPath}/assets/image/artist/icon/circle2.png" style="width: 8px"> <img src="${pageContext.request.contextPath}/assets/image/artist/icon/circle1.png" style="width: 8px"> <img src="${pageContext.request.contextPath}/assets/image/artist/icon/circle1.png" style="width: 8px">
+					</div>
+				</div>
+				<div>
+					<img src="${pageContext.request.contextPath}/assets/image/artist/img/22.PNG" style="width: 285px">
+				</div>
+			</div>
+			<div class="rightsection-02">
+				<!-- 라이브 표그래프 -->
+				<div class="rightsection-02-01">
+					<h3>NOW LIVE</h3>
+					<div>
+						<img src="${pageContext.request.contextPath}/assets/image/artist/icon/triangle1.png" style="width: 20px"> 1/2 <img src="${pageContext.request.contextPath}/assets/image/artist/icon/triangle2.png" style="width: 20px">
+					</div>
+				</div>
+				<table>
+					<tbody>
+						<tr>
+							<td>김진호</td>
+							<td>오후 3:24~</td>
+							<td>[위치 보기]</td>
+						</tr>
+						<tr>
+							<td>나비</td>
+							<td>오후 8:00~</td>
+							<td>[위치 보기]</td>
+						</tr>
+						<tr>
+							<td>이석훈</td>
+							<td>오후 8:20~</td>
+							<td>[위치 보기]</td>
+						</tr>
+						<tr>
+							<td>지석진</td>
+							<td>오후 8:40~</td>
+							<td>[위치 보기]</td>
+						</tr>
+						<tr>
+							<td>이지은</td>
+							<td>오후 9:05~</td>
+							<td>[위치 보기]</td>
+						</tr>
+						<tr>
+							<td>홀리뱅</td>
+							<td>오후 9:22~</td>
+							<td>[위치 보기]</td>
+						</tr>
+						<tr>
+							<td>하석훈</td>
+							<td>오후 9:24~</td>
+							<td>[위치 보기]</td>
+						</tr>
+						<tr>
+							<td>YGXGIRL</td>
+							<td>오후 10:00~</td>
+							<td>[위치 보기]</td>
+						</tr>
+						<tr>
+							<td>케이윌</td>
+							<td>오후 11:09~</td>
+							<td>[위치 보기]</td>
+						</tr>
+						<tr>
+							<td>웨이비</td>
+							<td>오후 11:25~</td>
+							<td>[위치 보기]</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+
+
+	<!-- footer -->
+	<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
+
+</body>
 </html>

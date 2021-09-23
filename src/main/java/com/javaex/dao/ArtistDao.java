@@ -1,8 +1,12 @@
 package com.javaex.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import com.javaex.vo.UserVo;
 
 @Repository
 public class ArtistDao {
@@ -11,10 +15,10 @@ public class ArtistDao {
 	private SqlSession sqlsession;
 	
 	// 아티스트 리스트 가져오기
-	public void getArtistList() {
-		System.out.println("artistdao");
+	public List<UserVo> getArtistList() {
+		System.out.println("[Artist.getArtistList()]");
 		
-		sqlsession.selectList("artist.getArtist");
+		return sqlsession.selectList("artist.getArtist");
 	}
 	
 	

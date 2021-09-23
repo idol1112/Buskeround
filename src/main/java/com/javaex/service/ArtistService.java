@@ -1,9 +1,12 @@
 package com.javaex.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.javaex.dao.ArtistDao;
+import com.javaex.vo.UserVo;
 
 @Service
 public class ArtistService {
@@ -12,10 +15,9 @@ public class ArtistService {
 	private ArtistDao artistDao;
 	
 	//아티스트 리스트 가져오기
-	public void getArtistList() {
-		System.out.println("artistlist");
+	public List<UserVo> getArtistList() {
 		
-		artistDao.getArtistList();
+		return artistDao.getArtistList();
 	}
 	
 

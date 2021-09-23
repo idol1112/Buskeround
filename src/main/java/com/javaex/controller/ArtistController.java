@@ -2,6 +2,7 @@ package com.javaex.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -16,11 +17,13 @@ public class ArtistController {
 	
 	//아티스트 종합랭킹
 	@RequestMapping(value = "/ArtistRenk", method= {RequestMethod.GET, RequestMethod.POST })
-	public String artistrenk() {
+	public String artistrenk(Model model ) {
 		
 		System.out.println("[CompanyController.ArtistRenk()]");
 		
-		artistService.getArtistList();
+		model.addAttribute("artistRenkList", artistService.getArtistList());
+		
+		System.out.println(artistService.getArtistList());
 		
 		return"/Artist/ArtistRenk";
 	}
