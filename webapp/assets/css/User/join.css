@@ -46,7 +46,7 @@ h1 {
   margin-bottom: 10px;
 }
 
-.joinbox input[type="text"], input[type="password"] {
+.joinbox input[type="text"], input[type="password"], input[type="email"] {
   height: 30px;
   margin-top: 5px;
   border: 1px solid #dddddd;

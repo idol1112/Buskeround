@@ -51,7 +51,7 @@
           <span id="pwChk">비밀번호가 일치하지 않습니다.</span>
 
           <p>이메일</p>
-          <input type="text" name="email">
+          <input type="email" name="email">
 
           <p>닉네임</p>
           <input type="text" name="nickname">
