@@ -3,10 +3,10 @@ package com.javaex.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.javaex.dao.BlogDao;
 import com.javaex.dao.MyPageDao;
 import com.javaex.dao.UserDao;
 import com.javaex.vo.MypageVo;
-import com.javaex.vo.UserVo;
 
 @Service
 public class MyPageService {
@@ -15,6 +15,8 @@ public class MyPageService {
 	MyPageDao mypageDao;
 	@Autowired
 	UserDao userDao;
+	@Autowired
+	BlogDao blogDao;
 	
 	//Artist 정보 가져오기
 	public MypageVo getArtistInfo(String id) {
@@ -28,7 +30,7 @@ public class MyPageService {
 		System.out.println("MyPageService.artistModify()");
 		
 		//블로그 만들기
-//		blogDao.createBlog(mypageVo.getId());
+		blogDao.createBlog(mypageVo.getId());
 		
 		return mypageDao.artistModify(mypageVo);
 	}
