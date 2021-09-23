@@ -1,18 +1,26 @@
 package com.javaex.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.javaex.service.ArtistService;
+
 @RequestMapping(value="/Artist")
 @Controller
 public class ArtistController {
+	
+	@Autowired
+	ArtistService artistService;
 	
 	//아티스트 종합랭킹
 	@RequestMapping(value = "/ArtistRenk", method= {RequestMethod.GET, RequestMethod.POST })
 	public String artistrenk() {
 		
 		System.out.println("[CompanyController.ArtistRenk()]");
+		
+		artistService.getArtistList();
 		
 		return"/Artist/ArtistRenk";
 	}

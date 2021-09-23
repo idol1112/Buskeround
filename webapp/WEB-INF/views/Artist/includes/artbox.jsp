@@ -13,11 +13,11 @@
     
         <div class="col-xl-7">
              <ul class="navbar_artmenu">
-                <li><a href="ArtistRenk.jsp">종합랭킹</a></li>
-                <li><a href="ArtistFan.jsp">팬 많은 순</a></li>
-                <li><a href="ArtistNew.jsp">NEW 아티스트순</a></li>
-                <li><a href="ArtistGenre.jsp">장르별 순위</a></li>
-                <li><a href="ArtistFanList.jsp">팬 등록 리스트</a></li>
+                <li><a href="${pageContext.request.contextPath}/Artist/ArtistRenk">종합랭킹</a></li>
+                <li><a href="${pageContext.request.contextPath}/Artist/ArtistFan">팬 많은 순</a></li>
+                <li><a href="${pageContext.request.contextPath}/Artist/ArtistNew">NEW 아티스트순</a></li>
+                <li><a href="${pageContext.request.contextPath}/Artist/ArtistGenre">장르별 순위</a></li>
+                <li><a href="${pageContext.request.contextPath}/Artist/ArtistFanList">팬 등록 리스트</a></li>
              </ul>
         </div>
         </div>
