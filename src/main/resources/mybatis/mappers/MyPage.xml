@@ -34,7 +34,11 @@
 			birthday = #{birthday},
 			genre = #{genre},
 			genre_type = #{genre_type}, 
-			user_type = 2
+			user_type = 2,
+			likes = 0,
+			fan = 0,
+			artist_regdate = sysdate,
+			live = 0
 		WHERE 
 			id = #{id}
 		]]>

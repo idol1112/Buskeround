@@ -23,9 +23,12 @@ public class MyPageService {
 		return mypageDao.getArtistInfo(id);
 	}
 	
-	//아티스트 정보 등록/수정
+	//아티스트 정보 등록
 	public int artistModify(MypageVo mypageVo) {
 		System.out.println("MyPageService.artistModify()");
+		
+		//블로그 만들기
+//		blogDao.createBlog(mypageVo.getId());
 		
 		return mypageDao.artistModify(mypageVo);
 	}
