@@ -1,51 +1,51 @@
 /* 회원 */
-DROP TABLE users 
+DROP TABLE users
    CASCADE CONSTRAINTS;
 
 /* 블로그 */
-DROP TABLE blog 
+DROP TABLE blog
    CASCADE CONSTRAINTS;
 
 /* 제휴사 */
-DROP TABLE company 
+DROP TABLE company
    CASCADE CONSTRAINTS;
 
 /* 공연날짜 */
-DROP TABLE buskingDate 
+DROP TABLE buskingDate
    CASCADE CONSTRAINTS;
 
 /* 게시글 */
-DROP TABLE post 
+DROP TABLE post
    CASCADE CONSTRAINTS;
 
 /* 카테고리 */
-DROP TABLE category 
+DROP TABLE category
    CASCADE CONSTRAINTS;
 
 /* 공연장 */
-DROP TABLE stage 
+DROP TABLE stage
    CASCADE CONSTRAINTS;
 
 /* 팬되기 */
-DROP TABLE fan 
+DROP TABLE fan
    CASCADE CONSTRAINTS;
 
 /* 공연시간 */
-DROP TABLE buskingTime 
+DROP TABLE buskingTime
    CASCADE CONSTRAINTS;
 
 /* 버스킹신청 */
-DROP TABLE buskingApp 
+DROP TABLE buskingApp
    CASCADE CONSTRAINTS;
 
 /* 좋아요 */
-DROP TABLE likes 
+DROP TABLE likes
    CASCADE CONSTRAINTS;
 
 /* 이력사항 */
-DROP TABLE resume 
+DROP TABLE resume
    CASCADE CONSTRAINTS;
-   
+
    /** 시퀀스 삭제 **/
 /* 회원 */
 drop sequence seq_user_no;
@@ -152,6 +152,7 @@ CREATE TABLE users (
    genre_type VARCHAR2(20), /* 활동유형 */
    fan NUMBER, /* 팬되기 */
    likes NUMBER, /* 좋아요 */
+   live CHAR(1), /* 라이브(방송상태) */
    artist_regdate DATE, /* 아티스트등록일 */
    user_type CHAR(1), /* 회원구분 */
    company_type CHAR(1) /* 제휴사여부 */
@@ -186,6 +187,8 @@ COMMENT ON COLUMN users.genre_type IS '활동유형';
 COMMENT ON COLUMN users.fan IS '팬되기';
 
 COMMENT ON COLUMN users.likes IS '좋아요';
+
+COMMENT ON COLUMN post.live IS '라이브(방송상태)';
 
 COMMENT ON COLUMN users.artist_regdate IS '아티스트등록일';
 
@@ -332,7 +335,6 @@ CREATE TABLE post (
    p_start DATE, /* 공연시작일 */
    p_end DATE, /* 공연종료일 */
    p_img VARCHAR2(1000), /* 공연이미지 */
-   live CHAR(1), /* 라이브(방송상태) */
    live_url VARCHAR2(100), /* 라이브주소 */
    hit NUMBER /* 조회수 */
 );
@@ -360,8 +362,6 @@ COMMENT ON COLUMN post.p_start IS '공연시작일';
 COMMENT ON COLUMN post.p_end IS '공연종료일';
 
 COMMENT ON COLUMN post.p_img IS '공연이미지';
-
-COMMENT ON COLUMN post.live IS '라이브(방송상태)';
 
 COMMENT ON COLUMN post.live_url IS '라이브주소';
 
