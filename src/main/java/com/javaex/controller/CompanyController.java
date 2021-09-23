@@ -3,6 +3,8 @@ package com.javaex.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.javaex.service.CompanyService;
+import com.javaex.service.UserService;
+import com.javaex.vo.UserVo;
 
 @RequestMapping(value ="/Company")
 @Controller
@@ -18,6 +22,8 @@ public class CompanyController {
 	
 	@Autowired
 	CompanyService companyService;
+	@Autowired
+	UserService userService;
 		
 	
 	//제휴사 등록 폼
@@ -37,7 +43,8 @@ public class CompanyController {
 								@RequestParam ("address") String address,
 								@RequestParam ("com_number") String com_number,
 								@RequestParam ("ceo_name") String ceo_name,
-								@RequestParam ("business_number") String business_number) {
+								@RequestParam ("business_number") String business_number,
+								HttpSession session) {
 		System.out.println("[CompanyController.companyInsert()]");
 		
 		Map<String, Object> companyInsertMap = new HashMap<>();
@@ -57,6 +64,13 @@ public class CompanyController {
 		
 		System.out.println("제휴사 ["+count+"]건 저장 완료");
 		
+		//유저 정보 가져오기
+		UserVo authUser = (UserVo)session.getAttribute("authUser");
+		
+		//수정된 정보 AuthUser 덮어쓰기
+		UserVo userVo = new UserVo(authUser.getId(), authUser.getPassword());
+		authUser = userService.getPerson(userVo);
+		session.setAttribute("authUser", authUser);
 		
 		
 		return "redirect:/Company/companyInfo";

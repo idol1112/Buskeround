@@ -23,6 +23,7 @@ public class CompanyService {
 	@Autowired
 	UserDao userDao;
 	
+	//제휴사 등록
 	public int companyInsert(Map<String, Object> companyInsertMap) {
 		System.out.println("CompanyService.companyInsert()");
 		
@@ -72,5 +73,6 @@ public class CompanyService {
 		System.out.println(companyVo);
 		return companyDao.companyInsert(companyVo);
 	}
-
+	
+	//company_type 바꾸기
 }
