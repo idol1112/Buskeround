@@ -6,7 +6,7 @@ public class MypageVo {
 	private String id;
 	private String nickname;
 	private String name;
-	private int hp;
+	private String hp;
 	private String gender;
 	private String birthday;
 	private int genre;
@@ -18,7 +18,7 @@ public class MypageVo {
 		super();
 	}
 	
-	public MypageVo(String id, String nickname, String name, int hp, String gender, String birthday, int genre,
+	public MypageVo(String id, String nickname, String name, String hp, String gender, String birthday, int genre,
 			String genre_type, int user_type) {
 		super();
 		this.id = id;
@@ -31,7 +31,7 @@ public class MypageVo {
 		this.genre_type = genre_type;
 		this.user_type = user_type;
 	}
-	
+
 	//Method G/S
 	
 	public String getId() {
@@ -57,12 +57,12 @@ public class MypageVo {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	public int getHp() {
+	
+	public String getHp() {
 		return hp;
 	}
 
-	public void setHp(int hp) {
+	public void setHp(String hp) {
 		this.hp = hp;
 	}
 
@@ -113,5 +113,6 @@ public class MypageVo {
 				+ ", birthday=" + birthday + ", genre=" + genre + ", genre_type=" + genre_type + ", user_type="
 				+ user_type + "]";
 	}
+	
 
 }
