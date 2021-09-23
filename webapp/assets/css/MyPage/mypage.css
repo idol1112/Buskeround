@@ -81,7 +81,7 @@ table td {
 }
 
 #profilepicturechange {
-    margin-left: 30px;
+    margin-left: 40px;
     margin-top: 5px;
     font-size: 12px;
 }
@@ -116,6 +116,7 @@ label {
 
 #profilepicture {
     border-radius: 8px;
+    margin-left: 10px;
     width: 150px;
     height: 150px;
 }
@@ -154,4 +155,8 @@ label {
 	margin-top: 3px;
 	padding-left: 11px;
 	color: red;
+}
+
+input[type="file"] {
+    display: none;
 }

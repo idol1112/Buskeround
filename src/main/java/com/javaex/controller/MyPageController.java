@@ -29,14 +29,10 @@ public class MyPageController {
 	    System.out.println("[MyPageController.profileModify()]");
 	    
 		UserVo authUser = (UserVo)session.getAttribute("authUser");
-//		UserVo getProfile = mypageService.getProfile(authUser.getUser_no());
 		
 	    
 	    return "/MyPage/mypageModify";
 	}
-	
-	
-	
 	
 	//아티스트 등록 폼
 	@RequestMapping(value = "/mypageArtist", method = {RequestMethod.GET, RequestMethod.POST})

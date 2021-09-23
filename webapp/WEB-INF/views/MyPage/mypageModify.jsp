@@ -41,17 +41,22 @@
 						<table>
 							<tr>
 								<td class="table-head"><label for="profilepicture">프로필 사진</label></td>
-								<td><img id="profilepicture" src="../../assets/img/profilepicture.jpg"><br>
-									<button id="profilepicturechange" class="btn-success btn-sm" type="submit">변경</button>
-									<button id="profilepicturedelete" class="btn-danger btn-sm" type="submit">삭제</button></td>
+								<td>
+									<img id="profilepicture" src="../../assets/img/profilepicture.jpg"><br>
+									<label id="profilepicturechange" class="btn-success btn-sm">
+								    <input type="file"/>
+								    변경
+									</label>
+									<button id="profilepicturedelete" class="btn-danger btn-sm" type="submit">삭제</button>
+								</td>
 							</tr>
 							<tr>
 								<td class="table-head"><label for="id">아이디</label></td>
-								<td><p class="input">thunderkyg</p></td>
+								<td><p class="input">${sessionScope.authUser.id}</p></td>
 							</tr>
 							<tr>
 								<td class="table-head"><label for="email">이메일</label></td>
-								<td><input class="input" type="text" id="email" name="email" placeholder="이메일을 입력해주세요"></td>
+								<td><input class="input" type="email" id="email" name="email" placeholder="이메일을 입력해주세요" value="${sessionScope.authUser.email}"></td>
 							</tr>
 							<tr>
 								<td class="table-head"><label for="password">페스워드</label></td>
@@ -59,7 +64,7 @@
 							</tr>
 							<tr>
 								<td class="table-head"><label for="nickname">닉네임</label></td>
-								<td><input class="input" type="text" id="nickname" name="nickname" placeholder="닉네임을 입력해주세요"></td>
+								<td><input class="input" type="text" id="nickname" name="nickname" placeholder="닉네임을 입력해주세요" value="${sessionScope.authUser.nickname}"></td>
 							</tr>
 						</table>
 						<button class="float-end btn-primary btn-sm" id="profilesubmit">수정</button>

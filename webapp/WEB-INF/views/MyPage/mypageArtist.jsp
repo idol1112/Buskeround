@@ -144,7 +144,7 @@
 </body>
 
 <script type="text/javascript">
-var nick_check = false;
+var nick_check = true;
 
 //활동명 중복
 $("#check_nickname").hide();
