@@ -94,7 +94,7 @@
       <div class="modal-body clear-fix" id="modal_body">
         <div>
           <label class="modal-label" id="modal_label">장소명</label>
-          <input type="text" placeholder="장소명을 입력세주세요">
+          <input type="text" placeholder="장소명을 입력세주세요" id="title">
         </div>
 
         <div>
@@ -141,7 +141,6 @@
 <script type="text/javascript">
 	$(".btn_start").on("click", function() {
 		event.preventDefault();
-		console.log("testing")
 
 		$("#exampleModal").modal('show');
 
@@ -168,9 +167,13 @@
 
 				 for (var i = 0; i < result.items.length; i++) {
 				     var items = result.items[i];
-				     console.log("title : "+items.snippet.title);
-				     console.log("videoId : "+items.id.videoId);
-				     console.log("썸네일 : "+items.snippet.thumbnails.high.url);
+
+				     var title = items.snippet.title;
+				     var video_id = items.id.videoId;
+				     var video_img = items.snippet.thumbnails.high.url;
+
+				     $("#title").val(title);
+				     $("#livelink").val(video_id);
 				 }
 			},
 

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class BlogController {
 
-  @RequestMapping(value = "/blog_main", method = {RequestMethod.GET, RequestMethod.POST})
+  @RequestMapping(value = "blog_main", method = {RequestMethod.GET, RequestMethod.POST})
   public String blog_main() {
     System.out.println("[TestingController.blog_main()]");
 
@@ -16,7 +16,7 @@ public class BlogController {
 
   }
 
-  @RequestMapping(value = "/blog_timeline", method = {RequestMethod.GET, RequestMethod.POST})
+  @RequestMapping(value = "blog_timeline", method = {RequestMethod.GET, RequestMethod.POST})
   public String blog_timeline() {
     System.out.println("[TestingController.blog_timeline()]");
 
@@ -24,7 +24,7 @@ public class BlogController {
 
   }
 
-  @RequestMapping(value = "/blog_gallery", method = {RequestMethod.GET, RequestMethod.POST})
+  @RequestMapping(value = "blog_gallery", method = {RequestMethod.GET, RequestMethod.POST})
   public String blog_gallery() {
     System.out.println("[TestingController.blog_gallery()]");
 
@@ -32,7 +32,7 @@ public class BlogController {
 
   }
 
-  @RequestMapping(value = "/blog_guestbook", method = {RequestMethod.GET, RequestMethod.POST})
+  @RequestMapping(value = "blog_guestbook", method = {RequestMethod.GET, RequestMethod.POST})
   public String blog_guestbook() {
     System.out.println("[TestingController.blog_guestbook()]");
 
