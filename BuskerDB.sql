@@ -1,3 +1,4 @@
+/** 테이블 삭제 **/
 /* 회원 */
 DROP TABLE users 
    CASCADE CONSTRAINTS;
@@ -45,7 +46,45 @@ DROP TABLE likes
 /* 이력사항 */
 DROP TABLE resume 
    CASCADE CONSTRAINTS;
+   
+/** 시퀀스 삭제 **/
+/* 회원 */
+drop sequence seq_user_no;
 
+/* 블로그 */
+drop sequence seq_blog_no;
+
+/* 제휴사 */
+drop sequence seq_com_no;
+
+/* 공연날짜 */
+drop sequence seq_date_no;
+
+/* 게시글 */
+drop sequence seq_post_no;
+
+/* 카테고리 */
+drop sequence seq_cate_no;
+
+/* 공연장 */
+drop sequence seq_stage_no;
+
+/* 팬되기 */
+drop sequence seq_fan_no;
+
+/* 공연시간 */
+drop sequence seq_time_no;
+
+/* 버스킹신청 */
+drop sequence seq_app_no;
+
+/* 좋아요 */
+drop sequence seq_likes_no;
+
+/* 이력사항 */
+drop sequence seq_resume_no;
+
+/** 테이블 생성 **/
 /* 회원 */
 CREATE TABLE users (
    user_no NUMBER NOT NULL, /* 회원번호 */
@@ -65,6 +104,12 @@ CREATE TABLE users (
    user_type CHAR(1), /* 회원구분 */
    company_type CHAR(1) /* 제휴사여부 */
 );
+
+/** 시퀀스 생성 **/
+create sequence seq_user_no
+increment by 1
+start with 1
+nocache;
 
 COMMENT ON TABLE users IS '회원';
 
@@ -122,6 +167,12 @@ CREATE TABLE blog (
    i_url VARCHAR2(100) /* 인스타주소 */
 );
 
+/** 시퀀스 생성 **/
+create sequence seq_blog_no
+increment by 1
+start with 1
+nocache;
+
 COMMENT ON TABLE blog IS '블로그';
 
 COMMENT ON COLUMN blog.user_no IS '회원번호';
@@ -161,6 +212,12 @@ CREATE TABLE company (
    latitude NUMBER, /* 위도 */
    longitude NUMBER /* 경도 */
 );
+
+/** 시퀀스 생성 **/
+create sequence seq_com_no
+increment by 1
+start with 1
+nocache;
 
 COMMENT ON TABLE company IS '제휴사';
 
@@ -204,6 +261,12 @@ CREATE TABLE buskingDate (
    requirements VARCHAR2(200) /* 요구사항 */
 );
 
+/** 시퀀스 생성 **/
+create sequence seq_date_no
+increment by 1
+start with 1
+nocache;
+
 COMMENT ON TABLE buskingDate IS '공연날짜';
 
 COMMENT ON COLUMN buskingDate.date_no IS '날짜번호';
@@ -244,6 +307,12 @@ CREATE TABLE post (
    hit NUMBER, /* 조회수 */
    writer NUMBER /* 작성자 */
 );
+
+/** 시퀀스 생성 **/
+create sequence seq_post_no
+increment by 1
+start with 1
+nocache;
 
 COMMENT ON TABLE post IS '게시글';
 
@@ -300,6 +369,12 @@ CREATE TABLE category (
    category_name VARCHAR2(20) /* 카테고리명 */
 );
 
+/** 시퀀스 생성 **/
+create sequence seq_cate_no
+increment by 1
+start with 1
+nocache;
+
 COMMENT ON TABLE category IS '카테고리';
 
 COMMENT ON COLUMN category.user_no IS '회원번호';
@@ -331,6 +406,12 @@ CREATE TABLE stage (
    stage_light CHAR(1), /* 무대조명 */
    parking CHAR(1) /* 주차 */
 );
+
+/** 시퀀스 생성 **/
+create sequence seq_stage_no
+increment by 1
+start with 1
+nocache;
 
 COMMENT ON TABLE stage IS '공연장';
 
@@ -365,6 +446,12 @@ CREATE TABLE fan (
    artist_no NUMBER /* 아티스트번호 */
 );
 
+/** 시퀀스 생성 **/
+create sequence seq_fan_no
+increment by 1
+start with 1
+nocache;
+
 COMMENT ON TABLE fan IS '팬되기';
 
 COMMENT ON COLUMN fan.fan_no IS '팬되기 일련번호';
@@ -392,6 +479,12 @@ CREATE TABLE buskingTime (
    start_time VARCHAR2(20), /* 시작시간 */
    end_time VARCHAR2(20) /* 종료시간 */
 );
+
+/** 시퀀스 생성 **/
+create sequence seq_time_no
+increment by 1
+start with 1
+nocache;
 
 COMMENT ON TABLE buskingTime IS '공연시간';
 
@@ -424,6 +517,12 @@ CREATE TABLE buskingApp (
    apply_date DATE, /* 신청일 */
    status VARCHAR2(20) /* 상태 */
 );
+
+/** 시퀀스 생성 **/
+create sequence seq_app_no
+increment by 1
+start with 1
+nocache;
 
 COMMENT ON TABLE buskingApp IS '버스킹신청';
 
@@ -459,6 +558,12 @@ CREATE TABLE likes (
    regdate DATE /* 날짜 */
 );
 
+/** 시퀀스 생성 **/
+create sequence seq_likes_no
+increment by 1
+start with 1
+nocache;
+
 COMMENT ON TABLE likes IS '좋아요';
 
 COMMENT ON COLUMN likes.likes_no IS '좋어요번호';
@@ -487,6 +592,12 @@ CREATE TABLE resume (
    resume_content VARCHAR2(50), /* 이력사항 */
    user_no NUMBER /* 회원번호 */
 );
+
+/** 시퀀스 생성 **/
+create sequence seq_resume_no
+increment by 1
+start with 1
+nocache;
 
 COMMENT ON TABLE resume IS '이력사항';
 
