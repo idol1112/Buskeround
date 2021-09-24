@@ -37,7 +37,7 @@
                 <a href="${pageContext.request.contextPath}/MyPage/profileModify">마이페이지</a>
                 <!-- 아티스트일 때 -->
                 <c:if test="${authUser.user_type == 2}">
-                  <a href="${pageContext.request.contextPath}/Blog/blog_main/${sessionScope.authUser.id}">내 블로그</a>
+                  <a href="${pageContext.request.contextPath}/blog/blog_main/${sessionScope.authUser.id}">내 블로그</a>
                 </c:if>
 
                 <!-- 제휴자일 때 -->

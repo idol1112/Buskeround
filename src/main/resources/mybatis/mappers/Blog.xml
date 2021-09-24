@@ -12,5 +12,30 @@
 	 	]]>
 
 	</insert>
+	
+	<!-- Select Blog -->
+	<select id="selectBlog" parameterType="String" resultType="BlogVo">
+		<![CDATA[	
+			SELECT
+			    us.user_no,
+			    us.id,
+			    us.nickname,
+			    user_img,
+			    genre,
+			    intro,
+			    banner,
+			    y_url,
+			    f_url,
+			    i_url,
+			    likes,
+			    fan
+			FROM
+			    users  us,
+			    blog   bl
+			WHERE
+			        us.user_no = bl.user_no
+			    AND id = #{id}
+	 	]]>
+	</select>
 
 </mapper>

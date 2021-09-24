@@ -5,26 +5,37 @@ public class BlogVo {
 	//Field
 	private int user_no;
 	private String id;
+	private String nickname;
+	private String user_img;
+	private int genre;
 	private String intro;
 	private String banner;
 	private String y_url;
 	private String f_url;
 	private String i_url;
+	private int likes;
+	private int fan;
 
 	//Constructor
 	public BlogVo() {
 		super();
 	}
 	
-	public BlogVo(int user_no, String id, String intro, String banner, String y_url, String f_url, String i_url) {
+	public BlogVo(int user_no, String id, String nickname, String user_img, int genre, String intro, String banner,
+			String y_url, String f_url, String i_url, int likes, int fan) {
 		super();
 		this.user_no = user_no;
 		this.id = id;
+		this.nickname = nickname;
+		this.user_img = user_img;
+		this.genre = genre;
 		this.intro = intro;
 		this.banner = banner;
 		this.y_url = y_url;
 		this.f_url = f_url;
 		this.i_url = i_url;
+		this.likes = likes;
+		this.fan = fan;
 	}
 
 	//Method G/S
@@ -42,6 +53,30 @@ public class BlogVo {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	public String getNickname() {
+		return nickname;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+
+	public String getUser_img() {
+		return user_img;
+	}
+
+	public void setUser_img(String user_img) {
+		this.user_img = user_img;
+	}
+
+	public int getGenre() {
+		return genre;
+	}
+
+	public void setGenre(int genre) {
+		this.genre = genre;
 	}
 
 	public String getIntro() {
@@ -84,12 +119,29 @@ public class BlogVo {
 		this.i_url = i_url;
 	}
 
-	
+	public int getLikes() {
+		return likes;
+	}
+
+	public void setLikes(int likes) {
+		this.likes = likes;
+	}
+
+	public int getFan() {
+		return fan;
+	}
+
+	public void setFan(int fan) {
+		this.fan = fan;
+	}
+
 	//Method - Ordinary
 	@Override
 	public String toString() {
-		return "BlogVo [user_no=" + user_no + ", id=" + id + ", intro=" + intro + ", banner=" + banner + ", y_url="
-				+ y_url + ", f_url=" + f_url + ", i_url=" + i_url + "]";
+		return "BlogVo [user_no=" + user_no + ", id=" + id + ", nickname=" + nickname + ", user_img=" + user_img
+				+ ", genre=" + genre + ", intro=" + intro + ", banner=" + banner + ", y_url=" + y_url + ", f_url="
+				+ f_url + ", i_url=" + i_url + ", likes=" + likes + ", fan=" + fan + "]";
 	}
+	
 
 }
