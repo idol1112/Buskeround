@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.javaex.service.CompanyService;
 import com.javaex.service.UserService;
 import com.javaex.vo.CompanyVo;
+import com.javaex.vo.StageVo;
 import com.javaex.vo.UserVo;
 
 @RequestMapping(value ="/Company")
@@ -27,7 +29,7 @@ public class CompanyController {
 	@Autowired
 	UserService userService;
 		
-	
+	///////////////////////////////// 제휴사 /////////////////////////////////
 	//제휴사 등록 폼
 	@RequestMapping(value = "/mypageCompany", method = {RequestMethod.GET, RequestMethod.POST})
 	public String mypageCompany() {
@@ -138,6 +140,9 @@ public class CompanyController {
 		
 		return "redirect:/Company/companyInfo";
 	}
+	///////////////////////////////// *제휴사* /////////////////////////////////
+	
+	///////////////////////////////// 공연장 /////////////////////////////////
 	//공연장 관리 폼(추가/삭제)
 	@RequestMapping(value = "/stageManage", method = {RequestMethod.GET, RequestMethod.POST})
 	public String stageManage() {
@@ -145,6 +150,17 @@ public class CompanyController {
 		
 		return "/Company/stageManage";
 	}
+	
+	//공연장 등록
+	@RequestMapping(value = "/stageInsert", method = {RequestMethod.GET, RequestMethod.POST})
+	public String stageInsert(@ModelAttribute StageVo stageVo) {
+		System.out.println("[CompanyController.stageInsert()]");
+		
+		System.out.println(stageVo);
+		
+		return "";
+	}
+	///////////////////////////////// *공연장* /////////////////////////////////
 	
 	//버스킹존 관리 폼(추가/수정/삭제)
 	@RequestMapping(value = "/buskingZoneManage", method = {RequestMethod.GET, RequestMethod.POST})

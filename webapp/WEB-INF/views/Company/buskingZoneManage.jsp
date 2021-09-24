@@ -50,25 +50,25 @@
 						</select>
 					</div>
 					<div class="form-group">
-						<img id="calendar" src="${pageContext.request.contextPath}/assets/image/buskingZone/calendar.png">
+						<img id="calendar" src="${pageContext.request.contextPath}/assets/image/company/calendar.png">
 					</div>
 					<div class="form-group">
 						<div class="time-table">
-							<input class="input-time" type="text" id="start-time" name="start-time" placeholder="시간 입력"> <img class="from-img" src="${pageContext.request.contextPath}/assets/image/buskingZone/icon/from.png"> <input class="input-time" type="text" id="start-time" name="start-time" placeholder="시간 입력">
+							<input class="input-time" type="text" id="start-time" name="start-time" placeholder="시간 입력"> <img class="from-img" src="${pageContext.request.contextPath}/assets/image/company/icon/from.png"> <input class="input-time" type="text" id="start-time" name="start-time" placeholder="시간 입력">
 							<button class="img-btn" type="submit">
-								<img class="btn-img" src="${pageContext.request.contextPath}/assets/image/buskingZone/icon/add.png">
+								<img class="btn-img" src="${pageContext.request.contextPath}/assets/image/company/icon/add.png">
 							</button>
 						</div>
 					</div>
 					<div class="form-group">
 						<ul>
-							<li class="time-list"><span class="list-time">18:00</span> <img class="from-img" src="${pageContext.request.contextPath}/assets/image/buskingZone/icon/from.png"> <span class="list-time">20:00</span>
+							<li class="time-list"><span class="list-time">18:00</span> <img class="from-img" src="${pageContext.request.contextPath}/assets/image/company/icon/from.png"> <span class="list-time">20:00</span>
 								<button class="img-btn" type="submit">
-									<img class="btn-img" src="${pageContext.request.contextPath}/assets/image/buskingZone/icon/delete.png">
+									<img class="btn-img" src="${pageContext.request.contextPath}/assets/image/company/icon/delete.png">
 								</button></li>
-							<li class="time-list"><span class="list-time">20:00</span> <img class="from-img" src="${pageContext.request.contextPath}/assets/image/buskingZone/icon/from.png"> <span class="list-time">22:00</span>
+							<li class="time-list"><span class="list-time">20:00</span> <img class="from-img" src="${pageContext.request.contextPath}/assets/image/company/icon/from.png"> <span class="list-time">22:00</span>
 								<button class="img-btn" type="submit">
-									<img class="btn-img" src="${pageContext.request.contextPath}/assets/image/buskingZone/icon/delete.png">
+									<img class="btn-img" src="${pageContext.request.contextPath}/assets/image/company/icon/delete.png">
 								</button></li>
 						</ul>
 					</div>

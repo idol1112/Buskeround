@@ -41,48 +41,51 @@
 				<div id="mypage-right-header">
 					<h5>공연장 관리</h5>
 				</div>
-				<div id="mypage-left-content">
-					<p class="content-title">공연 장소</p>
-
-					<div class="place-add">
-						<input type="text" placeholder="공연 장소를 입력하세요" value="">
-						<button class="img-btn" type="submit">
-							<img class="btn-img" src="${pageContext.request.contextPath}/assets/image/buskingZone/icon/add.png">
-						</button>
+				<form action="${pageContext.request.contextPath}/company/stageInsert" method="post">
+					<input type="hidden" name="user_no" value="${sessionScope.authUser.user_no }">
+					<div id="mypage-left-content">
+						<p class="content-title">공연 장소</p>
+	
+						<div class="place-add">
+							<input type="text" name="stage_name" placeholder="공연 장소를 입력하세요" value="">
+							<button class="img-btn" type="submit">
+								<img class="btn-img" src="${pageContext.request.contextPath}/assets/image/company/icon/add.png">
+							</button>
+						</div>
+						<ul class="place-list-group">
+							<li class="place-list">7층 스테이지
+								<button class="img-btn" type="submit">
+									<img class="btn-img" src="${pageContext.request.contextPath}/assets/image/company/icon/delete.png">
+								</button>
+							</li>
+							<li class="place-list">8층 카페
+								<button class="img-btn" type="submit">
+									<img class="btn-img" src="${pageContext.request.contextPath}/assets/image/company/icon/delete.png">
+								</button>
+							</li>
+						</ul>
 					</div>
-					<ul class="place-list-group">
-						<li class="place-list">7층 스테이지
-							<button class="img-btn" type="submit">
-								<img class="btn-img" src="${pageContext.request.contextPath}/assets/image/buskingZone/icon/delete.png">
-							</button>
-						</li>
-						<li class="place-list">8층 카페
-							<button class="img-btn" type="submit">
-								<img class="btn-img" src="${pageContext.request.contextPath}/assets/image/buskingZone/icon/delete.png">
-							</button>
-						</li>
-					</ul>
-				</div>
-				<div id="mypage-right-content">
-					<p class="content-title">공연 조건</p>
-
-					<div class="condition-state">우천시 진행</div>
-					<label class="radio-inline"> <input type="radio" name="rain-keepgoing" id="rain-keepgoing" value="able" checked="checked"> 가능
-					</label> <label class="radio-inline"> <input type="radio" name="rain-keepgoing" id="rain-keepgoing" value="disable"> 불가능
-					</label>
-					<div class="condition-state">무대조명</div>
-					<label class="radio-inline"> <input type="radio" name="stage-lighting" id="stage-lighting" value="able" checked="checked"> 가능
-					</label> <label class="radio-inline"> <input type="radio" name="stage-lighting" id="stage-lighting" value="disable"> 불가능
-					</label>
-					<div class="condition-state">주차</div>
-					<label class="radio-inline"> <input type="radio" name="parking" id="parking" value="able" checked="checked"> 가능
-					</label> <label class="radio-inline"> <input type="radio" name="parking" id="parking" value="disable"> 불가능
-					</label>
-
-				</div>
-				<div class="btn-area">
-					<button type="submit" class="btn-primary btn-sm">저장</button>
-				</div>
+					<div id="mypage-right-content">
+						<p class="content-title">공연 조건</p>
+	
+						<div class="condition-state">우천시 진행</div>
+						<label class="radio-inline"> <input type="radio" name="rain-progress" id="rain-progress" value="1" checked="checked"> 가능
+						</label> <label class="radio-inline"> <input type="radio" name="rain-progress" id="rain-progress" value="0"> 불가능
+						</label>
+						<div class="condition-state">무대조명</div>
+						<label class="radio-inline"> <input type="radio" name="stage-light" id="stage-light" value="1" checked="checked"> 가능
+						</label> <label class="radio-inline"> <input type="radio" name="stage-light" id="stage-light" value="0"> 불가능
+						</label>
+						<div class="condition-state">주차</div>
+						<label class="radio-inline"> <input type="radio" name="parking" id="parking" value="1" checked="checked"> 가능
+						</label> <label class="radio-inline"> <input type="radio" name="parking" id="parking" value="0"> 불가능
+						</label>
+	
+					</div>
+					<div class="btn-area">
+						<button type="submit" class="btn-primary btn-sm">저장</button>
+					</div>
+				</form>
 			</div>
 		</div>
 		<div class="col-xl-2"></div>

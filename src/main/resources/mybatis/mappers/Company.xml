@@ -6,8 +6,7 @@
 	<insert id="insertCompanyInfo" parameterType="CompanyVo">
 		<![CDATA[
 			insert into company
-			values( SEQ_COM_NO.nextval,
-			        #{user_no},
+			values( #{user_no},
 			        #{com_img},
 			        #{com_name},
 			        #{address},

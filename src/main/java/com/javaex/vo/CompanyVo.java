@@ -3,7 +3,6 @@ package com.javaex.vo;
 public class CompanyVo {
 	
 	//필드
-	private int com_no;
 	private int user_no;
 	private String com_img;
 	private String com_name;
@@ -20,10 +19,9 @@ public class CompanyVo {
 		super();
 	}
 	
-	public CompanyVo(int com_no, int user_no, String com_img, String com_name, String address, String com_number,
+	public CompanyVo(int user_no, String com_img, String com_name, String address, String com_number,
 			String ceo_name, String business_number, int latitude, int longitude) {
 		super();
-		this.com_no = com_no;
 		this.user_no = user_no;
 		this.com_img = com_img;
 		this.com_name = com_name;
@@ -50,16 +48,6 @@ public class CompanyVo {
 
 
 	//메소드 gs
-	public int getCom_no() {
-		return com_no;
-	}
-
-
-	public void setCom_no(int com_no) {
-		this.com_no = com_no;
-	}
-
-
 	public int getUser_no() {
 		return user_no;
 	}
@@ -153,7 +141,7 @@ public class CompanyVo {
 	//메소드
 	@Override
 	public String toString() {
-		return "CompanyVo [com_no=" + com_no + ", user_no=" + user_no + ", com_img=" + com_img + ", com_name="
+		return "CompanyVo [user_no=" + user_no + ", com_img=" + com_img + ", com_name="
 				+ com_name + ", address=" + address + ", com_number=" + com_number + ", ceo_name=" + ceo_name
 				+ ", business_number=" + business_number + ", latitude=" + latitude + ", longitude=" + longitude + "]";
 	}
