@@ -49,37 +49,39 @@
                     <h5>제휴사 정보</h5>
                 </div>
                 <div id="mypage-right-content">
-                    <form action="" method="POST">
+                    <form action="${pageContext.request.contextPath}/Company/companyModify" method="POST" enctype="multipart/form-data">
+                    	<input type="hidden" name="user_no" value="${requestScope.companyVo.user_no}">
+                    	<input type="hidden" name="used_img" value="${requestScope.companyVo.com_img}">
                         <table>
                             <tr>
                                 <td class="table-head"><label for="profilepicture">회사 로고</label></td>
-                                <td>
-                                        <img id="profilepicture" src="${pageContext.request.contextPath}/assets/image/buskingZone/cgv.png"><br>
-                                        <div id="profile-btn">
-                                            <button id="profilepicturechange" class="btn btn-success btn-sm" type="submit">변경</button> 
-                                            <button id="profilepicturedelete" class="btn btn-danger btn-sm" type="submit">삭제</button>
-                                        </div>
-                                </td>
+                                <td><img id="profilepicture" src="${pageContext.request.contextPath}/upload/${requestScope.companyVo.com_img}"><br>
+									<label id="profilepicturechange" class="btn-success btn-sm">
+										<input type="file" name="com_img" value="${requestScope.companyVo.com_img}"/>
+										변경
+									</label>
+									<label id="profilepicturedelete" class="btn-danger btn-sm">삭제</label>
+								</td>
                             </tr>
                             <tr>
-                                <td class="table-head"><label class="required" for="buildingname">건물명</label></td>
-                                <td><input class="input" type="text" id="buildingname" name="buildingname" value="신촌 CGV"></td>
+                                <td class="table-head"><label class="required" for="com_name">건물명</label></td>
+                                <td><input class="input" type="text" id="com_name" name="com_name" value="${requestScope.companyVo.com_name}"></td>
                             </tr>
                             <tr>
                                 <td class="table-head"><label class="required" for="address">주소</label></td>
-                                <td><input class="input" type="text" id="address" name="address" value="서울 서대문구 신촌로 129 아트레온"></td>
+                                <td><input class="input" type="text" id="address" name="address" value="${requestScope.companyVo.address}"></td>
                             </tr>
                             <tr>
-                                <td class="table-head"><label class="required" for="companycontact">연락처</label></td>
-                                <td><input class="input" type="text" id="companycontact" name="companycontact" value="1544-1122"></td>
+                                <td class="table-head"><label class="required" for="com_number">연락처</label></td>
+                                <td><input class="input" type="text" id="com_number" name="com_number" value="${requestScope.companyVo.com_number}"></td>
                             </tr>
                             <tr>
-                                <td class="table-head"><label class="required" for="representative">대표자명</label></td>
-                                <td><input class="input" type="text" id="representative" name="representative" value="김덕배"></td>
+                                <td class="table-head"><label class="required" for="ceo_name">대표자명</label></td>
+                                <td><input class="input" type="text" id="ceo_name" name="ceo_name" value="${requestScope.companyVo.ceo_name}"></td>
                             </tr>
                             <tr>
-                                <td class="table-head"><label class="required" for="businessnumber">사업자번호</label></td>
-                                <td><input class="input" type="text" id="businessnumber" name="businessnumber" value="104-81-45690"></td>
+                                <td class="table-head"><label class="required" for="business_number">사업자번호</label></td>
+                                <td><input class="input" type="text" id="business_number" name="business_number" value="${requestScope.companyVo.business_number}"></td>
                             </tr>
                         </table>
                         <button type="submit" class="float-end btn btn-primary btn-sm" id="profilesubmit">저장</button>

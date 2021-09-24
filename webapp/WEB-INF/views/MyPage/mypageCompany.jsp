@@ -33,14 +33,7 @@
 
 			<div id="mypage-right">
 				<div id="mypage-right-header">
-					<c:choose>
-						<c:when test="${authUser.company_type == 1}">
-							<h5>제휴사 등록</h5>
-						</c:when>
-						<c:otherwise>
-							<h5>제휴사 수정</h5>
-						</c:otherwise>
-					</c:choose>
+					<h5>제휴사 등록</h5>
 				</div>
 				<div id="mypage-right-content">
 					<form action="${pageContext.request.contextPath}/Company/companyInsert" method="post" enctype="multipart/form-data">
@@ -54,7 +47,8 @@
 										    <input type="file" name="com_img"/>
 										    변경
 										</label>
-										<label id="profilepicturedelete" class="btn-danger btn-sm">삭제</label></td>
+										<label id="profilepicturedelete" class="btn-danger btn-sm">삭제</label>
+									</td>
 								</tr>
 								<tr>
 									<td class="table-head"><label class="required" for="com_name">건물명</label></td>

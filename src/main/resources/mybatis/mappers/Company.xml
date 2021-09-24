@@ -19,4 +19,35 @@
 			        )
 		]]>
 	</insert>
+	
+	<!-- 제휴사 정보 불러오기 -->
+	<select id="selectCompany" resultType="CompanyVo" parameterType="int">
+		<![CDATA[
+			select
+			    user_no,
+			    com_img,
+			    com_name,
+			    address,
+			    com_number,
+			    ceo_name,
+			    business_number
+			from company
+			where user_no = #{user_no}
+		]]>
+	</select>
+	
+	<!-- 제휴사 정보 수정 -->
+	<update id="companyUpdate" parameterType="CompanyVo">
+		<![CDATA[
+			update  company
+			set
+			        com_img = #{com_img},
+			        com_name = #{com_name},
+			        address = #{address},
+			        com_number = #{com_number},
+			        ceo_name = #{ceo_name},
+			        business_number = #{business_number}
+			where   user_no = #{user_no}	
+		]]>
+	</update>
 </mapper>

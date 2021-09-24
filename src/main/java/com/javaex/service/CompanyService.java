@@ -74,5 +74,61 @@ public class CompanyService {
 		return companyDao.companyInsert(companyVo);
 	}
 	
-	//company_type 바꾸기
+	//제휴사 정보 불러오기
+	public CompanyVo selectCompany(int user_no) {
+		System.out.println("CompanyService.selectCompany()");
+		
+		return companyDao.selectCompany(user_no);
+	}
+	
+	//제휴사 정보 수정
+	public int companyModify(Map<String, Object> companyInsertMap) {
+		System.out.println("CompanyService.companyModify()");
+		
+		MultipartFile file = (MultipartFile) companyInsertMap.get("com_img");
+		int user_no = (int)companyInsertMap.get("user_no");
+		String com_name = (String)companyInsertMap.get("com_name");
+		String address = (String)companyInsertMap.get("address");
+		String com_number = (String)companyInsertMap.get("com_number");
+		String ceo_name = (String)companyInsertMap.get("ceo_name");
+		String business_number = (String)companyInsertMap.get("business_number");
+
+		String saveDir = "C:\\javaStudy\\upload";
+
+		// 확장자
+		String exName = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
+		System.out.println("exName:" + exName);
+		
+		// 저장파일이름(관리 떄문에 겹치지 않는 새이름 부여)
+		String logoFile = System.currentTimeMillis() + UUID.randomUUID().toString() + exName;
+		System.out.println("saveName:" + logoFile);
+
+		// 파일패스
+		String filePath = saveDir + "\\" + logoFile;
+		System.out.println("filePath:" + filePath);
+		
+		// 파일 서버하드디스크에 저장
+		try {
+
+			byte[] fileData = file.getBytes();
+			OutputStream out = new FileOutputStream(filePath);
+			BufferedOutputStream bout = new BufferedOutputStream(out);
+
+			bout.write(fileData);
+			bout.close();
+
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		CompanyVo companyVo = new CompanyVo(user_no, logoFile, com_name, address, com_number, ceo_name, business_number);
+		
+		return companyDao.companyUpdate(companyVo);
+	}
+	
+	//제휴사 정보 수정(이미지 변경x)
+	public int companyModify2(CompanyVo companyVo) {
+		
+		return companyDao.companyUpdate(companyVo);
+	}
 }

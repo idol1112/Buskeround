@@ -16,6 +16,10 @@ public class CompanyVo {
 	
 	
 	//생성자
+	public CompanyVo() {
+		super();
+	}
+	
 	public CompanyVo(int com_no, int user_no, String com_img, String com_name, String address, String com_number,
 			String ceo_name, String business_number, int latitude, int longitude) {
 		super();
