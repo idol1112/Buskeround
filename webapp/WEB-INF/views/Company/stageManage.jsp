@@ -41,7 +41,7 @@
 				<div id="mypage-right-header">
 					<h5>공연장 관리</h5>
 				</div>
-				<form action="${pageContext.request.contextPath}/company/stageInsert" method="post">
+				<form action="${pageContext.request.contextPath}/Company/stageInsert" method="get">
 					<input type="hidden" name="user_no" value="${sessionScope.authUser.user_no }">
 					<div id="mypage-left-content">
 						<p class="content-title">공연 장소</p>
@@ -69,12 +69,12 @@
 						<p class="content-title">공연 조건</p>
 	
 						<div class="condition-state">우천시 진행</div>
-						<label class="radio-inline"> <input type="radio" name="rain-progress" id="rain-progress" value="1" checked="checked"> 가능
-						</label> <label class="radio-inline"> <input type="radio" name="rain-progress" id="rain-progress" value="0"> 불가능
+						<label class="radio-inline"> <input type="radio" name="rain_progress" id="rain_progress" value="1" checked="checked"> 가능
+						</label> <label class="radio-inline"> <input type="radio" name="rain_progress" id="rain_progress" value="0"> 불가능
 						</label>
 						<div class="condition-state">무대조명</div>
-						<label class="radio-inline"> <input type="radio" name="stage-light" id="stage-light" value="1" checked="checked"> 가능
-						</label> <label class="radio-inline"> <input type="radio" name="stage-light" id="stage-light" value="0"> 불가능
+						<label class="radio-inline"> <input type="radio" name="stage_light" id="stage_light" value="1" checked="checked"> 가능
+						</label> <label class="radio-inline"> <input type="radio" name="stage_light" id="stage_light" value="0"> 불가능
 						</label>
 						<div class="condition-state">주차</div>
 						<label class="radio-inline"> <input type="radio" name="parking" id="parking" value="1" checked="checked"> 가능
