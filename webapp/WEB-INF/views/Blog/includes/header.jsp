@@ -93,13 +93,13 @@
       </div>
       <div class="modal-body clear-fix" id="modal_body">
         <div>
-          <label class="modal-label" id="modal_label">장소명</label>
-          <input type="text" placeholder="장소명을 입력세주세요" id="title">
+          <label class="modal-label" id="modal_label">제목</label>
+          <input type="text" placeholder="제목을 입력세주세요" id="title">
         </div>
 
         <div>
           <label class="modal-label" id="modal_label">위치</label>
-          <input type="text" placeholder="위치를 입력세주세요">
+          <input type="text" placeholder="위치를 입력세주세요" value="홍대 앞마당">
         </div>
 
         <button class="float-end mylocation">내 위치</button>
@@ -107,21 +107,12 @@
 
         <!-- 라이브/사진 -->
         <!-- 링크 -->
-        <div class="thumbnail">
-          <input type="radio" name="thumbnail" id="live" required>
-          <label for="live">라이브 스트리밍</label>
-
-          <div class="reveal-if-active">
-            <input type="text" id="livelink" class="require-if-active" data-require-pair="#live" placeholder="유튜브 라이브 링크를 입력해주세요.">
-          </div>
-        </div>
+        <input type="hidden" id="livelink">
 
         <!-- 사진 -->
         <div class="thumbnail">
-          <input type="radio" name="thumbnail" id="picture" required>
-          <label for="picture">사진 업로드</label>
-
-          <div class="reveal-if-active">
+          <div class="img_box">
+            <label for="picture">사진 업로드</label>
             <input type="file" id="thumbnailpicture" class="require-if-active" data-require-pair="#picture">
           </div>
         </div>
@@ -129,7 +120,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary close" data-dismiss="modal">취소</button>
-        <button type="button" class="btn btn-primary">방송 시작</button>
+        <button type="button" class="btn btn-primary close" id="perform_start">방송 시작</button>
       </div>
     </div>
   </div>
@@ -139,6 +130,11 @@
 
 
 <script type="text/javascript">
+
+	// 썸네일 등록 버튼 숨기기(모달창)
+	$(".img_box").hide();
+
+	// 공연시작 버튼 눌렀을 때(배너)
 	$(".btn_start").on("click", function() {
 		event.preventDefault();
 
@@ -146,7 +142,7 @@
 
 		$.ajax({
 			// 컨트롤러에서 대기중인 URL 주소이다.
-			url : "https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=UChlgI3UHCOnwUGzWzbJ3H5w&eventType=live&type=video&key=AIzaSyDTEc6Ma-ieVQBI8oQWgVxRXCHIOIMuFtk",
+			url : "https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=UCxd9m2kFCFN1nIWB8ZOscqg&eventType=live&type=video&key=AIzaSyDTEc6Ma-ieVQBI8oQWgVxRXCHIOIMuFtk",
 
 			// HTTP method type(GET, POST) 형식이다.
 			type : "get",
@@ -174,6 +170,10 @@
 
 				     $("#title").val(title);
 				     $("#livelink").val(video_id);
+
+				     if (result === null) {
+						$(".img_box").show();
+					}
 				 }
 			},
 
@@ -184,9 +184,49 @@
 		});
 	});
 
-	$(".close").on("click", function() {
-		console.log("testing")
 
+	// 공연시작 버튼 눌렀을 때(모달)
+	$("#perform_start").on("click", function() {
+
+		// 공연 데이터 묶기
+		var perform_data = {
+    			title : asd,
+    			p_start : 123,
+    			p_img : 123,
+    			live_url : 123
+		};
+
+		$.ajax({
+			// 컨트롤러에서 대기중인 URL 주소이다.
+			url : "${pageContext.request.contextPath}/api/blog/dbSave",
+
+			// HTTP method type(GET, POST) 형식이다.
+			type : "post",
+
+			// Json 형태의 데이터로 보낸다.
+			contentType : "application/json",
+
+			// Json 형식의 데이터를 받는다.
+			dataType : "json",
+
+			data : {
+				perform_data
+			},
+
+			// 성공일 경우 success로 들어오며, 'result'는 응답받은 데이터이다.
+			success : function(result) {
+				/*성공시 처리해야될 코드 작성*/
+
+			},
+
+			// 실패할경우 error로 들어온다.
+			error : function(XHR, status, error) {
+				console.error(status + " : " + error);
+			}
+		});
+	});
+
+	$(".close").on("click", function() {
 		$("#exampleModal").modal('hide');
 	});
 </script>

@@ -10,7 +10,7 @@ import com.javaex.service.UserService;
 
 @RequestMapping(value = "/api/user/")
 @Controller
-public class ApiUserController {
+public class ApiBlogController {
 
   @Autowired
   UserService userService;
@@ -34,4 +34,5 @@ public class ApiUserController {
   }
 
 }
+
 
