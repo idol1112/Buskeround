@@ -56,7 +56,7 @@
 							<td></td>
 							<td>활동명</td>
 							<td>주요장르</td>
-							<td>아티스트 정보</td>
+							<td>주요정보</td>
 							<td>좋아요</td>
 							<td>팬 되기</td>
 						</tr>
@@ -111,56 +111,13 @@
 				</div>
 				<table>
 					<tbody>
+					<c:forEach items="${artistLiveList}" var="aLive">
 						<tr>
-							<td>김진호</td>
+							<td>"${aLive.nickname}"</td>
 							<td>오후 3:24~</td>
 							<td>[위치 보기]</td>
 						</tr>
-						<tr>
-							<td>나비</td>
-							<td>오후 8:00~</td>
-							<td>[위치 보기]</td>
-						</tr>
-						<tr>
-							<td>이석훈</td>
-							<td>오후 8:20~</td>
-							<td>[위치 보기]</td>
-						</tr>
-						<tr>
-							<td>지석진</td>
-							<td>오후 8:40~</td>
-							<td>[위치 보기]</td>
-						</tr>
-						<tr>
-							<td>이지은</td>
-							<td>오후 9:05~</td>
-							<td>[위치 보기]</td>
-						</tr>
-						<tr>
-							<td>홀리뱅</td>
-							<td>오후 9:22~</td>
-							<td>[위치 보기]</td>
-						</tr>
-						<tr>
-							<td>하석훈</td>
-							<td>오후 9:24~</td>
-							<td>[위치 보기]</td>
-						</tr>
-						<tr>
-							<td>YGXGIRL</td>
-							<td>오후 10:00~</td>
-							<td>[위치 보기]</td>
-						</tr>
-						<tr>
-							<td>케이윌</td>
-							<td>오후 11:09~</td>
-							<td>[위치 보기]</td>
-						</tr>
-						<tr>
-							<td>웨이비</td>
-							<td>오후 11:25~</td>
-							<td>[위치 보기]</td>
-						</tr>
+						</c:forEach>
 					</tbody>
 				</table>
 			</div>

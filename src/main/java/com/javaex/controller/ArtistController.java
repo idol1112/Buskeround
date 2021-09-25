@@ -28,6 +28,19 @@ public class ArtistController {
 		return"/Artist/ArtistRenk";
 	}
 	
+	//라이브하고 있는 아티스트 리스트
+	@RequestMapping (value = "/ArtistLive", method = {RequestMethod.GET, RequestMethod.POST})
+	public String artistlive(Model model) {
+		
+		System.out.println("[CompanyController.ArtistLive()]");
+		
+		model.addAttribute("artistLiveList", artistService.getArtistLive());
+		
+		System.out.println(artistService.getArtistLive());
+		
+		return "/Artist/ArtistLive";
+	}
+	
 	
 	
 	//아티스트 팬 많은 순

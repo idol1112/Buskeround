@@ -20,5 +20,10 @@ public class ArtistService {
 		return artistDao.getArtistList();
 	}
 	
+	//아티스트 라이브 리스트 가져오기
+	public List<UserVo> getArtistLive() {
+		
+		return artistDao.getArtistLive();
+	}
 
 }

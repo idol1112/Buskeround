@@ -21,5 +21,12 @@ public class ArtistDao {
 		return sqlsession.selectList("artist.getArtist");
 	}
 	
+	//아티스트 라이브 리스트 가져오기
+	public List<UserVo> getArtistLive() {
+		System.out.println("[Artist.getArtistLive()]");
+		
+		return sqlsession.selectList("artist.getArtistLive");
+	}
+	
 	
 }

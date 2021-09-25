@@ -32,4 +32,29 @@
 		]]>
 	</select>
 
+
+	<!-- 아티스트 라이브 리스트 -->
+	<select id="getArtistlive" resultType="UserVo">
+		<![CDATA[
+		SELECT
+		
+		    user_no, 
+		    nickname, 
+		    gender, 
+		    birthday,
+		    genre,
+		    genre_type,
+		    fan,
+		    likes,
+		    live,
+		    artist_regdate,
+		    user_type,
+		    company_type
+		from users
+		where live = 1
+		
+		]]>
+	</select>
+
+
 </mapper>
