@@ -10,8 +10,8 @@ public class PostVo {
   private String title;
   private String content;
   private String reg_date;
-  private int latitude;
-  private int longitude;
+  private double latitude;
+  private double longitude;
   private String p_start;
   private String p_end;
   private String p_img;
@@ -23,7 +23,7 @@ public class PostVo {
     super();
   }
 
-  public PostVo(int user_no, int live, int post_no, int category, String title, String content, String reg_date, int latitude, int longitude,
+  public PostVo(int user_no, int live, int post_no, int category, String title, String content, String reg_date, double latitude, double longitude,
       String p_start, String p_end, String p_img, String live_url, int hit) {
     super();
     this.user_no = user_no;
@@ -99,19 +99,19 @@ public class PostVo {
     this.reg_date = reg_date;
   }
 
-  public int getLatitude() {
+  public double getLatitude() {
     return latitude;
   }
 
-  public void setLatitude(int latitude) {
+  public void setLatitude(double latitude) {
     this.latitude = latitude;
   }
 
-  public int getLongitude() {
+  public double getLongitude() {
     return longitude;
   }
 
-  public void setLongitude(int longitude) {
+  public void setLongitude(double longitude) {
     this.longitude = longitude;
   }
 

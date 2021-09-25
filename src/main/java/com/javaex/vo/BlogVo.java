@@ -1,147 +1,158 @@
 package com.javaex.vo;
 
 public class BlogVo {
-	
-	//Field
-	private int user_no;
-	private String id;
-	private String nickname;
-	private String user_img;
-	private int genre;
-	private String intro;
-	private String banner;
-	private String y_url;
-	private String f_url;
-	private String i_url;
-	private int likes;
-	private int fan;
 
-	//Constructor
-	public BlogVo() {
-		super();
-	}
-	
-	public BlogVo(int user_no, String id, String nickname, String user_img, int genre, String intro, String banner,
-			String y_url, String f_url, String i_url, int likes, int fan) {
-		super();
-		this.user_no = user_no;
-		this.id = id;
-		this.nickname = nickname;
-		this.user_img = user_img;
-		this.genre = genre;
-		this.intro = intro;
-		this.banner = banner;
-		this.y_url = y_url;
-		this.f_url = f_url;
-		this.i_url = i_url;
-		this.likes = likes;
-		this.fan = fan;
-	}
+  // Field
+  private int user_no;
+  private String id;
+  private String nickname;
+  private String user_img;
+  private int genre;
+  private String intro;
+  private String banner;
+  private String y_url;
+  private String f_url;
+  private String i_url;
+  private int likes;
+  private int fan;
+  private int live;
 
-	//Method G/S
-	public int getUser_no() {
-		return user_no;
-	}
+  // Constructor
+  public BlogVo() {
+    super();
+  }
 
-	public void setUser_no(int user_no) {
-		this.user_no = user_no;
-	}
+  public BlogVo(int user_no, String id, String nickname, String user_img, int genre, String intro, String banner, String y_url, String f_url,
+      String i_url, int likes, int fan, int live) {
+    super();
+    this.user_no = user_no;
+    this.id = id;
+    this.nickname = nickname;
+    this.user_img = user_img;
+    this.genre = genre;
+    this.intro = intro;
+    this.banner = banner;
+    this.y_url = y_url;
+    this.f_url = f_url;
+    this.i_url = i_url;
+    this.likes = likes;
+    this.fan = fan;
+    this.live = live;
+  }
 
-	public String getId() {
-		return id;
-	}
 
-	public void setId(String id) {
-		this.id = id;
-	}
+  // Method G/S
+  public int getUser_no() {
+    return user_no;
+  }
 
-	public String getNickname() {
-		return nickname;
-	}
+  public int getLive() {
+    return live;
+  }
 
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
-	}
+  public void setLive(int live) {
+    this.live = live;
+  }
 
-	public String getUser_img() {
-		return user_img;
-	}
+  public void setUser_no(int user_no) {
+    this.user_no = user_no;
+  }
 
-	public void setUser_img(String user_img) {
-		this.user_img = user_img;
-	}
+  public String getId() {
+    return id;
+  }
 
-	public int getGenre() {
-		return genre;
-	}
+  public void setId(String id) {
+    this.id = id;
+  }
 
-	public void setGenre(int genre) {
-		this.genre = genre;
-	}
+  public String getNickname() {
+    return nickname;
+  }
 
-	public String getIntro() {
-		return intro;
-	}
+  public void setNickname(String nickname) {
+    this.nickname = nickname;
+  }
 
-	public void setIntro(String intro) {
-		this.intro = intro;
-	}
+  public String getUser_img() {
+    return user_img;
+  }
 
-	public String getBanner() {
-		return banner;
-	}
+  public void setUser_img(String user_img) {
+    this.user_img = user_img;
+  }
 
-	public void setBanner(String banner) {
-		this.banner = banner;
-	}
+  public int getGenre() {
+    return genre;
+  }
 
-	public String getY_url() {
-		return y_url;
-	}
+  public void setGenre(int genre) {
+    this.genre = genre;
+  }
 
-	public void setY_url(String y_url) {
-		this.y_url = y_url;
-	}
+  public String getIntro() {
+    return intro;
+  }
 
-	public String getF_url() {
-		return f_url;
-	}
+  public void setIntro(String intro) {
+    this.intro = intro;
+  }
 
-	public void setF_url(String f_url) {
-		this.f_url = f_url;
-	}
+  public String getBanner() {
+    return banner;
+  }
 
-	public String getI_url() {
-		return i_url;
-	}
+  public void setBanner(String banner) {
+    this.banner = banner;
+  }
 
-	public void setI_url(String i_url) {
-		this.i_url = i_url;
-	}
+  public String getY_url() {
+    return y_url;
+  }
 
-	public int getLikes() {
-		return likes;
-	}
+  public void setY_url(String y_url) {
+    this.y_url = y_url;
+  }
 
-	public void setLikes(int likes) {
-		this.likes = likes;
-	}
+  public String getF_url() {
+    return f_url;
+  }
 
-	public int getFan() {
-		return fan;
-	}
+  public void setF_url(String f_url) {
+    this.f_url = f_url;
+  }
 
-	public void setFan(int fan) {
-		this.fan = fan;
-	}
+  public String getI_url() {
+    return i_url;
+  }
 
-	//Method - Ordinary
-	@Override
-	public String toString() {
-		return "BlogVo [user_no=" + user_no + ", id=" + id + ", nickname=" + nickname + ", user_img=" + user_img
-				+ ", genre=" + genre + ", intro=" + intro + ", banner=" + banner + ", y_url=" + y_url + ", f_url="
-				+ f_url + ", i_url=" + i_url + ", likes=" + likes + ", fan=" + fan + "]";
-	}
-	
+  public void setI_url(String i_url) {
+    this.i_url = i_url;
+  }
+
+  public int getLikes() {
+    return likes;
+  }
+
+  public void setLikes(int likes) {
+    this.likes = likes;
+  }
+
+  public int getFan() {
+    return fan;
+  }
+
+  public void setFan(int fan) {
+    this.fan = fan;
+  }
+
+  // Method - Ordinary
+  @Override
+  public String toString() {
+    return "BlogVo [user_no=" + user_no + ", id=" + id + ", nickname=" + nickname + ", user_img=" + user_img + ", genre=" + genre + ", intro=" + intro
+        + ", banner=" + banner + ", y_url=" + y_url + ", f_url=" + f_url + ", i_url=" + i_url + ", likes=" + likes + ", fan=" + fan + ", live=" + live
+        + "]";
+  }
+
 
 }

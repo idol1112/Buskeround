@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!---- 배너 ---->
 <div class=" banner">
@@ -8,9 +9,19 @@
   </a>
 
   <!-- 공연시작 버튼 -->
-  <form id="form" action="">
-    <button type="submit" class="btn_start">공연시작</button>
-  </form>
+  <c:if test="${blogVo.user_no == authUser.user_no}">
+    <c:if test="${blogVo.live == 0}">
+      <form id="form" action="">
+        <button type="submit" class="btn_start">공연시작</button>
+      </form>
+    </c:if>
+
+    <c:if test="${blogVo.live == 1}">
+      <form id="form" action="">
+        <button type="submit" class="btn_end">공연종료</button>
+      </form>
+    </c:if>
+  </c:if>
 
   <!-- sns 버튼 -->
   <a href="">
@@ -109,6 +120,9 @@
         <!-- 링크 -->
         <input type="hidden" id="livelink">
 
+        <!-- 공연시작 시간 -->
+        <input type="hidden" id="time_start">
+
         <!-- 사진 -->
         <div class="thumbnail">
           <div class="img_box">
@@ -120,7 +134,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary close" data-dismiss="modal">취소</button>
-        <button type="button" class="btn btn-primary close" id="perform_start">방송 시작</button>
+        <button type="submit" class="btn btn-primary close" id="perform_start">방송 시작</button>
       </div>
     </div>
   </div>
@@ -133,6 +147,73 @@
 
 	// 썸네일 등록 버튼 숨기기(모달창)
 	$(".img_box").hide();
+
+	// 공연종료 버튼 눌렀을 때(배너)
+	$(".btn_end").on("click", function() {
+
+		$.ajax({
+			// 컨트롤러에서 대기중인 URL 주소이다.
+			url : "${pageContext.request.contextPath}/api/blog/live_end",
+
+			// HTTP method type(GET, POST) 형식이다.
+			type : "get",
+
+			// Json 형태의 데이터로 보낸다.
+			contentType : "application/json",
+
+			// Json 형식의 데이터를 받는다.
+			dataType : "json",
+
+			data : {
+				user_no : ${blogVo.user_no}
+			},
+
+			// 성공일 경우 success로 들어오며, 'result'는 응답받은 데이터이다.
+			success : function(result) {
+				/*성공시 처리해야될 코드 작성*/
+
+
+			},
+
+			// 실패할경우 error로 들어온다.
+			error : function(XHR, status, error) {
+				console.error(status + " : " + error);
+			}
+		});
+	});
+
+	// 블로그 접속했을 때
+	$(document).ready(function(){
+
+		$.ajax({
+			// 컨트롤러에서 대기중인 URL 주소이다.
+			url : "${pageContext.request.contextPath}/api/blog/blog_id/${blogVo.id}",
+
+			// HTTP method type(GET, POST) 형식이다.
+			type : "post",
+
+			// Json 형태의 데이터로 보낸다.
+			contentType : "application/json",
+
+			// Json 형식의 데이터를 받는다.
+			dataType : "json",
+
+			data : {
+
+			},
+
+			// 성공일 경우 success로 들어오며, 'result'는 응답받은 데이터이다.
+			success : function(result) {
+				/*성공시 처리해야될 코드 작성*/
+
+			},
+
+			// 실패할경우 error로 들어온다.
+			error : function(XHR, status, error) {
+				console.error(status + " : " + error);
+			}
+		});
+	});
 
 	// 공연시작 버튼 눌렀을 때(배너)
 	$(".btn_start").on("click", function() {
@@ -161,6 +242,11 @@
 			success : function(result) {
 				/*성공시 처리해야될 코드 작성*/
 
+				// 유튜브 방송 중이 아닐 때 사진 올리는 버튼 보이기
+				if (result.pageInfo.totalResults == 0) {
+					$(".img_box").show();
+				}
+
 				 for (var i = 0; i < result.items.length; i++) {
 				     var items = result.items[i];
 
@@ -170,10 +256,6 @@
 
 				     $("#title").val(title);
 				     $("#livelink").val(video_id);
-
-				     if (result === null) {
-						$(".img_box").show();
-					}
 				 }
 			},
 
@@ -189,16 +271,16 @@
 	$("#perform_start").on("click", function() {
 
 		// 공연 데이터 묶기
-		var perform_data = {
-    			title : asd,
-    			p_start : 123,
-    			p_img : 123,
-    			live_url : 123
+		var postVo = {
+				user_no : ${blogVo.user_no},
+    			title : $("#title").val(),
+    			p_img :  $("#thumbnailpicture").val(),
+    			live_url : $("#livelink").val()
 		};
 
 		$.ajax({
 			// 컨트롤러에서 대기중인 URL 주소이다.
-			url : "${pageContext.request.contextPath}/api/blog/dbSave",
+			url : "${pageContext.request.contextPath}/api/blog/live_start",
 
 			// HTTP method type(GET, POST) 형식이다.
 			type : "post",
@@ -209,9 +291,7 @@
 			// Json 형식의 데이터를 받는다.
 			dataType : "json",
 
-			data : {
-				perform_data
-			},
+			data : JSON.stringify(postVo),
 
 			// 성공일 경우 success로 들어오며, 'result'는 응답받은 데이터이다.
 			success : function(result) {
@@ -226,7 +306,9 @@
 		});
 	});
 
+	// 모달창 닫기
 	$(".close").on("click", function() {
 		$("#exampleModal").modal('hide');
 	});
+
 </script>
