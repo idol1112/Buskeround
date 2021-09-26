@@ -160,3 +160,37 @@ label {
 input[type="file"] {
     display: none;
 }
+
+/* stageManage */
+.radio-group {
+	margin-left: 15px;
+}
+
+.radio-group .radio-inline {
+	margin-right: 60px;
+}
+
+.place-list-group {
+	margin-left:15px;
+}
+
+.place-list {
+	margin-bottom: 8px;
+}
+
+.label {
+	display: inline;
+    padding: .2em .6em .3em;
+    font-size: 100%;
+    font-weight: 800;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
+}
+
+.label-default {
+    background-color: #777;
+}

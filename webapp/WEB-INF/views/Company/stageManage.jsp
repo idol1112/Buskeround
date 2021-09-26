@@ -20,7 +20,7 @@
 
 <!-- css -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/Common/common.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/BuskingZone/company.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/MyPage/mypage.css">
 </head>
 
 <body>
@@ -41,51 +41,73 @@
 				<div id="mypage-right-header">
 					<h5>공연장 관리</h5>
 				</div>
-				<form action="${pageContext.request.contextPath}/Company/stageInsert" method="get">
-					<input type="hidden" name="user_no" value="${sessionScope.authUser.user_no }">
-					<div id="mypage-left-content">
-						<p class="content-title">공연 장소</p>
-	
-						<div class="place-add">
-							<input type="text" name="stage_name" placeholder="공연 장소를 입력하세요" value="">
-							<button class="img-btn" type="submit">
-								<img class="btn-img" src="${pageContext.request.contextPath}/assets/image/company/icon/add.png">
-							</button>
-						</div>
-						<ul class="place-list-group">
-							<li class="place-list">7층 스테이지
-								<button class="img-btn" type="submit">
-									<img class="btn-img" src="${pageContext.request.contextPath}/assets/image/company/icon/delete.png">
-								</button>
-							</li>
-							<li class="place-list">8층 카페
-								<button class="img-btn" type="submit">
-									<img class="btn-img" src="${pageContext.request.contextPath}/assets/image/company/icon/delete.png">
-								</button>
-							</li>
-						</ul>
-					</div>
-					<div id="mypage-right-content">
-						<p class="content-title">공연 조건</p>
-	
-						<div class="condition-state">우천시 진행</div>
-						<label class="radio-inline"> <input type="radio" name="rain_progress" id="rain_progress" value="1" checked="checked"> 가능
-						</label> <label class="radio-inline"> <input type="radio" name="rain_progress" id="rain_progress" value="0"> 불가능
-						</label>
-						<div class="condition-state">무대조명</div>
-						<label class="radio-inline"> <input type="radio" name="stage_light" id="stage_light" value="1" checked="checked"> 가능
-						</label> <label class="radio-inline"> <input type="radio" name="stage_light" id="stage_light" value="0"> 불가능
-						</label>
-						<div class="condition-state">주차</div>
-						<label class="radio-inline"> <input type="radio" name="parking" id="parking" value="1" checked="checked"> 가능
-						</label> <label class="radio-inline"> <input type="radio" name="parking" id="parking" value="0"> 불가능
-						</label>
-	
-					</div>
-					<div class="btn-area">
-						<button type="submit" class="btn-primary btn-sm">저장</button>
-					</div>
-				</form>
+				
+				<div id="mypage-right-content">
+                    <form action="#" method="get">
+                        <table>
+                            <tr>
+                                <td class="table-head"><label for="stage_name">장소명</label></td>
+                                <td><input class="input" type="text" id="stage_name" name="stage_name" value=""></td>
+                            </tr>
+                            <tr>
+                                <td class="table-head"><label for="rain_progress">우천시 진행</label></td>
+                                <td>
+                                	<div class="radio-group">
+	                                	<label class="radio-inline">
+	                                		<input type="radio" name="rain_progress" id="rain_progress" value="1" checked="checked"> 가능
+										</label> 
+										<label class="radio-inline">
+											<input type="radio" name="rain_progress" id="rain_progress" value="0"> 불가능
+										</label>
+									</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-head"><label for="stage_light">무대조명</label></td>
+                                <td>
+                                	<div class="radio-group">
+	                               		<label class="radio-inline">
+	                                		<input type="radio" name="stage_light" id="stage_light" value="1" checked="checked"> 가능
+										</label> 
+										<label class="radio-inline">
+											<input type="radio" name="stage_light" id="stage_light" value="0"> 불가능
+										</label>
+									</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-head"><label for="parking">주차</label></td>
+                                <td>
+                                	<div class="radio-group">
+	                                	<label class="radio-inline">
+	                                		<input type="radio" name="parking" id="parking" value="1" checked="checked"> 가능
+										</label> 
+										<label class="radio-inline">
+											<input type="radio" name="parking" id="parking" value="0"> 불가능
+										</label>
+									</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-head"><label for="business_number">공연장리스트</label></td>
+                                <td>
+                                	<ul class="place-list-group">
+										<li class="place-list">
+											<span class="label label-default">7층 스테이지</span>
+										</li>
+										<li class="place-list">
+											<span class="label label-default">8층 카페</span>
+										</li>
+										<li class="place-list">
+											<span class="label label-default">9층 옥상</span>
+										</li>
+									</ul>
+                                </td>
+                            </tr>
+                        </table>
+                        <button type="submit" class="float-end btn btn-primary btn-sm" id="stageInsbtn">저장</button>
+                    </form>
+                </div>
 			</div>
 		</div>
 		<div class="col-xl-2"></div>
