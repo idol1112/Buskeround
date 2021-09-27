@@ -36,7 +36,7 @@
 <!---- 프로필 박스 ---->
 <div class="profile_box">
   <div class="main_profile">
-    <img src="${pageContext.request.contextPath}/assets/image/blog/img/profile.jpg">
+    <img src="/Buskeround${blogVo.user_img}">
   </div>
 
   <table class="profile_intr">
