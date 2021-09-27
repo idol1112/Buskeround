@@ -10,7 +10,7 @@
 
 	<select id="findMap" parameterType="map" resultType="PostVo">
 		<![CDATA[
-			select no,latitude,longitude
+			select latitude,longitude
 			from post
 			where latitude < #{nlat}
 			and longitude < #{nlng}

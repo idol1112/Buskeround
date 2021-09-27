@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.javaex.vo.MapVo;
+import com.javaex.vo.PostVo;
 
 @Repository
 public class MapDao {
@@ -21,10 +22,10 @@ public class MapDao {
 		return mapList;
 	}
 	
-	public List<MapVo> mapfind(Map<String, Double> findMap) {
+	public List<PostVo> mapfind(Map<String, Double> findMap) {
 		System.out.println("맵찾기-서비스");
 		System.out.println("1"+findMap);
-		List<MapVo> mapfind = sqlSession.selectList("map.findMap", findMap);
+		List<PostVo> mapfind = sqlSession.selectList("map.findMap", findMap);
 		System.out.println("2"+mapfind);
 		return mapfind;
 	}

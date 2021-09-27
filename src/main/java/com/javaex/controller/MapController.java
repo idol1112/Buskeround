@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.javaex.service.MapService;
 import com.javaex.vo.MapVo;
+import com.javaex.vo.PostVo;
 
 @Controller
 public class MapController {
@@ -32,9 +33,9 @@ public class MapController {
 	
 	@ResponseBody
 	@RequestMapping("/Map/mapns")
-	public List<MapVo> mapns(@RequestParam("nlat") double nlat, @RequestParam("nlng") double nlng, @RequestParam("slat") double slat, @RequestParam("slng") double slng) {
+	public List<PostVo> mapns(@RequestParam("nlat") double nlat, @RequestParam("nlng") double nlng, @RequestParam("slat") double slat, @RequestParam("slng") double slng) {
 		System.out.println("에이작스컨트롤러");
-		List<MapVo> mapFind = mapService.mapfind(nlat,nlng,slat,slng);
+		List<PostVo> mapFind = mapService.mapfind(nlat,nlng,slat,slng);
 		System.out.println(mapFind);
 		return mapFind;
 	}

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.javaex.dao.MapDao;
 import com.javaex.vo.MapVo;
+import com.javaex.vo.PostVo;
 
 @Service
 public class MapService {
@@ -22,7 +23,7 @@ public class MapService {
 		return mapList;
 	}
 	
-	public List<MapVo> mapfind(double nlat,double nlng,double slat,double slng) {
+	public List<PostVo> mapfind(double nlat,double nlng,double slat,double slng) {
 		System.out.println("맵찾기-서비스");
 		
 		Map<String, Double> findMap = new HashMap<String, Double>();
@@ -31,7 +32,7 @@ public class MapService {
 		findMap.put("slat", slat);
 		findMap.put("slng", slng);
 		 
-		List<MapVo> mapfind = mapDao.mapfind(findMap);
+		List<PostVo> mapfind = mapDao.mapfind(findMap);
 		
 		return mapfind;
 	}

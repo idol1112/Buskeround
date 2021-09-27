@@ -151,7 +151,7 @@
 <div id="map"></div>
 <script>
     
-    
+   
 var mapContainer = document.getElementById('map'), // 지도의 중심좌표
     mapOption = { 
         center: new kakao.maps.LatLng(33.451475, 126.570528), // 지도의 중심좌표
@@ -187,7 +187,7 @@ kakao.maps.event.addListener(map, 'dragend', function() {
     
 	//서버에 위도경도전달
 	$.ajax({
-		url : "${pageContext.request.contextPath}/map/mapns",
+		url : "${pageContext.request.contextPath}/Map/mapns",
 		type : "post",
 		//contentType : "application/json",
 		data : {nlat: nlat, nlng: nlng, slat: slat, slng: slng},
@@ -203,15 +203,13 @@ kakao.maps.event.addListener(map, 'dragend', function() {
 	});
 });
 
-
-
-
-
-
-
-
-
 //======================================
+	
+	
+	
+	
+	
+	
 	
 //================================================================== 데이터베이스에서 가져온거 뺄것
 <c:forEach items="${mapList}" var="mapList">
