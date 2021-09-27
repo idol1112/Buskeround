@@ -33,6 +33,7 @@ public class MyPageService {
 		System.out.println("BlogDao");
 		
 		blogDao.createBlog(mypageVo.getUser_no());
+		blogDao.createCategory(mypageVo.getUser_no());
 		
 		return mypageDao.artistModify(mypageVo);
 	}

@@ -12,7 +12,47 @@
 	 	]]>
 
 	</insert>
+	
+	<!-- Create Category공지사항 -->
+	<insert id="createCategoryNotice" parameterType="int">
 
+		<![CDATA[
+		insert into category
+		values(seq_cate_no.nextval, #{user_no}, '공지사항')
+	 	]]>
+
+	</insert>
+	
+	<!-- Create Category타임라인 -->
+	<insert id="createCategoryTimeline" parameterType="int">
+
+		<![CDATA[
+		insert into category
+		values(seq_cate_no.nextval, #{user_no}, '타임라인')
+	 	]]>
+
+	</insert>
+	
+	<!-- Create Category갤러리 -->
+	<insert id="createCategoryGallery" parameterType="int">
+
+		<![CDATA[
+		insert into category
+		values(seq_cate_no.nextval, #{user_no}, '갤러리')
+	 	]]>
+
+	</insert>
+	
+	<!-- Create Category방명록-->
+	<insert id="createCategoryGuestbook" parameterType="int">
+
+		<![CDATA[
+		insert into category
+		values(seq_cate_no.nextval, #{user_no}, '방명록')
+	 	]]>
+
+	</insert>
+	
 	<!-- Select Blog -->
 	<select id="selectBlog" parameterType="String" resultType="BlogVo">
 		<![CDATA[

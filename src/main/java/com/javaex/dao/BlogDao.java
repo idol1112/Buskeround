@@ -19,6 +19,16 @@ public class BlogDao {
 	    return sqlSession.insert("blog.createBlog", user_no);
 	}
 	
+	//카테고리 가져오기
+	public int createCategory(int user_no) {
+		System.out.println("BlogDao.createCategory()");
+		
+		sqlSession.insert("blog.createCategoryNotice", user_no);
+		sqlSession.insert("blog.createCategoryTimeline", user_no);
+		sqlSession.insert("blog.createCategoryGallery", user_no);
+		return sqlSession.insert("blog.createCategoryGuestbook", user_no);
+	}
+	
 	//블로그 유저 정보 가져오기
 	public BlogVo selectUser(String id) {
 		System.out.println("BlogDao.SelectUser()");
