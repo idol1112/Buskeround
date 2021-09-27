@@ -22,6 +22,7 @@ public class UserVo {
   private String user_type;
   private String company_type;
   private int rn;
+  private String ranking_score;
   
 
   // 생성자
@@ -42,9 +43,9 @@ public class UserVo {
 }
   
 
-  public UserVo(int user_no, String id, String password, String email, String nickname, String user_img, String name,
+public UserVo(int user_no, String id, String password, String email, String nickname, String user_img, String name,
 		String hp, String gender, String birthday, String genre, String genre_type, int fan, int likes, String live,
-		String artist_regdate, String user_type, String company_type, int rn) {
+		String artist_regdate, String user_type, String company_type, int rn, String ranking_score) {
 	super();
 	this.user_no = user_no;
 	this.id = id;
@@ -65,6 +66,7 @@ public class UserVo {
 	this.user_type = user_type;
 	this.company_type = company_type;
 	this.rn = rn;
+	this.ranking_score = ranking_score;
 }
 
 // 메소드 - GS
@@ -219,7 +221,14 @@ public class UserVo {
 	public void setRn(int rn) {
 		this.rn = rn;
 	}
+	
+	public String getRanking_score() {
+		return ranking_score;
+	}
 
+	public void setRanking_score(String ranking_score) {
+		this.ranking_score = ranking_score;
+	}
 
 
 	// 메소드 - 일반
@@ -229,8 +238,10 @@ public class UserVo {
 				+ ", nickname=" + nickname + ", user_img=" + user_img + ", name=" + name + ", hp=" + hp + ", gender="
 				+ gender + ", birthday=" + birthday + ", genre=" + genre + ", genre_type=" + genre_type + ", fan=" + fan
 				+ ", likes=" + likes + ", live=" + live + ", artist_regdate=" + artist_regdate + ", user_type="
-				+ user_type + ", company_type=" + company_type + ", rn=" + rn + "]";
+				+ user_type + ", company_type=" + company_type + ", rn=" + rn + ", ranking_score=" + ranking_score
+				+ "]";
 	}
+
 }
 
 
