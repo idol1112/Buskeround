@@ -314,8 +314,7 @@ ALTER TABLE buskingDate
 /* 게시글 */
 CREATE TABLE post (
 	post_no NUMBER NOT NULL, /* 게시글번호 */
-	category CHAR(1) NOT NULL, /* 카테고리(분류) */
-	user_no NUMBER NOT NULL, /* 회원번호 */
+	category CHAR(1), /* 카테고리(분류) */
 	title VARCHAR2(1000), /* 제목(장소명) */
 	content VARCHAR2(3000), /* 내용 */
 	reg_date DATE, /* 작성일 */
@@ -325,8 +324,8 @@ CREATE TABLE post (
 	p_end DATE, /* 공연종료일 */
 	p_img VARCHAR2(1000), /* 공연이미지 */
 	live_url VARCHAR2(100), /* 라이브주소 */
-	hit NUMBER, /* 조회수 */
-	address VARCHAR2(1000) /* 주소 */
+	address VARCHAR2(1000), /* 주소 */
+	hit NUMBER /* 조회수 */
 );
 
 COMMENT ON TABLE post IS '게시글';
@@ -334,8 +333,6 @@ COMMENT ON TABLE post IS '게시글';
 COMMENT ON COLUMN post.post_no IS '게시글번호';
 
 COMMENT ON COLUMN post.category IS '카테고리(분류)';
-
-COMMENT ON COLUMN post.user_no IS '회원번호';
 
 COMMENT ON COLUMN post.title IS '제목(장소명)';
 
@@ -355,44 +352,39 @@ COMMENT ON COLUMN post.p_img IS '공연이미지';
 
 COMMENT ON COLUMN post.live_url IS '라이브주소';
 
-COMMENT ON COLUMN post.hit IS '조회수';
-
 COMMENT ON COLUMN post.address IS '주소';
+
+COMMENT ON COLUMN post.hit IS '조회수';
 
 CREATE UNIQUE INDEX PK_post
 	ON post (
-		post_no ASC,
-		category ASC,
-		user_no ASC
+		post_no ASC
 	);
 
 ALTER TABLE post
 	ADD
 		CONSTRAINT PK_post
 		PRIMARY KEY (
-			post_no,
-			category,
-			user_no
+			post_no
 		);
 
 /* 카테고리 */
 CREATE TABLE category (
-	user_no NUMBER NOT NULL, /* 회원번호 */
 	category CHAR(1) NOT NULL, /* 카테고리(분류) */
+	user_no NUMBER, /* 회원번호 */
 	category_name VARCHAR2(20) /* 카테고리명 */
 );
 
 COMMENT ON TABLE category IS '카테고리';
 
-COMMENT ON COLUMN category.user_no IS '회원번호';
-
 COMMENT ON COLUMN category.category IS '카테고리(분류)';
+
+COMMENT ON COLUMN category.user_no IS '회원번호';
 
 COMMENT ON COLUMN category.category_name IS '카테고리명';
 
 CREATE UNIQUE INDEX PK_category
 	ON category (
-		user_no ASC,
 		category ASC
 	);
 
@@ -400,7 +392,6 @@ ALTER TABLE category
 	ADD
 		CONSTRAINT PK_category
 		PRIMARY KEY (
-			user_no,
 			category
 		);
 
@@ -624,11 +615,9 @@ ALTER TABLE post
 	ADD
 		CONSTRAINT FK_category_TO_post
 		FOREIGN KEY (
-			user_no,
 			category
 		)
 		REFERENCES category (
-			user_no,
 			category
 		);
 
