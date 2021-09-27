@@ -53,7 +53,7 @@ public class BlogController {
 		blogService.modify(blogVo);
 		//수정 완료
 		
-		return "redirect:/Blog/blog_main";
+		return "redirect:/blog/blog_main/" + blogVo.getId();
 		
 	}
 

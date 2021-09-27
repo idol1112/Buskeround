@@ -45,6 +45,7 @@
 			<div class="modify-form">
 				<form action="${pageContext.request.contextPath}/blog/modify" method="POST">
 					<input type="hidden" name="user_no" value="${blogVo.user_no}">
+					<input type="hidden" name="id" value="${blogVo.id}">
 					<table>
 						<tr>
 							<td class="table-head"><label for="nickname">활동명</label></td>

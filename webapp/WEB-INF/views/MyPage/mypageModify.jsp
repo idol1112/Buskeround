@@ -42,9 +42,9 @@
 							<tr>
 								<td class="table-head"><label for="profilepicture">프로필 사진</label></td>
 								<td>
-									<img id="profilepicture" src="../../assets/img/profilepicture.jpg"><br>
+									<img id="profilepicture"><br>
 									<label id="profilepicturechange" class="btn-success btn-sm">
-								    <input type="file">
+								    <input type="file" id="file1" name="file1">
 								    변경
 									</label>
 									<button id="profilepicturedelete" class="btn-danger btn-sm" type="submit">삭제</button>
@@ -79,4 +79,37 @@
 	<!-- Footer -->
 	<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
 </body>
+
+<script type="text/javascript">
+
+//이미지 미리보기
+var sel_file;
+
+$(document).ready(function() {
+    $("#file1").on("change", handleImgFileSelect);
+});
+
+function handleImgFileSelect(e) {
+    var files = e.target.files;
+    var filesArr = Array.prototype.slice.call(files);
+
+    var reg = /(.*?)\/(jpg|jpeg|png|bmp)$/;
+
+    filesArr.forEach(function(f) {
+        if (!f.type.match(reg)) {
+            alert("확장자는 이미지 확장자만 가능합니다.");
+            return;
+        }
+
+        sel_file = f;
+
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            $("#profilepicture").attr("src", e.target.result);
+        }
+        reader.readAsDataURL(f);
+    });
+}
+
+</script>
 </html>
