@@ -314,7 +314,7 @@ ALTER TABLE buskingDate
 /* 게시글 */
 CREATE TABLE post (
 	post_no NUMBER NOT NULL, /* 게시글번호 */
-	category CHAR(1), /* 카테고리(분류) */
+	category_no NUMBER, /* 카테고리(번호) */
 	title VARCHAR2(1000), /* 제목(장소명) */
 	content VARCHAR2(3000), /* 내용 */
 	reg_date DATE, /* 작성일 */
@@ -332,7 +332,7 @@ COMMENT ON TABLE post IS '게시글';
 
 COMMENT ON COLUMN post.post_no IS '게시글번호';
 
-COMMENT ON COLUMN post.category IS '카테고리(분류)';
+COMMENT ON COLUMN post.category_no IS '카테고리(번호)';
 
 COMMENT ON COLUMN post.title IS '제목(장소명)';
 
@@ -370,29 +370,32 @@ ALTER TABLE post
 
 /* 카테고리 */
 CREATE TABLE category (
-	category CHAR(1) NOT NULL, /* 카테고리(분류) */
+	category_no NUMBER NOT NULL, /* 카테고리(번호) */
 	user_no NUMBER, /* 회원번호 */
+	category_type CHAR(1), /* 카테고리(분류) */
 	category_name VARCHAR2(20) /* 카테고리명 */
 );
 
 COMMENT ON TABLE category IS '카테고리';
 
-COMMENT ON COLUMN category.category IS '카테고리(분류)';
+COMMENT ON COLUMN category.category_no IS '카테고리(번호)';
 
 COMMENT ON COLUMN category.user_no IS '회원번호';
+
+COMMENT ON COLUMN category.category_type IS '카테고리(분류)';
 
 COMMENT ON COLUMN category.category_name IS '카테고리명';
 
 CREATE UNIQUE INDEX PK_category
 	ON category (
-		category ASC
+		category_no ASC
 	);
 
 ALTER TABLE category
 	ADD
 		CONSTRAINT PK_category
 		PRIMARY KEY (
-			category
+			category_no
 		);
 
 /* 공연장 */
@@ -615,10 +618,10 @@ ALTER TABLE post
 	ADD
 		CONSTRAINT FK_category_TO_post
 		FOREIGN KEY (
-			category
+			category_no
 		)
 		REFERENCES category (
-			category
+			category_no
 		);
 
 ALTER TABLE category

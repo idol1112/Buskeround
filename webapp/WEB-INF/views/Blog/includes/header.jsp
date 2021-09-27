@@ -4,7 +4,7 @@
 <!---- 배너 ---->
 <div class=" banner">
   <!-- 블로그 관리 버튼 -->
-  <a href="blogModifyForm.jsp">
+  <a href="${pageContext.request.contextPath}/blog/blog_modify/${blogVo.id}">
     <img class="setting" src="${pageContext.request.contextPath}/assets/image/blog/icon/settings.png">
   </a>
 

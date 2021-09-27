@@ -44,7 +44,7 @@
 								<td>
 									<img id="profilepicture" src="../../assets/img/profilepicture.jpg"><br>
 									<label id="profilepicturechange" class="btn-success btn-sm">
-								    <input type="file"/>
+								    <input type="file">
 								    변경
 									</label>
 									<button id="profilepicturedelete" class="btn-danger btn-sm" type="submit">삭제</button>

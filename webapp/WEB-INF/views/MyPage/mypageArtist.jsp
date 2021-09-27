@@ -64,7 +64,10 @@
 									</tr>
 									<tr>
 										<td class="table-head"><label for="gender">성별</label></td>
-										<td><input class="radio" type="radio" name="gender" value="male"><span class="radiolabel">남</span> <input type="radio" name="gender" value="female"><span class="radiolabel">여</span></td>
+										<td>
+											<input class="radio" type="radio" name="gender" id="male" value="male"><span class="radiolabel"><label for="male">남</label> </span>
+											<input type="radio" name="gender" id="female" value="female"><span class="radiolabel"><label for="female">여</label></span>
+									</td>
 									</tr>
 									<tr>
 										<td class="table-head"><label for="birthday">생년월일</label></td>
@@ -72,7 +75,14 @@
 									</tr>
 									<tr>
 										<td class="table-head"><label class="required" for="genre">퍼포먼스/장르</label></td>
-										<td><input class="radio" type="radio" name="genre" value="1"><span class="radiolabel">발라드</span> <input class="radio" type="radio" name="genre" value="2"><span class="radiolabel">댄스</span> <input class="radio" type="radio" name="genre" value="3"><span class="radiolabel">랩/힙합</span> <input class="radio" type="radio" name="genre" value="4"><span class="radiolabel">R&B소울</span><br> <br> <input class="radio" type="radio" name="genre" value="5"><span class="radiolabel">악기</span> <input class="radio" type="radio" name="genre" value="6"><span class="radiolabel">기타공연</span></td>
+										<td>
+											<input class="radio" id="1" type="radio" name="genre" value="1" ><span class="radiolabel"><label for="1">발라드</label></span>
+											<input class="radio" id="2" type="radio" name="genre" value="2" ><span class="radiolabel"><label for="2">댄스</label></span>
+											<input class="radio" id="3" type="radio" name="genre" value="3" ><span class="radiolabel"><label for="3">랩/힙합</label></span>
+											<input class="radio" id="4" type="radio" name="genre" value="4" ><span class="radiolabel"><label for="4">R&B소울</label></span><br><br> 
+											<input class="radio" id="5" type="radio" name="genre" value="5" ><span class="radiolabel"><label for="5">악기</label></span>
+											<input class="radio" id="6" type="radio" name="genre" value="6" ><span class="radiolabel"><label for="6">기타공연</label></span>
+										</td>
 									</tr>
 									<tr>
 										<td class="table-head"><label for="genre_type">장르유형</label></td>
@@ -112,8 +122,8 @@
 								</tr>
 								<tr>
 									<td class="table-head"><label class="required" for="gender">성별</label></td>
-									<td><input class="radio" type="radio" name="gender" value="male" <c:if test="${requestScope.mypageVo.gender == 'male'}">checked</c:if>><span class="radiolabel">남</span> 
-										<input type="radio" name="gender" value="female" <c:if test="${requestScope.mypageVo.gender == 'female'}">checked</c:if>><span class="radiolabel">여</span>
+									<td><input class="radio" type="radio" name="gender" id="male" value="male" <c:if test="${requestScope.mypageVo.gender == 'male'}">checked</c:if>><span class="radiolabel"><label for="male">남</label> </span>
+										<input type="radio" name="gender" id="female" value="female" <c:if test="${requestScope.mypageVo.gender == 'female'}">checked</c:if>><span class="radiolabel"><label for="female">여</label></span>
 									</td>
 								</tr>
 								<tr>
@@ -123,12 +133,12 @@
 								<tr>
 									<td class="table-head"><label class="required" for="genre">퍼포먼스/장르</label></td>
 									<td>
-										<input class="radio" type="radio" name="genre" value="1" <c:if test="${requestScope.mypageVo.genre == 1}">checked</c:if>><span class="radiolabel">발라드</span> 
-										<input class="radio" type="radio" name="genre" value="2" <c:if test="${requestScope.mypageVo.genre == 2}">checked</c:if>><span class="radiolabel">댄스</span> 
-										<input class="radio" type="radio" name="genre" value="3" <c:if test="${requestScope.mypageVo.genre == 3}">checked</c:if>><span class="radiolabel">랩/힙합</span> 
-										<input class="radio" type="radio" name="genre" value="4" <c:if test="${requestScope.mypageVo.genre == 4}">checked</c:if>><span class="radiolabel">R&B소울</span><br><br> 
-										<input class="radio" type="radio" name="genre" value="5" <c:if test="${requestScope.mypageVo.genre == 5}">checked</c:if>><span class="radiolabel">악기</span> 
-										<input class="radio" type="radio" name="genre" value="6" <c:if test="${requestScope.mypageVo.genre == 6}">checked</c:if>><span class="radiolabel">기타공연</span>
+										<input class="radio" id="1" type="radio" name="genre" value="1" <c:if test="${requestScope.mypageVo.genre == 1}">checked</c:if>><span class="radiolabel"><label for="1">발라드</label></span>
+										<input class="radio" id="2" type="radio" name="genre" value="2" <c:if test="${requestScope.mypageVo.genre == 2}">checked</c:if>><span class="radiolabel"><label for="2">댄스</label></span>
+										<input class="radio" id="3" type="radio" name="genre" value="3" <c:if test="${requestScope.mypageVo.genre == 3}">checked</c:if>><span class="radiolabel"><label for="3">랩/힙합</label></span>
+										<input class="radio" id="4" type="radio" name="genre" value="4" <c:if test="${requestScope.mypageVo.genre == 4}">checked</c:if>><span class="radiolabel"><label for="4">R&B소울</label></span><br><br> 
+										<input class="radio" id="5" type="radio" name="genre" value="5" <c:if test="${requestScope.mypageVo.genre == 5}">checked</c:if>><span class="radiolabel"><label for="5">악기</label></span>
+										<input class="radio" id="6" type="radio" name="genre" value="6" <c:if test="${requestScope.mypageVo.genre == 6}">checked</c:if>><span class="radiolabel"><label for="6">기타공연</label></span>
 									</td>
 								</tr>
 								<tr>
