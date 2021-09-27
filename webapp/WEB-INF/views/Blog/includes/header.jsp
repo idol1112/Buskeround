@@ -43,18 +43,50 @@
 
   <table class="profile_intr">
     <!-- 장르 -->
-    <tr>
-      <td class="main_genre"><img src="${pageContext.request.contextPath}/assets/image/blog/icon/hiphop.png"></td>
-    </tr>
+    <c:if test="${blogVo.genre == 1}">
+      <tr>
+        <td class="main_genre"><img src="${pageContext.request.contextPath}/assets/image/blog/icon/ballade.png"></td>
+      </tr>
+    </c:if>
+
+    <c:if test="${blogVo.genre == 2}">
+      <tr>
+        <td class="main_genre"><img src="${pageContext.request.contextPath}/assets/image/blog/icon/dance.png"></td>
+      </tr>
+    </c:if>
+
+    <c:if test="${blogVo.genre == 3}">
+      <tr>
+        <td class="main_genre"><img src="${pageContext.request.contextPath}/assets/image/blog/icon/hiphop.png"></td>
+      </tr>
+    </c:if>
+
+    <c:if test="${blogVo.genre == 4}">
+      <tr>
+        <td class="main_genre"><img src="${pageContext.request.contextPath}/assets/image/blog/icon/soul.png"></td>
+      </tr>
+    </c:if>
+
+    <c:if test="${blogVo.genre == 5}">
+      <tr>
+        <td class="main_genre"><img src="${pageContext.request.contextPath}/assets/image/blog/icon/musical.png"></td>
+      </tr>
+    </c:if>
+
+    <c:if test="${blogVo.genre == 6}">
+      <tr>
+        <td class="main_genre"><img src="${pageContext.request.contextPath}/assets/image/blog/icon/etc.png"></td>
+      </tr>
+    </c:if>
 
     <!-- 활동명 -->
     <tr>
-      <td class="main_name"><a href="blog_main.jsp">우주 멋쟁이</a></td>
+      <td class="main_name"><a href="blog_main.jsp">${blogVo.nickname}</a></td>
     </tr>
 
     <!-- 한 줄 소개 -->
     <tr>
-      <td class="main_intr">안녕하세요. 깊은 밤 이야기를 노래하는 아티스트 입니다. :)</td>
+      <td class="main_intr">${blogVo.intro}</td>
     </tr>
   </table>
 
