@@ -28,13 +28,13 @@ public class ApiBlogController {
   }
 
   /*** 공연 종료 ***/
+  @ResponseBody
   @RequestMapping(value = "live_end", method = {RequestMethod.GET, RequestMethod.POST})
-  public String live_end(@RequestParam("user_no") int user_no) {
+  public void live_end(@RequestParam("user_no") int user_no) {
     System.out.println("[현재 위치: ApiBlogController.live_end]");
 
     blogService2.live_end(user_no);
 
-    return "";
   }
 
   /*** 블로그 ID 받기 ***/
@@ -42,8 +42,6 @@ public class ApiBlogController {
   @RequestMapping(value = "blog_id/{id}", method = {RequestMethod.GET, RequestMethod.POST})
   public String blog_id(@PathVariable("id") String id) {
     System.out.println("[현재 위치: ApiBlogController.blog_id]");
-
-    System.out.println(id);
 
     return id;
   }

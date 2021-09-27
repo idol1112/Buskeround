@@ -3,6 +3,7 @@ package com.javaex.service;
 import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -13,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.javaex.dao.CompanyDao;
 import com.javaex.dao.UserDao;
 import com.javaex.vo.CompanyVo;
+import com.javaex.vo.StageVo;
 import com.javaex.vo.UserVo;
 
 @Service
@@ -22,7 +24,7 @@ public class CompanyService {
 	CompanyDao companyDao;
 	@Autowired
 	UserDao userDao;
-	
+	///////////////////////////////// 제휴사 /////////////////////////////////	
 	//제휴사 등록
 	public int companyInsert(Map<String, Object> companyInsertMap) {
 		System.out.println("CompanyService.companyInsert()");
@@ -128,7 +130,47 @@ public class CompanyService {
 	
 	//제휴사 정보 수정(이미지 변경x)
 	public int companyModify2(CompanyVo companyVo) {
+		System.out.println("CompanyService.companyModify2()");
 		
 		return companyDao.companyUpdate(companyVo);
 	}
+	///////////////////////////////// *제휴사* /////////////////////////////////
+	
+	///////////////////////////////// 공연장 /////////////////////////////////
+	//공연장 리스트 불러오기
+	public List<StageVo> getStage(int user_no) {
+		System.out.println("CompanyService.getStage()");
+		
+		return companyDao.selectStage(user_no);
+	}
+	
+	//공연장 리스트 하나 불러오기
+	public StageVo getStageOne(int stage_no) {
+		System.out.println("CompanyService.getStageOne()");
+		
+		return companyDao.selectStageOne(stage_no);
+	}
+	
+	//공연장 등록
+	public int stageInsert(StageVo stageVo) {
+		System.out.println("CompanyService.stageInsert()");
+		
+		return companyDao.stageInsert(stageVo);
+	}
+	
+	//공연장 수정
+	public int stageModify(StageVo stageVo) {
+		System.out.println("CompanyService.stageModify()");
+		
+		return companyDao.stageUpdate(stageVo);
+	}
+	
+	//공연장 삭제
+	public int stageRemove(int stage_no) {
+		System.out.println("CompanyService.stageRemove()");
+		
+		return companyDao.stageDelete(stage_no);
+	}
+	
+	///////////////////////////////// *공연장* /////////////////////////////////
 }

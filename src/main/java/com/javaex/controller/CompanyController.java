@@ -1,6 +1,7 @@
 package com.javaex.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.javaex.service.CompanyService;
@@ -145,8 +147,17 @@ public class CompanyController {
 	///////////////////////////////// 공연장 /////////////////////////////////
 	//공연장 관리 폼(추가/삭제)
 	@RequestMapping(value = "/stageManage", method = {RequestMethod.GET, RequestMethod.POST})
-	public String stageManage() {
+	public String stageManage(HttpSession session, Model model) {
 		System.out.println("[CompanyController.stageManage()]");
+		
+		UserVo authUser = (UserVo)session.getAttribute("authUser");
+		int user_no = authUser.getUser_no();
+		
+		List<StageVo> stageList = companyService.getStage(user_no);
+		
+		System.out.println(stageList);
+		
+		model.addAttribute("stageList", stageList);
 		
 		return "/Company/stageManage";
 	}
@@ -156,9 +167,43 @@ public class CompanyController {
 	public String stageInsert(@ModelAttribute StageVo stageVo) {
 		System.out.println("[CompanyController.stageInsert()]");
 		
-		System.out.println(stageVo);
+		int count = companyService.stageInsert(stageVo);
 		
-		return "";
+		System.out.println("공연장 ["+count+"]건 저장 완료");
+		
+		return "redirect:/Company/stageManage";
+	}
+	
+	//공연장 해당 데이터 가져오기
+	@ResponseBody
+	@RequestMapping(value = "/stageModifyForm", method = {RequestMethod.GET, RequestMethod.POST})
+	public StageVo stageModifyForm(@RequestParam ("stage_no") int stage_no) {
+		System.out.println("[CompanyController.stageModifyForm()]");
+		
+		return companyService.getStageOne(stage_no);
+	}
+	
+	//공연장 수정
+	@RequestMapping(value = "/stageModify", method = {RequestMethod.GET, RequestMethod.POST})
+	public String stageModify(@ModelAttribute StageVo stageVo) {
+		System.out.println("[CompanyController.stageModify()]");
+		
+		int count = companyService.stageModify(stageVo);
+		System.out.println("공연장 ["+count+"]건 수정 완료");
+		
+		return "redirect:/Company/stageManage";
+	}
+	
+	//공연장 삭제
+	@ResponseBody
+	@RequestMapping(value = "/stageRemove", method = {RequestMethod.GET, RequestMethod.POST})
+	public int stageRemove(@RequestParam ("stage_no") int stage_no) {
+		System.out.println("[CompanyController.stageRemove()]");
+		
+		System.out.println(stage_no);
+		
+		int count = companyService.stageRemove(stage_no);
+		return count;
 	}
 	///////////////////////////////// *공연장* /////////////////////////////////
 	

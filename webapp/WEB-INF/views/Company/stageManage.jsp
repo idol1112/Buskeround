@@ -21,6 +21,10 @@
 <!-- css -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/Common/common.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/MyPage/mypage.css">
+
+<!-- jquery -->
+<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+
 </head>
 
 <body>
@@ -43,7 +47,8 @@
 				</div>
 				
 				<div id="mypage-right-content">
-                    <form action="#" method="get">
+                    <form action="${pageContext.request.contextPath}/Company/stageInsert" method="get">
+                    <input type="hidden" name="user_no" value="${sessionScope.authUser.user_no }">
                         <table>
                             <tr>
                                 <td class="table-head"><label for="stage_name">장소명</label></td>
@@ -54,10 +59,10 @@
                                 <td>
                                 	<div class="radio-group">
 	                                	<label class="radio-inline">
-	                                		<input type="radio" name="rain_progress" id="rain_progress" value="1" checked="checked"> 가능
+	                                		<input type="radio" name="rain_progress" value="1"> 가능
 										</label> 
 										<label class="radio-inline">
-											<input type="radio" name="rain_progress" id="rain_progress" value="0"> 불가능
+											<input type="radio" name="rain_progress" value="0"> 불가능
 										</label>
 									</div>
                                 </td>
@@ -67,10 +72,10 @@
                                 <td>
                                 	<div class="radio-group">
 	                               		<label class="radio-inline">
-	                                		<input type="radio" name="stage_light" id="stage_light" value="1" checked="checked"> 가능
+	                                		<input type="radio" name="stage_light" id="stage_light" value="1"> 가능
 										</label> 
 										<label class="radio-inline">
-											<input type="radio" name="stage_light" id="stage_light" value="0"> 불가능
+											<input type="radio" name="stage_light" id="stage_light1" value="0"> 불가능
 										</label>
 									</div>
                                 </td>
@@ -80,10 +85,10 @@
                                 <td>
                                 	<div class="radio-group">
 	                                	<label class="radio-inline">
-	                                		<input type="radio" name="parking" id="parking" value="1" checked="checked"> 가능
+	                                		<input type="radio" name="parking" id="parking" value="1"> 가능
 										</label> 
 										<label class="radio-inline">
-											<input type="radio" name="parking" id="parking" value="0"> 불가능
+											<input type="radio" name="parking" id="parking1" value="0"> 불가능
 										</label>
 									</div>
                                 </td>
@@ -92,20 +97,18 @@
                                 <td class="table-head"><label for="business_number">공연장리스트</label></td>
                                 <td>
                                 	<ul class="place-list-group">
-										<li class="place-list">
-											<span class="label label-default">7층 스테이지</span>
+                                	<c:forEach items="${stageList}" var="stageList" varStatus="status">
+										<li id="l-${stageList.stage_no}" class="place-list">
+											<span class="label label-default" data-no="${stageList.stage_no}">${stageList.stage_name}</span>
+											<img class="delBtn" data-no="${stageList.stage_no}" src="${pageContext.request.contextPath}/assets/image/company/icon/delete.png">
 										</li>
-										<li class="place-list">
-											<span class="label label-default">8층 카페</span>
-										</li>
-										<li class="place-list">
-											<span class="label label-default">9층 옥상</span>
-										</li>
+									</c:forEach>
 									</ul>
                                 </td>
                             </tr>
                         </table>
                         <button type="submit" class="float-end btn btn-primary btn-sm" id="stageInsbtn">저장</button>
+                        
                     </form>
                 </div>
 			</div>
@@ -118,4 +121,86 @@
 	<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
 	<!------- footer -------->
 </body>
+
+<script type="text/javascript">
+
+$(".place-list-group").on("click", ".delBtn", function() {
+	console.log("삭제 버튼");
+	
+	var no = $(this).data("no");
+	console.log(no);
+	
+	$.ajax({
+			url : "${pageContext.request.contextPath }/Company/stageRemove",
+			type : "post",
+			//contentType : "application/json",
+			data : {stage_no : no},
+			//dataType : "json",
+			success : function(count) {
+				if (count === 1) {
+					//리스트에 삭제버튼이 있던 테이블 화면에서 지운다
+					$("#l-" + no).remove();
+				}
+			},
+			error : function(XHR, status, error) {
+				console.error(status + " : " + error);
+			}
+	
+	});
+})
+
+$(".place-list-group").on("click", ".label", function() {
+	console.log("리스트 버튼");
+	$("input[name = 'stage_no']").remove();
+	var no = $(this).data("no");
+	console.log(no);
+	$("form").attr("action", "${pageContext.request.contextPath}/Company/stageModify");
+	$("form").append("<input type='hidden' name='stage_no' value='"+no+"'>");
+	
+	
+	$.ajax({
+		url : "${pageContext.request.contextPath }/Company/stageModifyForm",
+		type : "post",
+		//contentType : "application/json",
+		data : {stage_no : no},
+		//dataType : "json",
+		success : function(stageVo) {
+		console.log(stageVo);
+		$("input[id = 'stage_name']").val(stageVo.stage_name);
+		
+		if(stageVo.rain_progress == '1') {
+			$("input[name='rain_progress'][value ='1']").prop("checked", true);
+			$("input[name='rain_progress'][value ='0']").prop("checked", false);
+		}else if(stageVo.rain_progress == '0') {
+			$("input[name='rain_progress'][value ='1']").prop("checked", false);
+			$("input[name='rain_progress'][value ='0']").prop("checked", true);
+
+		}
+		
+		if(stageVo.stage_light == '1') {
+			$("input[name='stage_light'][value ='1']").prop("checked", true);
+			$("input[name='stage_light'][value ='0']").prop("checked", false);
+		}else if(stageVo.stage_light == '0') {
+			$("input[name='stage_light'][value ='1']").prop("checked", false);
+			$("input[name='stage_light'][value ='0']").prop("checked", true);
+		}
+		if(stageVo.parking == '1') {
+			$("input[name='parking'][value ='1']").prop("checked", true);
+			$("input[name='parking'][value ='0']").prop("checked", false);
+		}else if(stageVo.parking == '0') {
+			$("input[name='parking'][value ='1']").prop("checked", false);
+			$("input[name='parking'][value ='0']").prop("checked", true);
+		}
+		
+		},
+		error : function(XHR, status, error) {
+			console.error(status + " : " + error);
+		}
+
+});
+	
+	
+})
+
+</script>
 </html>

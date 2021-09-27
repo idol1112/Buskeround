@@ -17,6 +17,7 @@ public class PostVo {
   private String p_img;
   private String live_url;
   private int hit;
+  private String address;
 
   // 생성자
   public PostVo() {
@@ -24,7 +25,7 @@ public class PostVo {
   }
 
   public PostVo(int user_no, int live, int post_no, int category, String title, String content, String reg_date, double latitude, double longitude,
-      String p_start, String p_end, String p_img, String live_url, int hit) {
+      String p_start, String p_end, String p_img, String live_url, int hit, String address) {
     super();
     this.user_no = user_no;
     this.live = live;
@@ -40,11 +41,21 @@ public class PostVo {
     this.p_img = p_img;
     this.live_url = live_url;
     this.hit = hit;
+    this.address = address;
   }
+
 
   // 메소드 - GS
   public int getUser_no() {
     return user_no;
+  }
+
+  public String getAddress() {
+    return address;
+  }
+
+  public void setAddress(String address) {
+    this.address = address;
   }
 
   public void setUser_no(int user_no) {
@@ -160,8 +171,7 @@ public class PostVo {
   public String toString() {
     return "PostVo [user_no=" + user_no + ", live=" + live + ", post_no=" + post_no + ", category=" + category + ", title=" + title + ", content="
         + content + ", reg_date=" + reg_date + ", latitude=" + latitude + ", longitude=" + longitude + ", p_start=" + p_start + ", p_end=" + p_end
-        + ", p_img=" + p_img + ", live_url=" + live_url + ", hit=" + hit + "]";
+        + ", p_img=" + p_img + ", live_url=" + live_url + ", hit=" + hit + ", address=" + address + "]";
   }
-
 
 }

@@ -15,6 +15,7 @@ public class BlogService2 {
   public int live_start(PostVo postVo) {
 
     blogDao2.live_start(postVo);
+    blogDao2.live_on(postVo);
 
     return postVo.getPost_no();
 
@@ -24,6 +25,7 @@ public class BlogService2 {
   public void live_end(int user_no) {
 
     blogDao2.live_end(user_no);
+    blogDao2.live_off(user_no);
 
   }
 

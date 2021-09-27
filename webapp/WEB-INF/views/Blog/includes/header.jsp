@@ -17,9 +17,7 @@
     </c:if>
 
     <c:if test="${blogVo.live == 1}">
-      <form id="form" action="">
         <button type="submit" class="btn_end">공연종료</button>
-      </form>
     </c:if>
   </c:if>
 
@@ -38,7 +36,7 @@
 <!---- 프로필 박스 ---->
 <div class="profile_box">
   <div class="main_profile">
-    <img src="${pageContext.request.contextPath}/assets/image/blog/img/profile.jpg">
+    <img src="/Buskeround${blogVo.user_img}">
   </div>
 
   <table class="profile_intr">
@@ -142,7 +140,7 @@
 
         <div>
           <label class="modal-label" id="modal_label">위치</label>
-          <input type="text" placeholder="위치를 입력세주세요" value="홍대 앞마당">
+          <input type="text" id="address" placeholder="위치를 입력세주세요" value="홍대 앞마당">
         </div>
 
         <button class="float-end mylocation">내 위치</button>
@@ -193,9 +191,6 @@
 			// Json 형태의 데이터로 보낸다.
 			contentType : "application/json",
 
-			// Json 형식의 데이터를 받는다.
-			dataType : "json",
-
 			data : {
 				user_no : ${blogVo.user_no}
 			},
@@ -204,6 +199,7 @@
 			success : function(result) {
 				/*성공시 처리해야될 코드 작성*/
 
+				location.reload();
 
 			},
 
@@ -307,7 +303,8 @@
 				user_no : ${blogVo.user_no},
     			title : $("#title").val(),
     			p_img :  $("#thumbnailpicture").val(),
-    			live_url : $("#livelink").val()
+    			live_url : $("#livelink").val(),
+    			address : $("#address").val()
 		};
 
 		$.ajax({
@@ -329,6 +326,7 @@
 			success : function(result) {
 				/*성공시 처리해야될 코드 작성*/
 
+				location.reload();
 			},
 
 			// 실패할경우 error로 들어온다.
