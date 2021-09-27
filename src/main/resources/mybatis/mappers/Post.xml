@@ -7,7 +7,6 @@
 	<insert id="live_start" parameterType="Postvo">
 		<![CDATA[
 			INSERT INTO post (
-			    user_no,
 			    post_no,
 			    category,
 			    title,
@@ -15,17 +14,18 @@
 			    longitude,
 			    p_start,
 			    p_img,
-			    live_url
+			    live_url,
+			    address
 			) VALUES (
-			    #{user_no},
 			    SEQ_POST_NO.nextval,
-			    4,
+			    2,
 			    #{title},
-			    33.1234123,
-			    78.1231466,
+			    33.45071802804865,
+			    126.57059752230168,
 			    sysdate,
 			    #{p_img},
-			    #{live_url}
+			    #{live_url},
+			    #{address}
 			)
 		]]>
 	</insert>
@@ -48,7 +48,16 @@
 			SET
 			    p_end = sysdate
 			WHERE
-			    user_no = #{user_no}
+			    (
+			        SELECT
+			            c.user_no
+			        FROM
+			            post      p,
+			            category  c
+			        WHERE
+			            p.category = c.category AND
+			            p.p_end is null
+			    ) = #{user_no}
 		]]>
 	</update>
 

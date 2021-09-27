@@ -142,7 +142,6 @@ label {
     padding-right: 35px;
     padding-left: 3px;
     margin-bottom: 12px;
-    cursor: pointer;
     font-size: 14px;
 }
 
@@ -189,8 +188,14 @@ input[type="file"] {
     white-space: nowrap;
     vertical-align: baseline;
     border-radius: .25em;
+    cursor: pointer;
 }
 
 .label-default {
     background-color: #777;
+}
+.delBtn {
+	cursor: pointer;
+	width: 15px;
+    padding-bottom: 2px;
 }

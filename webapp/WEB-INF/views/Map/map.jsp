@@ -10,7 +10,7 @@
     <style>
     	body {overflow:hidden}
     
-	    .wrap {position: absolute;left: 0;bottom: 40px;width: 288px;height: 132px;margin-left: -144px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
+	    .wrap {position: absolute;left: 0;bottom: 40px;width: 288px;height: 132px; margin-left: -144px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
 	    .wrap * {padding: 0;margin: 0;}
 	    .wrap .info {width: 286px;height: 120px;border-radius: 5px;border-bottom: 2px solid #ccc;border-right: 1px solid #ccc;overflow: hidden;background: #fff;}
 	    .wrap .info:nth-child(1) {border: 0;box-shadow: 0px 1px 2px #888;}
@@ -25,7 +25,6 @@
 	    .info:after {content: '';position: absolute;margin-left: -12px;left: 50%;bottom: 0;width: 22px;height: 12px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
 	    .info .link {color: #5085BB;}
 	    
-	    .map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
 		.map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
 		.map_wrap {position:relative;width:100%;height:700px;}
 		#menu_wrap {position:absolute;top:0;left:0;bottom:0;width:250px;margin:10px 0 30px 10px;padding:5px;overflow-y:auto;background:rgba(255, 255, 255, 0.7);z-index: 1;font-size:12px;border-radius: 10px;}
@@ -64,9 +63,7 @@
 		height:80px;
 		}
 		
-		.flex{
-		  display:flex;
-		}
+
 		
 		.scroll{
 		    padding: 0px 13px 0px 13px;
@@ -96,7 +93,6 @@
 		}
 		
 	</style>
-
 <!-- 부트스트랩 -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
@@ -151,7 +147,7 @@
 <div id="map"></div>
 <script>
     
-   
+    
 var mapContainer = document.getElementById('map'), // 지도의 중심좌표
     mapOption = { 
         center: new kakao.maps.LatLng(33.451475, 126.570528), // 지도의 중심좌표
@@ -203,13 +199,15 @@ kakao.maps.event.addListener(map, 'dragend', function() {
 	});
 });
 
+
+
+
+
+
+
+
+
 //======================================
-	
-	
-	
-	
-	
-	
 	
 //================================================================== 데이터베이스에서 가져온거 뺄것
 <c:forEach items="${mapList}" var="mapList">

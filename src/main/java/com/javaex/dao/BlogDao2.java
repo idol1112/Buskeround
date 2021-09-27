@@ -16,6 +16,13 @@ public class BlogDao2 {
     System.out.println("[사용 메소드: BlogDao2.live_start()]");
 
     sqlSession.insert("post.live_start", postVo);
+
+  }
+
+  /*** live_on ***/
+  public void live_on(PostVo postVo) {
+    System.out.println("[사용 메소드: BlogDao2.live_on()]");
+
     sqlSession.insert("post.live_on", postVo);
 
   }
@@ -25,6 +32,13 @@ public class BlogDao2 {
     System.out.println("[사용 메소드: BlogDao2.live_end()]");
 
     sqlSession.insert("post.live_end", user_no);
+
+  }
+
+  /*** live_off ***/
+  public void live_off(int user_no) {
+    System.out.println("[사용 메소드: BlogDao2.live_off()]");
+
     sqlSession.insert("post.live_off", user_no);
 
   }
