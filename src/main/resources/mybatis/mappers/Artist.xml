@@ -23,7 +23,7 @@
 	          ort.fan,
 	          ort.likes,
 	          ort.live,
-	          ort.artist_regdate,
+	          TO_CHAR(ort.artist_regdate, 'YYYY') artist_regdate,
 	          ort.user_type,
 	          ort.company_type
               
