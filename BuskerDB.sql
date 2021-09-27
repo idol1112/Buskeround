@@ -147,7 +147,8 @@ CREATE TABLE users (
 	likes NUMBER, /* 좋아요 */
 	artist_regdate DATE, /* 아티스트등록일 */
 	user_type CHAR(1), /* 회원구분 */
-	company_type CHAR(1) /* 제휴사여부 */
+	company_type CHAR(1), /* 제휴사여부 */
+	ranking_score VARCHAR2(1000) /* 아티스트 점수 */
 );
 
 COMMENT ON TABLE users IS '회원';
@@ -187,6 +188,8 @@ COMMENT ON COLUMN users.artist_regdate IS '아티스트등록일';
 COMMENT ON COLUMN users.user_type IS '회원구분';
 
 COMMENT ON COLUMN users.company_type IS '제휴사여부';
+
+COMMENT ON COLUMN users.ranking_score IS '아티스트 점수';
 
 CREATE UNIQUE INDEX PK_users
 	ON users (
