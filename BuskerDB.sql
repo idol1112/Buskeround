@@ -142,6 +142,7 @@ CREATE TABLE users (
 	birthday VARCHAR2(20), /* 생년월일 */
 	genre CHAR(1), /* 퍼포먼스_장르 */
 	genre_type VARCHAR2(20), /* 활동유형 */
+	live CHAR(1), /* 라이브(방송상태) */
 	fan NUMBER, /* 팬되기 */
 	likes NUMBER, /* 좋아요 */
 	artist_regdate DATE, /* 아티스트등록일 */
@@ -174,6 +175,8 @@ COMMENT ON COLUMN users.birthday IS '생년월일';
 COMMENT ON COLUMN users.genre IS '퍼포먼스_장르';
 
 COMMENT ON COLUMN users.genre_type IS '활동유형';
+
+COMMENT ON COLUMN users.live IS '라이브(방송상태)';
 
 COMMENT ON COLUMN users.fan IS '팬되기';
 
@@ -321,7 +324,6 @@ CREATE TABLE post (
 	p_start DATE, /* 공연시작일 */
 	p_end DATE, /* 공연종료일 */
 	p_img VARCHAR2(1000), /* 공연이미지 */
-	live CHAR(1), /* 라이브(방송상태) */
 	live_url VARCHAR2(100), /* 라이브주소 */
 	hit NUMBER, /* 조회수 */
 	address VARCHAR2(1000) /* 주소 */
@@ -350,8 +352,6 @@ COMMENT ON COLUMN post.p_start IS '공연시작일';
 COMMENT ON COLUMN post.p_end IS '공연종료일';
 
 COMMENT ON COLUMN post.p_img IS '공연이미지';
-
-COMMENT ON COLUMN post.live IS '라이브(방송상태)';
 
 COMMENT ON COLUMN post.live_url IS '라이브주소';
 
