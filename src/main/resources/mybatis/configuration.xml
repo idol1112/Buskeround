@@ -8,6 +8,7 @@
 		<typeAlias alias="CompanyVo" type="com.javaex.vo.CompanyVo" />
 		<typeAlias alias="BlogVo" type="com.javaex.vo.BlogVo" />
 		<typeAlias alias="PostVo" type="com.javaex.vo.PostVo" />
+		<typeAlias alias="MapVo" type="com.javaex.vo.MapVo" />
 	</typeAliases>
 
 	<mappers>
@@ -17,5 +18,6 @@
 		<mapper resource="mybatis/mappers/Blog.xml" />
 		<mapper resource="mybatis/mappers/Artist.xml" />
 		<mapper resource="mybatis/mappers/Post.xml" />
+		<mapper resource="mybatis/mappers/Map.xml" />
 	</mappers>
 </configuration>

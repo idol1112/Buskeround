@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="map">
+
+	<select id="mapList" resultType="PostVo">
+			select latitude,longitude
+			from post
+	</select>
+
+	<select id="findMap" parameterType="map" resultType="PostVo">
+		<![CDATA[
+			select no,latitude,longitude
+			from post
+			where latitude < #{nlat}
+			and longitude < #{nlng}
+			and latitude > #{slat}
+			and longitude > #{slng}
+		]]>
+	</select>
+</mapper>
