@@ -1,5 +1,7 @@
 package com.javaex.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.javaex.service.ArtistService;
+import com.javaex.vo.UserVo;
 
 @RequestMapping(value="/Artist")
 @Controller
@@ -19,27 +22,18 @@ public class ArtistController {
 	@RequestMapping(value = "/ArtistRenk", method= {RequestMethod.GET, RequestMethod.POST })
 	public String artistrenk(Model model ) {
 		
-		System.out.println("[CompanyController.ArtistRenk()]");
+		System.out.println("[ArtistController.ArtistRenk()]");
 		
 		model.addAttribute("artistRenkList", artistService.getArtistList());
+		
+		model.addAttribute("artistLiveList", artistService.getArtistLive());
 		
 		System.out.println(artistService.getArtistList());
 		
 		return"/Artist/ArtistRenk";
 	}
 	
-	//라이브하고 있는 아티스트 리스트
-	@RequestMapping (value = "/ArtistLive", method = {RequestMethod.GET, RequestMethod.POST})
-	public String artistlive(Model model) {
-		
-		System.out.println("[CompanyController.ArtistLive()]");
-		
-		model.addAttribute("artistLiveList", artistService.getArtistLive());
-		
-		System.out.println(artistService.getArtistLive());
-		
-		return "/Artist/ArtistLive";
-	}
+
 	
 	
 	
@@ -47,7 +41,7 @@ public class ArtistController {
 	@RequestMapping(value = "/ArtistFan", method= {RequestMethod.GET, RequestMethod.POST })
 	public String artistfan() {
 		
-		System.out.println("[CompanyController.ArtistFan()]");
+		System.out.println("[ArtistController.ArtistFan()]");
 		
 		return"/Artist/ArtistFan";
 	}
@@ -56,9 +50,14 @@ public class ArtistController {
 	
 	//아티스트 팬 추가목록(user)
 	@RequestMapping(value = "/ArtistFanList", method= {RequestMethod.GET, RequestMethod.POST })
-	public String artistfanlist() {
+	public String artistfanlist(Model model, HttpSession session) {
 		
-		System.out.println("[CompanyController.ArtistFanList()]");
+		System.out.println("[ArtistController.ArtistFanList()]");
+		
+		UserVo userVo = (UserVo)session.getAttribute("authUser");
+		
+		model.addAttribute("artistFanList", artistService.getFanList(userVo.getUser_no()));
+		
 		
 		return"/Artist/ArtistFanList";
 	}
@@ -70,7 +69,7 @@ public class ArtistController {
 	@RequestMapping(value = "/ArtistNew", method= {RequestMethod.GET, RequestMethod.POST })
 	public String artistnew() {
 		
-		System.out.println("[CompanyController.ArtistNew()]");
+		System.out.println("[ArtistController.ArtistNew()]");
 		
 		return"/Artist/ArtistNew";
 	}
@@ -81,7 +80,9 @@ public class ArtistController {
 	@RequestMapping(value = "/ArtistGenre", method= {RequestMethod.GET, RequestMethod.POST })
 	public String artistgenre() {
 		
-		System.out.println("[CompanyController.ArtistGenre()]");
+		System.out.println("[ArtistController.ArtistGenre()]");
+		
+		
 		
 		return"/Artist/ArtistGenre";
 	}
