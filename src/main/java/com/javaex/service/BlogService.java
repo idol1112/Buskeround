@@ -18,5 +18,12 @@ public class BlogService {
 		
 		return blogDao.selectUser(id);
 	}
+	
+	//블로그 수정하기
+	public int modify(BlogVo blogVo) {
+		System.out.println("BlogService.Modify()");
+		
+		return blogDao.modify(blogVo);	
+	}
 
 }

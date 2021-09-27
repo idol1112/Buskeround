@@ -35,4 +35,20 @@ public class BlogDao {
 		
 		return sqlSession.selectOne("blog.selectBlog", id);
 	}
+
+	//정보 수정
+	public int modify(BlogVo blogVo) {
+		System.out.println("BlogDao.Modify()");
+		
+		//Users
+		System.out.println("UsersModify");
+		sqlSession.update("blog.usersModify", blogVo);
+		
+		//Resume
+//		sqlSession.update("blog.resumeModify", blogVo);
+		
+		//Blog
+		System.out.println("BlogModify");
+		return sqlSession.update("blog.blogModify", blogVo);
+	}
 }

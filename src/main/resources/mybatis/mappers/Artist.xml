@@ -6,7 +6,49 @@
 	<!-- 아티스트 리스트 -->
 	<select id="getArtist" resultType="UserVo">
 		<![CDATA[
-	      SELECT
+          SELECT
+              rn,
+              ort.user_no, 
+	          ort.id,
+	          ort.password,
+	          ort.email,
+	          ort.nickname,
+	          ort.user_img,
+	          ort.name,
+	          ort.hp,
+	          ort.gender,
+	          ort.birthday,
+	          ort.genre,
+	          ort.genre_type,
+	          ort.fan,
+	          ort.likes,
+	          ort.live,
+	          ort.artist_regdate,
+	          ort.user_type,
+	          ort.company_type
+              
+          FROM (	      SELECT
+              rownum rn,  
+	          ot.user_no,
+	          ot.id,
+	          ot.password,
+	          ot.email,
+	          ot.nickname,
+	          ot.user_img,
+	          ot.name,
+	          ot.hp,
+	          ot.gender,
+	          ot.birthday,
+	          ot.genre,
+	          ot.genre_type,
+	          ot.fan,
+	          ot.likes,
+	          ot.live,
+	          ot.artist_regdate,
+	          ot.user_type,
+	          ot.company_type
+	          
+	      FROM (	      SELECT
 	      
 	          user_no, 
 	          id,
@@ -28,13 +70,16 @@
 	          company_type
 	          
 	      FROM users
-	      where user_type = 2
+	      where user_type = 2) ot) ort
+          where rn >=1
+          and rn <=10
+          
 		]]>
 	</select>
 
 
 	<!-- 아티스트 라이브 리스트 -->
-	<select id="getArtistlive" resultType="UserVo">
+	<select id="getArtistLive" resultType="UserVo">
 		<![CDATA[
 		SELECT
 		
@@ -54,6 +99,28 @@
 		where live = 1
 		
 		]]>
+	</select>
+	
+	<!-- 팬 되기 리스트 -->
+	<select id="getFanList" resultType="UserVo">
+		<![CDATA[
+		SELECT
+		
+		    id,
+		    u.user_img,
+		    u.genre,
+		    u.genre_type,
+		    u.fan,
+		    u.likes,
+		    u.artist_regdate,
+		    f.fan_no,
+		    u.nickname,
+		    f.user_no,
+		    f.artist_no
+		FROM users u, fan f
+		WHERE u.user_no = f.fan_no and f.user_no = #{user_no}
+		
+				]]>
 	</select>
 
 

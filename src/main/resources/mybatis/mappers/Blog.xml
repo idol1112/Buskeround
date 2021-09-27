@@ -18,7 +18,7 @@
 
 		<![CDATA[
 		insert into category
-		values(seq_cate_no.nextval, #{user_no}, '공지사항')
+		values(seq_cate_no.nextval, #{user_no}, 1, '공지사항')
 	 	]]>
 
 	</insert>
@@ -28,7 +28,7 @@
 
 		<![CDATA[
 		insert into category
-		values(seq_cate_no.nextval, #{user_no}, '타임라인')
+		values(seq_cate_no.nextval, #{user_no}, 2, '타임라인')
 	 	]]>
 
 	</insert>
@@ -38,7 +38,7 @@
 
 		<![CDATA[
 		insert into category
-		values(seq_cate_no.nextval, #{user_no}, '갤러리')
+		values(seq_cate_no.nextval, #{user_no}, 3, '갤러리')
 	 	]]>
 
 	</insert>
@@ -48,7 +48,7 @@
 
 		<![CDATA[
 		insert into category
-		values(seq_cate_no.nextval, #{user_no}, '방명록')
+		values(seq_cate_no.nextval, #{user_no}, 4, '방명록')
 	 	]]>
 
 	</insert>
@@ -78,5 +78,47 @@
 			    AND id = #{id}
 	 	]]>
 	</select>
-
+	
+	<!-- Blog(Users) Modify -->
+	<update id="usersModify" parameterType="BlogVo">
+		
+		<![CDATA[
+		UPDATE users 
+		SET 
+			nickname = #{nickname}
+		WHERE 
+			user_no = #{user_no}
+		]]>
+		
+	</update>
+	
+	<!-- Blog(Blog) Modify -->
+	<update id="blogModify" parameterType="BlogVo">
+		
+		<![CDATA[
+		UPDATE blog 
+		SET 
+			intro = #{intro},
+			y_url = #{y_url},
+			i_url = #{i_url},
+			f_url = #{f_url}
+		WHERE 
+			user_no = #{user_no}
+		]]>
+		
+	</update>
+	
+	<!-- Blog(resume) Modify -->
+	<!-- <update id="resumeModify" parameterType="BlogVo">
+		
+		<![CDATA[
+		UPDATE blog 
+		SET 
+			nickname = #{nickname},
+		WHERE 
+			user_no = #{user_no}
+		]]>
+		
+	</update> -->
+	
 </mapper>

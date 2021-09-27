@@ -31,11 +31,11 @@
 
 	<!------ br_container ------>
 	<div class="clearfix" id="br_container">
-		<c:import url="/views/Blog/includes/aside.jsp"></c:import>
+    <c:import url="/WEB-INF/views/Blog/includes/aside.jsp"></c:import>
 
 		<!------ br_content ------>
 		<div id="br_content">
-			<c:import url="/views/Blog/includes/header.jsp"></c:import>
+      	<c:import url="/WEB-INF/views/Blog/includes/header.jsp"></c:import>
 
 			<!-- 컨텐트 (프로필 수정) -->
 			<div class="modify-header">
@@ -43,19 +43,20 @@
 			</div>
 
 			<div class="modify-form">
-				<form action="" method="POST">
+				<form action="${pageContext.request.contextPath}/blog/modify" method="POST">
+					<input type="hidden" name="user_no" value="${blogVo.user_no}">
 					<table>
 						<tr>
-							<td class="table-head"><label for="artistname">활동명</label></td>
-							<td><input class="input" type="text" id="artistname" name="artistname" placeholder="활동명을 입력해주세요."></td>
+							<td class="table-head"><label for="nickname">활동명</label></td>
+							<td><input class="input" type="text" id="artistname" name="nickname" placeholder="활동명을 입력해주세요." value="${blogVo.nickname}"></td>
 						</tr>
 						<tr>
-							<td class="table-head"><label for="introduce">자기소개</label></td>
-							<td><textarea class="input" placeholder="자기소개를 입력해주세요."></textarea></td>
+							<td class="table-head"><label for="intro">자기소개</label></td>
+							<td><textarea class="input" name="intro" placeholder="자기소개를 입력해주세요.">${blogVo.intro}</textarea></td>
 						</tr>
 						<tr>
-							<td class="table-head"><label for="record">이력사항</label></td>
-							<td><input class="input" type="text" id="record" name="record" placeholder="이력사항을 입력해주세요"></td>
+							<td class="table-head"><label for="resume">이력사항</label></td>
+							<td><input class="input" type="text" id="record" name="resume" placeholder="이력사항을 입력해주세요"></td>
 						</tr>
 						<tr id="banner">
 							<td class="table-head"><label>대문이미지</label></td>
@@ -68,13 +69,13 @@
 							<td class="label-width">
 								<div>
 									<div>
-										<label>유튜브</label> <input class="sns-input" type="text">
+										<label>유튜브</label> <input class="sns-input" name="y_url" type="text" value="${blogVo.y_url}">
 									</div>
 									<div>
-										<label>페이스북</label> <input class="sns-input" type="text">
+										<label>페이스북</label> <input class="sns-input" name="f_url" type="text" value="${blogVo.f_url}">
 									</div>
 									<div>
-										<label>인스타그램</label> <input class="sns-input" type="text">
+										<label>인스타그램</label> <input class="sns-input" name="i_url" type="text" value="${blogVo.i_url}">
 									</div>
 								</div>
 
@@ -82,7 +83,8 @@
 						</tr>
 					</table>
 					<button class="float-end" id="profilecancel" onclick="location.href=''">취소</button>
-					<button class="float-end" id="profilesubmit" onclick="location.href=''">수정</button>
+					<button type="submit" class="float-end" id="profilesubmit">수정</button>
+				</form>
 			</div>
 		</div>
 	</div>

@@ -21,6 +21,7 @@ public class UserVo {
   private String artist_regdate;
   private String user_type;
   private String company_type;
+  private int rn;
   
 
   // 생성자
@@ -40,9 +41,10 @@ public class UserVo {
 	this.company_type = company_type;
 }
   
+
   public UserVo(int user_no, String id, String password, String email, String nickname, String user_img, String name,
 		String hp, String gender, String birthday, String genre, String genre_type, int fan, int likes, String live,
-		String artist_regdate, String user_type, String company_type) {
+		String artist_regdate, String user_type, String company_type, int rn) {
 	super();
 	this.user_no = user_no;
 	this.id = id;
@@ -62,9 +64,10 @@ public class UserVo {
 	this.artist_regdate = artist_regdate;
 	this.user_type = user_type;
 	this.company_type = company_type;
+	this.rn = rn;
 }
 
-  // 메소드 - GS
+// 메소드 - GS
   public int getUser_no() {
 		return user_no;
 	}
@@ -209,17 +212,25 @@ public class UserVo {
 		this.company_type = company_type;
 	}
 
+  public int getRn() {
+		return rn;
+	}
 
-  // 메소드 - 일반
+	public void setRn(int rn) {
+		this.rn = rn;
+	}
+
+
+
+	// 메소드 - 일반
 	@Override
 	public String toString() {
 		return "UserVo [user_no=" + user_no + ", id=" + id + ", password=" + password + ", email=" + email
 				+ ", nickname=" + nickname + ", user_img=" + user_img + ", name=" + name + ", hp=" + hp + ", gender="
 				+ gender + ", birthday=" + birthday + ", genre=" + genre + ", genre_type=" + genre_type + ", fan=" + fan
 				+ ", likes=" + likes + ", live=" + live + ", artist_regdate=" + artist_regdate + ", user_type="
-				+ user_type + ", company_type=" + company_type + "]";
-	}	
-
+				+ user_type + ", company_type=" + company_type + ", rn=" + rn + "]";
+	}
 }
 
 
