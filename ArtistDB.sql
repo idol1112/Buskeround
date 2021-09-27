@@ -15,6 +15,7 @@ insert INTO users VALUES (SEQ_USER_NO.nextval, 'lll', 1234, 'lll@naver.com', 'im
 insert INTO users VALUES (SEQ_USER_NO.nextval, 'mmm', 1234, 'mmm@naver.com', 'imm', '/assets/image/blog/icon/user.png', '이무진', '010-9096-1137', 'male', 19991020, 6, '재즈', 1, 26, 0, sysdate, 2, 1);
 insert INTO users VALUES (SEQ_USER_NO.nextval, 'nnn', 1234, 'nnn@naver.com', 'imn', '/assets/image/blog/icon/user.png', '박사나', '010-3677-8989', 'female', 20020309, 2, '솔로', 1, 15, 0, sysdate, 2, 1); 
 insert INTO users VALUES (SEQ_USER_NO.nextval, 'ooo', 1234, 'ooo@naver.com', 'imo', '/assets/image/blog/icon/user.png', '김선호', '010-3677-8989', 'male', 20010628, 4, '솔로', 1, 0, 0, sysdate, 2, 1);
+insert INTO users VALUES (SEQ_USER_NO.nextval, 'zzz', 1234, 'zzz@naver.com', 'imz', '/assets/image/blog/icon/user.png', '김동호', '010-2998-0001', 'male', 20000101, 1, '솔로', 0, 67, 0, sysdate, 2, 1);
 
 
 /*팬되기 조인 예시*/
@@ -24,3 +25,4 @@ SELECT
     f.artist_no
 FROM users u, fan f
 WHERE u.user_no = f.fan_no and f.user_no = 1;
+
