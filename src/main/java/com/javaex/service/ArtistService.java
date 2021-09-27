@@ -25,5 +25,11 @@ public class ArtistService {
 		
 		return artistDao.getArtistLive();
 	}
+	
+	//팬되기 리스트 가져오기
+	public List<UserVo> getFanList(int user_no) {
+		
+		return artistDao.getFanList(user_no);
+	}
 
 }

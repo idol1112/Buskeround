@@ -66,7 +66,7 @@
 
 							<!--1번-->
 							<tr>
-								<td>1</td>
+								<td>${aList.rn}</td>
 								<td><img src="/Buskeround${aList.user_img}" style="width: 80px"></td>
 								<td>
 									<div>${aList.nickname}</div>
@@ -113,11 +113,11 @@
 					<tbody>
 					<c:forEach items="${artistLiveList}" var="aLive">
 						<tr>
-							<td>"${aLive.nickname}"</td>
+							<td>${aLive.nickname}</td>
 							<td>오후 3:24~</td>
 							<td>[위치 보기]</td>
 						</tr>
-						</c:forEach>
+					</c:forEach>
 					</tbody>
 				</table>
 			</div>
