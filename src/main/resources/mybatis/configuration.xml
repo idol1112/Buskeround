@@ -9,6 +9,7 @@
 		<typeAlias alias="BlogVo" type="com.javaex.vo.BlogVo" />
 		<typeAlias alias="PostVo" type="com.javaex.vo.PostVo" />
 		<typeAlias alias="MapVo" type="com.javaex.vo.MapVo" />
+		<typeAlias alias="StageVo" type="com.javaex.vo.StageVo" />
 	</typeAliases>
 
 	<mappers>
@@ -19,5 +20,6 @@
 		<mapper resource="mybatis/mappers/Artist.xml" />
 		<mapper resource="mybatis/mappers/Post.xml" />
 		<mapper resource="mybatis/mappers/Map.xml" />
+		<mapper resource="mybatis/mappers/stage.xml" />
 	</mappers>
 </configuration>

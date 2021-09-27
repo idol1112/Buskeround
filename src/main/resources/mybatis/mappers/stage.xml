@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="stage">
+	<!-- 공연장 리스트 불러오기 -->
+	<select id="selectStage" resultType="StageVo">
+		<![CDATA[
+			select  stage_no,
+			        user_no,
+			        stage_name,
+			        rain_progress,
+			        stage_light,
+			        parking
+			from    stage
+			where user_no = #{user_no}
+			order by stage_no asc
+		]]>
+	</select>
+	
+	<!-- 공연장 리스트 하나 불러오기 -->
+	<select id="selectStageOne" resultType="StageVo">
+		<![CDATA[
+			select  stage_no,
+			        user_no,
+			        stage_name,
+			        rain_progress,
+			        stage_light,
+			        parking
+			from    stage
+			where stage_no = #{stage_no}
+		]]>
+	</select>
+
+	<!-- 공연장 정보 insert -->
+	<insert id="stageInsert" parameterType="StageVo">
+		<![CDATA[
+			insert into stage
+			values( SEQ_STAGE_NO.nextval,
+			        #{user_no},
+			        #{stage_name},
+			        #{rain_progress},
+			        #{stage_light},
+			        #{parking}
+			)
+		]]>
+	</insert>
+	
+	<!-- 공연장 정보 update -->
+	<update id="stageUpdate" parameterType="StageVo">
+		<![CDATA[
+			update  stage
+			set
+			        stage_name = #{stage_name},
+			        rain_progress = #{rain_progress},
+			        stage_light = #{stage_light},
+			        parking = #{parking}
+			where   stage_no = #{stage_no}	
+		]]>
+	</update>
+	
+	<!-- 공연장 정보 delete -->
+	<delete id="stageDelete" parameterType="int">
+		<![CDATA[
+			delete from stage
+			where stage_no = #{stage_no}
+		]]>
+	</delete>
+	
+</mapper>
