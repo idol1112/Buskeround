@@ -3,6 +3,35 @@
 
 <mapper namespace="mypage">
 
+	<!-- ModifyUser -->
+	<update id="modifyImg" parameterType="UserVo">
+	
+		<![CDATA[
+			UPDATE users 
+			SET 
+				nickname = #{nickname},
+				user_img = #{user_img},
+				email = #{email},
+				password = #{password}
+			WHERE 
+				user_no = #{user_no}
+			]]>
+	</update>
+	
+	<update id="modify" parameterType="UserVo">
+	
+		<![CDATA[
+			UPDATE users 
+			SET 
+				nickname = #{nickname},
+				email = #{email},
+				password = #{password}
+			WHERE 
+				user_no = #{user_no}
+			]]>
+	</update>
+	
+	
 	<!-- GetArtistInfo -->
 	<select id="getArtist" resultType="MypageVo" parameterType="String">
 		<![CDATA[

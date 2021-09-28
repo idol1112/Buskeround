@@ -56,306 +56,64 @@
                             <td>    </td>
                             <td>활동명</td>
                             <td>주요장르</td>
-                            <td>아티스트 정보</td>
+                            <td>주요정보</td>
                             <td>좋아요</td>
                             <td>팬 되기</td>
                         </tr>
                     </thead>
                     <tbody>
+                    	<c:forEach items="${artistFan}" var="fList">
                         <!--1번-->
                         <tr>
-                            <td>1</td>
+                            <td>${fList.rn}</td>
+                            <td><img src="/Buskeround${fList.user_img}" style="width: 80px"></td> 
                             <td>
-                                <img src="${pageContext.request.contextPath}/assets/image/artist/img/18.PNG" style="width:80px">
-                            </td>
-                            <td>
-                                <div>이지은</div>
+                                <div>${fList.nickname}</div>
                                 <div>
                                 	<img src="${pageContext.request.contextPath}/assets/image/artist/icon/youtube.png" style="width:20px">
                                     <img src="${pageContext.request.contextPath}/assets/image/artist/icon/facebook.png" style="width:20px">
                                     <img src="${pageContext.request.contextPath}/assets/image/artist/icon/insta.png" style="width:20px">
                                 </div>
                             </td>
+                            <!-- 장르 -->
+							<c:if test="${fList.genre == 1}">
+								<td><img src="${pageContext.request.contextPath}/assets/image/blog/icon/ballade.png" style="width: 60px"></td>
+							</c:if>
+
+							<c:if test="${fList.genre == 2}">
+								<td><img src="${pageContext.request.contextPath}/assets/image/blog/icon/dance.png" style="width: 60px"></td>
+							</c:if>
+
+							<c:if test="${fList.genre == 3}">
+								<td><img src="${pageContext.request.contextPath}/assets/image/blog/icon/hiphop.png" style="width: 60px"></td>
+							</c:if>
+
+							<c:if test="${fList.genre == 4}">
+								<td><img src="${pageContext.request.contextPath}/assets/image/blog/icon/soul.png" style="width: 60px"></td>
+							</c:if>
+
+							<c:if test="${fList.genre == 5}">
+								<td><img src="${pageContext.request.contextPath}/assets/image/blog/icon/musical.png" style="width: 60px"></td>
+							</c:if>
+
+							<c:if test="${fList.genre == 6}">
+								<td><img src="${pageContext.request.contextPath}/assets/image/blog/icon/etc.png" style="width: 60px"></td>
+							</c:if>
+                            
                             <td>
-                                <img src="${pageContext.request.contextPath}/assets/image/artist/icon/dance.png" style="width:60px">
-                            </td>
-                            <td>
-                                <div>활동유형 K-POP 댄스</div>
-                                <div>가입연도 2021년</div>
-                            </td>
-                            <td>
-                                <img src="${pageContext.request.contextPath}/assets/image/artist/icon/heart2.png" style="width:20px">
-                                <span>620</span>
-                            </td>
-                            <td>
-                                <img src="${pageContext.request.contextPath}/assets/image/artist/icon/fan1.png" style="width:20px">
-                                <span>409</span>
-                            </td>
-                        </tr>
-                        <!--2번-->
-                        <tr>
-                            <td>2</td>
-                            <td>
-                                <img src="${pageContext.request.contextPath}/assets/image/artist/img/14.PNG" style="width:80px">
-                            </td>
-                            <td>
-                                <div>홀리뱅(HOLLYBANG)</div>
-                                <div>
-                                    <img src="${pageContext.request.contextPath}/assets/image/artist/icon/facebook.png" style="width:20px">
-                                    <img src="${pageContext.request.contextPath}/assets/image/artist/icon/insta.png" style="width:20px">
-                                </div>
-                            </td>
-                            <td>
-                                <img src="${pageContext.request.contextPath}/assets/image/artist/icon/musical.png" style="width:60px">
-                            </td>
-                            <td>
-                                <div>활동유형 베이스</div>
-                                <div>가입연도 2020년</div>
-                            </td>
-                            <td>
-                                <img src="${pageContext.request.contextPath}/assets/image/artist/icon/heart1.png" style="width:20px">
-                                <span>340</span>
-                            </td>
-                            <td>
-                                <img src="${pageContext.request.contextPath}/assets/image/artist/icon/fan2.png" style="width:20px">
-                                <span>321</span>
-                            </td>
-                        </tr>
-                        <!--3번-->
-                        <tr>
-                            <td>3</td>
-                            <td>
-                                <img src="${pageContext.request.contextPath}/assets/image/artist/img/6.PNG" style="width:80px">
-                            </td>
-                            <td>
-                                <div>안다니엘</div>
-                                <div>
-                                    <img src="${pageContext.request.contextPath}/assets/image/artist/icon/youtube.png" style="width:20px">
-                                    <img src="${pageContext.request.contextPath}/assets/image/artist/icon/insta.png" style="width:20px">
-                                </div>
-                            </td>
-                            <td>
-                                <img src="${pageContext.request.contextPath}/assets/image/artist/icon/hiphop.png" style="width:70px">
-                            </td>
-                            <td>
-                                <div>활동유형 힙합</div>
-                                <div>가입연도 2020년</div>
+                                <div>${fList.genre_type}</div>
+                                <div>가입연도 ${fList.artist_regdate}년</div>
                             </td>
                             <td>
                                 <img src="${pageContext.request.contextPath}/assets/image/artist/icon/heart2.png" style="width:20px">
-                                <span>400</span>
-                            </td>
-                            <td>
-                                <img src="${pageContext.request.contextPath}/assets/image/artist/icon/fan2.png" style="width:20px">
-                                <span>320</span>
-                            </td>
-                        </tr>
-                        <!--4번-->
-                        <tr>
-                            <td>4</td>
-                            <td>
-                                <img src="${pageContext.request.contextPath}/assets/image/artist/img/12.PNG" style="width:80px">
-                            </td>
-                            <td>
-                                <div>악뮤(AKMU)</div>
-                                <div>
-                                    <img src="${pageContext.request.contextPath}/assets/image/artist/icon/youtube.png" style="width:20px">
-                                    <img src="${pageContext.request.contextPath}/assets/image/artist/icon/insta.png" style="width:20px">
-                                </div>
-                            </td>
-                            <td>
-                                <img src="${pageContext.request.contextPath}/assets/image/artist/icon/soul.png" style="width:75px">
-                            </td>
-                            <td>
-                                <div>활동유형 혼성그룹</div>
-                                <div>가입연도 2021년</div>
-                            </td>
-                            <td>
-                                <img src="${pageContext.request.contextPath}/assets/image/artist/icon/heart2.png" style="width:20px">
-                                <span>290</span>
+                                <span>${fList.likes}</span>
                             </td>
                             <td>
                                 <img src="${pageContext.request.contextPath}/assets/image/artist/icon/fan1.png" style="width:20px">
-                                <span>300</span>
+                                <span>${fList.fan}</span>
                             </td>
                         </tr>
-                        <!--5번-->
-                        <tr>
-                            <td>5</td>
-                            <td>
-                                <img src="${pageContext.request.contextPath}/assets/image/artist/img/4.PNG" style="width:80px">
-                            </td>
-                            <td>
-                                <div>안진혁</div>
-                                <div>
-                                    <img src="${pageContext.request.contextPath}/assets/image/artist/icon/youtube.png" style="width:20px">
-                                    <img src="${pageContext.request.contextPath}/assets/image/artist/icon/facebook.png" style="width:20px">
-                                    <img src="${pageContext.request.contextPath}/assets/image/artist/icon/insta.png" style="width:20px">
-                                </div>
-                            </td>
-                            <td>
-                                <img src="${pageContext.request.contextPath}/assets/image/artist/icon/soul.png" style="width:75px">
-                            </td>
-                            <td>
-                                <div>활동유형 솔로가수</div>
-                                <div>가입연도 2019년</div>
-                            </td>
-                            <td>
-                                <img src="${pageContext.request.contextPath}/assets/image/artist/icon/heart1.png" style="width:20px">
-                                <span>420</span>
-                            </td>
-                            <td>
-                                <img src="${pageContext.request.contextPath}/assets/image/artist/icon/fan1.png" style="width:20px">
-                                <span>205</span>
-                            </td>
-                        </tr>
-                        <!--6번-->
-                        <tr>
-                            <td>6</td>
-                            <td>
-                                <img src="${pageContext.request.contextPath}/assets/image/artist/img/21.PNG" style="width:80px">
-                            </td>
-                            <td>
-                                <div>김진호</div>
-                                <div>
-                                    <img src="${pageContext.request.contextPath}/assets/image/artist/icon/youtube.png" style="width:20px">
-                                    <img src="${pageContext.request.contextPath}/assets/image/artist/icon/facebook.png" style="width:20px">
-                                    <img src="${pageContext.request.contextPath}/assets/image/artist/icon/insta.png" style="width:20px">
-                                </div>
-                            </td>
-                            <td>
-                                <img src="${pageContext.request.contextPath}/assets/image/artist/icon/ballade.png" style="width:75px">
-                            </td>
-                            <td>
-                                <div>활동유형 솔로가수</div>
-                                <div>가입연도 2019년</div>
-                            </td>
-                            <td>
-                                <img src="${pageContext.request.contextPath}/assets/image/artist/icon/heart1.png" style="width:20px">
-                                <span>297</span>
-                            </td>
-                            <td>
-                                <img src="${pageContext.request.contextPath}/assets/image/artist/icon/fan1.png" style="width:20px">
-                                <span>200</span>
-                            </td>
-                        </tr>
-                        <!--7번-->
-                        <tr>
-                            <td>7</td>
-                            <td>
-                                <img src="${pageContext.request.contextPath}/assets/image/artist/img/19.PNG" style="width:80px">
-                            </td>
-                            <td>
-                                <div>YGXGIRL</div>
-                                <div>
-                                    <img src="${pageContext.request.contextPath}/assets/image/artist/icon/youtube.png" style="width:20px">
-                                    <img src="${pageContext.request.contextPath}/assets/image/artist/icon/facebook.png" style="width:20px">
-                                    <img src="${pageContext.request.contextPath}/assets/image/artist/icon/insta.png" style="width:20px">
-                                </div>
-                            </td>
-                            <td>
-                                <img src="${pageContext.request.contextPath}/assets/image/artist/icon/dance.png" style="width:60px">
-                            </td>
-                            <td>
-                                <div>활동유형 비보잉</div>
-                                <div>가입연도 2020년</div>
-                            </td>
-                            <td>
-                                <img src="${pageContext.request.contextPath}/assets/image/artist/icon/heart2.png" style="width:20px">
-                                <span>233</span>
-                            </td>
-                            <td>
-                                <img src="${pageContext.request.contextPath}/assets/image/artist/icon/fan2.png" style="width:20px">
-                                <span>140</span>
-                            </td>
-                        </tr>
-                        <!--8번-->
-                        <tr>
-                            <td>8</td>
-                            <td>
-                                <img src="${pageContext.request.contextPath}/assets/image/artist/img/8.PNG" style="width:80px">
-                            </td>
-                            <td>
-                                <div>태민</div>
-                                <div>
-                                    <img src="${pageContext.request.contextPath}/assets/image/artist/icon/youtube.png" style="width:20px">
-                                </div>
-                            </td>
-                            <td>
-                                <img src="${pageContext.request.contextPath}/assets/image/artist/icon/dance.png" style="width:60px">
-                            </td>
-                            <td>
-                                <div>활동유형 솔로댄서</div>
-                                <div>가입연도 2020년</div>
-                            </td>
-                            <td>
-                                <img src="${pageContext.request.contextPath}/assets/image/artist/icon/heart1.png" style="width:20px">
-                                <span>290</span>
-                            </td>
-                            <td>
-                                <img src="${pageContext.request.contextPath}/assets/image/artist/icon/fan1.png" style="width:20px">
-                                <span>120</span>
-                            </td>
-                        </tr>
-                        <!--9번-->
-                        <tr>
-                            <td>9</td>
-                            <td>
-                                <img src="${pageContext.request.contextPath}/assets/image/artist/img/13.PNG" style="width:80px">
-                            </td>
-                            <td>
-                                <div>최정훈</div>
-                                <div>
-                                    <img src="${pageContext.request.contextPath}/assets/image/artist/icon/youtube.png" style="width:20px">
-                                    <img src="${pageContext.request.contextPath}/assets/image/artist/icon/facebook.png" style="width:20px">
-                                    <img src="${pageContext.request.contextPath}/assets/image/artist/icon/insta.png" style="width:20px">
-                                </div>
-                            </td>
-                            <td>
-                                <img src="${pageContext.request.contextPath}/assets/image/artist/icon/musical.png" style="width:60px">
-                            </td>
-                            <td>
-                                <div>활동유형 베이스</div>
-                                <div>가입연도 2020년</div>
-                            </td>
-                            <td>
-                                <img src="${pageContext.request.contextPath}/assets/image/artist/icon/heart2.png" style="width:20px">
-                                <span>530</span>
-                            </td>
-                            <td>
-                                <img src="${pageContext.request.contextPath}/assets/image/artist/icon/fan1.png" style="width:20px">
-                                <span>114</span>
-                            </td>
-                        </tr>
-                        <!--10번-->
-                        <tr>
-                            <td>10</td>
-                            <td>
-                                <img src="${pageContext.request.contextPath}/assets/image/artist/img/16.PNG" style="width:80px">
-                            </td>
-                            <td>
-                                <div>조이(JOY)</div>
-                                <div>
-                                    <img src="${pageContext.request.contextPath}/assets/image/artist/icon/youtube.png" style="width:20px">
-                                    <img src="${pageContext.request.contextPath}/assets/image/artist/icon/insta.png" style="width:20px">
-                                </div>
-                            </td>
-                            <td>
-                                <img src="${pageContext.request.contextPath}/assets/image/artist/icon/soul.png" style="width:75px">
-                            </td>
-                            <td>
-                                <div>활동유형 솔로가수</div>
-                                <div>가입연도 2021년</div>
-                            </td>
-                            <td>
-                                <img src="${pageContext.request.contextPath}/assets/image/artist/icon/heart1.png" style="width:20px">
-                                <span>300</span>
-                            </td>
-                            <td>
-                                <img src="${pageContext.request.contextPath}/assets/image/artist/icon/fan1.png" style="width:20px">
-                                <span>109</span>
-                            </td>
-                        </tr>
+					  </c:forEach>
                     </tbody>
                 </table>
             </div>
@@ -390,56 +148,13 @@
                 </div>
                 <table>
                     <tbody>
-                        <tr>
-                            <td>김진호</td>
-                            <td>오후 3:24~</td>
-                            <td> [위치 보기]</td>
-                        </tr>
-                        <tr>
-                            <td>나비</td>
-                            <td>오후 8:00~</td>
-                            <td> [위치 보기]</td>
-                        </tr>
-                        <tr>
-                            <td>이석훈</td>
-                            <td>오후 8:20~</td>
-                            <td> [위치 보기]</td>
-                        </tr>
-                        <tr>
-                            <td>지석진</td>
-                            <td>오후 8:40~</td>
-                            <td> [위치 보기]</td>
-                        </tr>
-                        <tr>
-                            <td>이지은</td>
-                            <td>오후 9:05~</td>
-                            <td> [위치 보기]</td>
-                        </tr>
-                        <tr>
-                            <td>홀리뱅</td>
-                            <td>오후 9:22~</td>
-                            <td> [위치 보기]</td>
-                        </tr>
-                        <tr>
-                            <td>하석훈</td>
-                            <td>오후 9:24~</td>
-                            <td> [위치 보기]</td>
-                        </tr>
-                        <tr>
-                            <td>YGXGIRL</td>
-                            <td>오후 10:00~</td>
-                            <td> <br>[위치 보기]</td>
-                        </tr>
-                        <tr>
-                            <td>케이윌</td>
-                            <td>오후 11:09~</td>
-                            <td> [위치 보기]</td>
-                        </tr>
-                        <tr>
-                            <td>웨이비</td>
-                            <td>오후 11:25~</td>
-                            <td> [위치 보기]</td>
-                        </tr>
+						<c:forEach items="${artistLiveList}" var="aLive">
+							<tr>
+								<td>${aLive.nickname}</td>
+								<td>오후 3:24~</td>
+								<td>[위치 보기]</td>
+							</tr>
+						</c:forEach>
                     </tbody>
                 </table>
             </div>

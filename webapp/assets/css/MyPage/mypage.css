@@ -119,6 +119,7 @@ label {
     margin-left: 10px;
     width: 150px;
     height: 150px;
+    border-radius: 70%;
 }
 
 #profilesubmit {
