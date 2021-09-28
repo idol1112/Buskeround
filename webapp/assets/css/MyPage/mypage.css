@@ -206,6 +206,9 @@ input[type="file"] {
 .icon-img {
 	width: 15px;
 }
+.addBtn {
+	margin-bottom:3px;
+}
 
 .input-time {
 	width: 30%;
