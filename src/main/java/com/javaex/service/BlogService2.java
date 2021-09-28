@@ -14,10 +14,8 @@ public class BlogService2 {
   /*** 공연 시작 ***/
   public int live_start(PostVo postVo) {
 
-    blogDao2.live_start(postVo);
     blogDao2.live_on(postVo);
-
-    return postVo.getPost_no();
+    return blogDao2.live_start(postVo);
 
   }
 

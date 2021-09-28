@@ -2,7 +2,6 @@ package com.javaex.api.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -25,6 +24,7 @@ public class ApiBlogController {
     System.out.println("[현재 위치: ApiBlogController.live_start]");
 
     return blogService2.live_start(postVo);
+
   }
 
   /*** 공연 종료 ***/
@@ -35,15 +35,6 @@ public class ApiBlogController {
 
     blogService2.live_end(user_no);
 
-  }
-
-  /*** 블로그 ID 받기 ***/
-  @ResponseBody
-  @RequestMapping(value = "blog_id/{id}", method = {RequestMethod.GET, RequestMethod.POST})
-  public String blog_id(@PathVariable("id") String id) {
-    System.out.println("[현재 위치: ApiBlogController.blog_id]");
-
-    return id;
   }
 
 }

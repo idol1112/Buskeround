@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!---- 배너 ---->
-<div class=" banner">
+<div class="banner">
   <!-- 블로그 관리 버튼 -->
   <a href="${pageContext.request.contextPath}/blog/blog_modify/${blogVo.id}">
     <img class="setting" src="${pageContext.request.contextPath}/assets/image/blog/icon/settings.png">
@@ -11,13 +11,11 @@
   <!-- 공연시작 버튼 -->
   <c:if test="${blogVo.user_no == authUser.user_no}">
     <c:if test="${blogVo.live == 0}">
-      <form id="form" action="">
-        <button type="submit" class="btn_start">공연시작</button>
-      </form>
+        <button type="button" class="btn_start">공연시작</button>
     </c:if>
 
     <c:if test="${blogVo.live == 1}">
-        <button type="submit" class="btn_end">공연종료</button>
+        <button type="button" class="btn_end">공연종료</button>
     </c:if>
   </c:if>
 
@@ -175,6 +173,10 @@
 
 <script type="text/javascript">
 
+	// 유튜브 Channel ID 추출
+	var youtube_url = "${blogVo.y_url}";
+	var channel_id = youtube_url.slice(-24);
+
 	// 썸네일 등록 버튼 숨기기(모달창)
 	$(".img_box").hide();
 
@@ -210,39 +212,6 @@
 		});
 	});
 
-	// 블로그 접속했을 때
-	$(document).ready(function(){
-
-		$.ajax({
-			// 컨트롤러에서 대기중인 URL 주소이다.
-			url : "${pageContext.request.contextPath}/api/blog/blog_id/${blogVo.id}",
-
-			// HTTP method type(GET, POST) 형식이다.
-			type : "post",
-
-			// Json 형태의 데이터로 보낸다.
-			contentType : "application/json",
-
-			// Json 형식의 데이터를 받는다.
-			dataType : "json",
-
-			data : {
-
-			},
-
-			// 성공일 경우 success로 들어오며, 'result'는 응답받은 데이터이다.
-			success : function(result) {
-				/*성공시 처리해야될 코드 작성*/
-
-			},
-
-			// 실패할경우 error로 들어온다.
-			error : function(XHR, status, error) {
-				console.error(status + " : " + error);
-			}
-		});
-	});
-
 	// 공연시작 버튼 눌렀을 때(배너)
 	$(".btn_start").on("click", function() {
 		event.preventDefault();
@@ -251,7 +220,7 @@
 
 		$.ajax({
 			// 컨트롤러에서 대기중인 URL 주소이다.
-			url : "https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=UCxd9m2kFCFN1nIWB8ZOscqg&eventType=live&type=video&key=AIzaSyDTEc6Ma-ieVQBI8oQWgVxRXCHIOIMuFtk",
+			url : "https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=" + channel_id + "&eventType=live&type=video&key=AIzaSyDTEc6Ma-ieVQBI8oQWgVxRXCHIOIMuFtk",
 
 			// HTTP method type(GET, POST) 형식이다.
 			type : "get",
@@ -325,7 +294,6 @@
 			// 성공일 경우 success로 들어오며, 'result'는 응답받은 데이터이다.
 			success : function(result) {
 				/*성공시 처리해야될 코드 작성*/
-
 				location.reload();
 			},
 

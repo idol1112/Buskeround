@@ -12,10 +12,10 @@ public class BlogDao2 {
   SqlSession sqlSession;
 
   /*** 공연 시작 ***/
-  public void live_start(PostVo postVo) {
+  public int live_start(PostVo postVo) {
     System.out.println("[사용 메소드: BlogDao2.live_start()]");
 
-    sqlSession.insert("post.live_start", postVo);
+    return sqlSession.insert("post.live_start", postVo);
 
   }
 

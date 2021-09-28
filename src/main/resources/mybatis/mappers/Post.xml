@@ -6,26 +6,20 @@
 	<!-- 공연 시작 -->
 	<insert id="live_start" parameterType="Postvo">
 		<![CDATA[
-			INSERT INTO post (
-			    post_no,
-			    category,
-			    title,
-			    latitude,
-			    longitude,
-			    p_start,
-			    p_img,
-			    live_url,
-			    address
-			) VALUES (
-			    SEQ_POST_NO.nextval,
+			INSERT INTO post VALUES (
+			    seq_post_no.NEXTVAL,
 			    2,
 			    #{title},
+			    NULL,
+			    NULL,
 			    33.45071802804865,
 			    126.57059752230168,
 			    sysdate,
+			    NULL,
 			    #{p_img},
 			    #{live_url},
-			    #{address}
+			    #{address},
+			    NULL
 			)
 		]]>
 	</insert>
@@ -55,8 +49,8 @@
 			            post      p,
 			            category  c
 			        WHERE
-			            p.category = c.category AND
-			            p.p_end is null
+			                p.category_no = c.category_no
+			            AND p.p_end IS NULL
 			    ) = #{user_no}
 		]]>
 	</update>
