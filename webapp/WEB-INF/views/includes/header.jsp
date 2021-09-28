@@ -27,7 +27,14 @@
 
         <!-- 로그인 후 -->
         <c:if test="${authUser != null}">
-          <li><img id="main_profile" src="/Buskeround${authUser.user_img}"></li>
+          <li>
+          <c:if test="${authUser.user_img == null}">
+	          <img id="main_profile" src="/Buskeround/assets/image/blog/icon/user.png">
+          </c:if>
+          <c:if test="${authUser.user_img != null}">
+	          <img id="main_profile" src="${pageContext.request.contextPath}/upload/${sessionScope.authUser.user_img}">
+          </c:if>
+          </li>
           <li><b>${authUser.nickname}님</b></li>
           <li><div class="dropdown">
               <button class="dropbtn">

@@ -37,17 +37,29 @@
 					<h5>프로필 수정</h5>
 				</div>
 				<div id="mypage-right-content">
-					<form action="" method="POST">
+					<form action="${pageContext.request.contextPath}/MyPage/modify" method="POST" enctype="multipart/form-data">
+					<input type="hidden" name="user_no" value="${sessionScope.authUser.user_no}">
 						<table>
 							<tr>
 								<td class="table-head"><label for="profilepicture">프로필 사진</label></td>
 								<td>
-									<img id="profilepicture"><br>
+									<div id="image_container">
+										<c:if test="${authUser.user_img == null}">
+											<img id="profilepicture" src="/Buskeround/assets/image/blog/icon/user.png">
+										</c:if>
+										
+										<c:if test="${authUser.user_img != null}">
+											<img id="profilepicture" src="${pageContext.request.contextPath}/upload/${sessionScope.authUser.user_img}">
+										</c:if>
+									</div>
+									
 									<label id="profilepicturechange" class="btn-success btn-sm">
-								    <input type="file" id="file1" name="file1">
+								    <input type="file" id="file1" name="file1" accept="image/*" onchange="setThumbnail(event);">
 								    변경
 									</label>
-									<button id="profilepicturedelete" class="btn-danger btn-sm" type="submit">삭제</button>
+									<label id="profilepicturedelete" class="btn-danger btn-sm">
+									삭제
+									</label>
 								</td>
 							</tr>
 							<tr>
@@ -60,7 +72,7 @@
 							</tr>
 							<tr>
 								<td class="table-head"><label for="password">페스워드</label></td>
-								<td><input class="input" type="password" id="password" name="password" placeholder="페스워드를 입력해주세요"></td>
+								<td><input class="input" type="password" id="password" name="password" placeholder="페스워드를 입력해주세요" value="${sessionScope.authUser.password}"></td>
 							</tr>
 							<tr>
 								<td class="table-head"><label for="nickname">닉네임</label></td>
@@ -82,34 +94,23 @@
 
 <script type="text/javascript">
 
-//이미지 미리보기
-var sel_file;
+	function setThumbnail(event) { 
+		console.log("미리보기 실험")
+		var reader = new FileReader(); 
+		
+		var picture = document.getElementById("profilepicture");
+		picture.remove();
+		
+		reader.onload = function(event) { 
+			var img = document.createElement("img");
+			img.setAttribute("src", event.target.result); 
+			img.setAttribute("id", 'profilepicture'); 
+			document.querySelector("div#image_container").appendChild(img); 
+		}; 
+		
+		reader.readAsDataURL(event.target.files[0]); 
+		}
 
-$(document).ready(function() {
-    $("#file1").on("change", handleImgFileSelect);
-});
-
-function handleImgFileSelect(e) {
-    var files = e.target.files;
-    var filesArr = Array.prototype.slice.call(files);
-
-    var reg = /(.*?)\/(jpg|jpeg|png|bmp)$/;
-
-    filesArr.forEach(function(f) {
-        if (!f.type.match(reg)) {
-            alert("확장자는 이미지 확장자만 가능합니다.");
-            return;
-        }
-
-        sel_file = f;
-
-        var reader = new FileReader();
-        reader.onload = function(e) {
-            $("#profilepicture").attr("src", e.target.result);
-        }
-        reader.readAsDataURL(f);
-    });
-}
 
 </script>
 </html>
