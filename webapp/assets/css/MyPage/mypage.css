@@ -81,7 +81,7 @@ table td {
 }
 
 #profilepicturechange {
-    margin-left: 40px;
+    margin-left: 44px;
     margin-top: 5px;
     font-size: 12px;
 }
@@ -115,10 +115,11 @@ label {
 }
 
 #profilepicture {
-    border-radius: 8px;
+    border-radius: 70%;
     margin-left: 10px;
     width: 150px;
     height: 150px;
+    object-fit: cover;
 }
 
 #profilesubmit {
