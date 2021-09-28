@@ -66,4 +66,44 @@
 		]]>
 	</update>
 
+	<!-- 타임라인(메인) 조회 -->
+	<select id="timeline_main" parameterType="int" resultType="PostVo">
+		<![CDATA[
+			SELECT
+			    rn,
+			    ort.title,
+			    to_char(ort.p_start, 'YYYY.MM.DD"("dy")"') p_start,
+			    ort.p_img,
+			    ort.live_url
+			FROM
+			    (
+			        SELECT
+			            ROWNUM rn,
+			            ot.title,
+			            ot.p_start,
+			            ot.p_img,
+			            ot.live_url
+			        FROM
+			            (
+			                SELECT
+			                    p.title,
+			                    p.p_start,
+			                    p.p_img,
+			                    p.live_url
+			                FROM
+			                    post      p,
+			                    category  c
+			                WHERE
+			                        p.category_no = c.category_no
+			                    AND c.user_no = #{user_no}
+			                ORDER BY
+			                    p.p_start DESC
+			            ) ot
+			    ) ort
+			WHERE
+			        rn >= 1
+			    AND rn <= 2
+		]]>
+	</select>
+
 </mapper>

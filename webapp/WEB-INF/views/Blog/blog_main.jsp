@@ -54,25 +54,7 @@
       <div class="timeline_box">
         <div class="timeline">
           <ul>
-            <li>
-              <div class="content">
-                <h3>홍대 예술거리</h3>
-                <iframe width="430" height="240" src="https://www.youtube.com/embed/tLUR7Vz1TVY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-              </div>
-              <div class="time">
-                <h4>2021. 09. 10(금)</h4>
-              </div>
-            </li>
-
-            <li>
-              <div class="content">
-                <h3>마로니에 공원</h3>
-                <iframe width="430" height="240" src="https://www.youtube.com/embed/ObboG8Pvewo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-              </div>
-              <div class="time">
-                <h4>2021. 09. 09(목)</h4>
-              </div>
-            </li>
+            <div id="listArea"></div>
             <div style="clear: both;"></div>
           </ul>
         </div>
@@ -200,6 +182,7 @@
 <!------ ////(modal)//// ------>
 
 <script type="text/javascript">
+	// 갤러리 사진 눌렀을 때
 	$(".gallery_item").on("click", "#img_item", function() {
 		var img_title = $(this).parents(".gallery_item").children("div").children("h2").text();
 		$(".modal-title").text(img_title);
@@ -212,6 +195,64 @@
 
 	$("#btn_close").on("click", function() {
 		$("#img_modal").modal('hide');
+	});
+
+	// 블로그 로딩됐을 때
+	$(document).ready(function(){
+
+		$.ajax({
+			// 컨트롤러에서 대기중인 URL 주소이다.
+			url : "${pageContext.request.contextPath}/api/blog/timeline_main/${blogVo.user_no}",
+
+			// HTTP method type(GET, POST) 형식이다.
+			type : "get",
+
+			// Json 형태의 데이터로 보낸다.
+			contentType : "application/json",
+
+			// Json 형식의 데이터를 받는다.
+			dataType : "json",
+
+			data : null,
+
+			// 성공일 경우 success로 들어오며, 'result'는 응답받은 데이터이다.
+			success : function(timeList) {
+				/*성공시 처리해야될 코드 작성*/
+
+				for (var i = 0; i < timeList.length; i++) {
+					render(timeList[i]);
+				}
+
+				console.log(timeList);
+
+			},
+
+			// 실패할경우 error로 들어온다.
+			error : function(XHR, status, error) {
+				console.error(status + " : " + error);
+			}
+		});
+
+		// 타임라인 출력
+		function render(timeList) {
+			var str = '';
+			str += '<li>';
+			str += '	<div class="content">';
+			str += '		<h3>' + timeList.title + '</h3>';
+			if (timeList.live_url === null) {
+				str += '		          <img src="${pageContext.request.contextPath}/assets/image/blog/img/busker.jpg" alt="" style="width: 430px; height: 240px" />';
+			} else {
+				str += '		<iframe width="430" height="240" src="https://www.youtube.com/embed/' + timeList.live_url + '" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+			}
+			str += '	</div>';
+			str += '	<div class="time">';
+			str += '		<h4>' + timeList.p_start + '</h4>';
+			str += '	</div>';
+			str += '</li>';
+
+			$("#listArea").append(str);
+		};
+
 	});
 </script>
 
