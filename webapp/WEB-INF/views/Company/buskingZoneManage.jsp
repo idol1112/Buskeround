@@ -20,7 +20,16 @@
 
 <!-- css -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/Common/common.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/BuskingZone/company.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/MyPage/mypage.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/DatePicker/datepicker.min.css">
+
+<!-- jquery -->
+<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+<!-- datepicker -->
+<script src="${pageContext.request.contextPath}/assets/js/datepicker.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/i18n/datepicker.ko.js"></script>
+
 </head>
 
 <body>
@@ -39,60 +48,83 @@
 			</div>
 			<div id="mypage-right">
 				<div id="mypage-right-header">
-					<h5>버스킹존 등록</h5>
-				</div>
-				<div id="mypage-left-content">
-					<p class="content-title">공연 시간</p>
-					<div class="form-group">
-						<select name="stage" id="stage-select" class="select-box">
-							<option value="">7층 스테이지</option>
-							<option value="">8층 카페</option>
-						</select>
-					</div>
-					<div class="form-group">
-						<img id="calendar" src="${pageContext.request.contextPath}/assets/image/company/calendar.png">
-					</div>
-					<div class="form-group">
-						<div class="time-table">
-							<input class="input-time" type="text" id="start-time" name="start-time" placeholder="시간 입력"> <img class="from-img" src="${pageContext.request.contextPath}/assets/image/company/icon/from.png"> <input class="input-time" type="text" id="start-time" name="start-time" placeholder="시간 입력">
-							<button class="img-btn" type="submit">
-								<img class="btn-img" src="${pageContext.request.contextPath}/assets/image/company/icon/add.png">
-							</button>
-						</div>
-					</div>
-					<div class="form-group">
-						<ul>
-							<li class="time-list"><span class="list-time">18:00</span> <img class="from-img" src="${pageContext.request.contextPath}/assets/image/company/icon/from.png"> <span class="list-time">20:00</span>
-								<button class="img-btn" type="submit">
-									<img class="btn-img" src="${pageContext.request.contextPath}/assets/image/company/icon/delete.png">
-								</button></li>
-							<li class="time-list"><span class="list-time">20:00</span> <img class="from-img" src="${pageContext.request.contextPath}/assets/image/company/icon/from.png"> <span class="list-time">22:00</span>
-								<button class="img-btn" type="submit">
-									<img class="btn-img" src="${pageContext.request.contextPath}/assets/image/company/icon/delete.png">
-								</button></li>
-						</ul>
-					</div>
+					<h5>버스킹존 관리</h5>
 				</div>
 				<div id="mypage-right-content">
-					<p class="content-title">공연 조건</p>
-					<div class="condition-state title-content">우천시 진행</div>
-					<span class="availability">가능</span>
-					<div class="condition-state title-content">무대조명</div>
-					<span class="availability">가능</span>
-					<div class="condition-state title-content">주차</div>
-					<span class="availability">가능</span>
-
-					<div class="form-group requirement">
-						<label class="title-content" for="requirement-text">요구사항</label>
-						<textarea class="form-control" id="requirement-text" rows="5">
-                        </textarea>
-					</div>
-
-				</div>
-				<div class="btn-area">
-					<button type="submit" class="btn-primary btn-sm">등록</button>
-					<button type="submit" class="btn-danger btn-sm">삭제</button>
-				</div>
+                    <form action="" method="get">
+                    <input type="hidden" name="user_no" value="${sessionScope.authUser.user_no }">
+                        <table>
+                            <tr>
+                                <td class="table-head"><label for="stage_name">장소명</label></td>
+                                <td>
+	                            	<select name="stage_name" id="stage-select" class="select-box input">
+										<option value="">7층 스테이지</option>
+										<option value="">8층 카페</option>
+									</select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-head"><label for="business_number">공연 날짜</label></td>
+                                <td>
+                                	<input class="input" type="text" id="datepicker"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-head"><label for="business_number">요구 사항</label></td>
+                                <td>
+                                	<textarea class="input form-control" style= width:395px;height:200px></textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                            	<td class="table-head"><label for="business_number">공연 시간</label></td>
+                            	<td>
+                            		<select name="start_time" class="input input-time">
+                            			<option>00:00</option><option>00:30</option><option>01:00</option><option>01:30</option><option>02:00</option><option>02:30</option><option>03:00</option><option>03:30</option>
+                            			<option>04:00</option><option>04:30</option><option>05:00</option><option>05:30</option><option>06:00</option><option>06:30</option><option>07:00</option><option>07:30</option>
+                            			<option>08:00</option><option>08:30</option><option>09:00</option><option>09:30</option><option>10:00</option><option>10:30</option><option>11:00</option><option>11:30</option>
+                            			<option>12:00</option><option>12:30</option><option>13:00</option><option>13:30</option><option>14:00</option><option>14:30</option><option>15:00</option><option>16:30</option>
+                            			<option>16:00</option><option>16:30</option><option>17:00</option><option>17:30</option><option>18:00</option><option>18:30</option><option>19:00</option><option>19:30</option>
+                            			<option>20:00</option><option>20:30</option><option>21:00</option><option>21:30</option><option>22:00</option><option>22:30</option><option>23:00</option><option>23:30</option><option>24:00</option>
+                            		</select>
+                            		<img class="icon-img" src="${pageContext.request.contextPath}/assets/image/company/icon/from.png">
+                            		<select name="start_time" class="input input-time">
+                            			<option>00:00</option><option>00:30</option><option>01:00</option><option>01:30</option><option>02:00</option><option>02:30</option><option>03:00</option><option>03:30</option>
+                            			<option>04:00</option><option>04:30</option><option>05:00</option><option>05:30</option><option>06:00</option><option>06:30</option><option>07:00</option><option>07:30</option>
+                            			<option>08:00</option><option>08:30</option><option>09:00</option><option>09:30</option><option>10:00</option><option>10:30</option><option>11:00</option><option>11:30</option>
+                            			<option>12:00</option><option>12:30</option><option>13:00</option><option>13:30</option><option>14:00</option><option>14:30</option><option>15:00</option><option>16:30</option>
+                            			<option>16:00</option><option>16:30</option><option>17:00</option><option>17:30</option><option>18:00</option><option>18:30</option><option>19:00</option><option>19:30</option>
+                            			<option>20:00</option><option>20:30</option><option>21:00</option><option>21:30</option><option>22:00</option><option>22:30</option><option>23:00</option><option>23:30</option><option>24:00</option>
+                            		</select>
+                            		<img class="icon-img addBtn" src="${pageContext.request.contextPath}/assets/image/company/icon/add.png">
+                            	</td>
+                            </tr>
+                            <tr>
+                            	<td class="table-head"><label for="business_number">일정 리스트</label></td>
+                            	<td>
+                            		<ul class="list-group">
+										<li class="list">
+											<span class="label label-default">
+												<span>18:00</span>
+												<img class="icon-img" src="${pageContext.request.contextPath}/assets/image/company/icon/from.png"> 
+												<span>20:00</span>
+											</span>
+											<img class="icon-img" src="${pageContext.request.contextPath}/assets/image/company/icon/delete.png">
+										</li>
+										<li class="list">
+											<span class="label label-default">
+												<span>20:00</span> 
+												<img class="icon-img" src="${pageContext.request.contextPath}/assets/image/company/icon/from.png"> 
+												<span>22:00</span>
+											</span>
+											<img class="icon-img" src="${pageContext.request.contextPath}/assets/image/company/icon/delete.png">
+										</li>
+									</ul>
+                            	</td>
+                            </tr>
+                        </table>
+                        <button type="submit" class="float-end btn btn-primary btn-sm" id="stageInsbtn">저장</button>
+                    </form>
+                </div>
 			</div>
 		</div>
 		<div class="col-xl-2"></div>
@@ -103,4 +135,13 @@
 	<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
 	<!------- footer -------->
 </body>
+
+<script type="text/javascript">
+
+//datepicker
+$("#datepicker").datepicker({
+	language: 'ko'
+}); 
+
+</script>
 </html>

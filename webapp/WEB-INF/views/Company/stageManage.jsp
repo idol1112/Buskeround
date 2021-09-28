@@ -96,9 +96,9 @@
                             <tr>
                                 <td class="table-head"><label for="business_number">공연장리스트</label></td>
                                 <td>
-                                	<ul class="place-list-group">
+                                	<ul class="list-group">
                                 	<c:forEach items="${stageList}" var="stageList" varStatus="status">
-										<li id="l-${stageList.stage_no}" class="place-list">
+										<li id="l-${stageList.stage_no}" class="list">
 											<span class="label label-default" data-no="${stageList.stage_no}">${stageList.stage_name}</span>
 											<img class="delBtn" data-no="${stageList.stage_no}" src="${pageContext.request.contextPath}/assets/image/company/icon/delete.png">
 										</li>
@@ -124,7 +124,7 @@
 
 <script type="text/javascript">
 
-$(".place-list-group").on("click", ".delBtn", function() {
+$(".list-group").on("click", ".delBtn", function() {
 	console.log("삭제 버튼");
 	
 	var no = $(this).data("no");
@@ -149,7 +149,7 @@ $(".place-list-group").on("click", ".delBtn", function() {
 	});
 })
 
-$(".place-list-group").on("click", ".label", function() {
+$(".list-group").on("click", ".label", function() {
 	console.log("리스트 버튼");
 	$("input[name = 'stage_no']").remove();
 	var no = $(this).data("no");

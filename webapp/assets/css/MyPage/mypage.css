@@ -74,14 +74,14 @@ table td {
 }
 
 .input {
-    margin-left: 10px;
+    margin: 0px 10px;
     padding: 4px 4px 4px 4px;
     width: 70%;
     font-size: 12px;
 }
 
 #profilepicturechange {
-    margin-left: 40px;
+    margin-left: 44px;
     margin-top: 5px;
     font-size: 12px;
 }
@@ -115,11 +115,11 @@ label {
 }
 
 #profilepicture {
-    border-radius: 8px;
+    border-radius: 70%;
     margin-left: 10px;
     width: 150px;
     height: 150px;
-    border-radius: 70%;
+    object-fit: cover;
 }
 
 #profilesubmit {
@@ -170,17 +170,17 @@ input[type="file"] {
 	margin-right: 60px;
 }
 
-.place-list-group {
+.list-group {
 	margin-left:15px;
 }
 
-.place-list {
-	margin-bottom: 8px;
+.list {
+	margin-bottom: 3px;
 }
 
 .label {
 	display: inline;
-    padding: .2em .6em .3em;
+    padding: .2em .6em .1em;
     font-size: 100%;
     font-weight: 800;
     line-height: 1;
@@ -193,10 +193,24 @@ input[type="file"] {
 }
 
 .label-default {
+	display:inline-block;
     background-color: #777;
+    margin-bottom:3px;
 }
 .delBtn {
 	cursor: pointer;
 	width: 15px;
     padding-bottom: 2px;
+}
+
+/* buskingZoneManage */
+.icon-img {
+	width: 15px;
+}
+.addBtn {
+	margin-bottom:3px;
+}
+
+.input-time {
+	width: 30%;
 }
