@@ -102,8 +102,8 @@
 									<div>${aList.genre_type}</div>
 									<div>가입연도 ${aList.artist_regdate}년</div>
 								</td>
-								<td><img src="${pageContext.request.contextPath}/assets/image/artist/icon/heart2.png" style="width: 20px"> <span>${aList.likes}</span></td>
-								<td><img src="${pageContext.request.contextPath}/assets/image/artist/icon/fan1.png" style="width: 20px"> <span>${aList.fan}</span></td>
+								<td class="left02_td"><img src="${pageContext.request.contextPath}/assets/image/artist/icon/heart2.png" style="width: 20px"> <span>${aList.likes}</span></td>
+								<td class="left02_td"><img src="${pageContext.request.contextPath}/assets/image/artist/icon/fan1.png" style="width: 20px"> <span>${aList.fan}</span></td>
 							</tr>
 						</c:forEach>
 					</tbody>
