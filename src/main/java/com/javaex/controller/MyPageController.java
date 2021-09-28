@@ -64,7 +64,7 @@ public class MyPageController {
 		authUser = userService.getPerson(userVo1);
 		session.setAttribute("authUser", authUser);
 		
-		return "/Main";
+		return "Main/Main";
 	}
 	
 	//아티스트 등록 폼
