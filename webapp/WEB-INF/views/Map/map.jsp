@@ -121,7 +121,7 @@
         <div class="option">
             <div>
                 <form onsubmit="">
-                    <input type="text" value="강남역" id="keyword" size="15"> 
+                    <input type="text" value="" id="keyword" size="15"> 
                     <button type="submit" id="btn_sh">검색하기</button> 
                 </form>
             </div>
@@ -157,8 +157,9 @@ var mapContainer = document.getElementById('map'), // 지도의 중심좌표
 var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 var bounds = new kakao.maps.LatLngBounds();  // 지도를 재설정할 범위정보를 가지고 있을 LatLngBounds 객체를 생성합니다
 var positions = [];
+var content = [];
 var num = -1;
-
+var num2 = -1;
 
 
 //======================================지도 중심좌표 변경
@@ -168,7 +169,6 @@ kakao.maps.event.addListener(map, 'dragend', function() {
     // 지도의 중심좌표를 얻어옵니다 
     var latlngg = map.getCenter(); 
 	//console.log("중심좌표!"+ latlngg);
-	
 	
 	var boundss = map.getBounds();
 	
@@ -190,8 +190,11 @@ kakao.maps.event.addListener(map, 'dragend', function() {
 		
 		dataType : "json",
 		success : function(mapFind){
-			console.log(mapFind);
-			positions = mapFind;
+			for(var i=0; i<mapFind.length; i++){
+
+			console.log("1");
+			
+			};
 		},
 		error : function(XHR, status, error) {
 			console.error(status + " : " + error);
@@ -213,13 +216,30 @@ kakao.maps.event.addListener(map, 'dragend', function() {
 <c:forEach items="${mapList}" var="mapList">
 num += 1;
 positions[num] = new kakao.maps.LatLng(${mapList.latitude}, ${mapList.longitude});
-</c:forEach>
 
+content[num] = '<div class="wrap">' + 
+'    <div class="info">' + 
+'        <div class="title">' + 
+'            버스커 라운드${mapList.latitude}' +
+'        </div>' + 
+'        <div class="body">' + 
+'            <div class="img">' +
+'                <img src="" width="73" height="70">' +
+'           </div>' + 
+'            <div class="desc">' + 
+'                <div class="ellipsis">활동명 : ${mapList.nickname}</div>' + 
+'                <div class="ellipsis">장르   : ${mapList.genre}</div>' + 
+'                <div class="jibun ellipsis">오늘 공연 한번 불태워 보겠습니다.</div>' + 
+'            </div>' + 
+'        </div>' + 
+'    </div>' +    
+'</div>';
+</c:forEach>
 //==================================================================
 
 for(let i=0; i < positions.length; i++){
-    var data = positions[i];
-    console.log("p"+data);
+    num2 += 1;
+	var data = positions[i];
     displayMarker(data);
 }
 
@@ -228,7 +248,7 @@ var datas = bounds.extend(data);
 
 // 지도에 마커를 표시하는 함수입니다   
 function displayMarker(data) { 
-	//console.log(data)
+
     var marker = new kakao.maps.Marker({
         map: map,
         position: data
@@ -243,27 +263,9 @@ function displayMarker(data) {
     });
     
 
-    
-    var content = '<div class="wrap">' + 
-    '    <div class="info">' + 
-    '        <div class="title">' + 
-    '            버스커 라운드' + 
-    '        </div>' + 
-    '        <div class="body">' + 
-    '            <div class="img">' +
-    '                <img src="" width="73" height="70">' +
-    '           </div>' + 
-    '            <div class="desc">' + 
-    '                <div class="ellipsis">제주특별자치도 제주시 첨단로 242</div>' + 
-    '                <div class="jibun ellipsis">(우) 63309 (지번) 영평동 2181</div>' + 
-    '                <div><a href="https://www.kakaocorp.com/main" class="link">홈페이지</a></div>' + 
-    '            </div>' + 
-    '        </div>' + 
-    '    </div>' +    
-    '</div>';
 			
 
-    overlay.setContent(content);
+    overlay.setContent(content[num2]);
 
     kakao.maps.event.addListener(marker, 'click', function() {
         overlay.setMap(map);

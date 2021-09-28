@@ -3,19 +3,33 @@
 
 <mapper namespace="map">
 
-	<select id="mapList" resultType="PostVo">
-			select latitude,longitude
-			from post
+	<select id="mapList" resultType="MapVo">
+		<![CDATA[
+			select p.latitude,p.longitude,u.nickname,u.genre
+			from
+			post      p,
+			category  c,
+			users 	  u
+			WHERE p.category_no = c.category_no
+	      	AND c.user_no = u.user_no
+			AND p_end is null
+		]]>
 	</select>
 
-	<select id="findMap" parameterType="map" resultType="PostVo">
+	<select id="findMap" parameterType="map" resultType="MapVo">
 		<![CDATA[
-			select latitude,longitude
-			from post
-			where latitude < #{nlat}
-			and longitude < #{nlng}
-			and latitude > #{slat}
-			and longitude > #{slng}
+			SELECT p.latitude,p.longitude,u.nickname,p.address
+			FROM
+			post      p,
+			category  c,
+			users u
+			WHERE p.category_no = c.category_no
+	      	AND c.user_no = u.user_no
+		  	and latitude < #{nlat}
+		  	and longitude < #{nlng}
+		  	and latitude > #{slat}
+		  	and longitude > #{slng}
+		  	and p_end is null
 		]]>
 	</select>
 </mapper>
