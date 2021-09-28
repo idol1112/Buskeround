@@ -99,13 +99,12 @@
 		var reader = new FileReader(); 
 		
 		var picture = document.getElementById("profilepicture");
-		picture.remove();
 		
 		reader.onload = function(event) { 
 			var img = document.createElement("img");
 			img.setAttribute("src", event.target.result); 
 			img.setAttribute("id", 'profilepicture'); 
-			document.querySelector("div#image_container").appendChild(img); 
+			document.querySelector("img#profilepicture").setAttribute("src", event.target.result); 
 		}; 
 		
 		reader.readAsDataURL(event.target.files[0]); 
