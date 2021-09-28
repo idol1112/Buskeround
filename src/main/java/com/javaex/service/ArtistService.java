@@ -26,6 +26,14 @@ public class ArtistService {
 		return artistDao.getArtistLive();
 	}
 	
+	//팬 많은 순 리스트 가져오기
+	public List<UserVo> getArtistFan() {
+		
+		return artistDao.getArtistFan();
+	}
+	
+	
+	
 	//팬되기 리스트 가져오기
 	public List<UserVo> getFanList(int user_no) {
 		

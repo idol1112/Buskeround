@@ -28,6 +28,15 @@ public class ArtistDao {
 		return sqlsession.selectList("artist.getArtistLive");
 	}
 	
+	//아티스트 팬 많은 순 리스트 가져오기
+	public List<UserVo> getArtistFan() {
+		System.out.println("[ArtistDao.getArtistFan()]");
+		
+		return sqlsession.selectList("artist.getArtistFan");
+	}
+	
+	
+	
 	//팬 되기 리스트 가져오기
 	public List<UserVo> getFanList(int user_no) {
 		System.out.println("[ArtistDao.getFanList()]");

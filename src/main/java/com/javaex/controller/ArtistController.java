@@ -33,15 +33,18 @@ public class ArtistController {
 		return"/Artist/ArtistRenk";
 	}
 	
-
-	
-	
 	
 	//아티스트 팬 많은 순
 	@RequestMapping(value = "/ArtistFan", method= {RequestMethod.GET, RequestMethod.POST })
-	public String artistfan() {
+	public String artistfan(Model model) {
 		
 		System.out.println("[ArtistController.ArtistFan()]");
+		
+		model.addAttribute("artistFan", artistService.getArtistFan());
+		
+		model.addAttribute("artistLiveList", artistService.getArtistLive());
+		
+		System.out.println(artistService.getArtistFan());
 		
 		return"/Artist/ArtistFan";
 	}
@@ -81,8 +84,6 @@ public class ArtistController {
 	public String artistgenre() {
 		
 		System.out.println("[ArtistController.ArtistGenre()]");
-		
-		
 		
 		return"/Artist/ArtistGenre";
 	}
