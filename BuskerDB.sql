@@ -288,7 +288,7 @@ ALTER TABLE company
 CREATE TABLE buskingDate (
 	date_no NUMBER NOT NULL, /* 날짜번호 */
 	stage_no NUMBER, /* 공연장번호 */
-	perform_date DATE, /* 공연날짜 */
+	bus_date DATE, /* 공연날짜 */
 	requirements VARCHAR2(200) /* 요구사항 */
 );
 
@@ -298,7 +298,7 @@ COMMENT ON COLUMN buskingDate.date_no IS '날짜번호';
 
 COMMENT ON COLUMN buskingDate.stage_no IS '공연장번호';
 
-COMMENT ON COLUMN buskingDate.perform_date IS '공연날짜';
+COMMENT ON COLUMN buskingDate.bus_date IS '공연날짜';
 
 COMMENT ON COLUMN buskingDate.requirements IS '요구사항';
 
