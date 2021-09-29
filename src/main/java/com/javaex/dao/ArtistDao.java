@@ -42,13 +42,14 @@ public class ArtistDao {
 		return sqlsession.selectList("artist.getArtistNew");
 	}
 	
-	//아티스트 장르 리스트 가져오기_발라드
-	public List<UserVo> getArtistGenreBallad() {
-		System.out.println("[ArtistDao.getArtistGenreBallad()]");
+	//아티스트 장르 리스트 가져오기
+	public List<UserVo> getArtistGenre(int no) {
+		System.out.println("[ArtistDao.getArtistGenre()]");
 		
-		return sqlsession.selectList("artist.getArtistGenreBallad");
+		return sqlsession.selectList("artist.getArtistGenre", no);
 	}
 	
+ 
 	
 	
 	//팬 되기 리스트 가져오기
