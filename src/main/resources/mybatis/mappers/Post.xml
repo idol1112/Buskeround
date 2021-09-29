@@ -9,6 +9,7 @@
 			INSERT INTO post VALUES (
 			    seq_post_no.NEXTVAL,
 			    2,
+			    #{user_no},
 			    #{title},
 			    NULL,
 			    NULL,
@@ -42,16 +43,8 @@
 			SET
 			    p_end = sysdate
 			WHERE
-			    (
-			        SELECT
-			            c.user_no
-			        FROM
-			            post      p,
-			            category  c
-			        WHERE
-			                p.category_no = c.category_no
-			            AND p.p_end IS NULL
-			    ) = #{user_no}
+			        user_no = #{user_no}
+			    AND p_end IS NULL
 		]]>
 	</update>
 
@@ -86,18 +79,16 @@
 			        FROM
 			            (
 			                SELECT
-			                    p.title,
-			                    p.p_start,
-			                    p.p_img,
-			                    p.live_url
+			                    title,
+			                    p_start,
+			                    p_img,
+			                    live_url
 			                FROM
-			                    post      p,
-			                    category  c
+			                    post
 			                WHERE
-			                        p.category_no = c.category_no
-			                    AND c.user_no = #{user_no}
+			                    user_no = #{user_no}
 			                ORDER BY
-			                    p.p_start DESC
+			                    p_start DESC
 			            ) ot
 			    ) ort
 			WHERE

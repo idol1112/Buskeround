@@ -25,7 +25,9 @@ public class ApiBlogController {
   public int live_start(@RequestBody PostVo postVo) {
     System.out.println("[현재 위치: ApiBlogController.live_start]");
 
-    System.out.println(postVo);
+    System.out.println("공연시작: " + postVo);
+
+    System.out.println("[api 입니다]");
 
     return blogService2.live_start(postVo);
 
