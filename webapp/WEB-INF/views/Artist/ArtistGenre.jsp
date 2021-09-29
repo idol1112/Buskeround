@@ -55,12 +55,12 @@
         	
         	<div class="col-xl-7">
              <ul class="navbar_genremenu">
-                <li><a href="${pageContext.request.contextPath}/Artist/ArtistGenreBallad">발라드</a></li>
-                <li><a href="${pageContext.request.contextPath}/Artist/ArtistGenreDance">댄스</a></li>
-                <li><a href="${pageContext.request.contextPath}/Artist/ArtistGenreHiphop">랩/힙합</a></li>
-                <li><a href="${pageContext.request.contextPath}/Artist/ArtistGenreSoul">R&B/SOUL</a></li>
-                <li><a href="${pageContext.request.contextPath}/Artist/ArtistGenreMusical">악기</a></li>
-                <li><a href="${pageContext.request.contextPath}/Artist/ArtistGenreEtc">기타공연</a></li>
+                <li><a href="${pageContext.request.contextPath}/Artist/ArtistGenre/1">발라드</a></li>
+                <li><a href="${pageContext.request.contextPath}/Artist/ArtistGenre/2">댄스</a></li>
+                <li><a href="${pageContext.request.contextPath}/Artist/ArtistGenre/3">랩/힙합</a></li>
+                <li><a href="${pageContext.request.contextPath}/Artist/ArtistGenre/4">R&B/SOUL</a></li>
+                <li><a href="${pageContext.request.contextPath}/Artist/ArtistGenre/5">악기</a></li>
+                <li><a href="${pageContext.request.contextPath}/Artist/ArtistGenre/6">기타공연</a></li>
              </ul>
         	</div>
         	</div>
@@ -82,13 +82,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                    	<c:forEach items="${artistGenreBallad}" var="gbList">
+                    	<c:forEach items="${ArtistGenre}" var="gList">
                         <!--1번-->
                         <tr>
-                            <td>${gbList.rn}</td>
-                            <td><img src="/Buskeround${gbList.user_img}" style="width: 80px"></td> 
+                            <td>${gList.rn}</td>
+                            <td><img src="/Buskeround${gList.user_img}" style="width: 80px"></td> 
                             <td>
-                                <div>${gbList.nickname}</div>
+                                <div>${gList.nickname}</div>
                                 <div>
                                 	<img src="${pageContext.request.contextPath}/assets/image/artist/icon/youtube.png" style="width:20px">
                                     <img src="${pageContext.request.contextPath}/assets/image/artist/icon/facebook.png" style="width:20px">
@@ -96,41 +96,41 @@
                                 </div>
                             </td>
                             <!-- 장르 -->
-							<c:if test="${gbList.genre == 1}">
+							<c:if test="${gList.genre == 1}">
 								<td><img src="${pageContext.request.contextPath}/assets/image/blog/icon/ballade.png" style="width: 60px"></td>
 							</c:if>
 
-							<c:if test="${gbList.genre == 2}">
+							<c:if test="${gList.genre == 2}">
 								<td><img src="${pageContext.request.contextPath}/assets/image/blog/icon/dance.png" style="width: 60px"></td>
 							</c:if>
 
-							<c:if test="${gbList.genre == 3}">
+							<c:if test="${gList.genre == 3}">
 								<td><img src="${pageContext.request.contextPath}/assets/image/blog/icon/hiphop.png" style="width: 60px"></td>
 							</c:if>
 
-							<c:if test="${gbList.genre == 4}">
+							<c:if test="${gList.genre == 4}">
 								<td><img src="${pageContext.request.contextPath}/assets/image/blog/icon/soul.png" style="width: 60px"></td>
 							</c:if>
 
-							<c:if test="${gbList.genre == 5}">
+							<c:if test="${gList.genre == 5}">
 								<td><img src="${pageContext.request.contextPath}/assets/image/blog/icon/musical.png" style="width: 60px"></td>
 							</c:if>
 
-							<c:if test="${gbList.genre == 6}">
+							<c:if test="${gList.genre == 6}">
 								<td><img src="${pageContext.request.contextPath}/assets/image/blog/icon/etc.png" style="width: 60px"></td>
 							</c:if>
                             
                             <td>
-                                <div>${gbList.genre_type}</div>
-                                <div>가입연도 ${gbList.artist_regdate}년</div>
+                                <div>${gList.genre_type}</div>
+                                <div>가입연도 ${gList.artist_regdate}년</div>
                             </td>
                             <td>
                                 <img src="${pageContext.request.contextPath}/assets/image/artist/icon/heart2.png" style="width:20px">
-                                <span>${gbList.likes}</span>
+                                <span>${gList.likes}</span>
                             </td>
                             <td>
                                 <img src="${pageContext.request.contextPath}/assets/image/artist/icon/fan1.png" style="width:20px">
-                                <span>${gbList.fan}</span>
+                                <span>${gList.fan}</span>
                             </td>
                         </tr>
 					  </c:forEach>
@@ -152,8 +152,12 @@
                         <img src="${pageContext.request.contextPath}/assets/image/artist/icon/circle1.png" style="width:8px">
                     </div>
                 </div>
-                <div>
-                    <img src="${pageContext.request.contextPath}/assets/image/artist/img/22.PNG" style="width:285px">
+                <div style="width:285px; height:380px;">
+                	<img src="${pageContext.request.contextPath}/assets/image/artist/img/101.jfif" style="width:285px; height:285px; object-fit: cover;">
+                	<div style="max-width:285px; max-height:95px; width:285px; height:95px; background-color: #00ff00">
+                	<p>뉴아티스트 글씨 넣기뉴아티스트 글씨 넣기뉴아티스트 글씨 넣기뉴아티스트 글씨 넣기뉴아티스트 글씨 넣기</p>
+                	</div>
+                    
                 </div>
             </div>
             <div class="rightsection-02">

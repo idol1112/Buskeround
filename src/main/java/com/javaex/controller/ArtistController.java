@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -79,17 +80,17 @@ public class ArtistController {
 	
 	
 	
-	//아티스트 장르 목록_발라드
-	@RequestMapping(value = "/ArtistGenreBallad", method= {RequestMethod.GET, RequestMethod.POST })
-	public String artistgenre(Model model) {
+	//아티스트 장르 목록
+	@RequestMapping(value = "/ArtistGenre/{no}", method= {RequestMethod.GET, RequestMethod.POST })
+	public String artistgenre(@PathVariable("no") int no, Model model) {
 		
-		System.out.println("[ArtistController.ArtistGenreBallad()]");
+		System.out.println("[ArtistController.ArtistGenre()]");
 		
-		model.addAttribute("artistGenreBallad", artistService.getArtistGenreBallad());
+		model.addAttribute("ArtistGenre", artistService.getArtistGenre(no));
 		
 		model.addAttribute("artistLiveList", artistService.getArtistLive());
 		
-		return"/Artist/ArtistGenreBallad";
+		return"/Artist/ArtistGenre";
 	}
 	
 

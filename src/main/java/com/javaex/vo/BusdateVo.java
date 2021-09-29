@@ -13,6 +13,13 @@ public class BusdateVo {
 		super();
 	}
 
+	public BusdateVo(int stage_no, String bus_date, String requirements) {
+		super();
+		this.stage_no = stage_no;
+		this.bus_date = bus_date;
+		this.requirements = requirements;
+	}
+
 	public BusdateVo(int date_no, int stage_no, String bus_date, String requirements) {
 		super();
 		this.date_no = date_no;

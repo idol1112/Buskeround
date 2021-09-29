@@ -17,7 +17,7 @@
 				<li><a href="${pageContext.request.contextPath}/Artist/ArtistRenk">종합랭킹</a></li>
 				<li><a href="${pageContext.request.contextPath}/Artist/ArtistFan">팬 많은 순</a></li>
 				<li><a href="${pageContext.request.contextPath}/Artist/ArtistNew">NEW 아티스트순</a></li>
-				<li><a href="${pageContext.request.contextPath}/Artist/ArtistGenreBallad">장르별 순위</a></li>
+				<li><a href="${pageContext.request.contextPath}/Artist/ArtistGenre/1">장르별 순위</a></li>
 				<c:if test="${authUser.user_no != null}">
 					<li><a href="${pageContext.request.contextPath}/Artist/ArtistFanList">팬 등록 리스트</a></li>
 				</c:if>

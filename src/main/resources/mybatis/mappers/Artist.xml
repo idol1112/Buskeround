@@ -184,7 +184,7 @@
 	
 	
 	<!-- new 아티스트 리스트 -->	
-		<select id="getArtistNew" resultType="UserVo">
+		<select id="getArtistNew" resultType="UserVo" >
 		<![CDATA[
 		SELECT
               rn,
@@ -260,8 +260,8 @@
 		]]>
 	</select>
 	
-	<!-- 아티스트 장르 (발라드)리스트 -->
-		<select id="getArtistGenreBallad" resultType="UserVo">
+	<!-- 아티스트 장르 리스트 -->
+		<select id="getArtistGenre" resultType="UserVo" parameterType="int">
 		<![CDATA[
 	    SELECT
               rn,
@@ -330,12 +330,14 @@
               ranking_score
 	          
 	      FROM users
-	      where users.genre = 1 
+	      where users.genre = #{no} 
           ORDER by users.ranking_score desc) ot) ort
           where rn >=1
           and rn <=10
     ]]>
 	</select>
+	
+
 		
 	
 	<!-- 팬 되기 리스트 -->

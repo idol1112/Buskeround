@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,6 +19,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.javaex.service.CompanyService;
 import com.javaex.service.UserService;
+import com.javaex.vo.BusdateVo;
+import com.javaex.vo.BustimeVo;
 import com.javaex.vo.CompanyVo;
 import com.javaex.vo.StageVo;
 import com.javaex.vo.UserVo;
@@ -223,6 +226,21 @@ public class CompanyController {
 		model.addAttribute("stageList", stageList);
 		
 		return "/Company/buskingZoneManage";
+	}
+	
+	//버스킹존 등록
+	@RequestMapping(value = "/buskingZoneInsert", method = {RequestMethod.GET, RequestMethod.POST})
+	public String buskingZoneInsert(@RequestBody BusdateVo busdateVo,
+			@RequestParam ("start_time[]") List<BustimeVo> sList,
+			@RequestParam ("end_time[]") List<BustimeVo> eList) {
+		
+		System.out.println("[CompanyController.buskingZoneInsert()]");
+		
+		System.out.println(busdateVo);
+	    System.out.println(sList);
+	    System.out.println(eList);
+		
+		return"";
 	}
 	
 	///////////////////////////////// *버스킹존* /////////////////////////////////
