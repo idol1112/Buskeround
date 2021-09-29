@@ -19,9 +19,14 @@
 <!-- css -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/Common/common.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/MyPage/mypage.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/DatePicker/datepicker.min.css">
 
 <!-- jquery -->
 <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+<!-- datepicker -->
+<script src="${pageContext.request.contextPath}/assets/js/datepicker.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/i18n/datepicker.ko.js"></script>
 
 </head>
 <body>
@@ -70,8 +75,8 @@
 									</td>
 									</tr>
 									<tr>
-										<td class="table-head"><label for="birthday">생년월일</label></td>
-										<td><input class="input" type="text" id="birthday" name="birthday" placeholder="YYYY/MM/DD"></td>
+										<td class="table-head"><label for="datepicker">생년월일</label></td>
+										<td><input class="input" type="date" id="datepicker" autocomplete="off" name="birthday"/></td>
 									</tr>
 									<tr>
 										<td class="table-head"><label class="required" for="genre">퍼포먼스/장르</label></td>
@@ -128,7 +133,7 @@
 								</tr>
 								<tr>
 									<td class="table-head"><label for="birthday">생년월일</label></td>
-									<td><input class="input" type="text" id="birthday" name="birthday" placeholder="YYYY/MM/DD" value="${requestScope.mypageVo.birthday}"></td>
+									<td><input class="input" type="date" id="datepicker" autocomplete="off" name="birthday" value="${requestScope.mypageVo.birthday}"/></td>
 								</tr>
 								<tr>
 									<td class="table-head"><label class="required" for="genre">퍼포먼스/장르</label></td>
@@ -261,6 +266,14 @@ $("#artistModify").on("submit", function() {
 
 	return true;
 });
+
+//datepicker
+$("#datepicker").datepicker({
+	language: 'ko'
+}); 
+
+
+jQuery('input[type="date"]').live('click', function(e) {e.preventDefault();}).datepicker();
 
 </script>
 
