@@ -1,5 +1,7 @@
 package com.javaex.vo;
 
+import java.util.List;
+
 public class BustimeVo {
 
 	//필드
@@ -7,12 +9,19 @@ public class BustimeVo {
 	private int date_no;
 	private String start_time;
 	private String end_time;
+	private List<BustimeVo> tList;
 	
 	//생성자
 	public BustimeVo() {
 		super();
 	}
 	
+	public BustimeVo(String start_time, String end_time) {
+		super();
+		this.start_time = start_time;
+		this.end_time = end_time;
+	}
+
 	public BustimeVo(int time_no, int date_no, String start_time, String end_time) {
 		super();
 		this.time_no = time_no;
@@ -54,6 +63,14 @@ public class BustimeVo {
 		this.end_time = end_time;
 	}
 	
+	public List<BustimeVo> gettList() {
+		return tList;
+	}
+
+	public void settList(List<BustimeVo> tList) {
+		this.tList = tList;
+	}
+
 	//메소드
 	@Override
 	public String toString() {

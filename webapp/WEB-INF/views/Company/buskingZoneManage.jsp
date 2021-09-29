@@ -51,11 +51,10 @@
 					<h5>버스킹존 관리</h5>
 				</div>
 				<div id="mypage-right-content">
-                    <form action="" method="get">
-                    <input type="hidden" name="user_no" value="${sessionScope.authUser.user_no }">
+                    <form action="#" method="get">
                         <table>
                             <tr>
-                                <td class="table-head"><label for="stage_name">장소명</label></td>
+                                <td class="table-head"><label for="stage-select">장소명</label></td>
                                 <td>
 	                            	<select name="stage_no" id="stage-select" class="select-box input">
 	                            		<c:forEach items="${stageList}" var="stageList" varStatus="status">
@@ -65,36 +64,36 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td class="table-head"><label for="business_number">공연 날짜</label></td>
+                                <td class="table-head"><label for="datepicker">공연 날짜</label></td>
                                 <td>
-                                	<input class="input" type="text" id="datepicker"/>
+                                	<input class="input" type="text" name="bus_date" id="datepicker"/>
                                 </td>
                             </tr>
                             <tr>
-                                <td class="table-head"><label for="business_number">요구 사항</label></td>
+                                <td class="table-head"><label for="requirements">요구 사항</label></td>
                                 <td>
-                                	<textarea class="input form-control" style= width:395px;height:200px></textarea>
+                                	<textarea id="requirements" name="requirements" class="input form-control" style= width:395px;height:200px></textarea>
                                 </td>
                             </tr>
                             <tr>
-                            	<td class="table-head"><label for="business_number">공연 시간</label></td>
+                            	<td class="table-head"><label>공연 시간</label></td>
                             	<td id="time-table">
                             		<select name="start_time" class="input input-time">
-                            			<option>00:00</option><option>00:30</option><option>01:00</option><option>01:30</option><option>02:00</option><option>02:30</option><option>03:00</option><option>03:30</option>
-                            			<option>04:00</option><option>04:30</option><option>05:00</option><option>05:30</option><option>06:00</option><option>06:30</option><option>07:00</option><option>07:30</option>
-                            			<option>08:00</option><option>08:30</option><option>09:00</option><option>09:30</option><option>10:00</option><option>10:30</option><option>11:00</option><option>11:30</option>
-                            			<option>12:00</option><option>12:30</option><option>13:00</option><option>13:30</option><option>14:00</option><option>14:30</option><option>15:00</option><option>16:30</option>
-                            			<option>16:00</option><option>16:30</option><option>17:00</option><option>17:30</option><option>18:00</option><option>18:30</option><option>19:00</option><option>19:30</option>
-                            			<option>20:00</option><option>20:30</option><option>21:00</option><option>21:30</option><option>22:00</option><option>22:30</option><option>23:00</option><option>23:30</option><option>24:00</option>
+                            			<option value="00:00">00:00</option><option value="00:30">00:30</option><option value="01:00">01:00</option><option value="01:30">01:30</option><option value="02:00">02:00</option><option value="02:30">02:30</option><option value="03:00">03:00</option><option value="03:30">03:30</option>
+                            			<option value="04:00">04:00</option><option value="04:30">04:30</option><option value="05:00">05:00</option><option value="05:30">05:30</option><option value="06:00">06:00</option><option value="06:30">06:30</option><option value="07:00">07:00</option><option value="07:30">07:30</option>
+                            			<option value="08:00">08:00</option><option value="08:30">08:30</option><option value="09:00">09:00</option><option value="09:30">09:30</option><option value="10:00">10:00</option><option value="10:30">10:30</option><option value="11:00">11:00</option><option value="11:30">11:30</option>
+                            			<option value="12:00">12:00</option><option value="12:30">12:30</option><option value="13:00">13:00</option><option value="13:30">13:30</option><option value="14:00">14:00</option><option value="14:30">14:30</option><option value="15:00">15:00</option><option value="16:30">16:30</option>
+                            			<option value="16:00">16:00</option><option value="16:30">16:30</option><option value="17:00">17:00</option><option value="17:30">17:30</option><option value="18:00">18:00</option><option value="18:30">18:30</option><option value="19:00">19:00</option><option value="19:30">19:30</option>
+                            			<option value="20:00">20:00</option><option value="20:30">20:30</option><option value="21:00">21:00</option><option value="21:30">21:30</option><option value="22:00">22:00</option><option value="22:30">22:30</option><option value="23:00">23:00</option><option value="23:30">23:30</option><option value="24:00">24:00</option>
                             		</select>
                             		<img class="icon-img" src="${pageContext.request.contextPath}/assets/image/company/icon/from.png">
                             		<select name="end_time" class="input input-time">
-                            			<option>00:00</option><option>00:30</option><option>01:00</option><option>01:30</option><option>02:00</option><option>02:30</option><option>03:00</option><option>03:30</option>
-                            			<option>04:00</option><option>04:30</option><option>05:00</option><option>05:30</option><option>06:00</option><option>06:30</option><option>07:00</option><option>07:30</option>
-                            			<option>08:00</option><option>08:30</option><option>09:00</option><option>09:30</option><option>10:00</option><option>10:30</option><option>11:00</option><option>11:30</option>
-                            			<option>12:00</option><option>12:30</option><option>13:00</option><option>13:30</option><option>14:00</option><option>14:30</option><option>15:00</option><option>16:30</option>
-                            			<option>16:00</option><option>16:30</option><option>17:00</option><option>17:30</option><option>18:00</option><option>18:30</option><option>19:00</option><option>19:30</option>
-                            			<option>20:00</option><option>20:30</option><option>21:00</option><option>21:30</option><option>22:00</option><option>22:30</option><option>23:00</option><option>23:30</option><option>24:00</option>
+                            			<option value="00:00">00:00</option><option value="00:30">00:30</option><option value="01:00">01:00</option><option value="01:30">01:30</option><option value="02:00">02:00</option><option value="02:30">02:30</option><option value="03:00">03:00</option><option value="03:30">03:30</option>
+                            			<option value="04:00">04:00</option><option value="04:30">04:30</option><option value="05:00">05:00</option><option value="05:30">05:30</option><option value="06:00">06:00</option><option value="06:30">06:30</option><option value="07:00">07:00</option><option value="07:30">07:30</option>
+                            			<option value="08:00">08:00</option><option value="08:30">08:30</option><option value="09:00">09:00</option><option value="09:30">09:30</option><option value="10:00">10:00</option><option value="10:30">10:30</option><option value="11:00">11:00</option><option value="11:30">11:30</option>
+                            			<option value="12:00">12:00</option><option value="12:30">12:30</option><option value="13:00">13:00</option><option value="13:30">13:30</option><option value="14:00">14:00</option><option value="14:30">14:30</option><option value="15:00">15:00</option><option value="16:30">16:30</option>
+                            			<option value="16:00">16:00</option><option value="16:30">16:30</option><option value="17:00">17:00</option><option value="17:30">17:30</option><option value="18:00">18:00</option><option value="18:30">18:30</option><option value="19:00">19:00</option><option value="19:30">19:30</option>
+                            			<option value="20:00">20:00</option><option value="20:30">20:30</option><option value="21:00">21:00</option><option value="21:30">21:30</option><option value="22:00">22:00</option><option value="22:30">22:30</option><option value="23:00">23:00</option><option value="23:30">23:30</option><option value="24:00">24:00</option>
                             		</select>
                             		<img class="icon-img addBtn" src="${pageContext.request.contextPath}/assets/image/company/icon/add.png">
                             	</td>
@@ -123,7 +122,7 @@
                             	</td>
                             </tr>
                         </table>
-                        <button type="submit" class="float-end btn btn-primary btn-sm" id="stageInsbtn">저장</button>
+                        <button type="submit" class="float-end btn btn-primary btn-sm" id="insBtn">저장</button>
                     </form>
                 </div>
 			</div>
@@ -156,6 +155,48 @@ $("#time-table").on("click", ".minusBtn", function() {
 	$(this).parent().remove();
 });
 
+//버스킹존 데이터 전송
+$("form").on("click", "#insBtn", function() {
+	event.preventDefault();
+	console.log("저장 버튼");
+	var start_time = [];
+	var end_time = [];
+	
+	var busdateVo = {
+			stage_no: $("[name='stage_no']").val(),
+			bus_date: $("[name='bus_date']").val(),
+			requirements: $("[name='requirements']").val()
+	}
+	
+	$("[name='start_time']").each(function(index, item){
+		start_time.push($(item).val());
+		   });
+	$("[name='end_time']").each(function(index, item){
+		end_time.push($(item).val());
+		   });
+	console.log(busdateVo);
+	console.log(start_time);
+	console.log(end_time);
+	
+	$.ajax({
+		url : "${pageContext.request.contextPath }/Company/buskingZoneInsert",
+		type : "post",
+		//contentType : "application/json",
+		data :  {
+				start_time:start_time,
+				end_time:end_time
+				},
+		//dataType : "json",
+		success : function(count) {
+			//성공시 처리해야될 코드 작성
+			
+		},
+		error : function(XHR, status, error) {
+			console.error(status + " : " + error);
+		}
+	});
+})
+
 
 
 function add() {
@@ -164,21 +205,21 @@ function add() {
 	
 		str += '<div>';
 		str += '<select name="start_time" class="input input-time">';
-		str += '<option>00:00</option><option>00:30</option><option>01:00</option><option>01:30</option><option>02:00</option><option>02:30</option><option>03:00</option><option>03:30</option>';
-		str += '<option>04:00</option><option>04:30</option><option>05:00</option><option>05:30</option><option>06:00</option><option>06:30</option><option>07:00</option><option>07:30</option>';
-		str += '<option>08:00</option><option>08:30</option><option>09:00</option><option>09:30</option><option>10:00</option><option>10:30</option><option>11:00</option><option>11:30</option>';
-		str += '<option>12:00</option><option>12:30</option><option>13:00</option><option>13:30</option><option>14:00</option><option>14:30</option><option>15:00</option><option>16:30</option>';
-		str += '<option>16:00</option><option>16:30</option><option>17:00</option><option>17:30</option><option>18:00</option><option>18:30</option><option>19:00</option><option>19:30</option>';
-		str += '<option>20:00</option><option>20:30</option><option>21:00</option><option>21:30</option><option>22:00</option><option>22:30</option><option>23:00</option><option>23:30</option><option>24:00</option>';
+		str += '<option value="00:00">00:00</option><option value="00:30">00:30</option><option value="01:00">01:00</option><option value="01:30">01:30</option><option value="02:00">02:00</option><option value="02:30">02:30</option><option value="03:00">03:00</option><option value="03:30">03:30</option>';
+		str += '<option value="04:00">04:00</option><option value="04:30">04:30</option><option value="05:00">05:00</option><option value="05:30">05:30</option><option value="06:00">06:00</option><option value="06:30">06:30</option><option value="07:00">07:00</option><option value="07:30">07:30</option>';
+		str += '<option value="08:00">08:00</option><option value="08:30">08:30</option><option value="09:00">09:00</option><option value="09:30">09:30</option><option value="10:00">10:00</option><option value="10:30">10:30</option><option value="11:00">11:00</option><option value="11:30">11:30</option>';
+		str += '<option value="12:00">12:00</option><option value="12:30">12:30</option><option value="13:00">13:00</option><option value="13:30">13:30</option><option value="14:00">14:00</option><option value="14:30">14:30</option><option value="15:00">15:00</option><option value="16:30">16:30</option>';
+		str += '<option value="16:00">16:00</option><option value="16:30">16:30</option><option value="17:00">17:00</option><option value="17:30">17:30</option><option value="18:00">18:00</option><option value="18:30">18:30</option><option value="19:00">19:00</option><option value="19:30">19:30</option>';
+		str += '<option value="20:00">20:00</option><option value="20:30">20:30</option><option value="21:00">21:00</option><option value="21:30">21:30</option><option value="22:00">22:00</option><option value="22:30">22:30</option><option value="23:00">23:00</option><option value="23:30">23:30</option><option value="24:00">24:00</option>';
 		str += '</select>';
 		str += '<img class="add-img" src="${pageContext.request.contextPath}/assets/image/company/icon/from.png">';
 		str += '<select name="end_time" class="input input-time">';
-		str += '<option>00:00</option><option>00:30</option><option>01:00</option><option>01:30</option><option>02:00</option><option>02:30</option><option>03:00</option><option>03:30</option>';
-		str += '<option>04:00</option><option>04:30</option><option>05:00</option><option>05:30</option><option>06:00</option><option>06:30</option><option>07:00</option><option>07:30</option>';
-		str += '<option>08:00</option><option>08:30</option><option>09:00</option><option>09:30</option><option>10:00</option><option>10:30</option><option>11:00</option><option>11:30</option>';
-		str += '<option>12:00</option><option>12:30</option><option>13:00</option><option>13:30</option><option>14:00</option><option>14:30</option><option>15:00</option><option>16:30</option>';
-		str += '<option>16:00</option><option>16:30</option><option>17:00</option><option>17:30</option><option>18:00</option><option>18:30</option><option>19:00</option><option>19:30</option>';
-		str += '<option>20:00</option><option>20:30</option><option>21:00</option><option>21:30</option><option>22:00</option><option>22:30</option><option>23:00</option><option>23:30</option><option>24:00</option>';
+		str += '<option value="00:00">00:00</option><option value="00:30">00:30</option><option value="01:00">01:00</option><option value="01:30">01:30</option><option value="02:00">02:00</option><option value="02:30">02:30</option><option value="03:00">03:00</option><option value="03:30">03:30</option>';
+		str += '<option value="04:00">04:00</option><option value="04:30">04:30</option><option value="05:00">05:00</option><option value="05:30">05:30</option><option value="06:00">06:00</option><option value="06:30">06:30</option><option value="07:00">07:00</option><option value="07:30">07:30</option>';
+		str += '<option value="08:00">08:00</option><option value="08:30">08:30</option><option value="09:00">09:00</option><option value="09:30">09:30</option><option value="10:00">10:00</option><option value="10:30">10:30</option><option value="11:00">11:00</option><option value="11:30">11:30</option>';
+		str += '<option value="12:00">12:00</option><option value="12:30">12:30</option><option value="13:00">13:00</option><option value="13:30">13:30</option><option value="14:00">14:00</option><option value="14:30">14:30</option><option value="15:00">15:00</option><option value="16:30">16:30</option>';
+		str += '<option value="16:00">16:00</option><option value="16:30">16:30</option><option value="17:00">17:00</option><option value="17:30">17:30</option><option value="18:00">18:00</option><option value="18:30">18:30</option><option value="19:00">19:00</option><option value="19:30">19:30</option>';
+		str += '<option value="20:00">20:00</option><option value="20:30">20:30</option><option value="21:00">21:00</option><option value="21:30">21:30</option><option value="22:00">22:00</option><option value="22:30">22:30</option><option value="23:00">23:00</option><option value="23:30">23:30</option><option value="24:00">24:00</option>';
 		str += '</select>';
 		str += '<img class="minus-img minusBtn" src="${pageContext.request.contextPath}/assets/image/company/icon/minus.png">';
 		str += '</div>';
