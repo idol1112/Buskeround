@@ -49,7 +49,12 @@
 <!---- 프로필 박스 ---->
 <div class="profile_box">
   <div class="main_profile">
-    <img src="/Buskeround${blogVo.user_img}">
+  	<c:if test="${blogVo.user_img == null}">
+	    <img src="/Buskeround/assets/image/blog/icon/user.png">
+  	</c:if>
+  	<c:if test="${blogVo.user_img != null}">
+	    <img src="${pageContext.request.contextPath}/upload/${blogVo.user_img}">
+  	</c:if>
   </div>
 
   <table class="profile_intr">
