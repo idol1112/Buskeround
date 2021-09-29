@@ -92,13 +92,46 @@
 		
 	</update>
 	
-	<!-- Blog(Blog) Modify -->
+	<!-- Blog(Blog) Modify 이미지--> 
+	<update id="blogModifyImg" parameterType="BlogVo">
+		
+		<![CDATA[
+		UPDATE blog 
+		SET 
+			intro = #{intro},
+			banner = #{banner},
+			y_url = #{y_url},
+			i_url = #{i_url},
+			f_url = #{f_url}
+		WHERE 
+			user_no = #{user_no}
+		]]>
+		
+	</update>
+	<!-- Blog(Blog) Modify 이미지 없음-->
 	<update id="blogModify" parameterType="BlogVo">
 		
 		<![CDATA[
 		UPDATE blog 
 		SET 
 			intro = #{intro},
+			y_url = #{y_url},
+			i_url = #{i_url},
+			f_url = #{f_url}
+		WHERE 
+			user_no = #{user_no}
+		]]>
+		
+	</update>
+	
+	<!-- Blog(Blog) Modify 이미지삭제 -->
+	<update id="blogModifyDeleteImg" parameterType="BlogVo">
+		
+		<![CDATA[
+		UPDATE blog 
+		SET 
+			intro = #{intro},
+			banner = null,
 			y_url = #{y_url},
 			i_url = #{i_url},
 			f_url = #{f_url}

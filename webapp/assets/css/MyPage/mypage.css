@@ -3,7 +3,7 @@
 /********** 초기화 **********/
 body, div, ul, li, dl, dt, ol, h1, h2, h3, h4,
 h5, h6, input, fieldset, legend, p, select, table, 
-th, td, tr, textarea, button, form {
+th, td, tr, textarea, button, form, img {
   margin: 0px 0px 0px 0px;
   padding: 0px 0px 0px 0px;
 }
@@ -207,10 +207,25 @@ input[type="file"] {
 .icon-img {
 	width: 15px;
 }
+.add-img {
+	width: 15px;
+	margin: 0px 4px;
+}
+
+.minus-img{
+		width: 15px;
+	margin: 0px 5px;
+}
 .addBtn {
+	cursor: pointer;
+	margin-bottom:3px;
+}
+.minusBtn {
+	cursor: pointer;
 	margin-bottom:3px;
 }
 
 .input-time {
 	width: 30%;
+	margin-bottom:3px;
 }

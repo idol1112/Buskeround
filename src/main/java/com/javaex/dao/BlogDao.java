@@ -36,7 +36,23 @@ public class BlogDao {
 		return sqlSession.selectOne("blog.selectBlog", id);
 	}
 
-	//정보 수정
+	//정보 수정 (이미지)
+	public int modifyImg(BlogVo blogVo) {
+		System.out.println("BlogDao.ModifyImg()");
+		
+		//Users
+		System.out.println("UsersModify");
+		sqlSession.update("blog.usersModify", blogVo);
+		
+		//Resume
+//		sqlSession.update("blog.resumeModify", blogVo);
+		
+		//Blog
+		System.out.println("BlogModify");
+		return sqlSession.update("blog.blogModifyImg", blogVo);
+	}
+	
+	//정보수정 (이미지 없음)
 	public int modify(BlogVo blogVo) {
 		System.out.println("BlogDao.Modify()");
 		
@@ -50,5 +66,21 @@ public class BlogDao {
 		//Blog
 		System.out.println("BlogModify");
 		return sqlSession.update("blog.blogModify", blogVo);
+	}
+	
+	//정보수정 (이미지 삭제)
+	public int modifyDeleteImg(BlogVo blogVo) {
+		System.out.println("BlogDao.Modify()");
+		
+		//Users
+		System.out.println("UsersModify");
+		sqlSession.update("blog.usersModify", blogVo);
+		
+		//Resume
+//		sqlSession.update("blog.resumeModify", blogVo);
+		
+		//Blog
+		System.out.println("BlogModify");
+		return sqlSession.update("blog.blogModifyDeleteImg", blogVo);
 	}
 }

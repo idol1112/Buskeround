@@ -33,16 +33,7 @@
     <div id="br_content">
       <c:import url="/views/Blog/includes/header.jsp"></c:import>
 
-      <!-- nav_menu -->
-      <div class="navbar">
-        <ul class="navbar_menu">
-          <li class="bold"><a href="blog_main.jsp">홈</a></li>
-          <li><a href="blogNoticeBoard.jsp">공지사항</a></li>
-          <li><a href="blog_timeline.jsp">타임라인</a></li>
-          <li><a href="blog_gallery.jsp">갤러리</a></li>
-          <li><a href="blogGuestbookBoard.jsp">방명록</a></li>
-        </ul>
-      </div>
+      <c:import url="/WEB-INF/views/Blog/includes/navigation.jsp"></c:import>
 
       <!---- Welcome Picture ---->
       <div id="welcome">
