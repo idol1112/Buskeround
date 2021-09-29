@@ -5,7 +5,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import com.javaex.vo.PostVo;
-import com.javaex.vo.ThumbnailVo;
 
 @Repository
 public class BlogDao2 {
@@ -30,10 +29,10 @@ public class BlogDao2 {
   }
 
   /*** 공연 종료 ***/
-  public void live_end(int user_no) {
+  public int live_end(int user_no) {
     System.out.println("[사용 메소드: BlogDao2.live_end()]");
 
-    sqlSession.insert("post.live_end", user_no);
+    return sqlSession.insert("post.live_end", user_no);
 
   }
 
@@ -54,10 +53,10 @@ public class BlogDao2 {
   }
 
   /*** 파일 업로드 ***/
-  public void restore(ThumbnailVo thumbnailVo) {
+  public void restore(PostVo postVo) {
     System.out.println("[사용 메소드: BlogDao2.restore()]");
 
-    sqlSession.insert("post.imgInsert", thumbnailVo);
+    sqlSession.update("post.imgInsert", postVo);
 
   }
 

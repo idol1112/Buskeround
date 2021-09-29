@@ -24,6 +24,7 @@
 
 <!-- jquery -->
 <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="http://malsup.github.com/jquery.form.js"></script>
 </head>
 
 <body>
@@ -35,7 +36,8 @@
     <div id="br_content">
       <c:import url="/WEB-INF/views/Blog/includes/header.jsp"></c:import>
 
-      <c:import url="/WEB-INF/views/Blog/includes/navigation.jsp"></c:import>
+      <!-- nav_menu -->
+	  <c:import url="/WEB-INF/views/Blog/includes/navigation.jsp"></c:import>
 
       <!---- timeline ---->
       <div class="main_title">
@@ -213,9 +215,6 @@
 				for (var i = 0; i < timeList.length; i++) {
 					render(timeList[i]);
 				}
-
-				console.log(timeList);
-
 			},
 
 			// 실패할경우 error로 들어온다.
@@ -231,7 +230,7 @@
 			str += '	<div class="content">';
 			str += '		<h3>' + timeList.title + '</h3>';
 			if (timeList.live_url === null) {
-				str += '		          <img src="${pageContext.request.contextPath}/assets/image/blog/img/busker.jpg" alt="" style="width: 430px; height: 240px" />';
+				str += '		          <img src="${pageContext.request.contextPath}/upload/' + timeList.p_img +'" alt="" style="width: 430px; height: 240px,	object-fit: cover;" />';
 			} else {
 				str += '		<iframe width="430" height="240" src="https://www.youtube.com/embed/' + timeList.live_url + '" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
 			}

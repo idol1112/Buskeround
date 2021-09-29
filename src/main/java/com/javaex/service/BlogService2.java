@@ -26,10 +26,10 @@ public class BlogService2 {
   }
 
   /*** 공연 종료 ***/
-  public void live_end(int user_no) {
+  public int live_end(int user_no) {
 
-    blogDao2.live_end(user_no);
     blogDao2.live_off(user_no);
+    return blogDao2.live_end(user_no);
 
   }
 
@@ -42,7 +42,7 @@ public class BlogService2 {
   /*** 썸네일 등록 ***/
   public void restore(PostVo postVo, MultipartFile file) {
 
-    String saveDir = "E:\\javaStudy\\upload";
+    String saveDir = "C:\\javaStudy\\upload";
 
     // 확장자
     String exName = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
@@ -59,25 +59,21 @@ public class BlogService2 {
     // 파일 서버하드디스크에 저장
     try {
 
-        byte[] fileData = file.getBytes();
-        OutputStream out = new FileOutputStream(filePath);
-        BufferedOutputStream bout = new BufferedOutputStream(out);
+      byte[] fileData = file.getBytes();
+      OutputStream out = new FileOutputStream(filePath);
+      BufferedOutputStream bout = new BufferedOutputStream(out);
 
-        bout.write(fileData);
-        bout.close();
+      bout.write(fileData);
+      bout.close();
 
     } catch (Exception e) {
-        // TODO: handle exception
+      // TODO: handle exception
     }
 
     postVo.setP_img(logoFile);
 
+    blogDao2.restore(postVo);
+
   }
-
-  /*** 썸네일 등록(No img) ***/
-  public void restore(PostVo postVo) {
-
-    postVo.setP_img("noimg.png");
-}
 
 }

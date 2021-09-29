@@ -3,58 +3,58 @@
 
 <!---- 배너 ---->
 <c:choose>
-	<c:when test = "${blogVo.banner == null }">
-		<div class="banner" style='background-image: url("/Buskeround/assets/image/blog/img/defaultbanner.jpg")'>
-	</c:when>
-	<c:otherwise>
-		<div class="banner" style='background-image: url("${pageContext.request.contextPath}/upload/${blogVo.banner}")'>
-	</c:otherwise>
+  <c:when test="${blogVo.banner == null }">
+    <div class="banner" style='background-image: url("/Buskeround/assets/image/blog/img/defaultbanner.jpg")'>
+  </c:when>
+  <c:otherwise>
+    <div class="banner" style='background-image: url("${pageContext.request.contextPath}/upload/${blogVo.banner}")'>
+  </c:otherwise>
 </c:choose>
-  <!-- 블로그 관리 버튼 -->
-  <a href="${pageContext.request.contextPath}/blog/blog_modify/${blogVo.id}">
-    <img class="setting" src="${pageContext.request.contextPath}/assets/image/blog/icon/settings.png">
+<!-- 블로그 관리 버튼 -->
+<a href="${pageContext.request.contextPath}/blog/blog_modify/${blogVo.id}">
+  <img class="setting" src="${pageContext.request.contextPath}/assets/image/blog/icon/settings.png">
+</a>
+
+<!-- 공연시작 버튼 -->
+<c:if test="${blogVo.user_no == authUser.user_no}">
+  <c:if test="${blogVo.live == 0}">
+    <button type="button" class="btn_start">공연시작</button>
+  </c:if>
+
+  <c:if test="${blogVo.live == 1}">
+    <button type="button" class="btn_end">공연종료</button>
+  </c:if>
+</c:if>
+
+<!-- sns 버튼 -->
+<c:if test="${blogVo.f_url != null}">
+  <a href="${blogVo.f_url}" id="facebook_url" target='_blank'>
+    <img class="facebook" src="${pageContext.request.contextPath}/assets/image/blog/icon/facebook.png" alt="">
   </a>
+</c:if>
 
-  <!-- 공연시작 버튼 -->
-  <c:if test="${blogVo.user_no == authUser.user_no}">
-    <c:if test="${blogVo.live == 0}">
-      <button type="button" class="btn_start">공연시작</button>
-    </c:if>
+<c:if test="${blogVo.i_url != null}">
+  <a href="${blogVo.i_url}" id="instagram_url" target='_blank'>
+    <img class="instagram" src="${pageContext.request.contextPath}/assets/image/blog/icon/instagram.png" alt="">
+  </a>
+</c:if>
 
-    <c:if test="${blogVo.live == 1}">
-      <button type="button" class="btn_end">공연종료</button>
-    </c:if>
-  </c:if>
-
-  <!-- sns 버튼 -->
-  <c:if test="${blogVo.f_url != null}">
-    <a href="${blogVo.f_url}" id="facebook_url" target='_blank'>
-      <img class="facebook" src="${pageContext.request.contextPath}/assets/image/blog/icon/facebook.png" alt="">
-    </a>
-  </c:if>
-
-  <c:if test="${blogVo.i_url != null}">
-    <a href="${blogVo.i_url}" id="instagram_url" target='_blank'>
-      <img class="instagram" src="${pageContext.request.contextPath}/assets/image/blog/icon/instagram.png" alt="">
-    </a>
-  </c:if>
-
-  <c:if test="${blogVo.y_url != null}">
-    <a href="${blogVo.y_url}" id="youtube_url" target='_blank'>
-      <img class="youtube" src="${pageContext.request.contextPath}/assets/image/blog/icon/youtube.png" alt="">
-    </a>
-  </c:if>
+<c:if test="${blogVo.y_url != null}">
+  <a href="${blogVo.y_url}" id="youtube_url" target='_blank'>
+    <img class="youtube" src="${pageContext.request.contextPath}/assets/image/blog/icon/youtube.png" alt="">
+  </a>
+</c:if>
 </div>
 
 <!---- 프로필 박스 ---->
 <div class="profile_box">
   <div class="main_profile">
-  	<c:if test="${blogVo.user_img == null}">
-	    <img src="/Buskeround/assets/image/blog/icon/user.png">
-  	</c:if>
-  	<c:if test="${blogVo.user_img != null}">
-	    <img src="${pageContext.request.contextPath}/upload/${blogVo.user_img}">
-  	</c:if>
+     <c:if test="${blogVo.user_img == null}">
+       <img src="/Buskeround/assets/image/blog/icon/user.png">
+     </c:if>
+     <c:if test="${blogVo.user_img != null}">
+       <img src="${pageContext.request.contextPath}/upload/${blogVo.user_img}">
+     </c:if>
   </div>
 
   <table class="profile_intr">
@@ -150,7 +150,7 @@
         <h5 class="modal-title" id="exampleModalLabel">공연시작</h5>
       </div>
 
-      <form action="${pageContext.request.contextPath}/blog2/upload" method="post" enctype="multipart/form-data">
+      <form action="" method="post" enctype="multipart/form-data">
         <div class="modal-body clear-fix" id="modal_body">
           <div>
             <label class="modal-label" id="modal_label">제목</label>
@@ -171,14 +171,11 @@
           <!-- 공연시작 시간 -->
           <input type="hidden" id="time_start">
 
-          <!-- 유저 넘버 -->
-          <input type="hidden" id="user_no" value="${blogVo.user_no}">
-
           <!-- 사진 -->
           <div class="thumbnail">
             <div class="img_box">
               <label for="picture">사진 업로드</label>
-              <input type="file" class="require-if-active" accept="image/*" name="imgFile">
+              <input type="file" id="file1" name="file1">
             </div>
           </div>
         </div>
@@ -224,8 +221,6 @@
   if (channel_id === 1) {
     $(".img_box").show();
   };
-
-  console.log(channel_id);
 
   // 공연종료 버튼 눌렀을 때(배너)
   $(".btn_end").on("click", function() {
@@ -316,6 +311,7 @@
 
   // 공연시작 버튼 눌렀을 때(모달)
   $("#perform_start").on("click", function() {
+	    event.preventDefault();
 
     // 공연 데이터 묶기
     var postVo = {
@@ -354,7 +350,31 @@
       }
     });
 
+    var form = new FormData();
+    form.append( "file1", $("#file1")[0].files[0] );
 
+     jQuery.ajax({
+
+         url : "${pageContext.request.contextPath}/api/blog/upload/${blogVo.user_no}",
+
+         type : "post",
+
+         processData : false,
+
+         contentType : false,
+
+         data : form,
+
+         success : function(result) {
+           /*성공시 처리해야될 코드 작성*/
+
+         },
+
+         // 실패할경우 error로 들어온다.
+         error : function(XHR, status, error) {
+           console.error(status + " : " + error);
+         }
+  	});
   });
 
   // 모달창 닫기

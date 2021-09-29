@@ -3,12 +3,14 @@ package com.javaex.api.controller;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import com.javaex.service.BlogService2;
 import com.javaex.vo.PostVo;
 
@@ -25,10 +27,6 @@ public class ApiBlogController {
   public int live_start(@RequestBody PostVo postVo) {
     System.out.println("[현재 위치: ApiBlogController.live_start]");
 
-    System.out.println("공연시작: " + postVo);
-
-    System.out.println("[api 입니다]");
-
     return blogService2.live_start(postVo);
 
   }
@@ -36,10 +34,10 @@ public class ApiBlogController {
   /*** 공연 종료 ***/
   @ResponseBody
   @RequestMapping(value = "live_end", method = {RequestMethod.GET, RequestMethod.POST})
-  public void live_end(@RequestParam("user_no") int user_no) {
+  public int live_end(@RequestParam("user_no") int user_no) {
     System.out.println("[현재 위치: ApiBlogController.live_end]");
 
-    blogService2.live_end(user_no);
+    return blogService2.live_end(user_no);
 
   }
 
@@ -50,6 +48,27 @@ public class ApiBlogController {
     System.out.println("[현재 위치: ApiBlogController.timeline_main]");
 
     return blogService2.timeline_main(user_no);
+
+  }
+
+  /*** 썸네일 업로드 ***/
+  @ResponseBody
+  @RequestMapping(value = "upload/{user_no}", method = {RequestMethod.GET, RequestMethod.POST})
+  public String upload(@RequestParam(value = "file1", required = false) MultipartFile file, @PathVariable("user_no") int user_no,
+      @ModelAttribute PostVo postVo) {
+    System.out.println("[현재 위치: BlogController2.upload]");
+
+    postVo.setUser_no(user_no);
+
+    if (file == null) {
+      System.out.println("파일이 없습니다.");
+
+    } else {
+      blogService2.restore(postVo, file);
+
+    }
+
+    return "filelist";
 
   }
 

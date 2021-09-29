@@ -6,21 +6,28 @@
 	<!-- 공연 시작 -->
 	<insert id="live_start" parameterType="Postvo">
 		<![CDATA[
-			INSERT INTO post VALUES (
+			INSERT INTO post (
+			    post_no,
+			    category_no,
+			    user_no,
+			    title,
+			    latitude,
+			    longitude,
+			    p_start,
+			    live_url,
+			    address,
+			    p_img
+			) VALUES (
 			    seq_post_no.NEXTVAL,
 			    2,
 			    #{user_no},
 			    #{title},
-			    NULL,
-			    NULL,
 			    33.45071802804865,
 			    126.57059752230168,
 			    sysdate,
-			    NULL,
-			    #{p_img},
 			    #{live_url},
 			    #{address},
-			    NULL
+			    'noimg.png'
 			)
 		]]>
 	</insert>
@@ -96,5 +103,17 @@
 			    AND rn <= 2
 		]]>
 	</select>
+
+	<!-- 썸네일 등록 -->
+	<update id="imgInsert" parameterType="PostVo">
+		<![CDATA[
+			UPDATE post
+				SET
+				    p_img = #{p_img}
+				WHERE
+				        user_no = #{user_no}
+				    AND p_end IS NULL
+		]]>
+	</update>
 
 </mapper>
