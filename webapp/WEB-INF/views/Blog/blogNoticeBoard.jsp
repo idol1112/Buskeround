@@ -38,7 +38,6 @@
 	      <c:import url="/WEB-INF/views/Blog/includes/header.jsp"></c:import>
 	
 	      <c:import url="/WEB-INF/views/Blog/includes/navigation.jsp"></c:import>
-
 			<div class="content clearfix">
 				<!-- 글쓰기 버튼 -->
 				<div class="clearfix main_title">

@@ -148,7 +148,7 @@ CREATE TABLE users (
 	artist_regdate DATE, /* 아티스트등록일 */
 	user_type CHAR(1), /* 회원구분 */
 	company_type CHAR(1), /* 제휴사여부 */
-	ranking_score VARCHAR2(1000) /* 아티스트 점수 */
+	ranking_score NUMBER /* 아티스트 점수 */
 );
 
 COMMENT ON TABLE users IS '회원';
