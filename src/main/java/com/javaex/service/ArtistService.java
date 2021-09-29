@@ -26,11 +26,24 @@ public class ArtistService {
 		return artistDao.getArtistLive();
 	}
 	
-	//팬 많은 순 리스트 가져오기
+	//아티스트 팬 많은 순 리스트 가져오기
 	public List<UserVo> getArtistFan() {
 		
 		return artistDao.getArtistFan();
 	}
+	
+	//new 아티스트 리스트 가져오기
+	public List<UserVo> getArtistNew() {
+		
+		return artistDao.getArtistNew();
+	}
+	
+	//아티스트 장르 리스트 가져오기_메인화면(발라드)
+	public List<UserVo> getArtistGenreBallad() {
+		
+		return artistDao.getArtistGenreBallad();
+	}
+	
 	
 	
 	
