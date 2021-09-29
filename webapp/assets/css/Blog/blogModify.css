@@ -59,17 +59,12 @@ a:active {text-decoration: none; color: black;}
 }
 
 #profilepicturechange {
-    font-weight: bold;
-    width: 50px;
-    padding: 3px;
     margin-left: 24px;
     margin-top: 5px;
 }
 
 #profilepicturedelete {
-    font-weight: bold;
-    width: 50px;
-    padding: 3px;
+	font-size: 12px;
     margin-top: 5px;
 }
 
@@ -152,7 +147,12 @@ a:active {text-decoration: none; color: black;}
     display: block;
     margin-left: 10px;
     width: 696px;
-    height: 100px;
+    height: 125px;
+    object-fit: cover;
+}
+
+input[type="file"] {
+    display: none;
 }
 
 #banner span {
@@ -163,28 +163,14 @@ a:active {text-decoration: none; color: black;}
 
 #banner-changebutton {
     float: right;
-    font-weight: bold;
-    border: none;
-    width: 50px;
-    height: 30px;
-    padding: 2px;
-    border-radius: 5px;
-    margin-right: 10px;
-    margin-top: 10px;
+    margin-right: 7px;
+    margin-top: 8px;
 }   
 
 #banner-deletebutton {
     float: right;
-    font-weight: bold;
-    border: none;
-    width: 50px;
-    height: 30px;
-    padding: 2px;
-    border-radius: 5px;
     margin-right: 70px;
-    margin-top: 10px;
-    background-color: red;
-    color: white;
+    margin-top: 8px;
 }   
 
 .label-width label {

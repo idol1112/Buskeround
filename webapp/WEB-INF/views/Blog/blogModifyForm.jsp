@@ -43,9 +43,10 @@
 			</div>
 
 			<div class="modify-form">
-				<form action="${pageContext.request.contextPath}/blog/modify" method="POST">
+				<form action="${pageContext.request.contextPath}/blog/modify" method="POST" enctype="multipart/form-data">
 					<input type="hidden" name="user_no" value="${blogVo.user_no}">
 					<input type="hidden" name="id" value="${blogVo.id}">
+					<input id="img_check" type="hidden" name="img_check" value="0">
 					<table>
 						<tr>
 							<td class="table-head"><label for="nickname">활동명</label></td>
@@ -61,9 +62,25 @@
 						</tr>
 						<tr id="banner">
 							<td class="table-head"><label>대문이미지</label></td>
-							<td><img src="../../assets/image/blog/img/profilebanner.jpg">
-								<button id="banner-deletebutton">삭제</button>
-								<button id="banner-changebutton">변경</button></td>
+							<td>
+								<c:if test="${blogVo.banner == null}">
+									<img id="bannerImg" src="/Buskeround/assets/image/blog/img/defaultbanner.jpg">
+								</c:if>
+								
+								<c:if test="${blogVo.banner != null}">
+									<img id="bannerImg" src="${pageContext.request.contextPath}/upload/${blogVo.banner}">
+								</c:if>
+								
+								<label id="banner-deletebutton" class="btn-danger btn-sm">
+								삭제
+								</label>
+								
+								<label id="banner-changebutton" class="btn-success btn-sm">
+							    <input type="file" id="file1" name="file1" accept="image/*" onchange="setThumbnail(event);">
+							    변경
+								</label>
+								
+								</td>
 						</tr>
 						<tr>
 							<td class="table-head"><label>SNS 링크</label></td>
@@ -90,5 +107,33 @@
 		</div>
 	</div>
 </body>
+
+<script type="text/javascript">
+
+	//미리보기
+	function setThumbnail(event) { 
+		console.log("미리보기 실험")
+		var reader = new FileReader(); 
+		
+		var picture = document.getElementById("profilepicture");
+		
+		reader.onload = function(event) { 
+			document.querySelector("img#bannerImg").setAttribute("src", event.target.result); 
+			document.querySelector("input#img_check").setAttribute("value", '1'); 
+		}; 
+		
+		reader.readAsDataURL(event.target.files[0]); 
+		}
+	
+	//미리보기 삭제
+	$("#banner-deletebutton").on("click", function(){
+		console.log("미리보기 삭제")
+		
+		document.querySelector("img#bannerImg").setAttribute("src", '/Buskeround/assets/image/blog/img/defaultbanner.jpg'); 
+		document.querySelector("input#img_check").setAttribute("value", '2'); 
+	});
+
+
+</script>
 
 </html>

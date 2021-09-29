@@ -36,16 +36,7 @@
     <div id="br_content">
       <c:import url="/WEB-INF/views/Blog/includes/header.jsp"></c:import>
 
-      <!-- nav_menu -->
-      <div class="navbar">
-        <ul class="navbar_menu">
-          <li><a href="${pageContext.request.contextPath}/blog/blog_main">홈</a></li>
-          <li><a href="blogNoticeBoard.jsp">공지사항</a></li>
-          <li class="bold"><a href="${pageContext.request.contextPath}/blog/blog_timeline">타임라인</a></li>
-          <li><a href="${pageContext.request.contextPath}/blog/blog_gallery">갤러리</a></li>
-          <li><a href="${pageContext.request.contextPath}/blog/blog_guestbook">방명록</a></li>
-        </ul>
-      </div>
+      <c:import url="/WEB-INF/views/Blog/includes/navigation.jsp"></c:import>
 
       <!---- timeline ---->
       <div class="timeline_box">
