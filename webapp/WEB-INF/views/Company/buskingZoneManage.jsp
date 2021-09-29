@@ -57,9 +57,10 @@
                             <tr>
                                 <td class="table-head"><label for="stage_name">장소명</label></td>
                                 <td>
-	                            	<select name="stage_name" id="stage-select" class="select-box input">
-										<option value="">7층 스테이지</option>
-										<option value="">8층 카페</option>
+	                            	<select name="stage_no" id="stage-select" class="select-box input">
+	                            		<c:forEach items="${stageList}" var="stageList" varStatus="status">
+											<option value="${stageList.stage_no}">${stageList.stage_name}</option>
+										</c:forEach>
 									</select>
                                 </td>
                             </tr>
@@ -77,7 +78,7 @@
                             </tr>
                             <tr>
                             	<td class="table-head"><label for="business_number">공연 시간</label></td>
-                            	<td>
+                            	<td id="time-table">
                             		<select name="start_time" class="input input-time">
                             			<option>00:00</option><option>00:30</option><option>01:00</option><option>01:30</option><option>02:00</option><option>02:30</option><option>03:00</option><option>03:30</option>
                             			<option>04:00</option><option>04:30</option><option>05:00</option><option>05:30</option><option>06:00</option><option>06:30</option><option>07:00</option><option>07:30</option>
@@ -87,7 +88,7 @@
                             			<option>20:00</option><option>20:30</option><option>21:00</option><option>21:30</option><option>22:00</option><option>22:30</option><option>23:00</option><option>23:30</option><option>24:00</option>
                             		</select>
                             		<img class="icon-img" src="${pageContext.request.contextPath}/assets/image/company/icon/from.png">
-                            		<select name="start_time" class="input input-time">
+                            		<select name="end_time" class="input input-time">
                             			<option>00:00</option><option>00:30</option><option>01:00</option><option>01:30</option><option>02:00</option><option>02:30</option><option>03:00</option><option>03:30</option>
                             			<option>04:00</option><option>04:30</option><option>05:00</option><option>05:30</option><option>06:00</option><option>06:30</option><option>07:00</option><option>07:30</option>
                             			<option>08:00</option><option>08:30</option><option>09:00</option><option>09:30</option><option>10:00</option><option>10:30</option><option>11:00</option><option>11:30</option>
@@ -142,6 +143,48 @@
 $("#datepicker").datepicker({
 	language: 'ko'
 }); 
+
+//공연 시간 add 버튼
+$("#time-table").on("click", ".addBtn", function() {
+	console.log("add버튼");
+	add();
+});
+
+//공연 시간 minus 버튼
+$("#time-table").on("click", ".minusBtn", function() {
+	console.log("minus버튼");
+	$(this).parent().remove();
+});
+
+
+
+function add() {
+	
+	var str = '';
+	
+		str += '<div>';
+		str += '<select name="start_time" class="input input-time">';
+		str += '<option>00:00</option><option>00:30</option><option>01:00</option><option>01:30</option><option>02:00</option><option>02:30</option><option>03:00</option><option>03:30</option>';
+		str += '<option>04:00</option><option>04:30</option><option>05:00</option><option>05:30</option><option>06:00</option><option>06:30</option><option>07:00</option><option>07:30</option>';
+		str += '<option>08:00</option><option>08:30</option><option>09:00</option><option>09:30</option><option>10:00</option><option>10:30</option><option>11:00</option><option>11:30</option>';
+		str += '<option>12:00</option><option>12:30</option><option>13:00</option><option>13:30</option><option>14:00</option><option>14:30</option><option>15:00</option><option>16:30</option>';
+		str += '<option>16:00</option><option>16:30</option><option>17:00</option><option>17:30</option><option>18:00</option><option>18:30</option><option>19:00</option><option>19:30</option>';
+		str += '<option>20:00</option><option>20:30</option><option>21:00</option><option>21:30</option><option>22:00</option><option>22:30</option><option>23:00</option><option>23:30</option><option>24:00</option>';
+		str += '</select>';
+		str += '<img class="add-img" src="${pageContext.request.contextPath}/assets/image/company/icon/from.png">';
+		str += '<select name="end_time" class="input input-time">';
+		str += '<option>00:00</option><option>00:30</option><option>01:00</option><option>01:30</option><option>02:00</option><option>02:30</option><option>03:00</option><option>03:30</option>';
+		str += '<option>04:00</option><option>04:30</option><option>05:00</option><option>05:30</option><option>06:00</option><option>06:30</option><option>07:00</option><option>07:30</option>';
+		str += '<option>08:00</option><option>08:30</option><option>09:00</option><option>09:30</option><option>10:00</option><option>10:30</option><option>11:00</option><option>11:30</option>';
+		str += '<option>12:00</option><option>12:30</option><option>13:00</option><option>13:30</option><option>14:00</option><option>14:30</option><option>15:00</option><option>16:30</option>';
+		str += '<option>16:00</option><option>16:30</option><option>17:00</option><option>17:30</option><option>18:00</option><option>18:30</option><option>19:00</option><option>19:30</option>';
+		str += '<option>20:00</option><option>20:30</option><option>21:00</option><option>21:30</option><option>22:00</option><option>22:30</option><option>23:00</option><option>23:30</option><option>24:00</option>';
+		str += '</select>';
+		str += '<img class="minus-img minusBtn" src="${pageContext.request.contextPath}/assets/image/company/icon/minus.png">';
+		str += '</div>';
+		
+		$("#time-table").append(str);
+}
 
 </script>
 </html>
