@@ -34,6 +34,30 @@
 		#menu_wrap .option p {margin:10px 0;}  
 		#menu_wrap .option button {margin-left:5px;}
 		
+		#searchList li {list-style: none;}
+		#searchList .item {position:relative;border-bottom:1px solid #888;overflow: hidden;cursor: pointer;min-height: 65px;}
+		#searchList .item span {display: block;margin-top:4px;}
+		#searchList .item h5, #placesList .item .info {text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
+		#searchList .item .info{padding:10px 0 10px 55px;}
+		#searchList .info .gray {color:#8a8a8a;}
+		#searchList .info .jibun {padding-left:26px;background:url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_jibun.png) no-repeat;}
+		#searchList .info .tel {color:#009900;}
+		#searchList .item .markerbg {float:left;position:absolute;width:36px; height:37px;margin:10px 0 0 10px;background:url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png) no-repeat;}
+		#searchList .item .marker_1 {background-position: 0 -10px;}
+		#searchList .item .marker_2 {background-position: 0 -56px;}
+		#searchList .item .marker_3 {background-position: 0 -102px}
+		#searchList .item .marker_4 {background-position: 0 -148px;}
+		#searchList .item .marker_5 {background-position: 0 -194px;}
+		#searchList .item .marker_6 {background-position: 0 -240px;}
+		#searchList .item .marker_7 {background-position: 0 -286px;}
+		#searchList .item .marker_8 {background-position: 0 -332px;}
+		#searchList .item .marker_9 {background-position: 0 -378px;}
+		#searchList .item .marker_10 {background-position: 0 -423px;}
+		#searchList .item .marker_11 {background-position: 0 -470px;}
+		#searchList .item .marker_12 {background-position: 0 -516px;}
+		#searchList .item .marker_13 {background-position: 0 -562px;}
+		#searchList .item .marker_14 {background-position: 0 -608px;}
+		#searchList .item .marker_15 {background-position: 0 -654px;}
 
 		
 		#keyword{
@@ -57,7 +81,7 @@
 		 position:relative;
 		 overflow:hidden;
 		}
-		#searchList{
+/* 		#searchList{
 		border: 1px solid skyblue;
 		width:100%;
 		height:80px;
@@ -90,7 +114,7 @@
 		/* 스크롤바 뒷 배경 설정*/
 		.type1::-webkit-scrollbar-track{
 		    background-color: rgba(33,133,133,0.33);
-		}
+		} */
 		
 	</style>
 <!-- 부트스트랩 -->
@@ -105,6 +129,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 
 <!-- css -->
+
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/Common/common.css">
 
 <!-- jquery -->
@@ -127,16 +152,8 @@
             </div>
         </div>
         <hr>
-		<div id="searchList">1</div>
-		<div id="searchList">1</div>
-		<div id="searchList">1</div>
-		<div id="searchList">1</div>
-		<div id="searchList">1</div>
-		<div id="searchList">1</div>
-		<div id="searchList">1</div>
-		<div id="searchList">1</div>
-		<div id="searchList">1</div>
-		<div id="searchList">1</div>
+		<div id="searchList"></div>
+
 		
         
     </div>
@@ -180,6 +197,11 @@ kakao.maps.event.addListener(map, 'dragend', function() {
     var slat = swLatLng.getLat();
     var slng = swLatLng.getLng();
     
+    var listEl = document.getElementById('searchList');
+	var fragment = document.createDocumentFragment()
+	
+	removeAllChildNods(listEl);
+	//removeAllChildNods(listEl);
     
 	//서버에 위도경도전달
 	$.ajax({
@@ -191,10 +213,14 @@ kakao.maps.event.addListener(map, 'dragend', function() {
 		dataType : "json",
 		success : function(mapFind){
 			for(var i=0; i<mapFind.length; i++){
-
-			console.log("1");
+			/////////////////
+			var itemEl = getListItem(i, mapFind[i]);
 			
+			fragment.appendChild(itemEl);
+			//////////////////	
 			};
+			
+			listEl.appendChild(fragment);
 		},
 		error : function(XHR, status, error) {
 			console.error(status + " : " + error);
@@ -202,7 +228,24 @@ kakao.maps.event.addListener(map, 'dragend', function() {
 	});
 });
 
+function getListItem(index, mapFind) {
 
+    var el = document.createElement('li'),
+    itemStr ='<div class="body">' +  
+    '            <div class="img">' +
+    '                <img src="${pageContext.request.contextPath }/upload/'+mapFind.user_img+'" width="73" height="70" align="center">' +
+    '            <div class="desc">' + 
+    '                <div class="ellipsis">활동명 : '+mapFind.nickname+'</div>' + 
+    '                <div class="ellipsis">장소명   : '+mapFind.address+'</div>' + 
+    '            </div>' + 
+    '            </div>' + 
+    '        </div>';
+
+    el.innerHTML = itemStr;
+    el.className = 'item';
+
+    return el;
+}
 
 
 
@@ -220,11 +263,11 @@ positions[num] = new kakao.maps.LatLng(${mapList.latitude}, ${mapList.longitude}
 content[num] = '<div class="wrap">' + 
 '    <div class="info">' + 
 '        <div class="title">' + 
-'            버스커 라운드${mapList.latitude}' +
+'            버스커 라운드' +
 '        </div>' + 
 '        <div class="body">' + 
 '            <div class="img">' +
-'                <img src="" width="73" height="70">' +
+'                <img src="${pageContext.request.contextPath }/upload/${mapList.user_img}" width="73" height="70">' +
 '           </div>' + 
 '            <div class="desc">' + 
 '                <div class="ellipsis">활동명 : ${mapList.nickname}</div>' + 
@@ -274,6 +317,13 @@ function displayMarker(data) {
     kakao.maps.event.addListener(map, 'click', function() {
         overlay.setMap(null);
     });
+}
+
+// 검색결과 목록의 자식 Element를 제거하는 함수입니다
+function removeAllChildNods(el) {   
+    while (el.hasChildNodes()) {
+        el.removeChild (el.lastChild);
+    }
 }
 </script>
 
