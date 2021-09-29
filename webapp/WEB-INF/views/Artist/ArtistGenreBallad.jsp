@@ -21,6 +21,7 @@
 <!-- css -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/Artist/common.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/Common/common.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/Artist/ArtistGenre.css">
 
 <!-- jquery -->
 <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -40,13 +41,32 @@
         <div class="leftsection">
         	<!-- 종합랭킹 -->
             <div class="leftsection-01">
-                <h2>New 아티스트</h2>
+                <h2>장르별 순위</h2>
                 <!-- 아티스트 검색 -->
                 <div>
                     <input type="text" placeholder="아티스트 검색">
                     <img src="${pageContext.request.contextPath}/assets/image/artist/icon/search.png" style="width:20px">
                 </div>
             </div>
+            
+            <!-- 장르 검색 -->
+            <div class="row" id="genrebox">
+        	<div class="col-xl-3"></div>
+        	
+        	<div class="col-xl-7">
+             <ul class="navbar_genremenu">
+                <li><a href="${pageContext.request.contextPath}/Artist/ArtistGenreBallad">발라드</a></li>
+                <li><a href="${pageContext.request.contextPath}/Artist/ArtistGenreDance">댄스</a></li>
+                <li><a href="${pageContext.request.contextPath}/Artist/ArtistGenreHiphop">랩/힙합</a></li>
+                <li><a href="${pageContext.request.contextPath}/Artist/ArtistGenreSoul">R&B/SOUL</a></li>
+                <li><a href="${pageContext.request.contextPath}/Artist/ArtistGenreMusical">악기</a></li>
+                <li><a href="${pageContext.request.contextPath}/Artist/ArtistGenreEtc">기타공연</a></li>
+             </ul>
+        	</div>
+        	</div>
+        	
+        	<div class="col-xl-3"></div> 
+        	
 			<!-- 종합랭킹 표그래프 -->
             <div class="leftsection-02">
                 <table>
@@ -62,54 +82,55 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach items="${artistNew}" var="nList">
+                    	<c:forEach items="${artistGenreBallad}" var="gbList">
                         <!--1번-->
                         <tr>
-                            <td>${nList.rn}</td>
-							<td><img src="/Buskeround${nList.user_img}" style="width: 80px"></td> 
+                            <td>${gbList.rn}</td>
+                            <td><img src="/Buskeround${gbList.user_img}" style="width: 80px"></td> 
                             <td>
-                                <div>${nList.nickname}</div>
+                                <div>${gbList.nickname}</div>
                                 <div>
+                                	<img src="${pageContext.request.contextPath}/assets/image/artist/icon/youtube.png" style="width:20px">
                                     <img src="${pageContext.request.contextPath}/assets/image/artist/icon/facebook.png" style="width:20px">
                                     <img src="${pageContext.request.contextPath}/assets/image/artist/icon/insta.png" style="width:20px">
                                 </div>
                             </td>
                             <!-- 장르 -->
-							<c:if test="${nList.genre == 1}">
+							<c:if test="${gbList.genre == 1}">
 								<td><img src="${pageContext.request.contextPath}/assets/image/blog/icon/ballade.png" style="width: 60px"></td>
 							</c:if>
 
-							<c:if test="${nList.genre == 2}">
+							<c:if test="${gbList.genre == 2}">
 								<td><img src="${pageContext.request.contextPath}/assets/image/blog/icon/dance.png" style="width: 60px"></td>
 							</c:if>
 
-							<c:if test="${nList.genre == 3}">
+							<c:if test="${gbList.genre == 3}">
 								<td><img src="${pageContext.request.contextPath}/assets/image/blog/icon/hiphop.png" style="width: 60px"></td>
 							</c:if>
 
-							<c:if test="${nList.genre == 4}">
+							<c:if test="${gbList.genre == 4}">
 								<td><img src="${pageContext.request.contextPath}/assets/image/blog/icon/soul.png" style="width: 60px"></td>
 							</c:if>
 
-							<c:if test="${nList.genre == 5}">
+							<c:if test="${gbList.genre == 5}">
 								<td><img src="${pageContext.request.contextPath}/assets/image/blog/icon/musical.png" style="width: 60px"></td>
 							</c:if>
 
-							<c:if test="${nList.genre == 6}">
+							<c:if test="${gbList.genre == 6}">
 								<td><img src="${pageContext.request.contextPath}/assets/image/blog/icon/etc.png" style="width: 60px"></td>
 							</c:if>
-							
+                            
                             <td>
-                                <div>${nList.genre_type}</div>
-                                <div>가입연도 ${nList.artist_regdate}년</div>
+                                <div>${gbList.genre_type}</div>
+                                <div>가입연도 ${gbList.artist_regdate}년</div>
                             </td>
                             <td>
                                 <img src="${pageContext.request.contextPath}/assets/image/artist/icon/heart2.png" style="width:20px">
-                                <span>${nList.likes}</span>
+                                <span>${gbList.likes}</span>
                             </td>
                             <td>
                                 <img src="${pageContext.request.contextPath}/assets/image/artist/icon/fan1.png" style="width:20px">
-                                <span>${nList.fan}</span>
+                                <span>${gbList.fan}</span>
                             </td>
                         </tr>
 					  </c:forEach>
@@ -147,13 +168,14 @@
                 </div>
                 <table>
                     <tbody>
-                      <c:forEach items="${artistLiveList}" var="aLive">
+						<c:forEach items="${artistLiveList}" var="aLive">
 							<tr>
 								<td>${aLive.nickname}</td>
 								<td>오후 3:24~</td>
 								<td>[위치 보기]</td>
 							</tr>
 						</c:forEach>
+
                     </tbody>
                 </table>
             </div>
@@ -161,8 +183,9 @@
     </div>
   
   
-   <!-- footer -->
+  
+  <!-- footer -->
   <c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
   
 </body>
-</html>  
+</html>    

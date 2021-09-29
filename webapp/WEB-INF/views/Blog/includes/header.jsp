@@ -159,11 +159,14 @@
           <!-- 공연시작 시간 -->
           <input type="hidden" id="time_start">
 
+          <!-- 유저 넘버 -->
+          <input type="hidden" id="user_no" value="${blogVo.user_no}">
+
           <!-- 사진 -->
           <div class="thumbnail">
             <div class="img_box">
               <label for="picture">사진 업로드</label>
-              <input type="file" class="require-if-active" accept="image/*" id="file1" name="file1">
+              <input type="file" class="require-if-active" accept="image/*" name="imgFile">
             </div>
           </div>
         </div>

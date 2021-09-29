@@ -14,7 +14,7 @@ public class ArtistDao {
 	@Autowired
 	private SqlSession sqlsession;
 	
-	// 아티스트 리스트 가져오기
+	//아티스트 리스트 가져오기
 	public List<UserVo> getArtistList() {
 		System.out.println("[ArtistDao.getArtistList()]");
 		
@@ -33,6 +33,20 @@ public class ArtistDao {
 		System.out.println("[ArtistDao.getArtistFan()]");
 		
 		return sqlsession.selectList("artist.getArtistFan");
+	}
+	
+	//new 아티스트 리스트 가져오기
+	public List<UserVo> getArtistNew() {
+		System.out.println("[ArtistDao.getArtistNew()]");
+		
+		return sqlsession.selectList("artist.getArtistNew");
+	}
+	
+	//아티스트 장르 리스트 가져오기_발라드
+	public List<UserVo> getArtistGenreBallad() {
+		System.out.println("[ArtistDao.getArtistGenreBallad()]");
+		
+		return sqlsession.selectList("artist.getArtistGenreBallad");
 	}
 	
 	

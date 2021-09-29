@@ -50,7 +50,6 @@ public class ArtistController {
 	}
 	
 	
-	
 	//아티스트 팬 추가목록(user)
 	@RequestMapping(value = "/ArtistFanList", method= {RequestMethod.GET, RequestMethod.POST })
 	public String artistfanlist(Model model, HttpSession session) {
@@ -61,31 +60,36 @@ public class ArtistController {
 		
 		model.addAttribute("artistFanList", artistService.getFanList(userVo.getUser_no()));
 		
-		
 		return"/Artist/ArtistFanList";
 	}
 	
 	
-	
-	
 	//아티스트 뉴아티스트 목록
 	@RequestMapping(value = "/ArtistNew", method= {RequestMethod.GET, RequestMethod.POST })
-	public String artistnew() {
+	public String artistnew(Model model) {
 		
 		System.out.println("[ArtistController.ArtistNew()]");
+		
+		model.addAttribute("artistNew", artistService.getArtistNew());
+		
+		model.addAttribute("artistLiveList", artistService.getArtistLive());
 		
 		return"/Artist/ArtistNew";
 	}
 	
 	
 	
-	//아티스트 장르 목록
-	@RequestMapping(value = "/ArtistGenre", method= {RequestMethod.GET, RequestMethod.POST })
-	public String artistgenre() {
+	//아티스트 장르 목록_발라드
+	@RequestMapping(value = "/ArtistGenreBallad", method= {RequestMethod.GET, RequestMethod.POST })
+	public String artistgenre(Model model) {
 		
-		System.out.println("[ArtistController.ArtistGenre()]");
+		System.out.println("[ArtistController.ArtistGenreBallad()]");
 		
-		return"/Artist/ArtistGenre";
+		model.addAttribute("artistGenreBallad", artistService.getArtistGenreBallad());
+		
+		model.addAttribute("artistLiveList", artistService.getArtistLive());
+		
+		return"/Artist/ArtistGenreBallad";
 	}
 	
 

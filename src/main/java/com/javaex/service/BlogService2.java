@@ -2,7 +2,6 @@ package com.javaex.service;
 
 import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.OutputStream;
 import java.util.List;
 import java.util.UUID;
@@ -40,37 +39,45 @@ public class BlogService2 {
     return blogDao2.timeline_main(user_no);
   }
 
-  /*** 파일 업로드 처리 ***/
-  public void restore(MultipartFile file) {
-    System.out.println("[사용 메소드: GalleryService.restore()]");
+  /*** 썸네일 등록 ***/
+  public void restore(PostVo postVo, MultipartFile file) {
 
-    // 원본 파일명
-    String orgName = file.getOriginalFilename();
+    String saveDir = "E:\\javaStudy\\upload";
 
     // 확장자
-    String exName = orgName.substring(orgName.lastIndexOf("."));
+    String exName = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
+    System.out.println("exName:" + exName);
 
-    // 저장 파일명
-    String saveName = System.currentTimeMillis() + UUID.randomUUID().toString() + exName;
+    // 저장파일이름(관리 떄문에 겹치지 않는 새이름 부여)
+    String logoFile = System.currentTimeMillis() + UUID.randomUUID().toString() + exName;
+    System.out.println("saveName:" + logoFile);
 
-    // 파일 저장 위치
-    String filePath = "E:\\javaStudy\\upload\\" + saveName;
+    // 파일패스
+    String filePath = saveDir + "\\" + logoFile;
+    System.out.println("filePath:" + filePath);
 
-
-    // 1. 파일을 서버의 하드디스크에 저장
+    // 파일 서버하드디스크에 저장
     try {
-      byte[] fileData = file.getBytes();
-      OutputStream out = new FileOutputStream(filePath);
-      BufferedOutputStream bos = new BufferedOutputStream(out);
 
-      bos.write(fileData);
-      bos.close();
+        byte[] fileData = file.getBytes();
+        OutputStream out = new FileOutputStream(filePath);
+        BufferedOutputStream bout = new BufferedOutputStream(out);
 
-    } catch (IOException e) {
+        bout.write(fileData);
+        bout.close();
 
-      e.printStackTrace();
+    } catch (Exception e) {
+        // TODO: handle exception
     }
 
+    postVo.setP_img(logoFile);
+
   }
+
+  /*** 썸네일 등록(No img) ***/
+  public void restore(PostVo postVo) {
+
+    postVo.setP_img("noimg.png");
+}
 
 }
