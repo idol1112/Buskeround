@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.javaex.vo.BlogVo;
+import com.javaex.vo.MypageVo;
 
 @Repository
 public class BlogDao {
@@ -13,10 +14,10 @@ public class BlogDao {
 	SqlSession sqlSession;
 	
 	//블로그 등록
-	public int createBlog(int user_no) {
+	public int createBlog(MypageVo mypageVo) {
 		System.out.println("BlogDao.createBlog()");
 	    
-	    return sqlSession.insert("blog.createBlog", user_no);
+	    return sqlSession.insert("blog.createBlog", mypageVo);
 	}
 	
 	//카테고리 가져오기

@@ -4,11 +4,11 @@
 <mapper namespace="blog">
 
 	<!-- Create Blog -->
-	<insert id="createBlog" parameterType="int">
+	<insert id="createBlog" parameterType="MypageVo">
 
 		<![CDATA[
 		insert into blog(user_no, intro)
-		values(#{user_no}, '자기소개를 입력해주세요')
+		values(#{user_no}, '안녕하세요. ' || #{nickname} || '입니다.')
 	 	]]>
 
 	</insert>

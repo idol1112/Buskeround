@@ -2,7 +2,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!---- 배너 ---->
-<div class="banner">
+<c:choose>
+	<c:when test = "${blogVo.banner == null }">
+		<div class="banner" style='background-image: url("/Buskeround/assets/image/blog/img/defaultbanner.jpg")'>
+	</c:when>
+	<c:otherwise>
+		<div class="banner" style='background-image: url("${pageContext.request.contextPath}/upload/${blogVo.banner}")'>
+	</c:otherwise>
+</c:choose>
   <!-- 블로그 관리 버튼 -->
   <a href="${pageContext.request.contextPath}/blog/blog_modify/${blogVo.id}">
     <img class="setting" src="${pageContext.request.contextPath}/assets/image/blog/icon/settings.png">
@@ -21,19 +28,19 @@
 
   <!-- sns 버튼 -->
   <c:if test="${blogVo.f_url != null}">
-    <a href="" id="facebook_url" target='_blank'>
+    <a href="${blogVo.f_url}" id="facebook_url" target='_blank'>
       <img class="facebook" src="${pageContext.request.contextPath}/assets/image/blog/icon/facebook.png" alt="">
     </a>
   </c:if>
 
   <c:if test="${blogVo.i_url != null}">
-    <a href="" id="instagram_url" target='_blank'>
+    <a href="${blogVo.i_url}" id="instagram_url" target='_blank'>
       <img class="instagram" src="${pageContext.request.contextPath}/assets/image/blog/icon/instagram.png" alt="">
     </a>
   </c:if>
 
   <c:if test="${blogVo.y_url != null}">
-    <a href="" id="youtube_url" target='_blank'>
+    <a href="${blogVo.y_url}" id="youtube_url" target='_blank'>
       <img class="youtube" src="${pageContext.request.contextPath}/assets/image/blog/icon/youtube.png" alt="">
     </a>
   </c:if>

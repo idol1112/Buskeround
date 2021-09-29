@@ -88,9 +88,9 @@ public class MyPageService {
 		System.out.println("MyPageService.artistInsert()");
 		
 		//블로그 만들기
-		System.out.println("BlogDao");
+		System.out.println("BlogDao mypageVo: " + mypageVo);
 		
-		blogDao.createBlog(mypageVo.getUser_no());
+		blogDao.createBlog(mypageVo);
 		blogDao.createCategory(mypageVo.getUser_no());
 		
 		return mypageDao.artistModify(mypageVo);
