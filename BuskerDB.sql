@@ -318,6 +318,7 @@ ALTER TABLE buskingDate
 CREATE TABLE post (
 	post_no NUMBER NOT NULL, /* 게시글번호 */
 	category_no NUMBER, /* 카테고리(번호) */
+	user_no NUMBER, /* 회원번호 */
 	title VARCHAR2(1000), /* 제목(장소명) */
 	content VARCHAR2(3000), /* 내용 */
 	reg_date DATE, /* 작성일 */
@@ -336,6 +337,8 @@ COMMENT ON TABLE post IS '게시글';
 COMMENT ON COLUMN post.post_no IS '게시글번호';
 
 COMMENT ON COLUMN post.category_no IS '카테고리(번호)';
+
+COMMENT ON COLUMN post.user_no IS '회원번호';
 
 COMMENT ON COLUMN post.title IS '제목(장소명)';
 
@@ -625,6 +628,16 @@ ALTER TABLE post
 		)
 		REFERENCES category (
 			category_no
+		);
+
+ALTER TABLE post
+	ADD
+		CONSTRAINT FK_users_TO_post
+		FOREIGN KEY (
+			user_no
+		)
+		REFERENCES users (
+			user_no
 		);
 
 ALTER TABLE category
