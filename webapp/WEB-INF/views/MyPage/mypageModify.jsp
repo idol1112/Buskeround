@@ -21,6 +21,10 @@
 <!-- css -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/Common/common.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/MyPage/mypage.css">
+
+<!-- jquery -->
+<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+
 </head>
 <body>
 	<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
@@ -39,6 +43,7 @@
 				<div id="mypage-right-content">
 					<form action="${pageContext.request.contextPath}/MyPage/modify" method="POST" enctype="multipart/form-data">
 					<input type="hidden" name="user_no" value="${sessionScope.authUser.user_no}">
+					<input id="img_check" type="hidden" name="img_check" value="0">
 						<table>
 							<tr>
 								<td class="table-head"><label for="profilepicture">프로필 사진</label></td>
@@ -94,6 +99,7 @@
 
 <script type="text/javascript">
 
+	//미리보기
 	function setThumbnail(event) { 
 		console.log("미리보기 실험")
 		var reader = new FileReader(); 
@@ -101,14 +107,20 @@
 		var picture = document.getElementById("profilepicture");
 		
 		reader.onload = function(event) { 
-			var img = document.createElement("img");
-			img.setAttribute("src", event.target.result); 
-			img.setAttribute("id", 'profilepicture'); 
 			document.querySelector("img#profilepicture").setAttribute("src", event.target.result); 
+			document.querySelector("input#img_check").setAttribute("value", '1'); 
 		}; 
 		
 		reader.readAsDataURL(event.target.files[0]); 
 		}
+	
+	//미리보기 삭제
+	$("#profilepicturedelete").on("click", function(){
+		console.log("미리보기 삭제")
+		
+		document.querySelector("img#profilepicture").setAttribute("src", '/Buskeround/assets/image/blog/icon/user.png'); 
+		document.querySelector("input#img_check").setAttribute("value", '2'); 
+	});
 
 
 </script>

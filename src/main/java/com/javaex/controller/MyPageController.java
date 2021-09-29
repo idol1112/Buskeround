@@ -36,25 +36,38 @@ public class MyPageController {
 	//프로필 수정
 	@RequestMapping(value = "/modify", method = {RequestMethod.GET, RequestMethod.POST})
 	public String Modify(@ModelAttribute UserVo userVo,
-						 @RequestParam (value="file1", required=false, defaultValue="0") MultipartFile file, 
+						 @RequestParam (value="file1", required=false, defaultValue="0") MultipartFile file,
+						 @RequestParam ("img_check") int img,
 						 HttpSession session) {
 		System.out.println("[MyPageController.Modify()]");
 		
 		//확인
 		System.out.println("modify.userVo: " + userVo);
 		System.out.println("modify.file: " + file);
+		System.out.println("imgCheck: " + img);
 		
-		if(file.isEmpty()) {
-			int count = mypageService.modify(userVo);
+		if(img == 2) {
+			//이미지 삭제
+			int count = mypageService.modifyDeleteImg(userVo);
+			
 			//수정
 			System.out.println("수정 완료 여부: " + count);
-			
 		} else {
-			int count = mypageService.modifyImg(userVo, file);
-			
-			//수정
-			System.out.println("수정 완료 여부: " + count);
+			//이미지 X
+			if(file.isEmpty()) {
+				int count = mypageService.modify(userVo);
+				//수정
+				System.out.println("수정 완료 여부: " + count);
+				
+			} else {
+			//이미지 수정
+				int count = mypageService.modifyImg(userVo, file);
+				
+				//수정
+				System.out.println("수정 완료 여부: " + count);
+			}
 		}
+		
 		
 		//유저 정보 가져오기
 		UserVo authUser = (UserVo)session.getAttribute("authUser");

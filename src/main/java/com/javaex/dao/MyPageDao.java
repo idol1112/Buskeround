@@ -27,6 +27,13 @@ public class MyPageDao {
 		return sqlSession.update("mypage.modify", userVo);
 	}
 	
+	//유저 수정(이미지 없음)
+	public int modifyDeleteImg(UserVo userVo) {
+		System.out.println("[MyPageDao.ModifyUser()]");
+		
+		return sqlSession.update("mypage.modifyDeleteImg", userVo);
+	}
+	
 	//아티스트 정보 가져오기
 	public MypageVo getArtistInfo(String id) {
 	    System.out.println("[MyPageDao.getArtistInfo()]");

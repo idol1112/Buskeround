@@ -31,6 +31,20 @@
 			]]>
 	</update>
 	
+	<update id="modifyDeleteImg" parameterType="UserVo">
+	
+		<![CDATA[
+			UPDATE users 
+			SET 
+				nickname = #{nickname},
+				email = #{email},
+				password = #{password},
+				user_img = null
+			WHERE 
+				user_no = #{user_no}
+			]]>
+	</update>
+	
 	
 	<!-- GetArtistInfo -->
 	<select id="getArtist" resultType="MypageVo" parameterType="String">

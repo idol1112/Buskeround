@@ -69,6 +69,13 @@ public class MyPageService {
 		return mypageDao.modify(userVo);
 	}
 	
+	//유저 수정 (이미지 삭제)
+	public int modifyDeleteImg(UserVo userVo) {
+		System.out.println("MyPageService.modify");
+		
+		return mypageDao.modifyDeleteImg(userVo);
+	}
+	
 	//Artist 정보 가져오기
 	public MypageVo getArtistInfo(String id) {
 		System.out.println("MyPageService.getArtistInfo()");
