@@ -28,6 +28,10 @@
     <!-- css -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/Common/common.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/MyPage/mypage.css">
+    
+    <!-- jquery -->
+<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+
 </head>
 
 <body>
@@ -57,10 +61,12 @@
                                 <td class="table-head"><label for="profilepicture">회사 로고</label></td>
                                 <td><img id="profilepicture" src="${pageContext.request.contextPath}/upload/${requestScope.companyVo.com_img}"><br>
 									<label id="profilepicturechange" class="btn-success btn-sm">
-										<input type="file" name="com_img" value="${requestScope.companyVo.com_img}"/>
+										<input type="file" name="com_img" accept="image/*" onchange="setThumbnail(event);"/>
 										변경
 									</label>
-									<label id="profilepicturedelete" class="btn-danger btn-sm">삭제</label>
+									<label id="profilepicturedelete" class="btn-danger btn-sm">
+									취소
+									</label>
 								</td>
                             </tr>
                             <tr>
@@ -97,4 +103,30 @@
     <c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
     <!------- footer -------->
 </body>
+<script type="text/javascript">
+
+	//미리보기
+	function setThumbnail(event) { 
+		console.log("미리보기 실험")
+		var reader = new FileReader(); 
+		
+		var picture = document.getElementById("profilepicture");
+		
+		reader.onload = function(event) { 
+			document.querySelector("img#profilepicture").setAttribute("src", event.target.result);  
+		}; 
+		
+		reader.readAsDataURL(event.target.files[0]); 
+		}
+	
+	//미리보기 삭제
+	$("#profilepicturedelete").on("click", function(){
+		console.log("미리보기 삭제");
+		var img = $("#profilepicture").attr('src');
+		
+		console.log(img);
+		
+		document.querySelector("img#profilepicture").setAttribute("src", img); 
+	});
+</script>
 </html>
