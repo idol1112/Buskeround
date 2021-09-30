@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -229,18 +228,35 @@ public class CompanyController {
 	}
 	
 	//버스킹존 등록
+	@ResponseBody
 	@RequestMapping(value = "/buskingZoneInsert", method = {RequestMethod.GET, RequestMethod.POST})
-	public String buskingZoneInsert(@RequestBody BusdateVo busdateVo,
-			@RequestParam ("start_time[]") List<BustimeVo> sList,
-			@RequestParam ("end_time[]") List<BustimeVo> eList) {
+	public String buskingZoneInsert(@RequestParam ("stage_no") int stage_no,
+									@RequestParam ("bus_date") String bus_date,
+									@RequestParam ("requirements") String requirements,
+									@RequestParam ("startArray[]") List<String> sList,
+									@RequestParam ("endArray[]") List<String> eList
+									) {
 		
 		System.out.println("[CompanyController.buskingZoneInsert()]");
 		
+		BusdateVo busdateVo = new BusdateVo(stage_no, bus_date, requirements);
 		System.out.println(busdateVo);
-	    System.out.println(sList);
-	    System.out.println(eList);
+		System.out.println("-시작시간-");
+		for(String s : sList) {
+			System.out.println(s);
+		}
 		
-		return"";
+		System.out.println("-종료시간-");
+		for(String e : eList) {
+			System.out.println(e);
+		}
+		
+		int count= companyService.buskingZoneInsert(busdateVo, sList, eList);
+		
+		System.out.println("버스킹존 ["+count+"]건 저장 완료");
+	 
+		
+		return"redirect:/Company/buskingZoneManage";
 	}
 	
 	///////////////////////////////// *버스킹존* /////////////////////////////////

@@ -174,18 +174,22 @@ $("form").on("click", "#insBtn", function() {
 	$("[name='end_time']").each(function(index, item){
 		end_time.push($(item).val());
 		   });
-	console.log(busdateVo);
-	console.log(start_time);
-	console.log(end_time);
+	
+	var objParams = {
+			"stage_no": $("[name='stage_no']").val(),
+			"bus_date": $("[name='bus_date']").val(),
+			"requirements": $("[name='requirements']").val(),
+			"startArray": start_time,
+			"endArray"  : end_time
+	};
+	
+	console.log(objParams);
 	
 	$.ajax({
 		url : "${pageContext.request.contextPath }/Company/buskingZoneInsert",
 		type : "post",
 		//contentType : "application/json",
-		data :  {
-				start_time:start_time,
-				end_time:end_time
-				},
+		data :  objParams,
 		//dataType : "json",
 		success : function(count) {
 			//성공시 처리해야될 코드 작성

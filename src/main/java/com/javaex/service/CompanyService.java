@@ -3,6 +3,7 @@ package com.javaex.service;
 import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -13,6 +14,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.javaex.dao.CompanyDao;
 import com.javaex.dao.UserDao;
+import com.javaex.vo.BusdateVo;
+import com.javaex.vo.BustimeVo;
 import com.javaex.vo.CompanyVo;
 import com.javaex.vo.StageVo;
 import com.javaex.vo.UserVo;
@@ -173,4 +176,32 @@ public class CompanyService {
 	}
 	
 	///////////////////////////////// *공연장* /////////////////////////////////
+	
+	///////////////////////////////// 버스킹존 /////////////////////////////////
+	//버스킹존 등록
+	public int buskingZoneInsert(BusdateVo busdateVo, List<String> sList, List<String> eList) {
+		System.out.println("CompanyService.buskingZoneInsert()");
+		
+		System.out.println(busdateVo);
+		companyDao.busdateInsertKey(busdateVo);
+		int no = busdateVo.getDate_no();
+		String date = busdateVo.getBus_date();
+		//공연시간 리스트에 차곡차곡 데이터 넣어주기
+		List<BustimeVo> tList = new ArrayList<>();
+		for(int i=0; i < sList.size(); i++) {
+			
+			int date_no = no;
+			String start_time = (date+" "+sList.get(i));
+			String end_time = (date+" "+eList.get(i));
+			
+			tList.add(new BustimeVo(date_no, start_time, end_time));		
+		}
+		for(BustimeVo o : tList) {
+			System.out.println(o);
+		}
+		
+		return companyDao.bustimeInsert(tList);
+	}
+	
+	///////////////////////////////// *버스킹존* /////////////////////////////////
 }

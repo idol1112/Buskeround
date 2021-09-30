@@ -22,6 +22,13 @@ public class BustimeVo {
 		this.end_time = end_time;
 	}
 
+	public BustimeVo(int date_no, String start_time, String end_time) {
+		super();
+		this.date_no = date_no;
+		this.start_time = start_time;
+		this.end_time = end_time;
+	}
+
 	public BustimeVo(int time_no, int date_no, String start_time, String end_time) {
 		super();
 		this.time_no = time_no;

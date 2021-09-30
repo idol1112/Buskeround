@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="bustime">
+	
+	<!-- 공연시간 리스트로 저장 -->
+	<insert id="bustimeInsert" parameterType="java.util.List">
+		insert into buskingTime(time_no, date_no, start_time, end_time)
+		select seq_time_no.nextval, A.* from(
+		<foreach collection="list" item="item" separator="UNION ALL">
+			select
+					#{item.date_no} as date_no,
+					#{item.start_time} as start_name,
+					#{item.end_time} as end_name
+			from dual				
+		</foreach>) A
+	</insert>
+	
+</mapper>
