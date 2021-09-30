@@ -5,11 +5,13 @@
 
 	<select id="mapList" resultType="MapVo">
 		<![CDATA[
-			select p.latitude,p.longitude,u.nickname,u.genre,u.user_img
+			select p.latitude,p.longitude,u.nickname,u.genre,u.user_img,b.intro
 			from
 			post      p,
-			users 	  u
+			users 	  u,
+			blog	  b
 			WHERE p.user_no = u.user_no
+			AND b.user_no = u.user_no
 			AND p_end is null
 		]]>
 	</select>

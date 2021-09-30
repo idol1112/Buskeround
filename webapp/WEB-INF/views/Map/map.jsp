@@ -272,7 +272,7 @@ content[num] = '<div class="wrap">' +
 '            <div class="desc">' + 
 '                <div class="ellipsis">활동명 : ${mapList.nickname}</div>' + 
 '                <div class="ellipsis">장르   : ${mapList.genre}</div>' + 
-'                <div class="jibun ellipsis">오늘 공연 한번 불태워 보겠습니다.</div>' + 
+'                <div class="jibun ellipsis">${mapList.intro}</div>' + 
 '            </div>' + 
 '        </div>' + 
 '    </div>' +    

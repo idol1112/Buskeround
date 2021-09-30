@@ -12,12 +12,11 @@ public class MapVo {
 	private int user_no;		//유저번호	(table-users)
 	private String id;			//유저아이디(table-users)
 	private String user_img;	//유저프로필(table-users)
+	private String intro;		//블로그자기소개 (table-blog)
 	
 	public MapVo() {}
-
-	public MapVo(double latitude, double longitude, String p_end, String p_img, String address, String nickname,
-			String genre, int user_no, String id, String user_img) {
-		super();
+	
+	public MapVo(double latitude, double longitude, String p_end, String p_img, String address, String nickname, String genre, int user_no, String id, String user_img, String intro) {
 		this.latitude = latitude;
 		this.longitude = longitude;
 		this.p_end = p_end;
@@ -28,6 +27,7 @@ public class MapVo {
 		this.user_no = user_no;
 		this.id = id;
 		this.user_img = user_img;
+		this.intro = intro;
 	}
 
 	public double getLatitude() {
@@ -110,12 +110,23 @@ public class MapVo {
 		this.user_img = user_img;
 	}
 
+	public String getIntro() {
+		return intro;
+	}
+
+	public void setIntro(String intro) {
+		this.intro = intro;
+	}
+
 	@Override
 	public String toString() {
 		return "MapVo [latitude=" + latitude + ", longitude=" + longitude + ", p_end=" + p_end + ", p_img=" + p_img
 				+ ", address=" + address + ", nickname=" + nickname + ", genre=" + genre + ", user_no=" + user_no
-				+ ", id=" + id + ", user_img=" + user_img + "]";
+				+ ", id=" + id + ", user_img=" + user_img + ", intro=" + intro + "]";
 	}
+	
+	
+
 	
 	
 	
