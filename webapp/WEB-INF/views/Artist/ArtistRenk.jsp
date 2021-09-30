@@ -66,7 +66,14 @@
 							<!--1번-->
 							<tr>
 								<td>${aList.rn}</td>
-								<td><img src="/Buskeround${aList.user_img}" style="width: 80px"></td>
+								<td>
+									<c:if test="${UserVo.user_img == null}">
+									<img src="/Buskeround/assets/image/blog/icon/user.png" style="width: 70px; height: 70px; border-radius: 70%; object-fit: cover;">
+									</c:if> 
+									<c:if test="${UserVo.user_img != null}">
+									<img src="${pageContext.request.contextPath}/upload/${UserVo.user_img}" style="width: 70px; height: 70px; border-radius: 70%; object-fit: cover;">
+									</c:if>
+								</td>
 								<td>
 									<div>${aList.nickname}</div>
 									<div>
@@ -75,27 +82,27 @@
 								</td>
 								<!-- 장르 -->
 								<c:if test="${aList.genre == 1}">
-									<td><img src="${pageContext.request.contextPath}/assets/image/blog/icon/ballade.png" style="width: 60px"></td>
+									<td class="articon"><img src="${pageContext.request.contextPath}/assets/image/blog/icon/ballade.png" style="width: 60px"></td>
 								</c:if>
 
 								<c:if test="${aList.genre == 2}">
-									<td><img src="${pageContext.request.contextPath}/assets/image/blog/icon/dance.png" style="width: 60px"></td>
+									<td class="articon"><img src="${pageContext.request.contextPath}/assets/image/blog/icon/dance.png" style="width: 60px"></td>
 								</c:if>
 
 								<c:if test="${aList.genre == 3}">
-									<td><img src="${pageContext.request.contextPath}/assets/image/blog/icon/hiphop.png" style="width: 60px"></td>
+									<td class="articon"><img src="${pageContext.request.contextPath}/assets/image/blog/icon/hiphop.png" style="width: 60px"></td>
 								</c:if>
 
 								<c:if test="${aList.genre == 4}">
-									<td><img src="${pageContext.request.contextPath}/assets/image/blog/icon/soul.png" style="width: 60px"></td>
+									<td class="articon"><img src="${pageContext.request.contextPath}/assets/image/blog/icon/soul.png" style="width: 65px"></td>
 								</c:if>
 
 								<c:if test="${aList.genre == 5}">
-									<td><img src="${pageContext.request.contextPath}/assets/image/blog/icon/musical.png" style="width: 60px"></td>
+									<td class="articon"><img src="${pageContext.request.contextPath}/assets/image/blog/icon/musical.png" style="width: 60px"></td>
 								</c:if>
 
 								<c:if test="${aList.genre == 6}">
-									<td><img src="${pageContext.request.contextPath}/assets/image/blog/icon/etc.png" style="width: 60px"></td>
+									<td class="articon"><img src="${pageContext.request.contextPath}/assets/image/blog/icon/etc.png" style="width: 60px"></td>
 								</c:if>
 								<td>
 									<div>${aList.genre_type}</div>
