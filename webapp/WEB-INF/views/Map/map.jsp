@@ -266,9 +266,14 @@ content[num] = '<div class="wrap">' +
 '            버스커 라운드' +
 '        </div>' + 
 '        <div class="body">' + 
-'            <div class="img">' +
-'                <img src="${pageContext.request.contextPath }/upload/${mapList.user_img}" width="73" height="70">' +
-'           </div>' + 
+'              <div class="img">' +
+'		<c:if test="${mapList.user_img != null}">' +
+'                 <img src="${pageContext.request.contextPath }/upload/${mapList.user_img}" width="73" height="70">' +
+'		</c:if>' +
+'		<c:if test="${mapList.user_img == null}">' +
+'                 <img src="/Buskeround/assets/image/blog/icon/user.png" width="73" height="70">' +
+'		</c:if>' +
+'              </div>' +  
 '            <div class="desc">' + 
 '                <div class="ellipsis">활동명 : ${mapList.nickname}</div>' + 
 '                <div class="ellipsis">장르   : ${mapList.genre}</div>' + 
