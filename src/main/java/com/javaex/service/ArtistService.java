@@ -38,7 +38,7 @@ public class ArtistService {
 		return artistDao.getArtistNew();
 	}
 	
-	//아티스트 장르 리스트 가져오기_메인화면(발라드)
+	//아티스트 장르 리스트 가져오기
 	public List<UserVo> getArtistGenre(int no) {
 		
 		return artistDao.getArtistGenre(no);

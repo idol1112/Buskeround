@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="busdate">
+
+	<!-- 공연 날짜 저장(키값 저장) -->
+	<insert id="busdateInsert" parameterType="BusdateVo">
+		<selectKey keyProperty="date_no" resultType="int" order="BEFORE">
+			<![CDATA[
+				select seq_date_no.nextval from dual
+			]]>
+		</selectKey>
+		<![CDATA[
+			insert into buskingDate
+				 		values(#{date_no},
+				 			   #{stage_no},
+				 			   #{bus_date},
+				 			   #{requirements}
+				 		)
+		]]>
+	</insert>
+	
+	
+</mapper>

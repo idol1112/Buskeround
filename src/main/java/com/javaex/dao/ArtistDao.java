@@ -49,9 +49,8 @@ public class ArtistDao {
 		return sqlsession.selectList("artist.getArtistGenre", no);
 	}
 	
- 
 	
-	
+
 	//팬 되기 리스트 가져오기
 	public List<UserVo> getFanList(int user_no) {
 		System.out.println("[ArtistDao.getFanList()]");

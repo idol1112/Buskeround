@@ -6,6 +6,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.javaex.vo.BusdateVo;
+import com.javaex.vo.BustimeVo;
 import com.javaex.vo.CompanyVo;
 import com.javaex.vo.StageVo;
 
@@ -38,7 +40,7 @@ public class CompanyDao {
 	}
 	///////////////////////////////// *제휴사* /////////////////////////////////
 	
-///////////////////////////////// 공연장 /////////////////////////////////
+	///////////////////////////////// 공연장 /////////////////////////////////
 	//공연장 리스트 불러오기
 	public List<StageVo> selectStage(int user_no) {
 		System.out.println("CompanyDao.selectStage()");
@@ -74,5 +76,21 @@ public class CompanyDao {
 		return sqlSession.delete("stage.stageDelete", stage_no);
 	}
 
-///////////////////////////////// *공연장* /////////////////////////////////
+	///////////////////////////////// *공연장* /////////////////////////////////
+	
+	///////////////////////////////// 버스킹존 /////////////////////////////////
+	//버스킹존(날짜)등록 키값 가져오기
+	public int busdateInsertKey(BusdateVo busdateVo) {
+		System.out.println("CompanyDao.busdateInsert()");
+		
+		return sqlSession.insert("busdate.busdateInsert", busdateVo);
+	}
+	
+	//버스킹존(시간)등록
+	public int bustimeInsert(List<BustimeVo> tList) {
+		
+		return sqlSession.insert("bustime.bustimeInsert", tList);
+	}
+	
+	///////////////////////////////// *공연장* /////////////////////////////////
 }
