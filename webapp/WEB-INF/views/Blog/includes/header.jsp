@@ -49,12 +49,12 @@
 <!---- 프로필 박스 ---->
 <div class="profile_box">
   <div class="main_profile">
-     <c:if test="${blogVo.user_img == null}">
-       <img src="/Buskeround/assets/image/blog/icon/user.png">
-     </c:if>
-     <c:if test="${blogVo.user_img != null}">
-       <img src="${pageContext.request.contextPath}/upload/${blogVo.user_img}">
-     </c:if>
+    <c:if test="${blogVo.user_img == null}">
+      <img src="/Buskeround/assets/image/blog/icon/user.png">
+    </c:if>
+    <c:if test="${blogVo.user_img != null}">
+      <img src="${pageContext.request.contextPath}/upload/${blogVo.user_img}">
+    </c:if>
   </div>
 
   <table class="profile_intr">
@@ -150,41 +150,39 @@
         <h5 class="modal-title" id="exampleModalLabel">공연시작</h5>
       </div>
 
-      <form action="" method="post" enctype="multipart/form-data">
-        <div class="modal-body clear-fix" id="modal_body">
-          <div>
-            <label class="modal-label" id="modal_label">제목</label>
-            <input type="text" placeholder="제목을 입력세주세요" id="title">
-          </div>
-
-          <div>
-            <label class="modal-label" id="modal_label">위치</label>
-            <input type="text" id="address" placeholder="위치를 입력세주세요" value="홍대 앞마당">
-          </div>
-
-          <button class="float-end mylocation">내 위치</button>
-          <br>
-
-          <!-- 링크 -->
-          <input type="hidden" id="livelink">
-
-          <!-- 공연시작 시간 -->
-          <input type="hidden" id="time_start">
-
-          <!-- 사진 -->
-          <div class="thumbnail">
-            <div class="img_box">
-              <label for="picture">사진 업로드</label>
-              <input type="file" id="file1" name="file1">
-            </div>
-          </div>
+      <div class="modal-body clear-fix" id="modal_body">
+        <div>
+          <label class="modal-label" id="modal_label">제목</label>
+          <input type="text" placeholder="제목을 입력세주세요" id="title">
         </div>
 
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary close" data-dismiss="modal">취소</button>
-          <button class="btn btn-primary close" id="perform_start">방송 시작</button>
+        <div>
+          <label class="modal-label" id="modal_label">위치</label>
+          <input type="text" id="address" placeholder="위치를 입력세주세요" value="홍대 앞마당">
         </div>
-      </form>
+
+        <button class="float-end mylocation">내 위치</button>
+        <br>
+
+        <!-- 링크 -->
+        <input type="hidden" id="livelink">
+
+        <!-- 공연시작 시간 -->
+        <input type="hidden" id="time_start">
+
+        <!-- 사진 -->
+        <div class="thumbnail">
+          <div class="img_box">
+            <label for="picture">사진 업로드</label>
+            <input type="file" id="file1" name="file1">
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary close" data-dismiss="modal">취소</button>
+        <button class="btn btn-primary close" id="perform_start">방송 시작</button>
+      </div>
 
       <input type="hidden" id="p_img" value="1">
     </div>
@@ -311,7 +309,6 @@
 
   // 공연시작 버튼 눌렀을 때(모달)
   $("#perform_start").on("click", function() {
-	    event.preventDefault();
 
     // 공연 데이터 묶기
     var postVo = {
@@ -340,7 +337,36 @@
       // 성공일 경우 success로 들어오며, 'result'는 응답받은 데이터이다.
       success : function(result) {
         /*성공시 처리해야될 코드 작성*/
-        location.reload();
+
+        if (result === 1) {
+            var form = new FormData();
+            form.append( "file1", $("#file1")[0].files[0] );
+
+             jQuery.ajax({
+
+                 url : "${pageContext.request.contextPath}/api/blog/upload/${blogVo.user_no}",
+
+                 type : "post",
+
+                 processData : false,
+
+                 contentType : false,
+
+                 data : form,
+
+                 success : function(result) {
+                   /*성공시 처리해야될 코드 작성*/
+
+                	 location.reload();
+
+                 },
+
+                 // 실패할경우 error로 들어온다.
+                 error : function(XHR, status, error) {
+                   console.error(status + " : " + error);
+                 }
+          	});
+		}
 
       },
 
@@ -349,32 +375,6 @@
         console.error(status + " : " + error);
       }
     });
-
-    var form = new FormData();
-    form.append( "file1", $("#file1")[0].files[0] );
-
-     jQuery.ajax({
-
-         url : "${pageContext.request.contextPath}/api/blog/upload/${blogVo.user_no}",
-
-         type : "post",
-
-         processData : false,
-
-         contentType : false,
-
-         data : form,
-
-         success : function(result) {
-           /*성공시 처리해야될 코드 작성*/
-
-         },
-
-         // 실패할경우 error로 들어온다.
-         error : function(XHR, status, error) {
-           console.error(status + " : " + error);
-         }
-  	});
   });
 
   // 모달창 닫기

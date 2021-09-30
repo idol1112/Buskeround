@@ -44,48 +44,10 @@
         <input type="button" value="<" class="btn_prev">
         <input type="button" value=">" class="btn_next">
         <p class="date" id="date"></p>
-        <div class="timeline">
+       <div class="timeline">
           <ul>
-            <li>
-              <div class="content">
-                <h3>홍대 예술거리</h3>
-                <iframe width="430" height="240" src="https://www.youtube.com/embed/tLUR7Vz1TVY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-              </div>
-              <div class="time">
-                <h4>2021. 09. 10(금)</h4>
-              </div>
-            </li>
-
-            <li>
-              <div class="content">
-                <h3>마로니에 공원</h3>
-                <iframe width="430" height="240" src="https://www.youtube.com/embed/ObboG8Pvewo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-              </div>
-              <div class="time">
-                <h4>2021. 09. 09(목)</h4>
-              </div>
-            </li>
-
-            <li>
-              <div class="content">
-                <h3>신촌 CGV</h3>
-                <iframe width="430" height="240" src="https://www.youtube.com/embed/Vtr3zkm_0wo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-              </div>
-              <div class="time">
-                <h4>2021. 09. 08(수)</h4>
-              </div>
-            </li>
-
-            <li>
-              <div class="content">
-                <h3>문화의 거리</h3>
-                <iframe width="430" height="240" src="https://www.youtube.com/embed/G0c_lLNSqkY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-              </div>
-              <div class="time">
-                <h4>2021. 09. 07(화)</h4>
-              </div>
-            </li>
-            <div style="clear: both;"></div>
+            <div id="listArea"></div>
+            <div id="line" style="clear: both;"></div>
           </ul>
         </div>
       </div>
@@ -97,19 +59,6 @@
 </body>
 
 <script type="text/javascript">
-	$(".btn_start").on("click", function() {
-		event.preventDefault();
-		console.log("클릭");
-
-		var date = new Date().getFullYear();
-		date += '-' + ('0' + (new Date().getMonth() + 1)).slice(-2);
-		date += '-' + ('0' + new Date().getDate()).slice(-2);
-		date += ' ' + ('0' + new Date().getHours()).slice(-2);
-		date += ':' + ('0' + new Date().getMinutes()).slice(-2);
-		date += ':' + ('0' + new Date().getSeconds()).slice(-2);
-		console.log(date);
-	})
-
 	// 주간 날짜 구하기
 	var currentDay = new Date();
 	var theYear = currentDay.getFullYear();
@@ -137,81 +86,265 @@
 		date[i] = dd;
 	}
 
-	// prev_Starting
-	var prev_day1 = new Date(new Date(Date.parse(year[0] + "-"
-			+ Number(month[0]) + "-" + Number(date[0]))).setDate(new Date(Date
-			.parse(year[0] + "-" + Number(month[0]) + "-" + Number(date[0])))
-			.getDate() - 7));
+	// 날짜 구하기
+	var now_date_start = new Date(Date.parse(year[0] + "-"	+ Number(month[0]) + "-" + Number(date[0])));
+	var YYMMDD_start = new Date(Date.parse(year[0] + "-"	+ Number(month[0]) + "-" + Number(date[0])));
 
-	var prev_year1 = prev_day1.getFullYear();
-	var prev_month1 = ('0' + (prev_day1.getMonth() + 1)).slice(-2);
-	var prev_day1 = ('0' + prev_day1.getDate()).slice(-2);
+	var now_date_end = new Date(Date.parse(year[6] + "-"	+ Number(month[6]) + "-" + Number(date[6])));
+	var YYMMDD_end = new Date(Date.parse(year[6] + "-"	+ Number(month[6]) + "-" + Number(date[6])));
 
-	var prev_dateString = prev_year1 + '년 ' + prev_month1 + '월 ' + prev_day1
-			+ '일';
+	// 페이지 로딩됐을 때
+	$(document).ready(function() {
+		$('.date').text(year[0] + "년 " + month[0] + "월 " + date[0] + "일"	+ " - " + year[6] + "년 " + month[6] + "월 "	+ date[6] + "일");
 
-	// prev_Ending
-	var prev_day2 = new Date(new Date(Date.parse(year[6] + "-"
-			+ Number(month[6]) + "-" + Number(date[6]))).setDate(new Date(Date
-			.parse(year[6] + "-" + Number(month[6]) + "-" + Number(date[6])))
-			.getDate() - 7));
+		$.ajax({
+			// 컨트롤러에서 대기중인 URL 주소이다.
+			url : "${pageContext.request.contextPath}/api/blog/timeline",
 
-	var prev_year2 = prev_day2.getFullYear();
-	var prev_month2 = ('0' + (prev_day2.getMonth() + 1)).slice(-2);
-	var prev_day2 = ('0' + prev_day2.getDate()).slice(-2);
+			// HTTP method type(GET, POST) 형식이다.
+			type : "get",
 
-	var prev_dateEnding = prev_year2 + '년 ' + prev_month2 + '월 ' + prev_day2
-			+ '일';
+			// Json 형태의 데이터로 보낸다.
+			contentType : "application/json",
 
-	// next_Starting
-	var next_day1 = new Date(new Date(Date.parse(year[0] + "-"
-			+ Number(month[0]) + "-" + Number(date[0]))).setDate(new Date(Date
-			.parse(year[0] + "-" + Number(month[0]) + "-" + Number(date[0])))
-			.getDate() + 7));
+			// Json 형식의 데이터를 받는다.
+			dataType : "json",
 
-	var next_year1 = next_day1.getFullYear();
-	var next_month1 = ('0' + (next_day1.getMonth() + 1)).slice(-2);
-	var next_day1 = ('0' + next_day1.getDate()).slice(-2);
+			data : {
+				start_date : year[0] + month[0] + date[0],
+				end_date : year[6] + "" + month[6] + date[6]
+			},
 
-	var next_dateString = next_year1 + '년 ' + next_month1 + '월 ' + next_day1
-			+ '일';
+			// 성공일 경우 success로 들어오며, 'result'는 응답받은 데이터이다.
+			success : function(timeList) {
+				/*성공시 처리해야될 코드 작성*/
 
-	// next_Ending
-	var next_day2 = new Date(new Date(Date.parse(year[6] + "-"
-			+ Number(month[6]) + "-" + Number(date[6]))).setDate(new Date(Date
-			.parse(year[6] + "-" + Number(month[6]) + "-" + Number(date[6])))
-			.getDate() + 7));
+				$("#listArea").empty();
 
-	var next_year2 = next_day2.getFullYear();
-	var next_month2 = ('0' + (next_day2.getMonth() + 1)).slice(-2);
-	var next_day2 = ('0' + next_day2.getDate()).slice(-2);
+				for (var i = 0; i < timeList.length; i++) {
+					render(timeList[i]);
+				}
+			},
 
-	var next_dateEnding = next_year2 + '년 ' + next_month2 + '월 ' + next_day2
-			+ '일';
+			// 실패할경우 error로 들어온다.
+			error : function(XHR, status, error) {
+				console.error(status + " : " + error);
+			}
+		});
 
-	$(document).ready(
-			function() {
-				$('.date').text(
-						year[0] + "년 " + month[0] + "월 " + date[0] + "일"
-								+ " - " + year[6] + "년 " + month[6] + "월 "
-								+ date[6] + "일");
+		// btn_today 눌렀을 때
+		$(".btn_today").on("click",	function() {
+
+			// next_Starting
+			YYMMDD_start = new Date(Date.parse(year[0] + "-" + Number(month[0]) + "-" + Number(date[0])));
+
+			var now_year_start = now_date_start.getFullYear();
+			var now_month_start = ('0' + (now_date_start.getMonth() + 1)).slice(-2);
+			var now_day_start = ('0' + now_date_start.getDate()).slice(-2);
+
+			var now_dateStarting = now_year_start + '년 ' + now_month_start + '월 ' + now_day_start	+ '일';
+
+			// next_Ending
+			YYMMDD_end = new Date(Date.parse(year[6] + "-"	+ Number(month[6]) + "-" + Number(date[6])));
+
+			var now_year_end = now_date_end.getFullYear();
+			var now_month_end = ('0' + (now_date_end.getMonth() + 1)).slice(-2);
+			var now_day_end = ('0' + now_date_end.getDate()).slice(-2);
+
+			var now_dateEnding = now_year_end + '년 ' + now_month_end + '월 ' + now_day_end + '일';
+
+			$('.date').text(now_dateStarting + " - " + now_dateEnding);
+
+			$.ajax({
+				// 컨트롤러에서 대기중인 URL 주소이다.
+				url : "${pageContext.request.contextPath}/api/blog/timeline",
+
+				// HTTP method type(GET, POST) 형식이다.
+				type : "get",
+
+				// Json 형태의 데이터로 보낸다.
+				contentType : "application/json",
+
+				// Json 형식의 데이터를 받는다.
+				dataType : "json",
+
+				data : {
+					start_date : now_year_start + now_month_start + now_day_start,
+					end_date : now_year_end + now_month_end + now_day_end
+				},
+
+				// 성공일 경우 success로 들어오며, 'result'는 응답받은 데이터이다.
+				success : function(timeList) {
+					/*성공시 처리해야될 코드 작성*/
+
+					$("#listArea").empty();
+
+					for (var i = 0; i < timeList.length; i++) {
+						render(timeList[i]);
+					}
+
+				},
+
+				// 실패할경우 error로 들어온다.
+				error : function(XHR, status, error) {
+					console.error(status + " : " + error);
+				}
 			});
 
-	$(".btn_today").on(
-			"click",
-			function() {
-				$('.date').text(
-						year[0] + "년 " + month[0] + "월 " + date[0] + "일"
-								+ " - " + year[6] + "년 " + month[6] + "월 "
-								+ date[6] + "일");
+		});
+
+		// btn_next 눌렀을 때
+		$(".timeline_box").on("click", ".btn_next", function() {
+
+			// next_Starting
+			var next_days_start = new Date(YYMMDD_start.setDate(YYMMDD_start.getDate() + 7));
+
+			YYMMDD_start = next_days_start;
+
+			var next_year_start = next_days_start.getFullYear();
+			var next_month_start = ('0' + (next_days_start.getMonth() + 1)).slice(-2);
+			var next_day_start = ('0' + next_days_start.getDate()).slice(-2);
+
+			var next_dateStarting = next_year_start + '년 ' + next_month_start + '월 ' + next_day_start	+ '일';
+
+			// next_Ending
+			var next_days_end = new Date(YYMMDD_end.setDate(YYMMDD_end.getDate() + 7));
+
+			YYMMDD_end = next_days_end;
+
+			var next_year_end = next_days_end.getFullYear();
+			var next_month_end = ('0' + (next_days_end.getMonth() + 1)).slice(-2);
+			var next_day_end = ('0' + next_days_end.getDate()).slice(-2);
+
+			var next_dateEnding = next_year_end + '년 ' + next_month_end + '월 ' + next_day_end + '일';
+
+			$('.date').text(next_dateStarting + " - " + next_dateEnding);
+
+			$.ajax({
+				// 컨트롤러에서 대기중인 URL 주소이다.
+				url : "${pageContext.request.contextPath}/api/blog/timeline",
+
+				// HTTP method type(GET, POST) 형식이다.
+				type : "get",
+
+				// Json 형태의 데이터로 보낸다.
+				contentType : "application/json",
+
+				// Json 형식의 데이터를 받는다.
+				dataType : "json",
+
+				data : {
+					start_date : next_year_start + next_month_start + next_day_start,
+					end_date : next_year_end + next_month_end + next_day_end
+				},
+
+				// 성공일 경우 success로 들어오며, 'result'는 응답받은 데이터이다.
+				success : function(timeList) {
+					/*성공시 처리해야될 코드 작성*/
+
+					$("#listArea").empty();
+
+					for (var i = 0; i < timeList.length; i++) {
+						render(timeList[i]);
+					}
+				},
+
+				// 실패할경우 error로 들어온다.
+				error : function(XHR, status, error) {
+					console.error(status + " : " + error);
+				}
 			});
 
-	$(".timeline_box").on("click", ".btn_next", function() {
-		$('.date').text(next_dateString + " - " + next_dateEnding);
+		});
+
+		// btn_prev 눌렀을 때
+		$(".timeline_box").on("click", ".btn_prev", function() {
+
+			// prev_Starting
+			var prev_days_start = new Date(YYMMDD_start.setDate(YYMMDD_start.getDate() - 7));
+
+			YYMMDD_start = prev_days_start;
+
+			var prev_year_start = prev_days_start.getFullYear();
+			var prev_month_start = ('0' + (prev_days_start.getMonth() + 1)).slice(-2);
+			var prev_day_start = ('0' + prev_days_start.getDate()).slice(-2);
+
+			var prev_dateStaring = prev_year_start + '년 ' + prev_month_start + '월 ' + prev_day_start	+ '일';
+
+			// prev_Ending
+			var prev_days_end = new Date(YYMMDD_end.setDate(YYMMDD_end.getDate() - 7));
+
+			YYMMDD_end = prev_days_end;
+
+			var prev_year_end = prev_days_end.getFullYear();
+			var prev_month_end = ('0' + (prev_days_end.getMonth() + 1)).slice(-2);
+			var prev_day_end = ('0' + prev_days_end.getDate()).slice(-2);
+
+			var prev_dateEnding = prev_year_end + '년 ' + prev_month_end + '월 ' + prev_day_end	+ '일';
+
+			$('.date').text(prev_dateStaring + " - " + prev_dateEnding);
+
+			$.ajax({
+				// 컨트롤러에서 대기중인 URL 주소이다.
+				url : "${pageContext.request.contextPath}/api/blog/timeline",
+
+				// HTTP method type(GET, POST) 형식이다.
+				type : "get",
+
+				// Json 형태의 데이터로 보낸다.
+				contentType : "application/json",
+
+				// Json 형식의 데이터를 받는다.
+				dataType : "json",
+
+				data : {
+					start_date : prev_year_start + prev_month_start + prev_day_start,
+					end_date : prev_year_end + prev_month_end + prev_day_end
+				},
+
+				// 성공일 경우 success로 들어오며, 'result'는 응답받은 데이터이다.
+				success : function(timeList) {
+					/*성공시 처리해야될 코드 작성*/
+
+					$("#listArea").empty();
+					$("#line").empty();
+
+					for (var i = 0; i < timeList.length; i++) {
+						render(timeList[i]);
+					}
+
+				},
+
+				// 실패할경우 error로 들어온다.
+				error : function(XHR, status, error) {
+					console.error(status + " : " + error);
+				}
+			});
+
+		});
+
+		// 타임라인 출력
+		function render(timeList) {
+			var str = '';
+			str += '<li>';
+			str += '	<div class="content">';
+			str += '		<h3>' + timeList.title + '</h3>';
+			if (timeList.live_url === null) {
+				str += '		          <img src="${pageContext.request.contextPath}/upload/' + timeList.p_img +'" alt="" style="width: 430px; height: 240px,	object-fit: cover;" />';
+			} else {
+				str += '		<iframe width="430" height="240" src="https://www.youtube.com/embed/' + timeList.live_url + '" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+			}
+			str += '	</div>';
+			str += '	<div class="time">';
+			str += '		<h4>' + timeList.p_start + '</h4>';
+			str += '	</div>';
+			str += '</li>';
+
+			$("#listArea").append(str);
+		};
+
 	});
 
-	$(".timeline_box").on("click", ".btn_prev", function() {
-		$('.date').text(prev_dateString + " - " + prev_dateEnding);
-	});
+
 </script>
 </html>

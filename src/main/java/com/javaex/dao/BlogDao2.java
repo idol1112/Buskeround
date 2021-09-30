@@ -1,6 +1,7 @@
 package com.javaex.dao;
 
 import java.util.List;
+import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -49,6 +50,16 @@ public class BlogDao2 {
     System.out.println("[사용 메소드: BlogDao2.timeline_main()]");
 
     return sqlSession.selectList("post.timeline_main", user_no);
+
+  }
+
+  /*** 타임라인 조회 ***/
+  public List<PostVo> timeline(Map<String, Object> date_map) {
+    System.out.println("[사용 메소드: BlogDao2.timeline()]");
+
+    System.out.println(date_map);
+
+    return sqlSession.selectList("post.timeline", date_map);
 
   }
 

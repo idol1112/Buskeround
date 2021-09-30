@@ -4,6 +4,7 @@ import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,6 +38,13 @@ public class BlogService2 {
   public List<PostVo> timeline_main(int user_no) {
 
     return blogDao2.timeline_main(user_no);
+  }
+
+  /*** 타임라인 조회 ***/
+  public List<PostVo> timeline(Map<String, Object> date_map) {
+
+    return blogDao2.timeline(date_map);
+
   }
 
   /*** 썸네일 등록 ***/

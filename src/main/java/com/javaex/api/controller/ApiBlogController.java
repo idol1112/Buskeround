@@ -1,6 +1,8 @@
 package com.javaex.api.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -27,6 +29,8 @@ public class ApiBlogController {
   public int live_start(@RequestBody PostVo postVo) {
     System.out.println("[현재 위치: ApiBlogController.live_start]");
 
+    System.out.println("공연을 시작합니다.");
+
     return blogService2.live_start(postVo);
 
   }
@@ -51,10 +55,28 @@ public class ApiBlogController {
 
   }
 
+  /*** 타임라인 ***/
+  @ResponseBody
+  @RequestMapping(value = "timeline", method = {RequestMethod.GET, RequestMethod.POST})
+  public List<PostVo> timeline(@RequestParam("start_date") int start_date, @RequestParam("end_date") int end_date) {
+    System.out.println("[현재 위치: ApiBlogController.timeline]");
+
+    Map<String, Object> date_map = new HashMap<String, Object>();
+
+    date_map.put("start_date", start_date);
+    date_map.put("end_date", end_date);
+
+    System.out.println(blogService2.timeline(date_map));
+
+    return blogService2.timeline(date_map);
+
+  }
+
+
   /*** 썸네일 업로드 ***/
   @ResponseBody
   @RequestMapping(value = "upload/{user_no}", method = {RequestMethod.GET, RequestMethod.POST})
-  public String upload(@RequestParam(value = "file1", required = false) MultipartFile file, @PathVariable("user_no") int user_no,
+  public void upload(@RequestParam(value = "file1", required = false) MultipartFile file, @PathVariable("user_no") int user_no,
       @ModelAttribute PostVo postVo) {
     System.out.println("[현재 위치: BlogController2.upload]");
 
@@ -65,10 +87,9 @@ public class ApiBlogController {
 
     } else {
       blogService2.restore(postVo, file);
+      System.out.println("파일이 있습니다.");
 
     }
-
-    return "filelist";
 
   }
 
