@@ -471,8 +471,8 @@ ALTER TABLE fan
 CREATE TABLE buskingTime (
 	time_no NUMBER NOT NULL, /* 시간번호 */
 	date_no NUMBER, /* 날짜번호 */
-	start_time DATE, /* 시작시간 */
-	end_time DATE /* 종료시간 */
+	start_time varchar2(50), /* 시작시간 */
+	end_time varchar2(50) /* 종료시간 */
 );
 
 COMMENT ON TABLE buskingTime IS '공연시간';
