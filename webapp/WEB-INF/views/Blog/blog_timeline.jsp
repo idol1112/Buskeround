@@ -120,10 +120,16 @@
 				/*성공시 처리해야될 코드 작성*/
 
 				$("#listArea").empty();
+				$(".timeline").show();
 
 				for (var i = 0; i < timeList.length; i++) {
 					render(timeList[i]);
 				}
+
+				if (timeList.length == 0) {
+					$(".timeline").hide();
+				}
+
 			},
 
 			// 실패할경우 error로 들어온다.
@@ -178,9 +184,14 @@
 					/*성공시 처리해야될 코드 작성*/
 
 					$("#listArea").empty();
+					$(".timeline").show();
 
 					for (var i = 0; i < timeList.length; i++) {
 						render(timeList[i]);
+					}
+
+					if (timeList.length == 0) {
+						$(".timeline").hide();
 					}
 
 				},
@@ -243,10 +254,16 @@
 					/*성공시 처리해야될 코드 작성*/
 
 					$("#listArea").empty();
+					$(".timeline").show();
 
 					for (var i = 0; i < timeList.length; i++) {
 						render(timeList[i]);
 					}
+
+					if (timeList.length == 0) {
+						$(".timeline").hide();
+					}
+
 				},
 
 				// 실패할경우 error로 들어온다.
@@ -307,10 +324,14 @@
 					/*성공시 처리해야될 코드 작성*/
 
 					$("#listArea").empty();
-					$("#line").empty();
+					$(".timeline").show();
 
 					for (var i = 0; i < timeList.length; i++) {
 						render(timeList[i]);
+					}
+
+					if (timeList.length == 0) {
+						$(".timeline").hide();
 					}
 
 				},
