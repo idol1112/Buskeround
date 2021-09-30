@@ -143,12 +143,17 @@ a:active {text-decoration: none; color: black;}
   }
 
   /* Banner */
-.modify-form img {
+.bannerTable img {
     display: block;
     margin-left: 10px;
     width: 696px;
     height: 125px;
     object-fit: cover;
+}
+
+.field_wrapper img {
+	width: 20px;
+	margin-left: 2px;
 }
 
 input[type="file"] {
@@ -172,6 +177,15 @@ input[type="file"] {
     margin-right: 70px;
     margin-top: 8px;
 }   
+
+.remove_button {
+	margin-left: 5px; 
+	width: 18px;
+}
+
+.additionalResume {
+	margin-top : 5px;
+}
 
 .label-width label {
     width: 90px;

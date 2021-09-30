@@ -118,8 +118,6 @@ public class MyPageService {
 	    		  return false;
 	    	  }
 	      }
-	    
-	    
 	}
 	
 }
