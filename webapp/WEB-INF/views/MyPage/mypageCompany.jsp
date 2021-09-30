@@ -44,7 +44,7 @@
 									<td class="table-head"><label for="profilepicture">회사 로고</label></td>
 									<td><img id="profilepicture" src="${pageContext.request.contextPath}/assets/image/company/default.png"><br>
 										<label id="profilepicturechange" class="btn-success btn-sm">
-										    <input type="file" name="com_img"/>
+										    <input type="file" name="com_img" accept="image/*" onchange="setThumbnail(event);"/>
 										    변경
 										</label>
 										<label id="profilepicturedelete" class="btn-danger btn-sm">삭제</label>
@@ -82,4 +82,20 @@
 	<!-- Footer -->
     <c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
 </body>
+<script type="text/javascript">
+//미리보기
+function setThumbnail(event) { 
+	console.log("미리보기 실험")
+	var reader = new FileReader(); 
+	
+	var picture = document.getElementById("profilepicture");
+	
+	reader.onload = function(event) { 
+		document.querySelector("img#profilepicture").setAttribute("src", event.target.result);  
+	}; 
+	
+	reader.readAsDataURL(event.target.files[0]); 
+	}
+
+</script>
 </html>
