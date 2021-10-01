@@ -61,6 +61,10 @@ a:active {text-decoration: none; color: black;}
     font-size: 14px;
 }
 
+#mypage-category a:hover {
+	font-weight: bold;
+}
+
 /* Table */
 table {
     border-collapse: collapse;
@@ -79,6 +83,14 @@ table td {
     width: 70%;
     font-size: 12px;
 }
+
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+}
+
+
 
 #profilepicturechange {
     margin-left: 44px;
@@ -206,6 +218,7 @@ input[type="file"] {
 /* buskingZoneManage */
 .icon-img {
 	width: 15px;
+	margin-bottom: 2px;
 }
 .add-img {
 	width: 15px;
@@ -216,20 +229,27 @@ input[type="file"] {
 		width: 15px;
 	margin: 0px 5px;
 }
+
 .addBtn {
 	cursor: pointer;
 	margin-bottom:3px;
 }
+
 .minusBtn {
 	cursor: pointer;
 	margin-bottom:3px;
 }
 
+/* 임시 css*/
+.ex {
+	margin: 0px 0px;
+}
+
+#setting {
+	cursor: pointer;
+}
+
 .input-time {
 	width: 30%;
 	margin-bottom:3px;
-}
-
-#mypage-category a:hover {
-	font-weight: bold;
 }
