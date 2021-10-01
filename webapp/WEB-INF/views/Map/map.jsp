@@ -21,13 +21,13 @@
 	    .info .desc {position: relative;margin: 13px 0 0 90px;height: 75px;}
 	    .desc .ellipsis {overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
 	    .desc .jibun {font-size: 11px;color: #888;margin-top: -2px;}
-	    .info .img {position: absolute;top: 6px;left: 5px;width: 73px;height: 71px;border: 1px solid #ddd;color: #888;overflow: hidden;}
+	    .info .img {position: absolute;top: 6px;left: 5px;width: 83px;height: 71px;border: 1px solid #ddd;color: #888;overflow: hidden;}
 	    .info:after {content: '';position: absolute;margin-left: -12px;left: 50%;bottom: 0;width: 22px;height: 12px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
 	    .info .link {color: #5085BB;}
 	    
 		.map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
 		.map_wrap {position:relative;width:100%;height:700px;}
-		#menu_wrap {position:absolute;top:0;left:0;bottom:0;width:250px;margin:10px 0 30px 10px;padding:0px;overflow-y:auto;background:rgba(255, 255, 255, 0.7);z-index: 1;font-size:12px;border-radius: 10px;}
+		#menu_wrap {position:absolute;top:0;left:0;bottom:0;width:400px;height:100%;margin:10px 0 30px 10px;padding:0px;overflow-y:auto;background:rgba(255, 255, 255, 0.7);z-index: 1;font-size:12px;border-radius: 10px;}
 		.bg_white {background:#fff;}
 		#menu_wrap hr {display: block; height: 1px;border: 0; border-top: 2px solid #5F5F5F;margin:3px 0;}
 		#menu_wrap .option{text-align: center;}
@@ -82,12 +82,7 @@
 		 position:relative;
 		 overflow:hidden;
 		}
-/* 		#searchList{
-		border: 1px solid skyblue;
-		width:100%;
-		height:80px;
-		}
-		*/
+
 		
 		.listimg{
 		padding: 5px 0px 0px 5px;
@@ -185,9 +180,9 @@ var mapContainer = document.getElementById('map'), // 지도의 중심좌표
 
 var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 
-var imageSrc = '/Buskeround/assets/image/map/makericon.png', // 마커이미지의 주소입니다    
+var imageSrc = '/Buskeround/assets/image/map/makericon2.png', // 마커이미지의 주소입니다    
 imageSize = new kakao.maps.Size(55, 60), // 마커이미지의 크기입니다
-imageOption = {offset: new kakao.maps.Point(31, 50)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+imageOption = {offset: new kakao.maps.Point(31, 42)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
 
 var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption)
 
@@ -289,7 +284,7 @@ content[num] = '<div class="wrap">' +
 '                 <img src="${pageContext.request.contextPath }/upload/${mapList.user_img}" width="73" height="70">' +
 '		</c:if>' +
 '		<c:if test="${mapList.user_img == null}">' +
-'                 <img src="/Buskeround/assets/image/blog/icon/user.png" width="75" height="70">' +
+'                 <img src="/Buskeround/assets/image/blog/icon/user.png" width="80" height="70">' +
 '		</c:if>' +
 '              </div>' +  
 '            <div class="desc">' + 
