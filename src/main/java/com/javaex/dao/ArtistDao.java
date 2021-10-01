@@ -50,12 +50,20 @@ public class ArtistDao {
 	}
 	
 	
-
 	//팬 되기 리스트 가져오기
 	public List<UserVo> getFanList(int user_no) {
 		System.out.println("[ArtistDao.getFanList()]");
 		
 		return sqlsession.selectList("artist.getFanList", user_no);
+	}
+	
+	
+	
+	//블로그 라이브 리스트 가져오기
+	public List<UserVo> getBlogLive() {
+		System.out.println("[ArtistDao.getBlogLive()]");
+		
+		return sqlsession.selectList("artist.getBlogLive");
 	}
 	
 	
