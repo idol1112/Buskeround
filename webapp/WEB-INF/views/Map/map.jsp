@@ -97,7 +97,7 @@
 		    font-family: 'Nanum Gothic';
 		    background-color: rgba(0,0,0,0.8);
 		    margin-right: 50px;
-		}
+		}*/
 		/* 스크롤바 설정*/
 		.type1::-webkit-scrollbar{
 		    width: 6px;
@@ -172,6 +172,13 @@ var mapContainer = document.getElementById('map'), // 지도의 중심좌표
     }; 
 
 var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+var imageSrc = '/Buskeround/assets/image/map/makericon.png', // 마커이미지의 주소입니다    
+imageSize = new kakao.maps.Size(55, 60), // 마커이미지의 크기입니다
+imageOption = {offset: new kakao.maps.Point(31, 50)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+
+var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption)
+
 var bounds = new kakao.maps.LatLngBounds();  // 지도를 재설정할 범위정보를 가지고 있을 LatLngBounds 객체를 생성합니다
 var positions = [];
 var content = [];
@@ -259,7 +266,7 @@ function getListItem(index, mapFind) {
 <c:forEach items="${mapList}" var="mapList">
 num += 1;
 positions[num] = new kakao.maps.LatLng(${mapList.latitude}, ${mapList.longitude});
-
+//요기서 아이디를~!@#$%^&*
 content[num] = '<div class="wrap">' + 
 '    <div class="info">' + 
 '        <div class="title">' + 
@@ -271,7 +278,7 @@ content[num] = '<div class="wrap">' +
 '                 <img src="${pageContext.request.contextPath }/upload/${mapList.user_img}" width="73" height="70">' +
 '		</c:if>' +
 '		<c:if test="${mapList.user_img == null}">' +
-'                 <img src="/Buskeround/assets/image/blog/icon/user.png" width="73" height="70">' +
+'                 <img src="/Buskeround/assets/image/blog/icon/user.png" width="75" height="70">' +
 '		</c:if>' +
 '              </div>' +  
 '            <div class="desc">' + 
@@ -299,7 +306,8 @@ function displayMarker(data) {
 
     var marker = new kakao.maps.Marker({
         map: map,
-        position: data
+        position: data,
+        image: markerImage
     });
 	
 
