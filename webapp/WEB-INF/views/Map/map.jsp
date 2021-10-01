@@ -72,6 +72,7 @@
 		color:skyblue;
 		padding: 5px;
 		border-radius: 3px;
+		box-shadow: 0 2px 1px 0 rgb(0 0 0 / 15%);
 		}
 		
 		#map{
@@ -94,10 +95,12 @@
 		.formsearch{
 		padding: 10px 0px 10px 0px;
 		background-color: #00BFFF;
+		box-shadow: 0 2px 1px 0 rgb(0 0 0 / 15%);
 		}
 		
 		.boxsearch{
 		border-radius: 3px;
+		box-shadow: 0 2px 1px 0 rgb(0 0 0 / 15%);
 		}
 		
 		.scroll{
