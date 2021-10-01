@@ -113,6 +113,7 @@ body {
 	height: 30px;
 	border-radius: 70%;
 	object-fit: cover;
+	image-rendering: -webkit-optimize-contrast;
 }
 
 #main_dropdown {

@@ -35,7 +35,7 @@
 
 	<!-- nav_artist  -->
 	<c:import url="/WEB-INF/views/Artist/includes/artbox.jsp"></c:import>
-	
+
 	<div class="section-01">
 		<div class="leftsection">
 			<!-- 종합랭킹 -->
@@ -67,12 +67,12 @@
 							<tr>
 								<td>${aList.rn}</td>
 								<td>
-									<c:if test="${UserVo.user_img == null}">
-									<img src="/Buskeround/assets/image/blog/icon/user.png" style="width: 70px; height: 70px; border-radius: 70%; object-fit: cover;">
-									</c:if> 
-									<c:if test="${UserVo.user_img != null}">
-									<img src="${pageContext.request.contextPath}/upload/${UserVo.user_img}" style="width: 70px; height: 70px; border-radius: 70%; object-fit: cover;">
-									</c:if>
+    								<c:if test="${aList.user_img == null}">
+    								<img src="/Buskeround/assets/image/blog/icon/user.png" style="width: 70px; height: 70px; border-radius: 70%; object-fit: cover;">
+    								</c:if>
+    								<c:if test="${aList.user_img != null}">
+    								<img src="${pageContext.request.contextPath}/upload/${aList.user_img}" style="width: 70px; height: 70px; border-radius: 70%; object-fit: cover;">
+    								</c:if>
 								</td>
 								<td>
 									<div>${aList.nickname}</div>
@@ -119,7 +119,7 @@
 
 		<!-- aside -->
 		<c:import url="/WEB-INF/views/Artist/includes/aside.jsp"></c:import>
-		
+
 	</div>
 
 

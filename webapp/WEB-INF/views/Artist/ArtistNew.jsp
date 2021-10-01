@@ -31,10 +31,10 @@
 
   <!-- header -->
   <c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
-  
+
   <!-- nav_artist  -->
   <c:import url="/WEB-INF/views/Artist/includes/artbox.jsp"></c:import>
-    
+
       <div class="section-01">
         <div class="leftsection">
         	<!-- 종합랭킹 -->
@@ -66,13 +66,13 @@
                         <tr>
                             <td>${nList.rn}</td>
 							<td>
-								<c:if test="${UserVo.user_img == null}">
+								<c:if test="${nList.user_img == null}">
 								<img src="/Buskeround/assets/image/blog/icon/user.png" style="width: 70px; height: 70px; border-radius: 70%; object-fit: cover;">
-								</c:if> 
-								<c:if test="${UserVo.user_img != null}">
-								<img src="${pageContext.request.contextPath}/upload/${UserVo.user_img}" style="width: 70px; height: 70px; border-radius: 70%; object-fit: cover;">
 								</c:if>
-							</td> 
+								<c:if test="${nList.user_img != null}">
+								<img src="${pageContext.request.contextPath}/upload/${nList.user_img}" style="width: 70px; height: 70px; border-radius: 70%; object-fit: cover;">
+								</c:if>
+							</td>
                             <td>
                                 <div>${nList.nickname}</div>
                                 <div>
@@ -104,7 +104,7 @@
 							<c:if test="${nList.genre == 6}">
 								<td class="articon"><img src="${pageContext.request.contextPath}/assets/image/blog/icon/etc.png" style="width: 60px"></td>
 							</c:if>
-							
+
                             <td>
                                 <div>${nList.genre_type}</div>
                                 <div>가입연도 ${nList.artist_regdate}년</div>
@@ -123,15 +123,15 @@
                 </table>
             </div>
         </div>
-        
+
 		<!-- aside -->
 		<c:import url="/WEB-INF/views/Artist/includes/aside.jsp"></c:import>
-		
+
     </div>
-  
-  
+
+
    <!-- footer -->
   <c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
-  
+
 </body>
-</html>  
+</html>

@@ -30,12 +30,12 @@
 <body>
   <!-- header -->
   <c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
-  
+
   <!-- nav_artist  -->
   <c:import url="/WEB-INF/views/Artist/includes/artbox.jsp"></c:import>
-    
-    
-    
+
+
+
       <div class="section-01">
         <div class="leftsection">
         	<!-- 팬 많은 순 -->
@@ -63,16 +63,16 @@
                     </thead>
                     <tbody>
                     <c:forEach items="${artistFanList}" var="frList">
-                    
+
                         <!--1번-->
                         <tr>
                             <td>${frList.rn}</td>
                             <td>
-								<c:if test="${UserVo.user_img == null}">
+								<c:if test="${frList.user_img == null}">
 								<img src="/Buskeround/assets/image/blog/icon/user.png" style="width: 70px; height: 70px; border-radius: 70%; object-fit: cover;">
-								</c:if> 
-								<c:if test="${UserVo.user_img != null}">
-								<img src="${pageContext.request.contextPath}/upload/${UserVo.user_img}" style="width: 70px; height: 70px; border-radius: 70%; object-fit: cover;">
+								</c:if>
+								<c:if test="${frList.user_img != null}">
+								<img src="${pageContext.request.contextPath}/upload/${frList.user_img}" style="width: 70px; height: 70px; border-radius: 70%; object-fit: cover;">
 								</c:if>
                             </td>
                             <td>
@@ -107,7 +107,7 @@
 							<c:if test="${frList.genre == 6}">
 								<td class="articon"><img src="${pageContext.request.contextPath}/assets/image/blog/icon/etc.png" style="width: 60px"></td>
 							</c:if>
-                            
+
                             <td>
                                 <div>${frList.genre_type}</div>
                                 <div>가입연도 ${frList.artist_regdate}년</div>
@@ -126,14 +126,14 @@
                 </table>
             </div>
         </div>
-        
+
 		 <!-- nav_artist  -->
 		 <c:import url="/WEB-INF/views/Artist/includes/aside.jsp"></c:import>
-        
+
     </div>
-  
+
    <!-- footer -->
   <c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
-  
+
 </body>
-</html>    
+</html>

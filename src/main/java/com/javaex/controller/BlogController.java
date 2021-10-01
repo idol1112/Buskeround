@@ -35,10 +35,12 @@ public class BlogController {
 		// 해더 정보 가져오기
 		BlogVo blogVo = blogService.selectUser(id);
 		model.addAttribute(blogVo);
-		
+
 		//Aside 리스트
-		model.addAttribute("artistLiveList", artistService.getBlogLive());
-		
+		model.addAttribute("BlogLive", artistService.getBlogLive());
+		System.out.println("아티스트 라이브 리스트: " + artistService.getBlogLive());
+
+
 		System.out.println("BlogVo: " + blogVo);
 
 		return "Blog/blog_main";
@@ -53,10 +55,10 @@ public class BlogController {
 		// 해더 정보 가져오기
 		BlogVo blogVo = blogService.selectUser(id);
 		model.addAttribute(blogVo);
-		
+
 		// 이력사항 가져오기
-		
-		
+
+
 		return "Blog/blogModifyForm";
 	}
 
@@ -67,7 +69,7 @@ public class BlogController {
 			@RequestParam(value = "file1", required = false, defaultValue = "0") MultipartFile file,
 			@RequestParam("img_check") int img) {
 		System.out.println("[BlogController.modify()]");
-		
+
 		// 확인
 		System.out.println("modify.blogVo: " + blogVo);
 		System.out.println("modify.file: " + file);
@@ -77,10 +79,10 @@ public class BlogController {
 		for(String s : resumeContentList) {
 			System.out.println(s);
 		}
-		
+
 		List<ResumeVo> resumeList = new ArrayList<>();
 		for(String s : resumeContentList) {
-			
+
 			resumeList.add(new ResumeVo(0, blogVo.getUser_no(), s));
 		}
 		System.out.println("리스트 출력" + resumeList);
@@ -107,16 +109,16 @@ public class BlogController {
 			}
 
 		}
-		
+
 		// 수정 완료
 		return "redirect:/blog/blog_main/" + blogVo.getId();
 	}
 
-	
+
 	@RequestMapping(value = "blog_timeline/{id}", method = { RequestMethod.GET, RequestMethod.POST })
 	public String blog_timeline(@PathVariable("id") String id, Model model) {
 		System.out.println("[TestingController.blog_timeline()]");
-		
+
 		// 해더 정보 가져오기
 		BlogVo blogVo = blogService.selectUser(id);
 		model.addAttribute(blogVo);
@@ -128,7 +130,7 @@ public class BlogController {
 	@RequestMapping(value = "blog_gallery/{id}", method = { RequestMethod.GET, RequestMethod.POST })
 	public String blog_gallery(@PathVariable("id") String id, Model model) {
 		System.out.println("[TestingController.blog_gallery()]");
-		
+
 		// 해더 정보 가져오기
 		BlogVo blogVo = blogService.selectUser(id);
 		model.addAttribute(blogVo);
@@ -140,7 +142,7 @@ public class BlogController {
 	@RequestMapping(value = "blog_guestbook/{id}", method = { RequestMethod.GET, RequestMethod.POST })
 	public String blog_guestbook(@PathVariable("id") String id, Model model) {
 		System.out.println("[TestingController.blog_guestbook()]");
-		
+
 		// 해더 정보 가져오기
 		BlogVo blogVo = blogService.selectUser(id);
 		model.addAttribute(blogVo);
@@ -148,17 +150,17 @@ public class BlogController {
 		return "Blog/blogGuestbookBoard";
 
 	}
-	
+
 	@RequestMapping(value = "blog_notice/{id}", method = { RequestMethod.GET, RequestMethod.POST })
 	public String blog_noticeboard(@PathVariable("id") String id, Model model) {
 		System.out.println("[TestingController.blog_guestbook()]");
-		
+
 		// 해더 정보 가져오기
 		BlogVo blogVo = blogService.selectUser(id);
 		model.addAttribute(blogVo);
-		
+
 		return "Blog/blogNoticeBoard";
-		
+
 	}
 
 }

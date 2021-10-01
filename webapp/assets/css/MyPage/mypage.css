@@ -2,7 +2,7 @@
 
 /********** 초기화 **********/
 body, div, ul, li, dl, dt, ol, h1, h2, h3, h4,
-h5, h6, input, fieldset, legend, p, select, table, 
+h5, h6, input, fieldset, legend, p, select, table,
 th, td, tr, textarea, button, form, img {
   margin: 0px 0px 0px 0px;
   padding: 0px 0px 0px 0px;
@@ -132,6 +132,7 @@ label {
     width: 150px;
     height: 150px;
     object-fit: cover;
+    image-rendering: -webkit-optimize-contrast;
 }
 
 #profilesubmit {
@@ -162,7 +163,7 @@ label {
     content:" *";
     color: red;
   }
-  
+
 #check_nickname{
 	margin-top: 3px;
 	padding-left: 11px;

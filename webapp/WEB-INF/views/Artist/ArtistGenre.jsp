@@ -32,10 +32,10 @@
 
   <!-- header -->
   <c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
-  
+
   <!-- nav_artist  -->
   <c:import url="/WEB-INF/views/Artist/includes/artbox.jsp"></c:import>
-      
+
       <div class="section-01">
         <div class="leftsection">
         	<!-- 종합랭킹 -->
@@ -47,11 +47,11 @@
                     <img src="${pageContext.request.contextPath}/assets/image/artist/icon/search.png" style="width:20px">
                 </div>
             </div>
-            
+
             <!-- 장르 검색 -->
             <div class="row" id="genrebox">
         	<div class="col-xl-3"></div>
-        	
+
         	<div class="col-xl-7">
              <ul class="navbar_genremenu">
                 <li><a href="${pageContext.request.contextPath}/Artist/ArtistGenre/1">발라드</a></li>
@@ -63,9 +63,9 @@
              </ul>
         	</div>
         	</div>
-        	
-        	<div class="col-xl-3"></div> 
-        	
+
+        	<div class="col-xl-3"></div>
+
 			<!-- 종합랭킹 표그래프 -->
             <div class="leftsection-02">
                 <table>
@@ -86,11 +86,11 @@
                         <tr>
                             <td>${gList.rn}</td>
 							<td>
-								<c:if test="${UserVo.user_img == null}">
+								<c:if test="${gList.user_img == null}">
 								<img src="/Buskeround/assets/image/blog/icon/user.png" style="width: 70px; height: 70px; border-radius: 70%; object-fit: cover;">
-								</c:if> 
-								<c:if test="${UserVo.user_img != null}">
-								<img src="${pageContext.request.contextPath}/upload/${UserVo.user_img}" style="width: 70px; height: 70px; border-radius: 70%; object-fit: cover;">
+								</c:if>
+								<c:if test="${gList.user_img != null}">
+								<img src="${pageContext.request.contextPath}/upload/${gList.user_img}" style="width: 70px; height: 70px; border-radius: 70%; object-fit: cover;">
 								</c:if>
 							</td>
                             <td>
@@ -125,7 +125,7 @@
 							<c:if test="${gList.genre == 6}">
 								<td class="articon"><img src="${pageContext.request.contextPath}/assets/image/blog/icon/etc.png" style="width: 60px"></td>
 							</c:if>
-                            
+
                             <td>
                                 <div>${gList.genre_type}</div>
                                 <div>가입연도 ${gList.artist_regdate}년</div>
@@ -144,16 +144,16 @@
                 </table>
             </div>
         </div>
-        
+
 	  <!-- aside  -->
 	  <c:import url="/WEB-INF/views/Artist/includes/aside.jsp"></c:import>
-	  
+
     </div>
-  
-  
-  
+
+
+
   <!-- footer -->
   <c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
-  
+
 </body>
-</html>    
+</html>
