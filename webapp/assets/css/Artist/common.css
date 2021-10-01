@@ -130,4 +130,7 @@
   text-align: center;
 }
 
+.articon{
+	image-rendering: -webkit-optimize-contrast;
+}
 

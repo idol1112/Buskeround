@@ -62,127 +62,74 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <c:forEach items="${artistFanList}" var="fList">
+                    <c:forEach items="${artistFanList}" var="frList">
                     
                         <!--1번-->
                         <tr>
-                            <td>${fList.user_no}</td>
+                            <td>${frList.rn}</td>
                             <td>
-                                <img src="/Buskeround${fList.user_img}" style="width:80px">
+								<c:if test="${UserVo.user_img == null}">
+								<img src="/Buskeround/assets/image/blog/icon/user.png" style="width: 70px; height: 70px; border-radius: 70%; object-fit: cover;">
+								</c:if> 
+								<c:if test="${UserVo.user_img != null}">
+								<img src="${pageContext.request.contextPath}/upload/${UserVo.user_img}" style="width: 70px; height: 70px; border-radius: 70%; object-fit: cover;">
+								</c:if>
                             </td>
                             <td>
-                                <div>${fList.nickname}</div>
+                                <div>${frList.nickname}</div>
                                 <div>
                                 	<img src="${pageContext.request.contextPath}/assets/image/artist/icon/youtube.png" style="width:20px">
                                     <img src="${pageContext.request.contextPath}/assets/image/artist/icon/facebook.png" style="width:20px">
                                     <img src="${pageContext.request.contextPath}/assets/image/artist/icon/insta.png" style="width:20px">
                                 </div>
                             </td>
+                            <!-- 장르 -->
+							<c:if test="${frList.genre == 1}">
+								<td class="articon"><img src="${pageContext.request.contextPath}/assets/image/blog/icon/ballade.png" style="width: 60px"></td>
+							</c:if>
+
+							<c:if test="${frList.genre == 2}">
+								<td class="articon"><img src="${pageContext.request.contextPath}/assets/image/blog/icon/dance.png" style="width: 60px"></td>
+							</c:if>
+
+							<c:if test="${frList.genre == 3}">
+								<td class="articon"><img src="${pageContext.request.contextPath}/assets/image/blog/icon/hiphop.png" style="width: 60px"></td>
+							</c:if>
+
+							<c:if test="${frList.genre == 4}">
+								<td class="articon"><img src="${pageContext.request.contextPath}/assets/image/blog/icon/soul.png" style="width: 65px"></td>
+							</c:if>
+
+							<c:if test="${frList.genre == 5}">
+								<td class="articon"><img src="${pageContext.request.contextPath}/assets/image/blog/icon/musical.png" style="width: 60px"></td>
+							</c:if>
+
+							<c:if test="${frList.genre == 6}">
+								<td class="articon"><img src="${pageContext.request.contextPath}/assets/image/blog/icon/etc.png" style="width: 60px"></td>
+							</c:if>
+                            
                             <td>
-                                <img src="${pageContext.request.contextPath}/assets/image/artist/icon/dance.png" style="width:60px">
+                                <div>${frList.genre_type}</div>
+                                <div>가입연도 ${frList.artist_regdate}년</div>
                             </td>
                             <td>
-                                <div>${fList.genre_type}</div>
-                                <div>가입연도 ${fList.artist_regdate}년</div>
+                                <img src="${pageContext.request.contextPath}/assets/image/artist/icon/heart2.png" style="width:20px">
+                                <span>${frList.likes}</span>
                             </td>
                             <td>
-                                <img src="${pageContext.request.contextPath}/assets/image/artist/icon/heart1.png" style="width:20px">
-                                <span>620</span>
-                            </td>
-                            <td>
-                                <img src="${pageContext.request.contextPath}/assets/image/artist/icon/fan2.png" style="width:20px">
-                                <span>${fList.fan}</span>
+                                <img src="${pageContext.request.contextPath}/assets/image/artist/icon/fan1.png" style="width:20px">
+                                <span>${frList.fan}</span>
                             </td>
                         </tr>
-                        </c:forEach>
+					  </c:forEach>
                     </tbody>
                 </table>
             </div>
         </div>
         
-        <div class="rightsection">
-            <div class="rightsection-01">
-            <!-- 뉴아티스트 배너 -->
-                <div class="rightsection-01-01">
-                    <h3>NEW ARTIST</h3>
-                    <div>
-                        <img src="${pageContext.request.contextPath}/assets/image/artist/icon/circle1.png" style="width:8px">
-                        <img src="${pageContext.request.contextPath}/assets/image/artist/icon/circle1.png" style="width:8px">
-                        <img src="${pageContext.request.contextPath}/assets/image/artist/icon/circle2.png" style="width:8px">
-                        <img src="${pageContext.request.contextPath}/assets/image/artist/icon/circle1.png" style="width:8px">
-                        <img src="${pageContext.request.contextPath}/assets/image/artist/icon/circle1.png" style="width:8px">
-                    </div>
-                </div>
-                <div>
-                    <img src="${pageContext.request.contextPath}/assets/image/artist/img/22.PNG" style="width:285px">
-                </div>
-            </div>
-            <div class="rightsection-02">
-            <!-- 라이브 표그래프 -->
-                <div class="rightsection-02-01">
-                    <h3>NOW LIVE</h3>
-                    <div>
-                        <img src="${pageContext.request.contextPath}/assets/image/artist/icon/triangle1.png" style="width:20px">
-                        1/2
-                        <img src="${pageContext.request.contextPath}/assets/image/artist/icon/triangle2.png" style="width:20px">
-                    </div>
-                </div>
-                <table>
-                    <tbody>
-                        <tr>
-                            <td>김진호</td>
-                            <td>오후 3:24~</td>
-                            <td> [위치 보기]</td>
-                        </tr>
-                        <tr>
-                            <td>나비</td>
-                            <td>오후 8:00~</td>
-                            <td> [위치 보기]</td>
-                        </tr>
-                        <tr>
-                            <td>이석훈</td>
-                            <td>오후 8:20~</td>
-                            <td> [위치 보기]</td>
-                        </tr>
-                        <tr>
-                            <td>지석진</td>
-                            <td>오후 8:40~</td>
-                            <td> [위치 보기]</td>
-                        </tr>
-                        <tr>
-                            <td>이지은</td>
-                            <td>오후 9:05~</td>
-                            <td> [위치 보기]</td>
-                        </tr>
-                        <tr>
-                            <td>홀리뱅</td>
-                            <td>오후 9:22~</td>
-                            <td> [위치 보기]</td>
-                        </tr>
-                        <tr>
-                            <td>하석훈</td>
-                            <td>오후 9:24~</td>
-                            <td> [위치 보기]</td>
-                        </tr>
-                        <tr>
-                            <td>YGXGIRL</td>
-                            <td>오후 10:00~</td>
-                            <td> [위치 보기]</td>
-                        </tr>
-                        <tr>
-                            <td>케이윌</td>
-                            <td>오후 11:09~</td>
-                            <td> [위치 보기]</td>
-                        </tr>
-                        <tr>
-                            <td>씨스타</td>
-                            <td>오후 11:25~</td>
-                            <td> [위치 보기]</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+		 <!-- nav_artist  -->
+		 <c:import url="/WEB-INF/views/Artist/includes/aside.jsp"></c:import>
+        
     </div>
   
    <!-- footer -->

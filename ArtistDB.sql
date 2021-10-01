@@ -1,5 +1,5 @@
 /*임의의 정보 넣기*/
-insert INTO users VALUES (SEQ_USER_NO.nextval, 'aaa', 1234, 'aaa@naver.com', 'olseason', null, null, null, null, null, null, null, null, null, null, null, 2, 1, null);
+insert INTO users VALUES (SEQ_USER_NO.nextval, 'aaa', 1234, 'aaa@naver.com', 'olseason', null, '김덕배', null, null, 19980505, 2, '왁킹댄스', 0, 15, 15, sysdate, 2, 1, 30);
 insert INTO users VALUES (SEQ_USER_NO.nextval, 'bbb', 1234, 'bbb@naver.com', '홍길동', null, '홍길동', '010-0000-0000', 'male', 20000101, 1, '솔로', 1, 10, 40, sysdate, 2, 1, 50);
 insert INTO users VALUES (SEQ_USER_NO.nextval, 'ccc', 1234, 'ccc@naver.com', '박서준', null, '박서준', '010-1234-5000', 'male', 19970216, 1, '솔로', 1, 60, 40, sysdate, 2, 1, 100);
 insert INTO users VALUES (SEQ_USER_NO.nextval, 'ddd', 1234, 'ddd@naver.com', '제니', null, '김제니', '010-9978-0345', 'female', 19960520, 2, '솔로가수', 1, 55, 30, sysdate, 2, 1, 85);
@@ -8,8 +8,8 @@ insert INTO users VALUES (SEQ_USER_NO.nextval, 'fff', 1234, 'fff@naver.com', '�
 insert INTO users VALUES (SEQ_USER_NO.nextval, 'ggg', 1234, 'ggg@naver.com', 'ROSE', null, '박채영', '010-3212-1065', 'female', 19960211, 4, 'KPOP', 1, 89, 20, sysdate, 2, 1, 109);
 insert INTO users VALUES (SEQ_USER_NO.nextval, 'hhh', 1234, 'hhh@naver.com', '김현우', null, '김현우', '010-1343-6674', 'male', 19950616, 1, '솔로', 1, 40, 18, sysdate, 2, 1, 58);
 insert INTO users VALUES (SEQ_USER_NO.nextval, 'iii', 1234, 'iii@naver.com', '정국', null, '전정국', '010-7756-3490', 'male', 19970905, 2, '솔로', 1, 32, 30, sysdate, 2, 1, 62);
-insert INTO users VALUES (SEQ_USER_NO.nextval, 'jjj', 1234, 'jjj@naver.com', 'imj', null, null, null, null, null, null, null, null, null, null, null, 2, 1, null);
-insert INTO users VALUES (SEQ_USER_NO.nextval, 'kkk', 1234, 'kkk@naver.com', 'imk', null, null, null, null, null, null, null, null, null, null, null, 2, 1, null);
+insert INTO users VALUES (SEQ_USER_NO.nextval, 'jjj', 1234, 'jjj@naver.com', 'imj', null, '박혜원', null, null, 20020320, 5, '통기타솔로', 0, 14, 10, sysdate, 2, 1, 24);
+insert INTO users VALUES (SEQ_USER_NO.nextval, 'kkk', 1234, 'kkk@naver.com', 'imk', null, '양요섭', null, null, 19960129, 1, '발라드가수', 0, 45, 44, sysdate, 2, 1, 89);
 
 
 insert INTO users VALUES (SEQ_USER_NO.nextval, 'lll', 1234, 'lll@naver.com', 'TWICE', null, '김나연', '010-5512-8530', 'female', 19961209, 3, '솔로', 1, 50, 34, sysdate, 2, 1, 84);

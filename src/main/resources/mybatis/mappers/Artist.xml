@@ -84,23 +84,77 @@
 	<!-- 아티스트 라이브 리스트 -->
 	<select id="getArtistLive" resultType="UserVo">
 		<![CDATA[
-		SELECT
-		
-		    user_no, 
-		    nickname, 
-		    gender, 
-		    birthday,
-		    genre,
-		    genre_type,
-		    fan,
-		    likes,
-		    live,
-		    artist_regdate,
-		    user_type,
-		    company_type
-		from users
-		where live = 1
-		
+        SELECT
+              rn,
+              ort.user_no, 
+	          ort.id,
+	          ort.password,
+	          ort.email,
+	          ort.nickname,
+	          ort.user_img,
+	          ort.name,
+	          ort.hp,
+	          ort.gender,
+	          ort.birthday,
+	          ort.genre,
+	          ort.genre_type,
+	          ort.fan,
+	          ort.likes,
+	          ort.live,
+	          TO_CHAR(ort.artist_regdate, 'YYYY') artist_regdate,
+	          ort.user_type,
+	          ort.company_type,
+              ort.ranking_score
+              
+          FROM (	      SELECT
+              rownum rn,  
+	          ot.user_no,
+	          ot.id,
+	          ot.password,
+	          ot.email,
+	          ot.nickname,
+	          ot.user_img,
+	          ot.name,
+	          ot.hp,
+	          ot.gender,
+	          ot.birthday,
+	          ot.genre,
+	          ot.genre_type,
+	          ot.fan,
+	          ot.likes,
+	          ot.live,
+	          ot.artist_regdate,
+	          ot.user_type,
+	          ot.company_type,
+              ot.ranking_score
+	          
+	      FROM (	      SELECT
+	      
+	          user_no, 
+	          id,
+	          password,
+	          email,
+	          nickname,
+	          user_img,
+	          name,
+	          hp,
+	          gender,
+	          birthday,
+	          genre,
+	          genre_type,
+	          fan,
+	          likes,
+	          live,
+	          artist_regdate,
+	          user_type,
+	          company_type,
+              ranking_score
+	          
+	      FROM users
+	      where users.live = 1 
+          ORDER by users.ranking_score desc, users.artist_regdate asc) ot) ort
+          where rn >=1
+          and rn <=10
 		]]>
 	</select>
 	
@@ -343,7 +397,35 @@
 	<!-- 팬 되기 리스트 -->
 	<select id="getFanList" resultType="UserVo">
 		<![CDATA[
-		SELECT
+		select
+            rn,
+            ort.id,
+		    ort.user_img,
+		    ort.genre,
+		    ort.genre_type,
+		    ort.fan,
+		    ort.likes,
+		    ort.artist_regdate,
+		    ort.fan_no,
+		    ort.nickname,
+		    ort.user_no,
+		    ort.artist_no
+
+		from(       select
+            rownum rn,
+            ot.id,
+		    ot.user_img,
+		    ot.genre,
+		    ot.genre_type,
+		    ot.fan,
+		    ot.likes,
+		    ot.artist_regdate,
+		    ot.fan_no,
+		    ot.nickname,
+		    ot.user_no,
+		    ot.artist_no
+
+		from(		SELECT
 		
 		    id,
 		    u.user_img,
@@ -357,9 +439,88 @@
 		    f.user_no,
 		    f.artist_no
 		FROM users u, fan f
-		WHERE u.user_no = f.fan_no and f.user_no = #{user_no}
-		
-		]]>
+		WHERE u.user_no = f.fan_no and f.user_no = u.user_no
+        order by f.fan_no asc )ot)ort
+        where rn >=1
+        and rn <=10
+		]]>		
+	</select>
+
+	<!-- 블로그 라이브 리스트 가져오기 -->
+	<select id="getBlogLive" resultType="UserVo">
+	<![CDATA[
+	SELECT
+              rn,
+              ort.user_no, 
+	          ort.id,
+	          ort.password,
+	          ort.email,
+	          ort.nickname,
+	          ort.user_img,
+	          ort.name,
+	          ort.hp,
+	          ort.gender,
+	          ort.birthday,
+	          ort.genre,
+	          ort.genre_type,
+	          ort.fan,
+	          ort.likes,
+	          ort.live,
+	          TO_CHAR(ort.artist_regdate, 'YYYY') artist_regdate,
+	          ort.user_type,
+	          ort.company_type,
+              ort.ranking_score
+              
+          FROM (	      SELECT
+              rownum rn,  
+	          ot.user_no,
+	          ot.id,
+	          ot.password,
+	          ot.email,
+	          ot.nickname,
+	          ot.user_img,
+	          ot.name,
+	          ot.hp,
+	          ot.gender,
+	          ot.birthday,
+	          ot.genre,
+	          ot.genre_type,
+	          ot.fan,
+	          ot.likes,
+	          ot.live,
+	          ot.artist_regdate,
+	          ot.user_type,
+	          ot.company_type,
+              ot.ranking_score
+	          
+	      FROM (	      SELECT
+	      
+	          user_no, 
+	          id,
+	          password,
+	          email,
+	          nickname,
+	          user_img,
+	          name,
+	          hp,
+	          gender,
+	          birthday,
+	          genre,
+	          genre_type,
+	          fan,
+	          likes,
+	          live,
+	          artist_regdate,
+	          user_type,
+	          company_type,
+              ranking_score
+	          
+	      FROM users
+	      where users.live = 1 
+          ORDER by users.ranking_score desc, users.artist_regdate asc) ot) ort
+          where rn >=1
+          and rn <=6
+		]]>		
 	</select>
 
 
