@@ -1,5 +1,8 @@
 package com.javaex.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,8 +13,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.javaex.service.ArtistService;
 import com.javaex.service.BlogService;
 import com.javaex.vo.BlogVo;
+import com.javaex.vo.BustimeVo;
+import com.javaex.vo.ResumeVo;
 
 @RequestMapping(value = "/blog/")
 @Controller
@@ -19,6 +25,8 @@ public class BlogController {
 
 	@Autowired
 	BlogService blogService;
+    @Autowired
+    ArtistService artistService;
 
 	@RequestMapping(value = "blog_main/{id}", method = { RequestMethod.GET, RequestMethod.POST })
 	public String blog_main(@PathVariable("id") String id, Model model) {
@@ -27,12 +35,17 @@ public class BlogController {
 		// 해더 정보 가져오기
 		BlogVo blogVo = blogService.selectUser(id);
 		model.addAttribute(blogVo);
+		
+		//Aside 리스트
+		model.addAttribute("artistLiveList", artistService.getBlogLive());
+		
 		System.out.println("BlogVo: " + blogVo);
 
 		return "Blog/blog_main";
 
 	}
 
+	//ModifyForm
 	@RequestMapping(value = "blog_modify/{id}", method = { RequestMethod.GET, RequestMethod.POST })
 	public String blog_modifyform(@PathVariable("id") String id, Model model) {
 		System.out.println("[BlogController.blog_modify()]");
@@ -40,46 +53,61 @@ public class BlogController {
 		// 해더 정보 가져오기
 		BlogVo blogVo = blogService.selectUser(id);
 		model.addAttribute(blogVo);
-
+		
+		// 이력사항 가져오기
+		
+		
 		return "Blog/blogModifyForm";
 	}
 
 	// 수정
 	@RequestMapping(value = "modify", method = { RequestMethod.GET, RequestMethod.POST })
 	public String blog_modify(@ModelAttribute BlogVo blogVo,
+			@RequestParam("resume_content[]") List<String> resumeContentList,
 			@RequestParam(value = "file1", required = false, defaultValue = "0") MultipartFile file,
 			@RequestParam("img_check") int img) {
 		System.out.println("[BlogController.modify()]");
-
+		
 		// 확인
 		System.out.println("modify.blogVo: " + blogVo);
 		System.out.println("modify.file: " + file);
 		System.out.println("imgCheck: " + img);
+		System.out.println("이력사항");
+		//이력사항
+		for(String s : resumeContentList) {
+			System.out.println(s);
+		}
+		
+		List<ResumeVo> resumeList = new ArrayList<>();
+		for(String s : resumeContentList) {
+			
+			resumeList.add(new ResumeVo(0, blogVo.getUser_no(), s));
+		}
+		System.out.println("리스트 출력" + resumeList);
 
 		if (img == 2) {
 			// 이미지 삭제
-			int count = blogService.modifyDeleteImg(blogVo);
+			int count = blogService.modifyDeleteImg(blogVo, resumeList);
 
 			// 수정
 			System.out.println("수정 완료 여부: " + count);
 		} else {
 			// 이미지 X
 			if (file.isEmpty()) {
-				int count = blogService.modify(blogVo);
+				int count = blogService.modify(blogVo, resumeList);
 				// 수정
 				System.out.println("수정 완료 여부: " + count);
 
 			} else {
 				// 이미지 수정
-				int count = blogService.modifyImg(blogVo, file);
+				int count = blogService.modifyImg(blogVo, file, resumeList);
 
 				// 수정
 				System.out.println("수정 완료 여부: " + count);
 			}
 
 		}
-		// 가져온 정보 수정
-		blogService.modify(blogVo);
+		
 		// 수정 완료
 		return "redirect:/blog/blog_main/" + blogVo.getId();
 	}
