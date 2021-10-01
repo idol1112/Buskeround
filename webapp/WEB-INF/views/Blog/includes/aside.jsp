@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!------ br_sidebar ------>
 <div id="br_sidebar">
@@ -12,114 +13,44 @@
       <p>버스킹 Live</p>
     </div>
 
-    <!---- 우주멋쟁이 ---->
+    <!---- 아티스트 라이브 ---->
     <div class="side_nav">
+    <c:forEach items="${artistLiveList}" var="aLive">
+    
       <!---- 프로필 사진 ---->
       <div class="profile_img">
-        <img src="${pageContext.request.contextPath}/assets/image/blog/img/profile.jpg" alt="profile_img" class="profile_user_img">
+       	<c:if test="${UserVo.user_img == null}">
+		<img src="/Buskeround/assets/image/blog/icon/user.png" style="width: 40px; height: 40px; border-radius: 70%; object-fit: cover;">
+		</c:if> 
+		<c:if test="${UserVo.user_img != null}">
+		<img src="${pageContext.request.contextPath}/upload/${UserVo.user_img}" style="width: 40px; height: 40px; border-radius: 70%; object-fit: cover;">
+		</c:if>
       </div>
+      
       <!---- 활동명 ---->
       <div class="profile_name">
-        <span>우주멋쟁이</span>
+        <span>${aLive.nickname}</span>
       </div>
+      
       <!---- 라이브 on ---->
       <div class="live_on"></div>
+      
       <!---- 장르 ---->
       <div class="profile_genre">
-        <img src="${pageContext.request.contextPath}/assets/image/blog/icon/hiphop.png">
+        ${aLive.genre}
       </div>
+      </c:forEach>
     </div>
 
-    <!---- 블랙핑크 지수 ---->
-    <div class="side_nav">
-      <!---- 프로필 사진 ---->
-      <div class="profile_img">
-        <img src="${pageContext.request.contextPath}/assets/image/blog/img/profile2.jpg" alt="profile_img" class="profile_user_img">
-      </div>
-      <!---- 활동명 ---->
-      <div class="profile_name">
-        <span>블랙핑크 지수</span>
-      </div>
-      <!---- 라이브 on ---->
-      <div class="live_on"></div>
-      <!---- 장르 ---->
-      <div class="profile_genre">
-        <img src="${pageContext.request.contextPath}/assets/image/blog/icon/soul.png">
-      </div>
-    </div>
 
-    <!---- 벤 ---->
-    <div class="side_nav">
-      <!---- 프로필 사진 ---->
-      <div class="profile_img">
-        <img src="${pageContext.request.contextPath}/assets/image/blog/img/profile3.jpg" alt="profile_img" class="profile_user_img">
-      </div>
-      <!---- 활동명 ---->
-      <div class="profile_name">
-        <span>벤</span>
-      </div>
-      <!---- 라이브 on ---->
-      <div class="live_on"></div>
-      <!---- 장르 ---->
-      <div class="profile_genre">
-        <img src="${pageContext.request.contextPath}/assets/image/blog/icon/ballade.png">
-      </div>
-    </div>
 
-    <!---- 신예은 ---->
-    <div class="side_nav">
-      <!---- 프로필 사진 ---->
-      <div class="profile_img">
-        <img src="${pageContext.request.contextPath}/assets/image/blog/img/profile4.jpg" alt="profile_img" class="profile_user_img">
-      </div>
-      <!---- 활동명 ---->
-      <div class="profile_name">
-        <span>신예은</span>
-      </div>
-      <!---- 라이브 on ---->
-      <div class="live_on"></div>
-      <!---- 장르 ---->
-      <div class="profile_genre">
-        <img src="${pageContext.request.contextPath}/assets/image/blog/icon/musical.png">
-      </div>
-    </div>
 
-    <!---- 다현 ---->
-    <div class="side_nav">
-      <!---- 프로필 사진 ---->
-      <div class="profile_img">
-        <img src="${pageContext.request.contextPath}/assets/image/blog/img/profile5.jpg" alt="profile_img" class="profile_user_img">
-      </div>
-      <!---- 활동명 ---->
-      <div class="profile_name">
-        <span>다현</span>
-      </div>
-      <!---- 라이브 on ---->
-      <div class="live_on"></div>
-      <!---- 장르 ---->
-      <div class="profile_genre">
-        <img src="${pageContext.request.contextPath}/assets/image/blog/icon/dance.png">
-      </div>
-    </div>
 
-    <!---- 유재석 ---->
-    <div class="side_nav">
-      <!---- 프로필 사진 ---->
-      <div class="profile_img">
-        <img src="${pageContext.request.contextPath}/assets/image/blog/icon/user.png" alt="profile_img" class="profile_user_img">
-      </div>
-      <!---- 활동명 ---->
-      <div class="profile_name">
-        <span>유재석</span>
-      </div>
-      <!---- 라이브 on ---->
-      <div class="live_on"></div>
 
-      <!---- 장르 ---->
-      <div class="profile_genre">
-        <img src="${pageContext.request.contextPath}/assets/image/blog/icon/etc.png">
-      </div>
-    </div>
+
+
+
+
   </div>
 
 
