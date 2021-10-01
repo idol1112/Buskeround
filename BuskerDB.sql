@@ -1,49 +1,49 @@
 /* 회원 */
-DROP TABLE users 
+DROP TABLE users
 	CASCADE CONSTRAINTS;
 
 /* 블로그 */
-DROP TABLE blog 
+DROP TABLE blog
 	CASCADE CONSTRAINTS;
 
 /* 제휴사 */
-DROP TABLE company 
+DROP TABLE company
 	CASCADE CONSTRAINTS;
 
 /* 공연날짜 */
-DROP TABLE buskingDate 
+DROP TABLE buskingDate
 	CASCADE CONSTRAINTS;
 
 /* 게시글 */
-DROP TABLE post 
+DROP TABLE post
 	CASCADE CONSTRAINTS;
 
 /* 카테고리 */
-DROP TABLE category 
+DROP TABLE category
 	CASCADE CONSTRAINTS;
 
 /* 공연장 */
-DROP TABLE stage 
+DROP TABLE stage
 	CASCADE CONSTRAINTS;
 
 /* 팬되기 */
-DROP TABLE fan 
+DROP TABLE fan
 	CASCADE CONSTRAINTS;
 
 /* 공연시간 */
-DROP TABLE buskingTime 
+DROP TABLE buskingTime
 	CASCADE CONSTRAINTS;
 
 /* 버스킹신청 */
-DROP TABLE buskingApp 
+DROP TABLE buskingApp
 	CASCADE CONSTRAINTS;
 
 /* 좋아요 */
-DROP TABLE likes 
+DROP TABLE likes
 	CASCADE CONSTRAINTS;
 
 /* 이력사항 */
-DROP TABLE resume 
+DROP TABLE resume
 	CASCADE CONSTRAINTS;
 
 /** 시퀀스 삭제 **/
@@ -128,10 +128,7 @@ increment by 1
 start with 1
 nocache;
 
-CREATE FUNCTION get_seq RETURN NUMBER IS
-BEGIN
-  RETURN seq_resume_no.nextval;
-END;
+
 
 /* 회원 */
 CREATE TABLE users (
@@ -724,3 +721,10 @@ ALTER TABLE resume
 		REFERENCES blog (
 			user_no
 		);
+
+drop function get_seq;
+
+CREATE FUNCTION get_seq RETURN NUMBER IS
+BEGIN
+  RETURN seq_resume_no.nextval;
+END;
