@@ -48,7 +48,7 @@
 			</div>
 			<div id="mypage-right">
 				<div id="mypage-right-header">
-					<h5>버스킹존 관리</h5>
+					<h5>버스킹존 등록</h5>
 				</div>
 				<div id="mypage-right-content">
                     <form action="#" method="get">
@@ -61,12 +61,15 @@
 											<option value="${stageList.stage_no}">${stageList.stage_name}</option>
 										</c:forEach>
 									</select>
+									<a href='${pageContext.request.contextPath}/Company/buskingZoneModifyForm'>
+										<img id="setting" data-no="${authUser.user_no}" class="icon-img" src="${pageContext.request.contextPath}/assets/image/blog/icon/setting.png">
+									</a>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="table-head"><label for="datepicker">공연 날짜</label></td>
                                 <td>
-                                	<input class="input" type="text" name="bus_date" id="datepicker"/>
+                                	<input class="input" type="date" autocomplete="off" name="bus_date" id="datepicker"/>
                                 </td>
                             </tr>
                             <tr>
@@ -96,29 +99,6 @@
                             			<option value="20:00">20:00</option><option value="20:30">20:30</option><option value="21:00">21:00</option><option value="21:30">21:30</option><option value="22:00">22:00</option><option value="22:30">22:30</option><option value="23:00">23:00</option><option value="23:30">23:30</option><option value="24:00">24:00</option>
                             		</select>
                             		<img class="icon-img addBtn" src="${pageContext.request.contextPath}/assets/image/company/icon/add.png">
-                            	</td>
-                            </tr>
-                            <tr>
-                            	<td class="table-head"><label for="business_number">일정 리스트</label></td>
-                            	<td>
-                            		<ul class="list-group">
-										<li class="list">
-											<span class="label label-default">
-												<span>18:00</span>
-												<img class="icon-img" src="${pageContext.request.contextPath}/assets/image/company/icon/from.png"> 
-												<span>20:00</span>
-											</span>
-											<img class="icon-img" src="${pageContext.request.contextPath}/assets/image/company/icon/delete.png">
-										</li>
-										<li class="list">
-											<span class="label label-default">
-												<span>20:00</span> 
-												<img class="icon-img" src="${pageContext.request.contextPath}/assets/image/company/icon/from.png"> 
-												<span>22:00</span>
-											</span>
-											<img class="icon-img" src="${pageContext.request.contextPath}/assets/image/company/icon/delete.png">
-										</li>
-									</ul>
                             	</td>
                             </tr>
                         </table>
@@ -193,13 +173,20 @@ $("form").on("click", "#insBtn", function() {
 		//dataType : "json",
 		success : function(count) {
 			//성공시 처리해야될 코드 작성
-			
+			console.log(count);
+			if(count>0) {
+				$("[name='bus_date']").val("");
+				$("[name='requirements']").val("");
+				$("[name='start_time']").val("");
+				$("[name='end_time']").val("");
+			}
 		},
 		error : function(XHR, status, error) {
 			console.error(status + " : " + error);
 		}
 	});
 })
+
 
 
 

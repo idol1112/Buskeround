@@ -210,7 +210,7 @@ public class CompanyController {
 	///////////////////////////////// *공연장* /////////////////////////////////
 	
 	///////////////////////////////// 버스킹존 /////////////////////////////////
-	//버스킹존 관리 폼(추가/수정/삭제)
+	//버스킹존 등록 폼
 	@RequestMapping(value = "/buskingZoneManage", method = {RequestMethod.GET, RequestMethod.POST})
 	public String buskingZoneManage(HttpSession session, Model model) {
 		System.out.println("[CompanyController.buskingZoneManage()]");
@@ -230,7 +230,7 @@ public class CompanyController {
 	//버스킹존 등록
 	@ResponseBody
 	@RequestMapping(value = "/buskingZoneInsert", method = {RequestMethod.GET, RequestMethod.POST})
-	public String buskingZoneInsert(@RequestParam ("stage_no") int stage_no,
+	public int buskingZoneInsert(@RequestParam ("stage_no") int stage_no,
 									@RequestParam ("bus_date") String bus_date,
 									@RequestParam ("requirements") String requirements,
 									@RequestParam ("startArray[]") List<String> sList,
@@ -256,7 +256,24 @@ public class CompanyController {
 		System.out.println("버스킹존 ["+count+"]건 저장 완료");
 	 
 		
-		return"redirect:/Company/buskingZoneManage";
+		return count;
+	}
+	
+	//버스킹존 관리 폼
+	@RequestMapping(value = "/buskingZoneModifyForm", method = {RequestMethod.GET, RequestMethod.POST})
+	public String buskingZoneModifyForm(HttpSession session, Model model) {
+		System.out.println("[CompanyController.buskingZoneModifyForm()]");
+		
+		UserVo authUser = (UserVo)session.getAttribute("authUser");
+		int user_no = authUser.getUser_no();
+		
+		List<StageVo> stageList = companyService.getStage(user_no);
+		
+		System.out.println(stageList);
+		
+		model.addAttribute("stageList", stageList);
+		
+		return"/Company/buskingZoneModifyForm";
 	}
 	
 	///////////////////////////////// *버스킹존* /////////////////////////////////
