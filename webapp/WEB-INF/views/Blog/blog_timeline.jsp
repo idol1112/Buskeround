@@ -112,7 +112,8 @@
 
 			data : {
 				start_date : year[0] + month[0] + date[0],
-				end_date : year[6] + "" + month[6] + date[6]
+				end_date : year[6] + "" + month[6] + date[6],
+				user_no : ${blogVo.user_no}
 			},
 
 			// 성공일 경우 success로 들어오며, 'result'는 응답받은 데이터이다.
@@ -176,7 +177,8 @@
 
 				data : {
 					start_date : now_year_start + now_month_start + now_day_start,
-					end_date : now_year_end + now_month_end + now_day_end
+					end_date : now_year_end + now_month_end + now_day_end,
+					user_no : ${blogVo.user_no}
 				},
 
 				// 성공일 경우 success로 들어오며, 'result'는 응답받은 데이터이다.
@@ -246,7 +248,8 @@
 
 				data : {
 					start_date : next_year_start + next_month_start + next_day_start,
-					end_date : next_year_end + next_month_end + next_day_end
+					end_date : next_year_end + next_month_end + next_day_end,
+					user_no : ${blogVo.user_no}
 				},
 
 				// 성공일 경우 success로 들어오며, 'result'는 응답받은 데이터이다.
@@ -316,7 +319,8 @@
 
 				data : {
 					start_date : prev_year_start + prev_month_start + prev_day_start,
-					end_date : prev_year_end + prev_month_end + prev_day_end
+					end_date : prev_year_end + prev_month_end + prev_day_end,
+					user_no : ${blogVo.user_no}
 				},
 
 				// 성공일 경우 success로 들어오며, 'result'는 응답받은 데이터이다.

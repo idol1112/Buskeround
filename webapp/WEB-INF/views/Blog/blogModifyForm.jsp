@@ -57,9 +57,9 @@
 							<td><textarea class="input" name="intro" placeholder="자기소개를 입력해주세요.">${blogVo.intro}</textarea></td>
 						</tr>
 						<tr>
-							<td class="table-head"><label for="resume">이력사항</label></td>
+							<td class="table-head"><label for="resume_content[]">이력사항</label></td>
 							<td class="field_wrapper">
-								<input class="input" type="text" id="record" name="resume" placeholder="이력사항을 입력해주세요">
+								<input class="input" type="text" id="record" name="resume_content[]" placeholder="이력사항을 입력해주세요">
 								<a href="javascript:void(0);" class="add_button" title="Add field"><img src="/Buskeround/assets/image/blog/icon/add.png"/></a>
 							</td>
 							
@@ -115,7 +115,7 @@
 <script type="text/javascript">
 
 	$(document).ready(function(){
-	    var fieldHTML = '<div class="additionalResume"><input class="input" type="text" id="record" name="resume"><a href="javascript:void(0);" class="remove_button"><img src="/Buskeround/assets/image/blog/icon/minus.png"/></a></div>'; //New input field html 
+	    var fieldHTML = '<div class="additionalResume"><input class="input" type="text" id="record" name="resume_content[]"><a href="javascript:void(0);" class="remove_button"><img src="/Buskeround/assets/image/blog/icon/minus.png"/></a></div>'; //New input field html 
 	    var x = 1; //Initial field counter is 1
 	    
 	    //이력사항 +
@@ -135,33 +135,30 @@
 	        $(this).parent('div').remove(); //Remove field html
 	        x--; //Decrement field counter
 	    });
-	    
-		//미리보기
-		function setThumbnail(event) { 
-			console.log("미리보기 실험")
-			var reader = new FileReader(); 
-			
-			var picture = document.getElementById("profilepicture");
-			
-			reader.onload = function(event) { 
-				document.querySelector("img#bannerImg").setAttribute("src", event.target.result); 
-				document.querySelector("input#img_check").setAttribute("value", '1'); 
-			}; 
-			
-			reader.readAsDataURL(event.target.files[0]); 
-			}
-		
-		//미리보기 삭제
-		$("#banner-deletebutton").on("click", function(){
-			console.log("미리보기 삭제")
-			
-			document.querySelector("img#bannerImg").setAttribute("src", '/Buskeround/assets/image/blog/img/defaultbanner.jpg'); 
-			document.querySelector("input#img_check").setAttribute("value", '2'); 
-		});
 	});
 	    
-    
-
+	//미리보기
+	function setThumbnail(event) { 
+		console.log("미리보기 실험")
+		var reader = new FileReader(); 
+		
+		var picture = document.getElementById("profilepicture");
+		
+		reader.onload = function(event) { 
+			document.querySelector("img#bannerImg").setAttribute("src", event.target.result); 
+			document.querySelector("input#img_check").setAttribute("value", '1'); 
+		}; 
+		
+		reader.readAsDataURL(event.target.files[0]); 
+		}
+	
+	//미리보기 삭제
+	$("#banner-deletebutton").on("click", function(){
+		console.log("미리보기 삭제")
+		
+		document.querySelector("img#bannerImg").setAttribute("src", '/Buskeround/assets/image/blog/img/defaultbanner.jpg'); 
+		document.querySelector("input#img_check").setAttribute("value", '2'); 
+	});
 
 </script>
 

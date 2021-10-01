@@ -1,11 +1,14 @@
 package com.javaex.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.javaex.vo.BlogVo;
 import com.javaex.vo.MypageVo;
+import com.javaex.vo.ResumeVo;
 
 @Repository
 public class BlogDao {
@@ -84,4 +87,13 @@ public class BlogDao {
 		System.out.println("BlogModify");
 		return sqlSession.update("blog.blogModifyDeleteImg", blogVo);
 	}
+	
+	//이력서 등록
+	public int resumeInsert(List<ResumeVo> resumeList, BlogVo blogVo) {
+		System.out.println("BlogDao.Modify()");
+		
+		sqlSession.delete("blog.resumeDelete", blogVo.getUser_no());
+		return sqlSession.insert("blog.resumeInsert", resumeList);
+	}
+	
 }

@@ -128,6 +128,11 @@ increment by 1
 start with 1
 nocache;
 
+CREATE FUNCTION get_seq RETURN NUMBER IS
+BEGIN
+  RETURN seq_resume_no.nextval;
+END;
+
 /* 회원 */
 CREATE TABLE users (
 	user_no NUMBER NOT NULL, /* 회원번호 */

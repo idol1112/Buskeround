@@ -229,3 +229,7 @@ input[type="file"] {
 	width: 30%;
 	margin-bottom:3px;
 }
+
+#mypage-category a:hover {
+	font-weight: bold;
+}

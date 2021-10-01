@@ -4,15 +4,15 @@
 <!---- 배너 ---->
 <c:choose>
   <c:when test="${blogVo.banner == null }">
-    <div class="banner" style='background-image: url("/Buskeround/assets/image/blog/img/defaultbanner.jpg")'>
+    <div class="banner" style='background-image: url("/Buskeround/assets/image/blog/img/defaultbanner.jpg");background-size: 100% 100%;',>
   </c:when>
   <c:otherwise>
-    <div class="banner" style='background-image: url("${pageContext.request.contextPath}/upload/${blogVo.banner}")'>
+    <div class="banner" style='background-image: url("${pageContext.request.contextPath}/upload/${blogVo.banner}");background-size: 100% 100%;'>
   </c:otherwise>
 </c:choose>
 <!-- 블로그 관리 버튼 -->
 <a href="${pageContext.request.contextPath}/blog/blog_modify/${blogVo.id}">
-  <img class="setting" src="${pageContext.request.contextPath}/assets/image/blog/icon/settings.png">
+  <img class="setting" src="${pageContext.request.contextPath}/assets/image/blog/icon/setting.png">
 </a>
 
 <!-- 공연시작 버튼 -->

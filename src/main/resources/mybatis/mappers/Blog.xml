@@ -141,17 +141,30 @@
 		
 	</update>
 	
-	<!-- Blog(resume) Modify -->
-	<!-- <update id="resumeModify" parameterType="BlogVo">
-		
+	<!-- 이력사항 -->
+	<insert id="resumeInsert" parameterType="java.util.List">
+	
 		<![CDATA[
-		UPDATE blog 
-		SET 
-			nickname = #{nickname},
-		WHERE 
-			user_no = #{user_no}
+		INSERT ALL	
 		]]>
 		
-	</update> -->
+        <foreach collection="list"  item="index">
+           <![CDATA[
+		   INTO resume (resume_no, user_no, resume_content) VALUES (get_seq, #{index.user_no}, #{index.resume_content})
+		   ]]>
+       	</foreach>
+       
+       <![CDATA[
+       SELECT 1 FROM DUAL
+       ]]>
+    </insert>
+    
+    <!-- 이력삭제 -->
+    <delete id="resumeDelete" parameterType="int">
+    <![CDATA[
+  	  	DELETE FROM resume
+		WHERE user_no = #{user_no}
+    ]]>
+    </delete>
 	
 </mapper>
