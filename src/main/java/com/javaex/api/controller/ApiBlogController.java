@@ -58,13 +58,16 @@ public class ApiBlogController {
   /*** 타임라인 ***/
   @ResponseBody
   @RequestMapping(value = "timeline", method = {RequestMethod.GET, RequestMethod.POST})
-  public List<PostVo> timeline(@RequestParam("start_date") int start_date, @RequestParam("end_date") int end_date) {
+  public List<PostVo> timeline(@RequestParam("start_date") int start_date, @RequestParam("end_date") int end_date, @RequestParam("user_no") int user_no) {
     System.out.println("[현재 위치: ApiBlogController.timeline]");
 
     Map<String, Object> date_map = new HashMap<String, Object>();
 
     date_map.put("start_date", start_date);
     date_map.put("end_date", end_date);
+    date_map.put("user_no", user_no);
+
+    System.out.println(date_map);
 
     System.out.println(blogService2.timeline(date_map));
 

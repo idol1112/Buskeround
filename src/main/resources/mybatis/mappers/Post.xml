@@ -104,21 +104,23 @@
 		]]>
 	</select>
 
-	<!-- 타임라인(메인) 조회 -->
+	<!-- 타임라인 조회 -->
 	<select id="timeline" parameterType="map" resultType="PostVo">
 		<![CDATA[
-			SELECT
-			    title,
-			    p_start,
-			    p_img,
-			    live_url
-			FROM
-			    post
-			WHERE
-			        p_start >= TO_CHAR(#{start_date})
-			    AND p_start <= TO_CHAR(#{end_date})
-			ORDER BY
-			    p_start DESC
+	        SELECT
+	        	post_no,
+	            title,
+	            to_char(p_start, 'YYYY.MM.DD"("dy")"') p_start,
+	            p_img,
+	            live_url
+	        FROM
+	            post
+	        WHERE
+	                user_no = #{user_no}
+	            AND p_start >= to_char(#{start_date})
+	            AND p_start <= to_char(#{end_date})
+	        ORDER BY
+	            post_no DESC
 		]]>
 	</select>
 
