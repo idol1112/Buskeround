@@ -15,7 +15,7 @@
 
     <!---- 아티스트 라이브 ---->
     <div class="side_nav">
-    <c:forEach items="${artistLiveList}" var="aLive">
+    <c:forEach items="${BlogLive}" var="bLive">
     
       <!---- 프로필 사진 ---->
       <div class="profile_img">
@@ -29,7 +29,7 @@
       
       <!---- 활동명 ---->
       <div class="profile_name">
-        <span>${aLive.nickname}</span>
+        <span>${bLive.nickname}</span>
       </div>
       
       <!---- 라이브 on ---->
@@ -37,7 +37,7 @@
       
       <!---- 장르 ---->
       <div class="profile_genre">
-        ${aLive.genre}
+        ${bLive.genre}
       </div>
       </c:forEach>
     </div>
