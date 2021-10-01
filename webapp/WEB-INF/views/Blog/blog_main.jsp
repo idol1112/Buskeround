@@ -230,7 +230,12 @@
 			str += '	<div class="content">';
 			str += '		<h3>' + timeList.title + '</h3>';
 			if (timeList.live_url === null) {
-				str += '		          <img src="${pageContext.request.contextPath}/upload/' + timeList.p_img +'" alt="" style="width: 430px; height: 240px,	object-fit: cover;" />';
+				if (timeList.p_img === "noimg.png") {
+					str += '		          <img src="${pageContext.request.contextPath}/assets/image/blog/img/noimg.png" alt="" style="width: 430px; height: 240px,	object-fit: cover;" />';
+				} else {
+					str += '		          <img src="${pageContext.request.contextPath}/upload/' + timeList.p_img +'" alt="" style="width: 430px; height: 240px,	object-fit: cover;" />';
+				}
+
 			} else {
 				str += '		<iframe width="430" height="240" src="https://www.youtube.com/embed/' + timeList.live_url + '" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
 			}
