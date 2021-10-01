@@ -173,7 +173,13 @@ $("form").on("click", "#insBtn", function() {
 		//dataType : "json",
 		success : function(count) {
 			//성공시 처리해야될 코드 작성
-			
+			console.log(count);
+			if(count>0) {
+				$("[name='bus_date']").val("");
+				$("[name='requirements']").val("");
+				$("[name='start_time']").val("");
+				$("[name='end_time']").val("");
+			}
 		},
 		error : function(XHR, status, error) {
 			console.error(status + " : " + error);

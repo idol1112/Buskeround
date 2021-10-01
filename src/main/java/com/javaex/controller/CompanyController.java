@@ -230,7 +230,7 @@ public class CompanyController {
 	//버스킹존 등록
 	@ResponseBody
 	@RequestMapping(value = "/buskingZoneInsert", method = {RequestMethod.GET, RequestMethod.POST})
-	public String buskingZoneInsert(@RequestParam ("stage_no") int stage_no,
+	public int buskingZoneInsert(@RequestParam ("stage_no") int stage_no,
 									@RequestParam ("bus_date") String bus_date,
 									@RequestParam ("requirements") String requirements,
 									@RequestParam ("startArray[]") List<String> sList,
@@ -256,7 +256,7 @@ public class CompanyController {
 		System.out.println("버스킹존 ["+count+"]건 저장 완료");
 	 
 		
-		return"redirect:/Company/buskingZoneManage";
+		return count;
 	}
 	
 	//버스킹존 관리 폼
