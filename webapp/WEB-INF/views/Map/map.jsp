@@ -27,7 +27,7 @@
 	    
 		.map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
 		.map_wrap {position:relative;width:100%;height:700px;}
-		#menu_wrap {position:absolute;top:0;left:0;bottom:0;width:250px;margin:10px 0 30px 10px;padding:5px;overflow-y:auto;background:rgba(255, 255, 255, 0.7);z-index: 1;font-size:12px;border-radius: 10px;}
+		#menu_wrap {position:absolute;top:0;left:0;bottom:0;width:250px;margin:10px 0 30px 10px;padding:0px;overflow-y:auto;background:rgba(255, 255, 255, 0.7);z-index: 1;font-size:12px;border-radius: 10px;}
 		.bg_white {background:#fff;}
 		#menu_wrap hr {display: block; height: 1px;border: 0; border-top: 2px solid #5F5F5F;margin:3px 0;}
 		#menu_wrap .option{text-align: center;}
@@ -62,16 +62,16 @@
 		
 		#keyword{
 		border: 1px solid skyblue;
-		background-color: rgba(0,0,0,0);
 		color:black;
 		padding: 5px;
 		}
 		
 		#btn_sh{
 		border: 1px solid skyblue;
-		background-color: rgba(0,0,0,0);
+		background-color: background-color: #ffff00;;
 		color:skyblue;
 		padding: 5px;
+		border-radius: 3px;
 		}
 		
 		#map{
@@ -86,18 +86,28 @@
 		width:100%;
 		height:80px;
 		}
+		*/
 		
-
+		.listimg{
+		padding: 5px 0px 0px 5px;
+		}
+		.formsearch{
+		padding: 10px 0px 10px 0px;
+		background-color: #00BFFF;
+		}
+		
+		.boxsearch{
+		border-radius: 3px;
+		}
 		
 		.scroll{
 		    padding: 0px 13px 0px 13px;
 		    overflow-y: scroll;
 		    box-sizing: border-box;
-		    color: white;
 		    font-family: 'Nanum Gothic';
 		    background-color: rgba(0,0,0,0.8);
 		    margin-right: 50px;
-		}*/
+		}
 		/* 스크롤바 설정*/
 		.type1::-webkit-scrollbar{
 		    width: 6px;
@@ -145,13 +155,12 @@
     <div id="menu_wrap" class="bg_white scroll type1">
         <div class="option">
             <div>
-                <form onsubmit="">
-                    <input type="text" value="" id="keyword" size="15"> 
+                <form onsubmit="" class="formsearch">
+                    <input type="text" value="" id="keyword" class="boxsearch" size="22"> 
                     <button type="submit" id="btn_sh">검색하기</button> 
                 </form>
             </div>
         </div>
-        <hr>
 		<div id="searchList"></div>
 
 		
@@ -239,7 +248,7 @@ function getListItem(index, mapFind) {
 
     var el = document.createElement('li'),
     itemStr ='<div class="body">' +  
-    '            <div class="img">' +
+    '            <div class="img listimg">' +
     '                <img src="${pageContext.request.contextPath }/upload/'+mapFind.user_img+'" width="73" height="70" align="center">' +
     '            <div class="desc">' + 
     '                <div class="ellipsis">활동명 : '+mapFind.nickname+'</div>' + 
