@@ -62,7 +62,7 @@
 										</c:forEach>
 									</select>
 									<a href='${pageContext.request.contextPath}/Company/buskingZoneModifyForm'>
-										<img id="setting" data-no="${authUser.user_no}" class="icon-img" src="${pageContext.request.contextPath}/assets/image/blog/icon/settings.png">
+										<img id="setting" data-no="${authUser.user_no}" class="icon-img" src="${pageContext.request.contextPath}/assets/image/blog/icon/setting.png">
 									</a>
                                 </td>
                             </tr>
