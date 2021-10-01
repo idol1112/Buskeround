@@ -119,14 +119,14 @@
 		/* 스크롤바 막대 설정*/
 		.type1::-webkit-scrollbar-thumb{
 		    height: 17%;
-		    background-color: rgba(33,133,133,1);
+		    background-color: #00BFFF;
 		    /* 스크롤바 둥글게 설정    */
 		    border-radius: 10px;    
 		}
 		
 		/* 스크롤바 뒷 배경 설정*/
 		.type1::-webkit-scrollbar-track{
-		    background-color: rgba(33,133,133,0.33);
+		    background-color: 	#AFEEEE;
 		} */
 		
 	</style>
@@ -196,7 +196,6 @@ var positions = [];
 var content = [];
 var num = -1;
 var num2 = -1;
-
 
 //======================================지도 중심좌표 변경
 
