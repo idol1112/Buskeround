@@ -20,5 +20,21 @@
 		]]>
 	</insert>
 	
+	<!-- 날짜별 버스킹 데이터 불러오기 -->
+	<select id="selectBusking" parameterType="BusdateVo" resultType="BusdateVo">
+		<![CDATA[
+			select  bd.date_no as date_no,
+			        bd.bus_date as bus_date,
+			        bd.requirements as requirements,
+			        bt.time_no as time_no,
+			        bt.start_time as start_time,
+			        bt.end_time as end_time
+			from buskingdate bd, buskingtime bt
+			where bt.date_no = bd.date_no
+			and   bd.stage_no = #{stage_no}
+			and  bd.bus_date = #{bus_date}		
+		
+		]]>
+	</select>
 	
 </mapper>

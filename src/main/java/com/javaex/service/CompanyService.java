@@ -203,5 +203,12 @@ public class CompanyService {
 		return companyDao.bustimeInsert(tList);
 	}
 	
+	//버스킹존 날짜별 리스트 불러오기
+	public List<BusdateVo> getBuskingZone(BusdateVo busdateVo) {
+		System.out.println("CompanyService.getBuskingZone()");
+		
+		return companyDao.selectBusking(busdateVo);
+	}
+	
 	///////////////////////////////// *버스킹존* /////////////////////////////////
 }

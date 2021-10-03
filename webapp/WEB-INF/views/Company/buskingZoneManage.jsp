@@ -99,6 +99,7 @@
                             			<option value="20:00">20:00</option><option value="20:30">20:30</option><option value="21:00">21:00</option><option value="21:30">21:30</option><option value="22:00">22:00</option><option value="22:30">22:30</option><option value="23:00">23:00</option><option value="23:30">23:30</option><option value="24:00">24:00</option>
                             		</select>
                             		<img class="icon-img addBtn" src="${pageContext.request.contextPath}/assets/image/company/icon/add.png">
+                            		<div id="timeList"></div>
                             	</td>
                             </tr>
                         </table>
@@ -120,7 +121,9 @@
 
 //datepicker
 $("#datepicker").datepicker({
-	language: 'ko'
+	language: 'ko',
+	minDate: new Date(), // 최소 날짜 오늘 이후
+	autoClose: true
 }); 
 
 //공연 시간 add 버튼
@@ -179,6 +182,7 @@ $("form").on("click", "#insBtn", function() {
 				$("[name='requirements']").val("");
 				$("[name='start_time']").val("");
 				$("[name='end_time']").val("");
+				$("#timeList").empty();
 			}
 		},
 		error : function(XHR, status, error) {
@@ -215,7 +219,7 @@ function add() {
 		str += '<img class="minus-img minusBtn" src="${pageContext.request.contextPath}/assets/image/company/icon/minus.png">';
 		str += '</div>';
 		
-		$("#time-table").append(str);
+		$("#timeList").append(str);
 }
 
 </script>

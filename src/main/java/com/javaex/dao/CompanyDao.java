@@ -92,5 +92,11 @@ public class CompanyDao {
 		return sqlSession.insert("bustime.bustimeInsert", tList);
 	}
 	
+	//날짜별 버스킹정보 불러오기
+	public List<BusdateVo> selectBusking(BusdateVo busdateVo) {
+		
+		return sqlSession.selectList("busdate.selectBusking", busdateVo);
+	}
+	
 	///////////////////////////////// *공연장* /////////////////////////////////
 }

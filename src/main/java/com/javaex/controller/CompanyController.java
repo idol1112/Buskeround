@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,7 +20,6 @@ import org.springframework.web.multipart.MultipartFile;
 import com.javaex.service.CompanyService;
 import com.javaex.service.UserService;
 import com.javaex.vo.BusdateVo;
-import com.javaex.vo.BustimeVo;
 import com.javaex.vo.CompanyVo;
 import com.javaex.vo.StageVo;
 import com.javaex.vo.UserVo;
@@ -274,6 +274,17 @@ public class CompanyController {
 		model.addAttribute("stageList", stageList);
 		
 		return"/Company/buskingZoneModifyForm";
+	}
+	
+	//버스킹존 리스트 불러오기
+	@ResponseBody
+	@RequestMapping(value = "/buskingZoneList", method = {RequestMethod.GET, RequestMethod.POST})
+	public List<BusdateVo> buskingZoneList(@ModelAttribute BusdateVo busdateVo) {
+		System.out.println("[CompanyController.buskingZoneList()]");
+		
+		System.out.println(busdateVo);
+		
+		return companyService.getBuskingZone(busdateVo);
 	}
 	
 	///////////////////////////////// *버스킹존* /////////////////////////////////
