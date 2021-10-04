@@ -25,6 +25,9 @@
 <!-- jquery -->
 <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 
+<!-- sweetAlert -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
 </head>
 
 <body>
@@ -47,7 +50,7 @@
 				</div>
 				
 				<div id="mypage-right-content">
-                    <form action="${pageContext.request.contextPath}/Company/stageInsert" method="get">
+                    <form id="form-stage" action="${pageContext.request.contextPath}/Company/stageInsert" method="get">
                     <input type="hidden" name="user_no" value="${sessionScope.authUser.user_no }">
                         <table>
                             <tr>
@@ -124,6 +127,34 @@
 
 <script type="text/javascript">
 
+
+//공연장 저장 이벤트
+$("#stageInsbtn").on("click", function(e) {
+	e.preventDefault();
+	var form = $(this).parents('form');
+	const Toast = Swal.mixin({
+        toast: true,
+        position: 'center-center',
+        showConfirmButton: false,
+        timer: 1500,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+    })
+
+    Toast.fire({
+        icon: 'success',
+        title: '공연장 정보가 저장되었습니다.'
+    })
+	setTimeout(function () {
+	  form.submit();
+	}, 1500);
+
+})
+
+
 $(".list-group").on("click", ".delBtn", function() {
 	console.log("삭제 버튼");
 	
@@ -197,8 +228,7 @@ $(".list-group").on("click", ".label", function() {
 			console.error(status + " : " + error);
 		}
 
-});
-	
+	});
 	
 })
 

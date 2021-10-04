@@ -30,6 +30,9 @@
 <script src="${pageContext.request.contextPath}/assets/js/datepicker.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/i18n/datepicker.ko.js"></script>
 
+<!-- sweetAlert -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
 </head>
 
 <body>
@@ -190,6 +193,28 @@ $("form").on("click", "#insBtn", function() {
 		}
 	});
 })
+
+//저장 완료 alert
+$().ready(function () {
+            $("#insBtn").click(function () {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'center-center',
+                    showConfirmButton: false,
+                    timer: 1500,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+
+                Toast.fire({
+                    icon: 'success',
+                    title: '버스킹존 등록이 완료되었습니다.'
+                })
+            });
+        });
 
 
 
