@@ -37,4 +37,12 @@
 		]]>
 	</select>
 	
+	<!-- 공연 날짜 삭제 -->
+	<delete id="buskingDelete" parameterType="int">
+		<![CDATA[
+			delete from buskingdate
+			where date_no = #{date_no}		
+		]]>	
+	</delete>
+	
 </mapper>

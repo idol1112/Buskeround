@@ -28,6 +28,9 @@
 <!-- datepicker -->
 <script src="${pageContext.request.contextPath}/assets/js/datepicker.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/i18n/datepicker.ko.js"></script>
+
+<!-- sweetAlert -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
 <body>
 	<!-- header -->
@@ -49,6 +52,8 @@
 				</div>
 				<div id="mypage-right-content">
                     <form action="#" method="get">
+                    	<input type="hidden" name="bus_date" value=""/>
+                    	<input type="hidden" name="date_no" value=""/>
                         <table>
                             <tr>
                                 <td class="table-head"><label for="stage-select">장소명</label></td>
@@ -125,12 +130,14 @@ $("#datepicker").datepicker({
 	//선택한 날짜를 가져옴
 	onSelect:function(date) {
 		console.log(date);
+		$("[name='date_no']").val("");
 		$("[name='requirements']").val("");
 		$("#timeList").empty();
 		$('option:selected', 'select[name="start_time"]').removeAttr('selected');
 		$('option:selected', 'select[name="end_time"]').removeAttr('selected');
 		
 		var bus_date = date;
+		$("[name='bus_date']").val(bus_date);
 		
 		var busdateVo = {
 				stage_no: $("[name='stage_no']").val(),
@@ -146,6 +153,7 @@ $("#datepicker").datepicker({
 			success : function(busdateVo) {
 				//성공시 처리해야될 코드 작성
 				console.log(busdateVo);
+				$("[name='date_no']").val(busdateVo[0].date_no);
 				$("[name='requirements']").val(busdateVo[0].requirements);
 				
 				var st = busdateVo[0].start_time.slice(11);
@@ -165,9 +173,9 @@ $("#datepicker").datepicker({
 						
 						add(i);
 						//Using the value
-						$('select[name="start_time"][date-no="'+i+'"]').find('option[value="'+st+'"]').attr("selected",true);
+						$('select[name="start_time"][data-no="'+i+'"]').find('option[value="'+st+'"]').attr("selected",true);
 						//Using the text
-						$('select[name="end_time"][date-no="'+i+'"]').find('option[value="'+et+'"]').attr("selected",true);
+						$('select[name="end_time"][data-no="'+i+'"]').find('option[value="'+et+'"]').attr("selected",true);
 					}
 				}
 				
@@ -178,6 +186,69 @@ $("#datepicker").datepicker({
 		});
 	}
 });
+
+//버스킹존 데이터 전송
+$("form").on("click", "#insBtn", function() {
+	event.preventDefault();
+	console.log("저장 버튼");
+	var start_time = [];
+	var end_time = [];
+	
+	$("[name='start_time']").each(function(index, item){
+		start_time.push($(item).val());
+		   });
+	$("[name='end_time']").each(function(index, item){
+		end_time.push($(item).val());
+		   });
+	
+	var objParams = {
+			"date_no" : $("[name='date_no']").val(),
+			"stage_no": $("[name='stage_no']").val(),
+			"bus_date": $("[name='bus_date']").val(),
+			"requirements": $("[name='requirements']").val(),
+			"startArray": start_time,
+			"endArray"  : end_time
+	};
+	
+	console.log(objParams);
+	
+	$.ajax({
+		url : "${pageContext.request.contextPath }/Company/buskingZoneModify",
+		type : "post",
+		//contentType : "application/json",
+		data :  objParams,
+		//dataType : "json",
+		success : function(count) {
+			//성공시 처리해야될 코드 작성
+			console.log(count)
+		},
+		error : function(XHR, status, error) {
+			console.error(status + " : " + error);
+		}
+	});
+})
+
+//저장 완료 alert
+$().ready(function () {
+            $("#insBtn").click(function () {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'center-center',
+                    showConfirmButton: false,
+                    timer: 1500,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+
+                Toast.fire({
+                    icon: 'success',
+                    title: '버스킹존 수정이 완료되었습니다.'
+                })
+            });
+        });
 
 //공연 시간 add 버튼
 $("#time-table").on("click", ".addBtn", function() {
@@ -191,12 +262,39 @@ $("#time-table").on("click", ".minusBtn", function() {
 	$(this).parent().remove();
 });
 
+$().ready(function () {
+	$("#delBtn").click(function () {
+		Swal.fire({
+			title: '정말로 삭제하시겠습니까?',
+			text: "버스킹 일정을 삭제하시겠습니까?",
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			confirmButtonText: '확인',
+			cancelButtonText: '취소'
+		}).then((result) => {
+			if (result.isConfirmed) {
+				buskingDelete();
+			} 
+		})
+	});
+});
+
+
+function buskingDelete() {
+
+	var no = $("[name='date_no']").val();
+	location.href =	"${pageContext.request.contextPath }/Company/buskingZoneDelete?no="+no+"";
+
+}
+
 function add(i) {
 	
 	var str = '';
 	
 		str += '<div>';
-		str += '<select date-no="'+i+'" name="start_time" class="input input-time">';
+		str += '<select data-no="'+i+'" name="start_time" class="input input-time">';
 		str += '<option value="00:00">00:00</option><option value="00:30">00:30</option><option value="01:00">01:00</option><option value="01:30">01:30</option><option value="02:00">02:00</option><option value="02:30">02:30</option><option value="03:00">03:00</option><option value="03:30">03:30</option>';
 		str += '<option value="04:00">04:00</option><option value="04:30">04:30</option><option value="05:00">05:00</option><option value="05:30">05:30</option><option value="06:00">06:00</option><option value="06:30">06:30</option><option value="07:00">07:00</option><option value="07:30">07:30</option>';
 		str += '<option value="08:00">08:00</option><option value="08:30">08:30</option><option value="09:00">09:00</option><option value="09:30">09:30</option><option value="10:00">10:00</option><option value="10:30">10:30</option><option value="11:00">11:00</option><option value="11:30">11:30</option>';
@@ -205,7 +303,7 @@ function add(i) {
 		str += '<option value="20:00">20:00</option><option value="20:30">20:30</option><option value="21:00">21:00</option><option value="21:30">21:30</option><option value="22:00">22:00</option><option value="22:30">22:30</option><option value="23:00">23:00</option><option value="23:30">23:30</option><option value="24:00">24:00</option>';
 		str += '</select>';
 		str += '<img class="add-img" src="${pageContext.request.contextPath}/assets/image/company/icon/from.png">';
-		str += '<select date-no="'+i+'" name="end_time" class="input input-time">';
+		str += '<select data-no="'+i+'" name="end_time" class="input input-time">';
 		str += '<option value="00:00">00:00</option><option value="00:30">00:30</option><option value="01:00">01:00</option><option value="01:30">01:30</option><option value="02:00">02:00</option><option value="02:30">02:30</option><option value="03:00">03:00</option><option value="03:30">03:30</option>';
 		str += '<option value="04:00">04:00</option><option value="04:30">04:30</option><option value="05:00">05:00</option><option value="05:30">05:30</option><option value="06:00">06:00</option><option value="06:30">06:30</option><option value="07:00">07:00</option><option value="07:30">07:30</option>';
 		str += '<option value="08:00">08:00</option><option value="08:30">08:30</option><option value="09:00">09:00</option><option value="09:30">09:30</option><option value="10:00">10:00</option><option value="10:30">10:30</option><option value="11:00">11:00</option><option value="11:30">11:30</option>';

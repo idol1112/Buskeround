@@ -98,5 +98,11 @@ public class CompanyDao {
 		return sqlSession.selectList("busdate.selectBusking", busdateVo);
 	}
 	
+	//버스킹존 삭제
+	public int buskingZoneDelete(int date_no) {
+		
+		return sqlSession.delete("busdate.buskingDelete", date_no);
+	}
+	
 	///////////////////////////////// *공연장* /////////////////////////////////
 }

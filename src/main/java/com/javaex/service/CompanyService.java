@@ -210,5 +210,44 @@ public class CompanyService {
 		return companyDao.selectBusking(busdateVo);
 	}
 	
+	//버스킹존 수정
+	public int buskingZoneUpdate(BusdateVo busdateVo, List<String> sList, List<String> eList) {
+		System.out.println("CompanyService.buskingZoneInsert()");
+		
+		int date_no = busdateVo.getDate_no();
+		System.out.println(date_no);
+		
+		companyDao.buskingZoneDelete(date_no);
+		
+		
+		System.out.println(busdateVo);
+		
+		companyDao.busdateInsertKey(busdateVo);
+		int no = busdateVo.getDate_no();
+		String date = busdateVo.getBus_date();
+		//공연시간 리스트에 차곡차곡 데이터 넣어주기
+		List<BustimeVo> tList = new ArrayList<>();
+		for(int i=0; i < sList.size(); i++) {
+
+			String start_time = (date+" "+sList.get(i));
+			String end_time = (date+" "+eList.get(i));
+			
+			tList.add(new BustimeVo(no, start_time, end_time));		
+		}
+		for(BustimeVo o : tList) {
+			System.out.println(o);
+		}
+		
+		return companyDao.bustimeInsert(tList);
+		
+	}
+	
+	//버스킹존 삭제
+	public int buskingZoneDelete(int date_no) {
+		System.out.println("CompanyService.buskingZoneDelete()");
+		
+		return companyDao.buskingZoneDelete(date_no);
+	}
+	
 	///////////////////////////////// *버스킹존* /////////////////////////////////
 }

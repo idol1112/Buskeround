@@ -680,7 +680,8 @@ ALTER TABLE buskingTime
 		)
 		REFERENCES buskingDate (
 			date_no
-		);
+		)
+        ON DELETE CASCADE; --부모 테이블의 PK 삭제시 연결된 값 삭제
 
 ALTER TABLE buskingApp
 	ADD

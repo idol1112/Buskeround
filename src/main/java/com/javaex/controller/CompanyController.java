@@ -287,6 +287,52 @@ public class CompanyController {
 		return companyService.getBuskingZone(busdateVo);
 	}
 	
+	//버스킹존 일정 수정
+	@ResponseBody
+	@RequestMapping(value = "/buskingZoneModify", method = {RequestMethod.GET, RequestMethod.POST})
+	public int buskingZoneModify(	@RequestParam ("date_no") int date_no,
+									@RequestParam ("stage_no") int stage_no,
+									@RequestParam ("bus_date") String bus_date,
+									@RequestParam ("requirements") String requirements,
+									@RequestParam ("startArray[]") List<String> sList,
+									@RequestParam ("endArray[]") List<String> eList
+									) {
+		
+		System.out.println("[CompanyController.buskingZoneModify()]");
+		
+		BusdateVo busdateVo = new BusdateVo(date_no, stage_no, bus_date, requirements);
+		System.out.println(busdateVo);
+		System.out.println("-시작시간-");
+		for(String s : sList) {
+			System.out.println(s);
+		}
+		
+		System.out.println("-종료시간-");
+		for(String e : eList) {
+			System.out.println(e);
+		}
+		
+		int count = companyService.buskingZoneUpdate(busdateVo, sList, eList);
+		
+		System.out.println("버스킹존 ["+count+"]건 수정 완료");
+	 
+		
+		return count;
+	}
+	
+	//버스킹존 일정 삭제
+	@RequestMapping(value = "/buskingZoneDelete", method = {RequestMethod.GET, RequestMethod.POST})
+	public String buskingZoneDelete(@RequestParam ("no") int date_no) {
+		System.out.println("[CompanyController.buskingZoneDelete()]");
+		System.out.println(date_no);
+		
+		int count = companyService.buskingZoneDelete(date_no);
+		
+		System.out.println("버스킹존 ["+count+"]건 삭제 완료");
+		
+		return "redirect:/Company/buskingZoneModifyForm";
+		
+	}
 	///////////////////////////////// *버스킹존* /////////////////////////////////
 	
 	//공연 신청 관리 폼(수락/거절)
