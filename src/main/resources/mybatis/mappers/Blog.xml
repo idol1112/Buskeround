@@ -3,6 +3,15 @@
 
 <mapper namespace="blog">
 
+	<!-- Get User_no -->
+	<select id="getUserNo" resultType="int">
+		<![CDATA[
+			select user_no
+			from users
+			where id = #{id}
+	 	]]>
+	</select>
+
 	<!-- Create Blog -->
 	<insert id="createBlog" parameterType="MypageVo">
 
@@ -140,6 +149,17 @@
 		]]>
 		
 	</update>
+	
+	<!--  이력사항 리스트 출력 -->
+	<select id="selectResume" resultType="ResumeVo">
+		<![CDATA[
+		select resume_no,
+			   user_no,
+			   resume_content
+		from resume
+		where user_no = #{user_no}
+		]]>
+	</select>
 	
 	<!-- 이력사항 -->
 	<insert id="resumeInsert" parameterType="java.util.List">

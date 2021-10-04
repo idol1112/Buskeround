@@ -28,6 +28,11 @@ public class BlogService {
 	}
 	
 	//블로그 이력사항 가져오기
+	public List<ResumeVo> getResumeList(String id){
+		System.out.println("BlogService.getResumeList()");
+		
+		return blogDao.selectResumeList(id);
+	}
 	
 	//블로그 수정하기(이미지)
 	public int modifyImg(BlogVo blogVo, MultipartFile file, List<ResumeVo> resumeList) {

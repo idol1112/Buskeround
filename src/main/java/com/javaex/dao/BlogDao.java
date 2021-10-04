@@ -39,6 +39,16 @@ public class BlogDao {
 		
 		return sqlSession.selectOne("blog.selectBlog", id);
 	}
+	
+	//블로그 이력사항 정보 가져오기
+	public List<ResumeVo> selectResumeList(String id){
+		int user_no = sqlSession.selectOne("blog.getUserNo", id);
+		
+		System.out.println("BlogDao.SelectUser() + UserNo : " + user_no);
+		
+		return sqlSession.selectList("blog.selectResume", user_no);
+	}
+	
 
 	//정보 수정 (이미지)
 	public int modifyImg(BlogVo blogVo) {

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <!---- 배너 ---->
 <c:choose>
@@ -107,24 +108,26 @@
   </table>
 
   <!---- 이력사항 ---->
-  <table class="profile_his">
-    <tr>
-      <td class="history"><img src="${pageContext.request.contextPath}/assets/image/blog/icon/resume.png"></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td class="history1">- 전국노래자랑 185회 대상</td>
-      <td class="history2">- 인기가요 283회 출연</td>
-    </tr>
-    <tr>
-      <td class="history1">- 복면가왕 29회 3연승</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td class="history1">- 불후의명곡 29회 17연승</td>
-      <td></td>
-    </tr>
-  </table>
+  	<c:if test="${fn:length(resumeList) > 1}">
+	  <table class="profile_his">
+	    <tr>
+	      <td class="history"><img src="${pageContext.request.contextPath}/assets/image/blog/icon/resume.png"></td>
+	      <td></td>
+	    </tr>
+	    <tr>
+	      <td class="history1">- ${resumeList[0].resume_content}</td>
+	      <td class="history2">- ${resumeList[3].resume_content}</td>
+	    </tr>
+	    <tr>
+	      <td class="history1">- ${resumeList[1].resume_content}</td>
+	      <td class="history2">- ${resumeList[4].resume_content}</td>
+	    </tr>
+	    <tr>
+	      <td class="history1">- ${resumeList[2].resume_content}</td>
+	      <td class="history2">- ${resumeList[5].resume_content}</td>
+	    </tr>
+	  </table>
+  	</c:if>
 
   <!---- 좋아요&팬 박스 ---->
   <table class="like_box">

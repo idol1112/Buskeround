@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -59,8 +60,15 @@
 						<tr>
 							<td class="table-head"><label for="resume_content[]">이력사항</label></td>
 							<td class="field_wrapper">
-								<input class="input" type="text" id="record" name="resume_content[]" placeholder="이력사항을 입력해주세요">
+								<input class="input" type="text" id="record" name="resume_content[]" placeholder="이력사항을 입력해주세요" value="${resumeList[0].resume_content} ">
 								<a href="javascript:void(0);" class="add_button" title="Add field"><img src="/Buskeround/assets/image/blog/icon/add.png"/></a>
+								
+								<c:if test="${fn:length(resumeList) > 1}">
+									<c:forEach items="${resumeList}" var="resumeList" varStatus="status" begin="1">
+										<div class="additionalResume"><input class="input" type="text" id="record" name="resume_content[]" value="${resumeList.resume_content}">
+										<a href="javascript:void(0);" class="remove_button"><img src="/Buskeround/assets/image/blog/icon/minus.png" style="margin-left: -3px"/></a></div>
+									</c:forEach>
+								</c:if>
 							</td>
 							
 						</tr>
@@ -116,7 +124,7 @@
 
 	$(document).ready(function(){
 	    var fieldHTML = '<div class="additionalResume"><input class="input" type="text" id="record" name="resume_content[]"><a href="javascript:void(0);" class="remove_button"><img src="/Buskeround/assets/image/blog/icon/minus.png"/></a></div>'; //New input field html 
-	    var x = 1; //Initial field counter is 1
+	    var x = '${fn:length(resumeList)}'; //Field 
 	    
 	    //이력사항 +
 	    $(".add_button").click(function(){

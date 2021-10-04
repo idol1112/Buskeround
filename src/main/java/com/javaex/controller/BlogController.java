@@ -16,7 +16,6 @@ import org.springframework.web.multipart.MultipartFile;
 import com.javaex.service.ArtistService;
 import com.javaex.service.BlogService;
 import com.javaex.vo.BlogVo;
-import com.javaex.vo.BustimeVo;
 import com.javaex.vo.ResumeVo;
 
 @RequestMapping(value = "/blog/")
@@ -35,6 +34,10 @@ public class BlogController {
 		// 해더 정보 가져오기
 		BlogVo blogVo = blogService.selectUser(id);
 		model.addAttribute(blogVo);
+		
+		// 이력사항 가져오기
+		List<ResumeVo> resumeList = blogService.getResumeList(id);
+		model.addAttribute("resumeList", resumeList);
 
 		//Aside 리스트
 		model.addAttribute("BlogLive", artistService.getBlogLive());
@@ -54,10 +57,11 @@ public class BlogController {
 
 		// 해더 정보 가져오기
 		BlogVo blogVo = blogService.selectUser(id);
-		model.addAttribute(blogVo);
+		model.addAttribute("blogVo", blogVo);
 
 		// 이력사항 가져오기
-
+		List<ResumeVo> resumeList = blogService.getResumeList(id);
+		model.addAttribute("resumeList", resumeList);
 
 		return "Blog/blogModifyForm";
 	}
@@ -65,7 +69,7 @@ public class BlogController {
 	// 수정
 	@RequestMapping(value = "modify", method = { RequestMethod.GET, RequestMethod.POST })
 	public String blog_modify(@ModelAttribute BlogVo blogVo,
-			@RequestParam("resume_content[]") List<String> resumeContentList,
+			@RequestParam(value = "resume_content[]", required = false, defaultValue="0") List<String> resumeContentList,
 			@RequestParam(value = "file1", required = false, defaultValue = "0") MultipartFile file,
 			@RequestParam("img_check") int img) {
 		System.out.println("[BlogController.modify()]");
