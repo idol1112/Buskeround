@@ -13,7 +13,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
 
 <!-- 에디터 -->
-<link rel="stylesheet" type="text/css" href="../../assets/css/Blog/textEditor/css/styles.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/Blog/textEditor/css/styles.css">
 
 <!-- font(Logo) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,11 +31,11 @@
 <body>
   <!------ br_container ------>
   <div class="clearfix" id="br_container">
-    <c:import url="/views/Blog/includes/aside.jsp"></c:import>
+    <c:import url="/WEB-INF/views/Blog/includes/aside.jsp"></c:import>
 
     <!------ br_content ------>
     <div id="br_content">
-      <c:import url="/views/Blog/includes/header.jsp"></c:import>
+	    <c:import url="/WEB-INF/views/Blog/includes/header.jsp"></c:import>
 
       <div id="content">
         <!-- 컨텐트 (프로필 수정) -->
@@ -45,21 +45,25 @@
 
 
         <!-- 해더 -->
-        <form id="writeform-content clearfix">
-          <select>
+        <form id="writeform-content clearfix" action="${pageContext.request.contextPath}/blog/writePost/${blogVo.id}" method="POST" enctype="multipart/form-data" >
+          <select name="category_no">
             <option selected>카테고리</option>
-            <option>공지사항</option>
-            <option>갤러리</option>
-            <option>방명록</option>
+            <option value="1">공지사항</option>
+            <option value="2">갤러리</option>
+            <option value="4">방명록</option>
           </select>
 
-          <input id="title" type="text" placeholder="제목을 입력해 주세요.">
-
+          <input id="title" name="title" type="text" placeholder="제목을 입력해 주세요.">
+			
           <!-- 에디터 -->
-          <div class="editor"></div>
+          <textarea name="content" class="editor"></textarea>
+          
+          <!-- 페이스북 업로드 -->
           <input id="facebookupload" type="checkbox" value="facebook">
           <label for="facebookupload">페이스북 등록</label>
-          <button id="uploadbutton">등록</button>
+          
+          
+          <button type="submit" id="uploadbutton">등록</button>
         </form>
       </div>
 

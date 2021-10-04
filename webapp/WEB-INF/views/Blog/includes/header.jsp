@@ -98,7 +98,7 @@
 
     <!-- 활동명 -->
     <tr>
-      <td class="main_name"><a href="blog_main.jsp">${blogVo.nickname}</a></td>
+      <td class="main_name"><a href="${pageContext.request.contextPath}/blog/blog_main/${blogVo.id}">${blogVo.nickname}</a></td>
     </tr>
 
     <!-- 한 줄 소개 -->
@@ -115,16 +115,28 @@
 	      <td></td>
 	    </tr>
 	    <tr>
-	      <td class="history1">- ${resumeList[0].resume_content}</td>
-	      <td class="history2">- ${resumeList[3].resume_content}</td>
+	      <c:if test="${fn:length(resumeList) > 0}">
+	      <td class="history1">-  ${resumeList[0].resume_content}</td>
+	      </c:if>
+	      <c:if test="${fn:length(resumeList) > 3}">
+	      <td class="history2">-  ${resumeList[3].resume_content}</td>
+	      </c:if>
 	    </tr>
 	    <tr>
-	      <td class="history1">- ${resumeList[1].resume_content}</td>
-	      <td class="history2">- ${resumeList[4].resume_content}</td>
+	      <c:if test="${fn:length(resumeList) > 1}">
+	      <td class="history1">-  ${resumeList[1].resume_content}</td>
+	      </c:if>
+	      <c:if test="${fn:length(resumeList) > 4}">
+	      <td class="history2">-  ${resumeList[4].resume_content}</td>
+	      </c:if>
 	    </tr>
 	    <tr>
-	      <td class="history1">- ${resumeList[2].resume_content}</td>
-	      <td class="history2">- ${resumeList[5].resume_content}</td>
+	      <c:if test="${fn:length(resumeList) > 2}">
+	      <td class="history1">-  ${resumeList[2].resume_content}</td>
+	      </c:if>
+	      <c:if test="${fn:length(resumeList) > 5}">
+	      <td class="history2">-  ${resumeList[5].resume_content}</td>
+	      </c:if>
 	    </tr>
 	  </table>
   	</c:if>

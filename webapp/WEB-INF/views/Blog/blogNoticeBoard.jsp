@@ -42,7 +42,7 @@
 				<!-- 글쓰기 버튼 -->
 				<div class="clearfix main_title">
 					<img src="../../assets/image/blog/icon/letter.png"> <span>공지사항</span>
-					<button id="writebutton" type="button" onClick="location.href='blogWriteForm.jsp'">
+					<button id="writebutton" type="button" onClick="location.href='${pageContext.request.contextPath}/blog/blog_write/${blogVo.id}'">
 						<img src="../../assets/image/blog/icon/write.png">글쓰기
 					</button>
 				</div>

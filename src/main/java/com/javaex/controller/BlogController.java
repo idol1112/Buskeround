@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.javaex.service.ArtistService;
 import com.javaex.service.BlogService;
 import com.javaex.vo.BlogVo;
+import com.javaex.vo.PostVo;
 import com.javaex.vo.ResumeVo;
 
 @RequestMapping(value = "/blog/")
@@ -42,7 +43,6 @@ public class BlogController {
 		//Aside 리스트
 		model.addAttribute("BlogLive", artistService.getBlogLive());
 		System.out.println("아티스트 라이브 리스트: " + artistService.getBlogLive());
-
 
 		System.out.println("BlogVo: " + blogVo);
 
@@ -157,7 +157,7 @@ public class BlogController {
 
 	@RequestMapping(value = "blog_notice/{id}", method = { RequestMethod.GET, RequestMethod.POST })
 	public String blog_noticeboard(@PathVariable("id") String id, Model model) {
-		System.out.println("[TestingController.blog_guestbook()]");
+		System.out.println("[TestingController.blog_notice()]");
 
 		// 해더 정보 가져오기
 		BlogVo blogVo = blogService.selectUser(id);
@@ -165,6 +165,30 @@ public class BlogController {
 
 		return "Blog/blogNoticeBoard";
 
+	}
+	
+	@RequestMapping(value = "blog_write/{id}", method = { RequestMethod.GET, RequestMethod.POST })
+	public String blog_writeform(@PathVariable("id") String id, Model model) {
+		System.out.println("[TestingController.blog_writeForm()]");
+		
+		// 해더 정보 가져오기
+		BlogVo blogVo = blogService.selectUser(id);
+		model.addAttribute(blogVo);
+		
+		return "Blog/blogWriteForm";
+		
+	}
+	
+	@RequestMapping(value = "writePost/{id}", method = { RequestMethod.GET, RequestMethod.POST })
+	public String blog_writeform(@PathVariable("id") String id,
+								 @ModelAttribute PostVo postVo) {
+		System.out.println("[TestingController.writePost()]");
+		System.out.println("들어온 정보: " + postVo);
+		
+		
+		
+		return "redirect:/blog/blog_main/" + id;
+		
 	}
 
 }
