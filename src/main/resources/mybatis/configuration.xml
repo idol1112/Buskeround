@@ -13,6 +13,7 @@
 		<typeAlias alias="BusdateVo" type="com.javaex.vo.BusdateVo" />
 		<typeAlias alias="BustimeVo" type="com.javaex.vo.BustimeVo" />
 		<typeAlias alias="ResumeVo" type="com.javaex.vo.ResumeVo" />
+		<typeAlias alias="NoticeVo" type="com.javaex.vo.NoticeVo" />
 	</typeAliases>
 
 	<mappers>

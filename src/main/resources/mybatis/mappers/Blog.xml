@@ -186,5 +186,12 @@
 		WHERE user_no = #{user_no}
     ]]>
     </delete>
+    
+    <!-- 공지사항/방명록 등록 -->
+    <insert id="writePost" parameterType="NoticeVo">
+		<![CDATA[
+		
+		]]>
+    </insert>
 	
 </mapper>

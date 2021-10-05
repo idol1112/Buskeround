@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.javaex.dao.BlogDao;
 import com.javaex.vo.BlogVo;
+import com.javaex.vo.NoticeVo;
 import com.javaex.vo.ResumeVo;
 
 @Service
@@ -86,6 +87,12 @@ public class BlogService {
 		
 		blogDao.resumeInsert(resumeList, blogVo);
 		return blogDao.modifyDeleteImg(blogVo);	
+	}
+	
+	public int writePost(NoticeVo noticeVo) {
+		System.out.println("BlogService.writePost()");
+		
+		return blogDao.writePost(noticeVo);
 	}
 
 }

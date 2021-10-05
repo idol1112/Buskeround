@@ -16,7 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.javaex.service.ArtistService;
 import com.javaex.service.BlogService;
 import com.javaex.vo.BlogVo;
-import com.javaex.vo.PostVo;
+import com.javaex.vo.NoticeVo;
 import com.javaex.vo.ResumeVo;
 
 @RequestMapping(value = "/blog/")
@@ -181,10 +181,11 @@ public class BlogController {
 	
 	@RequestMapping(value = "writePost/{id}", method = { RequestMethod.GET, RequestMethod.POST })
 	public String blog_writeform(@PathVariable("id") String id,
-								 @ModelAttribute PostVo postVo) {
+								 @ModelAttribute NoticeVo noticeVo) {
 		System.out.println("[TestingController.writePost()]");
-		System.out.println("들어온 정보: " + postVo);
+		System.out.println("들어온 정보: " + noticeVo);
 		
+		blogService.writePost(noticeVo);
 		
 		
 		return "redirect:/blog/blog_main/" + id;

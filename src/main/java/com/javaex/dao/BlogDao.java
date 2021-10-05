@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.javaex.vo.BlogVo;
 import com.javaex.vo.MypageVo;
+import com.javaex.vo.NoticeVo;
 import com.javaex.vo.ResumeVo;
 
 @Repository
@@ -104,6 +105,13 @@ public class BlogDao {
 		
 		sqlSession.delete("blog.resumeDelete", blogVo.getUser_no());
 		return sqlSession.insert("blog.resumeInsert", resumeList);
+	}
+	
+	//공지/방명록 작성
+	public int writePost(NoticeVo noticeVo) {
+		System.out.println("BlogDao.writePost()");
+		
+		return sqlSession.insert("blog.postInsert", noticeVo);
 	}
 	
 }
