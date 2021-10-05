@@ -22,12 +22,12 @@
 			    2,
 			    #{user_no},
 			    #{title},
-			    33.45071802804865,
-			    126.57059752230168,
+			    #{latitude},
+			    #{longitude},
 			    sysdate,
 			    #{live_url},
 			    #{address},
-			    'noimg.png'
+			    #{p_img}
 			)
 		]]>
 	</insert>

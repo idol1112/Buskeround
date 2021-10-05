@@ -81,7 +81,7 @@
 			    user_no = #{user_no}
 		]]>
 	</select>
-	
+
 	<!-- companyType 바꾸기 -->
 	<update id="updateCompanyType" parameterType="UserVo">
 		<![CDATA[
@@ -90,5 +90,30 @@
 			where user_no = #{user_no}
 		]]>
 	</update>
+
+	<!-- 유저 정보 가져오기(모바일) -->
+	<select id="loginMobile" resultType="UserVo" parameterType="UserVo">
+		<![CDATA[
+		    SELECT
+			    u.user_no,
+			    u.nickname,
+			    u.id,
+			    u.password,
+			    u.user_img,
+			    u.live,
+			    b.intro,
+			    b.banner,
+			    b.y_url
+			FROM
+			    blog   b,
+			    users  u
+			WHERE
+			        b.user_no = u.user_no
+			    AND u.id = #{id}
+			    AND u.password = #{password}
+			    AND u.user_type = 2
+		]]>
+	</select>
+
 
 </mapper>

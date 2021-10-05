@@ -111,7 +111,7 @@
 			dataType : "json",
 
 			data : {
-				start_date : year[0] + month[0] + date[0],
+				start_date : year[0] + "" + month[0] + date[0],
 				end_date : year[6] + "" + month[6] + date[6],
 				user_no : ${blogVo.user_no}
 			},

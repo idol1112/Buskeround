@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 <!---- 배너 ---->
 <c:choose>
   <c:when test="${blogVo.banner == null }">
-    <div class="banner" style='background-image: url("/Buskeround/assets/image/blog/img/defaultbanner.jpg");background-size: 100% 100%;',>
+    <div class="banner" style='background-image: url("/Buskeround/assets/image/blog/img/defaultbanner.jpg"); background-size: 100% 100%;',>
   </c:when>
   <c:otherwise>
     <div class="banner" style='background-image: url("${pageContext.request.contextPath}/upload/${blogVo.banner}");background-size: 100% 100%;'>
@@ -108,38 +108,38 @@
   </table>
 
   <!---- 이력사항 ---->
-  	<c:if test="${fn:length(resumeList) > 1}">
-	  <table class="profile_his">
-	    <tr>
-	      <td class="history"><img src="${pageContext.request.contextPath}/assets/image/blog/icon/resume.png"></td>
-	      <td></td>
-	    </tr>
-	    <tr>
-	      <c:if test="${fn:length(resumeList) > 0}">
-	      <td class="history1">-  ${resumeList[0].resume_content}</td>
-	      </c:if>
-	      <c:if test="${fn:length(resumeList) > 3}">
-	      <td class="history2">-  ${resumeList[3].resume_content}</td>
-	      </c:if>
-	    </tr>
-	    <tr>
-	      <c:if test="${fn:length(resumeList) > 1}">
-	      <td class="history1">-  ${resumeList[1].resume_content}</td>
-	      </c:if>
-	      <c:if test="${fn:length(resumeList) > 4}">
-	      <td class="history2">-  ${resumeList[4].resume_content}</td>
-	      </c:if>
-	    </tr>
-	    <tr>
-	      <c:if test="${fn:length(resumeList) > 2}">
-	      <td class="history1">-  ${resumeList[2].resume_content}</td>
-	      </c:if>
-	      <c:if test="${fn:length(resumeList) > 5}">
-	      <td class="history2">-  ${resumeList[5].resume_content}</td>
-	      </c:if>
-	    </tr>
-	  </table>
-  	</c:if>
+  <c:if test="${fn:length(resumeList) > 1}">
+    <table class="profile_his">
+      <tr>
+        <td class="history"><img src="${pageContext.request.contextPath}/assets/image/blog/icon/resume.png"></td>
+        <td></td>
+      </tr>
+      <tr>
+        <c:if test="${fn:length(resumeList) > 0}">
+          <td class="history1">- ${resumeList[0].resume_content}</td>
+        </c:if>
+        <c:if test="${fn:length(resumeList) > 3}">
+          <td class="history2">- ${resumeList[3].resume_content}</td>
+        </c:if>
+      </tr>
+      <tr>
+        <c:if test="${fn:length(resumeList) > 1}">
+          <td class="history1">- ${resumeList[1].resume_content}</td>
+        </c:if>
+        <c:if test="${fn:length(resumeList) > 4}">
+          <td class="history2">- ${resumeList[4].resume_content}</td>
+        </c:if>
+      </tr>
+      <tr>
+        <c:if test="${fn:length(resumeList) > 2}">
+          <td class="history1">- ${resumeList[2].resume_content}</td>
+        </c:if>
+        <c:if test="${fn:length(resumeList) > 5}">
+          <td class="history2">- ${resumeList[5].resume_content}</td>
+        </c:if>
+      </tr>
+    </table>
+  </c:if>
 
   <!---- 좋아요&팬 박스 ---->
   <table class="like_box">
@@ -174,6 +174,8 @@
         <div>
           <label class="modal-label" id="modal_label">위치</label>
           <input type="text" id="address" placeholder="위치를 입력세주세요" value="홍대 앞마당">
+          <input type="hidden" id="lat">
+          <input type="hidden" id="lng">
         </div>
 
         <button class="float-end mylocation">내 위치</button>
@@ -205,6 +207,7 @@
 </div>
 </body>
 
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=79c2ae6522e8e0df7b0592164f933676"></script>
 <script type="text/javascript">
 
   //SNS 연결
@@ -271,6 +274,31 @@
   $(".btn_start").on("click", function() {
     event.preventDefault();
 
+  //HTML5의 geolocation으로 사용할 수 있는지 확인합니다
+    if (navigator.geolocation) {
+
+        // GeoLocation을 이용해서 접속 위치를 얻어옵니다
+        navigator.geolocation.getCurrentPosition(function(position) {
+
+            var lat = position.coords.latitude, // 위도
+            	lng = position.coords.longitude; // 경도
+
+                $("#lat").val(lat);
+                $("#lng").val(lng);
+
+            var locPosition = new kakao.maps.LatLng(lat, lng), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
+                message = '<div style="padding:5px;">여기에 계신가요?!</div>'; // 인포윈도우에 표시될 내용입니다
+
+          });
+
+    } else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
+
+        var locPosition = new kakao.maps.LatLng(33.450701, 126.570667),
+            message = 'geolocation을 사용할수 없어요..'
+
+        displayMarker(locPosition, message);
+    }
+
     $("#exampleModal").modal('show');
 
     if (channel_id.length === 24) {
@@ -307,6 +335,8 @@
                var video_id = items.id.videoId;
                var video_img = items.snippet.thumbnails.high.url;
 
+				console.log(video_img);
+
                $("#title").val(title);
                $("#livelink").val(video_id);
                $("#p_img").val(video_img);
@@ -331,7 +361,9 @@
           title : $("#title").val(),
           p_img :  $("#p_img").val(),
           live_url : $("#livelink").val(),
-          address : $("#address").val()
+          address : $("#address").val(),
+          latitude : $("#lat").val(),
+          longitude : $("#lng").val()
     };
 
     $.ajax({

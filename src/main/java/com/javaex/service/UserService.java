@@ -22,6 +22,12 @@ public class UserService {
     return userDao.getPerson(userVo);
   }
 
+  /*** 유저 정보 가져오기(모바일) ***/
+  public UserVo loginMobile(UserVo userVo) {
+
+    return userDao.loginMobile(userVo);
+  }
+
   /*** 아이디 중복체크 ***/
   public boolean idCheck(String id) {
 

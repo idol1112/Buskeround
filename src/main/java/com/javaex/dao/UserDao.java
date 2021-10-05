@@ -42,16 +42,23 @@ public class UserDao {
     return sqlSession.selectOne("user.getPerson", userVo);
   }
 
+  /*** 유저 정보 가져오기(모바일) ***/
+  public UserVo loginMobile(UserVo userVo) {
+    System.out.println("[사용 메소드: UserDao.loginMobile()]");
+
+    return sqlSession.selectOne("user.loginMobile", userVo);
+  }
+
   //Get Nickname
   public String getNick(int user_no) {
 	  System.out.println("[사용 메소드: UserDao.getNick()]");
-	  
+
 	  String nick = sqlSession.selectOne("user.getNick", user_no);
 	  System.out.println(nick);
-	  
+
 	  return nick;
   }
-  
+
   //companyType 바꾸기
   public void companyType(UserVo userVo) {
 	  sqlSession.update("user.updateCompanyType",userVo);

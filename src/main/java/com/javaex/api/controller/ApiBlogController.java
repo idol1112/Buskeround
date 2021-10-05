@@ -31,6 +31,8 @@ public class ApiBlogController {
 
     System.out.println("공연을 시작합니다.");
 
+    System.out.println(postVo);
+
     return blogService2.live_start(postVo);
 
   }
@@ -68,8 +70,6 @@ public class ApiBlogController {
     date_map.put("user_no", user_no);
 
     System.out.println(date_map);
-
-    System.out.println(blogService2.timeline(date_map));
 
     return blogService2.timeline(date_map);
 

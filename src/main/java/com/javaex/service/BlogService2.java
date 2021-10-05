@@ -22,7 +22,15 @@ public class BlogService2 {
   public int live_start(PostVo postVo) {
 
     blogDao2.live_on(postVo);
-    return blogDao2.live_start(postVo);
+
+    if (postVo.getP_img().equals("1")) {
+      postVo.setP_img("noimg.png");
+      return blogDao2.live_start(postVo);
+
+    } else {
+      return blogDao2.live_start(postVo);
+    }
+
 
   }
 
