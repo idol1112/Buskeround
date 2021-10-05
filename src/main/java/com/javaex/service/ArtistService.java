@@ -13,48 +13,69 @@ public class ArtistService {
 
 	@Autowired
 	private ArtistDao artistDao;
-	
-	//아티스트 리스트 가져오기
+
+	// 아티스트 리스트 가져오기
 	public List<UserVo> getArtistList() {
-		
+
 		return artistDao.getArtistList();
 	}
-	
-	//아티스트 라이브 리스트 가져오기
+
+	// 아티스트 라이브 리스트 가져오기
 	public List<UserVo> getArtistLive() {
-		
+
 		return artistDao.getArtistLive();
 	}
-	
-	//아티스트 팬 많은 순 리스트 가져오기
+
+	// 아티스트 팬 많은 순 리스트 가져오기
 	public List<UserVo> getArtistFan() {
-		
+
 		return artistDao.getArtistFan();
 	}
-	
-	//new 아티스트 리스트 가져오기
+
+	// new 아티스트 리스트 가져오기
 	public List<UserVo> getArtistNew() {
-		
+
 		return artistDao.getArtistNew();
 	}
-	
-	//아티스트 장르 리스트 가져오기
+
+	// 아티스트 장르 리스트 가져오기
 	public List<UserVo> getArtistGenre(int no) {
-		
+
 		return artistDao.getArtistGenre(no);
 	}
-	
-		
-	//팬되기 리스트 가져오기
+
+	// 팬되기 리스트 가져오기
 	public List<UserVo> getFanList(int user_no) {
-		
+
 		return artistDao.getFanList(user_no);
 	}
-	
-	
-	//블로그 라이브 리스트 가져오기
+
+	// 팬 등록
+	public boolean getFan(UserVo userVo) {
+
+		if (artistDao.getFanOk(userVo) == null) {
+
+			return false;
+			
+		} else {
+			System.out.println("팬입니다.");
+			artistDao.getFan(userVo);
+			
+			return true;
+
+		}
+
+	}
+
+	// 팬 로딩
+	public List<UserVo> getFanLoading(int user_no) {
+
+		return artistDao.getFanLoading(user_no);
+	}
+
+	// 블로그 라이브 리스트 가져오기
 	public List<UserVo> getBlogLive() {
-		
+
 		return artistDao.getBlogLive();
 	}
 

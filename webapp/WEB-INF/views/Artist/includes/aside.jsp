@@ -7,17 +7,24 @@
 		<div class="rightsection-01-01">
 			<h3>NEW ARTIST</h3>
 			<div>
-				<img src="${pageContext.request.contextPath}/assets/image/artist/icon/circle1.png" style="width: 8px"> 
-				<img src="${pageContext.request.contextPath}/assets/image/artist/icon/circle1.png" style="width: 8px"> 
-				<img src="${pageContext.request.contextPath}/assets/image/artist/icon/circle2.png" style="width: 8px"> 
-				<img src="${pageContext.request.contextPath}/assets/image/artist/icon/circle1.png" style="width: 8px"> 
-				<img src="${pageContext.request.contextPath}/assets/image/artist/icon/circle1.png" style="width: 8px">
+				<img src="${pageContext.request.contextPath}/assets/image/artist/icon/circle1.png" style="width: 8px"> <img src="${pageContext.request.contextPath}/assets/image/artist/icon/circle1.png" style="width: 8px"> <img src="${pageContext.request.contextPath}/assets/image/artist/icon/circle2.png" style="width: 8px"> <img src="${pageContext.request.contextPath}/assets/image/artist/icon/circle1.png" style="width: 8px"> <img src="${pageContext.request.contextPath}/assets/image/artist/icon/circle1.png" style="width: 8px">
 			</div>
 		</div>
 		<div style="width: 285px; height: 380px;">
-			<img src="${pageContext.request.contextPath}/assets/image/artist/img/101.jfif" style="width: 285px; height: 285px; object-fit: cover;">
+			<img class="slide1" src="${pageContext.request.contextPath}/assets/image/artist/img/101.jfif" style="width: 285px; height: 285px; object-fit: cover;">
+			<script>
+
+				
+			</script>
+
 			<div style="max-width: 285px; max-height: 95px; width: 285px; height: 95px; background-color: #00ff00">
-				<p>뉴아티스트 글씨 넣기뉴아티스트 글씨 넣기뉴아티스트 글씨 넣기뉴아티스트 글씨 넣기뉴아티스트</p>
+				<table class="asdietb">
+					<tr>
+						<td class="aside01">아티스트 이름</td>
+						<td class="aside02">장르</td>
+						<td class="aside03">자기소개</td>
+					</tr>
+				</table>
 			</div>
 
 		</div>
@@ -44,3 +51,4 @@
 		</table>
 	</div>
 </div>
+

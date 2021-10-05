@@ -157,10 +157,10 @@
           and rn <=10
 		]]>
 	</select>
-	
-	
+
+
 	<!-- 팬 많은 순 리스트 -->
-		<select id="getArtistFan" resultType="UserVo">
+	<select id="getArtistFan" resultType="UserVo">
 		<![CDATA[
         SELECT
               rn,
@@ -235,10 +235,10 @@
           and rn <=10		
 		]]>
 	</select>
-	
-	
-	<!-- new 아티스트 리스트 -->	
-		<select id="getArtistNew" resultType="UserVo" >
+
+
+	<!-- new 아티스트 리스트 -->
+	<select id="getArtistNew" resultType="UserVo">
 		<![CDATA[
 		SELECT
               rn,
@@ -313,9 +313,10 @@
           and rn <=10
 		]]>
 	</select>
-	
+
 	<!-- 아티스트 장르 리스트 -->
-		<select id="getArtistGenre" resultType="UserVo" parameterType="int">
+	<select id="getArtistGenre" resultType="UserVo"
+		parameterType="int">
 		<![CDATA[
 	    SELECT
               rn,
@@ -390,10 +391,10 @@
           and rn <=10
     ]]>
 	</select>
-	
 
-		
-	
+
+
+
 	<!-- 팬 되기 리스트 -->
 	<select id="getFanList" resultType="UserVo">
 		<![CDATA[
@@ -443,7 +444,7 @@
         order by f.fan_no asc )ot)ort
         where rn >=1
         and rn <=10
-		]]>		
+		]]>
 	</select>
 
 	<!-- 블로그 라이브 리스트 가져오기 -->
@@ -520,7 +521,39 @@
           ORDER by users.ranking_score desc, users.artist_regdate asc) ot) ort
           where rn >=1
           and rn <=6
-		]]>		
+		]]>
+	</select>
+
+	<!-- 팬 등록 -->
+	<insert id="getFan" parameterType="UserVo">
+	<![CDATA[
+	INSERT INTO fan
+	VALUES (SEQ_FAN_NO.nextval, #{user_no}, #{artist_no})
+	]]>
+	</insert>
+
+
+	<select id="getFanLoading" resultType="UserVo" parameterType="int">
+	<![CDATA[
+	SELECT
+	    user_no,
+	    artist_no
+	FROM
+	fan
+	where user_no = #{user_no}
+	]]>
+	</select>
+
+
+	<select id="getFanOk" resultType="UserVo" parameterType="UserVo">
+	<![CDATA[
+	SELECT
+	    user_no,
+	    artist_no
+	FROM
+	fan
+	where user_no = #{user_no} and artist_no = #{artist_no}
+	]]>
 	</select>
 
 

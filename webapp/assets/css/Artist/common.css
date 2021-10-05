@@ -134,3 +134,11 @@
 	image-rendering: -webkit-optimize-contrast;
 }
 
+.buttonicon{
+	border:0;
+	outline:0px;
+	background-color: #fff;
+}
+
+
+

@@ -58,6 +58,33 @@ public class ArtistDao {
 	}
 	
 	
+	//팬 등록
+	public void getFan(UserVo userVo) {
+		System.out.println("[ArtistDao.getFan()]");
+		
+		sqlsession.insert("artist.getFan", userVo);
+		
+	}
+	
+	//팬 로딩
+	public List<UserVo> getFanLoading(int user_no) {
+		System.out.println("[artistDao.getFanLoading()]");
+		
+		return sqlsession.selectList("artist.getFanLoading", user_no);
+	}
+	
+	//팬 등록 여부
+	public UserVo getFanOk(UserVo userVo) {
+		System.out.println("[artistDao.getFanOk()]");
+		
+		return sqlsession.selectOne("artist.getFanOk", userVo);
+	}
+	
+	
+	
+	
+	
+	
 	
 	//블로그 라이브 리스트 가져오기
 	public List<UserVo> getBlogLive() {

@@ -21,6 +21,7 @@
 <!-- css -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/Artist/common.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/Common/common.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/Artist/ArtistNoSearch.css">
 
 </head>
 
@@ -32,19 +33,29 @@
     <c:import url="/WEB-INF/views/Artist/includes/artbox.jsp"></c:import>
 
     
-     <div class="section-01">
-        <div class="leftsection">
-        	
-            <div class="leftsection-01">
-                <h2 class="search">종합검색</h2>
-                <!-- 아티스트 검색 -->
-                <div>
-                    <input type="text" placeholder="아티스트 검색">
-                    <img src="${pageContext.request.contextPath}/assets/image/artist/icon/search.png" style="width:20px">
-                </div>
-            </div>
-         </div>
-      </div>      
+	<div class="section-01">
+		<div class="leftsection">
+			<!-- 종합랭킹 -->
+			<div class="leftsection-01">
+				<h2>종합랭킹</h2>
+				<!-- 아티스트 검색 -->
+				<div>
+					<input type="text" placeholder="아티스트 검색"> <img src="${pageContext.request.contextPath}/assets/image/artist/icon/search.png" style="width: 20px">
+				</div>
+			</div>
+			<!-- 종합랭킹 표그래프 -->
+			<div class="leftsection-02">
+				<div class="nosearch-02">
+					<p style="width:701px; height:900px;">입력하신 정보를 찾을 수 없습니다.</p>
+				</div>
+
+			</div>
+		</div>
+
+		<!-- aside  -->
+		<c:import url="/WEB-INF/views/Artist/includes/aside.jsp"></c:import>
+		
+	</div>      
   
   
   <!-- footer -->

@@ -41,9 +41,15 @@
 			<!-- 종합랭킹 -->
 			<div class="leftsection-01">
 				<h2>종합랭킹</h2>
+
 				<!-- 아티스트 검색 -->
 				<div>
-					<input type="text" placeholder="아티스트 검색"> <img src="${pageContext.request.contextPath}/assets/image/artist/icon/search.png" style="width: 20px">
+					<form action="" method="get">
+						<input type="text" placeholder="아티스트 검색">
+						<button class="buttonicon" type="button">
+							<img src="${pageContext.request.contextPath}/assets/image/artist/icon/search.png" style="width: 20px">
+						</button>
+					</form>
 				</div>
 			</div>
 			<!-- 종합랭킹 표그래프 -->
@@ -66,14 +72,11 @@
 							<!--1번-->
 							<tr>
 								<td>${aList.rn}</td>
-								<td>
-    								<c:if test="${aList.user_img == null}">
-    								<img src="/Buskeround/assets/image/blog/icon/user.png" style="width: 70px; height: 70px; border-radius: 70%; object-fit: cover;">
-    								</c:if>
-    								<c:if test="${aList.user_img != null}">
-    								<img src="${pageContext.request.contextPath}/upload/${aList.user_img}" style="width: 70px; height: 70px; border-radius: 70%; object-fit: cover;">
-    								</c:if>
-								</td>
+								<td><c:if test="${aList.user_img == null}">
+										<img src="/Buskeround/assets/image/blog/icon/user.png" style="width: 70px; height: 70px; border-radius: 70%; object-fit: cover;">
+									</c:if> <c:if test="${aList.user_img != null}">
+										<img src="${pageContext.request.contextPath}/upload/${aList.user_img}" style="width: 70px; height: 70px; border-radius: 70%; object-fit: cover;">
+									</c:if></td>
 								<td>
 									<div>${aList.nickname}</div>
 									<div>
@@ -109,7 +112,7 @@
 									<div>가입연도 ${aList.artist_regdate}년</div>
 								</td>
 								<td class="left02_td"><img src="${pageContext.request.contextPath}/assets/image/artist/icon/heart2.png" style="width: 20px"> <span>${aList.likes}</span></td>
-								<td class="left02_td"><img src="${pageContext.request.contextPath}/assets/image/artist/icon/fan1.png" style="width: 20px"> <span>${aList.fan}</span></td>
+								<td class="left02_td"><img class="fan" data-no="${aList.user_no}" src="${pageContext.request.contextPath}/assets/image/artist/icon/fan1.png" style="width: 20px"><span>${aList.fan}</span></td>
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -122,10 +125,78 @@
 
 	</div>
 
-
-
 	<!-- footer -->
 	<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
 
 </body>
+
+<script type="text/javascript">
+
+// 페이지 로딩되었을 때
+$(document).ready(function(){
+
+	$.ajax({
+		// 컨트롤러에서 대기중인 URL 주소이다.
+		url : "${pageContext.request.contextPath}/Artist/FanLoading",
+
+		// HTTP method type(GET, POST) 형식이다.
+		type : "post",
+
+
+		data : {
+			user_no : ${authUser.user_no}
+		},
+
+		// 성공일 경우 success로 들어오며, 'result'는 응답받은 데이터이다.
+		success : function(result) {
+			/*성공시 처리해야될 코드 작성*/
+
+		},
+
+		// 실패할경우 error로 들어온다.
+		error : function(XHR, status, error) {
+			console.error(status + " : " + error);
+		}
+	});  
+
+});
+
+
+// 팬되기 눌렀을 때
+$(".fan").on("click",function(){
+	
+	$(this).attr('src', '${pageContext.request.contextPath}/assets/image/artist/icon/fan2.png');
+	var artist_no = $(this).data("no");
+	
+	$.ajax({
+		// 컨트롤러에서 대기중인 URL 주소이다.
+		url : "${pageContext.request.contextPath}/Artist/Fan",
+
+		// HTTP method type(GET, POST) 형식이다.
+		type : "get",
+
+		// Json 형태의 데이터로 보낸다.
+		contentType : "application/json",
+
+
+		data : {
+		artist_no : artist_no,
+		user_no : ${authUser.user_no}
+		},
+
+		// 성공일 경우 success로 들어오며, 'result'는 응답받은 데이터이다.
+		success : function(result) {
+			/*성공시 처리해야될 코드 작성*/
+			console.log(result)
+		},
+
+		// 실패할경우 error로 들어온다.
+		error : function(XHR, status, error) {
+			console.error(status + " : " + error);
+		}
+	});
+	
+});
+</script>
+
 </html>
