@@ -14,6 +14,7 @@ public class MapVo {
 	private String user_img;	//유저프로필(table-users)
 	private String intro;		//블로그자기소개 (table-blog)
 	
+	
 	public MapVo() {}
 	
 	public MapVo(double latitude, double longitude, String p_end, String p_img, String address, String nickname, String genre, int user_no, String id, String user_img, String intro) {

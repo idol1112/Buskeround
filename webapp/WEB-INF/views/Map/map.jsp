@@ -26,8 +26,8 @@
 	    .info .link {color: #5085BB;}
 	    
 		.map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
-		.map_wrap {position:relative;width:100%;height:700px;}
-		#menu_wrap {position:absolute;top:0;left:0;bottom:0;width:400px;height:100%;margin:10px 0 30px 10px;padding:0px;overflow-y:auto;background:rgba(255, 255, 255, 0.7);z-index: 1;font-size:12px;border-radius: 10px;}
+		.map_wrap {position:relative;width:100%;height:100%;}
+		#menu_wrap {position:absolute;top:0;left:0;bottom:0;width:365px;height:100%;padding:0px;overflow-y:auto;background:rgba(255, 255, 255, 0.7);z-index: 1;font-size:12px;}
 		.bg_white {background:#fff;}
 		#menu_wrap hr {display: block; height: 1px;border: 0; border-top: 2px solid #5F5F5F;margin:3px 0;}
 		#menu_wrap .option{text-align: center;}
@@ -67,12 +67,10 @@
 		}
 		
 		#btn_sh{
-		border: 1px solid skyblue;
-		background-color: background-color: #ffff00;;
-		color:skyblue;
+		border: 0px solid;
+		background-color: #ffffff;
 		padding: 5px;
-		border-radius: 3px;
-		box-shadow: 0 2px 1px 0 rgb(0 0 0 / 15%);
+
 		}
 		
 		#map{
@@ -94,8 +92,31 @@
 		}
 		
 		.boxsearch{
-		border-radius: 3px;
-		box-shadow: 0 2px 1px 0 rgb(0 0 0 / 15%);
+	    border:1px solid blue;
+	    position:relative;
+	    max-width:500px;
+	    margin-left:10px;
+	    margin-right:10px;
+		}
+		.inputsearch {
+		    outline:0;
+		    border:0;
+		    display:block;
+		    width:100%;
+		    padding:20px;
+		    padding-right:60px;
+		    box-sizing:border-box;
+		    font-weight:bold;
+		    font-size:2rem;
+		}
+		.buttonsearch {
+		    position:absolute;
+		    top:50%;
+		    right:10px;
+		    transform:translateY(-50%);
+		}
+		.listfont{
+			font-size:20px;
 		}
 		
 		.scroll{
@@ -114,9 +135,7 @@
 		/* 스크롤바 막대 설정*/
 		.type1::-webkit-scrollbar-thumb{
 		    height: 17%;
-		    background-color: #00BFFF;
-		    /* 스크롤바 둥글게 설정    */
-		    border-radius: 10px;    
+		    background-color: #00BFFF;   
 		}
 		
 		/* 스크롤바 뒷 배경 설정*/
@@ -153,9 +172,11 @@
     <div id="menu_wrap" class="bg_white scroll type1">
         <div class="option">
             <div>
-                <form onsubmit="" class="formsearch">
-                    <input type="text" value="" id="keyword" class="boxsearch" size="22"> 
-                    <button type="submit" id="btn_sh">검색하기</button> 
+                <form onsubmit="searchPlaces(); return false;" class="formsearch">
+                	<div class="boxsearch">
+                    <input type="text" value="강남역" id="keyword" class="inputsearch" placeholder="장소 입력"> 
+                    <button type="submit" id="btn_sh" class="buttonsearch"><img src="/Buskeround/assets/image/map/searchbtn.png" width="35px" height="35px"></button> 
+                    </div>
                 </form>
             </div>
         </div>
@@ -166,7 +187,7 @@
     </div>
 </div>
 
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=79c2ae6522e8e0df7b0592164f933676"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=79c2ae6522e8e0df7b0592164f933676&libraries=services"></script>
 
 <div id="map"></div>
 <script>
@@ -174,19 +195,20 @@
     
 var mapContainer = document.getElementById('map'), // 지도의 중심좌표
     mapOption = { 
-        center: new kakao.maps.LatLng(33.451475, 126.570528), // 지도의 중심좌표
+        center: new kakao.maps.LatLng(37.49699749185255, 127.02445040286854), // 지도의 중심좌표
         level: 3 // 지도의 확대 레벨
     }; 
 
 var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 
-var imageSrc = '/Buskeround/assets/image/map/makericon2.png', // 마커이미지의 주소입니다    
-imageSize = new kakao.maps.Size(55, 60), // 마커이미지의 크기입니다
-imageOption = {offset: new kakao.maps.Point(31, 42)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+var imageSrc = '/Buskeround/assets/image/map/makericon.png', // 마커이미지의 주소입니다    
+imageSize = new kakao.maps.Size(48, 55), // 마커이미지의 크기입니다
+imageOption = {offset: new kakao.maps.Point(26, 40)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
 
 var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption)
 
 var bounds = new kakao.maps.LatLngBounds();  // 지도를 재설정할 범위정보를 가지고 있을 LatLngBounds 객체를 생성합니다
+
 var positions = [];
 var content = [];
 var num = -1;
@@ -242,17 +264,26 @@ kakao.maps.event.addListener(map, 'dragend', function() {
 });
 
 function getListItem(index, mapFind) {
-
+	var sumimg = mapFind.p_img;
     var el = document.createElement('li'),
-    itemStr ='<div class="body">' +  
-    '            <div class="img listimg">' +
-    '                <img src="${pageContext.request.contextPath }/upload/'+mapFind.user_img+'" width="73" height="70" align="center">' +
-    '            <div class="desc">' + 
-    '                <div class="ellipsis">활동명 : '+mapFind.nickname+'</div>' + 
-    '                <div class="ellipsis">장소명   : '+mapFind.address+'</div>' + 
-    '            </div>' + 
-    '            </div>' + 
-    '        </div>';
+    itemStr = '';
+    itemStr +='<div class="body">'; 
+    itemStr +='<div class="img listimg">';
+    
+    if(sumimg.indexOf("http") == 0){
+    itemStr +='<img src="' + mapFind.p_img + '" width="350" height="250">'
+    }else if(sumimg.indexOf("noimg") == 0){
+    itemStr +='<img src="${pageContext.request.contextPath}/assets/image/blog/img/noimg.png" width="350" height="250">';
+    }else{
+    itemStr +='<img src="${pageContext.request.contextPath }/upload/'+mapFind.p_img+'" width="350" height="250">';
+    }
+    
+
+    itemStr +='<div class="ellipsis listfont">활동명 : '+mapFind.nickname+'</div>';
+    itemStr +='<div class="ellipsis listfont">장소명   : '+mapFind.address+'</div>';
+    itemStr +='<div>';
+
+    itemStr +='</div>';
 
     el.innerHTML = itemStr;
     el.className = 'item';
@@ -311,11 +342,11 @@ var datas = bounds.extend(data);
 function displayMarker(data) { 
 
     var marker = new kakao.maps.Marker({
+    	
         map: map,
         position: data,
         image: markerImage
     });
-	
 
 	
 	//오버레이 생성

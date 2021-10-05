@@ -46,4 +46,10 @@ public class MapController {
 		return "Map/maptest";
 	}
 	
+	@RequestMapping("/Map/testimg")
+	public String testimg(){
+		System.out.println("테스트이미지");
+		
+		return "Map/testimg";
+	}
 }
