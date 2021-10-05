@@ -39,4 +39,11 @@ public class MapController {
 		return mapFind;
 	}
 	
+	@RequestMapping("/Map/maptest")
+	public String maptest(){
+		System.out.println("맵테스트");
+		
+		return "Map/maptest";
+	}
+	
 }
