@@ -19,7 +19,7 @@ public class MapController {
 	@Autowired
 	MapService mapService;
 	
-
+	//지도 위도경도데이터 받기
 	@RequestMapping("/Map/map")
 	public String mapList(Model model) throws JsonProcessingException {
 		System.out.println("맵컨트롤러-맵리스트");
@@ -30,6 +30,17 @@ public class MapController {
 		return "Map/map";
 	}
 	
+	//버스킹존 데이터 받기
+	@RequestMapping("/Map/buskingzone")
+	public String busKingzoneList(Model model) throws JsonProcessingException {
+		List<MapVo> mapList = mapService.mapList();
+		model.addAttribute("mapList", mapList);
+		System.out.println(mapList);
+		
+		return "Map/buskingzone";
+	}
+	
+	//에이작스 위치기반 리스트테이터 받기
 	@ResponseBody
 	@RequestMapping("/Map/mapns")
 	public List<MapVo> mapns(@RequestParam("nlat") double nlat, @RequestParam("nlng") double nlng, @RequestParam("slat") double slat, @RequestParam("slng") double slng) {
@@ -46,10 +57,4 @@ public class MapController {
 		return "Map/maptest";
 	}
 	
-	@RequestMapping("/Map/testimg")
-	public String testimg(){
-		System.out.println("테스트이미지");
-		
-		return "Map/testimg";
-	}
 }
