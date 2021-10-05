@@ -81,27 +81,37 @@ public class CompanyDao {
 	///////////////////////////////// 버스킹존 /////////////////////////////////
 	//버스킹존(날짜)등록 키값 가져오기
 	public int busdateInsertKey(BusdateVo busdateVo) {
-		System.out.println("CompanyDao.busdateInsert()");
+		System.out.println("CompanyDao.busdateInsertKey()");
 		
 		return sqlSession.insert("busdate.busdateInsert", busdateVo);
 	}
 	
 	//버스킹존(시간)등록
 	public int bustimeInsert(List<BustimeVo> tList) {
+		System.out.println("CompanyDao.busdateInsert()");
 		
 		return sqlSession.insert("bustime.bustimeInsert", tList);
 	}
 	
 	//날짜별 버스킹정보 불러오기
 	public List<BusdateVo> selectBusking(BusdateVo busdateVo) {
+		System.out.println("CompanyDao.selectBusking()");
 		
 		return sqlSession.selectList("busdate.selectBusking", busdateVo);
 	}
 	
 	//버스킹존 삭제
 	public int buskingZoneDelete(int date_no) {
+		System.out.println("CompanyDao.buskingZoneDelete()");
 		
 		return sqlSession.delete("busdate.buskingDelete", date_no);
+	}
+	
+	//해당 공연장 버스킹 날짜 불러오기
+	public List<BusdateVo> selectBusdateList(int stage_no) {
+		System.out.println("CompanyDao.selectBusdateList()");
+		
+		return sqlSession.selectList("busdate.selectBusdateList", stage_no);
 	}
 	
 	///////////////////////////////// *공연장* /////////////////////////////////

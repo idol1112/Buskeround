@@ -333,6 +333,19 @@ public class CompanyController {
 		return "redirect:/Company/buskingZoneModifyForm";
 		
 	}
+	
+	//해당 공연장 버스킹 날짜 불러오기
+	@ResponseBody
+	@RequestMapping(value = "/buskingDateList", method = {RequestMethod.GET, RequestMethod.POST})
+	public List<BusdateVo> buskingDateList(int stage_no) {
+		System.out.println("[CompanyController.buskingDateList()]");
+		
+		System.out.println(stage_no);
+		List<BusdateVo> busdateVo = companyService.buskingDateList(stage_no);
+		System.out.println(busdateVo);
+		return busdateVo;
+	}
+	
 	///////////////////////////////// *버스킹존* /////////////////////////////////
 	
 	//공연 신청 관리 폼(수락/거절)

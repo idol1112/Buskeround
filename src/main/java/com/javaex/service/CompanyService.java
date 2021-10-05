@@ -249,5 +249,12 @@ public class CompanyService {
 		return companyDao.buskingZoneDelete(date_no);
 	}
 	
+	//해당 공연장 버스킹 날짜 불러오기
+	public List<BusdateVo> buskingDateList(int stage_no) {
+		System.out.println("CompanyService.buskingDateList()");
+		
+		return companyDao.selectBusdateList(stage_no);
+	}
+	
 	///////////////////////////////// *버스킹존* /////////////////////////////////
 }

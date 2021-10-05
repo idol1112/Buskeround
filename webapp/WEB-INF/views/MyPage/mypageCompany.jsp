@@ -20,6 +20,12 @@
 <!-- css -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/Common/common.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/MyPage/mypage.css">
+
+<!-- jquery -->
+<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+<!-- sweetAlert -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
 <body>
 	<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
@@ -96,6 +102,30 @@ function setThumbnail(event) {
 	
 	reader.readAsDataURL(event.target.files[0]); 
 	}
+	
+$("#profilesubmit").on("click", function(e) {
+	e.preventDefault();
+	var form = $(this).parents('form');
+	
+	Swal.fire({
+		title: '제휴사 등록',
+		text: "제휴사 등록을 하시겠습니까?",
+		icon: 'question',
+		showCancelButton: true,
+		confirmButtonColor: '#3085d6',
+		cancelButtonColor: '#d33',
+		confirmButtonText: '확인',
+		cancelButtonText: '취소'
+	}).then((result) => {
+		if (result.isConfirmed) {
+			form.submit();
+		} 
+	})
+
+	  
+	
+
+})
 
 </script>
 </html>

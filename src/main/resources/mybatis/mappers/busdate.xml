@@ -45,4 +45,15 @@
 		]]>	
 	</delete>
 	
+	<!-- 해당 공연장 버스킹 날짜 불러오기 -->
+	<select id="selectBusdateList"  parameterType="int" resultType="BusdateVo">
+		<![CDATA[
+			select  date_no,
+				  	bus_date
+			from    buskingdate
+			where   stage_no = #{stage_no}
+		
+		]]>
+	</select>
+	
 </mapper>

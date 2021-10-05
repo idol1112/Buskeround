@@ -121,14 +121,17 @@
 	<!------- footer -------->
 </body>
 <script type="text/javascript">
+var available_days = [],
+	$picker = $('#datepicker'),
+	months = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]
 	
 //datepicker
-$("#datepicker").datepicker({
+$picker.datepicker({
 	language: 'ko',
 	minDate: new Date(), // 최소 날짜 오늘 이후
 	
 	//선택한 날짜를 가져옴
-	onSelect:function(date) {
+	onSelect: function(date) {
 		console.log(date);
 		$("[name='date_no']").val("");
 		$("[name='requirements']").val("");
@@ -228,27 +231,116 @@ $("form").on("click", "#insBtn", function() {
 	});
 })
 
+//공연장 선택시 버스킹 일정 불러오기(ajax)
+$(document).ready(function () {
+	var stage_no;
+	stage_no = $("#stage-select").val();
+	console.log(stage_no);
+	
+	$.ajax({
+		url : "${pageContext.request.contextPath }/Company/buskingDateList",
+		type : "post",
+		//contentType : "application/json",
+		data :  {stage_no:stage_no},
+		//dataType : "json",
+		success : function(busdateVo) {
+			//성공시 처리해야될 코드 작성
+			for(var i=0;i<busdateVo.length;i++) {
+				available_days[i] = busdateVo[i].bus_date.substring(0, 10);
+			}
+			//등록된 버스킹일정 제외하고 날짜 비활성화
+			$picker.datepicker({
+			    onRenderCell: function (date, cellType) {
+
+			    	var myDate = date.getFullYear()+'-'+months[date.getMonth()]+'-'+((date.getDate()<10)?'0':'')+date.getDate();
+			    	console.log(myDate);
+			        
+			        if(available_days.indexOf(myDate) != -1) {
+			            return {
+			                disabled: false
+			            }
+			        } else {
+			          return {
+			        	disabled: true
+			          }
+			        }
+			    }
+				
+			});
+			
+		},
+		error : function(XHR, status, error) {
+			console.error(status + " : " + error);
+		}
+	});
+	$("#stage-select").on("change",  function () {
+		stage_no = $(this).val();
+		console.log(stage_no);
+		
+		$.ajax({
+			url : "${pageContext.request.contextPath }/Company/buskingDateList",
+			type : "post",
+			//contentType : "application/json",
+			data :  {stage_no:stage_no},
+			//dataType : "json",
+			success : function(busdateVo) {
+				//성공시 처리해야될 코드 작성
+				var available_days2 = [];
+				for(var i=0;i<busdateVo.length;i++) {
+					available_days2[i] = (busdateVo[i].bus_date).substring(0, 10);
+				}
+				console.log(available_days2);
+				//등록된 버스킹일정 제외하고 날짜 비활성화
+				$picker.datepicker({
+				    onRenderCell: function (date, cellType) {
+
+				    	var myDate = date.getFullYear()+'-'+months[date.getMonth()]+'-'+((date.getDate()<10)?'0':'')+date.getDate();
+				    	console.log(myDate);
+				        
+				        if(available_days2.indexOf(myDate) != -1) {
+				            return {
+				                disabled: false
+				            }
+				        } else {
+				          return {
+				        	disabled: true
+				          }
+				        }
+				    }
+					
+				});
+				
+			},
+			error : function(XHR, status, error) {
+				console.error(status + " : " + error);
+			}
+		});
+		
+		
+	});
+});
+
 //저장 완료 alert
 $().ready(function () {
-            $("#insBtn").click(function () {
-                const Toast = Swal.mixin({
-                    toast: true,
-                    position: 'center-center',
-                    showConfirmButton: false,
-                    timer: 1500,
-                    timerProgressBar: true,
-                    didOpen: (toast) => {
-                        toast.addEventListener('mouseenter', Swal.stopTimer)
-                        toast.addEventListener('mouseleave', Swal.resumeTimer)
-                    }
-                })
+    $("#insBtn").click(function () {
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'center-center',
+            showConfirmButton: false,
+            timer: 1500,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
 
-                Toast.fire({
-                    icon: 'success',
-                    title: '버스킹존 수정이 완료되었습니다.'
-                })
-            });
-        });
+        Toast.fire({
+            icon: 'success',
+            title: '버스킹존 수정이 완료되었습니다.'
+        })
+    });
+});
 
 //공연 시간 add 버튼
 $("#time-table").on("click", ".addBtn", function() {
@@ -262,6 +354,7 @@ $("#time-table").on("click", ".minusBtn", function() {
 	$(this).parent().remove();
 });
 
+//버스킹 일정 삭제 이벤트
 $().ready(function () {
 	$("#delBtn").click(function () {
 		Swal.fire({
