@@ -191,6 +191,6 @@ kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
     console.log(showlat);
     console.log(showlng);
 });
-
+</script>
 </body>
 </html>
