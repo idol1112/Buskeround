@@ -729,3 +729,90 @@ CREATE FUNCTION get_seq RETURN NUMBER IS
 BEGIN
   RETURN seq_resume_no.nextval;
 END;
+
+/*///////////////////////////테이블 초기화//////////////////////////////*/
+
+--제휴사 insert 문
+--김덕배씨 회원가입(제휴사1)
+insert into users
+values(
+        1,
+        '1234',
+        '1234',
+        '1234@naver.com',
+        '김덕배',
+        null,
+        '김덕배',
+        '010-1111-1111',
+        'male',
+        '1998-11-12',
+        '3',
+        '트랩',
+        '0',
+        0,
+        0,
+        sysdate,
+        '2',
+        '2',
+        '0'
+);
+--김창수씨 회원가입(제휴사2)
+insert into users
+values(
+        2,
+        '4321',
+        '4321',
+        '4321@naver.com',
+        '김창수',
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        '1',
+        '2',
+        null
+);
+
+-- 제휴사 등록
+insert into company values(1,'1633448248750e46f1e31-1938-4e04-b505-504ba9d79791.jpg','신촌 CGV','서울 서대문구 신촌로 129 아트레온','1544-1122','김덕배','104-81-45690');
+insert into company values(2,'16334837711904673cc34-d063-4543-a222-fc9eebd4141f.png','신라호텔','서울특별시 중구 동호로 249','02-2233-3131','김창덕','101-11-37840');
+
+--공연장 등록
+insert into stage values(1,1,'7층 스테이지','1','1','1');
+insert into stage values(2,1,'8층 카페','0','0','1');
+insert into stage values(3,1,'9층 옥상','1','0','0');
+----------------------------------------------------
+insert into stage values(4,2,'B1층 아트홀','1','1','1');
+insert into stage values(5,2,'B2층 무궁화홀','0','0','1');
+insert into stage values(6,2,'B3층 테라스','1','0','1');
+
+--공연 날짜
+insert into buskingdate values(1,1,'2021-10-24','지리는 아티스트 구해요');
+insert into buskingdate values(2,1,'2021-10-28','오지는 아티스트 구해요');
+insert into buskingdate values(3,1,'2021-10-30','아티스트 지리는 구해요');
+insert into buskingdate values(4,2,'2021-10-25','지리는 아티스트 구해요');
+insert into buskingdate values(5,2,'2021-10-27','오지는 아티스트 구해요');
+insert into buskingdate values(6,2,'2021-10-29','아티스트 지리는 구해요');
+insert into buskingdate values(7,3,'2021-10-23','지리는 아티스트 구해요');
+insert into buskingdate values(8,3,'2021-10-25','오지는 아티스트 구해요');
+insert into buskingdate values(9,3,'2021-10-26','아티스트 지리는 구해요');
+insert into buskingdate values(10,4,'2021-10-24','아이유 닮은 가수 구함');
+insert into buskingdate values(11,4,'2021-10-28','쇼미더머니 2차 합격 이상만');
+insert into buskingdate values(12,4,'2021-10-30','공연 경력있는 가수 우대');
+insert into buskingdate values(13,5,'2021-10-25','코노 평균97점 이상만');
+insert into buskingdate values(14,5,'2021-10-27','최소 4옥 레 올리시는분만');
+insert into buskingdate values(15,5,'2021-10-29','빌보드차트 들어보신분');
+insert into buskingdate values(16,6,'2021-10-23','몸만오시면 됩니다');
+insert into buskingdate values(17,6,'2021-10-25','아이돌 댄스팀 구해요');
+insert into buskingdate values(18,6,'2021-10-26','미스터 트롯 애청자만');
+
+--공연 시간
+
+
