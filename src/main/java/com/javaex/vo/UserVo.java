@@ -26,6 +26,7 @@ public class UserVo {
   private String intro;
   private String banner;
   private String y_url;
+  private int artist_no;
 
 
   // 생성자
@@ -45,36 +46,38 @@ public class UserVo {
     this.company_type = company_type;
   }
 
-  public UserVo(int user_no, String id, String password, String email, String nickname, String user_img, String name, String hp, String gender,
-      String birthday, String genre, String genre_type, int fan, int likes, String live, String artist_regdate, String user_type, String company_type,
-      int rn, String ranking_score, String intro, String banner, String y_url) {
-    super();
-    this.user_no = user_no;
-    this.id = id;
-    this.password = password;
-    this.email = email;
-    this.nickname = nickname;
-    this.user_img = user_img;
-    this.name = name;
-    this.hp = hp;
-    this.gender = gender;
-    this.birthday = birthday;
-    this.genre = genre;
-    this.genre_type = genre_type;
-    this.fan = fan;
-    this.likes = likes;
-    this.live = live;
-    this.artist_regdate = artist_regdate;
-    this.user_type = user_type;
-    this.company_type = company_type;
-    this.rn = rn;
-    this.ranking_score = ranking_score;
-    this.intro = intro;
-    this.banner = banner;
-    this.y_url = y_url;
-  }
+  public UserVo(int user_no, String id, String password, String email, String nickname, String user_img, String name,
+		String hp, String gender, String birthday, String genre, String genre_type, int fan, int likes, String live,
+		String artist_regdate, String user_type, String company_type, int rn, String ranking_score, String intro,
+		String banner, String y_url, int artist_no) {
+	super();
+	this.user_no = user_no;
+	this.id = id;
+	this.password = password;
+	this.email = email;
+	this.nickname = nickname;
+	this.user_img = user_img;
+	this.name = name;
+	this.hp = hp;
+	this.gender = gender;
+	this.birthday = birthday;
+	this.genre = genre;
+	this.genre_type = genre_type;
+	this.fan = fan;
+	this.likes = likes;
+	this.live = live;
+	this.artist_regdate = artist_regdate;
+	this.user_type = user_type;
+	this.company_type = company_type;
+	this.rn = rn;
+	this.ranking_score = ranking_score;
+	this.intro = intro;
+	this.banner = banner;
+	this.y_url = y_url;
+	this.artist_no = artist_no;
+}
 
-  // 메소드 - GS
+// 메소드 - GS
   public int getUser_no() {
     return user_no;
   }
@@ -259,14 +262,24 @@ public class UserVo {
     this.ranking_score = ranking_score;
   }
 
+  public int getArtist_no() {
+	return artist_no;
+  }
+
+  public void setArtist_no(int artist_no) {
+	this.artist_no = artist_no;
+  }
+
+
   // 메소드 - 일반
   @Override
   public String toString() {
-    return "UserVo [user_no=" + user_no + ", id=" + id + ", password=" + password + ", email=" + email + ", nickname=" + nickname + ", user_img="
-        + user_img + ", name=" + name + ", hp=" + hp + ", gender=" + gender + ", birthday=" + birthday + ", genre=" + genre + ", genre_type="
-        + genre_type + ", fan=" + fan + ", likes=" + likes + ", live=" + live + ", artist_regdate=" + artist_regdate + ", user_type=" + user_type
-        + ", company_type=" + company_type + ", rn=" + rn + ", ranking_score=" + ranking_score + ", intro=" + intro + ", banner=" + banner
-        + ", y_url=" + y_url + "]";
+  	return "UserVo [user_no=" + user_no + ", id=" + id + ", password=" + password + ", email=" + email + ", nickname="
+  			+ nickname + ", user_img=" + user_img + ", name=" + name + ", hp=" + hp + ", gender=" + gender
+  			+ ", birthday=" + birthday + ", genre=" + genre + ", genre_type=" + genre_type + ", fan=" + fan + ", likes="
+  			+ likes + ", live=" + live + ", artist_regdate=" + artist_regdate + ", user_type=" + user_type
+  			+ ", company_type=" + company_type + ", rn=" + rn + ", ranking_score=" + ranking_score + ", intro=" + intro
+  			+ ", banner=" + banner + ", y_url=" + y_url + ", artist_no=" + artist_no + "]";
   }
 }
 
