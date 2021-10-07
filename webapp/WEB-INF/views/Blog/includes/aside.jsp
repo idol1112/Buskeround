@@ -15,7 +15,7 @@
 
     <!---- 아티스트 라이브 ---->
     <div class="side_nav">
- <%--    <c:forEach items="${BlogLive}" var="bLive">
+    <c:forEach items="${BlogLive}" var="bLive">
 
       <!---- 프로필 사진 ---->
       <div class="profile_img">
@@ -73,7 +73,7 @@
         </tr>
       </c:if>
         </div>
-        </c:forEach> --%>
+        </c:forEach>
     </div>
 
   </div>

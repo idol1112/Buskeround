@@ -188,6 +188,7 @@ public class BlogController {
 		blogService.writePost(noticeVo);
 		
 		
+		
 		return "redirect:/blog/blog_main/" + id;
 		
 	}
