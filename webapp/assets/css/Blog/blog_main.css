@@ -390,3 +390,16 @@ h1 {
 	width: 1000px;
 	max-height: 900px;
 }
+
+#welcome {
+	text-align: center;
+}
+
+#welcomepicture {
+	height: 300px;
+}
+
+#welcomeword {
+	font-size: 20px;
+	color: gray;
+}
