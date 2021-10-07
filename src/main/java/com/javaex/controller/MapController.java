@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.javaex.service.MapService;
+import com.javaex.vo.BuskingzoneVo;
 import com.javaex.vo.MapVo;
 
 @Controller
@@ -30,16 +31,6 @@ public class MapController {
 		return "Map/map";
 	}
 	
-	//버스킹존 데이터 받기
-	@RequestMapping("/Map/buskingzone")
-	public String busKingzoneList(Model model) throws JsonProcessingException {
-		List<MapVo> mapList = mapService.mapList();
-		model.addAttribute("mapList", mapList);
-		System.out.println(mapList);
-		
-		return "Map/buskingzone";
-	}
-	
 	//에이작스 위치기반 리스트테이터 받기
 	@ResponseBody
 	@RequestMapping("/Map/mapns")
@@ -50,6 +41,39 @@ public class MapController {
 		return mapFind;
 	}
 	
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	//버스킹존 데이터 받기
+	@RequestMapping("/buskingzone")
+	public String busKingzoneList() {
+		System.out.println("버스킹존 컨트롤러");
+		
+		return "Map/buskingzone";
+	}
+	
+	//에이작스 위치기반 리스트테이터 받기
+	@ResponseBody
+	@RequestMapping("/buskingzonens")
+	public List<BuskingzoneVo> busKingzonens(@RequestParam("nlat") double nlat, @RequestParam("nlng") double nlng, @RequestParam("slat") double slat, @RequestParam("slng") double slng) {
+		System.out.println("버스킹존 컨트롤러");
+		List<BuskingzoneVo> buskingzoneList = mapService.buskingzoneList(nlat,nlng,slat,slng);
+		return buskingzoneList;
+	}
+	
+	@RequestMapping("/overlayList")
+	public List<BuskingzoneVo> overlayList(@RequestParam("user_no") int user_no) {
+		System.out.println("컨트롤러 - 오버레이리스트");
+
+		List<BuskingzoneVo> overlayList = mapService.overlayList(user_no);
+		System.out.println(overlayList);
+		return overlayList;
+	}
+	
+	
+	
+	
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	@RequestMapping("/Map/maptest")
 	public String maptest(){
 		System.out.println("맵테스트");

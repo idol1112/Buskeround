@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="buskingzone">
+
+	<select id="buskingzoneList" parameterType="map" resultType="buskingzoneVo">
+		<![CDATA[
+			select user_no,com_img,com_name,address,com_number
+			from company
+			WHERE latitude < #{nlat}
+			and longitude < #{nlng}
+			and latitude > #{slat}
+			and longitude > #{slng}
+		]]>
+	</select>
+	
+	<select id="overlayList" parameterType="int" resultType="buskingzoneVo">
+		<![CDATA[
+		select *
+		from company
+		where user_no = #{user_no}
+
+		]]>
+	</select>
+	
+
+</mapper>

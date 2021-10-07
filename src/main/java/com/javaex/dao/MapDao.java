@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.javaex.vo.BuskingzoneVo;
 import com.javaex.vo.MapVo;
 
 @Repository
@@ -25,6 +26,20 @@ public class MapDao {
 		System.out.println("맵찾기-다오");
 		List<MapVo> mapfind = sqlSession.selectList("map.findMap", findMap);
 		return mapfind;
+	}
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////	
+	
+	public List<BuskingzoneVo> buskingzoneList(Map<String, Double> buskingzoneMap) {
+		System.out.println("버스킹존 다오");
+		List<BuskingzoneVo> buskingzoneList = sqlSession.selectList("buskingzone.buskingzoneList", buskingzoneMap);
+		return buskingzoneList;
+	}
+	
+	public List<BuskingzoneVo> overlayList(int user_no) {
+		System.out.println("다오  - 오버레이리스트");
+		
+		return sqlSession.selectOne("buskingzone.overlayList", user_no);
 	}
 	
 }

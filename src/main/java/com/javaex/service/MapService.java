@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.javaex.dao.MapDao;
+import com.javaex.vo.BuskingzoneVo;
 import com.javaex.vo.MapVo;
 
 @Service
@@ -35,7 +36,27 @@ public class MapService {
 		
 		return mapfind;
 	}
+
+	////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
+	public List<BuskingzoneVo> buskingzoneList(double nlat,double nlng,double slat,double slng) {
+		System.out.println("버스킹존 서비스");
+		
+		Map<String, Double> buskingzoneMap = new HashMap<String, Double>();
+		buskingzoneMap.put("nlat", nlat);
+		buskingzoneMap.put("nlng", nlng);
+		buskingzoneMap.put("slat", slat);
+		buskingzoneMap.put("slng", slng);
+		List<BuskingzoneVo> buskingzoneList = mapDao.buskingzoneList(buskingzoneMap);
+		
+		return buskingzoneList;
+	}
+	
+	public List<BuskingzoneVo> overlayList(int user_no) {
+		System.out.println("서비스 - 오버레이리스트");
+		
+		return mapDao.overlayList(user_no);
+	}
 	
 	
 	

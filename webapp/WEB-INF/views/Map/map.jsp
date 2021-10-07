@@ -220,7 +220,7 @@ kakao.maps.event.addListener(map, 'dragend', function() {
 
     // 지도의 중심좌표를 얻어옵니다 
     var latlngg = map.getCenter(); 
-	//console.log("중심좌표!"+ latlngg);
+	console.log("중심좌표!"+ latlngg);
 	
 	var boundss = map.getBounds();
 	

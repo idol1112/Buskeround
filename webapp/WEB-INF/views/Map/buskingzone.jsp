@@ -167,8 +167,7 @@
 <c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
 
 <div class="map_wrap">
-    <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
-
+<div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
     <div id="menu_wrap" class="bg_white scroll type1">
         <div class="option">
             <div>
@@ -187,34 +186,17 @@
     </div>
 </div>
 
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=79c2ae6522e8e0df7b0592164f933676&libraries=services"></script>
 
-<div id="map"></div>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=79c2ae6522e8e0df7b0592164f933676"></script>
 <script>
-    
-    
-var mapContainer = document.getElementById('map'), // 지도의 중심좌표
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = { 
         center: new kakao.maps.LatLng(37.49699749185255, 127.02445040286854), // 지도의 중심좌표
         level: 3 // 지도의 확대 레벨
-    }; 
+    };
 
-var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-
-var imageSrc = '/Buskeround/assets/image/map/makericon.png', // 마커이미지의 주소입니다    
-imageSize = new kakao.maps.Size(48, 55), // 마커이미지의 크기입니다
-imageOption = {offset: new kakao.maps.Point(26, 40)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
-
-var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption)
-
-var bounds = new kakao.maps.LatLngBounds();  // 지도를 재설정할 범위정보를 가지고 있을 LatLngBounds 객체를 생성합니다
-
-var positions = [];
-var content = [];
-var num = -1;
-var num2 = -1;
-
-//======================================지도 중심좌표 변경
+// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
+var map = new kakao.maps.Map(mapContainer, mapOption);
 
 kakao.maps.event.addListener(map, 'dragend', function() {         
 
@@ -236,26 +218,25 @@ kakao.maps.event.addListener(map, 'dragend', function() {
 	var fragment = document.createDocumentFragment()
 	
 	removeAllChildNods(listEl);
-	//removeAllChildNods(listEl);
     
 	//서버에 위도경도전달
 	$.ajax({
-		url : "${pageContext.request.contextPath}/Map/mapns",
+		url : "${pageContext.request.contextPath}/buskingzonens",
 		type : "post",
 		//contentType : "application/json",
 		data : {nlat: nlat, nlng: nlng, slat: slat, slng: slng},
 		
 		dataType : "json",
-		success : function(mapFind){
-			for(var i=0; i<mapFind.length; i++){
+		success : function(buskingzoneList){
+ 			for(var i=0; i<buskingzoneList.length; i++){
 			/////////////////
-			var itemEl = getListItem(i, mapFind[i]);
+			var itemEl = getListItem(i, buskingzoneList[i]);
 			
 			fragment.appendChild(itemEl);
 			//////////////////	
 			};
 			
-			listEl.appendChild(fragment);
+			listEl.appendChild(fragment); 
 		},
 		error : function(XHR, status, error) {
 			console.error(status + " : " + error);
@@ -263,27 +244,28 @@ kakao.maps.event.addListener(map, 'dragend', function() {
 	});
 });
 
-function getListItem(index, mapFind) {
-	var sumimg = mapFind.p_img;
+function getListItem(index, buskingzoneList) {
+	var sumimg = buskingzoneList.com_img;
     var el = document.createElement('li'),
     itemStr = '';
     itemStr +='<div class="body">'; 
-    itemStr +='<div class="img listimg">';
+    itemStr +='<div class="img listimg" onclick="overlay('+buskingzoneList.user_no+')">';
     
-    if(sumimg.indexOf("http") == 0){
-    itemStr +='<img src="' + mapFind.p_img + '" width="350" height="250">'
-    }else if(sumimg.indexOf("noimg") == 0){
-    itemStr +='<img src="${pageContext.request.contextPath}/assets/image/blog/img/noimg.png" width="350" height="250">';
+    itemStr +='<div class="ellipsis listfont">'+buskingzoneList.com_name+'</div>';
+    itemStr +='<div class="ellipsis listfont">'+buskingzoneList.address+'</div>';
+    itemStr +='<div class="ellipsis listfont">'+buskingzoneList.com_number+'</div>';
+    
+    
+	if(sumimg.indexOf("noimg") == 0){
+    itemStr +='<img src="${pageContext.request.contextPath}/assets/image/blog/img/noimg.png" width="150" height="150" >';
     }else{
-    itemStr +='<img src="${pageContext.request.contextPath }/upload/'+mapFind.p_img+'" width="350" height="250">';
+    itemStr +='<img src="${pageContext.request.contextPath }/upload/'+buskingzoneList.com_img+'" width="350" height="250">';
     }
     
-
-    itemStr +='<div class="ellipsis listfont">활동명 : '+mapFind.nickname+'</div>';
-    itemStr +='<div class="ellipsis listfont">장소명   : '+mapFind.address+'</div>';
-    itemStr +='<div>';
+    itemStr +='</div>';
 
     itemStr +='</div>';
+    
 
     el.innerHTML = itemStr;
     el.className = 'item';
@@ -292,90 +274,60 @@ function getListItem(index, mapFind) {
 }
 
 
+function overlay(no) {
 
-
-
-
-
-//======================================
-	
-//================================================================== 데이터베이스에서 가져온거 뺄것
-<c:forEach items="${mapList}" var="mapList">
-num += 1;
-positions[num] = new kakao.maps.LatLng(${mapList.latitude}, ${mapList.longitude});
-//요기서 아이디를~!@#$%^&*
-content[num] = '<div class="wrap">' + 
-'    <div class="info">' + 
-'        <div class="title">' + 
-'            버스커 라운드' +
-'        </div>' + 
-'        <div class="body">' + 
-'              <div class="img">' +
-'		<c:if test="${mapList.user_img != null}">' +
-'                 <img src="${pageContext.request.contextPath }/upload/${mapList.user_img}" width="73" height="70">' +
-'		</c:if>' +
-'		<c:if test="${mapList.user_img == null}">' +
-'                 <img src="/Buskeround/assets/image/blog/icon/user.png" width="80" height="70">' +
-'		</c:if>' +
-'              </div>' +  
-'            <div class="desc">' + 
-'                <div class="ellipsis">활동명 : ${mapList.nickname}</div>' + 
-'                <div class="ellipsis">장르   : ${mapList.genre}</div>' + 
-'                <div class="jibun ellipsis">${mapList.intro}</div>' + 
-'            </div>' + 
-'        </div>' + 
-'    </div>' +    
-'</div>';
-</c:forEach>
-//==================================================================
-
-for(let i=0; i < positions.length; i++){
-    num2 += 1;
-	var data = positions[i];
-    displayMarker(data);
-}
-
-//LatLngBounds 객체에 좌표를 추가합니다
-var datas = bounds.extend(data);
-
-// 지도에 마커를 표시하는 함수입니다   
-function displayMarker(data) { 
-
-    var marker = new kakao.maps.Marker({
-    	
-        map: map,
-        position: data,
-        image: markerImage
-    });
-
-	
-	//오버레이 생성
-    var overlay = new kakao.maps.CustomOverlay({
-        yAnchor: 3,
-        position: marker.getPosition()
-    });
-    
-
+	//서버에 삭제요청(no, password 전달)
+	$.ajax({
+		url : "${pageContext.request.contextPath}/overlayList" ,
+		type : "post",
+		//contentType : "application/json",
+		data : {
+			user_no : no
+		},
+		
+		dataType : "json",
+		success : function(overlayList){
+			/*성공시 처리해야될 코드 작성*/
 			
+			
+		},
+		error : function(XHR, status, error) {
+			console.error(status + " : " + error);
+		}
+	});
+	
+};
 
-    overlay.setContent(content[num2]);
 
-    kakao.maps.event.addListener(marker, 'click', function() {
-        overlay.setMap(map);
-    });
-    
-    kakao.maps.event.addListener(map, 'click', function() {
-        overlay.setMap(null);
-    });
-}
 
-// 검색결과 목록의 자식 Element를 제거하는 함수입니다
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//검색결과 목록의 자식 Element를 제거하는 함수입니다
 function removeAllChildNods(el) {   
     while (el.hasChildNodes()) {
         el.removeChild (el.lastChild);
     }
 }
 </script>
-
 </body>
 </html>
