@@ -34,6 +34,8 @@
 		#menu_wrap .option p {margin:10px 0;}  
 		#menu_wrap .option button {margin-left:5px;}
 		
+		#overlayweb_table {position:absolute;top:0px;left:365px;width:360px;height:100%;z-index: 1;background-color:blue;}
+		
 		#searchList li {list-style: none;}
 		#searchList .item {position:relative;border-bottom:1px solid #888;overflow: hidden;cursor: pointer;min-height: 65px;}
 		#searchList .item span {display: block;margin-top:4px;}
@@ -168,6 +170,8 @@
 
 <div class="map_wrap">
 <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
+
+
     <div id="menu_wrap" class="bg_white scroll type1">
         <div class="option">
             <div>
@@ -179,12 +183,14 @@
                 </form>
             </div>
         </div>
-		<div id="searchList"></div>
-
-		
-        
+		<div id="searchList"></div>    
     </div>
+		<div id="overlayweb"></div> 
 </div>
+
+
+
+
 
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=79c2ae6522e8e0df7b0592164f933676"></script>
@@ -215,10 +221,12 @@ kakao.maps.event.addListener(map, 'dragend', function() {
     var slng = swLatLng.getLng();
     
     var listEl = document.getElementById('searchList');
+    var overlayClose = document.getElementById('overlayweb');
 	var fragment = document.createDocumentFragment()
-	
+
 	removeAllChildNods(listEl);
-    
+	removeOverlay(overlayClose);
+	
 	//서버에 위도경도전달
 	$.ajax({
 		url : "${pageContext.request.contextPath}/buskingzonens",
@@ -249,7 +257,7 @@ function getListItem(index, buskingzoneList) {
     var el = document.createElement('li'),
     itemStr = '';
     itemStr +='<div class="body">'; 
-    itemStr +='<div class="img listimg" onclick="overlay('+buskingzoneList.user_no+')">';
+    itemStr +='<div class="img listimg" onclick="overlayVo('+buskingzoneList.user_no+')">';
     
     itemStr +='<div class="ellipsis listfont">'+buskingzoneList.com_name+'</div>';
     itemStr +='<div class="ellipsis listfont">'+buskingzoneList.address+'</div>';
@@ -274,8 +282,8 @@ function getListItem(index, buskingzoneList) {
 }
 
 
-function overlay(no) {
-
+function overlayVo(no) {
+	console.log(no);
 	//서버에 삭제요청(no, password 전달)
 	$.ajax({
 		url : "${pageContext.request.contextPath}/overlayList" ,
@@ -286,9 +294,9 @@ function overlay(no) {
 		},
 		
 		dataType : "json",
-		success : function(overlayList){
+		success : function(overlayVo){
 			/*성공시 처리해야될 코드 작성*/
-			
+			overlay(overlayVo);
 			
 		},
 		error : function(XHR, status, error) {
@@ -318,7 +326,11 @@ function overlay(no) {
 
 
 
-
+function removeOverlay(overlayClose) {   
+    while (overlayClose.hasChildNodes()) {
+    	overlayClose.removeChild (overlayClose.lastChild);
+    }
+}
 
 
 
@@ -327,6 +339,23 @@ function removeAllChildNods(el) {
     while (el.hasChildNodes()) {
         el.removeChild (el.lastChild);
     }
+}
+function overlay(overlayVo){
+	var str = "";
+	str += '<table id="overlayweb_table">';
+	str += '	<tr>';
+	str += '		<td><img src="${pageContext.request.contextPath }/upload/'+ overlayVo.com_img + '" width="350" height="250"></td>';
+	str += '	</tr>';
+	
+	str += '	<tr>';
+	str += '		<td>'+ overlayVo.user_no + '</td>';
+	str += '		<td>'+ overlayVo.user_no + '</td>';
+	str += '		<td>'+ overlayVo.user_no + '</td>';
+	str += '	</tr>';
+	str += '</table>';
+	
+	$("#overlayweb").html(str);
+	
 }
 </script>
 </body>

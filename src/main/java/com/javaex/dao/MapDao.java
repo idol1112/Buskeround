@@ -36,10 +36,10 @@ public class MapDao {
 		return buskingzoneList;
 	}
 	
-	public List<BuskingzoneVo> overlayList(int user_no) {
+	public BuskingzoneVo overlayList(int user_no) {
 		System.out.println("다오  - 오버레이리스트");
-		
-		return sqlSession.selectOne("buskingzone.overlayList", user_no);
+		BuskingzoneVo overlayList = sqlSession.selectOne("buskingzone.overlayList", user_no);
+		return overlayList;
 	}
 	
 }

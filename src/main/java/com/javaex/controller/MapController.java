@@ -60,11 +60,12 @@ public class MapController {
 		return buskingzoneList;
 	}
 	
+	@ResponseBody
 	@RequestMapping("/overlayList")
-	public List<BuskingzoneVo> overlayList(@RequestParam("user_no") int user_no) {
+	public BuskingzoneVo overlayList(@RequestParam("user_no") int user_no) {
 		System.out.println("컨트롤러 - 오버레이리스트");
 
-		List<BuskingzoneVo> overlayList = mapService.overlayList(user_no);
+		BuskingzoneVo overlayList = mapService.overlayList(user_no);
 		System.out.println(overlayList);
 		return overlayList;
 	}

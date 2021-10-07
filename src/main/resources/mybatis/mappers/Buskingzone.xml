@@ -16,10 +16,9 @@
 	
 	<select id="overlayList" parameterType="int" resultType="buskingzoneVo">
 		<![CDATA[
-		select *
+		select user_no,com_img,com_name,address,com_number
 		from company
 		where user_no = #{user_no}
-
 		]]>
 	</select>
 	

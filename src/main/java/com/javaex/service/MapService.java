@@ -52,10 +52,10 @@ public class MapService {
 		return buskingzoneList;
 	}
 	
-	public List<BuskingzoneVo> overlayList(int user_no) {
+	public BuskingzoneVo overlayList(int user_no) {
 		System.out.println("서비스 - 오버레이리스트");
-		
-		return mapDao.overlayList(user_no);
+		BuskingzoneVo overlayList = mapDao.overlayList(user_no);
+		return overlayList;
 	}
 	
 	
