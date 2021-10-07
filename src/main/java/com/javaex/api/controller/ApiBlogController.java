@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import com.javaex.service.ArtistService;
 import com.javaex.service.BlogService;
 import com.javaex.service.BlogService2;
 import com.javaex.vo.BlogVo;
@@ -28,6 +29,9 @@ public class ApiBlogController {
 
   @Autowired
   BlogService blogService;
+
+  @Autowired
+  ArtistService artistService;
 
   /*** 공연 시작 ***/
   @ResponseBody
@@ -111,6 +115,15 @@ public class ApiBlogController {
 
   }
 
+  /*** 블로그 aside live list ***/
+  @ResponseBody
+  @RequestMapping(value = "blog_aside", method = {RequestMethod.GET, RequestMethod.POST})
+  public List<UserVo> blog_aside() {
+    System.out.println("[현재 위치: ApiBlogController.blog_aside]");
+
+    return artistService.getBlogLive();
+
+  }
 
 }
 
