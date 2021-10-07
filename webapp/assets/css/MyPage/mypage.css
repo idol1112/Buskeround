@@ -254,3 +254,35 @@ input[type="file"] {
 	width: 30%;
 	margin-bottom:3px;
 }
+
+/* applyManage */
+ #content-filter-area {
+    margin: 75px 50px 5px 9px;
+}
+
+.content-filter {
+    display: inline-block;
+    vertical-align: bottom;
+}
+
+.content-filter .input {
+	width: 105px;
+	height: 25px;
+	margin: 0px 3px 0px 0px;
+	padding: 0px;
+}
+
+#mypage-right .btn-area {
+    display: block;
+    margin: 50px 0px 10px 0px;
+    text-align: center;
+}
+
+.table .th-gray{
+	background-color: #F9F9F9;
+}
+
+.filter-img {
+	    width: 23px;
+    padding-bottom: 1px;
+}
