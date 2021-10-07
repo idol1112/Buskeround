@@ -13,8 +13,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import com.javaex.service.BlogService;
 import com.javaex.service.BlogService2;
+import com.javaex.vo.BlogVo;
 import com.javaex.vo.PostVo;
+import com.javaex.vo.UserVo;
 
 @RequestMapping(value = "/api/blog/")
 @Controller
@@ -23,13 +26,14 @@ public class ApiBlogController {
   @Autowired
   BlogService2 blogService2;
 
+  @Autowired
+  BlogService blogService;
+
   /*** 공연 시작 ***/
   @ResponseBody
   @RequestMapping(value = "live_start", method = {RequestMethod.GET, RequestMethod.POST})
   public int live_start(@RequestBody PostVo postVo) {
     System.out.println("[현재 위치: ApiBlogController.live_start]");
-
-    System.out.println("공연을 시작합니다.");
 
     System.out.println(postVo);
 
@@ -40,10 +44,10 @@ public class ApiBlogController {
   /*** 공연 종료 ***/
   @ResponseBody
   @RequestMapping(value = "live_end", method = {RequestMethod.GET, RequestMethod.POST})
-  public int live_end(@RequestParam("user_no") int user_no) {
+  public int live_end(@RequestBody PostVo postVo) {
     System.out.println("[현재 위치: ApiBlogController.live_end]");
 
-    return blogService2.live_end(user_no);
+    return blogService2.live_end(postVo);
 
   }
 
@@ -60,7 +64,8 @@ public class ApiBlogController {
   /*** 타임라인 ***/
   @ResponseBody
   @RequestMapping(value = "timeline", method = {RequestMethod.GET, RequestMethod.POST})
-  public List<PostVo> timeline(@RequestParam("start_date") int start_date, @RequestParam("end_date") int end_date, @RequestParam("user_no") int user_no) {
+  public List<PostVo> timeline(@RequestParam("start_date") int start_date, @RequestParam("end_date") int end_date,
+      @RequestParam("user_no") int user_no) {
     System.out.println("[현재 위치: ApiBlogController.timeline]");
 
     Map<String, Object> date_map = new HashMap<String, Object>();
@@ -95,6 +100,17 @@ public class ApiBlogController {
     }
 
   }
+
+  /*** 블로그 메인 ***/
+  @ResponseBody
+  @RequestMapping(value = "blog_main", method = {RequestMethod.GET, RequestMethod.POST})
+  public BlogVo blog_main(@RequestBody UserVo userVo) {
+    System.out.println("[현재 위치: ApiBlogController.blog_main]");
+
+    return blogService.selectUser(userVo.getId());
+
+  }
+
 
 }
 

@@ -35,10 +35,10 @@ public class BlogService2 {
   }
 
   /*** 공연 종료 ***/
-  public int live_end(int user_no) {
+  public int live_end(PostVo postVo) {
 
-    blogDao2.live_off(user_no);
-    return blogDao2.live_end(user_no);
+    blogDao2.live_off(postVo.getUser_no());
+    return blogDao2.live_end(postVo.getUser_no());
 
   }
 
