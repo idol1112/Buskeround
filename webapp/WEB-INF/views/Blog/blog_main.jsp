@@ -212,6 +212,15 @@
 			success : function(timeList) {
 				/*성공시 처리해야될 코드 작성*/
 
+				var str = '';
+				str += '<div id="welcome">';
+				str += '<img id="welcomepicture" src="${pageContext.request.contextPath}/assets/image/blog/img/welcome.png" />';
+				str += '<p id="welcomeword">공연을 시작해서 나만의 타임라인을 만들어보세요</p>';
+
+				if (timeList.length == 0) {
+					$(".timeline_box").append(str);
+				}
+
 				for (var i = 0; i < timeList.length; i++) {
 					render(timeList[i]);
 				}

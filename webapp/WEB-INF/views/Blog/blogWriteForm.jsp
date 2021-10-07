@@ -25,6 +25,8 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/Blog/blogWriteForm.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/Blog/blogStart.css">
 
+<!-- jquery -->
+<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 
 </head>
 
@@ -45,11 +47,14 @@
 
 
         <!-- 해더 -->
-        <form id="writeform-content clearfix" action="${pageContext.request.contextPath}/blog/writePost/${blogVo.id}" method="POST" enctype="multipart/form-data" >
+        <form id="writeform-content clearfix" class="testing" action="${pageContext.request.contextPath}/blog/writePost/${blogVo.id}" method="POST" enctype="multipart/form-data" >
+        <input type="hidden" name="user_no" value="${sessionScope.authUser.user_no}">
+        <input type="hidden" name="nickname" value="${sessionScope.authUser.nickname}">
+        
           <select name="category_no">
-            <option selected>카테고리</option>
+            <option selected value="0">카테고리</option>
             <option value="1">공지사항</option>
-            <option value="2">갤러리</option>
+            <option value="3">갤러리</option>
             <option value="4">방명록</option>
           </select>
 
@@ -132,6 +137,30 @@
             console.warn( 'Build id: l2el0rjf71xs-g3eg22e8e3t1' );
             console.error( error );
         } );
+
+	$('.testing').on("submit", function() {
+		console.log("서브밋")
+	
+		if ($("[name=category_no]").val() == 0) {
+			alert("카테고리를 선택해주세요.");
+	
+			return false;
+		}
+		
+		if ($("[name=title]").val().length < 1) {
+			alert("제목을 입력해주세요.");
+
+			return false;
+		}
+		
+		if ($("[name=content]").val().length < 1) {
+			alert("게시글 내용을 입력해주세요.");
+
+			return false;
+		}
+	
+		return true;
+	});
 </script>
 
 </html>

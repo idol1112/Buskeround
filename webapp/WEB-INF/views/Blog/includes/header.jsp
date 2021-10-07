@@ -241,19 +241,21 @@
   // 공연종료 버튼 눌렀을 때(배너)
   $(".btn_end").on("click", function() {
 
+	  var postVo = {
+		  	user_no : ${blogVo.user_no}
+	  };
+
     $.ajax({
       // 컨트롤러에서 대기중인 URL 주소이다.
       url : "${pageContext.request.contextPath}/api/blog/live_end",
 
       // HTTP method type(GET, POST) 형식이다.
-      type : "get",
+      type : "POST",
 
       // Json 형태의 데이터로 보낸다.
       contentType : "application/json",
 
-      data : {
-        user_no : ${blogVo.user_no}
-      },
+      data : JSON.stringify(postVo),
 
       // 성공일 경우 success로 들어오며, 'result'는 응답받은 데이터이다.
       success : function(result) {

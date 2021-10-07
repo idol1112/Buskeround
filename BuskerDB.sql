@@ -729,3 +729,7 @@ CREATE FUNCTION get_seq RETURN NUMBER IS
 BEGIN
   RETURN seq_resume_no.nextval;
 END;
+
+/*///////////////////////////테이블 초기화//////////////////////////////*/
+
+

@@ -111,6 +111,8 @@ public class BlogDao {
 	public int writePost(NoticeVo noticeVo) {
 		System.out.println("BlogDao.writePost()");
 		
+		System.out.println(noticeVo);
+		
 		return sqlSession.insert("blog.postInsert", noticeVo);
 	}
 	

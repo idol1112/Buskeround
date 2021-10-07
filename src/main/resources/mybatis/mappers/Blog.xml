@@ -188,9 +188,25 @@
     </delete>
     
     <!-- 공지사항/방명록 등록 -->
-    <insert id="writePost" parameterType="NoticeVo">
+    <insert id="postInsert" parameterType="NoticeVo">
 		<![CDATA[
-		
+		INSERT INTO post (
+				    post_no,
+				    category_no,
+				    user_no,
+				    title,
+				    content,
+				    reg_date,
+				    hit
+				) VALUES (
+				    seq_post_no.NEXTVAL,
+				    #{category_no},
+				    #{user_no},
+				    #{title},
+				    #{content},
+				    sysdate,
+				    0
+				)
 		]]>
     </insert>
 	
