@@ -111,6 +111,8 @@ public class BlogDao {
 	public int writePost(NoticeVo noticeVo) {
 		System.out.println("BlogDao.writePost()");
 		
+		int category = sqlSession.selectOne("blog.categoryNo", noticeVo);
+		noticeVo.setCategory_no(category);
 		System.out.println(noticeVo);
 		
 		return sqlSession.insert("blog.postInsert", noticeVo);

@@ -152,6 +152,7 @@
 	
 	<!--  이력사항 리스트 출력 -->
 	<select id="selectResume" resultType="ResumeVo">
+
 		<![CDATA[
 		select resume_no,
 			   user_no,
@@ -186,6 +187,16 @@
 		WHERE user_no = #{user_no}
     ]]>
     </delete>
+    
+    <!-- Category_no 가져오기 -->
+   	<select id="categoryNo" parameterType="NoticeVo" resultType="int">
+	    <![CDATA[
+		    select category_no
+		    from category
+		    where user_no = #{user_no}
+		    and category_type = #{category_type}
+	    ]]>
+    </select>
     
     <!-- 공지사항/방명록 등록 -->
     <insert id="postInsert" parameterType="NoticeVo">

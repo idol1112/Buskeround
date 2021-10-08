@@ -51,7 +51,7 @@
         <input type="hidden" name="user_no" value="${sessionScope.authUser.user_no}">
         <input type="hidden" name="nickname" value="${sessionScope.authUser.nickname}">
         
-          <select name="category_no">
+          <select name="category_type">
             <option selected value="0">카테고리</option>
             <option value="1">공지사항</option>
             <option value="3">갤러리</option>
