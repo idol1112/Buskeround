@@ -167,6 +167,19 @@ public class BlogController {
 
 	}
 	
+	@RequestMapping(value = "blog_noticeDetail/{id}", method = { RequestMethod.GET, RequestMethod.POST })
+	public String blog_noticeDetail(@PathVariable("id") String id, Model model) {
+		System.out.println("[TestingController.blog_notice()]");
+		
+		// 해더 정보 가져오기
+		BlogVo blogVo = blogService.selectUser(id);
+		model.addAttribute(blogVo);
+		
+		
+		return "Blog/blogNoticeDetail";
+		
+	}
+	
 	@RequestMapping(value = "blog_write/{id}", method = { RequestMethod.GET, RequestMethod.POST })
 	public String blog_writeform(@PathVariable("id") String id, Model model) {
 		System.out.println("[TestingController.blog_writeForm()]");

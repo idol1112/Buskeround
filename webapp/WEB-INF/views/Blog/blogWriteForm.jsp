@@ -63,11 +63,6 @@
           <!-- 에디터 -->
           <textarea name="content" class="editor"></textarea>
           
-          <!-- 페이스북 업로드 -->
-          <input id="facebookupload" type="checkbox" value="facebook">
-          <label for="facebookupload">페이스북 등록</label>
-          
-          
           <button type="submit" id="uploadbutton">등록</button>
         </form>
       </div>

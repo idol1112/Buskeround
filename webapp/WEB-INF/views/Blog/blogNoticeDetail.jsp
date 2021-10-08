@@ -31,11 +31,11 @@
 <body>
   <!------ br_container ------>
   <div class="clearfix" id="br_container">
-    <c:import url="/views/Blog/includes/aside.jsp"></c:import>
+    <c:import url="/WEB-INF/views/Blog/includes/aside.jsp"></c:import>
 
     <!------ br_content ------>
     <div id="br_content">
-      <c:import url="/views/Blog/includes/header.jsp"></c:import>
+	      <c:import url="/WEB-INF/views/Blog/includes/header.jsp"></c:import>
 
       <!-- 메인 -->
       <div class="main-detail">
