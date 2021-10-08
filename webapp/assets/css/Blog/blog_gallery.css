@@ -115,8 +115,14 @@
 }
 
 #modal_img {
-	width: 1000px;
-	max-height: 900px;
+	max-width: 1000px;
+	max-height: 600px;
+	object-fit: cover;
+}
+
+#modal_text {
+	margin-top: 15px;
+	font-size: 14px;
 }
 
 /* 게시판 */

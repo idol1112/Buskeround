@@ -2,7 +2,7 @@
 
 /********** 초기화 **********/
 body, div, ul, li, dl, dt, ol, h1, h2, h3, h4,
-h5, h6, input, fieldset, legend, p, select, table, 
+h5, h6, input, fieldset, legend, p, select, table,
 th, td, tr, textarea, button, form {
   margin: 0px 0px 0px 0px;
   padding: 0px 0px 0px 0px;
@@ -28,8 +28,9 @@ a:active {text-decoration: none; color: black;}
 
 .modify-header {
   border-bottom: lightgray solid 2px;
-  padding-bottom: 5px;
+  padding-bottom: 15px;
   padding-left: 5px;
+  margin-bottom: 5px;
 }
 
 .modify-header h5 {
@@ -64,7 +65,7 @@ a:active {text-decoration: none; color: black;}
   border: 1px solid #999;
   border-radius: 0px;
   margin-bottom: 10px;
-} 
+}
 
 #textarea{
   margin-top: 10px;
@@ -93,7 +94,7 @@ label[for=facebookupload]{
   padding: 8px 12px;
   margin: 0px 0px 5px 0px;
   border: none;
-  font-weight: bold;  
+  font-weight: bold;
   background: #FAFAFA;
   border: 1px solid #DDDDDD;
   font-size: 14px;

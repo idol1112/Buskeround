@@ -38,13 +38,13 @@
       <c:import url="/WEB-INF/views/Blog/includes/header.jsp"></c:import>
 
       <c:import url="/WEB-INF/views/Blog/includes/navigation.jsp"></c:import>
-      
+
       <div class="content clearfix">
         <!-- 글쓰기 버튼 -->
         <div class="clearfix main_title">
           <img src="${pageContext.request.contextPath}/assets/image/blog/icon/landscape.png">
           <span>갤러리</span>
-          <button id="writebutton" type="button" onClick="location.href='blogWriteForm.jsp'">
+          <button id="writebutton" type="button" onClick="location.href='${pageContext.request.contextPath}/blog/blog_write/${blogVo.id}'">
             <img src="${pageContext.request.contextPath}/assets/image/blog/icon/write.png">사진 올리기
           </button>
         </div>
@@ -129,10 +129,12 @@
       </div>
       <div class="modal-body">
         <img id="modal_img" src="">
+        <div class="modal_content">
+          <p id="modal_text"></p>
+        </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" id="btn_close" data-dismiss="modal">닫기</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary" id="btn_close">확인</button>
       </div>
     </div>
     <!-- /.modal-content -->
@@ -142,15 +144,19 @@
 <!------ ////(modal)//// ------>
 
 <script type="text/javascript">
-	$(".gallery_item").on("click", "#img_item", function() {
-		var img_title = $(this).parents(".gallery_item").children("div").children("h2").text();
-		$(".modal-title").text(img_title);
+	$(".gallery_item").on(
+			"click",
+			"#img_item",
+			function() {
+				var img_title = $(this).parents(".gallery_item")
+						.children("div").children("h2").text();
+				$(".modal-title").text(img_title);
 
-		var img_src = $(this).attr('src');
-		$("#modal_img").attr("src", img_src);
+				var img_src = $(this).attr('src');
+				$("#modal_img").attr("src", img_src);
 
-		$("#img_modal").modal('show');
-	});
+				$("#img_modal").modal('show');
+			});
 
 	$("#btn_close").on("click", function() {
 		$("#img_modal").modal('hide');
