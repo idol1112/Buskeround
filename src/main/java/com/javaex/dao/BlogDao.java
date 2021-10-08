@@ -118,4 +118,10 @@ public class BlogDao {
 		return sqlSession.insert("blog.postInsert", noticeVo);
 	}
 	
+	//Notice List (공지사항 리스트 가져오기)
+	public List<NoticeVo> noticeList(String id) {
+		System.out.println("BlogDao.noticeList");
+		
+		return sqlSession.selectList("blog.noticeList", id);
+	}
 }

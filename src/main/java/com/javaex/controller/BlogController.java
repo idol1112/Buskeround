@@ -131,18 +131,6 @@ public class BlogController {
 
 	}
 
-	@RequestMapping(value = "blog_gallery/{id}", method = { RequestMethod.GET, RequestMethod.POST })
-	public String blog_gallery(@PathVariable("id") String id, Model model) {
-		System.out.println("[TestingController.blog_gallery()]");
-
-		// 해더 정보 가져오기
-		BlogVo blogVo = blogService.selectUser(id);
-		model.addAttribute(blogVo);
-
-		return "Blog/blog_gallery";
-
-	}
-
 	@RequestMapping(value = "blog_guestbook/{id}", method = { RequestMethod.GET, RequestMethod.POST })
 	public String blog_guestbook(@PathVariable("id") String id, Model model) {
 		System.out.println("[TestingController.blog_guestbook()]");
@@ -162,6 +150,10 @@ public class BlogController {
 		// 해더 정보 가져오기
 		BlogVo blogVo = blogService.selectUser(id);
 		model.addAttribute(blogVo);
+		
+		// 리스트 가져오기
+//		List<NoticeVo> list = blogService.noticeList(id);
+//		model.addAttribute("noticeList", list);
 
 		return "Blog/blogNoticeBoard";
 
@@ -199,8 +191,6 @@ public class BlogController {
 		System.out.println("들어온 정보: " + noticeVo);
 		
 		blogService.writePost(noticeVo);
-		
-		
 		
 		return "redirect:/blog/blog_main/" + id;
 		

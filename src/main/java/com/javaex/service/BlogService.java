@@ -89,10 +89,18 @@ public class BlogService {
 		return blogDao.modifyDeleteImg(blogVo);	
 	}
 	
+	// Write Post (글 작성)
 	public int writePost(NoticeVo noticeVo) {
 		System.out.println("BlogService.writePost()");
 		
 		return blogDao.writePost(noticeVo);
+	}
+	
+	//Notice List (공지사항 리스트 가져오기)
+	public List<NoticeVo> noticeList(String id) {
+		System.out.println("BlogService.noticeList()");
+		
+		return blogDao.noticeList(id);
 	}
 
 }
