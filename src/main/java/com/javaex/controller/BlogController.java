@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.javaex.service.ArtistService;
 import com.javaex.service.BlogService;
+import com.javaex.service.BlogService2;
 import com.javaex.vo.BlogVo;
 import com.javaex.vo.NoticeVo;
 import com.javaex.vo.ResumeVo;
@@ -25,8 +26,12 @@ public class BlogController {
 
 	@Autowired
 	BlogService blogService;
+
     @Autowired
     ArtistService artistService;
+
+    @Autowired
+    BlogService2 blogService2;
 
 	@RequestMapping(value = "blog_main/{id}", method = { RequestMethod.GET, RequestMethod.POST })
 	public String blog_main(@PathVariable("id") String id, Model model) {
@@ -35,7 +40,7 @@ public class BlogController {
 		// 해더 정보 가져오기
 		BlogVo blogVo = blogService.selectUser(id);
 		model.addAttribute(blogVo);
-		
+
 		// 이력사항 가져오기
 		List<ResumeVo> resumeList = blogService.getResumeList(id);
 		model.addAttribute("resumeList", resumeList);
@@ -44,9 +49,14 @@ public class BlogController {
 		model.addAttribute("BlogLive", artistService.getBlogLive());
 		System.out.println("아티스트 라이브 리스트: " + artistService.getBlogLive());
 
-		System.out.println("BlogVo: " + blogVo);
+		// 갤러리 리스트
+		 model.addAttribute("galleryList", blogService2.getGalleryMain(blogVo.getUser_no()));
 
-		return "Blog/blog_main";
+		 System.out.println(blogService2.getGalleryMain(blogVo.getUser_no()));
+
+		 System.out.println("BlogVo: " + blogVo);
+
+		 return "Blog/blog_main";
 
 	}
 
@@ -131,18 +141,6 @@ public class BlogController {
 
 	}
 
-	@RequestMapping(value = "blog_gallery/{id}", method = { RequestMethod.GET, RequestMethod.POST })
-	public String blog_gallery(@PathVariable("id") String id, Model model) {
-		System.out.println("[TestingController.blog_gallery()]");
-
-		// 해더 정보 가져오기
-		BlogVo blogVo = blogService.selectUser(id);
-		model.addAttribute(blogVo);
-
-		return "Blog/blog_gallery";
-
-	}
-
 	@RequestMapping(value = "blog_guestbook/{id}", method = { RequestMethod.GET, RequestMethod.POST })
 	public String blog_guestbook(@PathVariable("id") String id, Model model) {
 		System.out.println("[TestingController.blog_guestbook()]");
@@ -163,34 +161,49 @@ public class BlogController {
 		BlogVo blogVo = blogService.selectUser(id);
 		model.addAttribute(blogVo);
 
+		// 리스트 가져오기
+//		List<NoticeVo> list = blogService.noticeList(id);
+//		model.addAttribute("noticeList", list);
+
 		return "Blog/blogNoticeBoard";
 
 	}
-	
-	@RequestMapping(value = "blog_write/{id}", method = { RequestMethod.GET, RequestMethod.POST })
-	public String blog_writeform(@PathVariable("id") String id, Model model) {
-		System.out.println("[TestingController.blog_writeForm()]");
-		
+
+	@RequestMapping(value = "blog_noticeDetail/{id}", method = { RequestMethod.GET, RequestMethod.POST })
+	public String blog_noticeDetail(@PathVariable("id") String id, Model model) {
+		System.out.println("[TestingController.blog_notice()]");
+
 		// 해더 정보 가져오기
 		BlogVo blogVo = blogService.selectUser(id);
 		model.addAttribute(blogVo);
-		
-		return "Blog/blogWriteForm";
-		
+
+
+		return "Blog/blogNoticeDetail";
+
 	}
-	
+
+	@RequestMapping(value = "blog_write/{id}", method = { RequestMethod.GET, RequestMethod.POST })
+	public String blog_writeform(@PathVariable("id") String id, Model model) {
+		System.out.println("[TestingController.blog_writeForm()]");
+
+		// 해더 정보 가져오기
+		BlogVo blogVo = blogService.selectUser(id);
+		model.addAttribute(blogVo);
+
+		return "Blog/blogWriteForm";
+
+	}
+
 	@RequestMapping(value = "writePost/{id}", method = { RequestMethod.GET, RequestMethod.POST })
 	public String blog_writeform(@PathVariable("id") String id,
 								 @ModelAttribute NoticeVo noticeVo) {
 		System.out.println("[TestingController.writePost()]");
 		System.out.println("들어온 정보: " + noticeVo);
-		
+
 		blogService.writePost(noticeVo);
-		
-		
-		
+
 		return "redirect:/blog/blog_main/" + id;
-		
+
 	}
 
 }

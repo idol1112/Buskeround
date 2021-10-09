@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,12 +38,14 @@
       <c:import url="/WEB-INF/views/Blog/includes/header.jsp"></c:import>
 
       <!-- nav_menu -->
-	  <c:import url="/WEB-INF/views/Blog/includes/navigation.jsp"></c:import>
+      <c:import url="/WEB-INF/views/Blog/includes/navigation.jsp"></c:import>
 
       <!---- timeline ---->
       <div class="main_title">
         <img src="${pageContext.request.contextPath}/assets/image/blog/icon/clock.png" alt="">
-        <span>타임라인</span>
+        <a href="${pageContext.request.contextPath}/blog/blog_timeline/${blogVo.id}">
+          <span>타임라인</span>
+        </a>
       </div>
       <div class="timeline_box">
         <div class="timeline">
@@ -126,65 +129,98 @@
       <!---- gallery ---->
       <div class="main_title">
         <img src="${pageContext.request.contextPath}/assets/image/blog/icon/landscape.png" alt="">
-        <span>갤러리</span>
+        <a href="${pageContext.request.contextPath}/blog/blog_gallery/${blogVo.id}">
+          <span>갤러리</span>
+        </a>
       </div>
 
+      <!---- gallery ---->
       <div class="gallery_box">
-        <div class="gallery_item">
-          <div class="gallery_item_caption">
-            <h2>홍대 거리</h2>
-            <p>2021. 09. 07</p>
-          </div>
-          <img id="img_item" src="${pageContext.request.contextPath}/assets/image/blog/img/busker2.jpg" alt="" />
-        </div>
 
-        <div class="gallery_item">
-          <div class="gallery_item_caption">
-            <h2>마로니에 공원</h2>
-            <p>2021. 09. 07</p>
+        <c:if test="${fn:length(galleryList) == 0}">
+          <p id="noGallery">등록된 사진이 없습니다.</p>
+        </c:if>
+
+        <c:forEach items="${galleryList}" var="gList">
+          <div class="gallery_item">
+            <div class="gallery_item_caption">
+              <h2>${gList.title}</h2>
+              <p>${gList.reg_date}</p>
+              <p id="hit">조회수: ${gList.hit}</p>
+            </div>
+            <img id="img_item" src="${pageContext.request.contextPath}/upload/${gList.p_img}" onclick="gallery_item(${gList.post_no})" data-no="${gList.post_no}" alt="" />
           </div>
-          <img id="img_item" src="${pageContext.request.contextPath}/assets/image/blog/img/busker.jpg" alt="" />
-        </div>
+        </c:forEach>
       </div>
       <!------ ////(gallery)//// ------>
     </div>
     <!------ ////(br_content)//// ------>
   </div>
   <!------ ////(br_container)//// ------>
+
+  <!-- modal -->
+  <div class="modal fade" id="img_modal">
+    <div class="modal-dialog" id="img_dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title"></h4>
+
+        </div>
+        <div class="modal-body">
+          <img id="modal_img" src="">
+          <div class="modal_content" id="modal_text"></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="btn_close">확인</button>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+  <!------ ////(modal)//// ------>
+
 </body>
 
-<!-- modal -->
-<div class="modal fade" id="img_modal">
-  <div class="modal-dialog" id="img_dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title">Modal title</h4>
-      </div>
-      <div class="modal-body">
-        <img id="modal_img" src="">
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" id="btn_close" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-    <!-- /.modal-content -->
-  </div>
-  <!-- /.modal-dialog -->
-</div>
-<!------ ////(modal)//// ------>
 
 <script type="text/javascript">
-	// 갤러리 사진 눌렀을 때
-	$(".gallery_item").on("click", "#img_item", function() {
-		var img_title = $(this).parents(".gallery_item").children("div").children("h2").text();
-		$(".modal-title").text(img_title);
 
-		var img_src = $(this).attr('src');
-		$("#modal_img").attr("src", img_src);
+//사진 클릭했을 때
+function gallery_item(post_no) {
 
-		$("#img_modal").modal('show');
+	$.ajax({
+		// 컨트롤러에서 대기중인 URL 주소이다.
+		url : "${pageContext.request.contextPath}/api/blog/gallery/" + post_no,
+
+		// HTTP method type(GET, POST) 형식이다.
+		type : "GET",
+
+		// Json 형식의 데이터를 받는다.
+		dataType : "json",
+
+		// 성공일 경우 success로 들어오며, 'result'는 응답받은 데이터이다.
+		success : function(result) {
+			/*성공시 처리해야될 코드 작성*/
+
+			console.log(result);
+
+			$(".modal-title").text(result.title);
+
+			$("#modal_img").attr("src", "${pageContext.request.contextPath}/upload/" + result.p_img);
+
+			$(".modal_content").append(result.content);
+
+		},
+
+		// 실패할경우 error로 들어온다.
+		error : function(XHR, status, error) {
+			console.error(status + " : " + error);
+		}
 	});
+
+	$("#img_modal").modal('show');
+
+}
 
 	$("#btn_close").on("click", function() {
 		$("#img_modal").modal('hide');

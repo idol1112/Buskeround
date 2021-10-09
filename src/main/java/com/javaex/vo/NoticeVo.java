@@ -4,6 +4,7 @@ public class NoticeVo {
 	
 	//Field
 	private int post_no;
+	private int category_type;
 	private int category_no;
 	private int user_no;
 	private String title;
@@ -19,10 +20,11 @@ public class NoticeVo {
 		super();
 	}
 	
-	public NoticeVo(int post_no, int category_no, int user_no, String title, String nickname, String regDate,
-			String hit, String content, String p_img, int rownum) {
+	public NoticeVo(int post_no, int category_type, int category_no, int user_no, String title, String nickname,
+			String regDate, String hit, String content, String p_img, int rownum) {
 		super();
 		this.post_no = post_no;
+		this.category_type = category_type;
 		this.category_no = category_no;
 		this.user_no = user_no;
 		this.title = title;
@@ -41,6 +43,14 @@ public class NoticeVo {
 
 	public void setPost_no(int post_no) {
 		this.post_no = post_no;
+	}
+
+	public int getCategory_type() {
+		return category_type;
+	}
+
+	public void setCategory_type(int category_type) {
+		this.category_type = category_type;
 	}
 
 	public int getCategory_no() {
@@ -114,14 +124,12 @@ public class NoticeVo {
 	public void setRownum(int rownum) {
 		this.rownum = rownum;
 	}
-
+	
 	//Method - Ordinary
 	@Override
 	public String toString() {
-		return "NoticeVo [post_no=" + post_no + ", category_no=" + category_no + ", user_no=" + user_no + ", title="
-				+ title + ", nickname=" + nickname + ", regDate=" + regDate + ", hit=" + hit + ", content=" + content
-				+ ", p_img=" + p_img + ", rownum=" + rownum + "]";
+		return "NoticeVo [post_no=" + post_no + ", category_type=" + category_type + ", category_no=" + category_no
+				+ ", user_no=" + user_no + ", title=" + title + ", nickname=" + nickname + ", regDate=" + regDate
+				+ ", hit=" + hit + ", content=" + content + ", p_img=" + p_img + ", rownum=" + rownum + "]";
 	}
-	
-
 }

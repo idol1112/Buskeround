@@ -72,6 +72,40 @@ public class ArtistService {
 
 		return artistDao.getFanLoading(user_no);
 	}
+	
+	
+	// 좋아요 등록
+	public boolean getLikes(UserVo userVo) {
+
+		if (artistDao.getLikesOk(userVo) == null) {
+
+			return false;
+			
+		} else {
+			System.out.println("좋아요를 눌렀습니다.");
+			artistDao.getLikes(userVo);
+			
+			return true;
+
+		}
+
+	}
+	
+	// 좋아요 로딩
+	public List<UserVo> getLikesLoading(int user_no) {
+
+		return artistDao.getLikesLoading(user_no);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	// 블로그 라이브 리스트 가져오기
 	public List<UserVo> getBlogLive() {

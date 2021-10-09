@@ -14,7 +14,10 @@
 		<typeAlias alias="BustimeVo" type="com.javaex.vo.BustimeVo" />
 		<typeAlias alias="ResumeVo" type="com.javaex.vo.ResumeVo" />
 		<typeAlias alias="NoticeVo" type="com.javaex.vo.NoticeVo" />
+		<typeAlias alias="BusappVo" type="com.javaex.vo.BusappVo" />
+		<typeAlias alias="AppFilterVo" type="com.javaex.vo.AppFilterVo" />
 		<typeAlias alias="BuskingzoneVo" type="com.javaex.vo.BuskingzoneVo" />
+		
 	</typeAliases>
 
 	<mappers>
@@ -28,6 +31,8 @@
 		<mapper resource="mybatis/mappers/stage.xml" />
 		<mapper resource="mybatis/mappers/busdate.xml" />
 		<mapper resource="mybatis/mappers/bustime.xml" />
+		<mapper resource="mybatis/mappers/busapp.xml" />
 		<mapper resource="mybatis/mappers/Buskingzone.xml" />
+		
 	</mappers>
 </configuration>

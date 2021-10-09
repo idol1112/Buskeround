@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="busapp">
+	
+	<!-- 공연 신청 리스트 불러오기(전체) -->
+	<select id="selectApplyList" parameterType="int" resultType="BusappVo">
+		<![CDATA[
+			SELECT
+			    ba.user_no,
+			    ba.apply_no,
+			    s.stage_name,
+			    bd.bus_date,
+			    bt.start_time,
+			    bt.end_time,
+			    u.nickname,
+			    u.genre,
+			    u.hp,
+			    ba.user_info,
+			    ba.status
+			FROM
+			    company      c,
+			    stage        s,
+			    buskingdate  bd,
+			    buskingtime  bt,
+			    buskingapp   ba,
+			    users        u
+			WHERE
+			        c.user_no = s.user_no
+			    AND s.stage_no = bd.stage_no
+			    AND bd.date_no = bt.date_no
+			    AND bt.time_no = ba.time_no
+			    AND ba.user_no = u.user_no
+			    AND c.user_no = #{user_no}		
+		
+		]]>
+	</select>
+	
+	<!-- 전체 공연장 날짜~날짜 검색 -->
+	<select id="selectFilterListAll" parameterType="AppFilterVo" resultType="BusappVo">
+		<![CDATA[
+			SELECT
+			    ba.user_no,
+			    u.nickname,
+			    s.stage_name,
+			    bd.bus_date,
+			    bt.start_time,
+			    bt.end_time,
+			    u.genre,
+			    u.hp,
+			    ba.user_info,
+			    ba.status
+			FROM
+			    company      c,
+			    stage        s,
+			    buskingdate  bd,
+			    buskingtime  bt,
+			    buskingapp   ba,
+			    users        u
+			WHERE
+			        c.user_no = s.user_no
+			    AND s.stage_no = bd.stage_no
+			    AND bd.date_no = bt.date_no
+			    AND bt.time_no = ba.time_no
+			    AND ba.user_no = u.user_no
+			    and c.user_no= #{user_no}
+			    and bus_date between to_date(#{start_date},'yyyy-mm-dd')and to_date(#{end_date},'yyyy-mm-dd')	
+		
+		]]>
+	</select>
+	
+		<!-- 특정 공연장 날짜~날짜 검색 -->
+	<select id="selectFilterList" parameterType="AppFilterVo" resultType="BusappVo">
+		<![CDATA[
+			SELECT
+			    ba.user_no,
+			    u.nickname,
+			    s.stage_name,
+			    bd.bus_date,
+			    bt.start_time,
+			    bt.end_time,
+			    u.genre,
+			    u.hp,
+			    ba.user_info,
+			    ba.status
+			FROM
+			    company      c,
+			    stage        s,
+			    buskingdate  bd,
+			    buskingtime  bt,
+			    buskingapp   ba,
+			    users        u
+			WHERE
+			        c.user_no = s.user_no
+			    AND s.stage_no = bd.stage_no
+			    AND bd.date_no = bt.date_no
+			    AND bt.time_no = ba.time_no
+			    AND ba.user_no = u.user_no
+			    and s.stage_no= #{stage_no}
+			    and bus_date between to_date(#{start_date},'yyyy-mm-dd')and to_date(#{end_date},'yyyy-mm-dd')	
+		
+		]]>
+	</select>
+
+</mapper>

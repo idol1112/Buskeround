@@ -111,7 +111,7 @@
 									<div>${aList.genre_type}</div>
 									<div>가입연도 ${aList.artist_regdate}년</div>
 								</td>
-								<td class="left02_td"><img src="${pageContext.request.contextPath}/assets/image/artist/icon/heart2.png" style="width: 20px"> <span>${aList.likes}</span></td>
+								<td class="left02_td"><img class="likes" src="${pageContext.request.contextPath}/assets/image/artist/icon/heart2.png" style="width: 20px"> <span>${aList.likes}</span></td>
 								<td class="left02_td"><img class="fan" data-no="${aList.user_no}" src="${pageContext.request.contextPath}/assets/image/artist/icon/fan1.png" style="width: 20px"><span>${aList.fan}</span></td>
 							</tr>
 						</c:forEach>
@@ -132,7 +132,7 @@
 
 <script type="text/javascript">
 
-// 페이지 로딩되었을 때
+// 팬 로딩되었을 때
 $(document).ready(function(){
 
 	$.ajax({
@@ -144,7 +144,7 @@ $(document).ready(function(){
 
 
 		data : {
-			user_no : ${authUser.user_no}
+		user_no : ${authUser.user_no}
 		},
 
 		// 성공일 경우 success로 들어오며, 'result'는 응답받은 데이터이다.
@@ -174,9 +174,12 @@ $(".fan").on("click",function(){
 
 		// HTTP method type(GET, POST) 형식이다.
 		type : "get",
-
+		
 		// Json 형태의 데이터로 보낸다.
 		contentType : "application/json",
+
+		// Json 형식의 데이터를 받는다.
+		dataType : "json",
 
 
 		data : {
@@ -197,6 +200,79 @@ $(".fan").on("click",function(){
 	});
 	
 });
+
+
+<script type="text/javascript">
+
+//좋아요 로딩되었을 때
+$(document).ready(function(){
+
+	$.ajax({
+		// 컨트롤러에서 대기중인 URL 주소이다.
+		url : "${pageContext.request.contextPath}/Artist/LikesLoading",
+
+		// HTTP method type(GET, POST) 형식이다.
+		type : "post",
+		
+
+		data : {
+		user_no : ${authUser.user_no}
+		},
+
+		// 성공일 경우 success로 들어오며, 'result'는 응답받은 데이터이다.
+		success : function(result) {
+			/*성공시 처리해야될 코드 작성*/
+
+		},
+
+		// 실패할경우 error로 들어온다.
+		error : function(XHR, status, error) {
+			console.error(status + " : " + error);
+		}
+	});  
+
+});
+
+
+//좋아요 눌렀을 때
+$(".likes").on("click",function(){
+	
+	$(this).attr('src', '${pageContext.request.contextPath}/assets/image/artist/icon/heart2.png');
+	var artist_no = $(this).data("no");
+	
+	$.ajax({
+		// 컨트롤러에서 대기중인 URL 주소이다.
+		url : "${pageContext.request.contextPath}/Artist/Likes",
+
+		// HTTP method type(GET, POST) 형식이다.
+		type : "get",
+
+		// Json 형태의 데이터로 보낸다.
+		contentType : "application/json",
+
+		// Json 형식의 데이터를 받는다.
+		dataType : "json",
+
+
+		artist_no : artist_no,
+		user_no : ${authUser.user_no}
+		},
+
+		// 성공일 경우 success로 들어오며, 'result'는 응답받은 데이터이다.
+		success : function(result) {
+			/*성공시 처리해야될 코드 작성*/
+			console.log(result)
+		},
+
+		// 실패할경우 error로 들어온다.
+		error : function(XHR, status, error) {
+			console.error(status + " : " + error);
+		}
+	});
+	
+});
+
+
 </script>
 
 </html>

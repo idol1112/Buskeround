@@ -51,7 +51,7 @@
         <input type="hidden" name="user_no" value="${sessionScope.authUser.user_no}">
         <input type="hidden" name="nickname" value="${sessionScope.authUser.nickname}">
         
-          <select name="category_no">
+          <select name="category_type">
             <option selected value="0">카테고리</option>
             <option value="1">공지사항</option>
             <option value="3">갤러리</option>
@@ -62,11 +62,6 @@
 			
           <!-- 에디터 -->
           <textarea name="content" class="editor"></textarea>
-          
-          <!-- 페이스북 업로드 -->
-          <input id="facebookupload" type="checkbox" value="facebook">
-          <label for="facebookupload">페이스북 등록</label>
-          
           
           <button type="submit" id="uploadbutton">등록</button>
         </form>

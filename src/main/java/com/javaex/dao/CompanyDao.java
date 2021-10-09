@@ -6,6 +6,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.javaex.vo.AppFilterVo;
+import com.javaex.vo.BusappVo;
 import com.javaex.vo.BusdateVo;
 import com.javaex.vo.BustimeVo;
 import com.javaex.vo.CompanyVo;
@@ -114,5 +116,29 @@ public class CompanyDao {
 		return sqlSession.selectList("busdate.selectBusdateList", stage_no);
 	}
 	
-	///////////////////////////////// *공연장* /////////////////////////////////
+	///////////////////////////////// *버스킹존* /////////////////////////////////
+	
+	///////////////////////////////// 공연신청관리 /////////////////////////////////
+	//제휴사별 전체 공연 리스트 불러오기
+	public List<BusappVo> selectApplyList(int user_no) {
+		System.out.println("CompanyDao.selectApplyList()");
+		
+		return sqlSession.selectList("busapp.selectApplyList", user_no);
+	}
+	
+	//전체 공연장 날짜~날짜 검색
+	public List<BusappVo> selectFilterListAll(AppFilterVo appFilterVo) {
+		System.out.println("CompanyDao.selectFilterListAll()");
+		
+		return sqlSession.selectList("busapp.selectFilterListAll", appFilterVo);
+	}
+	
+	//특정 공연장 날짜~날짜 검색
+	public List<BusappVo> selectFilterList(AppFilterVo appFilterVo) {
+		System.out.println("CompanyDao.selectFilterList()");
+		
+		return sqlSession.selectList("busapp.selectFilterList", appFilterVo);
+	}
+		
+	///////////////////////////////// *공연신청관리* /////////////////////////////////
 }

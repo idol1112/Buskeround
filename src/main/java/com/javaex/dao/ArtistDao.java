@@ -80,6 +80,27 @@ public class ArtistDao {
 		return sqlsession.selectOne("artist.getFanOk", userVo);
 	}
 	
+	//좋아요 등록
+	public void getLikes(UserVo userVo) {
+		System.out.println("[ArtistDao.getLikes()]");
+		
+		sqlsession.insert("artist.getLikes", userVo);
+	}
+	
+	//좋아요 로딩
+	public List<UserVo> getLikesLoading(int user_no) {
+		System.out.println("[artistDao.getLikesLoading()]");
+		
+		return sqlsession.selectList("artist.getLikesLoading", user_no);
+	}
+	
+	//좋아요 등록 여부
+	public UserVo getLikesOk(UserVo userVo) {
+		System.out.println("[artistDao.getLikesOk()]");
+		
+		return sqlsession.selectOne("artist.getLikesOk", userVo);
+	}
+	
 	
 	
 	

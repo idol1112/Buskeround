@@ -62,7 +62,7 @@
 						<tbody>
 							<tr>
 								<td>1</td>
-								<td class="left-align"><a href="blogNoticeDetail.jsp">8월 29일 버스킹 공지사항</a></td>
+								<td class="left-align"><a href="${pageContext.request.contextPath}/blog/blog_noticeDetail/thunderkyg">8월 29일 버스킹 공지사항</a></td>
 								<td>우주 멋쟁이</td>
 								<td>2021-09-08</td>
 								<td>100</td>

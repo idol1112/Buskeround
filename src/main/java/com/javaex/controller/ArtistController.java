@@ -106,7 +106,7 @@ public class ArtistController {
 
 	}
 
-	// 팬 되기
+	// 팬 등록
 	@ResponseBody
 	@RequestMapping(value = "/Fan", method = { RequestMethod.GET, RequestMethod.POST })
 	public boolean fan(@ModelAttribute UserVo userVo) {
@@ -125,6 +125,28 @@ public class ArtistController {
 		System.out.println("[ArtistController.FanLoading()]");
 
 		artistService.getFanLoading(user_no);
+
+	}
+	
+	// 좋아요 등록
+	@ResponseBody
+	@RequestMapping(value = "/Likes", method = { RequestMethod.GET, RequestMethod.POST })
+	public boolean likes(@ModelAttribute UserVo userVo) {
+
+		System.out.println("[ArtistController.Likes()]");
+
+		return artistService.getLikes(userVo);
+
+	}
+	
+	// 좋아요 로딩
+	@ResponseBody
+	@RequestMapping(value = "/LikesLoading", method = { RequestMethod.GET, RequestMethod.POST })
+	public void likesLoading(@RequestParam("user_no") int user_no) {
+
+		System.out.println("[ArtistController.LikesLoading()]");
+
+		artistService.getLikesLoading(user_no);
 
 	}
 

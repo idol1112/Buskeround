@@ -135,7 +135,7 @@ h1 {
 	position: absolute;
 	width: 10px;
 	height: 10px;
-	top: 24px;
+	top: 31px;
 	right: -6px;
 	background: #9A30AE;
 	border-radius: 50%;
@@ -147,7 +147,7 @@ h1 {
 	position: absolute;
 	width: 10px;
 	height: 10px;
-	top: 24px;
+	top: 31px;
 	left: -4px;
 	background: #9A30AE;
 	border-radius: 50%;
@@ -174,8 +174,8 @@ h1 {
 
 .timeline ul li:nth-child(odd) .time {
 	position: absolute;
-	top: 12px;
-	right: -165px;
+	top: 20px;
+	right: -150px;
 	margin: 0;
 	padding: 8px 16px;
 	background: #9A30AE;
@@ -186,8 +186,8 @@ h1 {
 
 .timeline ul li:nth-child(even) .time {
 	position: absolute;
-	top: 12px;
-	left: -165px;
+	top: 20px;
+	left: -150px;
 	margin: 0;
 	padding: 8px 16px;
 	background: #9A30AE;
@@ -344,10 +344,14 @@ h1 {
 .gallery_box .gallery_item p {
 	letter-spacing: 1px;
 	font-size: 12px;
-	padding: 12px 0;
+	padding: 12px 0 0 0;
 	opacity: 0;
 	transition: opacity 0.35s, transform 0.35s;
 	transform: translate3d(10%, 0, 0);
+}
+
+#hit {
+	padding: 0;
 }
 
 .gallery_box .gallery_item:hover img {
@@ -391,6 +395,11 @@ h1 {
 	max-height: 900px;
 }
 
+#modal_text {
+	margin-top: 15px;
+	font-size: 14px;
+}
+
 #welcome {
 	text-align: center;
 }
@@ -402,4 +411,12 @@ h1 {
 #welcomeword {
 	font-size: 20px;
 	color: gray;
+}
+
+#noGallery {
+	margin-top: 30px;
+	text-align: center;
+	font-size: 16px;
+	font-weight: bold;
+	text-align: center;
 }

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> 
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%> 
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -53,22 +55,26 @@
 					<h5>공연신청 관리</h5>
 				</div>
 				<div id="mypage-main-content">
-					<div id="content-filter-area">
-						<label><img class="filter-img" alt="filter" src="${pageContext.request.contextPath}/assets/image/company/icon/filter-icon.png"></label>
-						<div class="content-filter">
-							<select name="stage" class="input" id="stage-select">
-								<option value="">7층 스테이지</option>
-								<option value="">8층 카페</option>
-							</select>
+					<form action="${pageContext.request.contextPath }/Company/getFilterList" method="get">
+						<div id="content-filter-area">
+							<label><img class="filter-img" alt="filter" src="${pageContext.request.contextPath}/assets/image/company/icon/filter-icon.png"></label>
+							<div class="content-filter">
+								<select name="stage_no" id="stage-select" class="select-box input">
+									<option value="0">전체</option>
+	                           		<c:forEach items="${stageList}" var="stageList" varStatus="status">
+										<option value="${stageList.stage_no}">${stageList.stage_name}</option>
+									</c:forEach>
+								</select>
+							</div>
+							<div class="content-filter">
+								<input type="date" class="input" name="start_date" id="datepicker1"/>
+							</div>
+							<div class="content-filter">
+								<input type="date" class="input" name="end_date" id="datepicker2"/>
+							</div>
+								<img id="searchBtn" class="filter-img" alt="search" src="${pageContext.request.contextPath}/assets/image/company/icon/search-icon.png">
 						</div>
-						<div class="content-filter">
-							<input type="date" class="input" id="datepicker1"/>
-						</div>
-						<div class="content-filter">
-							<input type="date" class="input" id="datepicker2"/>
-						</div>
-						<label><img class="filter-img" alt="search" src="${pageContext.request.contextPath}/assets/image/company/icon/search-icon.png"></label>
-					</div>
+					</form>
 					<table class="table table-bordered">
 						<colgroup>
 							<col style="width: 15%">
@@ -93,81 +99,59 @@
 							<th class="th-gray">상태</th>
 							<th class="th-gray"></th>
 						</tr>
+						<c:forEach items="${busappVo}" var="busappVo" varStatus="status">
 						<tr>
-							<td>7층 스테이지</td>
-							<td>2021-09-01</td>
-							<td>22:00-24:00</td>
-							<td>버스커</td>
-							<td>R&B</td>
-							<td>010-1234-1234</td>
+							<td>${busappVo.stage_name}</td>
+							<c:set var="bus_date" value="${busappVo.bus_date}"/>
+							<td>${fn:substring(bus_date, 0, 10)}</td>
+							<c:set var="start_time" value="${busappVo.start_time}"/><c:set var="end_time" value="${busappVo.end_time}"/>
+							<td>${fn:substring(start_time, 11, 16)}-${fn:substring(end_time, 11, 16) }</td>
+							<td>${busappVo.nickname}</td>
+							<!-- 장르 -->
+							<c:if test="${busappVo.genre == 1}">
+								<td class="articon"><img class="genre-img2" src="${pageContext.request.contextPath}/assets/image/blog/icon/ballade.png" alt="발라드"></td>
+							</c:if>
+
+							<c:if test="${busappVo.genre == 2}">
+								<td class="articon"><img class="genre-img" src="${pageContext.request.contextPath}/assets/image/blog/icon/dance.png" alt="댄스"></td>
+							</c:if>
+
+							<c:if test="${busappVo.genre == 3}">
+								<td class="articon"><img class="genre-img" src="${pageContext.request.contextPath}/assets/image/blog/icon/hiphop.png" alt="힙합"></td>
+							</c:if>
+
+							<c:if test="${busappVo.genre == 4}">
+								<td class="articon"><img class="genre-img" src="${pageContext.request.contextPath}/assets/image/blog/icon/soul.png" alt="R&B"></td>
+							</c:if>
+
+							<c:if test="${busappVo.genre == 5}">
+								<td class="articon"><img class="genre-img" src="${pageContext.request.contextPath}/assets/image/blog/icon/musical.png" alt="악기"></td>
+							</c:if>
+
+							<c:if test="${busappVo.genre == 6}">
+								<td class="articon"><img class="genre-img" src="${pageContext.request.contextPath}/assets/image/blog/icon/etc.png" alt="기타공연"></td>
+							</c:if>
+							<td>${busappVo.hp}</td>
 							<td>상세정보</td>
-							<td>수락</td>
+							<c:if test="${busappVo.status == 1}">
+								<td>수락</td>
+							</c:if>
+
+							<c:if test="${busappVo.status == 2}">
+								<td>거절</td>
+							</c:if>
+
+							<c:if test="${busappVo.status == 3}">
+								<td class="articon"><img class="status-img" src="${pageContext.request.contextPath}/assets/image/company/icon/ongoing.png" alt="진행중"></td>
+							</c:if>
 							<td>
 								<div class="checkbox">
-									<input type="checkbox" value="">
+									<input type="checkbox" name="apply_no" value="${busappVo.apply_no}">
 								</div>
 							</td>
 						</tr>
-						<tr>
-							<td>7층 스테이지</td>
-							<td>2021-09-01</td>
-							<td>22:00-24:00</td>
-							<td>버스커</td>
-							<td>R&B</td>
-							<td>010-1234-1234</td>
-							<td>상세정보</td>
-							<td>진행중</td>
-							<td>
-								<div class="checkbox">
-									<input type="checkbox" value="">
-								</div>
-							</td>
-						</tr>
-						<tr>
-							<td>7층 스테이지</td>
-							<td>2021-09-01</td>
-							<td>22:00-24:00</td>
-							<td>버스커</td>
-							<td>R&B</td>
-							<td>010-1234-1234</td>
-							<td>상세정보</td>
-							<td>진행중</td>
-							<td>
-								<div class="checkbox">
-									<input type="checkbox" value="">
-								</div>
-							</td>
-						</tr>
-						<tr>
-							<td>7층 스테이지</td>
-							<td>2021-09-01</td>
-							<td>22:00-24:00</td>
-							<td>버스커</td>
-							<td>R&B</td>
-							<td>010-1234-1234</td>
-							<td>상세정보</td>
-							<td>수락</td>
-							<td>
-								<div class="checkbox">
-									<input type="checkbox" value="">
-								</div>
-							</td>
-						</tr>
-						<tr>
-							<td>7층 스테이지</td>
-							<td>2021-09-01</td>
-							<td>22:00-24:00</td>
-							<td>버스커</td>
-							<td>R&B</td>
-							<td>010-1234-1234</td>
-							<td>상세정보</td>
-							<td>수락</td>
-							<td>
-								<div class="checkbox">
-									<input type="checkbox" value="">
-								</div>
-							</td>
-						</tr>
+						</c:forEach>
+						
 					</table>
 				</div>
 				<div class="btn-area">
@@ -186,6 +170,12 @@
 </body>
 
 <script type="text/javascript">
+//필터 검색 버튼
+$("#searchBtn").on("click", function() {
+	var form = $(this).parents('form');
+	form.submit();
+});
+
 datePickerSet($("#datepicker1"), $("#datepicker2"), true); //다중은 시작하는 달력 먼저, 끝달력 2번째
 
 /*

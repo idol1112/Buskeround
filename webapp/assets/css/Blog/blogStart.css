@@ -70,5 +70,3 @@ input[type="checkbox"]:checked ~ .reveal-if-active {
   cursor: pointer;
   border-radius: 5px;
 }
-
-/* Input Testing */

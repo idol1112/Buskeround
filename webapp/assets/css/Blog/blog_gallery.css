@@ -72,10 +72,14 @@
 .gallery_box .gallery_item p {
 	letter-spacing: 1px;
 	font-size: 12px;
-	padding: 12px 0;
+	padding: 12px 0 0 0;
 	opacity: 0;
 	transition: opacity 0.35s, transform 0.35s;
 	transform: translate3d(10%, 0, 0);
+}
+
+#hit {
+	padding: 0;
 }
 
 .gallery_box .gallery_item:hover img {
@@ -115,8 +119,14 @@
 }
 
 #modal_img {
-	width: 1000px;
-	max-height: 900px;
+	max-width: 1000px;
+	max-height: 600px;
+	object-fit: cover;
+}
+
+#modal_text {
+	margin-top: 15px;
+	font-size: 14px;
 }
 
 /* 게시판 */
@@ -290,4 +300,11 @@
 	top: 18px;
 }
 
+#noGallery {
+	margin-top: 150px;
+	text-align: center;
+	font-size: 16px;
+	font-weight: bold;
+	text-align: center;
+}
 /***************************************************************************************/

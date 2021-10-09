@@ -111,9 +111,17 @@ public class BlogDao {
 	public int writePost(NoticeVo noticeVo) {
 		System.out.println("BlogDao.writePost()");
 		
+		int category = sqlSession.selectOne("blog.categoryNo", noticeVo);
+		noticeVo.setCategory_no(category);
 		System.out.println(noticeVo);
 		
 		return sqlSession.insert("blog.postInsert", noticeVo);
 	}
 	
+	//Notice List (공지사항 리스트 가져오기)
+	public List<NoticeVo> noticeList(String id) {
+		System.out.println("BlogDao.noticeList");
+		
+		return sqlSession.selectList("blog.noticeList", id);
+	}
 }

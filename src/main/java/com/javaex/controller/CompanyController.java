@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,6 +18,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.javaex.service.CompanyService;
 import com.javaex.service.UserService;
+import com.javaex.vo.AppFilterVo;
+import com.javaex.vo.BusappVo;
 import com.javaex.vo.BusdateVo;
 import com.javaex.vo.CompanyVo;
 import com.javaex.vo.StageVo;
@@ -350,8 +351,45 @@ public class CompanyController {
 	
 	//공연 신청 관리 폼(수락/거절)
 	@RequestMapping(value = "/applyManage", method = {RequestMethod.GET, RequestMethod.POST})
-	public String applyManage() {
+	public String applyManage(HttpSession session, Model model) {
 		System.out.println("[CompanyController.applyManage()]");
+		
+		UserVo authUser = (UserVo)session.getAttribute("authUser");
+		int user_no = authUser.getUser_no();
+		
+		List<StageVo> stageList = companyService.getStage(user_no);
+		
+		System.out.println(stageList);
+		
+		model.addAttribute("stageList", stageList);
+		
+		List<BusappVo> busappVo = companyService.getApplyList(user_no);
+		System.out.println(busappVo);
+		model.addAttribute("busappVo", busappVo);
+		
+		
+		return "/Company/applyManage";
+	}
+	
+	//공연 신청관리 필터 검색
+	@RequestMapping(value = "/getFilterList", method = {RequestMethod.GET, RequestMethod.POST})
+	public String getFilterList(HttpSession session, @ModelAttribute AppFilterVo appFilterVo, Model model) {
+		System.out.println("[CompanyController.getFilterList()]");
+		System.out.println(appFilterVo);
+		UserVo authUser = (UserVo)session.getAttribute("authUser");
+		int user_no = authUser.getUser_no();
+		int stage_no = appFilterVo.getStage_no();
+		
+		List<StageVo> stageList = companyService.getStage(user_no);
+		
+		System.out.println(stageList);
+		
+		model.addAttribute("stageList", stageList);
+		
+		if(stage_no == 0) {appFilterVo.setUser_no(user_no);}
+		
+		List<BusappVo> busappVo = companyService.getFilterList(appFilterVo);
+		model.addAttribute("busappVo", busappVo);
 		
 		return "/Company/applyManage";
 	}
