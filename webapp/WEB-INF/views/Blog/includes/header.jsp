@@ -11,10 +11,13 @@
     <div class="banner" style='background-image: url("${pageContext.request.contextPath}/upload/${blogVo.banner}");background-size: 100% 100%;'>
   </c:otherwise>
 </c:choose>
+
 <!-- 블로그 관리 버튼 -->
-<a href="${pageContext.request.contextPath}/blog/blog_modify/${blogVo.id}">
-  <img class="setting" src="${pageContext.request.contextPath}/assets/image/blog/icon/setting.png">
-</a>
+<c:if test="${blogVo.user_no == authUser.user_no}">
+  <a href="${pageContext.request.contextPath}/blog/blog_modify/${blogVo.id}">
+    <img class="setting" src="${pageContext.request.contextPath}/assets/image/blog/icon/setting.png">
+  </a>
+</c:if>
 
 <!-- 공연시작 버튼 -->
 <c:if test="${blogVo.user_no == authUser.user_no}">

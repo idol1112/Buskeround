@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 <!DOCTYPE html>
 <html>
@@ -44,123 +45,153 @@
         <div class="clearfix main_title">
           <img src="${pageContext.request.contextPath}/assets/image/blog/icon/landscape.png">
           <span>갤러리</span>
-          <button id="writebutton" type="button" onClick="location.href='${pageContext.request.contextPath}/blog/blog_write/${blogVo.id}'">
-            <img src="${pageContext.request.contextPath}/assets/image/blog/icon/write.png">사진 올리기
-          </button>
+
+          <c:if test="${blogVo.user_no == authUser.user_no}">
+            <button id="writebutton" type="button" onClick="location.href='${pageContext.request.contextPath}/blog/blog_write/${blogVo.id}'">
+              <img src="${pageContext.request.contextPath}/assets/image/blog/icon/write.png">사진 올리기
+            </button>
+          </c:if>
         </div>
 
         <!---- gallery ---->
         <div class="gallery_box">
-          <div class="gallery_item">
-            <div class="gallery_item_caption">
-              <h2>홍대 거리</h2>
-              <p>2021. 09. 07</p>
-            </div>
-            <img id="img_item" src="${pageContext.request.contextPath}/assets/image/blog/img/buker.jpg" alt="" />
-          </div>
 
-          <div class="gallery_item">
-            <div class="gallery_item_caption">
-              <h2>마로니에 공원</h2>
-              <p>2021. 09. 07</p>
-            </div>
-            <img id="img_item" src="${pageContext.request.contextPath}/assets/image/blog/img/busker.jpg" alt="" />
-          </div>
+          <c:if test="${fn:length(listMap.galleryList) == 0}">
+            <p id="noGallery">등록된 사진이 없습니다.</p>
+          </c:if>
 
-          <div class="gallery_item">
-            <div class="gallery_item_caption">
-              <h2>마로니에 공원</h2>
-              <p>2021. 09. 05</p>
+          <c:forEach items="${listMap.galleryList}" var="gList">
+            <div class="gallery_item">
+              <div class="gallery_item_caption">
+                <h2>${gList.title}</h2>
+                <p>${gList.reg_date}</p>
+                <p id="hit">조회수: ${gList.hit}</p>
+              </div>
+              <img id="img_item" src="${pageContext.request.contextPath}/upload/${gList.p_img}" onclick="gallery_item(${gList.post_no})" data-no="${gList.post_no}" alt="" />
             </div>
-            <img id="img_item" src="${pageContext.request.contextPath}/assets/image/blog/img/busker2.jpg" alt="" />
-          </div>
-
-          <div class="gallery_item">
-            <div class="gallery_item_caption">
-              <h2>이태원</h2>
-              <p>2021. 09. 03</p>
-            </div>
-            <img id="img_item" src="${pageContext.request.contextPath}/assets/image/blog/img/busker3.jpg" alt="" />
-          </div>
+          </c:forEach>
         </div>
         <!------ ////(gallery)//// ------>
 
-        <!-- 검색 기능 -->
-        <div class="topnav">
-          <div class="search-container">
-            <form action="/action_page.php">
-              <input type="text" placeholder="Search.." name="search">
-              <button type="submit">
-                <label class="icon fa fa-search" for="search"></label>
-              </button>
-            </form>
+        <c:if test="${fn:length(listMap.galleryList) != 0}">
+          <!-- 검색 기능 -->
+          <div class="topnav">
+            <div class="search-container">
+              <form action="${pageContext.request.contextPath}/blog/blog_gallery/${blogVo.id}" method="get">
+                <input type="text" placeholder="Search.." name="keyword">
+                <button type="submit">
+                  <label class="icon fa fa-search" for="search"></label>
+                </button>
+              </form>
+            </div>
           </div>
-        </div>
 
-        <!-- 페이징 -->
-        <div class="container xlarge">
-          <div class="pagination">
-            <ul>
-              <!-- Add Button-->
-              <li><a href="#">&laquo;</a></li>
-              <li><a href="#">1</a></li>
-              <li><a href="#">2</a></li>
-              <li class="active"><a href="#">3</a></li>
-              <!-- for active button-->
-              <li><a href="#">4</a></li>
-              <li><a href="#">5</a></li>
-              <li><a href="#">&raquo;</a></li>
-            </ul>
+          <!-- 페이징 -->
+          <div class="container xlarge">
+            <div class="pagination">
+              <ul>
+                <!-- 이전 버튼 -->
+                <c:if test="${listMap.prev == true}">
+                  <li><a href="${pageContext.request.contextPath}/blog/blog_gallery/${blogVo.id}?page=${listMap.start_page_btn_no-1}&keyword=${param.keyword}">&laquo;</a></li>
+                </c:if>
+
+                <!-- 페이지 -->
+                <c:forEach var="page" begin="${listMap.start_page_btn_no}" end="${listMap.end_page_btn_no}" step="1">
+                  <c:choose>
+
+                    <c:when test="${param.page == page}">
+                      <li class="active"><a href="${pageContext.request.contextPath}/blog/blog_gallery/${blogVo.id}?page=${page}&keyword=${param.keyword}">${page}</a></li>
+                    </c:when>
+
+                    <c:otherwise>
+                      <li><a href="${pageContext.request.contextPath}/blog/blog_gallery/${blogVo.id}?page=${page}&keyword=${param.keyword}">${page}</a></li>
+                    </c:otherwise>
+
+                  </c:choose>
+                </c:forEach>
+
+                <!-- 다음 버튼 -->
+                <c:if test="${listMap.next == true}">
+                  <li><a href="${pageContext.request.contextPath}/blog/blog_gallery/${blogVo.id}?page=${listMap.end_page_btn_no+1}&keyword=${param.keyword}">&laquo;</a></li>
+                </c:if>
+              </ul>
+            </div>
           </div>
-        </div>
+        </c:if>
       </div>
     </div>
     <!------ ////(br_content)//// ------>
   </div>
   <!------ ////(br_container)//// ------>
-</body>
 
-<!-- modal -->
-<div class="modal fade" id="img_modal">
-  <div class="modal-dialog" id="img_dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title"></h4>
-      </div>
-      <div class="modal-body">
-        <img id="modal_img" src="">
-        <div class="modal_content">
-          <p id="modal_text"></p>
+  <!-- modal -->
+  <div class="modal fade" id="img_modal">
+    <div class="modal-dialog" id="img_dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title"></h4>
+
+        </div>
+        <div class="modal-body">
+          <img id="modal_img" src="">
+          <div class="modal_content" id="modal_text"></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="btn_close">확인</button>
         </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" id="btn_close">확인</button>
-      </div>
+      <!-- /.modal-content -->
     </div>
-    <!-- /.modal-content -->
+    <!-- /.modal-dialog -->
   </div>
-  <!-- /.modal-dialog -->
-</div>
-<!------ ////(modal)//// ------>
+  <!------ ////(modal)//// ------>
+
+</body>
+
+
 
 <script type="text/javascript">
-	$(".gallery_item").on(
-			"click",
-			"#img_item",
-			function() {
-				var img_title = $(this).parents(".gallery_item")
-						.children("div").children("h2").text();
-				$(".modal-title").text(img_title);
 
-				var img_src = $(this).attr('src');
-				$("#modal_img").attr("src", img_src);
+// 사진 클릭했을 때
+function gallery_item(post_no) {
 
-				$("#img_modal").modal('show');
-			});
+	$.ajax({
+		// 컨트롤러에서 대기중인 URL 주소이다.
+		url : "${pageContext.request.contextPath}/api/blog/gallery/" + post_no,
 
-	$("#btn_close").on("click", function() {
-		$("#img_modal").modal('hide');
+		// HTTP method type(GET, POST) 형식이다.
+		type : "GET",
+
+		// Json 형식의 데이터를 받는다.
+		dataType : "json",
+
+		// 성공일 경우 success로 들어오며, 'result'는 응답받은 데이터이다.
+		success : function(result) {
+			/*성공시 처리해야될 코드 작성*/
+
+			console.log(result);
+
+			$(".modal-title").text(result.title);
+
+			$("#modal_img").attr("src", "${pageContext.request.contextPath}/upload/" + result.p_img);
+
+			$(".modal_content").append(result.content);
+
+		},
+
+		// 실패할경우 error로 들어온다.
+		error : function(XHR, status, error) {
+			console.error(status + " : " + error);
+		}
 	});
+
+	$("#img_modal").modal('show');
+
+}
+
+  $("#btn_close").on("click", function() {
+  	$("#img_modal").modal('hide');
+  });
 </script>
 
 </html>

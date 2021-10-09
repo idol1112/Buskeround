@@ -114,7 +114,7 @@ h1 {
 	position: absolute;
 	width: 10px;
 	height: 10px;
-	top: 24px;
+	top: 31px;
 	right: -6px;
 	background: #9A30AE;
 	border-radius: 50%;
@@ -126,7 +126,7 @@ h1 {
 	position: absolute;
 	width: 10px;
 	height: 10px;
-	top: 24px;
+	top: 31px;
 	left: -4px;
 	background: #9A30AE;
 	border-radius: 50%;
@@ -153,8 +153,8 @@ h1 {
 
 .timeline ul li:nth-child(odd) .time {
 	position: absolute;
-	top: 12px;
-	right: -165px;
+	top: 20px;
+	right: -150px;
 	margin: 0;
 	padding: 8px 16px;
 	background: #9A30AE;
@@ -165,8 +165,8 @@ h1 {
 
 .timeline ul li:nth-child(even) .time {
 	position: absolute;
-	top: 12px;
-	left: -165px;
+	top: 20px;
+	left: -150px;
 	margin: 0;
 	padding: 8px 16px;
 	background: #9A30AE;

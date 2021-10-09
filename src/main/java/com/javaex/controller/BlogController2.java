@@ -6,7 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
+import org.springframework.web.bind.annotation.RequestParam;
 import com.javaex.service.BlogService;
 import com.javaex.service.BlogService2;
 import com.javaex.vo.BlogVo;
@@ -17,19 +17,28 @@ public class BlogController2 {
 
   @Autowired
   BlogService2 blogService2;
+
   @Autowired
   BlogService blogService;
-  
-	@RequestMapping(value = "blog_gallery/{id}", method = { RequestMethod.GET, RequestMethod.POST })
-	public String blog_gallery(@PathVariable("id") String id, Model model) {
-		System.out.println("[TestingController.blog_gallery()]");
 
-		// 해더 정보 가져오기
-		BlogVo blogVo = blogService.selectUser(id);
-		model.addAttribute(blogVo);
+  /*** 갤러리 ***/
+  @RequestMapping(value = "blog_gallery/{id}", method = {RequestMethod.GET, RequestMethod.POST})
+  public String blog_gallery(Model model, @PathVariable("id") String id, @RequestParam(value = "page", required = false, defaultValue = "1") int page,
+      @RequestParam(value = "keyword", required = false, defaultValue = "") String keyword) {
+    System.out.println("[TestingController.blog_gallery()]");
 
-		return "Blog/blog_gallery";
+    // 해더 정보 가져오기
+    BlogVo blogVo = blogService.selectUser(id);
+    model.addAttribute(blogVo);
 
-	}
+    // 갤러리 정보 전달
+
+    System.out.println(page);
+
+    model.addAttribute("listMap", blogService2.galleryPage(blogVo.getUser_no(), page, keyword));
+
+    return "Blog/blog_gallery";
+
+  }
 
 }

@@ -1,5 +1,6 @@
 package com.javaex.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
@@ -69,6 +70,51 @@ public class BlogDao2 {
 
     sqlSession.update("post.imgInsert", postVo);
 
+  }
+
+  /*** 갤러리 리스트 가져오기 ***/
+  public List<PostVo> getGallery(int user_no, int start_num, int end_num, String keyword) {
+    System.out.println("[사용 메소드: BlogDao2.getGallery()]");
+
+    Map<String, Object> pageMap = new HashMap<String, Object>();
+
+    pageMap.put("user_no", user_no);
+    pageMap.put("start_num", start_num);
+    pageMap.put("end_num", end_num);
+    pageMap.put("keyword", keyword);
+
+    return sqlSession.selectList("post.getGallery", pageMap);
+
+  }
+
+  /*** 페이징 (전체 게시물 갯수 구하기) ***/
+  public int selectTotalCnt(String keyword) {
+    System.out.println("[사용 메소드: BlogDao2.selectTotalCnt()]");
+
+    return sqlSession.selectOne("post.selectTotalCnt", keyword);
+  }
+
+  /*** 갤러리 리스트 가져오기(Main) ***/
+  public List<PostVo> getGalleryMain(int user_no) {
+    System.out.println("[사용 메소드: BlogDao2.getGalleryMain()]");
+
+    return sqlSession.selectList("post.getGalleryMain", user_no);
+
+  }
+
+  /*** 갤러리 1개 가져오기 ***/
+  public PostVo getOneGallery(int post_no) {
+    System.out.println("[사용 메소드: BlogDao2.getOneGallery()]");
+
+    return sqlSession.selectOne("post.getOneGallery", post_no);
+
+  }
+
+  /*** 페이징 (전체 게시물 갯수 구하기) ***/
+  public int updateHit(int post_no) {
+    System.out.println("[사용 메소드: BlogDao2.updateHit()]");
+
+    return sqlSession.update("post.updateHit", post_no);
   }
 
 }

@@ -84,7 +84,6 @@ public class ApiBlogController {
 
   }
 
-
   /*** 썸네일 업로드 ***/
   @ResponseBody
   @RequestMapping(value = "upload/{user_no}", method = {RequestMethod.GET, RequestMethod.POST})
@@ -122,6 +121,16 @@ public class ApiBlogController {
     System.out.println("[현재 위치: ApiBlogController.blog_aside]");
 
     return artistService.getBlogLive();
+
+  }
+
+  /*** 갤러리 1개 조회 ***/
+  @ResponseBody
+  @RequestMapping(value = "gallery/{post_no}", method = {RequestMethod.GET, RequestMethod.POST})
+  public PostVo gallery(@PathVariable("post_no") int post_no) {
+    System.out.println("[현재 위치: ApiBlogController.blog_gallery]");
+
+    return blogService2.getOneGallery(post_no);
 
   }
 
