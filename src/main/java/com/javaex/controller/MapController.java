@@ -1,6 +1,8 @@
 package com.javaex.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -43,7 +45,7 @@ public class MapController {
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-	//버스킹존 데이터 받기
+	//버스킹존 이동
 	@RequestMapping("/buskingzone")
 	public String busKingzoneList() {
 		System.out.println("버스킹존 컨트롤러");
@@ -62,24 +64,34 @@ public class MapController {
 	
 	@ResponseBody
 	@RequestMapping("/overlayList")
-	public BuskingzoneVo overlayList(@RequestParam("user_no") int user_no) {
+	public Object overlayList(@RequestParam("user_no") int user_no) {
 		System.out.println("컨트롤러 - 오버레이리스트");
 
 		BuskingzoneVo overlayList = mapService.overlayList(user_no);
-		System.out.println(overlayList);
-		return overlayList;
-	}
-	
-	
-	
-	
-	
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	@RequestMapping("/Map/maptest")
-	public String maptest(){
-		System.out.println("맵테스트");
 		
-		return "Map/maptest";
+		List<BuskingzoneVo> overlayStage =  mapService.overlayStage(user_no);
+		
+		System.out.println(overlayList);
+		System.out.println(overlayStage);
+		
+		Map<String, Object> mapOverlay = new HashMap<String, Object>();
+		mapOverlay.put("overlayList", overlayList);
+		mapOverlay.put("overlayStage", overlayStage);
+
+		
+		return mapOverlay;
 	}
+	
+	@ResponseBody
+	@RequestMapping("/overlatSch")
+	public List<BuskingzoneVo> overlaySch(@RequestParam("buskingzone") String stage_name,@RequestParam("companyno") int user_no) {
+		System.out.println("장소선택시 날짜 가져오는 컨트롤러");
+
+		List<BuskingzoneVo> sch = mapService.overlaySch(stage_name,user_no);
+		System.out.println(sch);
+		return sch;
+	}
+	
+
 	
 }

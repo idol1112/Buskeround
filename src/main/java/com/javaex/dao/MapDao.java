@@ -42,4 +42,21 @@ public class MapDao {
 		return overlayList;
 	}
 	
+	public List<BuskingzoneVo> overlayStage(int user_no) {
+		System.out.println("서비스 -오버레이장소");
+		
+		List<BuskingzoneVo> overlatStage = sqlSession.selectList("buskingzone.overlayStage", user_no);
+		
+		return overlatStage;
+	}
+	
+	//에이작스 장소 지정시간 값가져오기
+	public List<BuskingzoneVo> overlaySch(Map<String, Object> overlaySch) {
+		System.out.println("장소선택시 날짜 가져오는 서비스");
+
+		List<BuskingzoneVo> sch = sqlSession.selectList("buskingzone.overlaySch",overlaySch);
+		
+		return sch;
+	}
+	
 }

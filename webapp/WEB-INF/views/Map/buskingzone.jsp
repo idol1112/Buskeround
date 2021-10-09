@@ -143,7 +143,11 @@
 		/* 스크롤바 뒷 배경 설정*/
 		.type1::-webkit-scrollbar-track{
 		    background-color: 	#AFEEEE;
-		} */
+		} 
+		
+		#com_name{
+			text-align: center;font-size:40px;
+		}
 		
 	</style>
 <!-- 부트스트랩 -->
@@ -195,6 +199,7 @@
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=79c2ae6522e8e0df7b0592164f933676"></script>
 <script>
+
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = { 
         center: new kakao.maps.LatLng(37.49699749185255, 127.02445040286854), // 지도의 중심좌표
@@ -284,6 +289,7 @@ function getListItem(index, buskingzoneList) {
 
 function overlayVo(no) {
 	console.log(no);
+	var info = [];
 	//서버에 삭제요청(no, password 전달)
 	$.ajax({
 		url : "${pageContext.request.contextPath}/overlayList" ,
@@ -294,9 +300,13 @@ function overlayVo(no) {
 		},
 		
 		dataType : "json",
-		success : function(overlayVo){
+		success : function(mapOverlay){
+		for(var i=0; i < mapOverlay.overlayStage.length; i++){
+			info[i] = mapOverlay.overlayStage[i].stage_name;
+		}
 			/*성공시 처리해야될 코드 작성*/
-			overlay(overlayVo);
+			overlay(mapOverlay,info);
+
 			
 		},
 		error : function(XHR, status, error) {
@@ -340,23 +350,79 @@ function removeAllChildNods(el) {
         el.removeChild (el.lastChild);
     }
 }
-function overlay(overlayVo){
-	var str = "";
-	str += '<table id="overlayweb_table">';
-	str += '	<tr>';
-	str += '		<td><img src="${pageContext.request.contextPath }/upload/'+ overlayVo.com_img + '" width="350" height="250"></td>';
-	str += '	</tr>';
+function overlay(mapOverlay,info){
+
+	var str ='<div id="overlayweb_table">'+
+	'<input type="hidden" name="company_no" value="'+mapOverlay.overlayList.user_no+'">'+
+	'	<div>'+
+	'		<img src="${pageContext.request.contextPath }/upload/'+ mapOverlay.overlayList.com_img + '" width="100%" height="250">'+
+	'	</div>'+
 	
-	str += '	<tr>';
-	str += '		<td>'+ overlayVo.user_no + '</td>';
-	str += '		<td>'+ overlayVo.user_no + '</td>';
-	str += '		<td>'+ overlayVo.user_no + '</td>';
-	str += '	</tr>';
-	str += '</table>';
+	'	<div>'+
+	'		<div id="com_name">'+ mapOverlay.overlayList.com_name + '</div>'+
+	'	</div>'+
+	
+	'	<div>'+
+	'		<div>대표자명 : '+ mapOverlay.overlayList.ceo_name + '</div>'+
+	'		<div>전화번호 : '+ mapOverlay.overlayList.com_number + '</div>'+
+	'		<div>상세주소 : '+ mapOverlay.overlayList.address + '</div>'+
+	'		<hr>'+
+	'	</div>'+
+	'	<div>'+
+	'	<select name="stage" id="stage-select">'+
+	'           <option value="non">장소 선택</option>';
+	for(var i=0; i<info.length; i++){
+	str +='		<option value="'+info[i]+'">'+info[i]+'';
+	str +='		</option>';
+	}
+	str +='	</select>';
+	
+	str +=' <select name="stage_app" id="stage_app">';
+	str +='		<option value="">날짜 선택';
+	str +='		</option>';
+	str +='	</select>';
+	
+	str +='	</div>';
+	str +='</div>';
+
+	
 	
 	$("#overlayweb").html(str);
 	
-}
+	$("#overlayweb_table").on("change","#stage-select",function(){
+		var buskingzone = $(this).val();
+		var companyno = $("[name='company_no']").val();
+		
+		
+		$.ajax({
+			url : "${pageContext.request.contextPath }/overlatSch",
+			type : "post",
+			//contentType : "application/json",
+			data :  {buskingzone: buskingzone,companyno: companyno},
+			
+			
+			//dataType : "json",
+			success : function(buskingzoneVo) {
+				
+				var str = '<option value="'+buskingzoneVo.bus_date+'" id="ff">'+buskingzoneVo.bus_date+'</option>';
+				
+				for(var i = 0; i<buskingzoneVo.length; i++){
+					console.log(i);
+					("#stage_app").append(str);
+				}
+				
+				
+			},
+			error : function(XHR, status, error) {
+				console.error(status + " : " + error);
+			}
+		
+	});
+});
+};
+
+
+
 </script>
 </body>
 </html>

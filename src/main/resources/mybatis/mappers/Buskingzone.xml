@@ -16,11 +16,30 @@
 	
 	<select id="overlayList" parameterType="int" resultType="buskingzoneVo">
 		<![CDATA[
-		select user_no,com_img,com_name,address,com_number
-		from company
-		where user_no = #{user_no}
+			select user_no,com_img,com_name,ceo_name,com_number,address
+			from company
+			where user_no = #{user_no}
 		]]>
 	</select>
 	
+	<select id="overlayStage" parameterType="int" resultType="buskingzoneVo">
+		<![CDATA[
+			select s.stage_name
+			from company c,stage s
+			where c.user_no = #{user_no}
+			and c.user_no = s.user_no
+		]]>
+	</select>
+
+	<select id="overlaySch" parameterType="map" resultType="buskingzoneVo">
+		<![CDATA[
+			select s.user_no,b.bus_date,b.requirements
+			from stage s, buskingdate b
+			where s.user_no = #{user_no}
+			and s.stage_name = #{stage_name}
+			and s.stage_no = b.stage_no
+			and sysdate <= b.bus_date
+		]]>
+	</select>
 
 </mapper>

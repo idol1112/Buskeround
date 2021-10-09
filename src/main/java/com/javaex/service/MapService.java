@@ -58,6 +58,26 @@ public class MapService {
 		return overlayList;
 	}
 	
+	public List<BuskingzoneVo> overlayStage(int user_no) {
+		System.out.println("서비스 -오버레이장소");
+		
+		List<BuskingzoneVo> overlatStage = mapDao.overlayStage(user_no);
+		
+		return overlatStage;
+	}
+	
+	public List<BuskingzoneVo> overlaySch(String stage_name, int user_no) {
+		System.out.println("장소선택시 날짜 가져오는 서비스");
+		
+		Map<String, Object> overlaySch = new HashMap<String, Object>();
+		overlaySch.put("stage_name", stage_name);
+		overlaySch.put("user_no", user_no);
+
+		
+		List<BuskingzoneVo> sch = mapDao.overlaySch(overlaySch);
+		
+		return sch;
+	}
 	
 	
 }

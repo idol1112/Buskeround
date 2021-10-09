@@ -31,6 +31,10 @@ public class BuskingzoneVo {
 	
 	public BuskingzoneVo() {}
 	
+	public BuskingzoneVo(String stage_name) {
+		this.stage_name = stage_name;
+	}
+	
 	public BuskingzoneVo(int user_no, String com_img, String com_name, String address, String com_number,
 			String ceo_name, String business_number, int latitude, int longitude, int date_no, int stage_no,
 			String bus_date, String requirements, int time_no, String start_time, String end_time, String stage_name,
