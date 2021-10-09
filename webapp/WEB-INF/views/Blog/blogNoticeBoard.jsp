@@ -42,9 +42,12 @@
 				<!-- 글쓰기 버튼 -->
 				<div class="clearfix main_title">
 					<img src="../../assets/image/blog/icon/letter.png"> <span>공지사항</span>
-					<button id="writebutton" type="button" onClick="location.href='${pageContext.request.contextPath}/blog/blog_write/${blogVo.id}'">
-						<img src="../../assets/image/blog/icon/write.png">글쓰기
-					</button>
+					
+					<c:if test="${blogVo.user_no == authUser.user_no}">
+						<button id="writebutton" type="button" onClick="location.href='${pageContext.request.contextPath}/blog/blog_write/${blogVo.id}'">
+							<img src="../../assets/image/blog/icon/write.png">글쓰기
+						</button>
+					</c:if>
 				</div>
 
 				<!-- 게시판 테이블 -->
@@ -60,84 +63,24 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td>1</td>
-								<td class="left-align"><a href="${pageContext.request.contextPath}/blog/blog_noticeDetail/thunderkyg">8월 29일 버스킹 공지사항</a></td>
-								<td>우주 멋쟁이</td>
-								<td>2021-09-08</td>
-								<td>100</td>
-							</tr>
-							<tr>
-								<td>9</td>
-								<td class="left-align">라돈 검출제품 거래금지 안내(21.09.06 수정)</td>
-								<td>우주 멋쟁이</td>
-								<td>2021-09-08</td>
-								<td>100</td>
-							</tr>
-							<tr>
-								<td>8</td>
-								<td class="left-align">추석 연휴 기차표 거래 집중 모니터링 안내</td>
-								<td>우주 멋쟁이</td>
-								<td>2021-09-08</td>
-								<td>100</td>
-							</tr>
-							<tr>
-								<td>7</td>
-								<td class="left-align">백신 대리 예약 거래금지 안내</td>
-								<td>우주 멋쟁이</td>
-								<td>2021-09-08</td>
-								<td>100</td>
-							</tr>
-							<tr>
-								<td>6</td>
-								<td class="left-align">중고나라 이용정책 제재 기준 변경 안내</td>
-								<td>우주 멋쟁이</td>
-								<td>2021-09-08</td>
-								<td>100</td>
-							</tr>
-							<tr>
-								<td>5</td>
-								<td class="left-align">[경복궁관리소 요청] 경복궁 관람권 거래 금지 안내</td>
-								<td>우주 멋쟁이</td>
-								<td>2021-09-08</td>
-								<td>100</td>
-							</tr>
-							<tr>
-								<td>4</td>
-								<td class="left-align">8월 29일 버스킹 공지사항</td>
-								<td>우주 멋쟁이</td>
-								<td>2021-09-08</td>
-								<td>100</td>
-							</tr>
-							<tr>
-								<td>3</td>
-								<td class="left-align">8월 29일 버스킹 공지사항</td>
-								<td>우주 멋쟁이</td>
-								<td>2021-09-08</td>
-								<td>100</td>
-							</tr>
-							<tr>
-								<td>2</td>
-								<td class="left-align">8월 29일 버스킹 공지사항</td>
-								<td>우주 멋쟁이</td>
-								<td>2021-09-08</td>
-								<td>100</td>
-							</tr>
-							<tr>
-								<td>1</td>
-								<td class="left-align">8월 29일 버스킹 공지사항</td>
-								<td>우주 멋쟁이</td>
-								<td>2021-09-08</td>
-								<td>100</td>
-							</tr>
+							<!-- 반복문 -->
+							<c:forEach items="${noticeList}" var="noticeVo" varStatus="status">
+								<tr>
+									<td>${noticeVo.rn}</td>
+									<td class="left-align"><a href="${pageContext.request.contextPath}/blog/blog_noticeDetail/${blogVo.id}?no=${noticeVo.post_no}">${noticeVo.title}</a></td>
+									<td>${noticeVo.nickname}</td>
+									<td>${noticeVo.regDate}</td>
+									<td>${noticeVo.hit}</td>
+								</tr>
+							</c:forEach>
 						</tbody>
 					</table>
 
 					<!-- 검색 기능 -->
 					<div class="topnav">
 						<div class="search-container">
-							<form action="/action_page.php">
-								<input type="text" placeholder="Search.." name="search">
+							<form action="${pageContext.request.contextPath}/blog/blog_notice/${blogVo.id}">
+								<input type="text" placeholder="Search.." name="keyword" value="">
 								<button type="submit">
 									<i class="fa fa-search"></i>
 								</button>

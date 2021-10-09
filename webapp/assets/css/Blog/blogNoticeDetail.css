@@ -41,6 +41,8 @@ a:active {text-decoration: none; color: black;}
   width: 36px;
   height: 36px;
   border-radius: 70%;
+  object-fit: cover;
+  image-rendering: -webkit-optimize-contrast;
 }
 
 .modify-header span:nth-child(2){
@@ -146,22 +148,40 @@ a:active {text-decoration: none; color: black;}
 }
 
 #board tbody tr:first-child{
-  color: red;
-  background-color: #F5F5F5;
-  font-weight: bold;
+    color: red;
+    background-color: #F5F5F5;
+    font-weight: bold;
 }
+
+#board tbody tr:first-child a{
+    color: red;
+    background-color: #F5F5F5;
+    font-weight: bold;
+}
+
 #board tbody tr:nth-child(2){
-  color: red;
-  background-color: #F5F5F5;
-  font-weight: bold;
+    color: red;
+    background-color: #F5F5F5;
+    font-weight: bold;
 }
+
+#board tbody tr:nth-child(2) a{
+    color: red;
+    background-color: #F5F5F5;
+    font-weight: bold;
+}
+
 #board tbody tr:nth-child(3){
-  color: red;
-  background-color: #F5F5F5;
-  font-weight: bold;
+    color: red;
+    background-color: #F5F5F5;
+    font-weight: bold;
 }
 
-
+#board tbody tr:nth-child(3) a{
+    color: red;
+    background-color: #F5F5F5;
+    font-weight: bold;
+}
 
 /* Common */
 .navbar .bold {

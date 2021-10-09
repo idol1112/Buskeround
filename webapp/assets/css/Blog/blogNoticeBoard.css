@@ -82,12 +82,32 @@ a:active {text-decoration: none; color: black;}
     background-color: #F5F5F5;
     font-weight: bold;
 }
+
+#board tbody tr:first-child a{
+    color: red;
+    background-color: #F5F5F5;
+    font-weight: bold;
+}
+
 #board tbody tr:nth-child(2){
     color: red;
     background-color: #F5F5F5;
     font-weight: bold;
 }
+
+#board tbody tr:nth-child(2) a{
+    color: red;
+    background-color: #F5F5F5;
+    font-weight: bold;
+}
+
 #board tbody tr:nth-child(3){
+    color: red;
+    background-color: #F5F5F5;
+    font-weight: bold;
+}
+
+#board tbody tr:nth-child(3) a{
     color: red;
     background-color: #F5F5F5;
     font-weight: bold;

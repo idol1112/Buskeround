@@ -1,6 +1,7 @@
 package com.javaex.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,9 +60,6 @@ public class BlogDao {
 		System.out.println("UsersModify");
 		sqlSession.update("blog.usersModify", blogVo);
 		
-		//Resume
-//		sqlSession.update("blog.resumeModify", blogVo);
-		
 		//Blog
 		System.out.println("BlogModify");
 		return sqlSession.update("blog.blogModifyImg", blogVo);
@@ -75,9 +73,6 @@ public class BlogDao {
 		System.out.println("UsersModify");
 		sqlSession.update("blog.usersModify", blogVo);
 		
-		//Resume
-//		sqlSession.update("blog.resumeModify", blogVo);
-		
 		//Blog
 		System.out.println("BlogModify");
 		return sqlSession.update("blog.blogModify", blogVo);
@@ -90,9 +85,6 @@ public class BlogDao {
 		//Users
 		System.out.println("UsersModify");
 		sqlSession.update("blog.usersModify", blogVo);
-		
-		//Resume
-//		sqlSession.update("blog.resumeModify", blogVo);
 		
 		//Blog
 		System.out.println("BlogModify");
@@ -119,9 +111,42 @@ public class BlogDao {
 	}
 	
 	//Notice List (공지사항 리스트 가져오기)
-	public List<NoticeVo> noticeList(String id) {
+	public List<NoticeVo> noticeList(Map<String, Object> searchvalue) {
 		System.out.println("BlogDao.noticeList");
 		
-		return sqlSession.selectList("blog.noticeList", id);
+		//맵 땡겨오기
+		String id = (String) searchvalue.get("id");
+		searchvalue.remove("id");
+		
+		//User_no 가져오기
+		int user_no = sqlSession.selectOne("blog.getUserNo", id);
+		
+		NoticeVo noticeVo = new NoticeVo();
+		noticeVo.setUser_no(user_no);
+		noticeVo.setCategory_type(1);
+		
+		//Category번호 가져오기
+		int category_no = sqlSession.selectOne("blog.categoryNo", noticeVo);
+		
+		//맵에 추가
+		searchvalue.put("category_no", category_no);
+		System.out.println("맵 마지막 출력: " + searchvalue);
+		
+		return sqlSession.selectList("blog.noticeList", searchvalue);
 	}
+	
+	// 조회수 Hit++
+	public int updateHit(int no) {
+		System.out.println("BlogDao.updateHit");
+
+		return sqlSession.update("blog.updateHit", no);
+	}
+	
+	// 공지사항 1개 가져오기
+	public NoticeVo getNotice(int no) {
+		System.out.println("BlogDao.getBoard");
+
+		return sqlSession.selectOne("blog.selectNotice", no);
+	}
+
 }
