@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.javaex.dao.CompanyDao;
 import com.javaex.dao.UserDao;
+import com.javaex.vo.BusappVo;
 import com.javaex.vo.BusdateVo;
 import com.javaex.vo.BustimeVo;
 import com.javaex.vo.CompanyVo;
@@ -257,4 +258,14 @@ public class CompanyService {
 	}
 	
 	///////////////////////////////// *버스킹존* /////////////////////////////////
+	
+	///////////////////////////////// 공연신청관리 /////////////////////////////////
+	//공연신청리스트 불러오기
+	public List<BusappVo> getApplyList(int user_no) {
+		System.out.println("CompanyService.getApplyList()");
+		
+		return companyDao.selectApplyList(user_no);
+	}
+	
+	///////////////////////////////// *공연신청관리* /////////////////////////////////
 }

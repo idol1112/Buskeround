@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.javaex.vo.BusappVo;
 import com.javaex.vo.BusdateVo;
 import com.javaex.vo.BustimeVo;
 import com.javaex.vo.CompanyVo;
@@ -114,5 +115,14 @@ public class CompanyDao {
 		return sqlSession.selectList("busdate.selectBusdateList", stage_no);
 	}
 	
-	///////////////////////////////// *공연장* /////////////////////////////////
+	///////////////////////////////// *버스킹존* /////////////////////////////////
+	
+	///////////////////////////////// 공연신청관리 /////////////////////////////////
+	public List<BusappVo> selectApplyList(int user_no) {
+		System.out.println("CompanyDao.selectApplyList()");
+		
+		return sqlSession.selectList("busapp.selectApplyList", user_no);
+	}
+		
+	///////////////////////////////// *공연신청관리* /////////////////////////////////
 }

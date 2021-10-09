@@ -286,3 +286,17 @@ input[type="file"] {
 	    width: 23px;
     padding-bottom: 1px;
 }
+
+.articon{
+	image-rendering: -webkit-optimize-contrast;
+}
+
+.genre-img {
+	width:65px;
+	height:24px;
+}
+
+.genre-img2 {
+	width:68px;
+	height:24px;
+}
