@@ -96,6 +96,13 @@ public class BlogService {
 
     return blogDao.writePost(noticeVo);
   }
+  
+  // Delete Post (글 삭제)
+  public int deletePost(int no) {
+	  System.out.println("BlogService.deletePost()");
+	  
+	  return blogDao.deletePost(no);
+  }
 
   // Notice List (공지사항 리스트 가져오기)
   public List<NoticeVo> noticeList(Map<String, Object> searchvalue) {

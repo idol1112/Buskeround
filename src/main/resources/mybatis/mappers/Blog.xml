@@ -292,4 +292,12 @@
 	        and post_no = #{no}
     	]]>
     </select>
+    
+    <!-- 삭제 -->
+    <delete id="deletePost" parameterType="int">
+    	<![CDATA[
+    		delete from post
+			where post_no = #{no}
+    	]]>
+    </delete>
 </mapper>

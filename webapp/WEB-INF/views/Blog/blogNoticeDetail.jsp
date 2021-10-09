@@ -56,7 +56,7 @@
           <span>조회 ${noticeVo.hit}</span>
 
 		  <c:if test="${blogVo.user_no == authUser.user_no}">
-    	      <button id="deletebutton" onclick="location.href=''">삭제</button>
+    	      <button id="deletebutton" onclick="location.href='${pageContext.request.contextPath}/blog/deletePost/${blogVo.id}?no=${noticeVo.post_no}'">삭제</button>
 	          <button id="modifybutton" onclick="location.href='blogWriteModifyForm.jsp'">수정</button>
 		  </c:if>
         </div>
@@ -71,7 +71,6 @@
           <div class="clearfix">
             <button id="writebutton" onclick="location.href='${pageContext.request.contextPath}/blog/blog_notice/${blogVo.id}'">목록</button>
           </div>
-
           <!-- 게시판 테이블 -->
           <div id="board">
             <table id="list">

@@ -144,9 +144,15 @@ public class BlogDao {
 	
 	// 공지사항 1개 가져오기
 	public NoticeVo getNotice(int no) {
-		System.out.println("BlogDao.getBoard");
+		System.out.println("BlogDao.getNotice");
 
 		return sqlSession.selectOne("blog.selectNotice", no);
+	}
+	
+	//포스트 삭제하기
+	public int deletePost(int no) { 
+		System.out.println("BlogDao.deletePost " + no);
+		return sqlSession.delete("blog.deletePost", no);
 	}
 
 }

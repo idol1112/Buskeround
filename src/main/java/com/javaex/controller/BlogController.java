@@ -196,7 +196,19 @@ public class BlogController {
 
     return "Blog/blogNoticeDetail";
   }
-
+  
+  //포스트 삭제
+  @RequestMapping(value = "deletePost/{id}", method = {RequestMethod.GET, RequestMethod.POST})
+  public String blog_deleteform(@PathVariable("id") String id, 
+		  						@RequestParam("no") int no) {
+	  System.out.println("[TestingController.blog_deleteform()]");
+	  
+	  blogService.deletePost(no);
+	  
+	  return "redirect:/blog/blog_main/" + id;
+  }
+  
+  //입력 폼
   @RequestMapping(value = "blog_write/{id}", method = {RequestMethod.GET, RequestMethod.POST})
   public String blog_writeform(@PathVariable("id") String id, Model model) {
     System.out.println("[TestingController.blog_writeForm()]");
@@ -208,6 +220,7 @@ public class BlogController {
     return "Blog/blogWriteForm";
   }
 
+  //입력 기능
   @RequestMapping(value = "writePost/{id}", method = {RequestMethod.GET, RequestMethod.POST})
   public String blog_writeform(@PathVariable("id") String id, @ModelAttribute NoticeVo noticeVo) {
     System.out.println("[TestingController.writePost()]");
