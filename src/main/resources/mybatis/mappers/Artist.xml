@@ -533,6 +533,7 @@
 	</insert>
 
 
+	<!-- 팬 로딩 -->
 	<select id="getFanLoading" resultType="UserVo" parameterType="int">
 	<![CDATA[
 	SELECT
@@ -545,6 +546,7 @@
 	</select>
 
 
+	<!-- 팬 등록여부 -->
 	<select id="getFanOk" resultType="UserVo" parameterType="UserVo">
 	<![CDATA[
 	SELECT
@@ -552,6 +554,40 @@
 	    artist_no
 	FROM
 	fan
+	where user_no = #{user_no} and artist_no = #{artist_no}
+	]]>
+	</select>
+	
+	
+	<!-- 좋아요 등록 -->
+	<insert id="getLikes" parameterType="UserVo">
+	<![CDATA[
+    insert into likes
+    values (SEQ_LIKES_NO.nextval, #{user_no}, #{artist_no}, sysdate)
+	]]>
+	</insert>
+	
+	
+	<!-- 좋아요 로딩 -->
+	<select id="getLikesLoading" resultType="UserVo" parameterType="int">
+	<![CDATA[
+    SELECT
+	    user_no,
+	    artist_no
+	FROM
+	likes
+	where user_no = #{user_no}
+	]]>
+	</select>
+	
+	<!-- 좋아요 등록여부 -->
+	<select id="getLikesOk" resultType="UserVo" parameterType="UserVo">
+	<![CDATA[
+	SELECT
+	    user_no,
+	    artist_no
+	FROM
+	likes
 	where user_no = #{user_no} and artist_no = #{artist_no}
 	]]>
 	</select>
