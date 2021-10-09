@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.javaex.service.CompanyService;
 import com.javaex.service.UserService;
+import com.javaex.vo.AppFilterVo;
 import com.javaex.vo.BusappVo;
 import com.javaex.vo.BusdateVo;
 import com.javaex.vo.CompanyVo;
@@ -366,6 +367,29 @@ public class CompanyController {
 		System.out.println(busappVo);
 		model.addAttribute("busappVo", busappVo);
 		
+		
+		return "/Company/applyManage";
+	}
+	
+	//공연 신청관리 필터 검색
+	@RequestMapping(value = "/getFilterList", method = {RequestMethod.GET, RequestMethod.POST})
+	public String getFilterList(HttpSession session, @ModelAttribute AppFilterVo appFilterVo, Model model) {
+		System.out.println("[CompanyController.getFilterList()]");
+		System.out.println(appFilterVo);
+		UserVo authUser = (UserVo)session.getAttribute("authUser");
+		int user_no = authUser.getUser_no();
+		int stage_no = appFilterVo.getStage_no();
+		
+		List<StageVo> stageList = companyService.getStage(user_no);
+		
+		System.out.println(stageList);
+		
+		model.addAttribute("stageList", stageList);
+		
+		if(stage_no == 0) {appFilterVo.setUser_no(user_no);}
+		
+		List<BusappVo> busappVo = companyService.getFilterList(appFilterVo);
+		model.addAttribute("busappVo", busappVo);
 		
 		return "/Company/applyManage";
 	}

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> 
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%> 
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -55,23 +55,26 @@
 					<h5>공연신청 관리</h5>
 				</div>
 				<div id="mypage-main-content">
-					<div id="content-filter-area">
-						<label><img class="filter-img" alt="filter" src="${pageContext.request.contextPath}/assets/image/company/icon/filter-icon.png"></label>
-						<div class="content-filter">
-							<select name="stage_no" id="stage-select" class="select-box input">
-                           		<c:forEach items="${stageList}" var="stageList" varStatus="status">
-									<option value="${stageList.stage_no}">${stageList.stage_name}</option>
-								</c:forEach>
-							</select>
+					<form action="${pageContext.request.contextPath }/Company/getFilterList" method="get">
+						<div id="content-filter-area">
+							<label><img class="filter-img" alt="filter" src="${pageContext.request.contextPath}/assets/image/company/icon/filter-icon.png"></label>
+							<div class="content-filter">
+								<select name="stage_no" id="stage-select" class="select-box input">
+									<option value="0">전체</option>
+	                           		<c:forEach items="${stageList}" var="stageList" varStatus="status">
+										<option value="${stageList.stage_no}">${stageList.stage_name}</option>
+									</c:forEach>
+								</select>
+							</div>
+							<div class="content-filter">
+								<input type="date" class="input" name="start_date" id="datepicker1"/>
+							</div>
+							<div class="content-filter">
+								<input type="date" class="input" name="end_date" id="datepicker2"/>
+							</div>
+								<img id="searchBtn" class="filter-img" alt="search" src="${pageContext.request.contextPath}/assets/image/company/icon/search-icon.png">
 						</div>
-						<div class="content-filter">
-							<input type="date" class="input" id="datepicker1"/>
-						</div>
-						<div class="content-filter">
-							<input type="date" class="input" id="datepicker2"/>
-						</div>
-						<label><img class="filter-img" alt="search" src="${pageContext.request.contextPath}/assets/image/company/icon/search-icon.png"></label>
-					</div>
+					</form>
 					<table class="table table-bordered">
 						<colgroup>
 							<col style="width: 15%">
@@ -139,7 +142,7 @@
 							</c:if>
 
 							<c:if test="${busappVo.status == 3}">
-								<td>진행중</td>
+								<td class="articon"><img class="status-img" src="${pageContext.request.contextPath}/assets/image/company/icon/ongoing.png" alt="진행중"></td>
 							</c:if>
 							<td>
 								<div class="checkbox">
@@ -167,6 +170,12 @@
 </body>
 
 <script type="text/javascript">
+//필터 검색 버튼
+$("#searchBtn").on("click", function() {
+	var form = $(this).parents('form');
+	form.submit();
+});
+
 datePickerSet($("#datepicker1"), $("#datepicker2"), true); //다중은 시작하는 달력 먼저, 끝달력 2번째
 
 /*

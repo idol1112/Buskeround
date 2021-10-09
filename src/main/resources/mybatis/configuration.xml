@@ -15,6 +15,7 @@
 		<typeAlias alias="ResumeVo" type="com.javaex.vo.ResumeVo" />
 		<typeAlias alias="NoticeVo" type="com.javaex.vo.NoticeVo" />
 		<typeAlias alias="BusappVo" type="com.javaex.vo.BusappVo" />
+		<typeAlias alias="AppFilterVo" type="com.javaex.vo.AppFilterVo" />
 		<typeAlias alias="BuskingzoneVo" type="com.javaex.vo.BuskingzoneVo" />
 		
 	</typeAliases>

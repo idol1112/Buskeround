@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.javaex.dao.CompanyDao;
 import com.javaex.dao.UserDao;
+import com.javaex.vo.AppFilterVo;
 import com.javaex.vo.BusappVo;
 import com.javaex.vo.BusdateVo;
 import com.javaex.vo.BustimeVo;
@@ -265,6 +266,20 @@ public class CompanyService {
 		System.out.println("CompanyService.getApplyList()");
 		
 		return companyDao.selectApplyList(user_no);
+	}
+	
+	public List<BusappVo> getFilterList(AppFilterVo appFilterVo) {
+		System.out.println("CompanyService.getFilterList()");
+		List<BusappVo>busappVo = new ArrayList<>();
+		
+		int stage_no = appFilterVo.getStage_no();
+		if(stage_no == 0) {
+			busappVo = companyDao.selectFilterListAll(appFilterVo);
+		}else {
+			busappVo = companyDao.selectFilterList(appFilterVo);
+		}
+		
+		return busappVo;
 	}
 	
 	///////////////////////////////// *공연신청관리* /////////////////////////////////
