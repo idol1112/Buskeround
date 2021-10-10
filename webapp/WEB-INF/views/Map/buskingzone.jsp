@@ -209,6 +209,8 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
 var map = new kakao.maps.Map(mapContainer, mapOption);
 
+
+
 kakao.maps.event.addListener(map, 'dragend', function() {         
 
     // 지도의 중심좌표를 얻어옵니다 
@@ -318,13 +320,82 @@ function overlayVo(no) {
 
 
 
+//========================================================
+if (navigator.geolocation) {
+    
+    // GeoLocation을 이용해서 접속 위치를 얻어옵니다
+    navigator.geolocation.getCurrentPosition(function(position) {
+        
+    	var imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png', // 마커이미지의 주소입니다    
+    	imageSize = new kakao.maps.Size(64, 69) // 마커이미지의 크기입니다
+
+    	  
+    	//마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
+    	var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+    	
+        var lat = position.coords.latitude, // 위도
+            lon = position.coords.longitude; // 경도
+        
+        var locPosition = new kakao.maps.LatLng(lat, lon) // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
+     	
+        // 리스트가져온거 빼주기
+        var positions = [];
+        var contentinfo = [];
+        var num = -1;
+        var num2 = -1;
+        
+        <c:forEach items="${buskingzoneList}" var="buskingzoneList">
+        num += 1;
+        positions[num] = new kakao.maps.LatLng(${buskingzoneList.latitude}, ${buskingzoneList.longitude});
+        contentinfo[num] = "${buskingzoneList.com_name}";
+        </c:forEach>
+        
+        for(let i=0; i < positions.length; i++){
+            num2 += 1;
+        	var data = positions[i];
+        	var content = contentinfo[i];
+            displayMarker(locPosition,data,markerImage,content);
+        }
+        
+
+
+        
+
+            
+      });
+    
+} else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
+    
+    var locPosition = new kakao.maps.LatLng(33.450701, 126.570667)   
+        
+    displayMarker(locPosition);
+}
+
+
+
+function displayMarker(locPosition,data,markerImage,content) {
+
+    // 마커를 생성합니다
+    var marker = new kakao.maps.Marker({  
+        map: map, 
+        image: markerImage,
+        position: data
+    }); 
+    
+    var infowindow = new kakao.maps.InfoWindow({
+        position : data, 
+        content : content 
+    });
+    infowindow.open(map, marker); 
+    // 지도 중심좌표를 접속위치로 변경합니다
+    map.setCenter(locPosition);      
+}    
 
 
 
 
 
-
-
+//========================================================
 
 
 
@@ -354,6 +425,7 @@ function overlay(mapOverlay,info){
 
 	var str ='<div id="overlayweb_table">'+
 	'<input type="hidden" name="company_no" value="'+mapOverlay.overlayList.user_no+'">'+
+	'<input type="hidden" name="time_no" value="">'+
 	'	<div>'+
 	'		<img src="${pageContext.request.contextPath }/upload/'+ mapOverlay.overlayList.com_img + '" width="100%" height="250">'+
 	'	</div>'+
@@ -391,6 +463,22 @@ function overlay(mapOverlay,info){
 	str +='<input type="text" name="zoneRequest" value="" disabled>';
 	str +='</div>';
 	
+	str +='<div>';
+	str +='<input type="text" name="rain" value="" disabled>';
+	str +='<input type="text" name="light" value="" disabled>';
+	str +='<input type="text" name="parking" value="" disabled>';
+	str +='</div>';
+	
+	str +='<div>';
+	str += '<input type="text" name="artistRequest" value="">';
+	str +='</div>';
+	
+	str +='<div>';
+	<c:if test="${authUser.user_no != null}">
+	str += '<button id="btnSubmit" onclick="relay();">공연신청</button>';
+	str += '<input type="hidden" name="userNo" value="'+${authUser.user_no}+'">';
+	</c:if>
+	str +='</div>';
 	
 	str +='	</div>';
 	str +='</div>';
@@ -399,6 +487,7 @@ function overlay(mapOverlay,info){
 	
 	$("#overlayweb").html(str);
 	
+	//장소 선택시 날짜 정보 가져오기
 	$("#overlayweb_table").on("change","#stage-select",function(){
 		var buskingzone = $(this).val();
 		var companyno = $("[name='company_no']").val();
@@ -415,6 +504,15 @@ function overlay(mapOverlay,info){
 			success : function(buskingzoneVo) {
 				
 				$(".che").remove();
+				$(".ches").remove();
+				$("[name='zoneRequest']").val("");
+				$("[name='rain']").val("");
+				$("[name='light']").val("");
+				$("[name='parking']").val("");
+				$("[name='artistRequest']").val("");
+				
+				
+				
 				
 				for(var i = 0; i<buskingzoneVo.length; i++){
 					console.log(i);
@@ -438,9 +536,6 @@ function overlay(mapOverlay,info){
 		var buskingzone = $("[name='stage']").val();
 		var companyno = $("[name='company_no']").val();
 		var buskingzone_date = busdate.substring(0, 10);
-		console.log(buskingzone+"앗싸 된다");
-		console.log(buskingzone_date);
-		console.log(companyno);
 		
  		$.ajax({
 			url : "${pageContext.request.contextPath }/overlayTime",
@@ -451,7 +546,6 @@ function overlay(mapOverlay,info){
 			
 			//dataType : "json",
 			success : function(timeVo) {
-				console.log(timeVo);
  				$(".ches").remove();
 				
 				for(var i = 0; i<timeVo.length; i++){
@@ -475,7 +569,7 @@ function overlay(mapOverlay,info){
 	
 	
 };
-
+//날짜데이터를 가져와서 그려주기
 function render(buskingzoneVo) {
 	var str = '';
 	
@@ -483,15 +577,73 @@ function render(buskingzoneVo) {
 	$("#stage_date").append(str);
 }
 
+//날짜데이터 선택시 우천시,라이트,주차,요구사항,시간대 그려주기
 function renderTime(timeVo) {
 	var str = '';
 	
 	str += '<option class="ches" value="date">'+timeVo.start_time.substring(11, 16)+'~'+timeVo.end_time.substring(11, 16)+'</option>';
-	str += '<input type="hidden" name="startTime" value="'+timeVo.start_time.substring(11, 16)+'"';
-	str += '<input type="hidden" name="endTime" value="'+timeVo.end_time.substring(11, 16)+'"';
+
+	
+	$("[name='time_no']").val(timeVo.time_no);
 	$("[name='zoneRequest']").val(timeVo.requirements);
+	
+	if("1" == timeVo.rain_progress){
+		$("[name='rain']").val("우천시 가능");
+	}else{
+		$("[name='rain']").val("우천시 불가능");
+	}
+	
+	if("1" == timeVo.stage_light){
+		$("[name='light']").val("무대조명 가능");
+	}else{
+		$("[name='light']").val("무대조명 불가능");
+	}
+	
+	if("1" == timeVo.parking){
+		$("[name='parking']").val("주차 가능");
+	}else{
+		$("[name='parking']").val("주차 불가능");
+	}
+
+
+	
 	$("#stage_time").append(str);
-} 
+}
+//==========================================================
+//등록 버튼 클릭할때 
+function relay(){
+
+	console.log("등록버튼 클릭");
+	
+	var user_no = $("[name='userNo']").val();
+	console.log(user_no);
+	
+	var time_no = $("[name='time_no']").val();
+	console.log(time_no);
+	
+	var artistRequest = $("[name='artistRequest']").val();
+	console.log(artistRequest);
+
+	
+	
+	//데이터 ajax방식으로 서버에 전송
+	$.ajax({
+		url : "${pageContext.request.contextPath }/buskingApp" ,
+		type : "post",
+		//contentType : "application/json",
+		data : {user_no: user_no, time_no: time_no, artistRequest: artistRequest},
+		
+		dataType : "json",
+		success : function(buskingVo){
+			/*성공시 처리해야될 코드 작성*/
+
+		},
+		error : function(XHR, status, error) {
+			console.error(status + " : " + error);
+		}
+	});
+	
+};
 
 </script>
 </body>

@@ -45,7 +45,7 @@
 	
 		<select id="overlayTime" parameterType="map" resultType="buskingzoneVo">
 		<![CDATA[
-			select t.start_time,t.end_time,b.requirements
+			select t.time_no,t.start_time,t.end_time,b.requirements,s.rain_progress,s.stage_light,s.parking
 			from buskingdate b,stage s,buskingtime t
 			where s.user_no = #{user_no}
 			and s.stage_name = #{stage_name}
@@ -54,5 +54,20 @@
 			and b.date_no = t.date_no
 		]]>
 	</select>
+	
+	<insert id="buskingApp" parameterType="map">
+		<![CDATA[
+			insert into buskingapp values(SEQ_APP_NO.nextval,#{user_no},#{time_no},#{user_info},sysdate,1)
+		]]>
+	</insert>
+	
+	<select id="buskingList" resultType="buskingzoneVo">
+	<![CDATA[
+	select com_name,latitude,longitude
+	from company
+	]]>
+	</select>
+	
+	
 
 </mapper>

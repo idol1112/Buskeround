@@ -47,8 +47,12 @@ public class MapController {
 	
 	//버스킹존 이동
 	@RequestMapping("/buskingzone")
-	public String busKingzoneList() {
+	public String busKingzoneList(Model model) {
 		System.out.println("버스킹존 컨트롤러");
+		List<BuskingzoneVo> buskingzoneList = mapService.buskingzoneList();
+		model.addAttribute("buskingzoneList", buskingzoneList);
+		System.out.println(buskingzoneList);
+		
 		
 		return "Map/buskingzone";
 	}
@@ -102,6 +106,18 @@ public class MapController {
 		System.out.println("컨트롤러데이터:"+time);
 		return time;
 	}
+	
+	//아티스트 공연신청
+	@RequestMapping("/buskingApp")
+	public String buskingApp(@RequestParam("user_no") int user_no, @RequestParam("time_no") int time_no, @RequestParam("artistRequest") String artistRequest) {
+		System.out.println("테스트 컨트롤러 삭제할거임");
+		
+		mapService.buskingApp(user_no,time_no,artistRequest);
+		
+		return "1";
+	}
+	
+	
 	
 
 	

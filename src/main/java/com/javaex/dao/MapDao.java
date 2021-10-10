@@ -69,4 +69,19 @@ public class MapDao {
 		return time;
 	}
 	
+	//아티스트 공연신청
+	public String buskingApp(Map<String, Object> buskingApp) {
+		System.out.println("서비스-공연신청");
+		
+		sqlSession.insert("buskingzone.buskingApp",buskingApp);
+		
+		return "";
+	}
+	
+	//버스킹존 위치데이터
+	public List<BuskingzoneVo> buskingzoneList() {
+		List<BuskingzoneVo> buskingzoneList = sqlSession.selectList("buskingzone.buskingList");
+		return buskingzoneList;
+	}
+	
 }

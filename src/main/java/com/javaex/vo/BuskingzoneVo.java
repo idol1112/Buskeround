@@ -9,8 +9,8 @@ public class BuskingzoneVo {
 	private String com_number;
 	private String ceo_name;
 	private String business_number;
-	private int latitude;
-	private int longitude;
+	private double latitude;
+	private double longitude;
 	
 	//buskingdate
 	private int date_no;
@@ -34,9 +34,9 @@ public class BuskingzoneVo {
 	public BuskingzoneVo(String stage_name) {
 		this.stage_name = stage_name;
 	}
-	
+
 	public BuskingzoneVo(int user_no, String com_img, String com_name, String address, String com_number,
-			String ceo_name, String business_number, int latitude, int longitude, int date_no, int stage_no,
+			String ceo_name, String business_number, double latitude, double longitude, int date_no, int stage_no,
 			String bus_date, String requirements, int time_no, String start_time, String end_time, String stage_name,
 			String rain_progress, String stage_light, String parking) {
 		this.user_no = user_no;
@@ -117,19 +117,19 @@ public class BuskingzoneVo {
 		this.business_number = business_number;
 	}
 
-	public int getLatitude() {
+	public double getLatitude() {
 		return latitude;
 	}
 
-	public void setLatitude(int latitude) {
+	public void setLatitude(double latitude) {
 		this.latitude = latitude;
 	}
 
-	public int getLongitude() {
+	public double getLongitude() {
 		return longitude;
 	}
 
-	public void setLongitude(int longitude) {
+	public void setLongitude(double longitude) {
 		this.longitude = longitude;
 	}
 
@@ -221,9 +221,6 @@ public class BuskingzoneVo {
 		this.parking = parking;
 	}
 
-	
-	
-	
 	@Override
 	public String toString() {
 		return "BuskingzoneVo [user_no=" + user_no + ", com_img=" + com_img + ", com_name=" + com_name + ", address="
@@ -236,7 +233,6 @@ public class BuskingzoneVo {
 	
 	
 	
-	
-	
+
 	
 }
