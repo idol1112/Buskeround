@@ -203,7 +203,6 @@ h1 {
 
 /* 게시판 */
 #board table {
-	margin: 0px 0px 0px 30px;
 	width: 1055px;
 	border-collapse: collapse;
 }
@@ -438,4 +437,35 @@ h1 {
 	font-size: 16px;
 	font-weight: bold;
 	text-align: center;
+}
+
+#noticehightlight {
+    color: red;
+    background-color: #F5F5F5;
+    font-weight: bold;
+}
+
+#noticehightlight a{
+    color: red;
+    background-color: #F5F5F5;
+    font-weight: bold;
+}
+
+.left-align {
+  text-align: left;
+}
+
+.noticebox{
+	border: 1px solid #ffc6c9;
+    background-color: #ffe3e4;
+    color: #ff4e59;
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: 800;
+    line-height: 19px;
+    display: block;
+    width: 56px;
+    height: 21px;
+    text-align: center;
+    margin-left: 23px;
 }

@@ -186,4 +186,56 @@ public class BlogDao {
 		
 		return sqlSession.delete("blog.deletePost", no);
 	}
+	
+	////////////////////////////////////////////////////////////////////////////////////////
+	//방명록
+	////////////////////////////////////////////////////////////////////////////////////////
+	
+	//리스트 가져오기
+	public List<NoticeVo> boardList(Map<String, Object> searchvalue) {
+		System.out.println("BlogDao.noticeList");
+		
+		//맵 땡겨오기
+		String id = (String) searchvalue.get("id");
+		
+		//User_no 가져오기
+		int user_no = sqlSession.selectOne("blog.getUserNo", id);
+		
+		NoticeVo noticeVo = new NoticeVo();
+		noticeVo.setUser_no(user_no);
+		noticeVo.setCategory_type(4);
+		
+		//Category번호 가져오기
+		int category_no = sqlSession.selectOne("blog.categoryNo", noticeVo);
+		
+		//맵에 추가
+		searchvalue.put("category_no", category_no);
+		System.out.println("맵 마지막 출력: " + searchvalue);
+		
+		return sqlSession.selectList("blog.noticeList", searchvalue);
+	}
+	
+	//카운트
+	public int selectTotalCntBoard(Map<String, Object> searchvalue) {
+		System.out.println("BlogDao.selectTotalCnt");
+		
+		//맵 땡겨오기
+		String id = (String) searchvalue.get("id");
+		
+		//User_no 가져오기
+		int user_no = sqlSession.selectOne("blog.getUserNo", id);
+		
+		NoticeVo noticeVo = new NoticeVo();
+		noticeVo.setUser_no(user_no);
+		noticeVo.setCategory_type(4);
+		
+		//Category번호 가져오기
+		int category_no = sqlSession.selectOne("blog.categoryNo", noticeVo);
+		
+		//맵에 추가
+		searchvalue.put("category_no", category_no);
+		System.out.println("맵 마지막 출력: " + searchvalue);
+		
+		return sqlSession.selectOne("blog.selectTotalCnt", searchvalue);
+	}
 }

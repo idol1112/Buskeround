@@ -43,9 +43,7 @@
 			
 				<div class="main_title">
 					  <img src="${pageContext.request.contextPath}/assets/image/blog/icon/letter.png"> 
-		          		
 		          	  <span>공지사항</span>
-		
 					  <!-- 글쓰기 버튼 -->
 			          <c:if test="${blogVo.user_no == authUser.user_no}">
 						<button id="writebutton" type="button" onClick="location.href='${pageContext.request.contextPath}/blog/blog_write/${blogVo.id}'">

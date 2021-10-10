@@ -41,7 +41,7 @@ a:active {text-decoration: none; color: black;}
 #writebutton{
     float: right;
     padding: 8px 12px;
-    margin: 8px 37px 10px 0px;
+    margin: 13px 37px 10px 0px;
     border: none;
     font-weight: bold;
     background: #FAFAFA;
@@ -76,6 +76,19 @@ a:active {text-decoration: none; color: black;}
 #board table>tbody>tr>td {
     padding: 10px 0px 10px 0px;
 }
+
+#noticehightlight {
+    color: red;
+    background-color: #F5F5F5;
+    font-weight: bold;
+}
+
+#noticehightlight a{
+    color: red;
+    background-color: #F5F5F5;
+    font-weight: bold;
+}
+
 /* 검색기능 */
 .topnav {
     overflow: hidden;
@@ -188,13 +201,9 @@ a:active {text-decoration: none; color: black;}
     padding: 0.5rem 0.9rem;
   }
 
-.pagination  li:first-child {
-    margin-right: 5px;
-  }
-.pagination  li:last-child {
-    margin-left: 5px;
-  }
-
+.left-align {
+  text-align: left;
+}
 
 .main_title img {
   width: 25px;
@@ -208,4 +217,17 @@ a:active {text-decoration: none; color: black;}
   font-weight: bold;
   position: relative;
   top: 18px;
+}
+
+#noPost {
+	margin-top: 180px;
+	margin-bottom: 150px;
+	text-align: center;
+	font-size: 16px;
+	font-weight: bold;
+	text-align: center;
+}
+
+.main_title {
+    margin-bottom: 30px;
 }

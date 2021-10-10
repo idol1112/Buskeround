@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,18 +39,30 @@
       <c:import url="/WEB-INF/views/Blog/includes/header.jsp"></c:import>
 
       <c:import url="/WEB-INF/views/Blog/includes/navigation.jsp"></c:import>
+      
+      
 
       <div class="content clearfix">
-        <div class="clearfix main_title">
-          <img src="${pageContext.request.contextPath}/assets/image/blog/icon/letter.png">
-          <span>방명록</span>
-          <button id="writebutton" type="button" onClick="location.href='blogWriteForm.jsp'">
-            <img src="${pageContext.request.contextPath}/assets/image/blog/icon/write.png">글쓰기
-          </button>
+      
+    	<div class="main_title">
+			<img src="${pageContext.request.contextPath}/assets/image/blog/icon/letter.png">
+            <span>방명록</span>
+
+			  <!-- 글쓰기 버튼 -->
+			  <button id="writebutton" type="button" onClick="location.href='${pageContext.request.contextPath}/blog/blog_write/${blogVo.id}'">
+				<img src="../../assets/image/blog/icon/write.png">글쓰기
+			  </button>
         </div>
 
         <!-- 게시판 테이블 -->
         <div id="board">
+        
+     	  <!-- 리스트 없을 때 -->
+		  <c:if test="${fn:length(listMap.boardList) == 0}">
+       	   <p id="noPost">등록된 글이 없습니다.</p>
+     	  </c:if>
+     	  
+     	  <c:if test="${fn:length(listMap.boardList) != 0}">
           <table id="list">
             <thead>
               <tr>
@@ -61,107 +74,61 @@
               </tr>
             </thead>
             <tbody>
+              <!-- 반복문 -->
+              
+			  <c:forEach items="${listMap.boardList}" var="boardVo" varStatus="status">
               <tr>
-                <td>10</td>
-                <td>응원합니다.</td>
-                <td>김영기</td>
-                <td>2021-09-08</td>
-                <td>100</td>
+                <td>${boardVo.rn}</td>
+                <td class="left-align"><a href="${pageContext.request.contextPath}/blog/blog_noticeDetail/${blogVo.id}?no=${boardVo.post_no}">${boardVo.title}</a></td>
+                <td>${boardVo.nickname}</td>
+                <td>${boardVo.regDate}</td>
+                <td>${boardVo.hit}</td>
               </tr>
-              <tr>
-                <td>9</td>
-                <td>사랑합니다</td>
-                <td>유승범</td>
-                <td>2021-09-08</td>
-                <td>100</td>
-              </tr>
-              <tr>
-                <td>8</td>
-                <td>좋아해요</td>
-                <td>김윤형</td>
-                <td>2021-09-08</td>
-                <td>100</td>
-              </tr>
-              <tr>
-                <td>7</td>
-                <td>응원합니다.</td>
-                <td>박수현</td>
-                <td>2021-09-08</td>
-                <td>100</td>
-              </tr>
-              <tr>
-                <td>6</td>
-                <td>사랑합니다.</td>
-                <td>이소정</td>
-                <td>2021-09-08</td>
-                <td>100</td>
-              </tr>
-              <tr>
-                <td>5</td>
-                <td>응원합니다.</td>
-                <td>김영기</td>
-                <td>2021-09-08</td>
-                <td>100</td>
-              </tr>
-              <tr>
-                <td>4</td>
-                <td>사랑합니다</td>
-                <td>유승범</td>
-                <td>2021-09-08</td>
-                <td>100</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>좋아해요</td>
-                <td>김윤형</td>
-                <td>2021-09-08</td>
-                <td>100</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>응원합니다.</td>
-                <td>박수현</td>
-                <td>2021-09-08</td>
-                <td>100</td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>사랑합니다.</td>
-                <td>이소정</td>
-                <td>2021-09-08</td>
-                <td>100</td>
-              </tr>
+			  </c:forEach>
+			  
             </tbody>
           </table>
+          </c:if>
 
           <!-- 검색 기능 -->
-          <div class="topnav">
-            <div class="search-container">
-              <form action="/action_page.php">
-                <input type="text" placeholder="Search.." name="search">
-                <button type="submit">
-                  <i class="fa fa-search"></i>
-                </button>
-              </form>
-            </div>
-          </div>
+          <c:if test="${fn:length(listMap.boardList) != 0}">
+			<div class="topnav">
+				<div class="search-container">
+					<form action="${pageContext.request.contextPath}/blog/blog_guestbook/${blogVo.id}">
+						<input type="text" placeholder="Search.." name="keyword" value="">
+						<button type="submit">
+							<i class="fa fa-search"></i>
+						</button>
+					</form>
+				</div>
+			</div>
 
           <!-- 페이징 -->
-          <div class="container xlarge">
-            <div class="pagination">
-              <ul>
-                <!-- Add Button-->
-                <li><a href="#">&laquo;</a></li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li class="active"><a href="#">3</a></li>
-                <!-- for active button-->
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#">&raquo;</a></li>
-              </ul>
-            </div>
-          </div>
+			<div class="container xlarge">
+				<div class="pagination">
+					<ul>
+						<c:if test="${listMap.prev == true}">
+							<li><a href="${pageContext.request.contextPath}/blog/blog_guestbook/${blogVo.id}?crtPage=${param.crtPage - 1}&keyword=${param.keyword}">&laquo;</a></li>
+						</c:if>
+						
+						<c:forEach begin="${listMap.startPageBtnNo}" end="${listMap.endPageBtnNo}" step="1" var="page">
+							<c:choose>
+								<c:when test="${param.crtPage eq page}">
+									<li class="active"><a href="${pageContext.request.contextPath}/blog/blog_guestbook/${blogVo.id}?crtPage=${page}&keyword=${param.keyword}">${page}</a></li>
+								</c:when>
+								<c:otherwise>
+									<li><a href="${pageContext.request.contextPath}/blog/blog_guestbook/${blogVo.id}?crtPage=${page}&keyword=${param.keyword}">${page}</a></li>
+								</c:otherwise>
+							</c:choose>										
+						</c:forEach>
+						
+						<c:if test="${listMap.next == true}">
+							<li><a href="${pageContext.request.contextPath}/blog/blog_guestbook/${blogVo.id}?crtPage=${param.crtPage + 1}&keyword=${param.keyword}">&raquo;</a></li>
+						</c:if>
+					</ul>
+				</div>
+			</div>
+  			</c:if>
         </div>
       </div>
     </div>

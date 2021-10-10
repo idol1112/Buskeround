@@ -55,9 +55,16 @@
 	        
 	          <select name="category_type" id="category_type" required>
 	            <option selected disabled value="">카테고리 선택</option>
-	            <option value="1">공지사항</option>
-	            <option value="3">갤러리</option>
-	            <option value="4">방명록</option>
+	            <c:choose>
+	            	<c:when test="${blogVo.user_no != authUser.user_no}">
+	           			<option value="4">방명록</option>
+	            	</c:when>
+	            	<c:otherwise>
+			            <option value="1">공지사항</option>
+	    		        <option value="3">갤러리</option>
+	           			<option value="4">방명록</option>
+	            	</c:otherwise>
+	            </c:choose>
 	          </select>
 	
 	          <input id="title" name="title" type="text" placeholder="제목을 입력해 주세요.">

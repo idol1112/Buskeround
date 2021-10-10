@@ -7,6 +7,6 @@
           <li><a href="${pageContext.request.contextPath}/blog/blog_notice/${blogVo.id}?crtPage=1">공지사항</a></li>
           <li><a href="${pageContext.request.contextPath}/blog/blog_timeline/${blogVo.id}">타임라인</a></li>
           <li><a href="${pageContext.request.contextPath}/blog/blog_gallery/${blogVo.id}?page=1">갤러리</a></li>
-          <li><a href="${pageContext.request.contextPath}/blog/blog_guestbook/${blogVo.id}">방명록</a></li>
+          <li><a href="${pageContext.request.contextPath}/blog/blog_guestbook/${blogVo.id}?crtPage=1">방명록</a></li>
         </ul>
       </div>
