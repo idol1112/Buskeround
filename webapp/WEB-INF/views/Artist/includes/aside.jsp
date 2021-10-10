@@ -5,30 +5,58 @@
 	<div class="rightsection-01">
 		<!-- 뉴아티스트 배너 -->
 		<div class="rightsection-01-01">
-			<h3>NEW ARTIST</h3>
 			<div>
-				<img src="${pageContext.request.contextPath}/assets/image/artist/icon/circle1.png" style="width: 8px"> <img src="${pageContext.request.contextPath}/assets/image/artist/icon/circle1.png" style="width: 8px"> <img src="${pageContext.request.contextPath}/assets/image/artist/icon/circle2.png" style="width: 8px"> <img src="${pageContext.request.contextPath}/assets/image/artist/icon/circle1.png" style="width: 8px"> <img src="${pageContext.request.contextPath}/assets/image/artist/icon/circle1.png" style="width: 8px">
+				<h3>NEW ARTIST</h3>
 			</div>
-		</div>
-		<div style="width: 285px; height: 380px;">
-			<img class="slide1" src="${pageContext.request.contextPath}/assets/image/artist/img/101.jfif" style="width: 285px; height: 285px; object-fit: cover;">
-			<script>
+			<!-- 캐러샐 -->
+			<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
 
-				
-			</script>
+				<div class="carousel-indicators">
+					<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+					<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+					<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+					<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+					<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
+				</div>
 
-			<div style="max-width: 285px; max-height: 95px; width: 285px; height: 95px; background-color: #00ff00">
-				<table class="asdietb">
-					<tr>
-						<td class="aside01">아티스트 이름</td>
-						<td class="aside02">장르</td>
-						<td class="aside03">자기소개</td>
-					</tr>
-				</table>
+				<div class="carousel-inner" style="width: 285px; height: 380px;">
+					<div class="carousel-item active">
+						<img src="${pageContext.request.contextPath}/assets/image/artist/img/101.jfif" class="d-block w-100" style="width: 285px; height: 380px; object-fit: cover;">
+						<table class="">
+							<tr>
+								<td class="">아티스트 이름</td>
+								<td class="">장르</td>
+								<td class="">자기소개</td>
+							</tr>
+						</table>
+					</div>
+					<div class="carousel-item">
+						<img src="${pageContext.request.contextPath}/assets/image/artist/img/100.jfif" class="d-block w-100" style="width: 285px; height: 380px; object-fit: cover;">
+					</div>
+					<div class="carousel-item">
+						<img src="${pageContext.request.contextPath}/assets/image/artist/img/101.jfif" class="d-block w-100" style="width: 285px; height: 380px; object-fit: cover;">
+					</div>
+					<div class="carousel-item">
+						<img src="${pageContext.request.contextPath}/assets/image/artist/img/100.jfif" class="d-block w-100" style="width: 285px; height: 380px; object-fit: cover;">
+					</div>
+					<div class="carousel-item">
+						<img src="${pageContext.request.contextPath}/assets/image/artist/img/101.jfif" class="d-block w-100" style="width: 285px; height: 380px; object-fit: cover;">
+					</div>
+				</div>
+
+				<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="visually-hidden">Previous</span>
+				</button>
+				<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="visually-hidden">Next</span>
+				</button>
+
+
 			</div>
-
 		</div>
 	</div>
+
+
 	<div class="rightsection-02">
 		<!-- 라이브 표그래프 -->
 		<div class="rightsection-02-01">
