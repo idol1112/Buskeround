@@ -83,7 +83,7 @@ public class BlogController {
 
     // 확인
     System.out.println("modify.blogVo: " + blogVo);
-    System.out.println("modify.file: " + file);
+    System.out.println("modify.file: " + file.getOriginalFilename());
     System.out.println("imgCheck: " + img);
     System.out.println("이력사항");
     // 이력사항
@@ -125,7 +125,7 @@ public class BlogController {
     return "redirect:/blog/blog_main/" + blogVo.getId();
   }
 
-
+  //타임라인
   @RequestMapping(value = "blog_timeline/{id}", method = {RequestMethod.GET, RequestMethod.POST})
   public String blog_timeline(@PathVariable("id") String id, Model model) {
     System.out.println("[TestingController.blog_timeline()]");
@@ -137,6 +137,7 @@ public class BlogController {
     return "Blog/blog_timeline";
   }
 
+  //방명록
   @RequestMapping(value = "blog_guestbook/{id}", method = {RequestMethod.GET, RequestMethod.POST})
   public String blog_guestbook(@PathVariable("id") String id, Model model) {
     System.out.println("[TestingController.blog_guestbook()]");
@@ -148,6 +149,7 @@ public class BlogController {
     return "Blog/blogGuestbookBoard";
   }
 
+  //리스트 가져오기
   @RequestMapping(value = "blog_notice/{id}", method = {RequestMethod.GET, RequestMethod.POST})
   public String blog_noticeboard(@PathVariable("id") String id, 
 								 @RequestParam(value = "keyword", required = false) String keyword, 
@@ -259,12 +261,19 @@ public class BlogController {
 
   //입력 기능
   @RequestMapping(value = "writePost/{id}", method = {RequestMethod.GET, RequestMethod.POST})
-  public String blog_writeform(@PathVariable("id") String id, @ModelAttribute NoticeVo noticeVo) {
+  public String blog_writeform(@PathVariable("id") String id, 
+		  					   @ModelAttribute NoticeVo noticeVo,
+		  					   @RequestParam(value = "file1", required = false, defaultValue = "0") MultipartFile file) {
     System.out.println("[TestingController.writePost()]");
+    System.out.println("파일이 들어오는지: " + file.getOriginalFilename());
     System.out.println("들어온 정보: " + noticeVo);
 
-    blogService.writePost(noticeVo);
-
+    if (file.isEmpty()) {
+    	blogService.writePost(noticeVo);
+    } else {
+    	blogService.writePostImg(noticeVo, file);
+    }
+    
     return "redirect:/blog/blog_main/" + id;
   }
 
