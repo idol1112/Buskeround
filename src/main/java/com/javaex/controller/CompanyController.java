@@ -393,4 +393,30 @@ public class CompanyController {
 		
 		return "/Company/applyManage";
 	}
+	
+	//공연 신청관리 수락/거절 상태 변경
+	@RequestMapping(value = "/statusModify", method = {RequestMethod.GET, RequestMethod.POST})
+	public String statusUpdate(@RequestParam ("arrayParam") List<Integer> aList,
+							   @RequestParam ("status") String status) {
+		System.out.println("[CompanyController.statusModify()]");
+		System.out.println(aList);
+		System.out.println(status);
+		
+		int count = companyService.statusModify(aList, status);
+		System.out.println("공연장 ["+count+"]건 변경 완료");
+		
+		return"redirect:/Company/applyManage";
+	}
+	
+	//공연 신청자 상세정보 불러오기
+	@ResponseBody
+	@RequestMapping(value = "/getUserInfo", method = {RequestMethod.GET, RequestMethod.POST})
+	public String getUserInfo(@RequestParam ("apply_no") int apply_no) {
+		System.out.println("[CompanyController.getUserInfo()]");
+		System.out.println(apply_no);
+		
+		return companyService.getUserInfo(apply_no);
+	}
+	
+	
 }

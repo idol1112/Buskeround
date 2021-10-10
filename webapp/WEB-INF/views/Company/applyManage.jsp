@@ -72,7 +72,7 @@
 							<div class="content-filter">
 								<input type="date" class="input" name="end_date" id="datepicker2"/>
 							</div>
-								<img id="searchBtn" class="filter-img" alt="search" src="${pageContext.request.contextPath}/assets/image/company/icon/search-icon.png">
+								<img id="searchBtn" class="filter-img click_item" alt="search" src="${pageContext.request.contextPath}/assets/image/company/icon/search-icon.png">
 						</div>
 					</form>
 					<table class="table table-bordered">
@@ -99,64 +99,69 @@
 							<th class="th-gray">상태</th>
 							<th class="th-gray"></th>
 						</tr>
-						<c:forEach items="${busappVo}" var="busappVo" varStatus="status">
-						<tr>
-							<td>${busappVo.stage_name}</td>
-							<c:set var="bus_date" value="${busappVo.bus_date}"/>
-							<td>${fn:substring(bus_date, 0, 10)}</td>
-							<c:set var="start_time" value="${busappVo.start_time}"/><c:set var="end_time" value="${busappVo.end_time}"/>
-							<td>${fn:substring(start_time, 11, 16)}-${fn:substring(end_time, 11, 16) }</td>
-							<td>${busappVo.nickname}</td>
-							<!-- 장르 -->
-							<c:if test="${busappVo.genre == 1}">
-								<td class="articon"><img class="genre-img2" src="${pageContext.request.contextPath}/assets/image/blog/icon/ballade.png" alt="발라드"></td>
-							</c:if>
-
-							<c:if test="${busappVo.genre == 2}">
-								<td class="articon"><img class="genre-img" src="${pageContext.request.contextPath}/assets/image/blog/icon/dance.png" alt="댄스"></td>
-							</c:if>
-
-							<c:if test="${busappVo.genre == 3}">
-								<td class="articon"><img class="genre-img" src="${pageContext.request.contextPath}/assets/image/blog/icon/hiphop.png" alt="힙합"></td>
-							</c:if>
-
-							<c:if test="${busappVo.genre == 4}">
-								<td class="articon"><img class="genre-img" src="${pageContext.request.contextPath}/assets/image/blog/icon/soul.png" alt="R&B"></td>
-							</c:if>
-
-							<c:if test="${busappVo.genre == 5}">
-								<td class="articon"><img class="genre-img" src="${pageContext.request.contextPath}/assets/image/blog/icon/musical.png" alt="악기"></td>
-							</c:if>
-
-							<c:if test="${busappVo.genre == 6}">
-								<td class="articon"><img class="genre-img" src="${pageContext.request.contextPath}/assets/image/blog/icon/etc.png" alt="기타공연"></td>
-							</c:if>
-							<td>${busappVo.hp}</td>
-							<td>상세정보</td>
-							<c:if test="${busappVo.status == 1}">
-								<td>수락</td>
-							</c:if>
-
-							<c:if test="${busappVo.status == 2}">
-								<td>거절</td>
-							</c:if>
-
-							<c:if test="${busappVo.status == 3}">
-								<td class="articon"><img class="status-img" src="${pageContext.request.contextPath}/assets/image/company/icon/ongoing.png" alt="진행중"></td>
-							</c:if>
-							<td>
-								<div class="checkbox">
-									<input type="checkbox" name="apply_no" value="${busappVo.apply_no}">
-								</div>
-							</td>
-						</tr>
-						</c:forEach>
+						<form id="form" method="get">
+							<input type="hidden" id="arrayParam" name="arrayParam">
+							<input type ="hidden" id="status" name="status">
+							<c:forEach items="${busappVo}" var="busappVo" varStatus="status">
+							<tr>
+								<td>${busappVo.stage_name}</td>
+								<c:set var="bus_date" value="${busappVo.bus_date}"/>
+								<td>${fn:substring(bus_date, 0, 10)}</td>
+								<c:set var="start_time" value="${busappVo.start_time}"/><c:set var="end_time" value="${busappVo.end_time}"/>
+								<td>${fn:substring(start_time, 11, 16)}-${fn:substring(end_time, 11, 16) }</td>
+								<td>${busappVo.nickname}</td>
+								<!-- 장르 -->
+								<c:if test="${busappVo.genre == 1}">
+									<td class="articon"><img class="genre-img2" src="${pageContext.request.contextPath}/assets/image/blog/icon/ballade.png" alt="발라드"></td>
+								</c:if>
+	
+								<c:if test="${busappVo.genre == 2}">
+									<td class="articon"><img class="genre-img" src="${pageContext.request.contextPath}/assets/image/blog/icon/dance.png" alt="댄스"></td>
+								</c:if>
+	
+								<c:if test="${busappVo.genre == 3}">
+									<td class="articon"><img class="genre-img" src="${pageContext.request.contextPath}/assets/image/blog/icon/hiphop.png" alt="힙합"></td>
+								</c:if>
+	
+								<c:if test="${busappVo.genre == 4}">
+									<td class="articon"><img class="genre-img" src="${pageContext.request.contextPath}/assets/image/blog/icon/soul.png" alt="R&B"></td>
+								</c:if>
+	
+								<c:if test="${busappVo.genre == 5}">
+									<td class="articon"><img class="genre-img" src="${pageContext.request.contextPath}/assets/image/blog/icon/musical.png" alt="악기"></td>
+								</c:if>
+	
+								<c:if test="${busappVo.genre == 6}">
+									<td class="articon"><img class="genre-img" src="${pageContext.request.contextPath}/assets/image/blog/icon/etc.png" alt="기타공연"></td>
+								</c:if>
+								<td>${busappVo.hp}</td>
+								<td><span class="click_item" onclick="user_info(${busappVo.apply_no})">상세정보</span></td>
+								<c:if test="${busappVo.status == 1}">
+									<td class="articon"><img class="status-img" src="${pageContext.request.contextPath}/assets/image/company/icon/accept.png" alt="수락"></td>
+								</c:if>
+	
+								<c:if test="${busappVo.status == 2}">
+									<td class="articon"><img class="status-img" src="${pageContext.request.contextPath}/assets/image/company/icon/refuse.png" alt="거절"></td>
+								</c:if>
+	
+								<c:if test="${busappVo.status == 3}">
+									<td class="articon"><img class="status-img" src="${pageContext.request.contextPath}/assets/image/company/icon/ongoing.png" alt="진행중"></td>
+								</c:if>
+								<td>
+										<div class="checkbox">
+											<input type="checkbox" name="apply_no" value="${busappVo.apply_no}">
+										</div>
+									
+								</td>
+							</tr>
+							</c:forEach>
+						</form>
 						
 					</table>
 				</div>
 				<div class="btn-area">
-					<button type="submit" class="btn-primary btn-sm">수락</button>
-					<button type="submit" class="btn-danger btn-sm">거절</button>
+					<button id="acceptBtn" type="button" class="btn-primary btn-sm">수락</button>
+					<button id="refuseBtn" type="button" class="btn-danger btn-sm">거절</button>
 				</div>
 			</div>
 		</div>
@@ -167,6 +172,25 @@
 	<!-- footer -->
 	<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
 	<!------- footer -------->
+	
+	<!------------- Modal --------------->
+  <div class="modal fade" id="infoModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->   
+      <div class="modal-content">
+        <div class="modal-header">
+ 
+          <h4 class="modal-title"></h4>
+          <button type="button" class="close" data-dismiss="modal">×</button>
+
+        </div>
+        <div class="modal-body">
+			<div class="modal_content" id="modal_text"></div>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 
 <script type="text/javascript">
@@ -175,6 +199,73 @@ $("#searchBtn").on("click", function() {
 	var form = $(this).parents('form');
 	form.submit();
 });
+
+//수락 버튼
+$("#acceptBtn").on("click", function() {
+	console.log("수락 버튼");
+	var array = new Array();
+	$('input:checkbox[name=apply_no]:checked').each(function() {
+		array.push(this.value);
+	});
+	
+	$("#arrayParam").val(array);
+	$("#status").val("1");
+	
+	$("#form").attr("action", "${pageContext.request.contextPath }/Company/statusModify");
+	$("#form").submit();
+});
+
+//거절 버튼
+$("#refuseBtn").on("click", function() {
+	console.log("거절 버튼");
+	var array = new Array();
+	$('input:checkbox[name=apply_no]:checked').each(function() {
+		array.push(this.value);
+	});
+	
+	$("#arrayParam").val(array);
+	$("#status").val("2");
+	
+	$("#form").attr("action", "${pageContext.request.contextPath }/Company/statusModify");
+	$("#form").submit();
+});
+
+//상세정보 클릭
+function user_info(apply_no) {
+	console.log(apply_no);
+	
+	$.ajax({
+		// 컨트롤러에서 대기중인 URL 주소이다.
+		url : "${pageContext.request.contextPath}/Company/getUserInfo?apply_no=" + apply_no,
+
+		// HTTP method type(GET, POST) 형식이다.
+		type : "GET",
+
+		// Json 형식의 데이터를 받는다.
+		dataType : "json",
+
+		// 성공일 경우 success로 들어오며, 'result'는 응답받은 데이터이다.
+		success : function(result) {
+			/*성공시 처리해야될 코드 작성*/
+			console.log(result);
+			$('.modal-title').text("상세정보");
+			$(".modal_content").append(result);
+		},
+
+		// 실패할경우 error로 들어온다.
+		error : function(XHR, status, error) {
+			console.error(status + " : " + error);
+		}
+	});
+	$("#infoModal").modal('show');
+
+}
+
+//모달창 끄기
+$(".close").on("click", function() {
+  	$("#infoModal").modal('hide');
+  	$(".modal_content").empty();
+  });
 
 datePickerSet($("#datepicker1"), $("#datepicker2"), true); //다중은 시작하는 달력 먼저, 끝달력 2번째
 

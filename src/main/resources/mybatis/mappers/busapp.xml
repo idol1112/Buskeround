@@ -41,6 +41,7 @@
 		<![CDATA[
 			SELECT
 			    ba.user_no,
+			    ba.apply_no,
 			    u.nickname,
 			    s.stage_name,
 			    bd.bus_date,
@@ -69,11 +70,12 @@
 		]]>
 	</select>
 	
-		<!-- 특정 공연장 날짜~날짜 검색 -->
+	<!-- 특정 공연장 날짜~날짜 검색 -->
 	<select id="selectFilterList" parameterType="AppFilterVo" resultType="BusappVo">
 		<![CDATA[
 			SELECT
 			    ba.user_no,
+			    ba.apply_no,
 			    u.nickname,
 			    s.stage_name,
 			    bd.bus_date,
@@ -99,6 +101,33 @@
 			    and s.stage_no= #{stage_no}
 			    and bus_date between to_date(#{start_date},'yyyy-mm-dd')and to_date(#{end_date},'yyyy-mm-dd')	
 		
+		]]>
+	</select>
+	
+	<!-- 공연 신청 수락 -->
+	<update id="statusAccept" parameterType="java.util.List">
+		<foreach collection="list" item="item" separator=";" open="DECLARE BEGIN" close="; END;">
+			update buskingapp
+			set    status = 1
+			where  apply_no = #{item}
+		</foreach>
+	</update>
+	
+	<!-- 공연 신청 거절 -->
+	<update id="statusRefuse" parameterType="java.util.List">
+		<foreach collection="list" item="item" index="index" separator=";" open="DECLARE BEGIN" close="; END;">
+			update buskingapp
+			set    status = 2
+			where  apply_no = #{item}
+		</foreach>
+	</update>
+	
+	<!-- 공연 신청자 상세정보 불러오기 -->
+	<select id="selectUserInfo" parameterType="int" resultType="String">
+		<![CDATA[
+			select user_info
+			from   buskingapp
+			where  apply_no = #{apply_no}
 		]]>
 	</select>
 

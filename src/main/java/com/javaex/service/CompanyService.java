@@ -268,6 +268,7 @@ public class CompanyService {
 		return companyDao.selectApplyList(user_no);
 	}
 	
+	//공연신청리스트 필터 검색
 	public List<BusappVo> getFilterList(AppFilterVo appFilterVo) {
 		System.out.println("CompanyService.getFilterList()");
 		List<BusappVo>busappVo = new ArrayList<>();
@@ -280,6 +281,28 @@ public class CompanyService {
 		}
 		
 		return busappVo;
+	}
+	
+	//공연 신청자 (수락/거절) 상태 변경
+	public int statusModify(List<Integer> aList, String status) {
+		System.out.println("CompanyService.statusModify()");
+		int count = 0;
+		if(status.equals("1")) {
+			count = companyDao.statusAccept(aList);
+		}else if(status.equals("2")) {
+			count = companyDao.statusRefuse(aList);
+		}
+		
+		
+		return count;
+	}
+	
+	//공연 신청자 상세정보 불러오기
+	
+	public String getUserInfo(int apply_no) {
+		System.out.println("CompanyService.getUserInfo()");
+		
+		return companyDao.selectUserInfo(apply_no);
 	}
 	
 	///////////////////////////////// *공연신청관리* /////////////////////////////////

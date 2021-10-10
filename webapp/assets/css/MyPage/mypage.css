@@ -309,3 +309,12 @@ input[type="file"] {
 .checkbox {
 	margin-top: 7px;
 }
+.click_item {
+	cursor: pointer;
+}
+
+.modal-title{
+ font-size: 17px;
+ text-align:left;
+ font-weight: bold;
+}

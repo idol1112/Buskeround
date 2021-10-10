@@ -139,6 +139,27 @@ public class CompanyDao {
 		
 		return sqlSession.selectList("busapp.selectFilterList", appFilterVo);
 	}
+	
+	//공연 신청 수락
+	public int statusAccept(List<Integer> aList) {
+		System.out.println("CompanyDao.statusAccept()");
+		
+		return sqlSession.update("busapp.statusAccept", aList);
+	}
+	
+	//공연 신청 거절
+	public int statusRefuse(List<Integer> aList) {
+		System.out.println("CompanyDao.statusRefuse()");
+		
+		return sqlSession.update("busapp.statusRefuse", aList);
+	}
+	
+	//
+	public String selectUserInfo(int apply_no) {
+		System.out.println("CompanyDao.selectUserInfo()");
+		
+		return sqlSession.selectOne("busapp.selectUserInfo", apply_no);
+	}
 		
 	///////////////////////////////// *공연신청관리* /////////////////////////////////
 }
