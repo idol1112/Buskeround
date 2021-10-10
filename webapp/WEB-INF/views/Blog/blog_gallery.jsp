@@ -42,7 +42,7 @@
 
       <div class="content clearfix">
         <!-- 글쓰기 버튼 -->
-        <div class="clearfix main_title">
+        <div class="main_title">
           <img src="${pageContext.request.contextPath}/assets/image/blog/icon/landscape.png">
           <span>갤러리</span>
 

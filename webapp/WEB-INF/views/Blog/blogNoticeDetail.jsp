@@ -41,30 +41,36 @@
       <div class="main-detail">
         <!-- 해딩 -->
         <div id="detail-header">
-          <h3>8월 29일 버스킹 공지사항</h3>
+          <h3>${noticeVo.title}</h3>
         </div>
         <!-- 작성자, 날짜, 조회 -->
         <div class="modify-header clearfix">
-          <img id="profilepicture" src="../../assets/image/blog/img/profile.jpg">
-          <span class="bold">우주 멋쟁이</span>
-          <span>2021-09-10</span>
-          <span>조회 497</span>
+              <c:if test="${blogVo.user_img == null}">
+		      	<img id="profilepicture" src="/Buskeround/assets/image/blog/icon/user.png">
+		      </c:if>
+			  <c:if test="${blogVo.user_img != null}">
+			    <img id="profilepicture" src="${pageContext.request.contextPath}/upload/${blogVo.user_img}">
+			  </c:if>
+          <span class="bold">${noticeVo.nickname}</span>
+          <span>${noticeVo.regDate}</span>
+          <span>조회 ${noticeVo.hit}</span>
 
-          <button id="deletebutton" onclick="location.href=''">삭제</button>
-          <button id="modifybutton" onclick="location.href='blogWriteModifyForm.jsp'">수정</button>
+		  <c:if test="${blogVo.user_no == authUser.user_no}">
+    	      <button id="deletebutton" onclick="location.href='${pageContext.request.contextPath}/blog/deletePost/${blogVo.id}?no=${noticeVo.post_no}'">삭제</button>
+	          <button id="modifybutton" onclick="location.href='blogWriteModifyForm.jsp'">수정</button>
+		  </c:if>
         </div>
         <!-- 내용 -->
         <div class="detail-content">
-          <p>If you're looking for random paragraphs, you've come to the right place. When a random word or a random sentence isn't quite enough, the next logical step is to find a random paragraph. We created the Random Paragraph Generator with you in mind. The process is quite simple. Choose the number of random paragraphs you'd like to see and click the button. Your chosen number of paragraphs will instantly appear. While it may not be obvious to everyone, there are a number of reasons creating random paragraphs can be useful. A few examples of how some people use this generator are listed in the following paragraphs</p>
+        	${noticeVo.content}
         </div>
 
         <!-- 공지사항 목록 -->
         <div>
           <!-- 글쓰기 버튼 -->
           <div class="clearfix">
-            <button id="writebutton" onclick="location.href='blogNoticeBoard.jsp'">목록</button>
+            <button id="writebutton" onclick="location.href='${pageContext.request.contextPath}/blog/blog_notice/${blogVo.id}'">목록</button>
           </div>
-
           <!-- 게시판 테이블 -->
           <div id="board">
             <table id="list">
@@ -78,27 +84,15 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>8월 29일 버스킹 공지사항</td>
-                  <td>우주 멋쟁이</td>
-                  <td>2021-09-08</td>
-                  <td>100</td>
-                </tr>
-                <tr>
-                  <td>9</td>
-                  <td>8월 29일 버스킹 공지사항</td>
-                  <td>우주 멋쟁이</td>
-                  <td>2021-09-08</td>
-                  <td>100</td>
-                </tr>
-                <tr>
-                  <td>8</td>
-                  <td>8월 29일 버스킹 공지사항</td>
-                  <td>우주 멋쟁이</td>
-                  <td>2021-09-08</td>
-                  <td>100</td>
-                </tr>
+				<c:forEach items="${noticeList}" var="noticeVo" varStatus="status" begin="0" end="2">
+					<tr>
+						<td>${noticeVo.rn}</td>
+						<td class="left-align"><a href="${pageContext.request.contextPath}/blog/blog_noticeDetail/${blogVo.id}?no=${noticeVo.post_no}">${noticeVo.title}</a></td>
+						<td>${noticeVo.nickname}</td>
+						<td>${noticeVo.regDate}</td>
+						<td>${noticeVo.hit}</td>
+					</tr>
+				</c:forEach>
               </tbody>
             </table>
           </div>

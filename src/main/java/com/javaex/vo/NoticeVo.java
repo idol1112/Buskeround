@@ -13,7 +13,7 @@ public class NoticeVo {
 	private String hit;
 	private String content;
 	private String p_img;
-	private int rownum;
+	private int rn;
 	
 	//Constructor
 	public NoticeVo() {
@@ -21,7 +21,7 @@ public class NoticeVo {
 	}
 	
 	public NoticeVo(int post_no, int category_type, int category_no, int user_no, String title, String nickname,
-			String regDate, String hit, String content, String p_img, int rownum) {
+			String regDate, String hit, String content, String p_img, int rn) {
 		super();
 		this.post_no = post_no;
 		this.category_type = category_type;
@@ -33,7 +33,7 @@ public class NoticeVo {
 		this.hit = hit;
 		this.content = content;
 		this.p_img = p_img;
-		this.rownum = rownum;
+		this.rn = rn;
 	}
 
 	//Method - G/S
@@ -116,20 +116,21 @@ public class NoticeVo {
 	public void setP_img(String p_img) {
 		this.p_img = p_img;
 	}
-
-	public int getRownum() {
-		return rownum;
-	}
-
-	public void setRownum(int rownum) {
-		this.rownum = rownum;
-	}
 	
+	public int getRn() {
+		return rn;
+	}
+
+	public void setRn(int rn) {
+		this.rn = rn;
+	}
+
 	//Method - Ordinary
 	@Override
 	public String toString() {
 		return "NoticeVo [post_no=" + post_no + ", category_type=" + category_type + ", category_no=" + category_no
 				+ ", user_no=" + user_no + ", title=" + title + ", nickname=" + nickname + ", regDate=" + regDate
-				+ ", hit=" + hit + ", content=" + content + ", p_img=" + p_img + ", rownum=" + rownum + "]";
+				+ ", hit=" + hit + ", content=" + content + ", p_img=" + p_img + ", rn=" + rn + "]";
 	}
+	
 }
