@@ -52,11 +52,21 @@ public class MapDao {
 	
 	//에이작스 장소 지정시간 값가져오기
 	public List<BuskingzoneVo> overlaySch(Map<String, Object> overlaySch) {
-		System.out.println("장소선택시 날짜 가져오는 서비스");
+		System.out.println("장소선택시 날짜 가져오는 다오");
 
 		List<BuskingzoneVo> sch = sqlSession.selectList("buskingzone.overlaySch",overlaySch);
 		
 		return sch;
+	}
+	
+	
+	//에이작스 날짜선택시 시간 가져오기
+	public List<BuskingzoneVo> overlayTime(Map<String, Object> overlayTime) {
+		System.out.println("날짜선택시 시간 가져오는 다오");
+		
+		List<BuskingzoneVo> time = sqlSession.selectList("buskingzone.overlayTime",overlayTime);
+		
+		return time;
 	}
 	
 }

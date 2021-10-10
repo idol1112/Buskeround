@@ -65,7 +65,7 @@ public class MapService {
 		
 		return overlatStage;
 	}
-	
+	//에이작스 장소선택시 날짜 가져오기
 	public List<BuskingzoneVo> overlaySch(String stage_name, int user_no) {
 		System.out.println("장소선택시 날짜 가져오는 서비스");
 		
@@ -73,10 +73,23 @@ public class MapService {
 		overlaySch.put("stage_name", stage_name);
 		overlaySch.put("user_no", user_no);
 
-		
 		List<BuskingzoneVo> sch = mapDao.overlaySch(overlaySch);
 		
 		return sch;
+	}
+	
+	//에이작스 날짜선택시 시간 가져오기
+	public List<BuskingzoneVo> overlayTime(String stage_name, int user_no, String buskingzone_date) {
+		System.out.println("날짜선택시 시간 가져오는 서비스");
+		
+		Map<String, Object> overlayTime = new HashMap<String, Object>();
+		overlayTime.put("stage_name", stage_name);
+		overlayTime.put("user_no", user_no);
+		overlayTime.put("buskingzone_date", buskingzone_date);
+		System.out.println(buskingzone_date);
+		List<BuskingzoneVo> time = mapDao.overlayTime(overlayTime);
+		
+		return time;
 	}
 	
 	

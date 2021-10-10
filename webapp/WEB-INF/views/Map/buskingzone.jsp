@@ -377,10 +377,20 @@ function overlay(mapOverlay,info){
 	}
 	str +='	</select>';
 	
-	str +=' <select name="stage_app" id="stage_app">';
+	str +=' <select name="stage_date" id="stage_date">';
 	str +='		<option value="">날짜 선택';
 	str +='		</option>';
 	str +='	</select>';
+	
+	str +=' <select name="stage_time" id="stage_time">';
+	str +='		<option value="">시간 선택';
+	str +='		</option>';
+	str +='	</select>';
+	
+	str +='<div>';
+	str +='<input type="text" name="zoneRequest" value="" disabled>';
+	str +='</div>';
+	
 	
 	str +='	</div>';
 	str +='</div>';
@@ -395,7 +405,7 @@ function overlay(mapOverlay,info){
 		
 		
 		$.ajax({
-			url : "${pageContext.request.contextPath }/overlatSch",
+			url : "${pageContext.request.contextPath }/overlaySch",
 			type : "post",
 			//contentType : "application/json",
 			data :  {buskingzone: buskingzone,companyno: companyno},
@@ -404,11 +414,13 @@ function overlay(mapOverlay,info){
 			//dataType : "json",
 			success : function(buskingzoneVo) {
 				
-				var str = '<option value="'+buskingzoneVo.bus_date+'" id="ff">'+buskingzoneVo.bus_date+'</option>';
+				$(".che").remove();
 				
 				for(var i = 0; i<buskingzoneVo.length; i++){
 					console.log(i);
-					("#stage_app").append(str);
+					
+					render(buskingzoneVo[i]);
+					
 				}
 				
 				
@@ -419,9 +431,67 @@ function overlay(mapOverlay,info){
 		
 	});
 });
+	
+//==============================================================================//
+	$("#overlayweb_table").on("change","#stage_date",function(){
+		var busdate = $(this).val();
+		var buskingzone = $("[name='stage']").val();
+		var companyno = $("[name='company_no']").val();
+		var buskingzone_date = busdate.substring(0, 10);
+		console.log(buskingzone+"앗싸 된다");
+		console.log(buskingzone_date);
+		console.log(companyno);
+		
+ 		$.ajax({
+			url : "${pageContext.request.contextPath }/overlayTime",
+			type : "post",
+			//contentType : "application/json",
+			data :  {buskingzone_date: buskingzone_date,companyno: companyno,buskingzone: buskingzone},
+			
+			
+			//dataType : "json",
+			success : function(timeVo) {
+				console.log(timeVo);
+ 				$(".ches").remove();
+				
+				for(var i = 0; i<timeVo.length; i++){
+					
+					renderTime(timeVo[i]);
+					
+				}
+				
+				
+			},
+			error : function(XHR, status, error) {
+				console.error(status + " : " + error);
+			}
+		
+	}); 
+});
+	
+	
+	
+	
+	
+	
 };
 
+function render(buskingzoneVo) {
+	var str = '';
+	
+	str += '<option class="che" value="'+buskingzoneVo.bus_date+'">'+buskingzoneVo.bus_date+'</option>';
+	$("#stage_date").append(str);
+}
 
+function renderTime(timeVo) {
+	var str = '';
+	
+	str += '<option class="ches" value="date">'+timeVo.start_time.substring(11, 16)+'~'+timeVo.end_time.substring(11, 16)+'</option>';
+	str += '<input type="hidden" name="startTime" value="'+timeVo.start_time.substring(11, 16)+'"';
+	str += '<input type="hidden" name="endTime" value="'+timeVo.end_time.substring(11, 16)+'"';
+	$("[name='zoneRequest']").val(timeVo.requirements);
+	$("#stage_time").append(str);
+} 
 
 </script>
 </body>

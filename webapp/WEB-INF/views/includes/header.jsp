@@ -18,7 +18,7 @@
       <ul class="navbar_menu">
         <li><a href="${pageContext.request.contextPath}/Map/map">공연</a></li>
         <li><a href="${pageContext.request.contextPath}/Artist/ArtistRenk">아티스트</a></li>
-        <li><a href="../Map/map2.jsp">버스킹존</a></li>
+        <li><a href="${pageContext.request.contextPath}/buskingzone">버스킹존</a></li>
         <li><a href="">고객센터</a></li>
       </ul>
 

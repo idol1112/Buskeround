@@ -33,12 +33,25 @@
 
 	<select id="overlaySch" parameterType="map" resultType="buskingzoneVo">
 		<![CDATA[
-			select s.user_no,b.bus_date,b.requirements
+			select s.user_no,to_char(b.bus_date, 'YYYY-MM-DD"("dy")"') bus_date,b.requirements
 			from stage s, buskingdate b
 			where s.user_no = #{user_no}
 			and s.stage_name = #{stage_name}
 			and s.stage_no = b.stage_no
 			and sysdate <= b.bus_date
+			order by bus_date asc
+		]]>
+	</select>
+	
+		<select id="overlayTime" parameterType="map" resultType="buskingzoneVo">
+		<![CDATA[
+			select t.start_time,t.end_time,b.requirements
+			from buskingdate b,stage s,buskingtime t
+			where s.user_no = #{user_no}
+			and s.stage_name = #{stage_name}
+			and b.stage_no = s.stage_no
+			and b.bus_date = #{buskingzone_date}
+			and b.date_no = t.date_no
 		]]>
 	</select>
 

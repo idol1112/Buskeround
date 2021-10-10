@@ -78,18 +78,29 @@ public class MapController {
 		mapOverlay.put("overlayList", overlayList);
 		mapOverlay.put("overlayStage", overlayStage);
 
-		
 		return mapOverlay;
 	}
 	
+	//에이작스 날짜 받기
 	@ResponseBody
-	@RequestMapping("/overlatSch")
+	@RequestMapping("/overlaySch")
 	public List<BuskingzoneVo> overlaySch(@RequestParam("buskingzone") String stage_name,@RequestParam("companyno") int user_no) {
 		System.out.println("장소선택시 날짜 가져오는 컨트롤러");
 
 		List<BuskingzoneVo> sch = mapService.overlaySch(stage_name,user_no);
 		System.out.println(sch);
 		return sch;
+	}
+	
+	//에이작스 시간 받기
+	@ResponseBody
+	@RequestMapping("/overlayTime")
+	public List<BuskingzoneVo> overlayTime(@RequestParam("buskingzone") String stage_name,@RequestParam("companyno") int user_no,@RequestParam("buskingzone_date") String buskingzone_date) {
+		System.out.println("날짜선택시 시간 가져오는 컨트롤러");
+
+		List<BuskingzoneVo> time = mapService.overlayTime(stage_name,user_no,buskingzone_date);
+		System.out.println("컨트롤러데이터:"+time);
+		return time;
 	}
 	
 
