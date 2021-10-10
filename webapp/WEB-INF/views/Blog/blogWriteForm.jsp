@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,10 +8,10 @@
 <title>Document</title>
 
 <!-- 부트스트랩 -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 <!-- 에디터 -->
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/Blog/textEditor/css/styles.css">
@@ -27,6 +28,7 @@
 
 <!-- jquery -->
 <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 
 </head>
 
@@ -47,23 +49,30 @@
 
 
         <!-- 해더 -->
-        <form id="writeform-content clearfix" class="testing" action="${pageContext.request.contextPath}/blog/writePost/${blogVo.id}" method="POST" enctype="multipart/form-data" >
-        <input type="hidden" name="user_no" value="${sessionScope.authUser.user_no}">
-        <input type="hidden" name="nickname" value="${sessionScope.authUser.nickname}">
-        
-          <select name="category_type" required>
-            <option selected disabled value="">카테고리 선택</option>
-            <option value="1">공지사항</option>
-            <option value="3">갤러리</option>
-            <option value="4">방명록</option>
-          </select>
-
-          <input id="title" name="title" type="text" placeholder="제목을 입력해 주세요.">
-			
-          <!-- 에디터 -->
-          <textarea name="content" class="editor"></textarea>
-          
-          <button type="submit" id="uploadbutton">등록</button>
+        <form id="writeform-content clearfix" class="testing" action="${pageContext.request.contextPath}/blog/writePost/${blogVo.id}" method="POST" enctype="multipart/form-data">
+	        <input type="hidden" name="user_no" value="${sessionScope.authUser.user_no}">
+	        <input type="hidden" name="nickname" value="${sessionScope.authUser.nickname}">
+	        
+	          <select name="category_type" id="category_type" required>
+	            <option selected disabled value="">카테고리 선택</option>
+	            <option value="1">공지사항</option>
+	            <option value="3">갤러리</option>
+	            <option value="4">방명록</option>
+	          </select>
+	
+	          <input id="title" name="title" type="text" placeholder="제목을 입력해 주세요.">
+				
+	          <!-- 에디터 -->
+	          <textarea name="content" class="editor" id="editor">
+	          </textarea>
+	          
+	            <div class="custom-file clearfix">
+				  <input type="file" name="file1" class="custom-file-input" id="validatedCustomFile">
+				  <label class="custom-file-label" for="validatedCustomFile" id="test">Choose Image...</label>
+				  <div class="invalid-feedback">적합하지 않은 파일입니다.</div>
+				</div>
+			  
+	          <button type="submit" id="uploadbutton">등록</button>
         </form>
       </div>
 
@@ -92,7 +101,6 @@
                 'fontColor',
                 'fontFamily',
                 '|',
-                'imageUpload',
                 'insertTable',
                 'undo',
                 'redo'
@@ -156,6 +164,32 @@
 	
 		return true;
 	});
+	
+    $('.custom-file').hide();
+	
+	$('#category_type').change(function(){
+
+		   selection = $('#category_type').val();
+		   
+		   if (selection == 3) {
+			   $('.custom-file').show();
+			 } else {
+			   $('.custom-file').hide();
+			 }
+		});
+	
+	$('#validatedCustomFile').change(function(){
+		
+		const fileInput = document.querySelector('#validatedCustomFile');
+		const path = fileInput.value;
+		const fileName = path.split(/(\\|\/)/g).pop();
+		console.log('File name:', fileName);
+		
+        document.getElementById('test').innerHTML
+        = fileName;
+	});
+	
+	
 </script>
 
 </html>

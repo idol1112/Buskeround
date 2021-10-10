@@ -41,11 +41,16 @@
         	<!-- 팬 많은 순 -->
             <div class="leftsection-01">
                 <h2>팬 많은 순</h2>
-                <!-- 아티스트 검색 -->
-                <div>
-                    <input type="text" placeholder="아티스트 검색">
-                    <img src="${pageContext.request.contextPath}/assets/image/artist/icon/search.png" style="width:20px">
-                </div>
+                
+				<!-- 아티스트 검색 -->
+				<div>
+					<form action="" method="get">
+						<input type="text" placeholder="아티스트 검색">
+						<button class="buttonicon" type="button">
+							<img src="${pageContext.request.contextPath}/assets/image/artist/icon/search.png" style="width: 20px">
+						</button>
+					</form>
+				</div>
             </div>
 			<!-- 종합랭킹 표그래프 -->
             <div class="leftsection-02">
@@ -133,6 +138,84 @@
 
   <!-- footer -->
   <c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
+  
+  
+  <script type="text/javascript">
+
+// 팬 로딩되었을 때
+$(document).ready(function(){
+
+	$.ajax({
+		// 컨트롤러에서 대기중인 URL 주소이다.
+		url : "${pageContext.request.contextPath}/Artist/FanLoading",
+
+		// HTTP method type(GET, POST) 형식이다.
+		type : "post",
+
+
+		data : {
+		user_no : ${authUser.user_no}
+		},
+
+		// 성공일 경우 success로 들어오며, 'result'는 응답받은 데이터이다.
+		success : function(result) {
+			/*성공시 처리해야될 코드 작성*/
+
+		},
+
+		// 실패할경우 error로 들어온다.
+		error : function(XHR, status, error) {
+			console.error(status + " : " + error);
+		}
+	});  
+
+});
+
+
+// 팬되기 눌렀을 때
+$(".fan").on("click",function(){
+	
+	$(this).attr('src', '${pageContext.request.contextPath}/assets/image/artist/icon/fan2.png');
+	var artist_no = $(this).data("no");
+	
+	$.ajax({
+		// 컨트롤러에서 대기중인 URL 주소이다.
+		url : "${pageContext.request.contextPath}/Artist/Fan",
+
+		// HTTP method type(GET, POST) 형식이다.
+		type : "get",
+		
+		// Json 형태의 데이터로 보낸다.
+		contentType : "application/json",
+
+		// Json 형식의 데이터를 받는다.
+		dataType : "json",
+
+
+		data : {
+		artist_no : artist_no,
+		user_no : ${authUser.user_no}
+		},
+
+		// 성공일 경우 success로 들어오며, 'result'는 응답받은 데이터이다.
+		success : function(result) {
+			/*성공시 처리해야될 코드 작성*/
+			console.log(result)
+		},
+
+		// 실패할경우 error로 들어온다.
+		error : function(XHR, status, error) {
+			console.error(status + " : " + error);
+		}
+	});
+	
+});
+
+
+
+
+
+</script>
 
 </body>
 </html>

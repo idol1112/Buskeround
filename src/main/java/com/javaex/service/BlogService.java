@@ -91,11 +91,48 @@ public class BlogService {
     return blogDao.modifyDeleteImg(blogVo);
   }
 
-  // Write Post (글 작성)
-  public int writePost(NoticeVo noticeVo) {
-    System.out.println("BlogService.writePost()");
+  // Write Post (글 작성) (이미지 있음)
+  public int writePostImg(NoticeVo noticeVo, MultipartFile file) {
+    System.out.println("BlogService.writePostImg()");
+    
+    String saveDir = "C:\\javaStudy\\upload";
+
+    // 확장자
+    String exName = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
+    System.out.println("exName:" + exName);
+
+    // 저장파일이름(관리 떄문에 겹치지 않는 새이름 부여)
+    String logoFile = System.currentTimeMillis() + UUID.randomUUID().toString() + exName;
+    System.out.println("saveName:" + logoFile);
+
+    // 파일패스
+    String filePath = saveDir + "\\" + logoFile;
+    System.out.println("filePath:" + filePath);
+
+    // 파일 서버하드디스크에 저장
+    try {
+
+      byte[] fileData = file.getBytes();
+      OutputStream out = new FileOutputStream(filePath);
+      BufferedOutputStream bout = new BufferedOutputStream(out);
+
+      bout.write(fileData);
+      bout.close();
+
+    } catch (Exception e) {
+      // TODO: handle exception
+    }
+    
+    noticeVo.setP_img(logoFile);
 
     return blogDao.writePost(noticeVo);
+  }
+  
+  // Write Post (글 작성) (이미지 없음)
+  public int writePost(NoticeVo noticeVo) {
+	    System.out.println("BlogService.writePost()");
+	  
+	  return blogDao.writePost(noticeVo);
   }
   
   // Modify Post (프로필 수정)

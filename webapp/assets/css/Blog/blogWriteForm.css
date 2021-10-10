@@ -101,3 +101,16 @@ label[for=facebookupload]{
   cursor: pointer;
   border-radius: 5px;
 }
+
+.custom-file-label{
+	width: 100%;
+}
+
+.custom-file-input{
+	right: 100px;
+	width: 92%;
+}
+
+.custom-file {
+	width: 92%;
+}

@@ -208,6 +208,12 @@
 				    title,
 				    content,
 				    reg_date,
+		]]>
+				    <if test="p_img != null">
+				    p_img,
+				    </if>
+		<![CDATA[
+				    
 				    hit
 				) VALUES (
 				    seq_post_no.NEXTVAL,
@@ -216,6 +222,11 @@
 				    #{title},
 				    #{content},
 				    sysdate,
+		]]>
+				    <if test="p_img != null">
+				    #{p_img},
+				    </if>
+		<![CDATA[
 				    0
 				)
 		]]>

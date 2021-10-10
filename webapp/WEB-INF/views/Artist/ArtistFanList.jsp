@@ -41,11 +41,16 @@
         	<!-- 팬 많은 순 -->
             <div class="leftsection-01">
                 <h2>팬 등록 리스트</h2>
-                <!-- 아티스트 검색 -->
-                <div>
-                    <input type="text" placeholder="아티스트 검색">
-                    <img src="${pageContext.request.contextPath}/assets/image/artist/icon/search.png" style="width:20px">
-                </div>
+                
+				<!-- 아티스트 검색 -->
+				<div>
+					<form action="" method="get">
+						<input type="text" placeholder="아티스트 검색">
+						<button class="buttonicon" type="button">
+							<img src="${pageContext.request.contextPath}/assets/image/artist/icon/search.png" style="width: 20px">
+						</button>
+					</form>
+				</div>
             </div>
 			<!-- 종합랭킹 표그래프 -->
             <div class="leftsection-02">
