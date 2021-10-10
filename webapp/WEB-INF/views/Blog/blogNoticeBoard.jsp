@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,19 +40,31 @@
 	
 	      <c:import url="/WEB-INF/views/Blog/includes/navigation.jsp"></c:import>
 			<div class="content clearfix">
-				<!-- 글쓰기 버튼 -->
-				<div class="clearfix main_title">
-					<img src="../../assets/image/blog/icon/letter.png"> <span>공지사항</span>
-					
-					<c:if test="${blogVo.user_no == authUser.user_no}">
+			
+				<div class="main_title">
+					  <img src="${pageContext.request.contextPath}/assets/image/blog/icon/letter.png"> 
+		          		
+		          	  <span>공지사항</span>
+		
+					  <!-- 글쓰기 버튼 -->
+			          <c:if test="${blogVo.user_no == authUser.user_no}">
 						<button id="writebutton" type="button" onClick="location.href='${pageContext.request.contextPath}/blog/blog_write/${blogVo.id}'">
 							<img src="../../assets/image/blog/icon/write.png">글쓰기
 						</button>
-					</c:if>
-				</div>
+					  </c:if>
+		        </div>
 
 				<!-- 게시판 테이블 -->
+				
 				<div id="board">
+					
+					<!-- 리스트 없을 때 -->
+					<c:if test="${fn:length(listMap.noticeList) == 0}">
+          				<p id="noPost">등록된 글이 없습니다.</p>
+        			</c:if>
+        			
+        			
+					<c:if test="${fn:length(listMap.noticeList) != 0}">
 					<table id="list">
 						<thead>
 							<tr>
@@ -64,19 +77,34 @@
 						</thead>
 						<tbody>
 							<!-- 반복문 -->
-							<c:forEach items="${noticeList}" var="noticeVo" varStatus="status">
-								<tr>
-									<td>${noticeVo.rn}</td>
-									<td class="left-align"><a href="${pageContext.request.contextPath}/blog/blog_noticeDetail/${blogVo.id}?no=${noticeVo.post_no}">${noticeVo.title}</a></td>
-									<td>${noticeVo.nickname}</td>
-									<td>${noticeVo.regDate}</td>
-									<td>${noticeVo.hit}</td>
-								</tr>
+							<c:forEach items="${listMap.noticeList}" var="noticeVo" varStatus="status">
+								<c:choose>
+									<c:when test="${noticeVo.rn < 4 && empty fn:trim(keyword)}">
+										<tr id="noticehightlight">
+											<td>${noticeVo.rn}</td>
+											<td class="left-align"><a href="${pageContext.request.contextPath}/blog/blog_noticeDetail/${blogVo.id}?no=${noticeVo.post_no}">${noticeVo.title}</a></td>
+											<td>${noticeVo.nickname}</td>
+											<td>${noticeVo.regDate}</td>
+											<td>${noticeVo.hit}</td>
+										</tr>
+									</c:when>
+									<c:otherwise>
+										<tr>
+											<td>${noticeVo.rn}</td>
+											<td class="left-align"><a href="${pageContext.request.contextPath}/blog/blog_noticeDetail/${blogVo.id}?no=${noticeVo.post_no}">${noticeVo.title}</a></td>
+											<td>${noticeVo.nickname}</td>
+											<td>${noticeVo.regDate}</td>
+											<td>${noticeVo.hit}</td>
+										</tr>
+									</c:otherwise>
+								</c:choose>
 							</c:forEach>
 						</tbody>
 					</table>
+					</c:if>
 
 					<!-- 검색 기능 -->
+					<c:if test="${fn:length(listMap.noticeList) != 0}">
 					<div class="topnav">
 						<div class="search-container">
 							<form action="${pageContext.request.contextPath}/blog/blog_notice/${blogVo.id}">
@@ -92,18 +120,29 @@
 					<div class="container xlarge">
 						<div class="pagination">
 							<ul>
-								<!-- Add Button-->
-								<li><a href="#">&laquo;</a></li>
-								<li><a href="#">1</a></li>
-								<li><a href="#">2</a></li>
-								<li class="active"><a href="#">3</a></li>
-								<!-- for active button-->
-								<li><a href="#">4</a></li>
-								<li><a href="#">5</a></li>
-								<li><a href="#">&raquo;</a></li>
+								<c:if test="${listMap.prev == true}">
+									<li><a href="${pageContext.request.contextPath}/blog/blog_notice/${blogVo.id}?crtPage=${param.crtPage - 1}&keyword=${param.keyword}">&laquo;</a></li>
+								</c:if>
+								
+								<c:forEach begin="${listMap.startPageBtnNo}" end="${listMap.endPageBtnNo}" step="1" var="page">
+									<c:choose>
+										<c:when test="${param.crtPage eq page}">
+											<li class="active"><a href="${pageContext.request.contextPath}/blog/blog_notice/${blogVo.id}?crtPage=${page}&keyword=${param.keyword}">${page}</a></li>
+										</c:when>
+										<c:otherwise>
+											<li><a href="${pageContext.request.contextPath}/blog/blog_notice/${blogVo.id}?crtPage=${page}&keyword=${param.keyword}">${page}</a></li>
+										</c:otherwise>
+									</c:choose>										
+								</c:forEach>
+								
+								<c:if test="${listMap.next == true}">
+									<li><a href="${pageContext.request.contextPath}/blog/blog_notice/${blogVo.id}?crtPage=${param.crtPage + 1}&keyword=${param.keyword}">&raquo;</a></li>
+								</c:if>
 							</ul>
 						</div>
 					</div>
+        			</c:if>
+        			
 				</div>
 			</div>
 		</div>
@@ -111,5 +150,12 @@
 	</div>
 	<!------ ////(br_container)//// ------>
 </body>
+<script type="text/javascript">
+
+
+
+
+</script>
+
 
 </html>

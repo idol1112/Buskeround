@@ -149,7 +149,10 @@ public class BlogController {
   }
 
   @RequestMapping(value = "blog_notice/{id}", method = {RequestMethod.GET, RequestMethod.POST})
-  public String blog_noticeboard(@PathVariable("id") String id, @RequestParam(value = "keyword", required = false) String keyword, Model model) {
+  public String blog_noticeboard(@PathVariable("id") String id, 
+								 @RequestParam(value = "keyword", required = false) String keyword, 
+								 @RequestParam(value = "crtPage", required = false, defaultValue = "1") int crtPage, 
+								 Model model) {
     System.out.println("[TestingController.blog_notice()]");
 
     // 해더 정보 가져오기
@@ -160,11 +163,12 @@ public class BlogController {
     Map<String, Object> searchvalue = new HashMap<String, Object>();
     searchvalue.put("search", keyword);
     searchvalue.put("id", id);
+    searchvalue.put("crtPage", crtPage);
 
     // 리스트 가져오기
-    List<NoticeVo> noticeList = blogService.noticeList(searchvalue);
-    System.out.println(noticeList);
-    model.addAttribute("noticeList", noticeList);
+    Map<String, Object> listMap = blogService.noticeList(searchvalue);
+    System.out.println(listMap);
+    model.addAttribute("listMap", listMap);
 
     return "Blog/blogNoticeBoard";
   }
@@ -172,7 +176,9 @@ public class BlogController {
   // 공지사항 하나 가져오기.
   @RequestMapping(value = "blog_noticeDetail/{id}", method = {RequestMethod.GET, RequestMethod.POST})
   public String blog_noticeDetail(@PathVariable("id") String id, @RequestParam("no") int no,
-      @RequestParam(value = "keyword", required = false) String keyword, Model model) {
+							      @RequestParam(value = "keyword", required = false) String keyword, 
+							      @RequestParam(value = "crtPage", required = false, defaultValue = "1") int crtPage,
+							      Model model) {
     System.out.println("[TestingController.blog_notice()]");
 
     // 해더 정보 가져오기
@@ -188,18 +194,48 @@ public class BlogController {
     Map<String, Object> searchvalue = new HashMap<String, Object>();
     searchvalue.put("search", keyword);
     searchvalue.put("id", id);
+    searchvalue.put("crtPage", crtPage);
 
     // 리스트 가져오기
-    List<NoticeVo> noticeList = blogService.noticeList(searchvalue);
-    System.out.println(noticeList);
-    model.addAttribute("noticeList", noticeList);
+    Map<String, Object> listMap = blogService.noticeList(searchvalue);
+    System.out.println(listMap);
+    model.addAttribute("listMap", listMap);
 
     return "Blog/blogNoticeDetail";
   }
   
+  //포스트 수정 폼
+  @RequestMapping(value = "updatePostForm/{id}", method = {RequestMethod.GET, RequestMethod.POST})
+  public String blog_updateForm(@PathVariable("id") String id, 
+		  						@RequestParam("no") int no,
+		  						Model model) {
+	  System.out.println("[TestingController.blog_updateForm()]");
+	  
+	  // 해더 정보 가져오기
+	  BlogVo blogVo = blogService.selectUser(id);
+	  model.addAttribute("blogVo", blogVo);
+	  
+	  NoticeVo noticeVo = blogService.getNotice(no);
+	  model.addAttribute("noticeVo", noticeVo);
+	  
+	  return "Blog/blogWriteModifyForm";
+  }
+  
+  //포스트 수정
+  @RequestMapping(value = "modifyPost/{id}", method = {RequestMethod.GET, RequestMethod.POST})
+  public String blog_deletePost(@PathVariable("id") String id, 
+		  						@ModelAttribute NoticeVo noticeVo ) {
+	  System.out.println("[TestingController.blog_modifyPost()]");
+	  
+	  blogService.modifyPost(noticeVo);
+	  
+	  return "redirect:/blog/blog_main/" + id;
+  }
+  
+  
   //포스트 삭제
   @RequestMapping(value = "deletePost/{id}", method = {RequestMethod.GET, RequestMethod.POST})
-  public String blog_deleteform(@PathVariable("id") String id, 
+  public String blog_deletePost(@PathVariable("id") String id, 
 		  						@RequestParam("no") int no) {
 	  System.out.println("[TestingController.blog_deleteform()]");
 	  
@@ -207,6 +243,7 @@ public class BlogController {
 	  
 	  return "redirect:/blog/blog_main/" + id;
   }
+  
   
   //입력 폼
   @RequestMapping(value = "blog_write/{id}", method = {RequestMethod.GET, RequestMethod.POST})

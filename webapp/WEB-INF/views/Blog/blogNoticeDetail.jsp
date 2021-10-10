@@ -57,7 +57,7 @@
 
 		  <c:if test="${blogVo.user_no == authUser.user_no}">
     	      <button id="deletebutton" onclick="location.href='${pageContext.request.contextPath}/blog/deletePost/${blogVo.id}?no=${noticeVo.post_no}'">삭제</button>
-	          <button id="modifybutton" onclick="location.href='blogWriteModifyForm.jsp'">수정</button>
+	          <button id="modifybutton" onclick="location.href='${pageContext.request.contextPath}/blog/updatePostForm/${blogVo.id}?no=${noticeVo.post_no}'">수정</button>
 		  </c:if>
         </div>
         <!-- 내용 -->
@@ -75,16 +75,16 @@
           <div id="board">
             <table id="list">
               <thead>
-                <tr>
-                  <th>공지</th>
-                  <th>제목</th>
-                  <th>작성자</th>
-                  <th>작성일</th>
-                  <th>조회</th>
-                </tr>
-              </thead>
+		      	<tr>
+		      		<th width="10%">공지</th>
+		      		<th width="50%">제목</th>
+		      		<th width="15%">작성자</th>
+		      		<th width="15%">작성일</th>
+		      		<th width="10%">조회</th>
+		      	</tr>
+		      </thead>
               <tbody>
-				<c:forEach items="${noticeList}" var="noticeVo" varStatus="status" begin="0" end="2">
+				<c:forEach items="${listMap.noticeList}" var="noticeVo" varStatus="status" begin="0" end="2">
 					<tr>
 						<td>${noticeVo.rn}</td>
 						<td class="left-align"><a href="${pageContext.request.contextPath}/blog/blog_noticeDetail/${blogVo.id}?no=${noticeVo.post_no}">${noticeVo.title}</a></td>

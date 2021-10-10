@@ -58,13 +58,21 @@
       <!------ ////(timeline)//// ------>
 
       <!---- notice ---->
-      <div class="notice">
         <div class="main_title">
           <img src="${pageContext.request.contextPath}/assets/image/blog/icon/letter.png" alt="">
+          <a href="${pageContext.request.contextPath}/blog/blog_notice/${blogVo.id}">
           <span>전체글보기</span>
+          </a>
         </div>
-        <div class="content clearfix">
+        
+        <div class="post_box">
+        	
+        <c:if test="${fn:length(noticeList) == 0}">
+          <p id="noPost">등록된 글이 없습니다.</p>
+        </c:if>
+
           <!-- 게시판 테이블 -->
+	      <c:if test="${fn:length(noticeList) != 0}">
           <div id="board">
             <table id="list">
               <thead>
@@ -84,46 +92,12 @@
                   <td>2021-09-08</td>
                   <td>100</td>
                 </tr>
-                <tr>
-                  <td>공지</td>
-                  <td>8월 29일 버스킹 공지사항</td>
-                  <td>우주 멋쟁이</td>
-                  <td>2021-09-08</td>
-                  <td>100</td>
-                </tr>
-                <tr>
-                  <td>10</td>
-                  <td>응원합니다.</td>
-                  <td>김영기</td>
-                  <td>2021-09-08</td>
-                  <td>100</td>
-                </tr>
-                <tr>
-                  <td>9</td>
-                  <td>사랑합니다</td>
-                  <td>유승범</td>
-                  <td>2021-09-08</td>
-                  <td>100</td>
-                </tr>
-                <tr>
-                  <td>8</td>
-                  <td>좋아해요</td>
-                  <td>김윤형</td>
-                  <td>2021-09-08</td>
-                  <td>100</td>
-                </tr>
-                <tr>
-                  <td>8</td>
-                  <td>좋아해요</td>
-                  <td>김윤형</td>
-                  <td>2021-09-08</td>
-                  <td>100</td>
-                </tr>
               </tbody>
             </table>
           </div>
+	      </c:if>
+	      
         </div>
-      </div>
       <!------ ////(notice)//// ------>
 
       <!---- gallery ---->

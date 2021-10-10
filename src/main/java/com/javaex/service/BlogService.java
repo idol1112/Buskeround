@@ -3,6 +3,7 @@ package com.javaex.service;
 import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -97,6 +98,13 @@ public class BlogService {
     return blogDao.writePost(noticeVo);
   }
   
+  // Modify Post (프로필 수정)
+  public int modifyPost(NoticeVo noticeVo) {
+	  System.out.println("BlogService.modifyPost()");
+	  
+	  return blogDao.modifyPost(noticeVo);
+  }
+  
   // Delete Post (글 삭제)
   public int deletePost(int no) {
 	  System.out.println("BlogService.deletePost()");
@@ -105,10 +113,67 @@ public class BlogService {
   }
 
   // Notice List (공지사항 리스트 가져오기)
-  public List<NoticeVo> noticeList(Map<String, Object> searchvalue) {
+  public Map<String, Object> noticeList(Map<String, Object> searchvalue) {
     System.out.println("BlogService.noticeList()");
+    int crtPage = (int) searchvalue.get("crtPage");
+    
+    crtPage = (crtPage > 0) ? crtPage : (crtPage=1);
+    
+    int listCnt = 10;
+    
+    //시작번호 계산하기
+  	int startRnum = ((crtPage-1)*listCnt+1);
+  	
+    //끝번 계산하기
+  	int endRnum = (crtPage*listCnt);
+  	searchvalue.put("startRnum", startRnum);
+  	searchvalue.put("endRnum", endRnum);
+  	
+  	List<NoticeVo> noticeList = blogDao.noticeList(searchvalue);
+  	System.out.println("리스트 가져오기 성공!: " + noticeList);
+  	
+	////////////////////////////////////////////////
+	// 페이징 게산
+	////////////////////////////////////////////////
+  	
+	//전체글 갯수
+	int totalCount = blogDao.selectTotalCnt(searchvalue);
+	System.out.println(totalCount);
+	
+	//페이지당 버튼 갯수
+	int pageBtnCount = 5;
+	
+	//마지막 버튼 번호
+	int endPageBtnNo = (int) (Math.ceil((crtPage/(double)pageBtnCount)) * pageBtnCount);
+	
+	//시작 버튼 번호
+	int startPageBtnNo = endPageBtnNo - pageBtnCount + 1;
+	
+	//다음 화살표 표현 유무
+	boolean next = false;
+	if((endPageBtnNo * listCnt) < totalCount){
+		next = true;
+	} else {
+		//다음 화살표 버튼이 없을때 endPageBtnNo를 다시 계산해야된다
+		//전체글갯수 / 한폐이지의 글갯수
+		
+		endPageBtnNo = (int) Math.ceil(totalCount/(double)listCnt);
+	}
+	
+	//이전 화살표 표현 유무
+	boolean prev = false;
+	if((startPageBtnNo) != 1) {
+		prev = true;
+	}
+	
+	Map<String, Object> listMap = new HashMap<String, Object>();
+	listMap.put("noticeList", noticeList);
+	listMap.put("prev", prev);
+	listMap.put("startPageBtnNo", startPageBtnNo);
+	listMap.put("endPageBtnNo", endPageBtnNo);
+	listMap.put("next", next);
 
-    return blogDao.noticeList(searchvalue);
+    return listMap;
   }
 
   // 공지사항 1개 가져오기

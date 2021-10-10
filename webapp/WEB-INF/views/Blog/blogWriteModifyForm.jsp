@@ -33,11 +33,11 @@
 <body>
   <!------ br_container ------>
   <div class="clearfix" id="br_container">
-    <c:import url="/views/Blog/includes/aside.jsp"></c:import>
+    <c:import url="/WEB-INF/views/Blog/includes/aside.jsp"></c:import>
     <!------ br_content ------>
 
     <div id="br_content">
-      <c:import url="/views/Blog/includes/header.jsp"></c:import>
+	      <c:import url="/WEB-INF/views/Blog/includes/header.jsp"></c:import>
 
       <div id="content">
         <!-- 컨텐트 (프로필 수정) -->
@@ -47,14 +47,17 @@
 
 
         <!-- 해더 -->
-        <form id="writeform-content clearfix">
+        <form id="writeform-content clearfix" class="testing" action="${pageContext.request.contextPath}/blog/modifyPost/${blogVo.id}" method="POST" enctype="multipart/form-data" >
+        <input type="hidden" name="post_no" value="${noticeVo.post_no}">
 
-          <input id="title" type="text" placeholder="제목을 입력해 주세요." value="8월 29일 버스킹 공지사항">
+          <input id="title" name="title" type="text" placeholder="제목을 입력해 주세요." value="${noticeVo.title}">
 
           <!-- 에디터 -->
-          <div class="editor">If you're looking for random paragraphs, you've come to the right place. When a random word or a random sentence isn't quite enough, the next logical step is to find a random paragraph. We created the Random Paragraph Generator with you in mind. The process is quite simple. Choose the number of random paragraphs you'd like to see and click the button. Your chosen number of paragraphs will instantly appear. While it may not be obvious to everyone, there are a number of reasons creating random paragraphs can be useful. A few examples of how some people use this generator are listed in the following paragraphs</div>
+          <textarea name="content" class="editor">
+          	${noticeVo.content}
+          </textarea>
 
-          <button id="uploadbutton">수정</button>
+          <button type="submit" id="uploadbutton">수정</button>
         </form>
       </div>
     </div>
@@ -120,5 +123,30 @@
             console.warn( 'Build id: l2el0rjf71xs-g3eg22e8e3t1' );
             console.error( error );
         } );
+        
+        
+	$('.testing').on("submit", function() {
+		console.log("서브밋")
+	
+		if ($("[name=category_no]").val() == 0) {
+			alert("카테고리를 선택해주세요.");
+	
+			return false;
+		}
+		
+		if ($("[name=title]").val().length < 1) {
+			alert("제목을 입력해주세요.");
+	
+			return false;
+		}
+		
+		if ($("[name=content]").val().length < 1) {
+			alert("게시글 내용을 입력해주세요.");
+	
+			return false;
+		}
+	
+		return true;
+	});
     </script>
 </html>

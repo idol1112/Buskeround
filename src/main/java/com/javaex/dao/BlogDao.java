@@ -116,7 +116,6 @@ public class BlogDao {
 		
 		//맵 땡겨오기
 		String id = (String) searchvalue.get("id");
-		searchvalue.remove("id");
 		
 		//User_no 가져오기
 		int user_no = sqlSession.selectOne("blog.getUserNo", id);
@@ -135,6 +134,30 @@ public class BlogDao {
 		return sqlSession.selectList("blog.noticeList", searchvalue);
 	}
 	
+	//Notice List Count(공지사항 갯수 확인) SELECT TOTAL COUNT
+	public int selectTotalCnt(Map<String, Object> searchvalue) {
+		System.out.println("BlogDao.selectTotalCnt");
+		
+		//맵 땡겨오기
+		String id = (String) searchvalue.get("id");
+		
+		//User_no 가져오기
+		int user_no = sqlSession.selectOne("blog.getUserNo", id);
+		
+		NoticeVo noticeVo = new NoticeVo();
+		noticeVo.setUser_no(user_no);
+		noticeVo.setCategory_type(1);
+		
+		//Category번호 가져오기
+		int category_no = sqlSession.selectOne("blog.categoryNo", noticeVo);
+		
+		//맵에 추가
+		searchvalue.put("category_no", category_no);
+		System.out.println("맵 마지막 출력: " + searchvalue);
+		
+		return sqlSession.selectOne("blog.selectTotalCnt", searchvalue);
+	}
+	
 	// 조회수 Hit++
 	public int updateHit(int no) {
 		System.out.println("BlogDao.updateHit");
@@ -149,10 +172,18 @@ public class BlogDao {
 		return sqlSession.selectOne("blog.selectNotice", no);
 	}
 	
+	//포스트 수정
+	public int modifyPost(NoticeVo noticeVo) { 
+		System.out.println("BlogDao.modifyPost: " + noticeVo);
+		
+		return sqlSession.update("blog.modifyPost", noticeVo);
+	}
+	
+	
 	//포스트 삭제하기
 	public int deletePost(int no) { 
 		System.out.println("BlogDao.deletePost " + no);
+		
 		return sqlSession.delete("blog.deletePost", no);
 	}
-
 }

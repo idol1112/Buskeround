@@ -262,8 +262,9 @@
 				</if> 
 			<![CDATA[
 			        order by post_no desc)ot)ort
-			order by rn asc
-		]]>
+			where rn>=#{startRnum}
+			and rn <=#{endRnum}
+			]]>
     </select>
     
     <!-- 조회수 updateHit -->
@@ -300,4 +301,28 @@
 			where post_no = #{no}
     	]]>
     </delete>
+    
+    <!-- 수정 -->
+	<update id="modifyPost" parameterType="NoticeVo">
+    	<![CDATA[
+    		update post
+			set title =  #{title},
+			    content = #{content}
+			where post_no = #{post_no}
+    	]]>
+	</update>
+	
+	<!-- Select Total Count -->
+	<select id="selectTotalCnt" resultType="int" parameterType="map">
+		<![CDATA[
+			select count(*)
+			from users u, post p
+			where u.user_no = p.user_no
+			and category_no = #{category_no}
+		]]>
+			<if test="search != null">
+				and( title || u.nickname || content) like '%'||#{search}||'%'
+			</if> 
+	</select>
+    
 </mapper>

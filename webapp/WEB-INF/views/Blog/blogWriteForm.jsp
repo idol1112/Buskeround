@@ -51,8 +51,8 @@
         <input type="hidden" name="user_no" value="${sessionScope.authUser.user_no}">
         <input type="hidden" name="nickname" value="${sessionScope.authUser.nickname}">
         
-          <select name="category_type">
-            <option selected value="0">카테고리</option>
+          <select name="category_type" required>
+            <option selected disabled value="">카테고리 선택</option>
             <option value="1">공지사항</option>
             <option value="3">갤러리</option>
             <option value="4">방명록</option>
@@ -136,7 +136,7 @@
 	$('.testing').on("submit", function() {
 		console.log("서브밋")
 	
-		if ($("[name=category_no]").val() == 0) {
+		if ($("[name=category_type]").val() == null) {
 			alert("카테고리를 선택해주세요.");
 	
 			return false;
