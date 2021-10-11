@@ -21,8 +21,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 
 <!-- css -->
+
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/Common/common.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/MyPage/mypage.css">
+
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/DatePicker/datepicker.min.css">
 
 <!-- jquery -->
@@ -163,7 +165,20 @@
 					<button id="acceptBtn" type="button" class="btn-primary btn-sm">수락</button>
 					<button id="refuseBtn" type="button" class="btn-danger btn-sm">거절</button>
 				</div>
-			</div>
+				<!-- 페이징 -->
+				<div class="container large">
+					<div class="pagination">
+						<ul>
+							<li><a href="">◀</a></li>
+							<li><a href="">1</a></li>
+							<li><a href="">2</a></li>
+							<li><a href="">3</a></li>
+							<li><a href="">4</a></li>
+							<li class="active"><a href="">5</a></li>
+							<li><a href="">▶</a></li>
+						</ul>
+					</div>
+				</div>
 		</div>
 		<div class="col-xl-2"></div>
 	</div>
