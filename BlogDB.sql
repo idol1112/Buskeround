@@ -5,7 +5,8 @@ insert into users values(seq_user_no.nextval,'1234','1234','1234@naver.com','김
 insert into users values(seq_user_no.nextval,'4321','4321','4321@naver.com','김창수',null,null,null,null,null,null,null,null,null,null,null,'1','2',null);
 
 --유저 정보 1(김덕배님) 블로그
-insert into blog values(1, '안녕하세요 김덕배의 블로그에 오신것을 환영합니다.', null, 'https://www.youtube.com/', 'https://www.facebook.com/', 'https://www.facebook.com/');
+insert into blog values(1, '안녕하세요 김덕배의 블로그에 오신것을 환영합니다.', null, 'https://www.youtube.com/', 'https://www.facebook.com/', 'https://www.instagram.com/');
+insert into blog values(2, '안녕하세요 김창수의 블로그에 오신것을 환영합니다.', null, 'https://www.youtube.com/', 'https://www.facebook.com/', 'https://www.instagram.com/');
 --이력사항
 insert into resume values(seq_resume_no.nextval, 1, '2000년 그래미 어워즈 수상');
 insert into resume values(seq_resume_no.nextval, 1, '2014 대한민국 연예예술상');
