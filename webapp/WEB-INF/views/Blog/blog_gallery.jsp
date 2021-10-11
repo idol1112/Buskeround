@@ -77,10 +77,10 @@
           <!-- 검색 기능 -->
           <div class="topnav">
             <div class="search-container">
-              <form action="${pageContext.request.contextPath}/blog/blog_gallery/${blogVo.id}" method="get">
-                <input type="text" placeholder="Search.." name="keyword">
+              <form action="${pageContext.request.contextPath}/blog/blog_gallery/${blogVo.id}" method="post">
+                <input type="text" placeholder="Search.." name="keyword" value="">
                 <button type="submit">
-                  <label class="icon fa fa-search" for="search"></label>
+                  <i class="fa fa-search"></i>
                 </button>
               </form>
             </div>
@@ -138,6 +138,9 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-primary" id="btn_close">확인</button>
+          <c:if test="${blogVo.user_no == authUser.user_no}">
+            <button class="btn btn-danger" id="btn_delete" onclick="">삭제</button>
+          </c:if>
         </div>
       </div>
       <!-- /.modal-content -->
@@ -173,9 +176,11 @@ function gallery_item(post_no) {
 
 			$(".modal-title").text(result.title);
 
-			$("#modal_img").attr("src", "${pageContext.request.contextPath}/upload/" + result.p_img);
+			$("#btn_delete").attr("onclick", "location.href='${pageContext.request.contextPath}/blog/deleteGallery/${blogVo.id}?post_no=" + post_no + "'");
 
 			$(".modal_content").append(result.content);
+
+			$("#modal_img").attr("src", "${pageContext.request.contextPath}/upload/" + result.p_img);
 
 		},
 

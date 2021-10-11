@@ -93,10 +93,14 @@ public class ApiBlogController {
 
     postVo.setUser_no(user_no);
 
+
+
     if (file == null) {
       System.out.println("파일이 없습니다.");
 
     } else {
+      System.out.println(user_no);
+
       blogService2.restore(postVo, file);
       System.out.println("파일이 있습니다.");
 
@@ -104,7 +108,7 @@ public class ApiBlogController {
 
   }
 
-  /*** 블로그 메인 ***/
+  /*** 블로그 메인(모바일) ***/
   @ResponseBody
   @RequestMapping(value = "blog_main", method = {RequestMethod.GET, RequestMethod.POST})
   public BlogVo blog_main(@RequestBody UserVo userVo) {
@@ -131,6 +135,47 @@ public class ApiBlogController {
     System.out.println("[현재 위치: ApiBlogController.blog_gallery]");
 
     return blogService2.getOneGallery(post_no);
+
+  }
+
+  /*** 배너 업로드 ***/
+  @ResponseBody
+  @RequestMapping(value = "banner/{user_no}", method = {RequestMethod.GET, RequestMethod.POST})
+  public int banner(@RequestParam(value = "file1", required = false) MultipartFile file, @PathVariable("user_no") int user_no) {
+    System.out.println("[현재 위치: BlogController2.banner]");
+
+    System.out.println(user_no);
+
+    if (file == null) {
+      System.out.println("파일이 없습니다.");
+      return blogService2.setBanner(user_no, null);
+
+    } else {
+      System.out.println("파일이 있습니다.");
+
+      return blogService2.setBanner(user_no, file);
+
+    }
+
+  }
+
+  /*** 프로필 업로드 ***/
+  @ResponseBody
+  @RequestMapping(value = "profile/{user_no}", method = {RequestMethod.GET, RequestMethod.POST})
+  public int profile(@RequestParam(value = "file1", required = false) MultipartFile file, @PathVariable("user_no") int user_no) {
+    System.out.println("[현재 위치: BlogController2.profile]");
+
+    System.out.println(user_no);
+
+    if (file == null) {
+      System.out.println("파일이 없습니다.");
+      return blogService2.setProfile(user_no, null);
+
+    } else {
+      System.out.println("파일이 있습니다.");
+      return blogService2.setProfile(user_no, file);
+
+    }
 
   }
 

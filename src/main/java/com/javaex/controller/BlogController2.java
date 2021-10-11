@@ -25,8 +25,7 @@ public class BlogController2 {
   @RequestMapping(value = "blog_gallery/{id}", method = {RequestMethod.GET, RequestMethod.POST})
   public String blog_gallery(Model model, @PathVariable("id") String id, @RequestParam(value = "page", required = false, defaultValue = "1") int page,
       @RequestParam(value = "keyword", required = false, defaultValue = "") String keyword) {
-    System.out.println("[TestingController.blog_gallery()]");
-
+    System.out.println("[현재 위치: BlogController2.blog_gallery]");
     // 해더 정보 가져오기
     BlogVo blogVo = blogService.selectUser(id);
     model.addAttribute(blogVo);
@@ -39,6 +38,16 @@ public class BlogController2 {
 
     return "Blog/blog_gallery";
 
+  }
+
+  /*** 갤러리 삭제 ***/
+  @RequestMapping(value = "deleteGallery/{id}", method = {RequestMethod.GET, RequestMethod.POST})
+  public String blog_deleteGallery(@PathVariable("id") String id, @RequestParam("post_no") int post_no) {
+    System.out.println("[현재 위치: BlogController2.blog_deleteGallery]");
+
+    blogService.deletePost(post_no);
+
+    return "redirect:/blog/blog_main/" + id;
   }
 
 }

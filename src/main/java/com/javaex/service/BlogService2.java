@@ -190,4 +190,90 @@ public class BlogService2 {
 
   }
 
+  /*** 배너 수정 ***/
+  public int setBanner(int user_no, MultipartFile file) {
+
+    String logoFile = null;
+
+    if (file != null) {
+      String saveDir = "C:\\javaStudy\\upload";
+
+      // 확장자
+      String exName = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
+      System.out.println("exName:" + exName);
+
+      // 저장파일이름(관리 떄문에 겹치지 않는 새이름 부여)
+      logoFile = System.currentTimeMillis() + UUID.randomUUID().toString() + exName;
+      System.out.println("saveName:" + logoFile);
+
+      // 파일패스
+      String filePath = saveDir + "\\" + logoFile;
+      System.out.println("filePath:" + filePath);
+
+      // 파일 서버하드디스크에 저장
+      try {
+
+        byte[] fileData = file.getBytes();
+        OutputStream out = new FileOutputStream(filePath);
+        BufferedOutputStream bout = new BufferedOutputStream(out);
+
+        bout.write(fileData);
+        bout.close();
+
+      } catch (Exception e) {
+        // TODO: handle exception
+      }
+    }
+
+    Map<String, Object> bannerMap = new HashMap<String, Object>();
+    bannerMap.put("user_no", user_no);
+    bannerMap.put("p_img", logoFile);
+
+    return blogDao2.setBanner(bannerMap);
+
+  }
+
+  /*** 프로필 사진 수정 ***/
+  public int setProfile(int user_no, MultipartFile file) {
+
+    String logoFile = null;
+
+    if (file != null) {
+      String saveDir = "C:\\javaStudy\\upload";
+
+      // 확장자
+      String exName = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
+      System.out.println("exName:" + exName);
+
+      // 저장파일이름(관리 떄문에 겹치지 않는 새이름 부여)
+      logoFile = System.currentTimeMillis() + UUID.randomUUID().toString() + exName;
+      System.out.println("saveName:" + logoFile);
+
+      // 파일패스
+      String filePath = saveDir + "\\" + logoFile;
+      System.out.println("filePath:" + filePath);
+
+      // 파일 서버하드디스크에 저장
+      try {
+
+        byte[] fileData = file.getBytes();
+        OutputStream out = new FileOutputStream(filePath);
+        BufferedOutputStream bout = new BufferedOutputStream(out);
+
+        bout.write(fileData);
+        bout.close();
+
+      } catch (Exception e) {
+        // TODO: handle exception
+      }
+    }
+
+    Map<String, Object> profileMap = new HashMap<String, Object>();
+    profileMap.put("user_no", user_no);
+    profileMap.put("user_img", logoFile);
+
+    return blogDao2.setProfile(profileMap);
+
+  }
+
 }

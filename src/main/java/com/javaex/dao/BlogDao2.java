@@ -110,11 +110,27 @@ public class BlogDao2 {
 
   }
 
-  /*** 페이징 (전체 게시물 갯수 구하기) ***/
+  /*** 조회수 ***/
   public int updateHit(int post_no) {
     System.out.println("[사용 메소드: BlogDao2.updateHit()]");
 
     return sqlSession.update("post.updateHit", post_no);
+  }
+
+  /*** 배너 수정 ***/
+  public int setBanner(Map<String, Object> bannerMap) {
+    System.out.println("[사용 메소드: BlogDao2.setBanner()]");
+
+    return sqlSession.update("post.setBanner", bannerMap);
+  }
+
+  /*** 프로필 수정 ***/
+  public int setProfile(Map<String, Object> profileMap) {
+    System.out.println("[사용 메소드: BlogDao2.setProfile()]");
+
+    System.out.println(profileMap);
+
+    return sqlSession.update("post.setProfile", profileMap);
   }
 
 }

@@ -52,6 +52,7 @@
 			WHERE
 			        user_no = #{user_no}
 			    AND p_end IS NULL
+		        AND p_start IS NOT NULL
 		]]>
 	</update>
 
@@ -135,7 +136,8 @@
 				    p_img = #{p_img}
 				WHERE
 				        user_no = #{user_no}
-				    AND p_end IS NULL
+		    		AND p_end IS NULL
+		        	AND p_start IS NOT NULL
 		]]>
 	</update>
 
@@ -290,6 +292,52 @@
 			    hit = hit + 1
 			WHERE
 			    post_no = #{post_no}
+		]]>
+	</update>
+
+	<!-- 배너 변경 -->
+	<update id="setBanner" parameterType="map">
+		<![CDATA[
+			UPDATE blog
+			SET
+		]]>
+
+		<choose>
+			<when test="p_img == null">
+				banner = null
+			</when>
+
+			<otherwise>
+				banner = #{p_img}
+			</otherwise>
+		</choose>
+
+		<![CDATA[
+			WHERE
+			    user_no = #{user_no}
+		]]>
+	</update>
+
+	<!-- 프로필 이미지 변경 -->
+	<update id="setProfile" parameterType="map">
+		<![CDATA[
+			UPDATE users
+			SET
+		]]>
+
+		<choose>
+			<when test="user_img == null">
+				user_img = null
+			</when>
+
+			<otherwise>
+				user_img = #{user_img}
+			</otherwise>
+		</choose>
+
+		<![CDATA[
+			WHERE
+			    user_no = #{user_no}
 		]]>
 	</update>
 
