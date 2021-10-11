@@ -121,8 +121,9 @@
   background-color: #cacaca;
 }
 .rightsection-02 table tbody tr td {
+  width:95px;	
   font-size: 15px;
-  padding: 5px 15px;
+  padding: 5px 8px;
   text-align: center;
 }
 
@@ -135,6 +136,57 @@
 	outline:0px;
 	background-color: #fff;
 }
+
+
+
+
+.containers {
+    margin: 30px 0 0px 0;
+    text-align: center;
+  }
+.containers:after {
+    clear: both;
+    content: "";
+    display: table;
+  }
+.containers ul {
+    width: 100%;
+  }
+  
+.xlarge {
+    width: 700px;
+  }
+
+.pagination  ul, li {
+    list-style: none;
+    display: inline;
+    padding-left: 0px;
+    font-size: 12px;
+  }
+
+.pagination  li:hover a {
+    color: black;
+    background-color: #CCCCCC;
+    border: solid 1px #CCCCCC;
+  }
+.pagination li.active a {
+    color: black;
+    background-color: #CCCCCC;
+    border: solid 1px #CCCCCC;
+    font-weight: bold;
+  }
+.pagination li a {
+    border: solid 1px #d7d7d7;
+    border-radius: 0.2rem;
+    color: #7d7d7d;
+    text-decoration: none;
+    text-transform: uppercase;
+    display: inline-block;
+    text-align: center;
+    padding: 0.5rem 0.9rem;
+  }
+
+
 
 
 

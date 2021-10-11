@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,9 +24,16 @@ public class ArtistController {
 
 	// 아티스트 종합랭킹
 	@RequestMapping(value = "/ArtistRenk", method = { RequestMethod.GET, RequestMethod.POST })
-	public String artistrenk(Model model) {
+	public String artistrenk(Model model, HttpSession session) {
 
 		System.out.println("[ArtistController.ArtistRenk()]");
+
+		UserVo userVo = (UserVo) session.getAttribute("authUser");
+
+		if (userVo != null) {
+			artistService.getFanLoading(userVo.getUser_no());
+
+		}
 
 		model.addAttribute("artistRenkList", artistService.getArtistList());
 
@@ -40,15 +46,16 @@ public class ArtistController {
 
 	// 아티스트 팬 많은 순
 	@RequestMapping(value = "/ArtistFan", method = { RequestMethod.GET, RequestMethod.POST })
-	public String artistfan(Model model) {
+	public String artistfan(@RequestParam(value = "page", required = false, defaultValue = "1") int page,
+			@RequestParam(value = "keyword", required = false, defaultValue = "") String keyword, Model model) {
 
 		System.out.println("[ArtistController.ArtistFan()]");
 
-		model.addAttribute("artistFan", artistService.getArtistFan());
+		model.addAttribute("artistFan", artistService.getArtistFan(page, keyword));
 
 		model.addAttribute("artistLiveList", artistService.getArtistLive());
 
-		System.out.println(artistService.getArtistFan());
+		System.out.println(artistService.getArtistFan(page, keyword));
 
 		return "/Artist/ArtistFan";
 	}
@@ -113,41 +120,12 @@ public class ArtistController {
 
 		System.out.println("[ArtistController.Fan()]");
 
+		System.out.println(userVo);
+
 		return artistService.getFan(userVo);
 
 	}
 
-	// 팬 로딩
-	@ResponseBody
-	@RequestMapping(value = "/FanLoading", method = { RequestMethod.GET, RequestMethod.POST })
-	public void fanLoading(@RequestParam("user_no") int user_no) {
 
-		System.out.println("[ArtistController.FanLoading()]");
-
-		artistService.getFanLoading(user_no);
-
-	}
-	
-	// 좋아요 등록
-	@ResponseBody
-	@RequestMapping(value = "/Likes", method = { RequestMethod.GET, RequestMethod.POST })
-	public boolean likes(@ModelAttribute UserVo userVo) {
-
-		System.out.println("[ArtistController.Likes()]");
-
-		return artistService.getLikes(userVo);
-
-	}
-	
-	// 좋아요 로딩
-	@ResponseBody
-	@RequestMapping(value = "/LikesLoading", method = { RequestMethod.GET, RequestMethod.POST })
-	public void likesLoading(@RequestParam("user_no") int user_no) {
-
-		System.out.println("[ArtistController.LikesLoading()]");
-
-		artistService.getLikesLoading(user_no);
-
-	}
 
 }

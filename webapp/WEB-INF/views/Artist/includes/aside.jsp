@@ -70,7 +70,7 @@
 				<c:forEach items="${artistLiveList}" var="aLive">
 					<tr>
 						<td>${aLive.nickname}</td>
-						<td>오후 3:24~</td>
+						<td>${aLive.live}</td>
 						<td>[위치 보기]</td>
 					</tr>
 				</c:forEach>

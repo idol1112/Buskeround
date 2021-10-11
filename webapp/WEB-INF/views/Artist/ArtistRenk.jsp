@@ -132,41 +132,14 @@
 
 <script type="text/javascript">
 
-// 팬 로딩되었을 때
-$(document).ready(function(){
-
-	$.ajax({
-		// 컨트롤러에서 대기중인 URL 주소이다.
-		url : "${pageContext.request.contextPath}/Artist/FanLoading",
-
-		// HTTP method type(GET, POST) 형식이다.
-		type : "post",
-
-
-		data : {
-		user_no : ${authUser.user_no}
-		},
-
-		// 성공일 경우 success로 들어오며, 'result'는 응답받은 데이터이다.
-		success : function(result) {
-			/*성공시 처리해야될 코드 작성*/
-
-		},
-
-		// 실패할경우 error로 들어온다.
-		error : function(XHR, status, error) {
-			console.error(status + " : " + error);
-		}
-	});  
-
-});
-
-
 // 팬되기 눌렀을 때
 $(".fan").on("click",function(){
 	
-	$(this).attr('src', '${pageContext.request.contextPath}/assets/image/artist/icon/fan2.png');
 	var artist_no = $(this).data("no");
+	
+	var thiss = $(this); 
+	
+	console.log(artist_no);
 	
 	$.ajax({
 		// 컨트롤러에서 대기중인 URL 주소이다.
@@ -191,6 +164,17 @@ $(".fan").on("click",function(){
 		success : function(result) {
 			/*성공시 처리해야될 코드 작성*/
 			console.log(result)
+			
+			if (result == false) {
+				console.log("성공~");
+				thiss.attr('src', '${pageContext.request.contextPath}/assets/image/artist/icon/fan2.png');
+				
+			} else {
+				thiss.attr('src', '${pageContext.request.contextPath}/assets/image/artist/icon/fan1.png');
+				
+				
+				
+			}
 		},
 
 		// 실패할경우 error로 들어온다.
@@ -198,7 +182,6 @@ $(".fan").on("click",function(){
 			console.error(status + " : " + error);
 		}
 	});
-	
 });
 
 
