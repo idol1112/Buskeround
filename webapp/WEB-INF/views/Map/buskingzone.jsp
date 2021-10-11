@@ -197,9 +197,8 @@
 
 
 
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=79c2ae6522e8e0df7b0592164f933676"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=79c2ae6522e8e0df7b0592164f933676&libraries=services"></script>
 <script>
-
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = { 
         center: new kakao.maps.LatLng(37.49699749185255, 127.02445040286854), // 지도의 중심좌표
@@ -208,10 +207,73 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 
 // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
 var map = new kakao.maps.Map(mapContainer, mapOption);
+//========================================
+//장소 검색 객체를 생성합니다
+var ps = new kakao.maps.services.Places();  
+
+// 키워드로 장소를 검색합니다
+searchPlaces();
+
+//키워드 검색을 요청하는 함수입니다
+function searchPlaces() {
+
+    var keyword = document.getElementById('keyword').value;
+
+    if (!keyword.replace(/^\s+|\s+$/g, '')) {
+        alert('키워드를 입력해주세요!');
+        return false;
+    }
+
+    // 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
+    ps.keywordSearch( keyword, placesSearchCB); 
+}
+
+//장소검색이 완료됐을 때 호출되는 콜백함수 입니다
+function placesSearchCB(data, status, pagination) {
+    if (status === kakao.maps.services.Status.OK) {
+
+        // 정상적으로 검색이 완료됐으면
+        // 검색 목록과 마커를 표출합니다
+        displayPlaces(data);
+
+    } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
+
+        alert('검색 결과가 존재하지 않습니다.');
+        return;
+
+    } else if (status === kakao.maps.services.Status.ERROR) {
+
+        alert('검색 결과 중 오류가 발생했습니다.');
+        return;
+
+    }
+}
+
+// 검색 결과 목록과 마커를 표출하는 함수입니다
+function displayPlaces(places) {
+
+
+    fragment = document.createDocumentFragment(), 
+    bounds = new kakao.maps.LatLngBounds();
+
+
+        // 마커를 생성하고 지도에 표시합니다
+        var placePosition = new kakao.maps.LatLng(places[0].y, places[0].x);
+
+
+        // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
+        // LatLngBounds 객체에 좌표를 추가합니다
+        bounds.extend(placePosition);
+
+    // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
+    map.setBounds(bounds);
+}
 
 
 
-kakao.maps.event.addListener(map, 'dragend', function() {         
+//========================================
+
+kakao.maps.event.addListener(map, 'center_changed', function() {         
 
     // 지도의 중심좌표를 얻어옵니다 
     var latlngg = map.getCenter(); 
@@ -244,11 +306,11 @@ kakao.maps.event.addListener(map, 'dragend', function() {
 		dataType : "json",
 		success : function(buskingzoneList){
  			for(var i=0; i<buskingzoneList.length; i++){
-			/////////////////
+
 			var itemEl = getListItem(i, buskingzoneList[i]);
 			
 			fragment.appendChild(itemEl);
-			//////////////////	
+	
 			};
 			
 			listEl.appendChild(fragment); 
