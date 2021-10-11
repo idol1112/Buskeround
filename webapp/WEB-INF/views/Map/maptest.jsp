@@ -15,6 +15,9 @@
 
 
 </style>
+
+<!-- jquery -->
+<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 </head>
 <body>
 <div class="map_wrap">
@@ -23,10 +26,11 @@
     <div id="menu_wrap">
         <div class="option">
             <div>
-                <form onsubmit="searchPlaces(); return false;">
-                    <input type="text" value="강남역" id="keyword" size="15" placeholder="장소 입력"> 
-                    <button type="submit">검색하기</button> 
-                </form>
+                <div>
+                    <input type="text" value="강남역" id="keyword" size="15" placeholder="장소 입력" > 
+                    <!-- <div onsubmit="searchPlaces(); return false;">검색하기</div> -->
+                    <button id="btnsch">검색하기</button> 
+                </div>
             </div>
         </div>
     </div>
@@ -50,10 +54,10 @@ var ps = new kakao.maps.services.Places();
 
 
 // 키워드로 장소를 검색합니다
-searchPlaces();
+searchPlaces(keyword);
 
 // 키워드 검색을 요청하는 함수입니다
-function searchPlaces() {
+function searchPlaces(keyword) {
 
     var keyword = document.getElementById('keyword').value;
 
@@ -65,6 +69,8 @@ function searchPlaces() {
     // 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
     ps.keywordSearch( keyword, placesSearchCB); 
 }
+
+
 
 // 장소검색이 완료됐을 때 호출되는 콜백함수 입니다
 function placesSearchCB(data, status, pagination) {
@@ -128,7 +134,12 @@ kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
     console.log(showlng);
 });
 
-
+$("#btnsch").on("click", function(){
+	var keyword = $("#keyword").val();
+	console.log(keyword);	
+	
+	searchPlaces(keyword);
+});
 
 
 </script>
