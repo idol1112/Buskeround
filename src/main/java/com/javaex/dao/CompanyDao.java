@@ -1,6 +1,7 @@
 package com.javaex.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -127,10 +128,17 @@ public class CompanyDao {
 	
 	///////////////////////////////// 공연신청관리 /////////////////////////////////
 	//제휴사별 전체 공연 리스트 불러오기
-	public List<BusappVo> selectApplyList(int user_no) {
+	public List<BusappVo> selectApplyList(Map<String, Object> applyMap) {
 		System.out.println("CompanyDao.selectApplyList()");
 		
-		return sqlSession.selectList("busapp.selectApplyList", user_no);
+		return sqlSession.selectList("busapp.selectApplyList", applyMap);
+	}
+	
+	//제휴사별 전체 공연 리스트 갯수 불러오기
+	public int selectTotalCnt(Map<String, Object> applyMap) {
+		System.out.println("CompanyDao.selectTotalCnt()");
+		
+		return sqlSession.selectOne("busapp.selectTotalCnt", applyMap);
 	}
 	
 	//전체 공연장 날짜~날짜 검색

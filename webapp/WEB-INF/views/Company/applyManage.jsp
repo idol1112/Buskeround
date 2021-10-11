@@ -24,6 +24,7 @@
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/Common/common.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/MyPage/mypage.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/BuskingZone/applyManage.css">
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/DatePicker/datepicker.min.css">
 
@@ -36,6 +37,10 @@
 
 <!-- sweetAlert -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+<style>
+
+</style>
 </head>
 
 <body>
@@ -77,6 +82,7 @@
 								<img id="searchBtn" class="filter-img click_item" alt="search" src="${pageContext.request.contextPath}/assets/image/company/icon/search-icon.png">
 						</div>
 					</form>
+					
 					<table class="table table-bordered">
 						<colgroup>
 							<col style="width: 15%">
@@ -100,63 +106,123 @@
 							<th class="th-gray">상세정보</th>
 							<th class="th-gray">상태</th>
 							<th class="th-gray"></th>
-						</tr>
+						</tr>				     	
+
 						<form id="form" method="get">
 							<input type="hidden" id="arrayParam" name="arrayParam">
 							<input type ="hidden" id="status" name="status">
-							<c:forEach items="${busappVo}" var="busappVo" varStatus="status">
-							<tr>
-								<td>${busappVo.stage_name}</td>
-								<c:set var="bus_date" value="${busappVo.bus_date}"/>
-								<td>${fn:substring(bus_date, 0, 10)}</td>
-								<c:set var="start_time" value="${busappVo.start_time}"/><c:set var="end_time" value="${busappVo.end_time}"/>
-								<td>${fn:substring(start_time, 11, 16)}-${fn:substring(end_time, 11, 16) }</td>
-								<td>${busappVo.nickname}</td>
-								<!-- 장르 -->
-								<c:if test="${busappVo.genre == 1}">
-									<td class="articon"><img class="genre-img2" src="${pageContext.request.contextPath}/assets/image/blog/icon/ballade.png" alt="발라드"></td>
-								</c:if>
-	
-								<c:if test="${busappVo.genre == 2}">
-									<td class="articon"><img class="genre-img" src="${pageContext.request.contextPath}/assets/image/blog/icon/dance.png" alt="댄스"></td>
-								</c:if>
-	
-								<c:if test="${busappVo.genre == 3}">
-									<td class="articon"><img class="genre-img" src="${pageContext.request.contextPath}/assets/image/blog/icon/hiphop.png" alt="힙합"></td>
-								</c:if>
-	
-								<c:if test="${busappVo.genre == 4}">
-									<td class="articon"><img class="genre-img" src="${pageContext.request.contextPath}/assets/image/blog/icon/soul.png" alt="R&B"></td>
-								</c:if>
-	
-								<c:if test="${busappVo.genre == 5}">
-									<td class="articon"><img class="genre-img" src="${pageContext.request.contextPath}/assets/image/blog/icon/musical.png" alt="악기"></td>
-								</c:if>
-	
-								<c:if test="${busappVo.genre == 6}">
-									<td class="articon"><img class="genre-img" src="${pageContext.request.contextPath}/assets/image/blog/icon/etc.png" alt="기타공연"></td>
-								</c:if>
-								<td>${busappVo.hp}</td>
-								<td><span class="click_item" onclick="user_info(${busappVo.apply_no})">상세정보</span></td>
-								<c:if test="${busappVo.status == 1}">
-									<td class="articon"><img class="status-img" src="${pageContext.request.contextPath}/assets/image/company/icon/accept.png" alt="수락"></td>
-								</c:if>
-	
-								<c:if test="${busappVo.status == 2}">
-									<td class="articon"><img class="status-img" src="${pageContext.request.contextPath}/assets/image/company/icon/refuse.png" alt="거절"></td>
-								</c:if>
-	
-								<c:if test="${busappVo.status == 3}">
-									<td class="articon"><img class="status-img" src="${pageContext.request.contextPath}/assets/image/company/icon/ongoing.png" alt="진행중"></td>
-								</c:if>
-								<td>
-										<div class="checkbox">
-											<input type="checkbox" name="apply_no" value="${busappVo.apply_no}">
-										</div>
-									
-								</td>
-							</tr>
-							</c:forEach>
+							
+							<!-- 전체 공연리스트 출력 -->
+							<c:if test="${fn:length(listMap.applyList) != 0}">
+								<c:forEach items="${listMap.applyList}" var="busappVo" varStatus="status">
+								<tr>
+									<td>${busappVo.stage_name}</td>
+									<c:set var="bus_date" value="${busappVo.bus_date}"/>
+									<td>${fn:substring(bus_date, 0, 10)}</td>
+									<c:set var="start_time" value="${busappVo.start_time}"/><c:set var="end_time" value="${busappVo.end_time}"/>
+									<td>${fn:substring(start_time, 11, 16)}-${fn:substring(end_time, 11, 16) }</td>
+									<td>${busappVo.nickname}</td>
+									<!-- 장르 -->
+									<c:if test="${busappVo.genre == 1}">
+										<td class="articon"><img class="genre-img2" src="${pageContext.request.contextPath}/assets/image/blog/icon/ballade.png" alt="발라드"></td>
+									</c:if>
+		
+									<c:if test="${busappVo.genre == 2}">
+										<td class="articon"><img class="genre-img" src="${pageContext.request.contextPath}/assets/image/blog/icon/dance.png" alt="댄스"></td>
+									</c:if>
+		
+									<c:if test="${busappVo.genre == 3}">
+										<td class="articon"><img class="genre-img" src="${pageContext.request.contextPath}/assets/image/blog/icon/hiphop.png" alt="힙합"></td>
+									</c:if>
+		
+									<c:if test="${busappVo.genre == 4}">
+										<td class="articon"><img class="genre-img" src="${pageContext.request.contextPath}/assets/image/blog/icon/soul.png" alt="R&B"></td>
+									</c:if>
+		
+									<c:if test="${busappVo.genre == 5}">
+										<td class="articon"><img class="genre-img" src="${pageContext.request.contextPath}/assets/image/blog/icon/musical.png" alt="악기"></td>
+									</c:if>
+		
+									<c:if test="${busappVo.genre == 6}">
+										<td class="articon"><img class="genre-img" src="${pageContext.request.contextPath}/assets/image/blog/icon/etc.png" alt="기타공연"></td>
+									</c:if>
+									<td>${busappVo.hp}</td>
+									<td class="info_text"><span class="click_item" onclick="user_info(${busappVo.apply_no})">상세정보</span></td>
+									<c:if test="${busappVo.status == 1}">
+										<td class="articon"><img class="status-img" src="${pageContext.request.contextPath}/assets/image/company/icon/accept.png" alt="수락"></td>
+									</c:if>
+		
+									<c:if test="${busappVo.status == 2}">
+										<td class="articon"><img class="status-img" src="${pageContext.request.contextPath}/assets/image/company/icon/refuse.png" alt="거절"></td>
+									</c:if>
+		
+									<c:if test="${busappVo.status == 3}">
+										<td class="articon"><img class="status-img" src="${pageContext.request.contextPath}/assets/image/company/icon/ongoing.png" alt="진행중"></td>
+									</c:if>
+									<td>
+											<div class="checkbox">
+												<input type="checkbox" name="apply_no" value="${busappVo.apply_no}">
+											</div>
+									</td>
+								</tr>
+								</c:forEach>
+							</c:if>
+							
+							<!-- 필터 검색시 공연리스트 출력 -->
+							<c:if test="${fn:length(listMap.applyList) == 0}">
+								<c:forEach items="${busappVo}" var="busappVo" varStatus="status">
+								<tr>
+									<td>${busappVo.stage_name}</td>
+									<c:set var="bus_date" value="${busappVo.bus_date}"/>
+									<td>${fn:substring(bus_date, 0, 10)}</td>
+									<c:set var="start_time" value="${busappVo.start_time}"/><c:set var="end_time" value="${busappVo.end_time}"/>
+									<td>${fn:substring(start_time, 11, 16)}-${fn:substring(end_time, 11, 16) }</td>
+									<td>${busappVo.nickname}</td>
+									<!-- 장르 -->
+									<c:if test="${busappVo.genre == 1}">
+										<td class="articon"><img class="genre-img2" src="${pageContext.request.contextPath}/assets/image/blog/icon/ballade.png" alt="발라드"></td>
+									</c:if>
+		
+									<c:if test="${busappVo.genre == 2}">
+										<td class="articon"><img class="genre-img" src="${pageContext.request.contextPath}/assets/image/blog/icon/dance.png" alt="댄스"></td>
+									</c:if>
+		
+									<c:if test="${busappVo.genre == 3}">
+										<td class="articon"><img class="genre-img" src="${pageContext.request.contextPath}/assets/image/blog/icon/hiphop.png" alt="힙합"></td>
+									</c:if>
+		
+									<c:if test="${busappVo.genre == 4}">
+										<td class="articon"><img class="genre-img" src="${pageContext.request.contextPath}/assets/image/blog/icon/soul.png" alt="R&B"></td>
+									</c:if>
+		
+									<c:if test="${busappVo.genre == 5}">
+										<td class="articon"><img class="genre-img" src="${pageContext.request.contextPath}/assets/image/blog/icon/musical.png" alt="악기"></td>
+									</c:if>
+		
+									<c:if test="${busappVo.genre == 6}">
+										<td class="articon"><img class="genre-img" src="${pageContext.request.contextPath}/assets/image/blog/icon/etc.png" alt="기타공연"></td>
+									</c:if>
+									<td>${busappVo.hp}</td>
+									<td class="info_text"><span class="click_item" onclick="user_info(${busappVo.apply_no})">상세정보</span></td>
+									<c:if test="${busappVo.status == 1}">
+										<td class="articon"><img class="status-img" src="${pageContext.request.contextPath}/assets/image/company/icon/accept.png" alt="수락"></td>
+									</c:if>
+		
+									<c:if test="${busappVo.status == 2}">
+										<td class="articon"><img class="status-img" src="${pageContext.request.contextPath}/assets/image/company/icon/refuse.png" alt="거절"></td>
+									</c:if>
+		
+									<c:if test="${busappVo.status == 3}">
+										<td class="articon"><img class="status-img" src="${pageContext.request.contextPath}/assets/image/company/icon/ongoing.png" alt="진행중"></td>
+									</c:if>
+									<td>
+											<div class="checkbox">
+												<input type="checkbox" name="apply_no" value="${busappVo.apply_no}">
+											</div>	
+									</td>
+								</tr>
+								</c:forEach>
+							</c:if>
 						</form>
 						
 					</table>
@@ -166,19 +232,32 @@
 					<button id="refuseBtn" type="button" class="btn-danger btn-sm">거절</button>
 				</div>
 				<!-- 페이징 -->
-				<div class="container large">
+				<c:if test="${fn:length(listMap.applyList) != 0}">
+				<div class="container">
 					<div class="pagination">
-						<ul>
-							<li><a href="">◀</a></li>
-							<li><a href="">1</a></li>
-							<li><a href="">2</a></li>
-							<li><a href="">3</a></li>
-							<li><a href="">4</a></li>
-							<li class="active"><a href="">5</a></li>
-							<li><a href="">▶</a></li>
+						<ul class="page_box">
+							<c:if test="${listMap.prev == true}">
+								<li class="page"><a href="${pageContext.request.contextPath}/Company/applyManage?crtPage=${param.crtPage - 1}">&laquo;</a></li>
+							</c:if>
+							
+							<c:forEach begin="${listMap.startPageBtnNo}" end="${listMap.endPageBtnNo}" step="1" var="page">
+								<c:choose>
+									<c:when test="${param.crtPage eq page}">
+										<li class="page active"><a href="${pageContext.request.contextPath}/Company/applyManage?crtPage=${page}">${page}</a></li>
+									</c:when>
+									<c:otherwise>
+										<li class="page"><a href="${pageContext.request.contextPath}/Company/applyManage?crtPage=${page}">${page}</a></li>
+									</c:otherwise>
+								</c:choose>										
+							</c:forEach>
+							
+							<c:if test="${listMap.next == true}">
+								<li class="page"><a href="${pageContext.request.contextPath}/Company/applyManage?crtPage=${param.crtPage + 1}">&raquo;</a></li>
+							</c:if>
 						</ul>
 					</div>
 				</div>
+				</c:if>
 		</div>
 		<div class="col-xl-2"></div>
 	</div>
@@ -197,7 +276,7 @@
         <div class="modal-header">
  
           <h4 class="modal-title"></h4>
-          <button type="button" class="close" data-dismiss="modal">×</button>
+          <img class="delBtn close" src="${pageContext.request.contextPath}/assets/image/company/icon/delete.png">
 
         </div>
         <div class="modal-body">

@@ -3,7 +3,6 @@
 /* Paging */
 .container {
     padding: 1rem;
-    margin: 0px;
     text-align: center;
   }
 .container:after {
@@ -15,25 +14,25 @@
     width: 100%;
   }
 
-.pagination  ul, li {
+.pagination .page_box, .page {
     list-style: none;
     display: inline;
     padding-left: 0px;
     font-size: 12px;
   }
 
-.pagination  li:hover a {
+.pagination .page:hover a {
     color: black;
     background-color: #CCCCCC;
     border: solid 1px #CCCCCC;
   }
-.pagination li.active a {
+.pagination .active a {
     color: black;
     background-color: #CCCCCC;
     border: solid 1px #CCCCCC;
     font-weight: bold;
   }
-.pagination li a {
+.pagination .page a {
     border: solid 1px #d7d7d7;
     border-radius: 0.2rem;
     color: #7d7d7d;
@@ -44,6 +43,3 @@
     padding: 0.5rem 0.9rem;
   }
 
-.left-align {
-  text-align: left;
-}

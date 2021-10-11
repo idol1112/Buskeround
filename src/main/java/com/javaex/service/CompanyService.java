@@ -4,6 +4,7 @@ import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -271,10 +272,68 @@ public class CompanyService {
 	
 	///////////////////////////////// 공연신청관리 /////////////////////////////////
 	//공연신청리스트 불러오기
-	public List<BusappVo> getApplyList(int user_no) {
+	public Map<String, Object> getApplyList(Map<String, Object> applyMap) {
 		System.out.println("CompanyService.getApplyList()");
 		
-		return companyDao.selectApplyList(user_no);
+		int crtPage = (int)applyMap.get("crtPage");
+	    
+	    crtPage = (crtPage > 0) ? crtPage : (crtPage=1);
+	    
+	    int listCnt = 10;
+	    
+	    //시작번호 계산하기
+	  	int startRnum = ((crtPage-1)*listCnt+1);
+	  	
+	    //끝번 계산하기
+	  	int endRnum = (crtPage*listCnt);
+	  	applyMap.put("startRnum", startRnum);
+	  	applyMap.put("endRnum", endRnum);
+		
+	  	List<BusappVo> applyList = companyDao.selectApplyList(applyMap);
+	  	System.out.println("리스트 가져오기 성공!: " + applyList);
+	  	
+		////////////////////////////////////////////////
+		// 페이징 게산
+		////////////////////////////////////////////////
+	  	
+	  	//전체 리스트 갯수
+		int totalCount = companyDao.selectTotalCnt(applyMap);
+		System.out.println(totalCount);
+		
+		//페이지당 버튼 갯수
+		int pageBtnCount = 5;
+		
+		//마지막 버튼 번호
+		int endPageBtnNo = (int) (Math.ceil((crtPage/(double)pageBtnCount)) * pageBtnCount);
+		
+		//시작 버튼 번호
+		int startPageBtnNo = endPageBtnNo - pageBtnCount + 1;
+		
+		//다음 화살표 표현 유무
+		boolean next = false;
+		if((endPageBtnNo * listCnt) < totalCount){
+			next = true;
+		} else {
+			//다음 화살표 버튼이 없을때 endPageBtnNo를 다시 계산해야된다
+			//전체글갯수 / 한폐이지의 글갯수
+			
+			endPageBtnNo = (int) Math.ceil(totalCount/(double)listCnt);
+		}
+		
+		//이전 화살표 표현 유무
+		boolean prev = false;
+		if((startPageBtnNo) != 1) {
+			prev = true;
+		}
+		
+		Map<String, Object> listMap = new HashMap<String, Object>();
+		listMap.put("applyList", applyList);
+		listMap.put("prev", prev);
+		listMap.put("startPageBtnNo", startPageBtnNo);
+		listMap.put("endPageBtnNo", endPageBtnNo);
+		listMap.put("next", next);
+		
+		return listMap;
 	}
 	
 	//공연신청리스트 필터 검색

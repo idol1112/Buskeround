@@ -276,7 +276,7 @@ input[type="file"] {
 #mypage-right .btn-area {
     display: block;
     margin: 50px 0px 10px 0px;
-    text-align: center;
+    text-align: right;
 }
 
 .table .th-gray{
@@ -311,6 +311,10 @@ input[type="file"] {
 }
 .click_item {
 	cursor: pointer;
+}
+
+.info_text {
+	color: purple;
 }
 
 .modal-title{

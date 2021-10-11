@@ -369,9 +369,11 @@ public class CompanyController {
 	
 	///////////////////////////////// *버스킹존* /////////////////////////////////
 	
+	///////////////////////////////// 공연신청관리 /////////////////////////////////
 	//공연 신청 관리 폼(수락/거절)
 	@RequestMapping(value = "/applyManage", method = {RequestMethod.GET, RequestMethod.POST})
-	public String applyManage(HttpSession session, Model model) {
+	public String applyManage(HttpSession session, Model model,
+							  @RequestParam(value = "crtPage", required = false, defaultValue = "1") int crtPage) {
 		System.out.println("[CompanyController.applyManage()]");
 		
 		UserVo authUser = (UserVo)session.getAttribute("authUser");
@@ -383,9 +385,13 @@ public class CompanyController {
 		
 		model.addAttribute("stageList", stageList);
 		
-		List<BusappVo> busappVo = companyService.getApplyList(user_no);
-		System.out.println(busappVo);
-		model.addAttribute("busappVo", busappVo);
+		 Map<String, Object> applyMap = new HashMap<String, Object>();
+		 applyMap.put("user_no", user_no);
+		 applyMap.put("crtPage", crtPage);
+		
+		 Map<String, Object>listMap = companyService.getApplyList(applyMap);
+		System.out.println(listMap);
+		model.addAttribute("listMap", listMap);
 		
 		
 		return "/Company/applyManage";
@@ -438,5 +444,5 @@ public class CompanyController {
 		return companyService.getUserInfo(apply_no);
 	}
 	
-	
+	///////////////////////////////// *공연신청관리* /////////////////////////////////
 }
