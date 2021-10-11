@@ -24,6 +24,9 @@
 <!-- jquery -->
 <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 
+<!-- sweetAlert -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
 <!-- datepicker -->
 <script src="${pageContext.request.contextPath}/assets/js/datepicker.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/i18n/datepicker.ko.js"></script>
@@ -56,16 +59,16 @@
 								<table>
 									<tr>
 										<td class="table-head"><label class="required" for="nickname">활동명</label></td>
-										<td><input class="input" type="text" id="artistname" name="nickname" placeholder="활동명을 입력해주세요" value="${sessionScope.authUser.nickname}">
+										<td><input required class="input" type="text" id="artistname" name="nickname" placeholder="활동명을 입력해주세요" value="${sessionScope.authUser.nickname}">
 										<span id="check_nickname">중복된 활동명입니다.</span></td>
 									</tr>
 									<tr>
 										<td class="table-head"><label class="required" for="name">이름</label></td>
-										<td><input class="input" type="text" id="name" name="name" placeholder="이름을 입력해주세요."></td>
+										<td><input required class="input" type="text" id="name" name="name" placeholder="이름을 입력해주세요."></td>
 									</tr>
 									<tr>
 										<td class="table-head"><label class="required" for="hp">연락처</label></td>
-										<td><input class="input" type="text" id="hp" name="hp" placeholder="연락처를 입력해주세요."></td>
+										<td><input required class="input" type="text" id="hp" name="hp" placeholder="연락처를 입력해주세요."></td>
 									</tr>
 									<tr>
 										<td class="table-head"><label for="gender">성별</label></td>
@@ -266,6 +269,26 @@ $("#artistModify").on("submit", function() {
 
 	return true;
 });
+
+$("#profilesubmit").on("click", function(e) {
+	e.preventDefault();
+	var form = $(this).parents('form');
+	
+	Swal.fire({
+		title: '아티스트 등록',
+		text: "아티스트 등록을 하시겠습니까?",
+		icon: 'question',
+		showCancelButton: true,
+		confirmButtonColor: '#3085d6',
+		cancelButtonColor: '#d33',
+		confirmButtonText: '확인',
+		cancelButtonText: '취소'
+	}).then((result) => {
+		if (result.isConfirmed) {
+			form.submit();
+		} 
+	})
+})
 
 //datepicker
 $("#datepicker").datepicker({

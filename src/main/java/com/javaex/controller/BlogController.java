@@ -296,15 +296,16 @@ public class BlogController {
   @RequestMapping(value = "writePost/{id}", method = {RequestMethod.GET, RequestMethod.POST})
   public String blog_writeform(@PathVariable("id") String id, 
 		  					   @ModelAttribute NoticeVo noticeVo,
+		  					   @RequestParam ("category") int category,
 		  					   @RequestParam(value = "file1", required = false, defaultValue = "0") MultipartFile file) {
     System.out.println("[TestingController.writePost()]");
     System.out.println("파일이 들어오는지: " + file.getOriginalFilename());
     System.out.println("들어온 정보: " + noticeVo);
 
     if (file.isEmpty()) {
-    	blogService.writePost(noticeVo);
+    	blogService.writePost(noticeVo, category);
     } else {
-    	blogService.writePostImg(noticeVo, file);
+    	blogService.writePostImg(noticeVo, file, category);
     }
     
     return "redirect:/blog/blog_main/" + id;

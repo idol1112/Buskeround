@@ -50,7 +50,8 @@
 
         <!-- 해더 -->
         <form id="writeform-content clearfix" class="testing" action="${pageContext.request.contextPath}/blog/writePost/${blogVo.id}" method="POST" enctype="multipart/form-data">
-	        <input type="hidden" name="user_no" value="${sessionScope.authUser.user_no}">
+	        <input type="hidden" name="category" value="${sessionScope.authUser.user_no}">
+	        <input type="hidden" name="user_no" value="${blogVo.user_no}">
 	        <input type="hidden" name="nickname" value="${sessionScope.authUser.nickname}">
 	        
 	          <select name="category_type" id="category_type" required>

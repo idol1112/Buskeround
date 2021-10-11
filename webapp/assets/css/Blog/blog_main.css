@@ -263,18 +263,6 @@ h1 {
 	border-radius: 5px;
 }
 
-#board tbody tr:first-child {
-	color: red;
-	background-color: #F5F5F5;
-	font-weight: bold;
-}
-
-#board tbody tr:nth-child(2) {
-	color: red;
-	background-color: #F5F5F5;
-	font-weight: bold;
-}
-
 .gallery_box {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));

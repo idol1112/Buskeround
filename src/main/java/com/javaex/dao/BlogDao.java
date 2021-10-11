@@ -100,11 +100,12 @@ public class BlogDao {
 	}
 	
 	//공지/방명록 작성
-	public int writePost(NoticeVo noticeVo) {
+	public int writePost(NoticeVo noticeVo, int user_no) {
 		System.out.println("BlogDao.writePost()");
 		
 		int category = sqlSession.selectOne("blog.categoryNo", noticeVo);
 		noticeVo.setCategory_no(category);
+		noticeVo.setUser_no(user_no);
 		System.out.println(noticeVo);
 		
 		return sqlSession.insert("blog.postInsert", noticeVo);

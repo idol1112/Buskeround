@@ -92,7 +92,7 @@ public class BlogService {
   }
 
   // Write Post (글 작성) (이미지 있음)
-  public int writePostImg(NoticeVo noticeVo, MultipartFile file) {
+  public int writePostImg(NoticeVo noticeVo, MultipartFile file, int category) {
     System.out.println("BlogService.writePostImg()");
     
     String saveDir = "C:\\javaStudy\\upload";
@@ -125,14 +125,14 @@ public class BlogService {
     
     noticeVo.setP_img(logoFile);
 
-    return blogDao.writePost(noticeVo);
+    return blogDao.writePost(noticeVo, category);
   }
   
   // Write Post (글 작성) (이미지 없음)
-  public int writePost(NoticeVo noticeVo) {
+  public int writePost(NoticeVo noticeVo, int category) {
 	    System.out.println("BlogService.writePost()");
 	  
-	  return blogDao.writePost(noticeVo);
+	  return blogDao.writePost(noticeVo, category);
   }
   
   // Modify Post (프로필 수정)
