@@ -95,11 +95,18 @@ public class CompanyDao {
 		return sqlSession.insert("bustime.bustimeInsert", tList);
 	}
 	
-	//날짜별 버스킹정보 불러오기
+	//버스킹존 장소/날짜별 리스트 불러오기
 	public List<BusdateVo> selectBusking(BusdateVo busdateVo) {
 		System.out.println("CompanyDao.selectBusking()");
 		
 		return sqlSession.selectList("busdate.selectBusking", busdateVo);
+	}
+	
+	//버스킹존 장소/날짜별 일정 불러오기
+	public List<BusdateVo> selectBusPlan(BusdateVo busdateVo) {
+		System.out.println("CompanyDao.selectBusPlan()");
+		
+		return sqlSession.selectList("busdate.selectBusPlan", busdateVo);
 	}
 	
 	//버스킹존 삭제

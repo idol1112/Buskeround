@@ -318,3 +318,7 @@ input[type="file"] {
  text-align:left;
  font-weight: bold;
 }
+
+.plan_nickname {
+	margin-left: 5px;
+}

@@ -42,6 +42,8 @@ public class CompanyService {
 		String com_number = (String)companyInsertMap.get("com_number");
 		String ceo_name = (String)companyInsertMap.get("ceo_name");
 		String business_number = (String)companyInsertMap.get("business_number");
+		double latitude = (double)companyInsertMap.get("latitude");
+		double longitude = (double)companyInsertMap.get("longitude");
 
 		String saveDir = "C:\\javaStudy\\upload";
 
@@ -71,7 +73,7 @@ public class CompanyService {
 			// TODO: handle exception
 		}
 		
-		CompanyVo companyVo = new CompanyVo(user_no, logoFile, com_name, address, com_number, ceo_name, business_number);
+		CompanyVo companyVo = new CompanyVo(user_no, logoFile, com_name, address, com_number, ceo_name, business_number, latitude, longitude);
 		
 		UserVo userVo = new UserVo(user_no, company_type);
 		
@@ -205,11 +207,18 @@ public class CompanyService {
 		return companyDao.bustimeInsert(tList);
 	}
 	
-	//버스킹존 날짜별 리스트 불러오기
+	//버스킹존 장소/날짜별 리스트 불러오기
 	public List<BusdateVo> getBuskingZone(BusdateVo busdateVo) {
 		System.out.println("CompanyService.getBuskingZone()");
 		
 		return companyDao.selectBusking(busdateVo);
+	}
+	
+	//버스킹존 장소/날짜별 일정 불러오기
+	public List<BusdateVo> getBusPlan(BusdateVo busdateVo) {
+		System.out.println("CompanyService.getBusPlan()");
+		
+		return companyDao.selectBusPlan(busdateVo);
 	}
 	
 	//버스킹존 수정

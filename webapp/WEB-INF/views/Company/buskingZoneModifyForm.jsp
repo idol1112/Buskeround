@@ -104,6 +104,12 @@
                             		<div id="timeList"></div>
                             	</td>
                             </tr>
+                            <tr>
+                            	<td class="table-head"><label>공연 일정</label></td>
+                            	<td id="bus_plan">
+                            		
+                            	</td>
+                            </tr>
                         </table>
                         <input type="button" class="float-end btn btn-danger btn-sm" id="delBtn" value="삭제">
                         <button type="submit" class="float-end btn btn-primary btn-sm" id="insBtn">저장</button>
@@ -136,6 +142,7 @@ $picker.datepicker({
 		$("[name='date_no']").val("");
 		$("[name='requirements']").val("");
 		$("#timeList").empty();
+		$("#bus_plan").empty();
 		$('option:selected', 'select[name="start_time"]').removeAttr('selected');
 		$('option:selected', 'select[name="end_time"]').removeAttr('selected');
 		
@@ -181,6 +188,38 @@ $picker.datepicker({
 						$('select[name="end_time"][data-no="'+i+'"]').find('option[value="'+et+'"]').attr("selected",true);
 					}
 				}
+				
+				//버스킹 일정 불러오기
+				var busplan = {
+						date_no : busdateVo[0].date_no,
+						stage_no : busdateVo[0].stage_no
+				}
+				
+				$.ajax({
+					url : "${pageContext.request.contextPath }/Company/buskingZonePlan",
+					type : "post",
+					//contentType : "application/json",
+					data :  busplan,
+					//dataType : "json",
+					success : function(result) {
+						//성공시 처리해야될 코드 작성
+						console.log(result.length);
+						var str = '';
+						for(var i=0;i<result.length;i++) {
+						str +='<div class="input">';
+						str +='<span class="label label-default">'+result[i].start_time.substring(10, 16)+'-'+result[i].end_time.substring(10, 16)+'</span>';
+						str +='<span class="plan_nickname">'+result[i].nickname+'</span>';
+						str +='</div>';
+						
+						
+						}
+						$("#bus_plan").append(str);
+						
+					},
+					error : function(XHR, status, error) {
+						console.error(status + " : " + error);
+					}
+				});
 				
 			},
 			error : function(XHR, status, error) {

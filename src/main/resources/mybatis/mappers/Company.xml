@@ -13,8 +13,8 @@
 			        #{com_number},
 			        #{ceo_name},
 			        #{business_number},
-			        0,
-			        0
+			        #{latitude},
+			        #{longitude}
 			        )
 		]]>
 	</insert>

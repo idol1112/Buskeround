@@ -12,6 +12,8 @@ public class BusdateVo {
 	private String start_time;
 	private String end_time;
 	
+	private String nickname;
+	
 	//생성자
 	public BusdateVo() {
 		super();
@@ -49,6 +51,19 @@ public class BusdateVo {
 		this.time_no = time_no;
 		this.start_time = start_time;
 		this.end_time = end_time;
+	}
+
+	public BusdateVo(int date_no, int stage_no, String bus_date, String requirements, int time_no, String start_time,
+			String end_time, String nickname) {
+		super();
+		this.date_no = date_no;
+		this.stage_no = stage_no;
+		this.bus_date = bus_date;
+		this.requirements = requirements;
+		this.time_no = time_no;
+		this.start_time = start_time;
+		this.end_time = end_time;
+		this.nickname = nickname;
 	}
 
 	//메소드 g-s
@@ -108,11 +123,21 @@ public class BusdateVo {
 		this.end_time = end_time;
 	}
 
+	public String getNickname() {
+		return nickname;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+
+
 	//메소드
 	@Override
 	public String toString() {
 		return "BusdateVo [date_no=" + date_no + ", stage_no=" + stage_no + ", bus_date=" + bus_date + ", requirements="
-				+ requirements + ", time_no=" + time_no + ", start_time=" + start_time + ", end_time=" + end_time + "]";
+				+ requirements + ", time_no=" + time_no + ", start_time=" + start_time + ", end_time=" + end_time
+				+ ", nickname=" + nickname + "]";
 	}
 	
 }

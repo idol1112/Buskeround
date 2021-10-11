@@ -10,8 +10,8 @@ public class CompanyVo {
 	private String com_number;
 	private String ceo_name;
 	private String business_number;
-	private int latitude;
-	private int longitude;
+	private double latitude;
+	private double longitude;
 	
 	
 	//생성자
@@ -20,7 +20,7 @@ public class CompanyVo {
 	}
 	
 	public CompanyVo(int user_no, String com_img, String com_name, String address, String com_number,
-			String ceo_name, String business_number, int latitude, int longitude) {
+			String ceo_name, String business_number, double latitude, double longitude) {
 		super();
 		this.user_no = user_no;
 		this.com_img = com_img;
@@ -118,22 +118,22 @@ public class CompanyVo {
 	}
 
 
-	public int getLatitude() {
+	public double getLatitude() {
 		return latitude;
 	}
 
 
-	public void setLatitude(int latitude) {
+	public void setLatitude(double latitude) {
 		this.latitude = latitude;
 	}
 
 
-	public int getLongitude() {
+	public double getLongitude() {
 		return longitude;
 	}
 
 
-	public void setLongitude(int longitude) {
+	public void setLongitude(double longitude) {
 		this.longitude = longitude;
 	}
 	

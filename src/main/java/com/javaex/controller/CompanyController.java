@@ -53,6 +53,8 @@ public class CompanyController {
 								@RequestParam ("com_number") String com_number,
 								@RequestParam ("ceo_name") String ceo_name,
 								@RequestParam ("business_number") String business_number,
+								@RequestParam ("latitude") double latitude,
+								@RequestParam ("longitude") double longitude,
 								HttpSession session) {
 		System.out.println("[CompanyController.companyInsert()]");
 		
@@ -66,6 +68,8 @@ public class CompanyController {
 		companyInsertMap.put("com_number", com_number);
 		companyInsertMap.put("ceo_name", ceo_name);
 		companyInsertMap.put("business_number", business_number);
+		companyInsertMap.put("latitude", latitude);
+		companyInsertMap.put("longitude", longitude);
 		
 		System.out.println(companyInsertMap);
 		
@@ -285,7 +289,23 @@ public class CompanyController {
 		
 		System.out.println(busdateVo);
 		
-		return companyService.getBuskingZone(busdateVo);
+		List<BusdateVo> busdateList = companyService.getBuskingZone(busdateVo);
+		
+		System.out.println(busdateList);
+		
+		return busdateList;
+	}
+	
+	//버스킹존 일정 불러오기
+	@ResponseBody
+	@RequestMapping(value = "/buskingZonePlan", method = {RequestMethod.GET, RequestMethod.POST})
+	public List<BusdateVo> buskingZonePlan(@ModelAttribute BusdateVo busdateVo) {
+		System.out.println("[CompanyController.buskingZonePlan()]");
+		
+		System.out.println(busdateVo);
+		List<BusdateVo> result = companyService.getBusPlan(busdateVo);
+		System.out.println(result);
+		return result;
 	}
 	
 	//버스킹존 일정 수정
