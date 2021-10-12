@@ -21,56 +21,28 @@
 <!-- css -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/Artist/common.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/Common/common.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/Artist/ArtistGenre.css">
-
-<!-- jquery -->
-<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/Artist/ArtistSearch.css">
 
 </head>
 
 <body>
-
 	<!-- header -->
 	<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
 
 	<!-- nav_artist  -->
 	<c:import url="/WEB-INF/views/Artist/includes/artbox.jsp"></c:import>
 
+
 	<div class="section-01">
 		<div class="leftsection">
 			<!-- 종합랭킹 -->
 			<div class="leftsection-01">
-				<h2>장르별 순위</h2>
-
+				<h2>통합검색</h2>
 				<!-- 아티스트 검색 -->
 				<div>
-					<form action="" method="get">
-						<input type="text" placeholder="아티스트 검색">
-						<button class="buttonicon" type="button">
-							<img src="${pageContext.request.contextPath}/assets/image/artist/icon/search.png" style="width: 20px">
-						</button>
-					</form>
+					<input type="text" placeholder="아티스트 검색"> <img src="${pageContext.request.contextPath}/assets/image/artist/icon/search.png" style="width: 20px">
 				</div>
 			</div>
-
-			<!-- 장르 검색 -->
-			<div class="row" id="genrebox">
-				<div class="col-xl-3"></div>
-
-				<div class="col-xl-7">
-					<ul class="navbar_genremenu">
-						<li><a href="${pageContext.request.contextPath}/Artist/ArtistGenre/1">발라드</a></li>
-						<li><a href="${pageContext.request.contextPath}/Artist/ArtistGenre/2">댄스</a></li>
-						<li><a href="${pageContext.request.contextPath}/Artist/ArtistGenre/3">랩/힙합</a></li>
-						<li><a href="${pageContext.request.contextPath}/Artist/ArtistGenre/4">R&B/SOUL</a></li>
-						<li><a href="${pageContext.request.contextPath}/Artist/ArtistGenre/5">악기</a></li>
-						<li><a href="${pageContext.request.contextPath}/Artist/ArtistGenre/6">기타공연</a></li>
-					</ul>
-				</div>
-			</div>
-
-			<div class="col-xl-3"></div>
-
 			<!-- 종합랭킹 표그래프 -->
 			<div class="leftsection-02">
 				<table>
@@ -86,17 +58,17 @@
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach items="${ArtistGenre}" var="gList">
+						<c:forEach items="${artistNew.ArtistList}" var="nList">
 							<!--1번-->
 							<tr>
-								<td>${gList.rn}</td>
-								<td><c:if test="${gList.user_img == null}">
+								<td>${nList.rn}</td>
+								<td><c:if test="${nList.user_img == null}">
 										<img src="/Buskeround/assets/image/blog/icon/user.png" style="width: 70px; height: 70px; border-radius: 70%; object-fit: cover;">
-									</c:if> <c:if test="${gList.user_img != null}">
-										<img src="${pageContext.request.contextPath}/upload/${gList.user_img}" style="width: 70px; height: 70px; border-radius: 70%; object-fit: cover;">
+									</c:if> <c:if test="${nList.user_img != null}">
+										<img src="${pageContext.request.contextPath}/upload/${nList.user_img}" style="width: 70px; height: 70px; border-radius: 70%; object-fit: cover;">
 									</c:if></td>
 								<td>
-									<div>${gList.nickname}</div>
+									<div>${nList.nickname}</div>
 									<div>
 										<c:if test="${nList.y_url != null}">
 											<img src="${pageContext.request.contextPath}/assets/image/artist/icon/youtube.png" style="width: 20px">
@@ -110,129 +82,49 @@
 									</div>
 								</td>
 								<!-- 장르 -->
-								<c:if test="${gList.genre == 1}">
+								<c:if test="${nList.genre == 1}">
 									<td class="articon"><img src="${pageContext.request.contextPath}/assets/image/blog/icon/ballade.png" style="width: 60px"></td>
 								</c:if>
 
-								<c:if test="${gList.genre == 2}">
+								<c:if test="${nList.genre == 2}">
 									<td class="articon"><img src="${pageContext.request.contextPath}/assets/image/blog/icon/dance.png" style="width: 60px"></td>
 								</c:if>
 
-								<c:if test="${gList.genre == 3}">
+								<c:if test="${nList.genre == 3}">
 									<td class="articon"><img src="${pageContext.request.contextPath}/assets/image/blog/icon/hiphop.png" style="width: 60px"></td>
 								</c:if>
 
-								<c:if test="${gList.genre == 4}">
+								<c:if test="${nList.genre == 4}">
 									<td class="articon"><img src="${pageContext.request.contextPath}/assets/image/blog/icon/soul.png" style="width: 65px"></td>
 								</c:if>
 
-								<c:if test="${gList.genre == 5}">
+								<c:if test="${nList.genre == 5}">
 									<td class="articon"><img src="${pageContext.request.contextPath}/assets/image/blog/icon/musical.png" style="width: 60px"></td>
 								</c:if>
 
-								<c:if test="${gList.genre == 6}">
+								<c:if test="${nList.genre == 6}">
 									<td class="articon"><img src="${pageContext.request.contextPath}/assets/image/blog/icon/etc.png" style="width: 60px"></td>
 								</c:if>
 
 								<td>
-									<div>${gList.genre_type}</div>
-									<div>가입연도 ${gList.artist_regdate}년</div>
+									<div>${nList.genre_type}</div>
+									<div>가입연도 ${nList.artist_regdate}년</div>
 								</td>
-								<td><img src="${pageContext.request.contextPath}/assets/image/artist/icon/heart2.png" style="width: 20px"> <span>${gList.likes}</span></td>
-								<td><img src="${pageContext.request.contextPath}/assets/image/artist/icon/fan1.png" style="width: 20px"> <span>${gList.fan}</span></td>
+								<td><img src="${pageContext.request.contextPath}/assets/image/artist/icon/heart2.png" style="width: 20px"> <span>${nList.likes}</span></td>
+								<td><img src="${pageContext.request.contextPath}/assets/image/artist/icon/fan1.png" style="width: 20px"> <span>${nList.fan}</span></td>
 							</tr>
 						</c:forEach>
 					</tbody>
 				</table>
 			</div>
 		</div>
-
 		<!-- aside  -->
 		<c:import url="/WEB-INF/views/Artist/includes/aside.jsp"></c:import>
 
 	</div>
 
 
-
 	<!-- footer -->
 	<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
-
-	<script type="text/javascript">
-
-// 팬 로딩되었을 때
-$(document).ready(function(){
-
-	$.ajax({
-		// 컨트롤러에서 대기중인 URL 주소이다.
-		url : "${pageContext.request.contextPath}/Artist/FanLoading",
-
-		// HTTP method type(GET, POST) 형식이다.
-		type : "post",
-
-
-		data : {
-		user_no : ${authUser.user_no}
-		},
-
-		// 성공일 경우 success로 들어오며, 'result'는 응답받은 데이터이다.
-		success : function(result) {
-			/*성공시 처리해야될 코드 작성*/
-
-		},
-
-		// 실패할경우 error로 들어온다.
-		error : function(XHR, status, error) {
-			console.error(status + " : " + error);
-		}
-	});  
-
-});
-
-
-// 팬되기 눌렀을 때
-$(".fan").on("click",function(){
-	
-	$(this).attr('src', '${pageContext.request.contextPath}/assets/image/artist/icon/fan2.png');
-	var artist_no = $(this).data("no");
-	
-	$.ajax({
-		// 컨트롤러에서 대기중인 URL 주소이다.
-		url : "${pageContext.request.contextPath}/Artist/Fan",
-
-		// HTTP method type(GET, POST) 형식이다.
-		type : "get",
-		
-		// Json 형태의 데이터로 보낸다.
-		contentType : "application/json",
-
-		// Json 형식의 데이터를 받는다.
-		dataType : "json",
-
-
-		data : {
-		artist_no : artist_no,
-		user_no : ${authUser.user_no}
-		},
-
-		// 성공일 경우 success로 들어오며, 'result'는 응답받은 데이터이다.
-		success : function(result) {
-			/*성공시 처리해야될 코드 작성*/
-			console.log(result)
-		},
-
-		// 실패할경우 error로 들어온다.
-		error : function(XHR, status, error) {
-			console.error(status + " : " + error);
-		}
-	});
-	
-});
-
-
-
-
-
-</script>
-
 </body>
 </html>

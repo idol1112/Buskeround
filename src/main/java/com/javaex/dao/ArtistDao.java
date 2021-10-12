@@ -45,12 +45,21 @@ public class ArtistDao {
 	}
 
 	// new 아티스트 리스트 가져오기
-	public List<UserVo> getArtistNew() {
+	public List<UserVo> getArtistNew(int start_num, int end_num, String keyword) {
 		System.out.println("[ArtistDao.getArtistNew()]");
+		
+		System.out.println("start_num: " + start_num + "end_num: " + end_num + "keyword: " + keyword);
+		
+		Map<String, Object> artistMap = new HashMap<String, Object>();
+		artistMap.put("start_num", start_num);
+		artistMap.put("end_num", end_num);
+		artistMap.put("search", keyword);
 
-		return sqlsession.selectList("artist.getArtistNew");
+		return sqlsession.selectList("artist.getArtistNew", artistMap);
 	}
 
+	
+	
 	// 아티스트 장르 리스트 가져오기
 	public List<UserVo> getArtistGenre(int no) {
 		System.out.println("[ArtistDao.getArtistGenre()]");

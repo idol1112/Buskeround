@@ -6,7 +6,7 @@
 	<!-- 아티스트 종합랭킹 리스트 -->
 	<select id="getArtist" resultType="UserVo">
 		<![CDATA[
-                    SELECT
+        SELECT
               rn,
               ort.user_no, 
 	          ort.id,
@@ -95,7 +95,7 @@
 	<!-- 아티스트 라이브 리스트 -->
 	<select id="getArtistLive" resultType="UserVo">
 		<![CDATA[
-                  SELECT
+        SELECT
               rn,
               ort.user_no, 
 	          ort.id,
@@ -279,7 +279,7 @@
 	<!-- new 아티스트 리스트 -->
 	<select id="getArtistNew" resultType="UserVo">
 		<![CDATA[
-          		SELECT
+        SELECT
               rn,
               ort.user_no, 
 	          ort.id,
@@ -355,19 +355,27 @@
               b.i_url
 	          
 	      FROM users u, blog b
-	      where user_type = 2 
+	      where u.user_type = 2 
           and u.user_no= b.user_no
+          ]]>
+		<if test="search != null">
+		<![CDATA[
+			and nickname like '%'||#{search}||'%'
+			]]>
+		</if>
+		<![CDATA[
           ORDER by u.artist_regdate desc) ot) ort
-          where rn >=1
-          and rn <=10
-		]]>
+          where rn >= #{start_num}
+          and rn <= #{end_num}	
+          ]]>
 	</select>
+	
 
 	<!-- 아티스트 장르 리스트 -->
 	<select id="getArtistGenre" resultType="UserVo"
 		parameterType="int">
 		<![CDATA[
-	    SELECT
+        SELECT
               rn,
               ort.user_no, 
 	          ort.id,
@@ -387,7 +395,10 @@
 	          TO_CHAR(ort.artist_regdate, 'YYYY') artist_regdate,
 	          ort.user_type,
 	          ort.company_type,
-              ort.ranking_score
+              ort.ranking_score,
+              ort.y_url,
+              ort.f_url,
+              ort.i_url
               
           FROM (	      SELECT
               rownum rn,  
@@ -409,33 +420,40 @@
 	          ot.artist_regdate,
 	          ot.user_type,
 	          ot.company_type,
-              ot.ranking_score
+              ot.ranking_score,
+              ot.y_url,
+              ot.f_url,
+              ot.i_url
 	          
 	      FROM (	      SELECT
 	      
-	          user_no, 
-	          id,
-	          password,
-	          email,
-	          nickname,
-	          user_img,
-	          name,
-	          hp,
-	          gender,
-	          birthday,
-	          genre,
-	          genre_type,
-	          fan,
-	          likes,
-	          live,
-	          artist_regdate,
-	          user_type,
-	          company_type,
-              ranking_score
+	          u.user_no, 
+	          u.id,
+	          u.password,
+	          u.email,
+	          u.nickname,
+	          u.user_img,
+	          u.name,
+	          u.hp,
+	          u.gender,
+	          u.birthday,
+	          u.genre,
+	          u.genre_type,
+	          u.fan,
+	          u.likes,
+	          u.live,
+	          u.artist_regdate,
+	          u.user_type,
+	          u.company_type,
+              u.ranking_score,
+              b.y_url,
+              b.f_url,
+              b.i_url
 	          
-	      FROM users
-	      where users.genre = #{no} 
-          ORDER by users.ranking_score desc) ot) ort
+	      FROM users u, blog b
+	      where u.genre = #{no} 
+          and u.user_no = b.user_no
+          ORDER by u.ranking_score desc) ot) ort
           where rn >=1
           and rn <=10
     ]]>
@@ -447,7 +465,7 @@
 	<!-- 팬 되기 리스트 -->
 	<select id="getFanList" resultType="UserVo">
 		<![CDATA[
-		select
+        select
             rn,
             ort.id,
 		    ort.user_img,
@@ -459,7 +477,10 @@
 		    ort.fan_no,
 		    ort.nickname,
 		    ort.user_no,
-		    ort.artist_no
+		    ort.artist_no,
+            ort.y_url,
+            ort.f_url,
+            ort.i_url
 
 		from(       select
             rownum rn,
@@ -473,7 +494,10 @@
 		    ot.fan_no,
 		    ot.nickname,
 		    ot.user_no,
-		    ot.artist_no
+		    ot.artist_no,
+            ot.y_url,
+            ot.f_url,
+            ot.i_url
 
 		from(		SELECT
 		
@@ -487,9 +511,14 @@
 		    f.fan_no,
 		    u.nickname,
 		    f.user_no,
-		    f.artist_no
-		FROM users u, fan f
-		WHERE u.user_no = f.fan_no and f.user_no = u.user_no
+		    f.artist_no,
+            b.y_url,
+            b.f_url,
+            b.i_url
+            
+		FROM users u, fan f, blog b
+		WHERE u.user_no = f.fan_no 
+        and f.fan_no = b.user_no
         order by f.fan_no asc )ot)ort
         where rn >=1
         and rn <=10

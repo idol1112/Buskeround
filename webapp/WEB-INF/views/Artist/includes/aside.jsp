@@ -20,8 +20,8 @@
 				</div>
 
 				<div class="carousel-inner" style="width: 285px; height: 380px;">
-					<div class="carousel-item active">
-						<img src="${pageContext.request.contextPath}/assets/image/artist/img/101.jfif" class="d-block w-100" style="width: 285px; height: 380px; object-fit: cover;">
+					<div class="carousel-item active" data-bs-interval="3000">
+						<img src="${pageContext.request.contextPath}/assets/image/artist/img/2.PNG" class="d-block w-100" style="width: 285px; height: 380px; object-fit: cover;">
 						<table class="">
 							<tr>
 								<td class="">아티스트 이름</td>
@@ -30,17 +30,17 @@
 							</tr>
 						</table>
 					</div>
-					<div class="carousel-item">
-						<img src="${pageContext.request.contextPath}/assets/image/artist/img/100.jfif" class="d-block w-100" style="width: 285px; height: 380px; object-fit: cover;">
+					<div class="carousel-item" data-bs-interval="3000">
+						<img src="${pageContext.request.contextPath}/assets/image/artist/img/3.PNG" class="d-block w-100" style="width: 285px; height: 380px; object-fit: cover;">
 					</div>
-					<div class="carousel-item">
-						<img src="${pageContext.request.contextPath}/assets/image/artist/img/101.jfif" class="d-block w-100" style="width: 285px; height: 380px; object-fit: cover;">
+					<div class="carousel-item" data-bs-interval="3000">
+						<img src="${pageContext.request.contextPath}/assets/image/artist/img/4.PNG" class="d-block w-100" style="width: 285px; height: 380px; object-fit: cover;">
 					</div>
-					<div class="carousel-item">
-						<img src="${pageContext.request.contextPath}/assets/image/artist/img/100.jfif" class="d-block w-100" style="width: 285px; height: 380px; object-fit: cover;">
+					<div class="carousel-item" data-bs-interval="3000">
+						<img src="${pageContext.request.contextPath}/assets/image/artist/img/5.PNG" class="d-block w-100" style="width: 285px; height: 380px; object-fit: cover;">
 					</div>
-					<div class="carousel-item">
-						<img src="${pageContext.request.contextPath}/assets/image/artist/img/101.jfif" class="d-block w-100" style="width: 285px; height: 380px; object-fit: cover;">
+					<div class="carousel-item" data-bs-interval="3000">
+						<img src="${pageContext.request.contextPath}/assets/image/artist/img/6.PNG" class="d-block w-100" style="width: 285px; height: 380px; object-fit: cover;">
 					</div>
 				</div>
 
@@ -50,8 +50,6 @@
 				<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
 					<span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="visually-hidden">Next</span>
 				</button>
-
-
 			</div>
 		</div>
 	</div>

@@ -21,7 +21,7 @@
 <!-- css -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/Artist/common.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/Common/common.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/Artist/ArtistNoSearch.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/Artist/ArtistSearch.css">
 
 </head>
 
@@ -37,7 +37,7 @@
 		<div class="leftsection">
 			<!-- 종합랭킹 -->
 			<div class="leftsection-01">
-				<h2>종합랭킹</h2>
+				<h2>통합검색</h2>
 				<!-- 아티스트 검색 -->
 				<div>
 					<input type="text" placeholder="아티스트 검색"> <img src="${pageContext.request.contextPath}/assets/image/artist/icon/search.png" style="width: 20px">

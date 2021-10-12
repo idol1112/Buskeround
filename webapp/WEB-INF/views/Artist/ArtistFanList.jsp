@@ -28,20 +28,20 @@
 </head>
 
 <body>
-  <!-- header -->
-  <c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
+	<!-- header -->
+	<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
 
-  <!-- nav_artist  -->
-  <c:import url="/WEB-INF/views/Artist/includes/artbox.jsp"></c:import>
+	<!-- nav_artist  -->
+	<c:import url="/WEB-INF/views/Artist/includes/artbox.jsp"></c:import>
 
 
 
-      <div class="section-01">
-        <div class="leftsection">
-        	<!-- 팬 많은 순 -->
-            <div class="leftsection-01">
-                <h2>팬 등록 리스트</h2>
-                
+	<div class="section-01">
+		<div class="leftsection">
+			<!-- 팬 많은 순 -->
+			<div class="leftsection-01">
+				<h2>팬 등록 리스트</h2>
+
 				<!-- 아티스트 검색 -->
 				<div>
 					<form action="" method="get">
@@ -51,94 +51,91 @@
 						</button>
 					</form>
 				</div>
-            </div>
+			</div>
 			<!-- 종합랭킹 표그래프 -->
-            <div class="leftsection-02">
-                <table>
-                    <thead>
-                        <tr>
-                            <td>NO</td>
-                            <td>    </td>
-                            <td>활동명</td>
-                            <td>주요장르</td>
-                            <td>주요정보</td>
-                            <td>좋아요</td>
-                            <td>팬 되기</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <c:forEach items="${artistFanList}" var="frList">
+			<div class="leftsection-02">
+				<table>
+					<thead>
+						<tr>
+							<td>NO</td>
+							<td></td>
+							<td>활동명</td>
+							<td>주요장르</td>
+							<td>주요정보</td>
+							<td>좋아요</td>
+							<td>팬 되기</td>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach items="${artistFanList}" var="frList">
 
-                        <!--1번-->
-                        <tr>
-                            <td>${frList.rn}</td>
-                            <td>
-								<c:if test="${frList.user_img == null}">
-								<img src="/Buskeround/assets/image/blog/icon/user.png" style="width: 70px; height: 70px; border-radius: 70%; object-fit: cover;">
+							<!--1번-->
+							<tr>
+								<td>${frList.rn}</td>
+								<td><c:if test="${frList.user_img == null}">
+										<img src="/Buskeround/assets/image/blog/icon/user.png" style="width: 70px; height: 70px; border-radius: 70%; object-fit: cover;">
+									</c:if> <c:if test="${frList.user_img != null}">
+										<img src="${pageContext.request.contextPath}/upload/${frList.user_img}" style="width: 70px; height: 70px; border-radius: 70%; object-fit: cover;">
+									</c:if></td>
+								<td>
+									<div>${frList.nickname}</div>
+									<div>
+										<c:if test="${nList.y_url != null}">
+											<img src="${pageContext.request.contextPath}/assets/image/artist/icon/youtube.png" style="width: 20px">
+										</c:if>
+										<c:if test="${nList.f_url != null}">
+											<img src="${pageContext.request.contextPath}/assets/image/artist/icon/facebook.png" style="width: 20px">
+										</c:if>
+										<c:if test="${nList.i_url != null}">
+											<img src="${pageContext.request.contextPath}/assets/image/artist/icon/insta.png" style="width: 20px">
+										</c:if>
+									</div>
+								</td>
+								<!-- 장르 -->
+								<c:if test="${frList.genre == 1}">
+									<td class="articon"><img src="${pageContext.request.contextPath}/assets/image/blog/icon/ballade.png" style="width: 60px"></td>
 								</c:if>
-								<c:if test="${frList.user_img != null}">
-								<img src="${pageContext.request.contextPath}/upload/${frList.user_img}" style="width: 70px; height: 70px; border-radius: 70%; object-fit: cover;">
+
+								<c:if test="${frList.genre == 2}">
+									<td class="articon"><img src="${pageContext.request.contextPath}/assets/image/blog/icon/dance.png" style="width: 60px"></td>
 								</c:if>
-                            </td>
-                            <td>
-                                <div>${frList.nickname}</div>
-                                <div>
-                                	<img src="${pageContext.request.contextPath}/assets/image/artist/icon/youtube.png" style="width:20px">
-                                    <img src="${pageContext.request.contextPath}/assets/image/artist/icon/facebook.png" style="width:20px">
-                                    <img src="${pageContext.request.contextPath}/assets/image/artist/icon/insta.png" style="width:20px">
-                                </div>
-                            </td>
-                            <!-- 장르 -->
-							<c:if test="${frList.genre == 1}">
-								<td class="articon"><img src="${pageContext.request.contextPath}/assets/image/blog/icon/ballade.png" style="width: 60px"></td>
-							</c:if>
 
-							<c:if test="${frList.genre == 2}">
-								<td class="articon"><img src="${pageContext.request.contextPath}/assets/image/blog/icon/dance.png" style="width: 60px"></td>
-							</c:if>
+								<c:if test="${frList.genre == 3}">
+									<td class="articon"><img src="${pageContext.request.contextPath}/assets/image/blog/icon/hiphop.png" style="width: 60px"></td>
+								</c:if>
 
-							<c:if test="${frList.genre == 3}">
-								<td class="articon"><img src="${pageContext.request.contextPath}/assets/image/blog/icon/hiphop.png" style="width: 60px"></td>
-							</c:if>
+								<c:if test="${frList.genre == 4}">
+									<td class="articon"><img src="${pageContext.request.contextPath}/assets/image/blog/icon/soul.png" style="width: 65px"></td>
+								</c:if>
 
-							<c:if test="${frList.genre == 4}">
-								<td class="articon"><img src="${pageContext.request.contextPath}/assets/image/blog/icon/soul.png" style="width: 65px"></td>
-							</c:if>
+								<c:if test="${frList.genre == 5}">
+									<td class="articon"><img src="${pageContext.request.contextPath}/assets/image/blog/icon/musical.png" style="width: 60px"></td>
+								</c:if>
 
-							<c:if test="${frList.genre == 5}">
-								<td class="articon"><img src="${pageContext.request.contextPath}/assets/image/blog/icon/musical.png" style="width: 60px"></td>
-							</c:if>
+								<c:if test="${frList.genre == 6}">
+									<td class="articon"><img src="${pageContext.request.contextPath}/assets/image/blog/icon/etc.png" style="width: 60px"></td>
+								</c:if>
 
-							<c:if test="${frList.genre == 6}">
-								<td class="articon"><img src="${pageContext.request.contextPath}/assets/image/blog/icon/etc.png" style="width: 60px"></td>
-							</c:if>
+								<td>
+									<div>${frList.genre_type}</div>
+									<div>가입연도 ${frList.artist_regdate}년</div>
+								</td>
+								<td><img src="${pageContext.request.contextPath}/assets/image/artist/icon/heart2.png" style="width: 20px"> <span>${frList.likes}</span></td>
+								<td><img src="${pageContext.request.contextPath}/assets/image/artist/icon/fan1.png" style="width: 20px"> <span>${frList.fan}</span></td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
+		</div>
 
-                            <td>
-                                <div>${frList.genre_type}</div>
-                                <div>가입연도 ${frList.artist_regdate}년</div>
-                            </td>
-                            <td>
-                                <img src="${pageContext.request.contextPath}/assets/image/artist/icon/heart2.png" style="width:20px">
-                                <span>${frList.likes}</span>
-                            </td>
-                            <td>
-                                <img src="${pageContext.request.contextPath}/assets/image/artist/icon/fan1.png" style="width:20px">
-                                <span>${frList.fan}</span>
-                            </td>
-                        </tr>
-					  </c:forEach>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+		<!-- nav_artist  -->
+		<c:import url="/WEB-INF/views/Artist/includes/aside.jsp"></c:import>
 
-		 <!-- nav_artist  -->
-		 <c:import url="/WEB-INF/views/Artist/includes/aside.jsp"></c:import>
+	</div>
 
-    </div>
-
-   <!-- footer -->
-  <c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
+	<!-- footer -->
+	<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
 
 </body>
 </html>

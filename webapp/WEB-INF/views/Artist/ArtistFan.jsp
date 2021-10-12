@@ -80,7 +80,15 @@
 								<td>
 									<div>${fList.nickname}</div>
 									<div>
-										<img src="${pageContext.request.contextPath}/assets/image/artist/icon/youtube.png" style="width: 20px"> <img src="${pageContext.request.contextPath}/assets/image/artist/icon/facebook.png" style="width: 20px"> <img src="${pageContext.request.contextPath}/assets/image/artist/icon/insta.png" style="width: 20px">
+										<c:if test="${nList.y_url != null}">
+											<img src="${pageContext.request.contextPath}/assets/image/artist/icon/youtube.png" style="width: 20px">
+										</c:if>
+										<c:if test="${nList.f_url != null}">
+											<img src="${pageContext.request.contextPath}/assets/image/artist/icon/facebook.png" style="width: 20px">
+										</c:if>
+										<c:if test="${nList.i_url != null}">
+											<img src="${pageContext.request.contextPath}/assets/image/artist/icon/insta.png" style="width: 20px">
+										</c:if>
 									</div>
 								</td>
 								<!-- 장르 -->

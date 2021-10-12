@@ -62,13 +62,16 @@ public class ArtistController {
 
 	// 아티스트 뉴아티스트 목록
 	@RequestMapping(value = "/ArtistNew", method = { RequestMethod.GET, RequestMethod.POST })
-	public String artistnew(Model model) {
+	public String artistnew(@RequestParam(value = "page", required = false, defaultValue = "1") int page,
+			@RequestParam(value = "keyword", required = false, defaultValue = "") String keyword, Model model) {
 
 		System.out.println("[ArtistController.ArtistNew()]");
 
-		model.addAttribute("artistNew", artistService.getArtistNew());
+		model.addAttribute("artistNew", artistService.getArtistNew(page, keyword));
 
 		model.addAttribute("artistLiveList", artistService.getArtistLive());
+		
+		System.out.println(artistService.getArtistNew(page, keyword));
 
 		return "/Artist/ArtistNew";
 	}
@@ -112,6 +115,19 @@ public class ArtistController {
 		return "/Artist/ArtistNoSearch";
 
 	}
+	
+	// 아티스트 검색 결과 뿌리기
+	@RequestMapping(value = "/ArtistSearch", method = { RequestMethod.GET, RequestMethod.POST })
+	public String artistsearch(Model model) {
+
+		System.out.println("[ArtistController.ArtistSearch()]");
+
+		model.addAttribute("artistLiveList", artistService.getArtistLive());
+
+		return "/Artist/ArtistSearch";
+	}
+	
+	
 
 	// 팬 등록
 	@ResponseBody
