@@ -19,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.javaex.service.CompanyService;
 import com.javaex.service.UserService;
 import com.javaex.vo.AppFilterVo;
+import com.javaex.vo.ApplyListVo;
 import com.javaex.vo.BusappVo;
 import com.javaex.vo.BusdateVo;
 import com.javaex.vo.CompanyVo;
@@ -445,4 +446,35 @@ public class CompanyController {
 	}
 	
 	///////////////////////////////// *공연신청관리* /////////////////////////////////
+	
+	///////////////////////////////// 공연신청현황 /////////////////////////////////
+	//내 공연신청 현황 불러오기(아티스트)
+	@RequestMapping(value = "/applyList", method = {RequestMethod.GET, RequestMethod.POST})
+	public String applyList(HttpSession session, Model model) {
+		System.out.println("[CompanyController.applyList()]");
+		
+		UserVo authUser = (UserVo)session.getAttribute("authUser");
+		int user_no = authUser.getUser_no();
+		
+		List<ApplyListVo> applyListVo = companyService.myApplyList(user_no);
+		System.out.println(applyListVo);
+		
+		model.addAttribute("applyListVo", applyListVo);
+		
+		return"/MyPage/applyList";
+	}
+	
+	//내 공연신청 현황 삭제
+	@RequestMapping(value = "/applyListRemove", method = {RequestMethod.GET, RequestMethod.POST})
+	public String applyListRemove(@RequestParam("no") int apply_no) {
+		System.out.println("[CompanyController.applyListRemove()]");
+		
+		System.out.println(apply_no);
+		int count = companyService.applyListRemove(apply_no);
+		System.out.println("공연 신청 ["+count+"]건 삭제 완료");
+		
+		return"redirect:/Company/applyList";
+	}
+	///////////////////////////////// *공연신청현황* /////////////////////////////////
+	
 }

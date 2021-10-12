@@ -56,7 +56,7 @@
 			                AND bt.time_no = ba.time_no
 			                AND ba.user_no = u.user_no
 			                AND c.user_no = #{user_no}
-			                order by s.stage_no asc)ot)ort
+			                order by s.stage_no asc, ba.time_no asc)ot)ort
 			                where rn >= #{startRnum}
 			                and   rn <= #{endRnum}
 		
@@ -114,7 +114,8 @@
 			    AND bt.time_no = ba.time_no
 			    AND ba.user_no = u.user_no
 			    and c.user_no= #{user_no}
-			    and bus_date between to_date(#{start_date},'yyyy-mm-dd')and to_date(#{end_date},'yyyy-mm-dd')	
+			    and bus_date between to_date(#{start_date},'yyyy-mm-dd')and to_date(#{end_date},'yyyy-mm-dd')
+			    order by s.stage_no asc, ba.time_no asc	
 		
 		]]>
 	</select>
@@ -149,7 +150,7 @@
 			    AND ba.user_no = u.user_no
 			    and s.stage_no= #{stage_no}
 			    and bus_date between to_date(#{start_date},'yyyy-mm-dd')and to_date(#{end_date},'yyyy-mm-dd')	
-		
+				order by ba.time_no asc
 		]]>
 	</select>
 	
@@ -179,5 +180,47 @@
 			where  apply_no = #{apply_no}
 		]]>
 	</select>
+	
+	<!-- 내 공연 신청 현황 불러오기 -->
+	<select id="selectMyApplyList" parameterType="int" resultType="ApplyListVo">
+		<![CDATA[
+		    SELECT
+		    ba.apply_no,
+		    c.com_name,
+		    s.stage_name,
+		    bd.bus_date,
+		    bt.start_time,
+		    bt.end_time,
+		    c.address,
+		    c.com_number,
+		    bd.requirements,
+		    ba.status
+		    
+		FROM
+		    company      c,
+		    stage        s,
+		    buskingdate  bd,
+		    buskingtime  bt,
+		    buskingapp   ba,
+		    users        u
+		WHERE
+		        c.user_no = s.user_no
+		    AND s.stage_no = bd.stage_no
+		    AND bd.date_no = bt.date_no
+		    AND bt.time_no = ba.time_no
+		    AND ba.user_no = u.user_no
+		    AND ba.user_no = #{user_no}	
+		
+		]]>
+	</select>
+	
+	<!-- 내 공연 신청 현황 삭제 -->
+	<delete id="applyListDelete" parameterType="int">
+		<![CDATA[
+			delete 
+			from   buskingapp
+			where  apply_no = #{apply_no}
+		]]>
+	</delete>
 
 </mapper>

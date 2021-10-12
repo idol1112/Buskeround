@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.javaex.dao.CompanyDao;
 import com.javaex.dao.UserDao;
 import com.javaex.vo.AppFilterVo;
+import com.javaex.vo.ApplyListVo;
 import com.javaex.vo.BusappVo;
 import com.javaex.vo.BusdateVo;
 import com.javaex.vo.BustimeVo;
@@ -275,10 +276,13 @@ public class CompanyService {
 	public Map<String, Object> getApplyList(Map<String, Object> applyMap) {
 		System.out.println("CompanyService.getApplyList()");
 		
+		//맵에서 crtPage 꺼내서(int)형으로 담음 (object형이니까 명시적 변환)
 		int crtPage = (int)applyMap.get("crtPage");
 	    
+		//예상) crtPage의 값이 0 초과가 아니면 crtPage값을 1로 초기화
 	    crtPage = (crtPage > 0) ? crtPage : (crtPage=1);
 	    
+	    //한 페이지 개수 선언
 	    int listCnt = 10;
 	    
 	    //시작번호 계산하기
@@ -374,4 +378,21 @@ public class CompanyService {
 	}
 	
 	///////////////////////////////// *공연신청관리* /////////////////////////////////
+	
+	///////////////////////////////// 공연신청현황 /////////////////////////////////
+	//내 공연신청 현황 불러오기(아티스트)
+	public List<ApplyListVo> myApplyList(int user_no) {
+		System.out.println("CompanyService.myApplyList()");
+		
+		return companyDao.selectMyApplyList(user_no);
+	}
+	
+	//내 공연신청 현황 삭제
+	public int applyListRemove(int apply_no) {
+		System.out.println("CompanyService.myApplyList()");
+		
+		return companyDao.applyListDelete(apply_no);
+	}
+	
+	///////////////////////////////// *공연신청현황* /////////////////////////////////
 }

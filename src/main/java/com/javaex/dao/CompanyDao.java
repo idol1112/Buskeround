@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.javaex.vo.AppFilterVo;
+import com.javaex.vo.ApplyListVo;
 import com.javaex.vo.BusappVo;
 import com.javaex.vo.BusdateVo;
 import com.javaex.vo.BustimeVo;
@@ -177,4 +178,21 @@ public class CompanyDao {
 	}
 		
 	///////////////////////////////// *공연신청관리* /////////////////////////////////
+	
+	///////////////////////////////// 공연신청현황 /////////////////////////////////
+	//내 공연신청 현황 불러오기(아티스트)
+	public List<ApplyListVo> selectMyApplyList(int user_no) {
+		System.out.println("CompanyDao.myApplyList()");
+	
+		return sqlSession.selectList("busapp.selectMyApplyList", user_no);
+	}
+	
+	//내 공연신청 현황 삭제
+	public int applyListDelete(int apply_no) {
+		System.out.println("CompanyService.myApplyList()");
+		
+		return sqlSession.delete("busapp.applyListDelete", apply_no);
+	}
+	
+	///////////////////////////////// *공연신청현황* /////////////////////////////////
 }

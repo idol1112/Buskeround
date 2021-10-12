@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> 
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%> 
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -19,109 +21,88 @@
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 
 <!-- css -->
-<link rel="stylesheet" href="../../assets/css/Common/common.css">
-<link rel="stylesheet" href="../../assets/css/BuskingZone/busking.css">
-<link rel="stylesheet" href="../../assets/css/MyPage/mypage.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/Common/common.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/MyPage/mypage.css">
+
+<!-- jquery -->
+<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+<!-- sweetAlert -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
 
 <body>
 	<!-- header -->
-	<c:import url="/views/includes/header.jsp"></c:import>
+	<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
 	<!------- header -------->
 
 	<!-- Content -->
 	<div class="row" id="contentbox">
 		<div class="col-xl-2"></div>
 		<div class="col-xl-8" id="mypage">
-			<c:import url="/views/MyPage/includes/aside.jsp"></c:import>
+			<c:import url="/WEB-INF/views/MyPage/includes/aside.jsp"></c:import>
 			<div id="mypage-right">
 				<div id="mypage-right-header">
 					<h5>공연신청 현황</h5>
 				</div>
 				<div id="mypage-right-content">
+					<c:if test="${fn:length(applyListVo) == 0}">
+						<p>신청 내역이 없습니다.</p>
+					</c:if>
+					<c:if test="${fn:length(applyListVo) != 0}">
 					<table class="table table-bordered">
 						<colgroup>
 							<col style="width: 10%">
-							<col style="width: 10%">
-							<col style="width: 17%">
-							<col style="width: 10%">
-							<col style="width: 10%">
-							<col style="width: 23%">
+							<col style="width: 13%">
 							<col style="width: 10%">
 							<col style="width: 10%">
+							<col style="width: 27%">
+							<col style="width: 12%">
+							<col style="width: 8%">
+							<col style="width: 7%">
+							<col style="width: 3%">
 						</colgroup>
 
 						<tr>
-							<th>장소명</th>
-							<th>연락처</th>
-							<th>공연장소</th>
-							<th>날짜</th>
-							<th>시간</th>
-							<th>상세정보</th>
-							<th>상태</th>
-							<th></th>
+							<th class="th-gray">장소명</th>
+							<th class="th-gray">공연장소</th>
+							<th class="th-gray">날짜</th>
+							<th class="th-gray">시간</th>
+							<th class="th-gray">주소</th>
+							<th class="th-gray">연락처</th>
+							<th class="th-gray">요구사항</th>
+							<th class="th-gray">상태</th>
+							<th class="th-gray"></th>
 						</tr>
+						<c:forEach items="${applyListVo}" var="vo" varStatus="status">
 						<tr>
-							<td>신촌CGV</td>
-							<td>1544-1122</td>
-							<td>7층 스테이지</td>
-							<td>2021-09-01</td>
-							<td>22:00-24:00</td>
-							<td>상세정보</td>
-							<td>수락</td>
+							<td>${vo.com_name }</td>
+							<td>${vo.stage_name }</td>
+							<c:set var="bus_date" value="${vo.bus_date}"/>
+							<td>${fn:substring(bus_date, 0, 10)}</td>
+							<c:set var="start_time" value="${vo.start_time}"/><c:set var="end_time" value="${vo.end_time}"/>
+							<td>${fn:substring(start_time, 11, 16)}-${fn:substring(end_time, 11, 16) }</td>
+							<td>${vo.address }</td>
+							<td>${vo.com_number }</td>
+							<td class="info_text"><span class="click_item" data-no="${vo.requirements }">요구사항</span></td>
+							<c:if test="${vo.status == 1}">
+								<td class="articon"><img class="status-img" src="${pageContext.request.contextPath}/assets/image/company/icon/accept.png" alt="수락"></td>
+							</c:if>
+
+							<c:if test="${vo.status == 2}">
+								<td class="articon"><img class="status-img" src="${pageContext.request.contextPath}/assets/image/company/icon/refuse.png" alt="거절"></td>
+							</c:if>
+
+							<c:if test="${vo.status == 3}">
+								<td class="articon"><img class="status-img" src="${pageContext.request.contextPath}/assets/image/company/icon/ongoing.png" alt="진행중"></td>
+							</c:if>
 							<td>
-								<button type="submit" class="btn btn-danger btn-sm btn-block" id="btn-submit">취소</button>
+								<a href="${pageContext.request.contextPath }/Company/applyListRemove?no=${vo.apply_no}" ><img class="delBtn" src="${pageContext.request.contextPath}/assets/image/company/icon/delete.png"></a>
 							</td>
 						</tr>
-						<tr>
-							<td>신촌CGV</td>
-							<td>1544-1122</td>
-							<td>7층 스테이지</td>
-							<td>2021-09-01</td>
-							<td>22:00-24:00</td>
-							<td>상세정보</td>
-							<td>진행중</td>
-							<td>
-								<button type="submit" class="btn btn-danger btn-sm btn-block" id="btn-submit">취소</button>
-							</td>
-						</tr>
-						<tr>
-							<td>신촌CGV</td>
-							<td>1544-1122</td>
-							<td>7층 스테이지</td>
-							<td>2021-09-01</td>
-							<td>22:00-24:00</td>
-							<td>상세정보</td>
-							<td>거절</td>
-							<td>
-								<button type="submit" class="btn btn-danger btn-sm btn-block" id="btn-submit">취소</button>
-							</td>
-						</tr>
-						<tr>
-							<td>신촌CGV</td>
-							<td>1544-1122</td>
-							<td>7층 스테이지</td>
-							<td>2021-09-01</td>
-							<td>22:00-24:00</td>
-							<td>상세정보</td>
-							<td>진행중</td>
-							<td>
-								<button type="submit" class="btn btn-danger btn-sm btn-block" id="btn-submit">취소</button>
-							</td>
-						</tr>
-						<tr>
-							<td>신촌CGV</td>
-							<td>1544-1122</td>
-							<td>7층 스테이지</td>
-							<td>2021-09-01</td>
-							<td>22:00-24:00</td>
-							<td>상세정보</td>
-							<td>진행중</td>
-							<td>
-								<button type="submit" class="btn btn-danger btn-sm btn-block" id="btn-submit">취소</button>
-							</td>
-						</tr>
+						</c:forEach>
 					</table>
+					</c:if>
 				</div>
 			</div>
 		</div>
@@ -133,10 +114,46 @@
 	<!-------- content -------->
 
 	<!-- footer -->
-	<c:import url="/views/includes/footer.jsp"></c:import>
+	<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
 	<!------- footer -------->
+	
 
-	</div>
-	<!------- wrap -------->
+	<!------------- Modal --------------->
+  <div class="modal fade" id="infoModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->   
+      <div class="modal-content">
+        <div class="modal-header">
+ 
+          <h4 class="modal-title"></h4>
+          <img class="delBtn close" src="${pageContext.request.contextPath}/assets/image/company/icon/delete.png">
+
+        </div>
+        <div class="modal-body">
+			<div class="modal_content" id="modal_text"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
 </body>
+
+<script type="text/javascript">
+//요구사항 클릭
+$(".click_item").on("click", function() {
+	var requirements = $(this).data("no");
+	console.log(requirements);
+	$('.modal-title').text("요구사항");
+	$(".modal_content").append(requirements);
+	$("#infoModal").modal('show');
+});
+
+//모달창 끄기
+$(".close").on("click", function() {
+  	$("#infoModal").modal('hide');
+  	$(".modal_content").empty();
+  });
+
+</script>
 </html>

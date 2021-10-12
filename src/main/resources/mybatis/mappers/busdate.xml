@@ -60,6 +60,7 @@
 			    and bd.stage_no = #{stage_no}
 			    AND bt.date_no = #{date_no}
 			    And ba.status = 1
+			    order by ba.time_no asc
 		
 		]]>
 	</select>

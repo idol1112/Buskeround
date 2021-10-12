@@ -62,11 +62,11 @@
 					<h5>공연신청 관리</h5>
 				</div>
 				<div id="mypage-main-content">
-					<form action="${pageContext.request.contextPath }/Company/getFilterList" method="get">
+					<form class="bg-p" action="${pageContext.request.contextPath }/Company/getFilterList" method="get">
 						<div id="content-filter-area">
 							<label><img class="filter-img" alt="filter" src="${pageContext.request.contextPath}/assets/image/company/icon/filter-icon.png"></label>
 							<div class="content-filter">
-								<select name="stage_no" id="stage-select" class="select-box input">
+								<select name="stage_no" id="stage-select" class="select-box input filter-white">
 									<option value="0">전체</option>
 	                           		<c:forEach items="${stageList}" var="stageList" varStatus="status">
 										<option value="${stageList.stage_no}">${stageList.stage_name}</option>
@@ -74,10 +74,10 @@
 								</select>
 							</div>
 							<div class="content-filter">
-								<input type="date" class="input" name="start_date" id="datepicker1"/>
+								<input type="date" class="input filter-white" name="start_date" id="datepicker1"/>
 							</div>
 							<div class="content-filter">
-								<input type="date" class="input" name="end_date" id="datepicker2"/>
+								<input type="date" class="input filter-white" name="end_date" id="datepicker2"/>
 							</div>
 								<img id="searchBtn" class="filter-img click_item" alt="search" src="${pageContext.request.contextPath}/assets/image/company/icon/search-icon.png">
 						</div>
