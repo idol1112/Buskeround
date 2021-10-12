@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="customercenter">
+
+	<!-- Select Total Count -->
+	<select id="selectTotalCnt" resultType="int" parameterType="map">
+		<![CDATA[
+			select count(*)
+			from ccnotice
+		]]>
+			<if test="search != null">
+				where( title || content) like '%'||#{search}||'%'
+			</if> 
+	</select>
+	
+	    <!-- 공지사항 리스트 가져오기 -->
+    <select id="noticeList" resultType="CustomerCenter" parameterType="map">
+   		<![CDATA[
+   		
+		 select ort.rn,
+		 		ort.notice_no,  
+		   		ort.user_no,
+		   		ort.title,
+		   		ort.content,
+		   		ort.reg_date,
+		   		ort.hit
+		   	from (select	rownum rn,
+			   				ot.notice_no,
+			   				ot.user_no,
+			   				ot.title,
+			   				ot.content,
+			   				ot.reg_date,
+			   				ot.hit
+			   		from (select   notice_no,
+						    	   user_no,
+						    	   title,
+						    	   content,
+						    	   TO_CHAR(reg_date, 'YYYY-MM-DD') as reg_date,
+						    	   hit
+						    from ccnotice
+						    		]]>
+						    <if test="search != null">
+						    	where( title || content) like '%'||#{search}||'%'
+						    </if> 
+						    <![CDATA[
+						    order by notice_no desc)ot)ort
+			where rn >= #{startRnum}
+			and rn <= #{endRnum}
+		   ]]>
+    </select>
+    
+</mapper>
