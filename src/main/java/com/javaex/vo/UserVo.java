@@ -30,6 +30,7 @@ public class UserVo {
 	private String i_url;
 	private int artist_no;
 	private boolean fanOk;
+	private String p_start;
 
 	// 생성자
 	public UserVo() {
@@ -51,7 +52,7 @@ public class UserVo {
 	public UserVo(int user_no, String id, String password, String email, String nickname, String user_img, String name,
 			String hp, String gender, String birthday, String genre, String genre_type, int fan, int likes, String live,
 			String artist_regdate, String user_type, String company_type, int rn, String ranking_score, String intro,
-			String banner, String y_url, String f_url, String i_url, int artist_no, boolean fanOk) {
+			String banner, String y_url, String f_url, String i_url, int artist_no, boolean fanOk, String p_start) {
 		super();
 		this.user_no = user_no;
 		this.id = id;
@@ -80,9 +81,10 @@ public class UserVo {
 		this.i_url = i_url;
 		this.artist_no = artist_no;
 		this.fanOk = fanOk;
+		this.p_start = p_start;
 	}
 
-// 메소드 - GS
+	// 메소드 - GS
 	public int getUser_no() {
 		return user_no;
 	}
@@ -299,6 +301,14 @@ public class UserVo {
 		this.fanOk = fanOk;
 	}
 
+	public String getP_start() {
+		return p_start;
+	}
+
+	public void setP_start(String p_start) {
+		this.p_start = p_start;
+	}
+
 	// 메소드 - 일반
 	@Override
 	public String toString() {
@@ -308,7 +318,7 @@ public class UserVo {
 				+ ", likes=" + likes + ", live=" + live + ", artist_regdate=" + artist_regdate + ", user_type="
 				+ user_type + ", company_type=" + company_type + ", rn=" + rn + ", ranking_score=" + ranking_score
 				+ ", intro=" + intro + ", banner=" + banner + ", y_url=" + y_url + ", f_url=" + f_url + ", i_url="
-				+ i_url + ", artist_no=" + artist_no + ", fanOk=" + fanOk + "]";
+				+ i_url + ", artist_no=" + artist_no + ", fanOk=" + fanOk + ", p_start=" + p_start + "]";
 	}
 
 }
