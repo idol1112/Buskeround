@@ -11,7 +11,7 @@
 
       <!-- nav_logo -->
       <div class="navbar_logo">
-        <a href="${pageContext.request.contextPath}/Main">Br.</a>
+        <i class="fas fa-cat"></i><a href="${pageContext.request.contextPath}/Main">B.r</a>
       </div>
 
       <!-- nav_menu -->
