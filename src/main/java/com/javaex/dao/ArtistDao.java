@@ -73,6 +73,21 @@ public class ArtistDao {
 
 		return sqlsession.selectList("artist.getFanList", user_no);
 	}
+	
+	//아티스트 검색 리스트
+	public List<UserVo> getArtistSearch(int start_num, int end_num, String keyword) {
+		System.out.println("[ArtistDao.getArtistSearch()]");
+		
+		System.out.println("start_num: " + start_num + "end_num: " + end_num + "keyword: " + keyword);
+		
+		Map<String, Object> artistMap = new HashMap<String, Object>();
+		artistMap.put("start_num", start_num);
+		artistMap.put("end_num", end_num);
+		artistMap.put("search", keyword);
+
+		return sqlsession.selectList("artist.getArtistSearch", artistMap);
+	}
+	
 
 	// 팬 등록
 	public void getFan(UserVo userVo) {

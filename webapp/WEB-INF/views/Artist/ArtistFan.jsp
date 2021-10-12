@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 <!DOCTYPE html>
 <html>
@@ -45,15 +46,16 @@
 
 				<!-- 아티스트 검색 -->
 				<div>
-					<form action="${pageContext.request.contextPath}/Buskeround/Artist/ArtistFan" method="get">
-						<input type="text" placeholder="아티스트 검색">
-						<button class="buttonicon" type="button">
+					<form action="${pageContext.request.contextPath}/Artist/ArtistSearch" method="get">
+						<input name="keyword" type="text" placeholder="아티스트 검색">
+						<button class="buttonicon" type="submit">
 							<img src="${pageContext.request.contextPath}/assets/image/artist/icon/search.png" style="width: 20px">
 						</button>
 					</form>
 				</div>
 			</div>
 			<!-- 종합랭킹 표그래프 -->
+
 			<div class="leftsection-02">
 				<table>
 					<thead>
@@ -155,9 +157,7 @@
 					</ul>
 				</div>
 			</div>
-
 		</div>
-
 
 		<!-- nav_artist  -->
 		<c:import url="/WEB-INF/views/Artist/includes/aside.jsp"></c:import>

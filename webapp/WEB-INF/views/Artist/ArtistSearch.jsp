@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 <!DOCTYPE html>
 <html>
@@ -40,83 +41,98 @@
 				<h2>통합검색</h2>
 				<!-- 아티스트 검색 -->
 				<div>
-					<input type="text" placeholder="아티스트 검색"> <img src="${pageContext.request.contextPath}/assets/image/artist/icon/search.png" style="width: 20px">
+					<form action="${pageContext.request.contextPath}/Artist/ArtistSearch" method="get">
+						<input name="keyword" type="text" placeholder="아티스트 검색">
+						<button class="buttonicon" type="submit">
+							<img src="${pageContext.request.contextPath}/assets/image/artist/icon/search.png" style="width: 20px">
+						</button>
+					</form>
 				</div>
+
 			</div>
 			<!-- 종합랭킹 표그래프 -->
-			<div class="leftsection-02">
-				<table>
-					<thead>
-						<tr>
-							<td>NO</td>
-							<td></td>
-							<td>활동명</td>
-							<td>주요장르</td>
-							<td>주요정보</td>
-							<td>좋아요</td>
-							<td>팬 되기</td>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach items="${artistNew.ArtistList}" var="nList">
-							<!--1번-->
+
+			<c:if test="${fn:length(artistSearch.ArtistList) == 0}">
+				<div class="nosearch-02">
+					<p style="width: 701px; height: 900px;">입력하신 정보를 찾을 수 없습니다.</p>
+				</div>
+			</c:if>
+			<c:if test="${fn:length(artistSearch.ArtistList) != 0}">
+
+				<div class="leftsection-02">
+					<table>
+						<thead>
 							<tr>
-								<td>${nList.rn}</td>
-								<td><c:if test="${nList.user_img == null}">
-										<img src="/Buskeround/assets/image/blog/icon/user.png" style="width: 70px; height: 70px; border-radius: 70%; object-fit: cover;">
-									</c:if> <c:if test="${nList.user_img != null}">
-										<img src="${pageContext.request.contextPath}/upload/${nList.user_img}" style="width: 70px; height: 70px; border-radius: 70%; object-fit: cover;">
-									</c:if></td>
-								<td>
-									<div>${nList.nickname}</div>
-									<div>
-										<c:if test="${nList.y_url != null}">
-											<img src="${pageContext.request.contextPath}/assets/image/artist/icon/youtube.png" style="width: 20px">
-										</c:if>
-										<c:if test="${nList.f_url != null}">
-											<img src="${pageContext.request.contextPath}/assets/image/artist/icon/facebook.png" style="width: 20px">
-										</c:if>
-										<c:if test="${nList.i_url != null}">
-											<img src="${pageContext.request.contextPath}/assets/image/artist/icon/insta.png" style="width: 20px">
-										</c:if>
-									</div>
-								</td>
-								<!-- 장르 -->
-								<c:if test="${nList.genre == 1}">
-									<td class="articon"><img src="${pageContext.request.contextPath}/assets/image/blog/icon/ballade.png" style="width: 60px"></td>
-								</c:if>
-
-								<c:if test="${nList.genre == 2}">
-									<td class="articon"><img src="${pageContext.request.contextPath}/assets/image/blog/icon/dance.png" style="width: 60px"></td>
-								</c:if>
-
-								<c:if test="${nList.genre == 3}">
-									<td class="articon"><img src="${pageContext.request.contextPath}/assets/image/blog/icon/hiphop.png" style="width: 60px"></td>
-								</c:if>
-
-								<c:if test="${nList.genre == 4}">
-									<td class="articon"><img src="${pageContext.request.contextPath}/assets/image/blog/icon/soul.png" style="width: 65px"></td>
-								</c:if>
-
-								<c:if test="${nList.genre == 5}">
-									<td class="articon"><img src="${pageContext.request.contextPath}/assets/image/blog/icon/musical.png" style="width: 60px"></td>
-								</c:if>
-
-								<c:if test="${nList.genre == 6}">
-									<td class="articon"><img src="${pageContext.request.contextPath}/assets/image/blog/icon/etc.png" style="width: 60px"></td>
-								</c:if>
-
-								<td>
-									<div>${nList.genre_type}</div>
-									<div>가입연도 ${nList.artist_regdate}년</div>
-								</td>
-								<td><img src="${pageContext.request.contextPath}/assets/image/artist/icon/heart2.png" style="width: 20px"> <span>${nList.likes}</span></td>
-								<td><img src="${pageContext.request.contextPath}/assets/image/artist/icon/fan1.png" style="width: 20px"> <span>${nList.fan}</span></td>
+								<td>NO</td>
+								<td></td>
+								<td>활동명</td>
+								<td>주요장르</td>
+								<td>주요정보</td>
+								<td>좋아요</td>
+								<td>팬 되기</td>
 							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
-			</div>
+						</thead>
+						<tbody>
+							<c:forEach items="${artistSearch.ArtistList}" var="nList">
+								<!--1번-->
+								<tr>
+									<td>${nList.rn}</td>
+									<td><c:if test="${nList.user_img == null}">
+											<img src="/Buskeround/assets/image/blog/icon/user.png" style="width: 70px; height: 70px; border-radius: 70%; object-fit: cover;">
+										</c:if> <c:if test="${nList.user_img != null}">
+											<img src="${pageContext.request.contextPath}/upload/${nList.user_img}" style="width: 70px; height: 70px; border-radius: 70%; object-fit: cover;">
+										</c:if></td>
+									<td>
+										<div>${nList.nickname}</div>
+										<div>
+											<c:if test="${nList.y_url != null}">
+												<img src="${pageContext.request.contextPath}/assets/image/artist/icon/youtube.png" style="width: 20px">
+											</c:if>
+											<c:if test="${nList.f_url != null}">
+												<img src="${pageContext.request.contextPath}/assets/image/artist/icon/facebook.png" style="width: 20px">
+											</c:if>
+											<c:if test="${nList.i_url != null}">
+												<img src="${pageContext.request.contextPath}/assets/image/artist/icon/insta.png" style="width: 20px">
+											</c:if>
+										</div>
+									</td>
+									<!-- 장르 -->
+									<c:if test="${nList.genre == 1}">
+										<td class="articon"><img src="${pageContext.request.contextPath}/assets/image/blog/icon/ballade.png" style="width: 60px"></td>
+									</c:if>
+
+									<c:if test="${nList.genre == 2}">
+										<td class="articon"><img src="${pageContext.request.contextPath}/assets/image/blog/icon/dance.png" style="width: 60px"></td>
+									</c:if>
+
+									<c:if test="${nList.genre == 3}">
+										<td class="articon"><img src="${pageContext.request.contextPath}/assets/image/blog/icon/hiphop.png" style="width: 60px"></td>
+									</c:if>
+
+									<c:if test="${nList.genre == 4}">
+										<td class="articon"><img src="${pageContext.request.contextPath}/assets/image/blog/icon/soul.png" style="width: 65px"></td>
+									</c:if>
+
+									<c:if test="${nList.genre == 5}">
+										<td class="articon"><img src="${pageContext.request.contextPath}/assets/image/blog/icon/musical.png" style="width: 60px"></td>
+									</c:if>
+
+									<c:if test="${nList.genre == 6}">
+										<td class="articon"><img src="${pageContext.request.contextPath}/assets/image/blog/icon/etc.png" style="width: 60px"></td>
+									</c:if>
+
+									<td>
+										<div>${nList.genre_type}</div>
+										<div>가입연도 ${nList.artist_regdate}년</div>
+									</td>
+									<td><img src="${pageContext.request.contextPath}/assets/image/artist/icon/heart2.png" style="width: 20px"> <span>${nList.likes}</span></td>
+									<td><img src="${pageContext.request.contextPath}/assets/image/artist/icon/fan1.png" style="width: 20px"> <span>${nList.fan}</span></td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</div>
+			</c:if>
 		</div>
 		<!-- aside  -->
 		<c:import url="/WEB-INF/views/Artist/includes/aside.jsp"></c:import>

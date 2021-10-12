@@ -104,30 +104,23 @@ public class ArtistController {
 		return "/Artist/ArtistFanList";
 	}
 
-	// 아티스트 검색 없을 때
-	@RequestMapping(value = "/ArtistNoSearch", method = { RequestMethod.GET, RequestMethod.POST })
-	public String artistnosearch(Model model) {
 
-		System.out.println("[ArtistController.ArtistNoSearch()]");
-
-		model.addAttribute("artistLiveList", artistService.getArtistLive());
-
-		return "/Artist/ArtistNoSearch";
-
-	}
-	
 	// 아티스트 검색 결과 뿌리기
 	@RequestMapping(value = "/ArtistSearch", method = { RequestMethod.GET, RequestMethod.POST })
-	public String artistsearch(Model model) {
+	public String artistsearch(@RequestParam(value = "page", required = false, defaultValue = "1") int page,
+			@RequestParam(value = "keyword", required = false, defaultValue = "") String keyword, Model model) {
 
 		System.out.println("[ArtistController.ArtistSearch()]");
+		
+		System.out.println(keyword);
+		
+		model.addAttribute("artistSearch", artistService.getArtistSearch(page, keyword));
 
 		model.addAttribute("artistLiveList", artistService.getArtistLive());
+		
 
 		return "/Artist/ArtistSearch";
 	}
-	
-	
 
 	// 팬 등록
 	@ResponseBody
@@ -141,7 +134,6 @@ public class ArtistController {
 		return artistService.getFan(userVo);
 
 	}
-
 
 
 }

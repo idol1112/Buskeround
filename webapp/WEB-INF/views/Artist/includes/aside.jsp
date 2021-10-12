@@ -68,7 +68,7 @@
 				<c:forEach items="${artistLiveList}" var="aLive">
 					<tr>
 						<td>${aLive.nickname}</td>
-						<td>${aLive.live}</td>
+						<td>${aLive.p_start}~</td>
 						<td>[위치 보기]</td>
 					</tr>
 				</c:forEach>
