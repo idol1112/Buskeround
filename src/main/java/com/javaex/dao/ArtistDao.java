@@ -130,6 +130,7 @@ public class ArtistDao {
 		return sqlsession.selectOne("artist.pageCount", countMap);
 	}
 	
+	//checkArtist
 	public String checkArtist(UserVo userVo) {
 		System.out.println("[ArtistDao.checkArtist()]");
 		
@@ -137,5 +138,28 @@ public class ArtistDao {
 		
 		return check;
 	}
+	
+	
+	//팬되기 숫자 올리기
+	public void artistFanUp(int no) {
+		System.out.println("[ArtistDao.artistFanUp()]");
+		
+		sqlsession.update("artistFanUp", no);
+	}
+	
+	//팬되기 숫자 내리기
+	public void artistFanDown(int no) {
+		System.out.println("[ArtistDao.artistFanDown()]");
+		
+		sqlsession.update("artistFanDown", no);
+	}
+	
+	//팬되기 삭제
+	public void deleteFan(UserVo userVo) {
+		System.out.println("[ArtistDao.deleteFan()]");
+		
+		sqlsession.update("deleteFan", userVo);
+	}
+	
 
 }

@@ -119,16 +119,16 @@
 									<div>${aList.genre_type}</div>
 									<div>가입연도 ${aList.artist_regdate}년</div>
 								</td>
-									<td class="left02_td"><img class="likes" src="${pageContext.request.contextPath}/assets/image/artist/icon/heart1.png" style="width: 20px"> <span>${aList.likes}</span></td>
+								<td class="left02_td"><img class="likes" src="${pageContext.request.contextPath}/assets/image/artist/icon/heart1.png" style="width: 20px"> <span>${aList.likes}</span></td>
 								<c:choose>
 									<c:when test="${aList.fanOk == true}">
-										<td class="left02_td"><img class="fan" data-no="${aList.user_no}" src="${pageContext.request.contextPath}/assets/image/artist/icon/fan2.png" style="width: 20px"><span>${aList.fan}</span></td>
+										<td class="left02_td"><img class="fan" data-no="${aList.user_no}" src="${pageContext.request.contextPath}/assets/image/artist/icon/fan2.png" style="width: 20px"><span class="fan2-${aList.user_no}">${aList.fan}</span></td>
 									</c:when>
 									<c:otherwise>
-										<td class="left02_td"><img class="fan" data-no="${aList.user_no}" src="${pageContext.request.contextPath}/assets/image/artist/icon/fan1.png" style="width: 20px"><span>${aList.fan}</span></td>
+										<td class="left02_td"><img class="fan" data-no="${aList.user_no}" src="${pageContext.request.contextPath}/assets/image/artist/icon/fan1.png" style="width: 20px"><span class="fan2">${aList.fan}</span></td>
 									</c:otherwise>
 								</c:choose>
-								
+
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -179,18 +179,19 @@ $(".fan").on("click",function(){
 		// 성공일 경우 success로 들어오며, 'result'는 응답받은 데이터이다.
 		success : function(result) {
 			/*성공시 처리해야될 코드 작성*/
-			console.log(result)
+		var fan = $(".fan2-" + artist_no + "");
+		if (result == false) {
+			thiss.attr('src', '${pageContext.request.contextPath}/assets/image/artist/icon/fan2.png');
+			var fanV = parseInt(fan.html()) + 1;
+			fan.html(fanV);
 			
-			if (result == false) {
-				console.log("성공~");
-				thiss.attr('src', '${pageContext.request.contextPath}/assets/image/artist/icon/fan2.png');
-				
-			} else {
-				thiss.attr('src', '${pageContext.request.contextPath}/assets/image/artist/icon/fan1.png');
-				
-				
-				
-			}
+		} else {
+			thiss.attr('src', '${pageContext.request.contextPath}/assets/image/artist/icon/fan1.png');
+			var fanV = parseInt(fan.html()) - 1;
+			fan.html(fanV);
+
+		}
+			
 		},
 
 		// 실패할경우 error로 들어온다.

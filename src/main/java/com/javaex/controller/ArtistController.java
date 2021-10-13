@@ -1,6 +1,8 @@
 package com.javaex.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -134,9 +136,7 @@ public class ArtistController {
 	public boolean fan(@ModelAttribute UserVo userVo) {
 
 		System.out.println("[ArtistController.Fan()]");
-
-		System.out.println(userVo);
-
+		
 		return artistService.getFan(userVo);
 
 	}

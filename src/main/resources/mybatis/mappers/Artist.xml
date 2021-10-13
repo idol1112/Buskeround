@@ -374,7 +374,7 @@
           and rn <= #{end_num}	
           ]]>
 	</select>
-	
+
 
 	<!-- 아티스트 장르 리스트 -->
 	<select id="getArtistGenre" resultType="UserVo"
@@ -529,8 +529,8 @@
         and rn <=10
 		]]>
 	</select>
-	
-	
+
+
 	<!-- 아티스트 검색 리스트 -->
 	<select id="getArtistSearch" resultType="UserVo">
 		<![CDATA[
@@ -702,14 +702,6 @@
 		]]>
 	</select>
 
-	<!-- 팬 등록 -->
-	<insert id="getFan" parameterType="UserVo">
-	<![CDATA[
-	INSERT INTO fan
-	VALUES (SEQ_FAN_NO.nextval, #{user_no}, #{artist_no})
-	]]>
-	</insert>
-
 
 	<!-- 팬 로딩 -->
 	<select id="getFanLoading" resultType="UserVo"
@@ -738,40 +730,6 @@
 	</select>
 
 
-	<!-- 좋아요 등록 -->
-	<insert id="getLikes" parameterType="UserVo">
-	<![CDATA[
-    insert into likes
-    values (SEQ_LIKES_NO.nextval, #{user_no}, #{artist_no}, sysdate)
-	]]>
-	</insert>
-
-
-	<!-- 좋아요 로딩 -->
-	<select id="getLikesLoading" resultType="UserVo"
-		parameterType="int">
-	<![CDATA[
-    SELECT
-	    user_no,
-	    artist_no
-	FROM
-	likes
-	where user_no = #{user_no}
-	]]>
-	</select>
-
-	<!-- 좋아요 등록여부 -->
-	<select id="getLikesOk" resultType="UserVo"
-		parameterType="UserVo">
-	<![CDATA[
-	SELECT
-	    user_no,
-	    artist_no
-	FROM
-	likes
-	where user_no = #{user_no} and artist_no = #{artist_no}
-	]]>
-	</select>
 
 	<!-- 페이징 -->
 	<select id="pageCount" resultType="int" parameterType="map">
@@ -787,9 +745,10 @@
 			and nickname like '%'||#{keyword}||'%'
 		</if>
 	</select>
-	
-	<!-- Check Artist-->
-	<select id="artistCheck" resultType="String" parameterType="UserVo">
+
+	<!-- Artist Check -->
+	<select id="artistCheck" resultType="String"
+		parameterType="UserVo">
 	<![CDATA[
 		SELECT
 		    user_no
@@ -799,6 +758,45 @@
 		and artist_no =  #{user_no}
 	]]>
 	</select>
+
+
+
+	<!-- 팬 등록 -->
+	<insert id="getFan" parameterType="UserVo">
+	<![CDATA[
+	INSERT INTO fan
+	VALUES (SEQ_FAN_NO.nextval, #{user_no}, #{artist_no})
+	]]>
+	</insert>
+
+	<!-- 팬되기 숫자 올리기 -->
+	<update id="artistFanUp" parameterType="int">
+	<![CDATA[
+		UPDATE users set
+		fan = fan +1
+		where user_no = #{no}
+	]]>
+	</update>
+
+
+	<!-- 팬되기 숫자 삭제 -->
+	<delete id="deleteFan" parameterType="UserVo">
+	<![CDATA[
+		DELETE fan
+		WHERE
+	        artist_no = #{artist_no}
+	    AND user_no = #{user_no}
+   	]]>
+	</delete>
+
+	<!-- 팬되기 숫자 내리기 -->
+	<update id="artistFanDown" parameterType="int">
+	<![CDATA[
+		UPDATE users set
+		fan = fan -1
+		where user_no = #{no}
+	]]>
+	</update>
 
 
 

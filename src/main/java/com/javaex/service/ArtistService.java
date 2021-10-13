@@ -16,7 +16,7 @@ public class ArtistService {
 	@Autowired
 	private ArtistDao artistDao;
 
-	// 아티스트 리스트 가져오기
+	// 아티스트 팬 =..
 	public List<UserVo> getArtistList(int user_no) {
 
 		List<UserVo> aList = artistDao.getArtistList();
@@ -37,6 +37,7 @@ public class ArtistService {
 		return aList;
 	}
 	
+	// 아티스트 리스트 가져오기
 	public List<UserVo> getArtistList() {
 		
 		List<UserVo> aList = artistDao.getArtistList();
@@ -306,11 +307,14 @@ public class ArtistService {
 
 			System.out.println("팬이 아닙니다.");
 			artistDao.getFan(userVo);
+			artistDao.artistFanUp(userVo.getArtist_no());
 
 			return false;
 
 		} else {
 			System.out.println("팬입니다.");
+			artistDao.deleteFan(userVo);
+		    artistDao.artistFanDown(userVo.getArtist_no());
 
 			return true;
 
@@ -318,25 +322,13 @@ public class ArtistService {
 
 	}
 
-	// 팬 로딩
-//	public void getFanLoading(int user_no) {
-//
-//		List<UserVo> fanList = artistDao.getFanLoading(user_no);
-//
-////		for (int i = 0; i < fanList.size(); i++) {
-////			if (fanList.get(i).getArtist_no().i) {
-////				fanList.get(i).setFanOk(true);
-////			} else {
-////				fanList.get(i).setFanOk(false);
-////			}
-////		}
-//
-//	}
 
 	// 블로그 라이브 리스트 가져오기
 	public List<UserVo> getBlogLive() {
 
 		return artistDao.getBlogLive();
 	}
+
+	
 
 }
