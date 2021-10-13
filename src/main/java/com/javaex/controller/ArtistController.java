@@ -140,6 +140,17 @@ public class ArtistController {
 		return artistService.getFan(userVo);
 
 	}
+	
+	// 좋아요 등록
+	@ResponseBody
+	@RequestMapping(value = "/Likes", method = { RequestMethod.GET, RequestMethod.POST })
+	public boolean likes(@ModelAttribute UserVo userVo) {
+		
+		System.out.println("[ArtistController.Fan()]");
+		
+		return artistService.getLikes(userVo);
+		
+	}
 
 
 }
