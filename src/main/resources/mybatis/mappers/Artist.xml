@@ -792,7 +792,7 @@
 	]]>
 	</insert>
 	
-	<!-- 팬 등록 -->
+	<!-- 좋아요 등록 -->
 	<insert id="getLikes" parameterType="UserVo">
 	<![CDATA[
 	INSERT INTO likes
@@ -809,7 +809,7 @@
 	]]>
 	</update>
 	
-	<!-- 팬되기 숫자 올리기 -->
+	<!-- 좋아요 숫자 올리기 -->
 	<update id="artistLikesUp" parameterType="int">
 	<![CDATA[
 		UPDATE users set
@@ -829,6 +829,7 @@
    	]]>
 	</delete>
 	
+	<!-- 좋아요 숫자 삭제 -->
 	<delete id="deleteLikes" parameterType="UserVo">
 	<![CDATA[
 		DELETE likes
@@ -847,7 +848,7 @@
 	]]>
 	</update>
 	
-	<!-- 팬되기 숫자 내리기 -->
+	<!-- 좋아요 숫자 내리기 -->
 	<update id="artistLikesDown" parameterType="int">
 	<![CDATA[
 		UPDATE users set
