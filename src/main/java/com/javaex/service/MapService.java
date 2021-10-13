@@ -106,7 +106,7 @@ public class MapService {
 		return "";
 	}
 	//버스킹존 위치데이터
-	public List<BuskingzoneVo> buskingzoneList() {
+	public List<BuskingzoneVo> buskingzoneLists() {
 		List<BuskingzoneVo> buskingzoneList = mapDao.buskingzoneList();
 		return buskingzoneList;
 	}

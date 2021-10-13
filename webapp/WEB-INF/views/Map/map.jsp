@@ -87,12 +87,12 @@
 		}
 		.formsearch{
 		padding: 10px 0px 10px 0px;
-		background-color: #00BFFF;
+		background-color: #8D2DE0;
 		box-shadow: 0 2px 1px 0 rgb(0 0 0 / 15%);
 		}
 		
 		.boxsearch{
-	    border:1px solid blue;
+	    border:1px solid #BF00FF;
 	    position:relative;
 	    max-width:500px;
 	    margin-left:10px;
@@ -201,6 +201,11 @@ var mapContainer = document.getElementById('map'), // 지도의 중심좌표
 
 var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 
+function relayout() {    
+    
+    map.relayout();
+}
+
 //========================================
 //장소 검색 객체를 생성합니다
 var ps = new kakao.maps.services.Places();  
@@ -282,7 +287,7 @@ var num2 = -1;
 
 //======================================지도 중심좌표 변경
 
-kakao.maps.event.addListener(map, 'center_changed', function() {         
+kakao.maps.event.addListener(map, 'idle', function() {         
 
     // 지도의 중심좌표를 얻어옵니다 
     var latlngg = map.getCenter(); 

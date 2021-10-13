@@ -63,7 +63,7 @@
 	
 	<select id="buskingList" resultType="buskingzoneVo">
 	<![CDATA[
-	select com_name,latitude,longitude
+	select user_no,com_name,latitude,longitude
 	from company
 	]]>
 	</select>

@@ -19,7 +19,7 @@
 	    .info .close:hover {cursor: pointer;}
 	    .info .body {position: relative;overflow: hidden;}
 	    .info .desc {position: relative;margin: 13px 0 0 90px;height: 75px;}
-	    .desc .ellipsis {overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+
 	    .desc .jibun {font-size: 11px;color: #888;margin-top: -2px;}
 	    .info .img {position: absolute;top: 6px;left: 5px;width: 83px;height: 71px;border: 1px solid #ddd;color: #888;overflow: hidden;}
 	    .info:after {content: '';position: absolute;margin-left: -12px;left: 50%;bottom: 0;width: 22px;height: 12px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
@@ -34,7 +34,7 @@
 		#menu_wrap .option p {margin:10px 0;}  
 		#menu_wrap .option button {margin-left:5px;}
 		
-		#overlayweb_table {position:absolute;top:0px;left:365px;width:360px;height:100%;z-index: 1;background-color:blue;}
+		#overlayweb_table {position:absolute;top:0px;left:365px;width:360px;height:100%;z-index: 1;background-color:White;}
 		
 		#searchList li {list-style: none;}
 		#searchList .item {position:relative;border-bottom:1px solid #888;overflow: hidden;cursor: pointer;min-height: 65px;}
@@ -63,7 +63,7 @@
 
 		
 		#keyword{
-		border: 1px solid skyblue;
+		border:0;
 		color:black;
 		padding: 5px;
 		}
@@ -85,20 +85,26 @@
 
 		
 		.listimg{
-		padding: 5px 0px 0px 5px;
+		padding: 5px 5px 5px 5px;
 		}
+		.listimg:hover {
+    	background: #E0ECF8;
+  		}
+		
+		
 		.formsearch{
 		padding: 10px 0px 10px 0px;
-		background-color: #00BFFF;
+		background-color: #8D2DE0;
 		box-shadow: 0 2px 1px 0 rgb(0 0 0 / 15%);
 		}
 		
 		.boxsearch{
-	    border:1px solid blue;
+	    border:1px solid #BF00FF;
 	    position:relative;
 	    max-width:500px;
 	    margin-left:10px;
 	    margin-right:10px;
+	    box-shadow: 0 2px 1px 0 rgb(0 0 0 / 15%);
 		}
 		.inputsearch {
 		    outline:0;
@@ -117,9 +123,19 @@
 		    right:10px;
 		    transform:translateY(-50%);
 		}
-		.listfont{
-			font-size:20px;
+		.listfont_title{
+			width:220px;
+			font-size:22px;
+			font-weight: bold;
+			text-align: center;
 		}
+		
+		.listfont_address{
+			font-size:14px;
+			
+		}
+		
+		
 		
 		.scroll{
 		    padding: 0px 13px 0px 13px;
@@ -137,18 +153,43 @@
 		/* 스크롤바 막대 설정*/
 		.type1::-webkit-scrollbar-thumb{
 		    height: 17%;
-		    background-color: #00BFFF;   
+		    background-color: #8D2DE0;   
 		}
 		
 		/* 스크롤바 뒷 배경 설정*/
 		.type1::-webkit-scrollbar-track{
-		    background-color: 	#AFEEEE;
+		    background-color: 	#E2A9F3;
 		} 
 		
 		#com_name{
 			text-align: center;font-size:40px;
 		}
 		
+	.button_application {
+	  background-color: #D358F7;
+	  border: none;
+	  color: white;
+	  padding: 15px 32px;
+	  text-align: center;
+	  text-decoration: none;
+	  display: inline-block;
+	  font-size: 16px;
+	}
+
+	
+	.affiliate_info{
+		font-size: 16px;
+	}
+
+	.Whether{
+	border: 0px;
+	background-color: #FFFFFF;
+	}
+
+
+
+		
+
 	</style>
 <!-- 부트스트랩 -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
@@ -270,21 +311,20 @@ function displayPlaces(places) {
 }
 
 
-
+//kakao.maps.event.addListener(map, 'idle', function() {    
 //========================================
 
-kakao.maps.event.addListener(map, 'center_changed', function() {         
+kakao.maps.event.addListener(map, 'idle', function() {         
 
     // 지도의 중심좌표를 얻어옵니다 
     var latlngg = map.getCenter(); 
 	//console.log("중심좌표!"+ latlngg);
 	
 	var boundss = map.getBounds();
-	
+	console.log(boundss);
 	var neLatLng = boundss.getNorthEast();
     var nlat = neLatLng.getLat();
     var nlng = neLatLng.getLng();
-	
     var swLatLng = boundss.getSouthWest();
     var slat = swLatLng.getLat();
     var slng = swLatLng.getLng();
@@ -306,7 +346,7 @@ kakao.maps.event.addListener(map, 'center_changed', function() {
 		dataType : "json",
 		success : function(buskingzoneList){
  			for(var i=0; i<buskingzoneList.length; i++){
-
+			console.log(buskingzoneList.length);
 			var itemEl = getListItem(i, buskingzoneList[i]);
 			
 			fragment.appendChild(itemEl);
@@ -327,20 +367,31 @@ function getListItem(index, buskingzoneList) {
     itemStr = '';
     itemStr +='<div class="body">'; 
     itemStr +='<div class="img listimg" onclick="overlayVo('+buskingzoneList.user_no+')">';
-    
-    itemStr +='<div class="ellipsis listfont">'+buskingzoneList.com_name+'</div>';
-    itemStr +='<div class="ellipsis listfont">'+buskingzoneList.address+'</div>';
-    itemStr +='<div class="ellipsis listfont">'+buskingzoneList.com_number+'</div>';
-    
-    
+
+    itemStr +='<table>'; 
+    itemStr +='<tr><td rowspan="4">';
 	if(sumimg.indexOf("noimg") == 0){
     itemStr +='<img src="${pageContext.request.contextPath}/assets/image/blog/img/noimg.png" width="150" height="150" >';
     }else{
-    itemStr +='<img src="${pageContext.request.contextPath }/upload/'+buskingzoneList.com_img+'" width="350" height="250">';
+    itemStr +='<img src="${pageContext.request.contextPath }/upload/'+buskingzoneList.com_img+'" width="150" height="150">';
     }
+	itemStr +='</td>';
+	
+    itemStr +='<tr><td>';
+    itemStr +='<div class="listfont_title" >'+buskingzoneList.com_name+'</div>';
+    itemStr +='</td></tr>';
     
-    itemStr +='</div>';
+    itemStr +='<tr><td>';
+    itemStr +='<div class="listfont_address"><img src="${pageContext.request.contextPath}/assets/image/map/address.png" width="40" height="40" >'+buskingzoneList.address+'</div>';
+    itemStr +='</td></tr>';
+    
+    itemStr +='<tr><td>';
+    itemStr +='<div class="listfont"><img src="${pageContext.request.contextPath}/assets/image/map/Phone.png" width="40" height="40" >'+buskingzoneList.com_number+'</div>';
+    itemStr +='</td></tr>';
 
+    itemStr +='</tr>';
+    itemStr +='</table>';
+    itemStr +='</div>';
     itemStr +='</div>';
     
 
@@ -380,10 +431,15 @@ function overlayVo(no) {
 	
 };
 
-
+var positions = [];
+var contentinfo = [];
+var userNos = [];
+var num = -1;
+var num2 = -1;
 
 //========================================================
-if (navigator.geolocation) {
+	
+ if (navigator.geolocation) {
     
     // GeoLocation을 이용해서 접속 위치를 얻어옵니다
     navigator.geolocation.getCurrentPosition(function(position) {
@@ -401,22 +457,21 @@ if (navigator.geolocation) {
         var locPosition = new kakao.maps.LatLng(lat, lon) // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
      	
         // 리스트가져온거 빼주기
-        var positions = [];
-        var contentinfo = [];
-        var num = -1;
-        var num2 = -1;
+
         
         <c:forEach items="${buskingzoneList}" var="buskingzoneList">
         num += 1;
         positions[num] = new kakao.maps.LatLng(${buskingzoneList.latitude}, ${buskingzoneList.longitude});
         contentinfo[num] = "${buskingzoneList.com_name}";
+		userNos[num] = "${buskingzoneList.user_no}";
         </c:forEach>
         
         for(let i=0; i < positions.length; i++){
             num2 += 1;
         	var data = positions[i];
         	var content = contentinfo[i];
-            displayMarker(locPosition,data,markerImage,content);
+			var userNo = userNos[i];
+            displayMarker(locPosition,data,markerImage,content,userNo);
         }
         
 
@@ -426,16 +481,11 @@ if (navigator.geolocation) {
             
       });
     
-} else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
-    
-    var locPosition = new kakao.maps.LatLng(33.450701, 126.570667)   
-        
-    displayMarker(locPosition);
 }
 
 
 
-function displayMarker(locPosition,data,markerImage,content) {
+function displayMarker(locPosition,data,markerImage,content,userNo) {
 
     // 마커를 생성합니다
     var marker = new kakao.maps.Marker({  
@@ -450,7 +500,11 @@ function displayMarker(locPosition,data,markerImage,content) {
     });
     infowindow.open(map, marker); 
     // 지도 중심좌표를 접속위치로 변경합니다
-    map.setCenter(locPosition);      
+    
+    kakao.maps.event.addListener(marker, 'click', function() {
+    	overlayVo(userNo);
+    });
+     
 }    
 
 
@@ -497,53 +551,101 @@ function overlay(mapOverlay,info){
 	'	</div>'+
 	
 	'	<div>'+
-	'		<div>대표자명 : '+ mapOverlay.overlayList.ceo_name + '</div>'+
-	'		<div>전화번호 : '+ mapOverlay.overlayList.com_number + '</div>'+
-	'		<div>상세주소 : '+ mapOverlay.overlayList.address + '</div>'+
+	'		<div class="affiliate_info">대표자명 : '+ mapOverlay.overlayList.ceo_name + '</div>'+
+	'		<div class="affiliate_info">전화번호 : '+ mapOverlay.overlayList.com_number + '</div>'+
+	'		<div class="affiliate_info">상세주소 : '+ mapOverlay.overlayList.address + '</div>'+
 	'		<hr>'+
 	'	</div>'+
+	
+	'<table width="359">'+
+	'<tr align ="center">'+
+	'<td width="150px">장소</td>'+
+	'<td>'+
 	'	<div>'+
-	'	<select name="stage" id="stage-select">'+
+	'	<select name="stage" id="stage-select" style="width:180px;height:36px; margin-bottom:10px">'+
 	'           <option value="non">장소 선택</option>';
 	for(var i=0; i<info.length; i++){
 	str +='		<option value="'+info[i]+'">'+info[i]+'';
 	str +='		</option>';
 	}
 	str +='	</select>';
+	str +='	</div>';
+	str +='</td>';
+	str +='</tr>';
 	
-	str +=' <select name="stage_date" id="stage_date">';
+	str +='<tr align ="center">';
+	str +='<td width="150px">날짜</td>';
+	str +='<td>';
+	str +='	<div>';
+	str +=' <select name="stage_date" id="stage_date" style="width:180px;height:36px; margin-bottom:10px">';
 	str +='		<option value="">날짜 선택';
 	str +='		</option>';
 	str +='	</select>';
+	str +='	</div>';
+	str +='</td>';
+	str +='</tr>';
 	
-	str +=' <select name="stage_time" id="stage_time">';
+	str +='<tr align ="center">';
+	str +='<td width="150px">시간</td>';
+	str +='<td>';
+	str +='	<div>';
+	str +=' <select name="stage_time" id="stage_time" style="width:180px;height:36px; margin-bottom:10px">';
 	str +='		<option value="">시간 선택';
 	str +='		</option>';
 	str +='	</select>';
+	str +='	</div>';
+	str +='</td>';
+	str +='</tr>';
 	
+	str +='<tr align ="center">';
+	str +='<td width="150px">우천시</td><td>';
 	str +='<div>';
-	str +='<input type="text" name="zoneRequest" value="" disabled>';
+	str +='<input type="text" class="Whether" name="rain" value="" style="width:180px; margin-bottom:10px" disabled>';
 	str +='</div>';
+	str +='</td></tr>';
 	
+	str +='<tr align ="center">';
+	str +='<td width="150px">무대조명</td><td>';
 	str +='<div>';
-	str +='<input type="text" name="rain" value="" disabled>';
-	str +='<input type="text" name="light" value="" disabled>';
-	str +='<input type="text" name="parking" value="" disabled>';
+	str +='<input type="text" class="Whether" name="light" value="" style="width:180px; margin-bottom:10px" disabled>';
 	str +='</div>';
+	str +='</td></tr>';
 	
+	str +='<tr align ="center">';
+	str +='<td width="150px">주차여부</td><td>';
 	str +='<div>';
-	str += '<input type="text" name="artistRequest" value="">';
+	str +='<input type="text" class="Whether" name="parking" value="" style="width:180px; margin-bottom:10px" disabled>';
 	str +='</div>';
+	str +='</td></tr>';
 	
+	
+	str +='<tr align ="center">';
+	str +='<td width="150px">제휴사 요청사항</td><td>';
+	str +='<div>';
+	str +='<input type="text" class="Whether" name="zoneRequest" value="" style="width:180px;height:100px; margin-bottom:10px" disabled>';
+	str +='</div>';
+	str +='</td></tr>';
+	
+
+	str +='<tr align ="center">';
+	str +='<td width="150px">아티스트 요청사항</td><td>';
+	str +='<div>';
+	str += '<input type="text" name="artistRequest" value="" style="width:180px;height:100px; margin-bottom:10px">';
+	str +='</div>';
+	str +='</td></tr>';
+	
+	str +='<tr align ="center">';
+	str +='<td colspan = "2">';
 	str +='<div>';
 	<c:if test="${authUser.user_no != null}">
-	str += '<button id="btnSubmit" onclick="relay();">공연신청</button>';
+	str += '<button class="button_application" id="btnSubmit" onclick="relay();">공연신청</button>';
 	str += '<input type="hidden" name="userNo" value="'+${authUser.user_no}+'">';
 	</c:if>
 	str +='</div>';
+	str +='</td></tr>';
 	
 	str +='	</div>';
-	str +='</div>';
+	str +='</table>';
 
 	
 	
@@ -650,21 +752,21 @@ function renderTime(timeVo) {
 	$("[name='zoneRequest']").val(timeVo.requirements);
 	
 	if("1" == timeVo.rain_progress){
-		$("[name='rain']").val("우천시 가능");
+		$("[name='rain']").val("가능");
 	}else{
-		$("[name='rain']").val("우천시 불가능");
+		$("[name='rain']").val("불가능");
 	}
 	
 	if("1" == timeVo.stage_light){
-		$("[name='light']").val("무대조명 가능");
+		$("[name='light']").val("가능");
 	}else{
-		$("[name='light']").val("무대조명 불가능");
+		$("[name='light']").val("불가능");
 	}
 	
 	if("1" == timeVo.parking){
-		$("[name='parking']").val("주차 가능");
+		$("[name='parking']").val("가능");
 	}else{
-		$("[name='parking']").val("주차 불가능");
+		$("[name='parking']").val("불가능");
 	}
 
 

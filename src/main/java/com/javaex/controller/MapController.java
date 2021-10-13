@@ -49,7 +49,7 @@ public class MapController {
 	@RequestMapping("/buskingzone")
 	public String busKingzoneList(Model model) {
 		System.out.println("버스킹존 컨트롤러");
-		List<BuskingzoneVo> buskingzoneList = mapService.buskingzoneList();
+		List<BuskingzoneVo> buskingzoneList = mapService.buskingzoneLists();
 		model.addAttribute("buskingzoneList", buskingzoneList);
 		System.out.println(buskingzoneList);
 		
@@ -110,7 +110,6 @@ public class MapController {
 	//아티스트 공연신청
 	@RequestMapping("/buskingApp")
 	public String buskingApp(@RequestParam("user_no") int user_no, @RequestParam("time_no") int time_no, @RequestParam("artistRequest") String artistRequest) {
-		System.out.println("테스트 컨트롤러 삭제할거임");
 		
 		mapService.buskingApp(user_no,time_no,artistRequest);
 		
