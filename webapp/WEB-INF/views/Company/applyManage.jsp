@@ -124,7 +124,7 @@
 									<td>${busappVo.nickname}</td>
 									<!-- 장르 -->
 									<c:if test="${busappVo.genre == 1}">
-										<td class="articon"><img class="genre-img2" src="${pageContext.request.contextPath}/assets/image/blog/icon/ballade.png" alt="발라드"></td>
+										<td class="articon"><img class="genre-img" src="${pageContext.request.contextPath}/assets/image/blog/icon/ballade.png" alt="발라드"></td>
 									</c:if>
 		
 									<c:if test="${busappVo.genre == 2}">
@@ -294,8 +294,33 @@ $("#searchBtn").on("click", function() {
 	form.submit();
 });
 
+$("#profilesubmit").on("click", function(e) {
+	e.preventDefault();
+	var form = $(this).parents('form');
+	
+	Swal.fire({
+		title: '제휴사 등록',
+		text: "제휴사 등록을 하시겠습니까?",
+		icon: 'question',
+		showCancelButton: true,
+		confirmButtonColor: '#3085d6',
+		cancelButtonColor: '#d33',
+		confirmButtonText: '확인',
+		cancelButtonText: '취소'
+	}).then((result) => {
+		if (result.isConfirmed) {
+			form.submit();
+		} 
+	})
+
+	  
+	
+
+})
+
 //수락 버튼
-$("#acceptBtn").on("click", function() {
+$("#acceptBtn").on("click", function(e) {
+	e.preventDefault();
 	console.log("수락 버튼");
 	var array = new Array();
 	$('input:checkbox[name=apply_no]:checked').each(function() {
@@ -304,13 +329,28 @@ $("#acceptBtn").on("click", function() {
 	
 	$("#arrayParam").val(array);
 	$("#status").val("1");
-	
+	//confirm창
 	$("#form").attr("action", "${pageContext.request.contextPath }/Company/statusModify");
-	$("#form").submit();
+	
+	Swal.fire({
+		title: '공연신청 수락',
+		text: "공연신청을 수락하시겠습니까?",
+		icon: 'question',
+		showCancelButton: true,
+		confirmButtonColor: '#3085d6',
+		cancelButtonColor: '#d33',
+		confirmButtonText: '수락',
+		cancelButtonText: '취소'
+	}).then((result) => {
+		if (result.isConfirmed) {
+			$("#form").submit();
+		} 
+	})
 });
 
 //거절 버튼
-$("#refuseBtn").on("click", function() {
+$("#refuseBtn").on("click", function(e) {
+	e.preventDefault();
 	console.log("거절 버튼");
 	var array = new Array();
 	$('input:checkbox[name=apply_no]:checked').each(function() {
@@ -319,9 +359,22 @@ $("#refuseBtn").on("click", function() {
 	
 	$("#arrayParam").val(array);
 	$("#status").val("2");
-	
+	//confirm창
 	$("#form").attr("action", "${pageContext.request.contextPath }/Company/statusModify");
-	$("#form").submit();
+	Swal.fire({
+		title: '공연신청 거절',
+		text: "공연신청을 거절하시겠습니까?",
+		icon: 'question',
+		showCancelButton: true,
+		confirmButtonColor: '#3085d6',
+		cancelButtonColor: '#d33',
+		confirmButtonText: '거절',
+		cancelButtonText: '취소'
+	}).then((result) => {
+		if (result.isConfirmed) {
+			$("#form").submit();
+		} 
+	})
 });
 
 //상세정보 클릭
