@@ -13,30 +13,31 @@ insert into users values(seq_user_no.nextval,'1113','1113','1113@naver.com','비
 insert into users values(seq_user_no.nextval,'1114','1114','1114@naver.com','아칼리',null,null,null,null,null,null,null,null,null,null,null,'1','2',null);
 --아티스트들 생성
 /*임의의 정보 넣기*/
-insert INTO users VALUES (seq_user_no.nextval, 'aaa', 1234, 'aaa@naver.com', '이달의 소녀', '10.PNG', '김밥통', null, null, 19980505, 2, '왁킹댄스', 0, 15, 15, sysdate, 2, 1, 30);
-insert INTO users VALUES (seq_user_no.nextval, 'bbb', 1234, 'bbb@naver.com', '워너비', '1.PNG', '홍길동', '010-0000-0000', 'male', 20000101, 1, '솔로', 1, 10, 40, sysdate, 2, 1, 50);
-insert INTO users VALUES (seq_user_no.nextval, 'ccc', 1234, 'ccc@naver.com', '박서준', '8.PNG', '박서준', '010-1234-5000', 'male', 19970216, 1, '솔로', 1, 60, 40, sysdate, 2, 1, 100);
-insert INTO users VALUES (seq_user_no.nextval, 'ddd', 1234, 'ddd@naver.com', '제니', '52.PNG', '김제니', '010-9978-0345', 'female', 19960520, 2, '솔로가수', 1, 55, 30, sysdate, 2, 1, 85);
-insert INTO users VALUES (seq_user_no.nextval, 'eee', 1234, 'eee@naver.com', '이여름', '53.PNG', '이여름', '010-6720-0080', 'female', 19981109, 5, '솔로', 1, 67, 20, sysdate, 2, 1, 87);
-insert INTO users VALUES (seq_user_no.nextval, 'fff', 1234, 'fff@naver.com', '김동률', '41.PNG', '김동률', '010-2998-0000', 'male', 20000101, 1, '솔로', 1, 67, 15, sysdate, 2, 1, 82);
-insert INTO users VALUES (seq_user_no.nextval, 'ggg', 1234, 'ggg@naver.com', 'ROSE', '20.PNG', '박채영', '010-3212-1065', 'female', 19960211, 4, 'KPOP', 1, 89, 20, sysdate, 2, 1, 109);
-insert INTO users VALUES (seq_user_no.nextval, 'hhh', 1234, 'hhh@naver.com', '김현우', '13.PNG', '김현우', '010-1343-6674', 'male', 19950616, 1, '솔로', 1, 40, 18, sysdate, 2, 1, 58);
-insert INTO users VALUES (seq_user_no.nextval, 'iii', 1234, 'iii@naver.com', '정국', '9.PNG', '전정국', '010-7756-3490', 'male', 19970905, 2, '솔로', 1, 32, 30, sysdate, 2, 1, 62);
-insert INTO users VALUES (seq_user_no.nextval, 'jjj', 1234, 'jjj@naver.com', '박혜원', '43.PNG', '박혜원', null, null, 20020320, 5, '통기타솔로', 0, 14, 10, sysdate, 2, 1, 24);
-insert INTO users VALUES (seq_user_no.nextval, 'kkk', 1234, 'kkk@naver.com', '양요섭', '48.PNG', '양요섭', null, null, 19960129, 1, '발라드가수', 0, 45, 44, sysdate, 2, 1, 89);
+insert INTO users VALUES (seq_user_no.nextval, 'aaa', '1234', 'aaa@naver.com', '이달의 소녀', '10.PNG', '김밥통', null, null, '19980505', '2', '왁킹댄스', '0', 15, 15, sysdate, '2', '1', 30);
+insert INTO users VALUES (seq_user_no.nextval, 'bbb', '1234', 'bbb@naver.com', '워너비', '1.PNG', '홍길동', '010-0000-0000', 'male', '20000101', '1', '솔로', '1', 10, 40, sysdate, '2', '1', 50);
+insert INTO users VALUES (seq_user_no.nextval, 'ccc', '1234', 'ccc@naver.com', '박서준', '8.PNG', '박서준', '010-1234-5000', 'male', '19970216', '1', '솔로', '1', 60, 40, sysdate, '2', '1', 100);
+insert INTO users VALUES (seq_user_no.nextval, 'ddd', '1234', 'ddd@naver.com', '제니', '52.PNG', '김제니', '010-9978-0345', 'female', '19960520', '2', '솔로가수', '1', 55, 30, sysdate, '2', '1', 85);
+insert INTO users VALUES (seq_user_no.nextval, 'eee', '1234', 'eee@naver.com', '이여름', '53.PNG', '이여름', '010-6720-0080', 'female', '19981109', '5', '솔로', '1', 67, 20, sysdate, '2', '1', 87);
+insert INTO users VALUES (seq_user_no.nextval, 'fff', '1234', 'fff@naver.com', '김동률', '41.PNG', '김동률', '010-2998-0000', 'male', '20000101', '1', '솔로', '1', 67, 15, sysdate, '2', '1', 82);
+insert INTO users VALUES (seq_user_no.nextval, 'ggg', '1234', 'ggg@naver.com', 'ROSE', '20.PNG', '박채영', '010-3212-1065', 'female', '19960211', '4', 'KPOP', '1', 89, 20, sysdate, '2', '1', 109);
+insert INTO users VALUES (seq_user_no.nextval, 'hhh', '1234', 'hhh@naver.com', '김현우', '13.PNG', '김현우', '010-1343-6674', 'male', '19950616', '1', '솔로', '1', 40, 18, sysdate, '2', '1', 58);
+insert INTO users VALUES (seq_user_no.nextval, 'iii', '1234', 'iii@naver.com', '정국', '9.PNG', '전정국', '010-7756-3490', 'male', '19970905', '2', '솔로', '1', 32, 30, sysdate, '2', '1', 62);
+insert INTO users VALUES (seq_user_no.nextval, 'jjj', '1234', 'jjj@naver.com', '박혜원', '43.PNG', '박혜원', null, null, '20020320', '5', '통기타솔로', '0', 14, 10, sysdate, '2', '1', 24);
+insert INTO users VALUES (seq_user_no.nextval, 'kkk', '1234', 'kkk@naver.com', '양요섭', '48.PNG', '양요섭', null, null, '19960129', '1', '발라드가수', '0', 45, 44, sysdate, '2', '1', 89);
 
 
-insert INTO users VALUES (seq_user_no.nextval, 'lll', 1234, 'lll@naver.com', 'TWICE', '44.PNG', '김나연', '010-5512-8530', 'female', 19961209, 3, '솔로', 1, 50, 34, sysdate, 2, 1, 84);
-insert INTO users VALUES (seq_user_no.nextval, 'mmm', 1234, 'mmm@naver.com', '이무진', '17.PNG', '이무진', '010-9096-1137', 'male', 19991020, 6, '카드마술', 1, 26, 20, sysdate, 2, 1, 46);
-insert INTO users VALUES (seq_user_no.nextval, 'nnn', 1234, 'nnn@naver.com', '사나', '16.PNG', '박사나', '010-3677-8989', 'female', 20020309, 2, '솔로', 1, 15, 10, sysdate, 2, 1, 25); 
-insert INTO users VALUES (seq_user_no.nextval, 'ooo', 1234, 'ooo@naver.com', '김선호', '4.PNG', '김선호', '010-3677-8989', 'male', 20010628, 4, '솔로', 1, 37, 49, sysdate, 2, 1, 86);
-insert INTO users VALUES (seq_user_no.nextval, 'zzz', 1234, 'zzz@naver.com', '김동호', '6.PNG', '김동호', '010-2998-0001', 'male', 20000101, 1, '솔로', 0, 67, 50, sysdate, 2, 1, 117);
-insert INTO users VALUES (seq_user_no.nextval, 'PPP', 1234, 'PPP@naver.com', 'ICON', '49.PNG', '박정진', '010-5656-3788', 'male', 19950326, 3, '힙합', 0, 20, 55, sysdate, 2, 1, 77);
-insert INTO users VALUES (seq_user_no.nextval, 'qqq', 1234, 'qqq@naver.com', '이제훈', '38.PNG', '이제훈', '010-7749-0881', 'male', 19980419, 5, '베이스', 0, 22, 26, sysdate, 2, 1, 46);
-insert INTO users VALUES (seq_user_no.nextval, 'rrr', 1234, 'rrr@naver.com', '홀리뱅(HOLLYBANG)', '14.PNG', '홀리뱅', '010-2280-1445', 'female', 19940513, 6, '행위예술', 0, 49, 32, sysdate, 2, 1, 81);
-insert INTO users VALUES (seq_user_no.nextval, 'sss', 1234, 'sss@naver.com', '미노이(MENOI)', '11.PNG', '이민영', '010-0007-7654', 'female', 19961124, 4, '알앤비', 0, 33, 10, sysdate, 2, 1, 43);
+insert INTO users VALUES (seq_user_no.nextval, 'lll', '1234', 'lll@naver.com', 'TWICE', '44.PNG', '김나연', '010-5512-8530', 'female', '19961209', '3', '솔로', '1', 50, 34, sysdate, '2', '1', 84);
+insert INTO users VALUES (seq_user_no.nextval, 'mmm', '1234', 'mmm@naver.com', '이무진', '17.PNG', '이무진', '010-9096-1137', 'male', '19991020', '6', '카드마술', '1', 26, 20, sysdate, '2', '1', 46);
+insert INTO users VALUES (seq_user_no.nextval, 'nnn', '1234', 'nnn@naver.com', '사나', '16.PNG', '박사나', '010-3677-8989', 'female', '20020309', '2', '솔로', '1', 15, 10, sysdate, '2', '1', 25); 
+insert INTO users VALUES (seq_user_no.nextval, 'ooo', '1234', 'ooo@naver.com', '김선호', '4.PNG', '김선호', '010-3677-8989', 'male', '20010628', '4', '솔로', '1', 37, 49, sysdate, '2', '1', 86);
+insert INTO users VALUES (seq_user_no.nextval, 'zzz', '1234', 'zzz@naver.com', '김동호', '6.PNG', '김동호', '010-2998-0001', 'male', '20000101', '1', '솔로', '0', 67, 50, sysdate, '2', '1', 117);
+insert INTO users VALUES (seq_user_no.nextval, 'PPP', '1234', 'PPP@naver.com', 'ICON', '49.PNG', '박정진', '010-5656-3788', 'male', '19950326', '3', '힙합', '0', 20, 55, sysdate, '2', '1', 77);
+insert INTO users VALUES (seq_user_no.nextval, 'qqq', '1234', 'qqq@naver.com', '이제훈', '38.PNG', '이제훈', '010-7749-0881', 'male', '19980419', '5', '베이스', '0', 22, 26, sysdate, '2', '1', 46);
+insert INTO users VALUES (seq_user_no.nextval, 'rrr', '1234', 'rrr@naver.com', '홀리뱅(HOLLYBANG)', '14.PNG', '홀리뱅', '010-2280-1445', 'female', '19940513', '6', '행위예술', '0', 49, 32, sysdate, '2', '1', 81);
+insert INTO users VALUES (seq_user_no.nextval, 'sss', '1234', 'sss@naver.com', '미노이(MENOI)', '11.PNG', '이민영', '010-0007-7654', 'female', '19961124', '4', '알앤비', '0', 33, 10, sysdate, '2', '1', 43);
 
 --Blog
+insert into blog values (1, '안녕하세요. 김덕배입니다.', null, null, null, null);
 insert into blog values (7, '안녕하세요. aaa입니다.', null, null, null, null);
 insert into blog values (8, '안녕하세요. bbb입니다.', null, null, null, null);
 insert into blog values (9, '안녕하세요. ccc입니다.', null, null, null, null);
@@ -59,7 +60,14 @@ insert into blog values (25, '안녕하세요. rrr입니다.', null, null, null,
 insert into blog values (26, '안녕하세요. sss입니다.', null, null, null, null);
 
 --Category
-insert into category values (seq_cate_no.nextval, 7, 2, '타임라인');
+insert into category values(seq_cate_no.nextval, 1, 1, '공지사항');
+insert into category values(seq_cate_no.nextval, 1, 2, '타임라인');
+insert into category values(seq_cate_no.nextval, 1, 3, '갤러리');
+insert into category values(seq_cate_no.nextval, 1, 4, '방명록');
+insert into category values(seq_cate_no.nextval, 7, 1, '공지사항');
+insert into category values(seq_cate_no.nextval, 7, 2, '타임라인');
+insert into category values(seq_cate_no.nextval, 7, 3, '갤러리');
+insert into category values(seq_cate_no.nextval, 7, 4, '방명록');
 insert into category values (seq_cate_no.nextval, 8, 2, '타임라인');
 insert into category values (seq_cate_no.nextval, 9, 2, '타임라인');
 insert into category values (seq_cate_no.nextval, 10, 2, '타임라인');
