@@ -10,9 +10,9 @@
     <style>
     	body {overflow:hidden}
     
-	    .wrap {position: absolute;left: 0;bottom: 40px;width: 288px;height: 132px; margin-left: -144px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
+	    .wrap {position: absolute;left: 0;bottom: 40px;width: 150px;height: 51px; margin-left: -75px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
 	    .wrap * {padding: 0;margin: 0;}
-	    .wrap .info {width: 286px;height: 120px;border-radius: 5px;border-bottom: 2px solid #ccc;border-right: 1px solid #ccc;overflow: hidden;background: #fff;}
+	    .wrap .info {width: 150px;height: 40px;border-radius: 5px;border-bottom: 2px solid #ccc;border-right: 1px solid #ccc;overflow: hidden;background: #fff;}
 	    .wrap .info:nth-child(1) {border: 0;box-shadow: 0px 1px 2px #888;}
 	    .info .title {padding: 5px 0 0 10px;height: 30px;background: #eee;border-bottom: 1px solid #ddd;font-size: 18px;font-weight: bold;}
 	    .info .close {position: absolute;top: 10px;right: 10px;color: #888;width: 17px;height: 17px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');}
@@ -27,7 +27,7 @@
 	    
 		.map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
 		.map_wrap {position:relative;width:100%;height:100%;}
-		#menu_wrap {position:absolute;top:0;left:0;bottom:0;width:365px;height:100%;padding:0px;overflow-y:auto;background:rgba(255, 255, 255, 0.7);z-index: 1;font-size:12px;}
+		#menu_wrap {position:absolute;top:0;left:0;bottom:0;width:365px;height:100%;padding:0px;overflow-y:auto;background:#ffffff;z-index: 1;font-size:12px;}
 		.bg_white {background:#fff;}
 		#menu_wrap hr {display: block; height: 1px;border: 0; border-top: 2px solid #5F5F5F;margin:3px 0;}
 		#menu_wrap .option{text-align: center;}
@@ -66,13 +66,16 @@
 		border:0;
 		color:black;
 		padding: 5px;
+		border:2px solid #732991;
+		margin:10px;
 		}
 		
 		#btn_sh{
 		border: 0px solid;
 		background-color: #ffffff;
-		padding: 5px;
-
+		margin-right: -15px;
+    	margin-top: -16px;
+    	background: rgba(255, 255, 255, 0.25);
 		}
 		
 		#map{
@@ -93,18 +96,18 @@
 		
 		
 		.formsearch{
+		width:344px;
 		padding: 10px 0px 10px 0px;
-		background-color: #8D2DE0;
-		box-shadow: 0 2px 1px 0 rgb(0 0 0 / 15%);
+		background-color: #FFFFFF;
 		}
 		
 		.boxsearch{
-	    border:1px solid #BF00FF;
+	    border:0px solid #BF00FF;
 	    position:relative;
 	    max-width:500px;
 	    margin-left:10px;
 	    margin-right:10px;
-	    box-shadow: 0 2px 1px 0 rgb(0 0 0 / 15%);
+
 		}
 		.inputsearch {
 		    outline:0;
@@ -115,7 +118,9 @@
 		    padding-right:60px;
 		    box-sizing:border-box;
 		    font-weight:bold;
-		    font-size:2rem;
+		    font-size:20px;
+		    margin-left:-30px;
+
 		}
 		.buttonsearch {
 		    position:absolute;
@@ -124,14 +129,17 @@
 		    transform:translateY(-50%);
 		}
 		.listfont_title{
-			width:220px;
-			font-size:22px;
+			width:250px;
+			font-size:30px;
 			font-weight: bold;
-			text-align: center;
 		}
 		
 		.listfont_address{
-			font-size:14px;
+			font-size:20px;
+			
+		}
+		.listfont_number{
+			font-size:20px;
 			
 		}
 		
@@ -153,12 +161,12 @@
 		/* 스크롤바 막대 설정*/
 		.type1::-webkit-scrollbar-thumb{
 		    height: 17%;
-		    background-color: #8D2DE0;   
+   
 		}
 		
 		/* 스크롤바 뒷 배경 설정*/
 		.type1::-webkit-scrollbar-track{
-		    background-color: 	#E2A9F3;
+
 		} 
 		
 		#com_name{
@@ -186,8 +194,26 @@
 	background-color: #FFFFFF;
 	}
 
-
-
+	.sumimg{
+	width:350px;height=200px;
+	
+	}
+	
+	.ovralyfont{
+	
+	font-size:15px;
+	text-align: center;
+	
+	}
+	
+	
+/* 	div *,
+	div *:before,
+	div *:after {
+	    -webkit-box-sizing: content-box !important;
+	    -moz-box-sizing: content-box !important;
+	    box-sizing: content-box !important;
+	} */
 		
 
 	</style>
@@ -224,6 +250,7 @@
                 	<div class="boxsearch">
                     <input type="text" value="강남역" id="keyword" class="inputsearch" placeholder="장소 입력"> 
                     <button type="submit" id="btn_sh" class="buttonsearch"><img src="/Buskeround/assets/image/map/searchbtn.png" width="35px" height="35px"></button> 
+                    <img src="${pageContext.request.contextPath}/assets/image/map/busr.png" style="width:353px">
                     </div>
                 </form>
             </div>
@@ -305,6 +332,8 @@ function displayPlaces(places) {
         // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
         // LatLngBounds 객체에 좌표를 추가합니다
         bounds.extend(placePosition);
+        
+        
 
     // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
     map.setBounds(bounds);
@@ -368,32 +397,16 @@ function getListItem(index, buskingzoneList) {
     itemStr +='<div class="body">'; 
     itemStr +='<div class="img listimg" onclick="overlayVo('+buskingzoneList.user_no+')">';
 
-    itemStr +='<table>'; 
-    itemStr +='<tr><td rowspan="4">';
 	if(sumimg.indexOf("noimg") == 0){
-    itemStr +='<img src="${pageContext.request.contextPath}/assets/image/blog/img/noimg.png" width="150" height="150" >';
+    itemStr +='<img src="${pageContext.request.contextPath}/assets/image/blog/img/noimg.png" width="350" height="200" >';
     }else{
-    itemStr +='<img src="${pageContext.request.contextPath }/upload/'+buskingzoneList.com_img+'" width="150" height="150">';
+    itemStr +='<img src="${pageContext.request.contextPath }/upload/'+buskingzoneList.com_img+'" width="350" height="200">';
     }
-	itemStr +='</td>';
-	
-    itemStr +='<tr><td>';
     itemStr +='<div class="listfont_title" >'+buskingzoneList.com_name+'</div>';
-    itemStr +='</td></tr>';
-    
-    itemStr +='<tr><td>';
-    itemStr +='<div class="listfont_address"><img src="${pageContext.request.contextPath}/assets/image/map/address.png" width="40" height="40" >'+buskingzoneList.address+'</div>';
-    itemStr +='</td></tr>';
-    
-    itemStr +='<tr><td>';
-    itemStr +='<div class="listfont"><img src="${pageContext.request.contextPath}/assets/image/map/Phone.png" width="40" height="40" >'+buskingzoneList.com_number+'</div>';
-    itemStr +='</td></tr>';
-
-    itemStr +='</tr>';
-    itemStr +='</table>';
+    itemStr +='<div class="listfont_address">주소: '+buskingzoneList.address+'</div>';
+    itemStr +='<div class="listfont_number">번호: '+buskingzoneList.com_number+'</div>';
     itemStr +='</div>';
     itemStr +='</div>';
-    
 
     el.innerHTML = itemStr;
     el.className = 'item';
@@ -444,12 +457,6 @@ var num2 = -1;
     // GeoLocation을 이용해서 접속 위치를 얻어옵니다
     navigator.geolocation.getCurrentPosition(function(position) {
         
-    	var imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png', // 마커이미지의 주소입니다    
-    	imageSize = new kakao.maps.Size(64, 69) // 마커이미지의 크기입니다
-
-    	  
-    	//마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
-    	var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
     	
         var lat = position.coords.latitude, // 위도
             lon = position.coords.longitude; // 경도
@@ -467,15 +474,19 @@ var num2 = -1;
         </c:forEach>
         
         for(let i=0; i < positions.length; i++){
-            num2 += 1;
+            num2 += 1;	
         	var data = positions[i];
         	var content = contentinfo[i];
 			var userNo = userNos[i];
-            displayMarker(locPosition,data,markerImage,content,userNo);
+	        var contentbox = '<div class="wrap">' + 
+	        '    <div class="info">' + 
+	        '        <div class="ovralyfont">' + 
+	        '            '+content+'' + 
+	        '        </div>' + 
+	        '    </div>' +    
+	        '</div>';
+            displayMarker(locPosition,data,content,userNo,contentbox);
         }
-        
-
-
         
 
             
@@ -485,20 +496,23 @@ var num2 = -1;
 
 
 
-function displayMarker(locPosition,data,markerImage,content,userNo) {
+function displayMarker(locPosition,data,content,userNo,contentbox) {
 
     // 마커를 생성합니다
     var marker = new kakao.maps.Marker({  
         map: map, 
-        image: markerImage,
         position: data
     }); 
     
-    var infowindow = new kakao.maps.InfoWindow({
-        position : data, 
-        content : content 
+    var overlay = new kakao.maps.CustomOverlay({
+        content: contentbox,
+        map: map,
+        position: data      
     });
-    infowindow.open(map, marker); 
+    
+
+    overlay.setMap(map);
+ 
     // 지도 중심좌표를 접속위치로 변경합니다
     
     kakao.maps.event.addListener(marker, 'click', function() {
@@ -808,6 +822,10 @@ function relay(){
 	});
 	
 };
+
+
+
+
 
 </script>
 </body>
