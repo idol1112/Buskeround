@@ -376,7 +376,8 @@
 			                WHERE
 			                    p_img IS NOT NULL
 			                    AND p_start IS NULL
-			                    AND p_end IS NULL
+			             		AND p_end IS NULL
+                    			AND reg_date IS NOT NULL
 			                ORDER BY
 			                    reg_date DESC
 			            ) ot
