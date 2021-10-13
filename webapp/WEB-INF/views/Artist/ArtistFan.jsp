@@ -80,7 +80,9 @@
 										<img src="${pageContext.request.contextPath}/upload/${fList.user_img}" style="width: 70px; height: 70px; border-radius: 70%; object-fit: cover;">
 									</c:if></td>
 								<td>
-									<div>${fList.nickname}</div>
+									<div>
+										<a href="${pageContext.request.contextPath}/blog/blog_main/${fList.id}">${fList.nickname}</a>
+									</div>
 									<div>
 										<c:if test="${nList.y_url != null}">
 											<img src="${pageContext.request.contextPath}/assets/image/artist/icon/youtube.png" style="width: 20px">
