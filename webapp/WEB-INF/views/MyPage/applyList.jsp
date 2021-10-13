@@ -97,7 +97,7 @@
 								<td class="articon"><img class="status-img" src="${pageContext.request.contextPath}/assets/image/company/icon/ongoing.png" alt="진행중"></td>
 							</c:if>
 							<td>
-								<a href="${pageContext.request.contextPath }/Company/applyListRemove?no=${vo.apply_no}" ><img class="delBtn" src="${pageContext.request.contextPath}/assets/image/company/icon/delete.png"></a>
+								<a id="appDel" href="${pageContext.request.contextPath }/Company/applyListRemove?no=${vo.apply_no}" ><img class="delBtn" src="${pageContext.request.contextPath}/assets/image/company/icon/delete.png"></a>
 							</td>
 						</tr>
 						</c:forEach>

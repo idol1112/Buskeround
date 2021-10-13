@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<!-- fontAwesome -->
+<script src="https://kit.fontawesome.com/aa597d8f0c.js" crossorigin="anonymous"></script>
+
 <!-- header -->
 <div class="row" id="navbox">
   <div class="col-xl-2"></div>
@@ -11,7 +14,7 @@
 
       <!-- nav_logo -->
       <div class="navbar_logo">
-        <i class="fas fa-cat"></i><a href="${pageContext.request.contextPath}/Main">B.r</a>
+        <i class="fas fa-cat"></i><a href="${pageContext.request.contextPath}/Main">Br.</a>
       </div>
 
       <!-- nav_menu -->
