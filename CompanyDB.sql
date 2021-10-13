@@ -3,7 +3,14 @@
 insert into users values(seq_user_no.nextval,'1234','1234','1234@naver.com','김덕배',null,'김덕배','010-1111-1111','male','1998-11-12','3','트랩','0',0,0,sysdate,'2','2','0');
 --김창수씨 회원가입(제휴사2)
 insert into users values(seq_user_no.nextval,'4321','4321','4321@naver.com','김창수',null,null,null,null,null,null,null,null,null,null,null,'1','2',null);
-
+--박수현씨 회원가입(제휴사3)
+insert into users values(seq_user_no.nextval,'1111','1111','1111@naver.com','박수현',null,null,null,null,null,null,null,null,null,null,null,'1','2',null);
+--고라파덕씨 회원가입(제휴사4)
+insert into users values(seq_user_no.nextval,'1112','1112','1112@naver.com','고라파덕',null,null,null,null,null,null,null,null,null,null,null,'1','2',null);
+--비에고씨 회원가입(제휴사5)
+insert into users values(seq_user_no.nextval,'1113','1113','1113@naver.com','비에고',null,null,null,null,null,null,null,null,null,null,null,'1','2',null);
+--아칼리씨 회원가입(제휴사6)
+insert into users values(seq_user_no.nextval,'1114','1114','1114@naver.com','아칼리',null,null,null,null,null,null,null,null,null,null,null,'1','2',null);
 --아티스트들 생성
 /*임의의 정보 넣기*/
 insert INTO users VALUES (seq_user_no.nextval, 'aaa', 1234, 'aaa@naver.com', 'olseason', null, '김밥통', null, null, 19980505, 2, '왁킹댄스', 0, 15, 15, sysdate, 2, 1, 30);
@@ -30,53 +37,56 @@ insert INTO users VALUES (seq_user_no.nextval, 'rrr', 1234, 'rrr@naver.com', '�
 insert INTO users VALUES (seq_user_no.nextval, 'sss', 1234, 'sss@naver.com', '미노이(MENOI)', null, '이민영', '010-0007-7654', 'female', 19961124, 4, '알앤비', 0, 33, 10, sysdate, 2, 1, 43);
 
 --Blog
-insert into blog values (3, '안녕하세요. aaa입니다.', null, null, null, null);
-insert into blog values (4, '안녕하세요. bbb입니다.', null, null, null, null);
-insert into blog values (5, '안녕하세요. ccc입니다.', null, null, null, null);
-insert into blog values (6, '안녕하세요. ddd입니다.', null, null, null, null);
-insert into blog values (7, '안녕하세요. eee입니다.', null, null, null, null);
-insert into blog values (8, '안녕하세요. fff입니다.', null, null, null, null);
-insert into blog values (9, '안녕하세요. ggg입니다.', null, null, null, null);
-insert into blog values (10, '안녕하세요. hhh입니다.', null, null, null, null);
-insert into blog values (11, '안녕하세요. iii입니다.', null, null, null, null);
-insert into blog values (12, '안녕하세요. jjj입니다.', null, null, null, null);
+insert into blog values (7, '안녕하세요. aaa입니다.', null, null, null, null);
+insert into blog values (8, '안녕하세요. bbb입니다.', null, null, null, null);
+insert into blog values (9, '안녕하세요. ccc입니다.', null, null, null, null);
+insert into blog values (10, '안녕하세요. ddd입니다.', null, null, null, null);
+insert into blog values (11, '안녕하세요. eee입니다.', null, null, null, null);
+insert into blog values (12, '안녕하세요. fff입니다.', null, null, null, null);
+insert into blog values (13, '안녕하세요. ggg입니다.', null, null, null, null);
+insert into blog values (14, '안녕하세요. hhh입니다.', null, null, null, null);
+insert into blog values (15, '안녕하세요. iii입니다.', null, null, null, null);
+insert into blog values (16, '안녕하세요. jjj입니다.', null, null, null, null);
 
 --Category
-insert into category values (seq_cate_no.nextval, 3, 2, '타임라인');
-insert into category values (seq_cate_no.nextval, 4, 2, '타임라인');
-insert into category values (seq_cate_no.nextval, 5, 2, '타임라인');
-insert into category values (seq_cate_no.nextval, 6, 2, '타임라인');
 insert into category values (seq_cate_no.nextval, 7, 2, '타임라인');
 insert into category values (seq_cate_no.nextval, 8, 2, '타임라인');
 insert into category values (seq_cate_no.nextval, 9, 2, '타임라인');
 insert into category values (seq_cate_no.nextval, 10, 2, '타임라인');
 insert into category values (seq_cate_no.nextval, 11, 2, '타임라인');
 insert into category values (seq_cate_no.nextval, 12, 2, '타임라인');
+insert into category values (seq_cate_no.nextval, 13, 2, '타임라인');
+insert into category values (seq_cate_no.nextval, 14, 2, '타임라인');
+insert into category values (seq_cate_no.nextval, 15, 2, '타임라인');
+insert into category values (seq_cate_no.nextval, 16, 2, '타임라인');
 
 --Post (timeline)
-INSERT INTO post VALUES (seq_post_no.NEXTVAL, 1, 3, '안녕하세요', NULL, NULL, 33.451486, 126.571199, TO_DATE('2021-09-01 10:26:11','YYYY-MM-DD HH24:MI:SS'), sysdate, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
-INSERT INTO post VALUES (seq_post_no.NEXTVAL, 1, 3, '안녕하세요', NULL, NULL, 33.451549, 126.569021, TO_DATE('2021-09-06 10:26:11','YYYY-MM-DD HH24:MI:SS'), sysdate, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
-INSERT INTO post VALUES (seq_post_no.NEXTVAL, 1, 3, '안녕하세요', NULL, NULL, 33.453160, 126.569815, TO_DATE('2021-09-08 10:26:11','YYYY-MM-DD HH24:MI:SS'), sysdate, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
-INSERT INTO post VALUES (seq_post_no.NEXTVAL, 1, 3, '안녕하세요', NULL, NULL, 33.454189, 126.571843, TO_DATE('2021-09-10 10:26:11','YYYY-MM-DD HH24:MI:SS'), sysdate, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
-INSERT INTO post VALUES (seq_post_no.NEXTVAL, 1, 3, '안녕하세요', NULL, NULL, 33.454977, 126.569000, TO_DATE('2021-09-15 10:26:11','YYYY-MM-DD HH24:MI:SS'), sysdate, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
-INSERT INTO post VALUES (seq_post_no.NEXTVAL, 1, 3, '안녕하세요', NULL, NULL, 33.453187, 126.566779, TO_DATE('2021-09-18 10:26:11','YYYY-MM-DD HH24:MI:SS'), sysdate, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
-INSERT INTO post VALUES (seq_post_no.NEXTVAL, 1, 3, '안녕하세요', NULL, NULL, 33.449633, 126.570597, TO_DATE('2021-09-22 10:26:11','YYYY-MM-DD HH24:MI:SS'), sysdate, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
-INSERT INTO post VALUES (seq_post_no.NEXTVAL, 1, 3, '안녕하세요', NULL, NULL, 33.448344, 126.573828, TO_DATE('2021-09-28 10:26:11','YYYY-MM-DD HH24:MI:SS'), sysdate, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
-INSERT INTO post VALUES (seq_post_no.NEXTVAL, 1, 3, '안녕하세요', NULL, NULL, 33.448944, 126.569601, TO_DATE('2021-10-01 10:26:11','YYYY-MM-DD HH24:MI:SS'), NULL, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
-INSERT INTO post VALUES (seq_post_no.NEXTVAL, 2, 4, '안녕하세요', NULL, NULL, 33.451486, 126.571199, TO_DATE('2021-09-01 10:26:11','YYYY-MM-DD HH24:MI:SS'), NULL, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
-INSERT INTO post VALUES (seq_post_no.NEXTVAL, 3, 5, '안녕하세요', NULL, NULL, 33.451549, 126.569021, TO_DATE('2021-09-06 10:26:11','YYYY-MM-DD HH24:MI:SS'), NULL, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
-INSERT INTO post VALUES (seq_post_no.NEXTVAL, 4, 6, '안녕하세요', NULL, NULL, 33.453160, 126.569815, TO_DATE('2021-09-08 10:26:11','YYYY-MM-DD HH24:MI:SS'), NULL, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
-INSERT INTO post VALUES (seq_post_no.NEXTVAL, 5, 7, '안녕하세요', NULL, NULL, 33.454189, 126.571843, TO_DATE('2021-09-10 10:26:11','YYYY-MM-DD HH24:MI:SS'), NULL, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
-INSERT INTO post VALUES (seq_post_no.NEXTVAL, 6, 8, '안녕하세요', NULL, NULL, 33.454977, 126.569000, TO_DATE('2021-09-15 10:26:11','YYYY-MM-DD HH24:MI:SS'), NULL, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
-INSERT INTO post VALUES (seq_post_no.NEXTVAL, 7, 9, '안녕하세요', NULL, NULL, 33.453187, 126.566779, TO_DATE('2021-09-18 10:26:11','YYYY-MM-DD HH24:MI:SS'), NULL, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
-INSERT INTO post VALUES (seq_post_no.NEXTVAL, 8, 10, '안녕하세요', NULL, NULL, 33.449633, 126.570597, TO_DATE('2021-09-22 10:26:11','YYYY-MM-DD HH24:MI:SS'), NULL, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
-INSERT INTO post VALUES (seq_post_no.NEXTVAL, 9, 11, '안녕하세요', NULL, NULL, 33.448344, 126.573828, TO_DATE('2021-09-28 10:26:11','YYYY-MM-DD HH24:MI:SS'), NULL, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
-INSERT INTO post VALUES (seq_post_no.NEXTVAL, 10, 12, '안녕하세요', NULL, NULL, 33.448944, 126.569601, TO_DATE('2021-10-01 10:26:11','YYYY-MM-DD HH24:MI:SS'), NULL, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
+INSERT INTO post VALUES (seq_post_no.NEXTVAL, 1, 7, '안녕하세요', NULL, NULL, 33.451486, 126.571199, TO_DATE('2021-09-01 10:26:11','YYYY-MM-DD HH24:MI:SS'), sysdate, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
+INSERT INTO post VALUES (seq_post_no.NEXTVAL, 1, 7, '안녕하세요', NULL, NULL, 33.451549, 126.569021, TO_DATE('2021-09-06 10:26:11','YYYY-MM-DD HH24:MI:SS'), sysdate, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
+INSERT INTO post VALUES (seq_post_no.NEXTVAL, 1, 7, '안녕하세요', NULL, NULL, 33.453160, 126.569815, TO_DATE('2021-09-08 10:26:11','YYYY-MM-DD HH24:MI:SS'), sysdate, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
+INSERT INTO post VALUES (seq_post_no.NEXTVAL, 1, 7, '안녕하세요', NULL, NULL, 33.454189, 126.571843, TO_DATE('2021-09-10 10:26:11','YYYY-MM-DD HH24:MI:SS'), sysdate, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
+INSERT INTO post VALUES (seq_post_no.NEXTVAL, 1, 7, '안녕하세요', NULL, NULL, 33.454977, 126.569000, TO_DATE('2021-09-15 10:26:11','YYYY-MM-DD HH24:MI:SS'), sysdate, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
+INSERT INTO post VALUES (seq_post_no.NEXTVAL, 1, 7, '안녕하세요', NULL, NULL, 33.453187, 126.566779, TO_DATE('2021-09-18 10:26:11','YYYY-MM-DD HH24:MI:SS'), sysdate, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
+INSERT INTO post VALUES (seq_post_no.NEXTVAL, 1, 7, '안녕하세요', NULL, NULL, 33.449633, 126.570597, TO_DATE('2021-09-22 10:26:11','YYYY-MM-DD HH24:MI:SS'), sysdate, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
+INSERT INTO post VALUES (seq_post_no.NEXTVAL, 1, 7, '안녕하세요', NULL, NULL, 33.448344, 126.573828, TO_DATE('2021-09-28 10:26:11','YYYY-MM-DD HH24:MI:SS'), sysdate, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
+INSERT INTO post VALUES (seq_post_no.NEXTVAL, 1, 7, '안녕하세요', NULL, NULL, 33.448944, 126.569601, TO_DATE('2021-10-01 10:26:11','YYYY-MM-DD HH24:MI:SS'), NULL, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
+INSERT INTO post VALUES (seq_post_no.NEXTVAL, 2, 8, '안녕하세요', NULL, NULL, 33.451486, 126.571199, TO_DATE('2021-09-01 10:26:11','YYYY-MM-DD HH24:MI:SS'), NULL, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
+INSERT INTO post VALUES (seq_post_no.NEXTVAL, 3, 9, '안녕하세요', NULL, NULL, 33.451549, 126.569021, TO_DATE('2021-09-06 10:26:11','YYYY-MM-DD HH24:MI:SS'), NULL, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
+INSERT INTO post VALUES (seq_post_no.NEXTVAL, 4, 10, '안녕하세요', NULL, NULL, 33.453160, 126.569815, TO_DATE('2021-09-08 10:26:11','YYYY-MM-DD HH24:MI:SS'), NULL, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
+INSERT INTO post VALUES (seq_post_no.NEXTVAL, 5, 11, '안녕하세요', NULL, NULL, 33.454189, 126.571843, TO_DATE('2021-09-10 10:26:11','YYYY-MM-DD HH24:MI:SS'), NULL, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
+INSERT INTO post VALUES (seq_post_no.NEXTVAL, 6, 12, '안녕하세요', NULL, NULL, 33.454977, 126.569000, TO_DATE('2021-09-15 10:26:11','YYYY-MM-DD HH24:MI:SS'), NULL, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
+INSERT INTO post VALUES (seq_post_no.NEXTVAL, 7, 13, '안녕하세요', NULL, NULL, 33.453187, 126.566779, TO_DATE('2021-09-18 10:26:11','YYYY-MM-DD HH24:MI:SS'), NULL, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
+INSERT INTO post VALUES (seq_post_no.NEXTVAL, 8, 14, '안녕하세요', NULL, NULL, 33.449633, 126.570597, TO_DATE('2021-09-22 10:26:11','YYYY-MM-DD HH24:MI:SS'), NULL, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
+INSERT INTO post VALUES (seq_post_no.NEXTVAL, 9, 15, '안녕하세요', NULL, NULL, 33.448344, 126.573828, TO_DATE('2021-09-28 10:26:11','YYYY-MM-DD HH24:MI:SS'), NULL, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
+INSERT INTO post VALUES (seq_post_no.NEXTVAL, 10, 16, '안녕하세요', NULL, NULL, 33.448944, 126.569601, TO_DATE('2021-10-01 10:26:11','YYYY-MM-DD HH24:MI:SS'), NULL, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
 
 -- 제휴사 등록
-insert into company values(1,'1633448248750e46f1e31-1938-4e04-b505-504ba9d79791.jpg','신촌 CGV','서울 서대문구 신촌로 129 아트레온','1544-1122','김덕배','104-81-45690',0,0);
-insert into company values(2,'16334837711904673cc34-d063-4543-a222-fc9eebd4141f.png','신라호텔','서울특별시 중구 동호로 249','02-2233-3131','김창덕','101-11-37840',0,0);
-
+insert into company values(1,'1633448248750e46f1e31-1938-4e04-b505-504ba9d79791.jpg','신촌 CGV','서울 서대문구 신촌로 129 아트레온','1544-1122','김덕배','104-81-45690',37.55649812100385,126.94032867686857);
+insert into company values(2,'16334837711904673cc34-d063-4543-a222-fc9eebd4141f.png','신라호텔','서울특별시 중구 동호로 249','02-2233-3131','김창덕','101-11-37840',37.5577797894265,127.00762909337426);
+insert into company values(3,'16334837711904673cc34-d063-4543-a222-fc9eebd4141f.png','스타벅스','서울특별시 강남구 강남대로 390','02-1111-1111','박수현','104-52-37620',37.497960743833886,127.0285145402949);
+insert into company values(4,'16334837711904673cc34-d063-4543-a222-fc9eebd4141f.png','시그니엘','서울특별시 송파구 올림픽로 300 롯데월드타워','02-2222-2222','고라파덕','137-98-32340',37.51319142112977,127.10195564589539);
+insert into company values(5,'16334837711904673cc34-d063-4543-a222-fc9eebd4141f.png','에버랜드','경기도 용인시 처인구 포곡읍 에버랜드로 199','02-3333-3333','비에고','199-99-99999',37.29355565476383,127.19979467916205);
+insert into company values(6,'16334837711904673cc34-d063-4543-a222-fc9eebd4141f.png','하이미디어','서울특별시 서초구 강남대로 405 통영빌딩','02-4444-4444','아칼리','127-445-30293',37.49879182639053, 127.02664971809797);
 --공연장 등록
 insert into stage values(SEQ_STAGE_NO.nextval,1,'7층 스테이지','1','1','1');
 insert into stage values(SEQ_STAGE_NO.nextval,1,'8층 카페','0','0','1');
@@ -145,21 +155,33 @@ insert into buskingtime values(SEQ_TIME_NO.nextval,18,'2021-10-26 15:00','2021-1
 insert into buskingtime values(SEQ_TIME_NO.nextval,18,'2021-10-26 20:00','2021-10-26 24:00');
 
 --버스킹 신청
-insert into buskingapp values(SEQ_APP_NO.nextval,4,1,'잘부탁드립니다 오네가이시마스',sysdate,'3');
-insert into buskingapp values(SEQ_APP_NO.nextval,5,3,'가요대상 3회수상자입니다 데려가세요',sysdate,'3');
-insert into buskingapp values(SEQ_APP_NO.nextval,6,5,'전국노래자랑 100회이상 시청',sysdate,'3');
-insert into buskingapp values(SEQ_APP_NO.nextval,7,7,'아이유랑 이름이 비슷합니다',sysdate,'3');
-insert into buskingapp values(SEQ_APP_NO.nextval,8,9,'이사람은 무료로 노래해드립니다',sysdate,'3');
-insert into buskingapp values(SEQ_APP_NO.nextval,9,11,'노래 기똥차게 잘합니다 불러만주십쇼',sysdate,'3');
-insert into buskingapp values(SEQ_APP_NO.nextval,10,14,'미스터 트롯 오디션 3연속 탈락',sysdate,'3');
-insert into buskingapp values(SEQ_APP_NO.nextval,11,16,'잘부탁드립니다 오네가이시마스',sysdate,'3');
-insert into buskingapp values(SEQ_APP_NO.nextval,12,19,'가요대상 3회수상자입니다 데려가세요',sysdate,'3');
-insert into buskingapp values(SEQ_APP_NO.nextval,13,22,'전국노래자랑 100회이상 시청',sysdate,'3');
-insert into buskingapp values(SEQ_APP_NO.nextval,14,25,'아이유랑 이름이 비슷합니다',sysdate,'3');
-insert into buskingapp values(SEQ_APP_NO.nextval,15,28,'이사람은 무료로 노래해드립니다',sysdate,'3');
-insert into buskingapp values(SEQ_APP_NO.nextval,16,30,'노래 기똥차게 잘합니다 불러만주십쇼',sysdate,'3');
-insert into buskingapp values(SEQ_APP_NO.nextval,17,33,'미스터 트롯 오디션 3연속 탈락',sysdate,'3');
-insert into buskingapp values(SEQ_APP_NO.nextval,18,35,'안뽑으면 3년동안 삼대가 재수없음',sysdate,'3');
+insert into buskingapp values(SEQ_APP_NO.nextval,1,19,'잘부탁드립니다 오네가이시마스',sysdate,'3');
+insert into buskingapp values(SEQ_APP_NO.nextval,1,20,'가요대상 3회수상자입니다 데려가세요',sysdate,'3');
+insert into buskingapp values(SEQ_APP_NO.nextval,1,23,'전국노래자랑 100회이상 시청',sysdate,'3');
+insert into buskingapp values(SEQ_APP_NO.nextval,1,26,'아이유랑 이름이 비슷합니다',sysdate,'3');
+insert into buskingapp values(SEQ_APP_NO.nextval,1,29,'이사람은 무료로 노래해드립니다',sysdate,'3');
+insert into buskingapp values(SEQ_APP_NO.nextval,1,32,'미스터 트롯 오디션 3연속 탈락',sysdate,'3');
+insert into buskingapp values(SEQ_APP_NO.nextval,7,1,'가요대상 3회수상자입니다 데려가세요',sysdate,'3');
+insert into buskingapp values(SEQ_APP_NO.nextval,8,1,'전국노래자랑 100회이상 시청',sysdate,'3');
+insert into buskingapp values(SEQ_APP_NO.nextval,9,2,'아이유랑 이름이 비슷합니다',sysdate,'3');
+insert into buskingapp values(SEQ_APP_NO.nextval,10,3,'이사람은 무료로 노래해드립니다',sysdate,'3');
+insert into buskingapp values(SEQ_APP_NO.nextval,11,4,'노래 기똥차게 잘합니다 불러만주십쇼',sysdate,'3');
+insert into buskingapp values(SEQ_APP_NO.nextval,12,4,'미스터 트롯 오디션 3연속 탈락',sysdate,'3');
+insert into buskingapp values(SEQ_APP_NO.nextval,13,6,'잘부탁드립니다 오네가이시마스',sysdate,'3');
+insert into buskingapp values(SEQ_APP_NO.nextval,14,7,'가요대상 3회수상자입니다 데려가세요',sysdate,'3');
+insert into buskingapp values(SEQ_APP_NO.nextval,15,8,'전국노래자랑 100회이상 시청',sysdate,'3');
+insert into buskingapp values(SEQ_APP_NO.nextval,16,9,'아이유랑 이름이 비슷합니다',sysdate,'3');
+insert into buskingapp values(SEQ_APP_NO.nextval,17,9,'이사람은 무료로 노래해드립니다',sysdate,'3');
+insert into buskingapp values(SEQ_APP_NO.nextval,18,11,'노래 기똥차게 잘합니다 불러만주십쇼',sysdate,'3');
+insert into buskingapp values(SEQ_APP_NO.nextval,19,12,'미스터 트롯 오디션 3연속 탈락',sysdate,'3');
+insert into buskingapp values(SEQ_APP_NO.nextval,20,12,'안뽑으면 3년동안 삼대가 재수없음',sysdate,'3');
+insert into buskingapp values(SEQ_APP_NO.nextval,21,12,'이사람은 무료로 노래해드립니다',sysdate,'3');
+insert into buskingapp values(SEQ_APP_NO.nextval,22,13,'아이유랑 이름이 비슷합니다',sysdate,'3');
+insert into buskingapp values(SEQ_APP_NO.nextval,23,14,'전국노래자랑 100회이상 시청',sysdate,'3');
+insert into buskingapp values(SEQ_APP_NO.nextval,24,15,'노래 기똥차게 잘합니다 불러만주십쇼',sysdate,'3');
+insert into buskingapp values(SEQ_APP_NO.nextval,25,16,'미스터 트롯 오디션 3연속 탈락',sysdate,'3');
+insert into buskingapp values(SEQ_APP_NO.nextval,26,17,'잘부탁드립니다 오네가이시마스',sysdate,'3');
+insert into buskingapp values(SEQ_APP_NO.nextval,13,18,'맥도날드 BTS세트 먹어봄',sysdate,'3');
 /*////////////////////////////insert문////////////////////////////////////*/
 
 --select문(공연신청 관리)

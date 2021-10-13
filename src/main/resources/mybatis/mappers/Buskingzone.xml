@@ -57,7 +57,7 @@
 	
 	<insert id="buskingApp" parameterType="map">
 		<![CDATA[
-			insert into buskingapp values(SEQ_APP_NO.nextval,#{user_no},#{time_no},#{user_info},sysdate,1)
+			insert into buskingapp values(SEQ_APP_NO.nextval,#{user_no},#{time_no},#{user_info},sysdate,3)
 		]]>
 	</insert>
 	
