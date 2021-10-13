@@ -1,0 +1,319 @@
+@charset "UTF-8";
+
+/********** 초기화 **********/
+body, div, ul, li, dl, dt, ol, h1, h2, h3, h4, h5, h6, input, fieldset,
+	legend, p, select, table, th, td, tr, textarea, button, form {
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+}
+
+.clfix {
+	zoom: 1;
+	display: block;
+}
+
+.clfix:after {
+	content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+    font-size: 0;
+    line-height: 0;
+}
+
+body {
+	font-family: "맑은 고딕", 돋음;
+	font-size: 12px;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+a:link {
+	text-decoration: none;
+	color: black;
+}
+
+a:visited {
+	text-decoration: none;
+	color: black;
+}
+
+a:hover {
+	text-decoration: none;
+	color: black;
+}
+
+a:active {
+	text-decoration: none;
+	color: black;
+}
+
+/** footer 하단 고정 **/
+body {
+	min-height: 95vh; /* 최소 높이를 지정 */
+	display: flex;
+	flex-direction: column;
+	margin: 0px;
+}
+
+/** 폭 설정 **/
+.row {
+	width: 100%;
+}
+
+/** nav **/
+#navbox {
+	border-bottom: 2px solid #59007e;
+}
+
+.navbar {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 8px 12px;
+}
+
+.navbar_menu, .navbar_login {
+	padding: 0px;
+	margin: 0px;
+	display: flex;
+	list-style: none;
+}
+
+/** nav_logo **/
+.navbar_logo {
+	padding-top: 8px;
+	font-family: 'Pacifico', cursive;
+	font-size: 55px;
+}
+
+.navbar_logo i {
+	color: indigo;
+}
+
+/** nav_menu **/
+.navbar_menu li {
+	padding: 0px 45px;
+	padding-top: 20px;
+	font-size: 23px;
+}
+
+.navbar_menu a:hover {
+	color: #59007e;
+	font-weight: bold;
+}
+
+/** nav_login **/
+.navbar_login li {
+	padding: 8px 5px;
+	padding-top: 25px;
+	font-size: 14px;
+}
+
+/** footer **/
+#footerbox {
+	height: 60px;
+	position: relative;
+	border-top: 1px solid #bfbfbf;
+	margin-top: auto;
+	font-size: 13px;
+}
+
+/* Login 후 */
+.navbar b {
+	vertical-align: middle;
+}
+
+#main_profile {
+	width: 30px;
+	height: 30px;
+	border-radius: 70%;
+	object-fit: cover;
+	image-rendering: -webkit-optimize-contrast;
+}
+
+#main_dropdown {
+	width: 15px;
+	height: 15px;
+}
+
+.dropbtn {
+	background-color: white;
+	color: white;
+	font-size: 16px;
+	border: none;
+}
+
+.dropdown {
+	position: relative;
+	display: inline-block;
+}
+
+.dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: #f1f1f1;
+	min-width: 120px;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	z-index: 2;
+}
+
+.dropdown-content a {
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+}
+
+.dropdown-content a:hover {
+	background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+	display: block;
+}
+
+.dropdown:hover .dropbtn {
+	background-color: white;
+}
+
+/* cont_wrap */
+h2 {
+	height: 24px;
+    color: #1a1a1a;
+    font-size: 15px;
+    line-height: 15px;
+    letter-spacing: -1px;
+    font-weight: bold;
+    font-family: "맑은 고딕","Malgun Gothic","Apple Gothic",sans-serif;
+}
+
+#cont_wrap {
+	margin: 0 auto;
+	margin-top: 50px;
+    background: 0;
+}
+
+#cont_section {
+	position: relative;
+    width: 1244px;
+    margin: 0 auto;
+}
+
+#conts_section.pr_none {
+    padding: 0 20px;
+}
+
+.map {
+	position: relative;
+    z-index: 5;
+    width: 554px;
+    height: 340px;
+    float: left;
+}
+
+.new_artist {
+	position: relative;
+    width: 314px;
+    margin: 0 0 0 8px;
+    float: left;
+    height: 340px;
+}
+
+.id_wrap {
+	float: left;
+    width: 358px;
+    margin-left: 8px;
+    height: 316px;
+}
+
+.id_wrap .login_wrap {
+	position: relative;
+    width: 358px;
+    height: 160px;
+}
+
+.id_wrap .login_wrap .login_box {
+	height: 160px;
+	margin-top: 24px;
+	padding: 16px 16px 12px 17px;
+    background-color: #f7f9fa;
+    border: 1px solid #dae1e6;
+}
+
+.login_wrap .login_box .login_msg {
+	padding-left: 3px;
+    color: grey;
+}
+
+.login_wrap .login_box .link_login {
+	display: block;
+    padding: 15px 0;
+    margin: 22px 0px;
+    background-color: indigo;
+    border: 1px solid indigo;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    font-size: 15px;
+    color: #fff;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+}
+
+.login_box .sub_area .link_join {
+	float: right;
+	color: #505050;
+}
+
+.id_wrap .apply_wrap {
+	position: relative;
+    width: 358px;
+    height: 80px;
+    margin-top: 8px;
+}
+
+.id_wrap .photo_wrap {
+		position: relative;
+    width: 358px;
+    height: 63px;
+    margin-top: 5px;
+}
+
+.artist_wrap {
+	clear: both;
+    width: 876px;
+    position: relative;
+    float: left;
+    height: 554px;
+    margin-top: 32px;
+    margin-bottom: 49px;
+}
+
+.artist_wrap .live_wrap {
+	clear: both;
+    width: 876px;
+    position: relative;
+    float: left;
+    height: 272px;
+}
+
+.artist_wrap .gallery_wrap {
+	clear: both;
+    width: 876px;
+    position: relative;
+    float: left;
+    height: 272px;
+    margin-top: 10px;
+}
+
+.artist_rank {
+	width: 334px;
+    float: left;
+    margin-left: 24px;
+    height: 554px;
+    margin-top: 32px;
+}
