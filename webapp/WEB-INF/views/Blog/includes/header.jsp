@@ -32,54 +32,45 @@
 
 <!-- sns 버튼 -->
 <c:choose>
-	<c:when test="blogVo.user_no == authUser.user_no">
-		<c:if test="${blogVo.f_url != null}">
-		  <a href="${blogVo.f_url}" id="facebook_url" target='_blank'>
-		    <img class="facebook" src="${pageContext.request.contextPath}/assets/image/blog/icon/facebook.png" alt="">
-		  </a>
-		</c:if>
-		
-		<c:if test="${blogVo.i_url != null}">
-		  <a href="${blogVo.i_url}" id="instagram_url" target='_blank'>
-		    <img class="instagram" src="${pageContext.request.contextPath}/assets/image/blog/icon/instagram.png" alt="">
-		  </a>
-		</c:if>
-		
-		<c:if test="${blogVo.y_url != null}">
-		  <a href="${blogVo.y_url}" id="youtube_url" target='_blank'>
-		    <img class="youtube" src="${pageContext.request.contextPath}/assets/image/blog/icon/youtube.png" alt="">
-		  </a>
-		</c:if>
-	</c:when>
-	<c:otherwise>
-			<c:if test="${blogVo.f_url != null}">
-			  <a href="${blogVo.f_url}" id="facebook_url" target='_blank'>
-			    <img class="facebook" src="${pageContext.request.contextPath}/assets/image/blog/icon/facebook.png" alt="" style="margin-right: 8px;">
-			  </a>
-			</c:if>
-			
-			<c:if test="${blogVo.i_url != null}">
-			  <a href="${blogVo.i_url}" id="instagram_url" target='_blank'>
-			    <img class="instagram" src="${pageContext.request.contextPath}/assets/image/blog/icon/instagram.png" alt="">
-			  </a>
-			</c:if>
-			
-			<c:if test="${blogVo.y_url != null}">
-			  <a href="${blogVo.y_url}" id="youtube_url" target='_blank'>
-			    <img class="youtube" src="${pageContext.request.contextPath}/assets/image/blog/icon/youtube.png" alt="">
-			  </a>
-			</c:if>
-	</c:otherwise>
+  <c:when test="${blogVo.user_no == authUser.user_no}">
+    <c:if test="${blogVo.f_url != null}">
+      <a href="${blogVo.f_url}" id="facebook_url" target='_blank'>
+        <img class="facebook" src="${pageContext.request.contextPath}/assets/image/blog/icon/facebook.png" alt="">
+      </a>
+    </c:if>
+
+    <c:if test="${blogVo.i_url != null}">
+      <a href="${blogVo.i_url}" id="instagram_url" target='_blank'>
+        <img class="instagram" src="${pageContext.request.contextPath}/assets/image/blog/icon/instagram.png" alt="">
+      </a>
+    </c:if>
+
+    <c:if test="${blogVo.y_url != null}">
+      <a href="${blogVo.y_url}" id="youtube_url" target='_blank'>
+        <img class="youtube" src="${pageContext.request.contextPath}/assets/image/blog/icon/youtube.png" alt="">
+      </a>
+    </c:if>
+  </c:when>
+  <c:otherwise>
+    <c:if test="${blogVo.f_url != null}">
+      <a href="${blogVo.f_url}" id="facebook_url" target='_blank'>
+        <img class="facebook" src="${pageContext.request.contextPath}/assets/image/blog/icon/facebook.png" alt="" style="margin-right: 10px;">
+      </a>
+    </c:if>
+
+    <c:if test="${blogVo.i_url != null}">
+      <a href="${blogVo.i_url}" id="instagram_url" target='_blank'>
+        <img class="instagram" src="${pageContext.request.contextPath}/assets/image/blog/icon/instagram.png" alt="">
+      </a>
+    </c:if>
+
+    <c:if test="${blogVo.y_url != null}">
+      <a href="${blogVo.y_url}" id="youtube_url" target='_blank'>
+        <img class="youtube" src="${pageContext.request.contextPath}/assets/image/blog/icon/youtube.png" alt="">
+      </a>
+    </c:if>
+  </c:otherwise>
 </c:choose>
-
-
-
-
-
-
-
-
-
 
 </div>
 

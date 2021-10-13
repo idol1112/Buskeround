@@ -178,18 +178,18 @@ INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) 
 INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 4, 1, '방명록 테스팅: 김덕배님 응원합니다! 사랑해요!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
 
 --갤러리
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, p_img, hit) VALUES (seq_post_no.NEXTVAL, 3, 1, 'Title 제목 갤러리 테스팅: 2021-10-11 공연 사진.', 'Content Testing 123 내용 테스팅 123', sysdate, null, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, p_img, hit) VALUES (seq_post_no.NEXTVAL, 3, 1, 'Title 제목 갤러리 테스팅: 2021-10-11 공연 사진.', 'Content Testing 123 내용 테스팅 123', sysdate, null, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, p_img, hit) VALUES (seq_post_no.NEXTVAL, 3, 1, 'Title 제목 갤러리 테스팅: 2021-10-11 공연 사진.', 'Content Testing 123 내용 테스팅 123', sysdate, null, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, p_img, hit) VALUES (seq_post_no.NEXTVAL, 3, 1, 'Title 제목 갤러리 테스팅: 2021-10-11 공연 사진.', 'Content Testing 123 내용 테스팅 123', sysdate, null, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, p_img, hit) VALUES (seq_post_no.NEXTVAL, 3, 1, 'Title 제목 갤러리 테스팅: 2021-10-11 공연 사진.', 'Content Testing 123 내용 테스팅 123', sysdate, null, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, p_img, hit) VALUES (seq_post_no.NEXTVAL, 3, 1, 'Title 제목 갤러리 테스팅: 2021-10-11 공연 사진.', 'Content Testing 123 내용 테스팅 123', sysdate, null, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, p_img, hit) VALUES (seq_post_no.NEXTVAL, 3, 1, 'Title 제목 갤러리 테스팅: 2021-10-11 공연 사진.', 'Content Testing 123 내용 테스팅 123', sysdate, null, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, p_img, hit) VALUES (seq_post_no.NEXTVAL, 3, 1, 'Title 제목 갤러리 테스팅: 2021-10-11 공연 사진.', 'Content Testing 123 내용 테스팅 123', sysdate, null, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, p_img, hit) VALUES (seq_post_no.NEXTVAL, 3, 1, 'Title 제목 갤러리 테스팅: 2021-10-11 공연 사진.', 'Content Testing 123 내용 테스팅 123', sysdate, null, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, p_img, hit) VALUES (seq_post_no.NEXTVAL, 3, 1, 'Title 제목 갤러리 테스팅: 2021-10-11 공연 사진.', 'Content Testing 123 내용 테스팅 123', sysdate, null, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, p_img, hit) VALUES (seq_post_no.NEXTVAL, 3, 1, 'Title 제목 갤러리 테스팅: 2021-10-11 공연 사진.', 'Content Testing 123 내용 테스팅 123', sysdate, null, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, p_img, hit) VALUES (seq_post_no.NEXTVAL, 3, 1, 'Title 제목 갤러리 테스팅: 2021-10-11 공연 사진.', 'Content Testing 123 내용 테스팅 123', sysdate, null, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, p_img, hit) VALUES (seq_post_no.NEXTVAL, 3, 1, 'Title 제목 갤러리 테스팅: 2021-10-11 공연 사진.', 'Content Testing 123 내용 테스팅 123', sysdate, '1000.jpg', 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, p_img, hit) VALUES (seq_post_no.NEXTVAL, 3, 1, 'Title 제목 갤러리 테스팅: 2021-10-11 공연 사진.', 'Content Testing 123 내용 테스팅 123', sysdate, '1001.jpg', 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, p_img, hit) VALUES (seq_post_no.NEXTVAL, 3, 1, 'Title 제목 갤러리 테스팅: 2021-10-11 공연 사진.', 'Content Testing 123 내용 테스팅 123', sysdate, '1002.jpg', 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, p_img, hit) VALUES (seq_post_no.NEXTVAL, 3, 1, 'Title 제목 갤러리 테스팅: 2021-10-11 공연 사진.', 'Content Testing 123 내용 테스팅 123', sysdate, '1003.jpg', 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, p_img, hit) VALUES (seq_post_no.NEXTVAL, 3, 1, 'Title 제목 갤러리 테스팅: 2021-10-11 공연 사진.', 'Content Testing 123 내용 테스팅 123', sysdate, '1004.jpg', 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, p_img, hit) VALUES (seq_post_no.NEXTVAL, 3, 1, 'Title 제목 갤러리 테스팅: 2021-10-11 공연 사진.', 'Content Testing 123 내용 테스팅 123', sysdate, '1005.jpg', 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, p_img, hit) VALUES (seq_post_no.NEXTVAL, 3, 1, 'Title 제목 갤러리 테스팅: 2021-10-11 공연 사진.', 'Content Testing 123 내용 테스팅 123', sysdate, '1006.jpg', 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, p_img, hit) VALUES (seq_post_no.NEXTVAL, 3, 1, 'Title 제목 갤러리 테스팅: 2021-10-11 공연 사진.', 'Content Testing 123 내용 테스팅 123', sysdate, '1007.jpg', 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, p_img, hit) VALUES (seq_post_no.NEXTVAL, 3, 1, 'Title 제목 갤러리 테스팅: 2021-10-11 공연 사진.', 'Content Testing 123 내용 테스팅 123', sysdate, '1008.jpg', 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, p_img, hit) VALUES (seq_post_no.NEXTVAL, 3, 1, 'Title 제목 갤러리 테스팅: 2021-10-11 공연 사진.', 'Content Testing 123 내용 테스팅 123', sysdate, '1009.jpg', 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, p_img, hit) VALUES (seq_post_no.NEXTVAL, 3, 1, 'Title 제목 갤러리 테스팅: 2021-10-11 공연 사진.', 'Content Testing 123 내용 테스팅 123', sysdate, '1010.jpg', 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, p_img, hit) VALUES (seq_post_no.NEXTVAL, 3, 1, 'Title 제목 갤러리 테스팅: 2021-10-11 공연 사진.', 'Content Testing 123 내용 테스팅 123', sysdate, '1011.jpg', 0);
 INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, p_img, hit) VALUES (seq_post_no.NEXTVAL, 3, 1, 'Title 제목 갤러리 테스팅: 2021-10-11 공연 사진.', 'Content Testing 123 내용 테스팅 123', sysdate, null, 0);
 INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, p_img, hit) VALUES (seq_post_no.NEXTVAL, 3, 1, 'Title 제목 갤러리 테스팅: 2021-10-11 공연 사진.', 'Content Testing 123 내용 테스팅 123', sysdate, null, 0);
 INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, p_img, hit) VALUES (seq_post_no.NEXTVAL, 3, 1, 'Title 제목 갤러리 테스팅: 2021-10-11 공연 사진.', 'Content Testing 123 내용 테스팅 123', sysdate, null, 0);

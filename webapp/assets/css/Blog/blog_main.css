@@ -327,9 +327,11 @@ h1 {
 	font-weight: 300;
 	overflow: hidden;
 	padding: 12px 0;
+	text-overflow: ellipsis; white-space : nowrap;
 	opacity: 0;
 	transition: opacity 0.35s, transform 0.35s;
 	transform: translate3d(10%, 0, 0);
+	white-space: nowrap;
 }
 
 .gallery_box .gallery_item h2, .oo-gallery .gallery_item p {
@@ -428,32 +430,32 @@ h1 {
 }
 
 #noticehightlight {
-    color: red;
-    background-color: #F5F5F5;
-    font-weight: bold;
+	color: red;
+	background-color: #F5F5F5;
+	font-weight: bold;
 }
 
-#noticehightlight a{
-    color: red;
-    background-color: #F5F5F5;
-    font-weight: bold;
+#noticehightlight a {
+	color: red;
+	background-color: #F5F5F5;
+	font-weight: bold;
 }
 
 .left-align {
-  text-align: left;
+	text-align: left;
 }
 
-.noticebox{
+.noticebox {
 	border: 1px solid #ffc6c9;
-    background-color: #ffe3e4;
-    color: #ff4e59;
-    border-radius: 3px;
-    font-size: 11px;
-    font-weight: 800;
-    line-height: 19px;
-    display: block;
-    width: 56px;
-    height: 21px;
-    text-align: center;
-    margin-left: 23px;
+	background-color: #ffe3e4;
+	color: #ff4e59;
+	border-radius: 3px;
+	font-size: 11px;
+	font-weight: 800;
+	line-height: 19px;
+	display: block;
+	width: 56px;
+	height: 21px;
+	text-align: center;
+	margin-left: 23px;
 }

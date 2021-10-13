@@ -92,7 +92,7 @@ public class BlogService2 {
 
   }
 
-  /*** 갤러리 리스트 가져오기(Main) ***/
+  /*** 갤러리 리스트 가져오기(blog_Main) ***/
   public List<PostVo> getGalleryMain(int user_no) {
 
     return blogDao2.getGalleryMain(user_no);
@@ -275,5 +275,13 @@ public class BlogService2 {
     return blogDao2.setProfile(profileMap);
 
   }
+
+  /*** 갤러리 리스트 가져오기(Main) ***/
+  public List<PostVo> getGalleryMainPage() {
+
+    return blogDao2.getGalleryMainPage();
+
+  }
+
 
 }

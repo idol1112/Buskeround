@@ -341,5 +341,51 @@
 		]]>
 	</update>
 
+	<!-- 갤러리 최신순 가져오기 (메인) -->
+	<select id="getGalleryMainPage" resultType="PostVo">
+		<![CDATA[
+			SELECT
+			    rn,
+			    ott.post_no,
+			    ott.title,
+			    ott.content,
+			    ott.reg_date,
+			    ott.p_img,
+			    ott.hit
+			FROM
+			    (
+			        SELECT
+			            ROWNUM rn,
+			            ot.post_no,
+			            ot.title,
+			            ot.content,
+			            ot.reg_date,
+			            ot.p_img,
+			            ot.hit
+			        FROM
+			            (
+			                SELECT
+			                    post_no,
+			                    title,
+			                    content,
+			                    to_char(reg_date, 'YYYY. MM. DD"("dy")"') reg_date,
+			                    p_img,
+			                    hit
+			                FROM
+			                    post
+			                WHERE
+			                    p_img IS NOT NULL
+			                    AND p_start IS NULL
+			                    AND p_end IS NULL
+			                ORDER BY
+			                    reg_date DESC
+			            ) ot
+			    ) ott
+			WHERE
+			        rn >= 1
+			    AND rn <= 4
+		]]>
+	</select>
+
 
 </mapper>

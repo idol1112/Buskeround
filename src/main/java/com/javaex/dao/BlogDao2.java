@@ -94,7 +94,7 @@ public class BlogDao2 {
     return sqlSession.selectOne("post.selectTotalCnt", keyword);
   }
 
-  /*** 갤러리 리스트 가져오기(Main) ***/
+  /*** 갤러리 리스트 가져오기(blog_Main) ***/
   public List<PostVo> getGalleryMain(int user_no) {
     System.out.println("[사용 메소드: BlogDao2.getGalleryMain()]");
 
@@ -131,6 +131,14 @@ public class BlogDao2 {
     System.out.println(profileMap);
 
     return sqlSession.update("post.setProfile", profileMap);
+  }
+
+  /*** 갤러리 최신순 가져오기(Main) ***/
+  public List<PostVo> getGalleryMainPage() {
+    System.out.println("[사용 메소드: BlogDao2.getGalleryMainPage()]");
+
+    return sqlSession.selectList("post.getGalleryMainPage");
+
   }
 
 }
