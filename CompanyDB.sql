@@ -1,4 +1,5 @@
-ert 문
+--insert문
+
 --김덕배씨 회원가입(제휴사1)
 insert into users values(seq_user_no.nextval,'1234','1234','1234@naver.com','김덕배','101.PNG','김덕배','010-1111-1111','male','1998-11-12','3','트랩','0',0,0,sysdate,'2','2','0');
 --김창수씨 회원가입(제휴사2)
@@ -79,24 +80,24 @@ insert into category values (seq_cate_no.nextval, 15, 2, '타임라인');
 insert into category values (seq_cate_no.nextval, 16, 2, '타임라인');
 
 --Post (timeline)
-INSERT INTO post VALUES (seq_post_no.NEXTVAL, 1, 7, '안녕하세요', NULL, NULL, 33.451486, 126.571199, TO_DATE('2021-09-01 10:26:11','YYYY-MM-DD HH24:MI:SS'), sysdate, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
-INSERT INTO post VALUES (seq_post_no.NEXTVAL, 1, 7, '안녕하세요', NULL, NULL, 33.451549, 126.569021, TO_DATE('2021-09-06 10:26:11','YYYY-MM-DD HH24:MI:SS'), sysdate, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
-INSERT INTO post VALUES (seq_post_no.NEXTVAL, 1, 7, '안녕하세요', NULL, NULL, 33.453160, 126.569815, TO_DATE('2021-09-08 10:26:11','YYYY-MM-DD HH24:MI:SS'), sysdate, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
-INSERT INTO post VALUES (seq_post_no.NEXTVAL, 1, 7, '안녕하세요', NULL, NULL, 33.454189, 126.571843, TO_DATE('2021-09-10 10:26:11','YYYY-MM-DD HH24:MI:SS'), sysdate, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
-INSERT INTO post VALUES (seq_post_no.NEXTVAL, 1, 7, '안녕하세요', NULL, NULL, 33.454977, 126.569000, TO_DATE('2021-09-15 10:26:11','YYYY-MM-DD HH24:MI:SS'), sysdate, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
-INSERT INTO post VALUES (seq_post_no.NEXTVAL, 1, 7, '안녕하세요', NULL, NULL, 33.453187, 126.566779, TO_DATE('2021-09-18 10:26:11','YYYY-MM-DD HH24:MI:SS'), sysdate, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
-INSERT INTO post VALUES (seq_post_no.NEXTVAL, 1, 7, '안녕하세요', NULL, NULL, 33.449633, 126.570597, TO_DATE('2021-09-22 10:26:11','YYYY-MM-DD HH24:MI:SS'), sysdate, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
-INSERT INTO post VALUES (seq_post_no.NEXTVAL, 1, 7, '안녕하세요', NULL, NULL, 33.448344, 126.573828, TO_DATE('2021-09-28 10:26:11','YYYY-MM-DD HH24:MI:SS'), sysdate, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
-INSERT INTO post VALUES (seq_post_no.NEXTVAL, 1, 7, '안녕하세요', NULL, NULL, 33.448944, 126.569601, TO_DATE('2021-10-01 10:26:11','YYYY-MM-DD HH24:MI:SS'), NULL, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
-INSERT INTO post VALUES (seq_post_no.NEXTVAL, 2, 8, '안녕하세요', NULL, NULL, 33.451486, 126.571199, TO_DATE('2021-09-01 10:26:11','YYYY-MM-DD HH24:MI:SS'), NULL, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
-INSERT INTO post VALUES (seq_post_no.NEXTVAL, 3, 9, '안녕하세요', NULL, NULL, 33.451549, 126.569021, TO_DATE('2021-09-06 10:26:11','YYYY-MM-DD HH24:MI:SS'), NULL, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
-INSERT INTO post VALUES (seq_post_no.NEXTVAL, 4, 10, '안녕하세요', NULL, NULL, 33.453160, 126.569815, TO_DATE('2021-09-08 10:26:11','YYYY-MM-DD HH24:MI:SS'), NULL, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
-INSERT INTO post VALUES (seq_post_no.NEXTVAL, 5, 11, '안녕하세요', NULL, NULL, 33.454189, 126.571843, TO_DATE('2021-09-10 10:26:11','YYYY-MM-DD HH24:MI:SS'), NULL, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
-INSERT INTO post VALUES (seq_post_no.NEXTVAL, 6, 12, '안녕하세요', NULL, NULL, 33.454977, 126.569000, TO_DATE('2021-09-15 10:26:11','YYYY-MM-DD HH24:MI:SS'), NULL, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
-INSERT INTO post VALUES (seq_post_no.NEXTVAL, 7, 13, '안녕하세요', NULL, NULL, 33.453187, 126.566779, TO_DATE('2021-09-18 10:26:11','YYYY-MM-DD HH24:MI:SS'), NULL, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
-INSERT INTO post VALUES (seq_post_no.NEXTVAL, 8, 14, '안녕하세요', NULL, NULL, 33.449633, 126.570597, TO_DATE('2021-09-22 10:26:11','YYYY-MM-DD HH24:MI:SS'), NULL, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
-INSERT INTO post VALUES (seq_post_no.NEXTVAL, 9, 15, '안녕하세요', NULL, NULL, 33.448344, 126.573828, TO_DATE('2021-09-28 10:26:11','YYYY-MM-DD HH24:MI:SS'), NULL, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
-INSERT INTO post VALUES (seq_post_no.NEXTVAL, 10, 16, '안녕하세요', NULL, NULL, 33.448944, 126.569601, TO_DATE('2021-10-01 10:26:11','YYYY-MM-DD HH24:MI:SS'), NULL, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
+INSERT INTO post VALUES (seq_post_no.NEXTVAL, 1, 7, '안녕하세요', NULL, NULL, 33.451486, 126.571199, TO_DATE('2021-09-01 10:26:11','YYYY-MM-DD HH24:MI:SS'), sysdate, '1000.jpg', 'nQoRw_5ning', '하이미디어', NULL);
+INSERT INTO post VALUES (seq_post_no.NEXTVAL, 1, 7, '안녕하세요', NULL, NULL, 33.451549, 126.569021, TO_DATE('2021-09-06 10:26:11','YYYY-MM-DD HH24:MI:SS'), sysdate, '1001.jpg', 'nQoRw_5ning', '하이미디어', NULL);
+INSERT INTO post VALUES (seq_post_no.NEXTVAL, 1, 7, '안녕하세요', NULL, NULL, 33.453160, 126.569815, TO_DATE('2021-09-08 10:26:11','YYYY-MM-DD HH24:MI:SS'), sysdate, '1002.jpg', 'nQoRw_5ning', '하이미디어', NULL);
+INSERT INTO post VALUES (seq_post_no.NEXTVAL, 1, 7, '안녕하세요', NULL, NULL, 33.454189, 126.571843, TO_DATE('2021-09-10 10:26:11','YYYY-MM-DD HH24:MI:SS'), sysdate, '1003.jpg', 'nQoRw_5ning', '하이미디어', NULL);
+INSERT INTO post VALUES (seq_post_no.NEXTVAL, 1, 7, '안녕하세요', NULL, NULL, 33.454977, 126.569000, TO_DATE('2021-09-15 10:26:11','YYYY-MM-DD HH24:MI:SS'), sysdate, '1004.jpg', 'nQoRw_5ning', '하이미디어', NULL);
+INSERT INTO post VALUES (seq_post_no.NEXTVAL, 1, 7, '안녕하세요', NULL, NULL, 33.453187, 126.566779, TO_DATE('2021-09-18 10:26:11','YYYY-MM-DD HH24:MI:SS'), sysdate, '1005.jpg', 'nQoRw_5ning', '하이미디어', NULL);
+INSERT INTO post VALUES (seq_post_no.NEXTVAL, 1, 7, '안녕하세요', NULL, NULL, 33.449633, 126.570597, TO_DATE('2021-09-22 10:26:11','YYYY-MM-DD HH24:MI:SS'), sysdate, '1006.jpg', 'nQoRw_5ning', '하이미디어', NULL);
+INSERT INTO post VALUES (seq_post_no.NEXTVAL, 1, 7, '안녕하세요', NULL, NULL, 33.448344, 126.573828, TO_DATE('2021-09-28 10:26:11','YYYY-MM-DD HH24:MI:SS'), sysdate, '1007.jpg', 'nQoRw_5ning', '하이미디어', NULL);
+INSERT INTO post VALUES (seq_post_no.NEXTVAL, 1, 7, '안녕하세요', NULL, NULL, 33.448944, 126.569601, TO_DATE('2021-10-01 10:26:11','YYYY-MM-DD HH24:MI:SS'), NULL, '1008.jpg', 'nQoRw_5ning', '하이미디어', NULL);
+INSERT INTO post VALUES (seq_post_no.NEXTVAL, 2, 8, '안녕하세요', NULL, NULL, 33.451486, 126.571199, TO_DATE('2021-09-01 10:26:11','YYYY-MM-DD HH24:MI:SS'), NULL, '1009.jpg', 'nQoRw_5ning', '하이미디어', NULL);
+INSERT INTO post VALUES (seq_post_no.NEXTVAL, 3, 9, '안녕하세요', NULL, NULL, 33.451549, 126.569021, TO_DATE('2021-09-06 10:26:11','YYYY-MM-DD HH24:MI:SS'), NULL, '1010.jpg', 'nQoRw_5ning', '하이미디어', NULL);
+INSERT INTO post VALUES (seq_post_no.NEXTVAL, 4, 10, '안녕하세요', NULL, NULL, 33.453160, 126.569815, TO_DATE('2021-09-08 10:26:11','YYYY-MM-DD HH24:MI:SS'), NULL, '1011.jpg', 'nQoRw_5ning', '하이미디어', NULL);
+INSERT INTO post VALUES (seq_post_no.NEXTVAL, 5, 11, '안녕하세요', NULL, NULL, 33.454189, 126.571843, NULL, NULL, '1000.jpg', 'nQoRw_5ning', '하이미디어', NULL);
+INSERT INTO post VALUES (seq_post_no.NEXTVAL, 6, 12, '안녕하세요', NULL, NULL, 33.454977, 126.569000, NULL, NULL, '1001.jpg', 'nQoRw_5ning', '하이미디어', NULL);
+INSERT INTO post VALUES (seq_post_no.NEXTVAL, 7, 13, '안녕하세요', NULL, NULL, 33.453187, 126.566779, NULL, NULL, '1002.jpg', 'nQoRw_5ning', '하이미디어', NULL);
+INSERT INTO post VALUES (seq_post_no.NEXTVAL, 8, 14, '안녕하세요', NULL, NULL, 33.449633, 126.570597, NULL, NULL, '1003.jpg', 'nQoRw_5ning', '하이미디어', NULL);
+INSERT INTO post VALUES (seq_post_no.NEXTVAL, 9, 15, '안녕하세요', NULL, NULL, 33.448344, 126.573828, NULL, NULL, '1004.jpg', 'nQoRw_5ning', '하이미디어', NULL);
+INSERT INTO post VALUES (seq_post_no.NEXTVAL, 10, 16, '안녕하세요', NULL, NULL, 33.448944, 126.569601, NULL, NULL, '1005.jpg', 'nQoRw_5ning', '하이미디어', NULL);
 
 -- 제휴사 등록
 insert into company values(1,'101.PNG','신촌 CGV','서울 서대문구 신촌로 129 아트레온','1544-1122','김덕배','104-81-45690',37.55649812100385,126.94032867686857);
@@ -202,28 +203,3 @@ insert into buskingapp values(SEQ_APP_NO.nextval,26,17,'잘부탁드립니다 �
 insert into buskingapp values(SEQ_APP_NO.nextval,13,18,'맥도날드 BTS세트 먹어봄',sysdate,'3');
 /*////////////////////////////insert문////////////////////////////////////*/
 
---select문(공연신청 관리)
-SELECT
-    ba.user_no,
-    u.nickname,
-    s.stage_name,
-    bd.bus_date,
-    bt.start_time,
-    bt.end_time,
-    u.genre,
-    u.hp,
-    ba.user_info,
-    ba.status
-FROM
-    company      c,
-    stage        s,
-    buskingdate  bd,
-    buskingtime  bt,
-    buskingapp   ba,
-    users        u
-WHERE
-        c.user_no = s.user_no
-    AND s.stage_no = bd.stage_no
-    AND bd.date_no = bt.date_no
-    AND bt.time_no = ba.time_no
-    AND ba.user_no = u.user_no;
