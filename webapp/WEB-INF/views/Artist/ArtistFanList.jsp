@@ -79,8 +79,7 @@
 									</c:if> <c:if test="${frList.user_img != null}">
 										<img src="${pageContext.request.contextPath}/upload/${frList.user_img}" style="width: 70px; height: 70px; border-radius: 70%; object-fit: cover;">
 									</c:if></td>
-								<td>
-									<div>${frList.nickname}</div>
+								<td><a href="${pageContext.request.contextPath}/blog/blog_main/${frList.id}">${frList.nickname}</a>
 									<div>
 										<c:if test="${nList.y_url != null}">
 											<img src="${pageContext.request.contextPath}/assets/image/artist/icon/youtube.png" style="width: 20px">
@@ -91,8 +90,7 @@
 										<c:if test="${nList.i_url != null}">
 											<img src="${pageContext.request.contextPath}/assets/image/artist/icon/insta.png" style="width: 20px">
 										</c:if>
-									</div>
-								</td>
+									</div></td>
 								<!-- 장르 -->
 								<c:if test="${frList.genre == 1}">
 									<td class="articon"><img src="${pageContext.request.contextPath}/assets/image/blog/icon/ballade.png" style="width: 60px"></td>
