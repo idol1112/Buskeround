@@ -119,8 +119,16 @@
 									<div>${aList.genre_type}</div>
 									<div>가입연도 ${aList.artist_regdate}년</div>
 								</td>
-								<td class="left02_td"><img class="likes" src="${pageContext.request.contextPath}/assets/image/artist/icon/heart2.png" style="width: 20px"> <span>${aList.likes}</span></td>
-								<td class="left02_td"><img class="fan" data-no="${aList.user_no}" src="${pageContext.request.contextPath}/assets/image/artist/icon/fan1.png" style="width: 20px"><span>${aList.fan}</span></td>
+									<td class="left02_td"><img class="likes" src="${pageContext.request.contextPath}/assets/image/artist/icon/heart1.png" style="width: 20px"> <span>${aList.likes}</span></td>
+								<c:choose>
+									<c:when test="${aList.fanOk == true}">
+										<td class="left02_td"><img class="fan" data-no="${aList.user_no}" src="${pageContext.request.contextPath}/assets/image/artist/icon/fan2.png" style="width: 20px"><span>${aList.fan}</span></td>
+									</c:when>
+									<c:otherwise>
+										<td class="left02_td"><img class="fan" data-no="${aList.user_no}" src="${pageContext.request.contextPath}/assets/image/artist/icon/fan1.png" style="width: 20px"><span>${aList.fan}</span></td>
+									</c:otherwise>
+								</c:choose>
+								
 							</tr>
 						</c:forEach>
 					</tbody>

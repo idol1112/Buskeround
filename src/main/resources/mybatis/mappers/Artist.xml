@@ -787,6 +787,18 @@
 			and nickname like '%'||#{keyword}||'%'
 		</if>
 	</select>
+	
+	<!-- Check Artist-->
+	<select id="artistCheck" resultType="String" parameterType="UserVo">
+	<![CDATA[
+		SELECT
+		    user_no
+		FROM
+		fan
+		where user_no = #{artist_no}
+		and artist_no =  #{user_no}
+	]]>
+	</select>
 
 
 

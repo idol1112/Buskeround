@@ -129,5 +129,13 @@ public class ArtistDao {
 
 		return sqlsession.selectOne("artist.pageCount", countMap);
 	}
+	
+	public String checkArtist(UserVo userVo) {
+		System.out.println("[ArtistDao.checkArtist()]");
+		
+		String check = sqlsession.selectOne("artistCheck", userVo);
+		
+		return check;
+	}
 
 }
