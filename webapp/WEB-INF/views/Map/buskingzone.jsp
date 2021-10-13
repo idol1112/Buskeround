@@ -34,10 +34,10 @@
 		#menu_wrap .option p {margin:10px 0;}
 		#menu_wrap .option button {margin-left:5px;}
 
-		#overlayweb_table {position:absolute;top:0px;left:365px;width:360px;height:100%;z-index: 1;background-color:White;}
+		#overlayweb_table {position:absolute;top:0px;left:365px;width:360px;height:100%;z-index: 1;background-color:White; margin-left: -10px;}
 
 		#searchList li {list-style: none;}
-		#searchList .item {position:relative;border-bottom:1px solid #F2F3F6;overflow: hidden;cursor: pointer;min-height: 65px;}
+		#searchList .item {position:relative;overflow: hidden;cursor: pointer;min-height: 65px;}
 		#searchList .item span {display: block;margin-top:4px;}
 		#searchList .item h5, #placesList .item .info {text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
 		#searchList .item .info{padding:10px 0 10px 55px;}
@@ -61,6 +61,12 @@
 		#searchList .item .marker_14 {background-position: 0 -608px;}
 		#searchList .item .marker_15 {background-position: 0 -654px;}
 
+        #table {
+        width: 360px;
+        margin-top: 10px;
+
+        }
+
         #company_box {
           width: 330px;
           height: 180px;
@@ -69,8 +75,14 @@
         #company_box img {
            height:100%;
            width: 100%;
-           object-fit:cover;
-           border-radius: 10px 10px 10px 10px;
+           object-fit: contain;
+        }
+
+        #overlayweb_img_box {
+          width: 100%;
+          height: 250px;
+          object-fit:contain;
+          margin-top: 10px;
         }
 
 		#keyword{
@@ -97,14 +109,15 @@
 		 overflow:hidden;
 		}
 
-
 		.listimg{
-		padding: 10px 15px 20px 15px;
+		margin: 0 15px;
+        padding: 15px 0;
+        border-bottom:1px solid #A9A9A9;
 		}
+
 		.listimg:hover {
     	background: #E0ECF8;
   		}
-
 
 		.formsearch{
 		width:344px;
@@ -146,6 +159,7 @@
 			width:250px;
 			font-size:20px;
 			font-weight: 900;
+            color: #0068c3;
 		}
 
 		.listfont_address{
@@ -187,7 +201,7 @@
 		}
 
 		#com_name{
-			text-align: center;font-size:40px;
+			text-align: center;font-size:30px; font-weight: bold;
 		}
 
 	.button_application {
@@ -203,7 +217,8 @@
 
 
 	.affiliate_info{
-		font-size: 16px;
+	  font-size: 14px;
+      margin: 5px 15px;
 	}
 
 	.Whether{
@@ -574,7 +589,7 @@ function overlay(mapOverlay,info){
 	'<input type="hidden" name="company_no" value="'+mapOverlay.overlayList.user_no+'">'+
 	'<input type="hidden" name="time_no" value="">'+
 	'	<div>'+
-	'		<img src="${pageContext.request.contextPath }/upload/'+ mapOverlay.overlayList.com_img + '" width="100%" height="250">'+
+	'		<img id="overlayweb_img_box" src="${pageContext.request.contextPath }/upload/'+ mapOverlay.overlayList.com_img + '">'+
 	'	</div>'+
 
 	'	<div>'+
@@ -585,10 +600,9 @@ function overlay(mapOverlay,info){
 	'		<div class="affiliate_info">대표자명 : '+ mapOverlay.overlayList.ceo_name + '</div>'+
 	'		<div class="affiliate_info">전화번호 : '+ mapOverlay.overlayList.com_number + '</div>'+
 	'		<div class="affiliate_info">상세주소 : '+ mapOverlay.overlayList.address + '</div>'+
-	'		<hr>'+
 	'	</div>'+
 
-	'<table width="359">'+
+	'<table id="table">'+
 	'<tr align ="center">'+
 	'<td width="150px">장소</td>'+
 	'<td>'+
