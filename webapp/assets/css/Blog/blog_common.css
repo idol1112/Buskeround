@@ -10,10 +10,13 @@ body, div, ul, li, dl, dt, ol, h1, h2, h3, h4, h5, h6, input, fieldset,
 body {
 	font-family: "맑은 고딕", 돋음;
 	font-size: 12px;
+}
+
+#br_sidebar {
 	-ms-overflow-style: none;
 }
 
-::-webkit-scrollbar {
+#br_sidebar::-webkit-scrollbar {
 	display: none;
 }
 

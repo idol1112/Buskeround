@@ -34,6 +34,19 @@ public class ArtistService {
 			
 		}
 		
+		for (int i = 0; i < aList.size(); i++) {
+			
+			aList.get(i).setArtist_no(user_no);
+			String check = artistDao.checkLike(aList.get(i));
+			
+			if (check == null) {
+				aList.get(i).setLikeOk(false);
+			} else {
+				aList.get(i).setLikeOk(true);
+			}
+			
+		}
+		
 		return aList;
 	}
 	
@@ -320,6 +333,28 @@ public class ArtistService {
 
 		}
 
+	}
+	
+	// 좋아요 등록
+	public boolean getLikes(UserVo userVo) {
+		
+		if (artistDao.getLikesOk(userVo) == null) {
+			
+			System.out.println("팬이 아닙니다.");
+			artistDao.getLikes(userVo);
+			artistDao.artistLikesUp(userVo.getArtist_no());
+			
+			return false;
+			
+		} else {
+			System.out.println("팬입니다.");
+			artistDao.deleteLikes(userVo);
+			artistDao.artistLikesDown(userVo.getArtist_no());
+			
+			return true;
+			
+		}
+		
 	}
 
 
