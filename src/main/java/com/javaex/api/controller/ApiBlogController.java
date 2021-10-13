@@ -93,8 +93,6 @@ public class ApiBlogController {
 
     postVo.setUser_no(user_no);
 
-
-
     if (file == null) {
       System.out.println("파일이 없습니다.");
 
@@ -105,16 +103,6 @@ public class ApiBlogController {
       System.out.println("파일이 있습니다.");
 
     }
-
-  }
-
-  /*** 블로그 메인(모바일) ***/
-  @ResponseBody
-  @RequestMapping(value = "blog_main", method = {RequestMethod.GET, RequestMethod.POST})
-  public BlogVo blog_main(@RequestBody UserVo userVo) {
-    System.out.println("[현재 위치: ApiBlogController.blog_main]");
-
-    return blogService.selectUser(userVo.getId());
 
   }
 
@@ -138,7 +126,17 @@ public class ApiBlogController {
 
   }
 
-  /*** 배너 업로드 ***/
+  /*** 블로그 메인(안드로이드) ***/
+  @ResponseBody
+  @RequestMapping(value = "blog_main", method = {RequestMethod.GET, RequestMethod.POST})
+  public BlogVo blog_main(@RequestBody UserVo userVo) {
+    System.out.println("[현재 위치: ApiBlogController.blog_main]");
+
+    return blogService.selectUser(userVo.getId());
+
+  }
+
+  /*** 배너 업로드(안드로이드) ***/
   @ResponseBody
   @RequestMapping(value = "banner/{user_no}", method = {RequestMethod.GET, RequestMethod.POST})
   public int banner(@RequestParam(value = "file1", required = false) MultipartFile file, @PathVariable("user_no") int user_no) {
@@ -159,7 +157,7 @@ public class ApiBlogController {
 
   }
 
-  /*** 프로필 업로드 ***/
+  /*** 프로필 업로드(안드로이드) ***/
   @ResponseBody
   @RequestMapping(value = "profile/{user_no}", method = {RequestMethod.GET, RequestMethod.POST})
   public int profile(@RequestParam(value = "file1", required = false) MultipartFile file, @PathVariable("user_no") int user_no) {

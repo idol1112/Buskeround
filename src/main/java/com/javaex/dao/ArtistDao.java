@@ -84,7 +84,7 @@ public class ArtistDao {
 		artistMap.put("start_num", start_num);
 		artistMap.put("end_num", end_num);
 		artistMap.put("search", keyword);
-
+		
 		return sqlsession.selectList("artist.getArtistSearch", artistMap);
 	}
 	
@@ -94,7 +94,14 @@ public class ArtistDao {
 		System.out.println("[ArtistDao.getFan()]");
 
 		sqlsession.insert("artist.getFan", userVo);
-
+	}
+	
+	// 팬 등록
+	public void getLikes(UserVo userVo) {
+		System.out.println("[ArtistDao.getLikes()]");
+		System.out.println(userVo);
+		
+		sqlsession.insert("artist.getLikes", userVo);
 	}
 
 	// 팬 로딩
@@ -109,6 +116,13 @@ public class ArtistDao {
 		System.out.println("[artistDao.getFanOk()]");
 
 		return sqlsession.selectOne("artist.getFanOk", userVo);
+	}
+	
+	// 좋아요 등록 여부
+	public UserVo getLikesOk(UserVo userVo) {
+		System.out.println("[artistDao.getFanOk()]");
+		
+		return sqlsession.selectOne("artist.getLikesOk", userVo);
 	}
 
 
@@ -129,5 +143,67 @@ public class ArtistDao {
 
 		return sqlsession.selectOne("artist.pageCount", countMap);
 	}
+	
+	//check Fans
+	public String checkArtist(UserVo userVo) {
+		System.out.println("[ArtistDao.checkArtist()]");
+		
+		String check = sqlsession.selectOne("artistCheck", userVo);
+		
+		return check;
+	}
+	
+	//check Likes
+	public String checkLike(UserVo userVo) {
+		System.out.println("[ArtistDao.checkLike()]");
+		
+		String check = sqlsession.selectOne("likeCheck", userVo);
+		
+		return check;
+	}
+	
+	
+	//팬되기 숫자 올리기
+	public void artistFanUp(int no) {
+		System.out.println("[ArtistDao.artistFanUp()]");
+		
+		sqlsession.update("artistFanUp", no);
+	}
+	
+	//좋아요 숫자 올리기
+	public void artistLikesUp(int no) {
+		System.out.println("[ArtistDao.artistFanUp()]");
+		
+		sqlsession.update("artistLikesUp", no);
+	}
+	
+	//팬되기 숫자 내리기
+	public void artistFanDown(int no) {
+		System.out.println("[ArtistDao.artistFanDown()]");
+		
+		sqlsession.update("artistFanDown", no);
+	}
+	
+	//팬되기 숫자 내리기
+	public void artistLikesDown(int no) {
+		System.out.println("[ArtistDao.artistLikesDown()]");
+		
+		sqlsession.update("artistLikesDown", no);
+	}
+	
+	//팬되기 삭제
+	public void deleteFan(UserVo userVo) {
+		System.out.println("[ArtistDao.deleteFan()]");
+		
+		sqlsession.update("deleteFan", userVo);
+	}
+	
+	//팬되기 삭제
+	public void deleteLikes(UserVo userVo) {
+		System.out.println("[ArtistDao.deleteFan()]");
+		
+		sqlsession.update("deleteLikes", userVo);
+	}
+	
 
 }

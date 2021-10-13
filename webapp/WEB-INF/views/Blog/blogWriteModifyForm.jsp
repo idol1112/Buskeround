@@ -56,7 +56,8 @@
           <textarea name="content" class="editor">
           	${noticeVo.content}
           </textarea>
-
+		  
+		  <button id="uploadbutton" onclick="history.back()" style="background-color: red; color: white; margin-left: 5px">취소</button>
           <button type="submit" id="uploadbutton">수정</button>
         </form>
       </div>

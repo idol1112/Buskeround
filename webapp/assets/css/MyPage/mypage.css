@@ -302,13 +302,8 @@ input[type="file"] {
 }
 
 .genre-img {
-	width:65px;
-	height:24px;
-}
-
-.genre-img2 {
-	width:68px;
-	height:24px;
+    width: 70px;
+    height: 24px;
 }
 
 .status-img {

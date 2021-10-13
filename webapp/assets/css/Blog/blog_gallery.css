@@ -57,9 +57,11 @@
 	font-weight: 300;
 	overflow: hidden;
 	padding: 12px 0;
+	text-overflow: ellipsis; white-space : nowrap;
 	opacity: 0;
 	transition: opacity 0.35s, transform 0.35s;
 	transform: translate3d(10%, 0, 0);
+	white-space: nowrap;
 }
 
 .gallery_box .gallery_item h2, .oo-gallery .gallery_item p {

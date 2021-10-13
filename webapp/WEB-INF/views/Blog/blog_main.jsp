@@ -58,58 +58,58 @@
       <!------ ////(timeline)//// ------>
 
       <!---- notice ---->
-        <div class="main_title">
-          <img src="${pageContext.request.contextPath}/assets/image/blog/icon/letter.png" alt="">
-          <a href="${pageContext.request.contextPath}/blog/blog_guestbook/${blogVo.id}">
+      <div class="main_title">
+        <img src="${pageContext.request.contextPath}/assets/image/blog/icon/letter.png" alt="">
+        <a href="${pageContext.request.contextPath}/blog/blog_guestbook/${blogVo.id}">
           <span>전체글보기</span>
-          </a>
-        </div>
-        
-        <div class="post_box">
-        	
+        </a>
+      </div>
+
+      <div class="post_box">
+
         <c:if test="${fn:length(noticeMap.noticeList) == 0 && fn:length(boardMap.boardList) == 0}">
           <p id="noPost">등록된 글이 없습니다.</p>
         </c:if>
 
-          <!-- 게시판 테이블 -->
-	      <c:if test="${fn:length(noticeMap.noticeList) != 0 || fn:length(boardMap.boardList) != 0}">
+        <!-- 게시판 테이블 -->
+        <c:if test="${fn:length(noticeMap.noticeList) != 0 || fn:length(boardMap.boardList) != 0}">
           <div id="board">
             <table id="list">
               <thead>
                 <tr>
-	                <th width="10%"></th>
-	                <th width="50%">제목</th>
-	                <th width="15%">작성자</th>
-	                <th width="15%">작성일</th>
-	                <th width="10%">조회</th>
+                  <th width="10%"></th>
+                  <th width="50%">제목</th>
+                  <th width="15%">작성자</th>
+                  <th width="15%">작성일</th>
+                  <th width="10%">조회</th>
                 </tr>
               </thead>
               <tbody>
-              <c:forEach items="${noticeMap.noticeList}" var="noticeVo" varStatus="status" begin="0" end="1">
-                <tr id="noticehightlight">
-					<td><span class="noticebox">공지</span></td>
-					<td class="left-align"><a href="${pageContext.request.contextPath}/blog/blog_noticeDetail/${blogVo.id}?no=${noticeVo.post_no}">${noticeVo.title}</a></td>
-					<td>${noticeVo.nickname}</td>
-					<td>${noticeVo.regDate}</td>
-					<td>${noticeVo.hit}</td>
-                </tr>
-              </c:forEach>
-              
-              <c:forEach items="${boardMap.boardList}" var="noticeVo" varStatus="status" begin="0" end="2">
-                <tr>
-					<td>${noticeVo.rn}</td>
-					<td class="left-align"><a href="${pageContext.request.contextPath}/blog/blog_noticeDetail/${blogVo.id}?no=${noticeVo.post_no}">${noticeVo.title}</a></td>
-					<td>${noticeVo.nickname}</td>
-					<td>${noticeVo.regDate}</td>
-					<td>${noticeVo.hit}</td>
-                </tr>
-              </c:forEach>
+                <c:forEach items="${noticeMap.noticeList}" var="noticeVo" varStatus="status" begin="0" end="1">
+                  <tr id="noticehightlight">
+                    <td><span class="noticebox">공지</span></td>
+                    <td class="left-align"><a href="${pageContext.request.contextPath}/blog/blog_noticeDetail/${blogVo.id}?no=${noticeVo.post_no}">${noticeVo.title}</a></td>
+                    <td>${noticeVo.nickname}</td>
+                    <td>${noticeVo.regDate}</td>
+                    <td>${noticeVo.hit}</td>
+                  </tr>
+                </c:forEach>
+
+                <c:forEach items="${boardMap.boardList}" var="noticeVo" varStatus="status" begin="0" end="2">
+                  <tr>
+                    <td>${noticeVo.rn}</td>
+                    <td class="left-align"><a href="${pageContext.request.contextPath}/blog/blog_noticeDetail/${blogVo.id}?no=${noticeVo.post_no}">${noticeVo.title}</a></td>
+                    <td>${noticeVo.nickname}</td>
+                    <td>${noticeVo.regDate}</td>
+                    <td>${noticeVo.hit}</td>
+                  </tr>
+                </c:forEach>
               </tbody>
             </table>
           </div>
-	      </c:if>
-	      
-        </div>
+        </c:if>
+
+      </div>
       <!------ ////(notice)//// ------>
 
       <!---- gallery ---->

@@ -16,10 +16,46 @@ public class ArtistService {
 	@Autowired
 	private ArtistDao artistDao;
 
+	// 아티스트 팬 =..
+	public List<UserVo> getArtistList(int user_no) {
+
+		List<UserVo> aList = artistDao.getArtistList();
+
+		for (int i = 0; i < aList.size(); i++) {
+
+			aList.get(i).setArtist_no(user_no);
+			String check = artistDao.checkArtist(aList.get(i));
+			
+			if (check == null) {
+				aList.get(i).setFanOk(false);
+			} else {
+				aList.get(i).setFanOk(true);
+			}
+			
+		}
+		
+		for (int i = 0; i < aList.size(); i++) {
+			
+			aList.get(i).setArtist_no(user_no);
+			String check = artistDao.checkLike(aList.get(i));
+			
+			if (check == null) {
+				aList.get(i).setLikeOk(false);
+			} else {
+				aList.get(i).setLikeOk(true);
+			}
+			
+		}
+		
+		return aList;
+	}
+	
 	// 아티스트 리스트 가져오기
 	public List<UserVo> getArtistList() {
-
-		return artistDao.getArtistList();
+		
+		List<UserVo> aList = artistDao.getArtistList();
+		
+		return aList;
 	}
 
 	// 아티스트 라이브 리스트 가져오기
@@ -44,7 +80,7 @@ public class ArtistService {
 		boolean next = false;
 		boolean prev = false;
 
-		///////////////////////////////////////////////////////////////////////////////////////////
+		/////////////////////////////////////////////////////////////////////// )////////////////////
 		////////// 리스트 출력
 		//////////////////////////////////////////////////////////////////////////////////////////
 
@@ -186,8 +222,6 @@ public class ArtistService {
 		return listMap;
 	}
 
-	
-	
 	// 아티스트 장르 리스트 가져오기
 	public List<UserVo> getArtistGenre(int no) {
 
@@ -199,10 +233,10 @@ public class ArtistService {
 
 		return artistDao.getFanList(user_no);
 	}
-	
-	//아티스트 검색 리스트
+
+	// 아티스트 검색 리스트
 	public Map<String, Object> getArtistSearch(int page, String keyword) {
-		
+
 		// 페이징 리스트 변수
 		int list_count;
 		int start_num;
@@ -278,9 +312,6 @@ public class ArtistService {
 		// 시작 번호, 끝 번호를 보내야 한다.
 		return listMap;
 	}
-	
-	
-	
 
 	// 팬 등록
 	public boolean getFan(UserVo userVo) {
@@ -288,39 +319,51 @@ public class ArtistService {
 		if (artistDao.getFanOk(userVo) == null) {
 
 			System.out.println("팬이 아닙니다.");
-			// artistDao.getFan(userVo);
+			artistDao.getFan(userVo);
+			artistDao.artistFanUp(userVo.getArtist_no());
 
 			return false;
 
 		} else {
 			System.out.println("팬입니다.");
+			artistDao.deleteFan(userVo);
+		    artistDao.artistFanDown(userVo.getArtist_no());
 
 			return true;
 
 		}
 
 	}
-
-	// 팬 로딩
-	public void getFanLoading(int user_no) {
-
-		List<UserVo> fanList = artistDao.getFanLoading(user_no);
-
-//		for (int i = 0; i < fanList.size(); i++) {
-//			if (fanList.get(i).getArtist_no().i) {
-//				fanList.get(i).setFanOk(true);
-//			} else {
-//				fanList.get(i).setFanOk(false);
-//			}
-//		}
-
+	
+	// 좋아요 등록
+	public boolean getLikes(UserVo userVo) {
+		
+		if (artistDao.getLikesOk(userVo) == null) {
+			
+			System.out.println("팬이 아닙니다.");
+			artistDao.getLikes(userVo);
+			artistDao.artistLikesUp(userVo.getArtist_no());
+			
+			return false;
+			
+		} else {
+			System.out.println("팬입니다.");
+			artistDao.deleteLikes(userVo);
+			artistDao.artistLikesDown(userVo.getArtist_no());
+			
+			return true;
+			
+		}
+		
 	}
 
-	
+
 	// 블로그 라이브 리스트 가져오기
 	public List<UserVo> getBlogLive() {
 
 		return artistDao.getBlogLive();
 	}
+
+	
 
 }

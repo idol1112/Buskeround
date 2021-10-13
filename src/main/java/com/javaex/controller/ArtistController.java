@@ -1,5 +1,9 @@
 package com.javaex.controller;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,11 +35,15 @@ public class ArtistController {
 		UserVo userVo = (UserVo) session.getAttribute("authUser");
 
 		if (userVo != null) {
-			artistService.getFanLoading(userVo.getUser_no());
+			int user_no = userVo.getUser_no();
+			List<UserVo> aList = artistService.getArtistList(user_no);
+			
+			model.addAttribute("artistRenkList", aList);
 
+		} else {
+			model.addAttribute("artistRenkList", artistService.getArtistList());
 		}
 
-		model.addAttribute("artistRenkList", artistService.getArtistList());
 
 		model.addAttribute("artistLiveList", artistService.getArtistLive());
 
@@ -128,11 +136,20 @@ public class ArtistController {
 	public boolean fan(@ModelAttribute UserVo userVo) {
 
 		System.out.println("[ArtistController.Fan()]");
-
-		System.out.println(userVo);
-
+		
 		return artistService.getFan(userVo);
 
+	}
+	
+	// 좋아요 등록
+	@ResponseBody
+	@RequestMapping(value = "/Likes", method = { RequestMethod.GET, RequestMethod.POST })
+	public boolean likes(@ModelAttribute UserVo userVo) {
+		
+		System.out.println("[ArtistController.Fan()]");
+		
+		return artistService.getLikes(userVo);
+		
 	}
 
 

@@ -22,13 +22,6 @@
 				<div class="carousel-inner" style="width: 285px; height: 380px;">
 					<div class="carousel-item active" data-bs-interval="3000">
 						<img src="${pageContext.request.contextPath}/assets/image/artist/img/2.PNG" class="d-block w-100" style="width: 285px; height: 380px; object-fit: cover;">
-						<table class="">
-							<tr>
-								<td class="">아티스트 이름</td>
-								<td class="">장르</td>
-								<td class="">자기소개</td>
-							</tr>
-						</table>
 					</div>
 					<div class="carousel-item" data-bs-interval="3000">
 						<img src="${pageContext.request.contextPath}/assets/image/artist/img/3.PNG" class="d-block w-100" style="width: 285px; height: 380px; object-fit: cover;">
