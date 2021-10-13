@@ -130,14 +130,6 @@ public class ArtistController {
 		System.out.println("[ArtistController.ArtistFanList()]");
 
 		UserVo userVo = (UserVo) session.getAttribute("authUser");
-		
-		if (userVo != null) {
-			model.addAttribute("artistFanList", artistService.getFanList(userVo.getUser_no()));
-
-		} else {
-			model.addAttribute("artistFanList", artistService.getFanList(userVo.getUser_no()));
-		}
-
 		model.addAttribute("artistFanList", artistService.getFanList(userVo.getUser_no()));
 
 		model.addAttribute("artistLiveList", artistService.getArtistLive());

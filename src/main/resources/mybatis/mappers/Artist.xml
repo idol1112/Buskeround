@@ -515,7 +515,7 @@
 		    u.artist_regdate,
 		    f.fan_no,
 		    u.nickname,
-		    f.user_no,
+		    u.user_no,
 		    f.artist_no,
             b.y_url,
             b.f_url,
