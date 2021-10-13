@@ -478,7 +478,7 @@
 		    ort.genre_type,
 		    ort.fan,
 		    ort.likes,
-		    ort.artist_regdate,
+		    TO_CHAR(ort.artist_regdate, 'YYYY') artist_regdate,
 		    ort.fan_no,
 		    ort.nickname,
 		    ort.user_no,
@@ -522,9 +522,9 @@
             b.i_url
             
 		FROM users u, fan f, blog b
-		WHERE u.user_no = f.fan_no 
-        and f.fan_no = b.user_no
-        order by f.fan_no asc )ot)ort
+		WHERE u.user_no = f.artist_no 
+        and u.user_no = b.user_no
+        order by f.fan_no ASC )ot)ort
         where rn >=1
         and rn <=10
 		]]>
@@ -728,9 +728,10 @@
 	where user_no = #{user_no} and artist_no = #{artist_no}
 	]]>
 	</select>
-	
+
 	<!-- 팬 등록여부 -->
-	<select id="getLikesOk" resultType="UserVo" parameterType="UserVo">
+	<select id="getLikesOk" resultType="UserVo"
+		parameterType="UserVo">
 	<![CDATA[
 	SELECT
 	    user_no,
@@ -759,7 +760,8 @@
 	</select>
 
 	<!-- Artist Check -->
-	<select id="artistCheck" resultType="String" parameterType="UserVo">
+	<select id="artistCheck" resultType="String"
+		parameterType="UserVo">
 	<![CDATA[
 		SELECT
 		    user_no
@@ -769,9 +771,10 @@
 		and artist_no =  #{user_no}
 	]]>
 	</select>
-	
+
 	<!-- Artist Check -->
-	<select id="likeCheck" resultType="String" parameterType="UserVo">
+	<select id="likeCheck" resultType="String"
+		parameterType="UserVo">
 	<![CDATA[
 		SELECT
 		    user_no
@@ -791,7 +794,7 @@
 	VALUES (SEQ_likes_NO.nextval, #{user_no}, #{artist_no})
 	]]>
 	</insert>
-	
+
 	<!-- 좋아요 등록 -->
 	<insert id="getLikes" parameterType="UserVo">
 	<![CDATA[
@@ -808,7 +811,7 @@
 		where user_no = #{no}
 	]]>
 	</update>
-	
+
 	<!-- 좋아요 숫자 올리기 -->
 	<update id="artistLikesUp" parameterType="int">
 	<![CDATA[
@@ -828,7 +831,7 @@
 	    AND user_no = #{user_no}
    	]]>
 	</delete>
-	
+
 	<!-- 좋아요 숫자 삭제 -->
 	<delete id="deleteLikes" parameterType="UserVo">
 	<![CDATA[
@@ -847,7 +850,7 @@
 		where user_no = #{no}
 	]]>
 	</update>
-	
+
 	<!-- 좋아요 숫자 내리기 -->
 	<update id="artistLikesDown" parameterType="int">
 	<![CDATA[
