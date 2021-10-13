@@ -176,6 +176,7 @@
 	      FROM users u, blog b, post p
 	      where u.live = 1 
 	      and p.p_end is null
+	      and p.reg_date is null
           and u.user_no = b.user_no
           and u.user_no = p.user_no
           ORDER by u.ranking_score desc, u.artist_regdate asc) ot) ort
