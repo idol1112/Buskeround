@@ -60,7 +60,7 @@
 		<div class="rightsection-02-01">
 			<h3>NOW LIVE</h3>
 			<div>
-				<img src="${pageContext.request.contextPath}/assets/image/artist/icon/triangle1.png" style="width: 20px"> 1/2 <img src="${pageContext.request.contextPath}/assets/image/artist/icon/triangle2.png" style="width: 20px">
+				
 			</div>
 		</div>
 		<table>

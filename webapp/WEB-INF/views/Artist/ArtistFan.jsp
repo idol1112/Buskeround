@@ -99,7 +99,7 @@
 								</c:if>
 
 								<c:if test="${fList.genre == 2}">
-									<td class="articon"><img src="${pageContext.request.contextPath}/assets/image/blog/icon/dance.png" style="width: 60px"></td>
+									<td class="articon"><img src="${pageContext.request.contextPath}/assets/image/blog/icon/dance.png" style="width: 55px"></td>
 								</c:if>
 
 								<c:if test="${fList.genre == 3}">
@@ -107,11 +107,11 @@
 								</c:if>
 
 								<c:if test="${fList.genre == 4}">
-									<td class="articon"><img src="${pageContext.request.contextPath}/assets/image/blog/icon/soul.png" style="width: 65px"></td>
+									<td class="articon"><img src="${pageContext.request.contextPath}/assets/image/blog/icon/soul.png" style="width: 70px"></td>
 								</c:if>
 
 								<c:if test="${fList.genre == 5}">
-									<td class="articon"><img src="${pageContext.request.contextPath}/assets/image/blog/icon/musical.png" style="width: 60px"></td>
+									<td class="articon"><img src="${pageContext.request.contextPath}/assets/image/blog/icon/musical.png" style="width: 55px"></td>
 								</c:if>
 
 								<c:if test="${fList.genre == 6}">

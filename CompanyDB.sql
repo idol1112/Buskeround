@@ -47,6 +47,16 @@ insert into blog values (13, '안녕하세요. ggg입니다.', null, null, null,
 insert into blog values (14, '안녕하세요. hhh입니다.', null, null, null, null);
 insert into blog values (15, '안녕하세요. iii입니다.', null, null, null, null);
 insert into blog values (16, '안녕하세요. jjj입니다.', null, null, null, null);
+insert into blog values (11, '안녕하세요. kkk입니다.', null, null, null, null);
+insert into blog values (12, '안녕하세요. lll입니다.', null, null, null, null);
+insert into blog values (13, '안녕하세요. mmm입니다.', null, null, null, null);
+insert into blog values (14, '안녕하세요. nnn입니다.', null, null, null, null);
+insert into blog values (15, '안녕하세요. ooo입니다.', null, null, null, null);
+insert into blog values (16, '안녕하세요. zzz입니다.', null, null, null, null);
+insert into blog values (17, '안녕하세요. ppp입니다.', null, null, null, null);
+insert into blog values (18, '안녕하세요. qqq입니다.', null, null, null, null);
+insert into blog values (19, '안녕하세요. rrr입니다.', null, null, null, null);
+insert into blog values (20, '안녕하세요. sss입니다.', null, null, null, null);
 
 --Category
 insert into category values (seq_cate_no.nextval, 7, 2, '타임라인');

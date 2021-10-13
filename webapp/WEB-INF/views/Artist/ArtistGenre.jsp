@@ -73,7 +73,7 @@
 			<div class="col-xl-3"></div>
 			<!-- 종합랭킹 표그래프 -->
 
-			<div class="leftsection-02">
+			<div class="leftsection-02" style="width: 701px; height: 900px;">
 				<table>
 					<thead>
 						<tr>
