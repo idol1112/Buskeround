@@ -120,8 +120,23 @@
 									<div>${frList.genre_type}</div>
 									<div>가입연도 ${frList.artist_regdate}년</div>
 								</td>
-								<td><img src="${pageContext.request.contextPath}/assets/image/artist/icon/heart2.png" style="width: 20px"> <span>${frList.likes}</span></td>
-								<td><img src="${pageContext.request.contextPath}/assets/image/artist/icon/fan1.png" style="width: 20px"> <span>${frList.fan}</span></td>
+								<c:choose>
+									<c:when test="${frList.likeOk == true}">
+										<td class="left02_td"><img class="likes" data-no="${frList.user_no}" src="${pageContext.request.contextPath}/assets/image/artist/icon/heart2.png" style="width: 20px"> <span class="likes2-${frList.user_no}">${frList.likes}</span></td>
+									</c:when>
+									<c:otherwise>
+										<td class="left02_td"><img class="likes" data-no="${frList.user_no}" src="${pageContext.request.contextPath}/assets/image/artist/icon/heart1.png" style="width: 20px"> <span class="likes2-${frList.user_no}">${frList.likes}</span></td>
+									</c:otherwise>
+								</c:choose>
+								
+								<c:choose>
+									<c:when test="${frList.fanOk == true}">
+										<td class="left02_td"><img class="fan" data-no="${frList.user_no}" src="${pageContext.request.contextPath}/assets/image/artist/icon/fan2.png" style="width: 20px"><span class="fan2-${frList.user_no}">${frList.fan}</span></td>
+									</c:when>
+									<c:otherwise>
+										<td class="left02_td"><img class="fan" data-no="${frList.user_no}" src="${pageContext.request.contextPath}/assets/image/artist/icon/fan1.png" style="width: 20px"><span class="fan2-${frList.user_no}">${frList.fan}</span></td>
+									</c:otherwise>
+								</c:choose>
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -138,4 +153,112 @@
 	<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
 
 </body>
+<script type="text/javascript">
+//팬되기 눌렀을 때
+$(".fan").on("click",function(){
+	
+	var artist_no = $(this).data("no");
+	
+	var thiss = $(this); 
+	
+	console.log(artist_no);
+	
+	$.ajax({
+		// 컨트롤러에서 대기중인 URL 주소이다.
+		url : "${pageContext.request.contextPath}/Artist/Fan",
+
+		// HTTP method type(GET, POST) 형식이다.
+		type : "get",
+		
+		// Json 형태의 데이터로 보낸다.
+		contentType : "application/json",
+
+		// Json 형식의 데이터를 받는다.
+		dataType : "json",
+
+
+		data : {
+		artist_no : artist_no,
+		user_no : ${authUser.user_no}
+		},
+
+		// 성공일 경우 success로 들어오며, 'result'는 응답받은 데이터이다.
+		success : function(result) {
+			/*성공시 처리해야될 코드 작성*/
+		var fan = $(".fan2-" + artist_no + "");
+		if (result == false) {
+			thiss.attr('src', '${pageContext.request.contextPath}/assets/image/artist/icon/fan2.png');
+			var fanV = parseInt(fan.html()) + 1;
+			fan.html(fanV);
+			
+		} else {
+			thiss.attr('src', '${pageContext.request.contextPath}/assets/image/artist/icon/fan1.png');
+			var fanV = parseInt(fan.html()) - 1;
+			fan.html(fanV);
+
+		}
+			
+		},
+
+		// 실패할경우 error로 들어온다.
+		error : function(XHR, status, error) {
+			console.error(status + " : " + error);
+		}
+	});
+});
+
+
+// 좋아요 눌렀을 때
+$(".likes").on("click",function(){
+	
+	var artist_no = $(this).data("no");
+	
+	var thiss = $(this); 
+	
+	console.log(artist_no);
+	
+	$.ajax({
+		// 컨트롤러에서 대기중인 URL 주소이다.
+		url : "${pageContext.request.contextPath}/Artist/Likes",
+
+		// HTTP method type(GET, POST) 형식이다.
+		type : "get",
+		
+		// Json 형태의 데이터로 보낸다.
+		contentType : "application/json",
+
+		// Json 형식의 데이터를 받는다.
+		dataType : "json",
+
+
+		data : {
+		artist_no : artist_no,
+		user_no : ${authUser.user_no}
+		},
+
+		// 성공일 경우 success로 들어오며, 'result'는 응답받은 데이터이다.
+		success : function(result) {
+			/*성공시 처리해야될 코드 작성*/
+		var likes = $(".likes2-" + artist_no + "");
+		if (result == false) {
+			thiss.attr('src', '${pageContext.request.contextPath}/assets/image/artist/icon/heart2.png');
+			var likesV = parseInt(likes.html()) + 1;
+			likes.html(likesV);
+			
+		} else {
+			thiss.attr('src', '${pageContext.request.contextPath}/assets/image/artist/icon/heart1.png');
+			var likesV = parseInt(likes.html()) - 1;
+			likes.html(likesV);
+
+		}
+			
+		},
+
+		// 실패할경우 error로 들어온다.
+		error : function(XHR, status, error) {
+			console.error(status + " : " + error);
+		}
+	});
+});
+</script>
 </html>

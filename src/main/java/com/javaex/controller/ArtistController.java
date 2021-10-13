@@ -55,15 +55,23 @@ public class ArtistController {
 	// 아티스트 팬 많은 순
 	@RequestMapping(value = "/ArtistFan", method = { RequestMethod.GET, RequestMethod.POST })
 	public String artistfan(@RequestParam(value = "page", required = false, defaultValue = "1") int page,
-			@RequestParam(value = "keyword", required = false, defaultValue = "") String keyword, Model model) {
+			@RequestParam(value = "keyword", required = false, defaultValue = "") String keyword, Model model, HttpSession session) {
 
 		System.out.println("[ArtistController.ArtistFan()]");
+		
+		UserVo userVo = (UserVo) session.getAttribute("authUser");
 
-		model.addAttribute("artistFan", artistService.getArtistFan(page, keyword));
+		if (userVo != null) {
+			int user_no = userVo.getUser_no();
+			
+			model.addAttribute("artistFan", artistService.getArtistFan(page, keyword, user_no));
+
+		} else {
+			model.addAttribute("artistFan", artistService.getArtistFan(page, keyword));
+		}
+
 
 		model.addAttribute("artistLiveList", artistService.getArtistLive());
-
-		System.out.println(artistService.getArtistFan(page, keyword));
 
 		return "/Artist/ArtistFan";
 	}
@@ -71,11 +79,20 @@ public class ArtistController {
 	// 아티스트 뉴아티스트 목록
 	@RequestMapping(value = "/ArtistNew", method = { RequestMethod.GET, RequestMethod.POST })
 	public String artistnew(@RequestParam(value = "page", required = false, defaultValue = "1") int page,
-			@RequestParam(value = "keyword", required = false, defaultValue = "") String keyword, Model model) {
+			@RequestParam(value = "keyword", required = false, defaultValue = "") String keyword, Model model, HttpSession session) {
 
 		System.out.println("[ArtistController.ArtistNew()]");
+		
+		UserVo userVo = (UserVo) session.getAttribute("authUser");
 
-		model.addAttribute("artistNew", artistService.getArtistNew(page, keyword));
+		if (userVo != null) {
+			int user_no = userVo.getUser_no();
+			
+			model.addAttribute("artistNew", artistService.getArtistNew(page, keyword, user_no));
+
+		} else {
+			model.addAttribute("artistNew", artistService.getArtistNew(page, keyword));
+		}
 
 		model.addAttribute("artistLiveList", artistService.getArtistLive());
 		
@@ -86,11 +103,20 @@ public class ArtistController {
 
 	// 아티스트 장르 목록
 	@RequestMapping(value = "/ArtistGenre/{no}", method = { RequestMethod.GET, RequestMethod.POST })
-	public String artistgenre(@PathVariable("no") int no, Model model) {
+	public String artistgenre(@PathVariable("no") int no, Model model, HttpSession session) {
 
 		System.out.println("[ArtistController.ArtistGenre()]");
+		
+		UserVo userVo = (UserVo) session.getAttribute("authUser");
 
-		model.addAttribute("ArtistGenre", artistService.getArtistGenre(no));
+		if (userVo != null) {
+			int user_no = userVo.getUser_no();
+			
+			model.addAttribute("ArtistGenre", artistService.getArtistGenre(no, user_no));
+
+		} else {
+			model.addAttribute("ArtistGenre", artistService.getArtistGenre(no));
+		}
 
 		model.addAttribute("artistLiveList", artistService.getArtistLive());
 
@@ -104,6 +130,13 @@ public class ArtistController {
 		System.out.println("[ArtistController.ArtistFanList()]");
 
 		UserVo userVo = (UserVo) session.getAttribute("authUser");
+		
+		if (userVo != null) {
+			model.addAttribute("artistFanList", artistService.getFanList(userVo.getUser_no()));
+
+		} else {
+			model.addAttribute("artistFanList", artistService.getFanList(userVo.getUser_no()));
+		}
 
 		model.addAttribute("artistFanList", artistService.getFanList(userVo.getUser_no()));
 
@@ -116,14 +149,21 @@ public class ArtistController {
 	// 아티스트 검색 결과 뿌리기
 	@RequestMapping(value = "/ArtistSearch", method = { RequestMethod.GET, RequestMethod.POST })
 	public String artistsearch(@RequestParam(value = "page", required = false, defaultValue = "1") int page,
-			@RequestParam(value = "keyword", required = false, defaultValue = "") String keyword, Model model) {
+			@RequestParam(value = "keyword", required = false, defaultValue = "") String keyword, Model model, HttpSession session) {
 
 		System.out.println("[ArtistController.ArtistSearch()]");
 		
-		System.out.println(keyword);
-		
-		model.addAttribute("artistSearch", artistService.getArtistSearch(page, keyword));
+		UserVo userVo = (UserVo) session.getAttribute("authUser");
 
+		if (userVo != null) {
+			int user_no = userVo.getUser_no();
+			
+			model.addAttribute("artistSearch", artistService.getArtistSearch(page, keyword, user_no));
+
+		} else {
+			model.addAttribute("artistSearch", artistService.getArtistSearch(page, keyword));
+		}
+		
 		model.addAttribute("artistLiveList", artistService.getArtistLive());
 		
 
