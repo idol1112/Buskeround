@@ -31,23 +31,56 @@
 </c:if>
 
 <!-- sns 버튼 -->
-<c:if test="${blogVo.f_url != null}">
-  <a href="${blogVo.f_url}" id="facebook_url" target='_blank'>
-    <img class="facebook" src="${pageContext.request.contextPath}/assets/image/blog/icon/facebook.png" alt="">
-  </a>
-</c:if>
+<c:choose>
+	<c:when test="blogVo.user_no == authUser.user_no">
+		<c:if test="${blogVo.f_url != null}">
+		  <a href="${blogVo.f_url}" id="facebook_url" target='_blank'>
+		    <img class="facebook" src="${pageContext.request.contextPath}/assets/image/blog/icon/facebook.png" alt="">
+		  </a>
+		</c:if>
+		
+		<c:if test="${blogVo.i_url != null}">
+		  <a href="${blogVo.i_url}" id="instagram_url" target='_blank'>
+		    <img class="instagram" src="${pageContext.request.contextPath}/assets/image/blog/icon/instagram.png" alt="">
+		  </a>
+		</c:if>
+		
+		<c:if test="${blogVo.y_url != null}">
+		  <a href="${blogVo.y_url}" id="youtube_url" target='_blank'>
+		    <img class="youtube" src="${pageContext.request.contextPath}/assets/image/blog/icon/youtube.png" alt="">
+		  </a>
+		</c:if>
+	</c:when>
+	<c:otherwise>
+			<c:if test="${blogVo.f_url != null}">
+			  <a href="${blogVo.f_url}" id="facebook_url" target='_blank'>
+			    <img class="facebook" src="${pageContext.request.contextPath}/assets/image/blog/icon/facebook.png" alt="" style="margin-right: 8px;">
+			  </a>
+			</c:if>
+			
+			<c:if test="${blogVo.i_url != null}">
+			  <a href="${blogVo.i_url}" id="instagram_url" target='_blank'>
+			    <img class="instagram" src="${pageContext.request.contextPath}/assets/image/blog/icon/instagram.png" alt="">
+			  </a>
+			</c:if>
+			
+			<c:if test="${blogVo.y_url != null}">
+			  <a href="${blogVo.y_url}" id="youtube_url" target='_blank'>
+			    <img class="youtube" src="${pageContext.request.contextPath}/assets/image/blog/icon/youtube.png" alt="">
+			  </a>
+			</c:if>
+	</c:otherwise>
+</c:choose>
 
-<c:if test="${blogVo.i_url != null}">
-  <a href="${blogVo.i_url}" id="instagram_url" target='_blank'>
-    <img class="instagram" src="${pageContext.request.contextPath}/assets/image/blog/icon/instagram.png" alt="">
-  </a>
-</c:if>
 
-<c:if test="${blogVo.y_url != null}">
-  <a href="${blogVo.y_url}" id="youtube_url" target='_blank'>
-    <img class="youtube" src="${pageContext.request.contextPath}/assets/image/blog/icon/youtube.png" alt="">
-  </a>
-</c:if>
+
+
+
+
+
+
+
+
 </div>
 
 <!---- 프로필 박스 ---->
@@ -176,12 +209,11 @@
 
         <div>
           <label class="modal-label" id="modal_label">위치</label>
-          <input type="text" id="address" placeholder="위치를 입력세주세요" value="홍대 앞마당">
+          <input type="text" id="address" placeholder="위치를 입력세주세요" value="">
           <input type="hidden" id="lat">
           <input type="hidden" id="lng">
         </div>
 
-        <button class="float-end mylocation">내 위치</button>
         <br>
 
         <!-- 링크 -->
@@ -200,8 +232,8 @@
       </div>
 
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary close" data-dismiss="modal">취소</button>
         <button class="btn btn-primary close" id="perform_start">방송 시작</button>
+        <button type="button" class="btn btn-secondary close" data-dismiss="modal">취소</button>
       </div>
 
       <input type="hidden" id="p_img" value="1">

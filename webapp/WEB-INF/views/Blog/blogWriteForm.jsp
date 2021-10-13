@@ -80,6 +80,7 @@
 				  <div class="invalid-feedback">적합하지 않은 파일입니다.</div>
 				</div>
 			  
+	          <button id="uploadbutton" onclick="history.back()" style="background-color: red; color: white; margin-left: 5px">취소</button>
 	          <button type="submit" id="uploadbutton">등록</button>
         </form>
       </div>

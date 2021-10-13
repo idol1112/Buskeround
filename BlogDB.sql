@@ -4,7 +4,7 @@ insert into users values(0,'admin','1234','admin@naver.com','관리자',null,'�
 --김덕배씨 회원가입(제휴사1)
 insert into users values(seq_user_no.nextval,'1234','1234','1234@naver.com','김덕배',null,'김덕배','010-1111-1111','male','1998-11-12','3','트랩','0',0,0,sysdate,'2','2','0');
 --김창수씨 회원가입(제휴사2)
-insert into users values(seq_user_no.nextval,'4321','4321','4321@naver.com','김창수',null,null,null,null,null,null,null,null,null,null,null,'2','2',null);
+insert into users values(seq_user_no.nextval,'4321','4321','4321@naver.com','김창수',null,null,null,null,null,null,null,null,null,null,null,'1','2',null);
 
 --유저 정보 1(김덕배님) 블로그
 insert into blog values(1, '안녕하세요 김덕배의 블로그에 오신것을 환영합니다.', null, 'https://www.youtube.com/', 'https://www.facebook.com/', 'https://www.instagram.com/');
