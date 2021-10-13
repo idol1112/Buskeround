@@ -27,7 +27,7 @@
 	    
 		.map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
 		.map_wrap {position:relative;width:100%;height:100%;}
-		#menu_wrap {position:absolute;top:0;left:0;bottom:0;width:365px;height:100%;padding:0px;overflow-y:auto;background:rgba(255, 255, 255, 0.7);z-index: 1;font-size:12px;}
+		#menu_wrap {position:absolute;top:0;left:0;bottom:0;width:365px;height:100%;padding:0px;overflow-y:auto;background:#ffffff;z-index: 1;font-size:12px;}
 		.bg_white {background:#fff;}
 		#menu_wrap hr {display: block; height: 1px;border: 0; border-top: 2px solid #5F5F5F;margin:3px 0;}
 		#menu_wrap .option{text-align: center;}
@@ -61,7 +61,6 @@
 
 		
 		#keyword{
-		border: 1px solid skyblue;
 		color:black;
 		padding: 5px;
 		}
@@ -69,7 +68,7 @@
 		#btn_sh{
 		border: 0px solid;
 		background-color: #ffffff;
-		padding: 5px;
+		padding: 0px 5px 15px 5px;
 
 		}
 		
@@ -87,12 +86,10 @@
 		}
 		.formsearch{
 		padding: 10px 0px 10px 0px;
-		background-color: #8D2DE0;
-		box-shadow: 0 2px 1px 0 rgb(0 0 0 / 15%);
+		background-color: #FFFFFF;
 		}
 		
 		.boxsearch{
-	    border:1px solid #BF00FF;
 	    position:relative;
 	    max-width:500px;
 	    margin-left:10px;
@@ -135,13 +132,14 @@
 		/* 스크롤바 막대 설정*/
 		.type1::-webkit-scrollbar-thumb{
 		    height: 17%;
-		    background-color: #00BFFF;   
+   
 		}
 		
 		/* 스크롤바 뒷 배경 설정*/
 		.type1::-webkit-scrollbar-track{
-		    background-color: 	#AFEEEE;
-		} */
+
+		} 
+
 		
 	</style>
 <!-- 부트스트랩 -->
@@ -176,6 +174,7 @@
                 	<div class="boxsearch">
                     <input type="text" value="강남역" id="keyword" class="inputsearch" placeholder="장소 입력"> 
                     <button type="submit" id="btn_sh" class="buttonsearch"><img src="/Buskeround/assets/image/map/searchbtn.png" width="35px" height="35px"></button> 
+                    <img src="${pageContext.request.contextPath}/assets/image/map/busr.png" style="width:353px">
                     </div>
                 </form>
             </div>
