@@ -96,7 +96,7 @@
   background-color: #fafafa;
 }
 .accordion__title.active {
-  background: #e3f7d4;
+  background: #E3CCFF;
 }
 .accordion__title.active .x7 {
   transform: rotate(-90deg);
