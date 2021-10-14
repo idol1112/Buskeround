@@ -91,14 +91,44 @@
         <div class="id_wrap">
           <div class="login_wrap">
             <div class="login_box">
+              
+              <!-- 로그인 전 -->
+              <c:if test="${authUser == null}">
               <p class="login_msg">버스커라운드를 더 편리하게 이용하세요.</p>
-              <a class="link_login" href="#">Buskeround 로그인</a>
+              <a class="link_login" href="${pageContext.request.contextPath}/user/loginForm">Buskeround 로그인</a>
               <div class="sub_area">
+              	<div class="look_box">
+              		<a href="#" class="link_look">아이디</a>
+              		<a href="#" class="link_look">비밀번호찾기</a>
+              	
+              	</div>
                 <div class="link_join">
-                  <a href="#">회원가입</a>
+                  <a href="${pageContext.request.contextPath}/user/agreement">회원가입</a>
                 </div>
-
               </div>
+              </c:if>
+              <!-- 로그인 전 -->
+              <!-- 로그인 후 -->
+              <c:if test="${authUser != null}">
+              <div class="sc_user">
+              	<a href="${pageContext.request.contextPath}/user/logout" class="btn_logout">로그아웃</a>
+              	<c:if test="${authUser.user_img == null}">
+	          	<img id="my_profile" src="/Buskeround/assets/image/blog/icon/user.png">
+          		</c:if>
+          		<c:if test="${authUser.user_img != null}">
+	          	<img id="my_profile" src="${pageContext.request.contextPath}/upload/${sessionScope.authUser.user_img}">
+          		</c:if>
+          		<div class="user_info">
+	          		<div class="info_box">
+	          			<a href="${pageContext.request.contextPath}/blog/blog_main/${sessionScope.authUser.id}">${authUser.nickname}님</a>
+	          		</div>
+	          		<div class="new_box">
+	          			<a class="mypage" href="${pageContext.request.contextPath}/MyPage/profileModify">마이페이지</a>
+	          			<a class="fan-list" href="${pageContext.request.contextPath}/Artist/ArtistFanList">팬등록리스트</a>
+	          		</div>
+	          	</div>
+              </div>
+              </c:if>
             </div>
           </div>
           <div class="apply_wrap">

@@ -244,6 +244,7 @@ h2 {
 	border: 1px solid #dae1e6;
 }
 
+/* 로그인전 */
 .login_wrap .login_box .login_msg {
 	padding-left: 3px;
 	color: grey;
@@ -264,9 +265,92 @@ h2 {
 	text-decoration: none;
 }
 
+.login_box .sub_area .look_box {
+	float: left;
+}
+
+.sub_area .look_box .link_look {
+	color: #404040;
+}
+
+.sub_area .link_look+.link_look:before {
+	background-color: #d7dce0;
+    display: inline-block;
+    width: 3px;
+    height: 3px;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    vertical-align: top;
+    content: '';
+    margin: 0 5px 0 2px;
+    vertical-align: 3px;
+}
+
 .login_box .sub_area .link_join {
 	float: right;
-	color: #505050;
+	color: #404040;
+}
+/* 로그인전 */
+
+/* 로그인후 */
+.login_wrap .login_box .sc_user {
+	background-color: #f7f9fa;
+}
+
+.login_box .sc_user .btn_logout {
+    position: absolute;
+    top: 64px;
+    right: 62px;
+    padding: 4px 18px 4px 18px;
+    background-color: indigo;
+    -webkit-border-radius: 14px;
+    border-radius: 14px;
+    font-size: 11px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.sc_user .btn_logout:hover {
+	background: #888;
+	font-weight: bold;
+}
+
+.login_box .sc_user #my_profile {
+	float: left;
+    position: relative;
+    margin: 15px;
+	width: 100px;
+	height: 100px;
+	border-radius: 70%;
+	object-fit: cover;
+	image-rendering: -webkit-optimize-contrast;
+}
+
+.login_box .sc_user .user_info {
+	float: left;
+	margin-top: 50px;
+    font-size: 13px;
+}
+
+.sc_user .user_info .info_box {
+	padding-right: 60px;
+    line-height: 18px;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.sc_user .user_info .new_box {
+	overflow: hidden;
+    margin-top: 5px;
+    color: #888;
+}
+
+.user_info .new_box .mypage:hover {
+	text-decoration: underline;
+}
+
+.user_info .new_box .fan-list:hover {
+	text-decoration: underline;
 }
 
 .id_wrap .apply_wrap {

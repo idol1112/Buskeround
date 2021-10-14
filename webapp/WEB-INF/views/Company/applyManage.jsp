@@ -180,7 +180,7 @@
 									<td>${busappVo.nickname}</td>
 									<!-- 장르 -->
 									<c:if test="${busappVo.genre == 1}">
-										<td class="articon"><img class="genre-img2" src="${pageContext.request.contextPath}/assets/image/blog/icon/ballade.png" alt="발라드"></td>
+										<td class="articon"><img class="genre-img" src="${pageContext.request.contextPath}/assets/image/blog/icon/ballade.png" alt="발라드"></td>
 									</c:if>
 		
 									<c:if test="${busappVo.genre == 2}">
