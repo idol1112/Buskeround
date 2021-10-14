@@ -60,12 +60,27 @@
 		#searchList .item .marker_13 {background-position: 0 -562px;}
 		#searchList .item .marker_14 {background-position: 0 -608px;}
 		#searchList .item .marker_15 {background-position: 0 -654px;}
-
+		.radius_border{border:1px solid #919191;border-radius:5px;}     
+		.custom_zoomcontrol {position:absolute;top:50px;right:10px;width:36px;height:80px;overflow:hidden;z-index:1;background-color:#f5f5f5;} 
+		.custom_zoomcontrol span {display:block;width:36px;height:40px;text-align:center;cursor:pointer;}     
+		.custom_zoomcontrol span img {width:28px;height:28px;border:none;margin-top: 7px;margin-right: 2px;}             
+		.custom_zoomcontrol span:first-child{border-bottom:1px solid #bfbfbf;} 
+		
         #table {
         width: 360px;
         margin-top: 10px;
-
         }
+        
+       .table_sub{
+       font-size:18px;
+       text-align: left;
+       }
+       
+       .table_div{
+       margin-left: 13px;
+       }
+       
+
 
         #company_box {
           width: 330px;
@@ -80,7 +95,7 @@
 
         #overlayweb_img_box {
           width: 100%;
-          height: 250px;
+          height: 230px;
           object-fit:contain;
           margin-top: 10px;
         }
@@ -144,7 +159,6 @@
 		    font-weight:bold;
 		    font-size:20px;
 		    margin-left:-30px;
-
 		}
 
 		.buttonsearch {
@@ -205,7 +219,7 @@
 		}
 
 	.button_application {
-	  background-color: #D358F7;
+	  background-color: #732991;
 	  border: none;
 	  color: white;
 	  padding: 15px 32px;
@@ -213,6 +227,7 @@
 	  text-decoration: none;
 	  display: inline-block;
 	  font-size: 16px;
+	  border-radius: 12px;
 	}
 
 
@@ -224,6 +239,7 @@
 	.Whether{
 	border: 0px;
 	background-color: #FFFFFF;
+	text-align: center;
 	}
 
 	.sumimg{
@@ -237,16 +253,8 @@
 	text-align: center;
 
 	}
-
-
-/* 	div *,
-	div *:before,
-	div *:after {
-	    -webkit-box-sizing: content-box !important;
-	    -moz-box-sizing: content-box !important;
-	    box-sizing: content-box !important;
-	} */
-
+	
+    
 
 	</style>
 <!-- 부트스트랩 -->
@@ -271,9 +279,16 @@
 <body>
 <c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
 
+
+
 <div class="map_wrap">
 <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
-
+    <!-- 지도 확대, 축소 컨트롤 div 입니다 -->
+    <div class="custom_zoomcontrol radius_border"> 
+        <span onclick="zoomIn()"><img src="${pageContext.request.contextPath}/assets/image/map/btn_plus.png" alt="확대"></span>  
+        <span onclick="zoomOut()"><img src="${pageContext.request.contextPath}/assets/image/map/btn_minus.png" alt="축소"></span>
+    </div>
+	<!------------------------>
 
     <div id="menu_wrap" class="bg_white scroll type1">
         <div class="option">
@@ -430,7 +445,7 @@ function getListItem(index, buskingzoneList) {
     itemStr +='<div class="img listimg" onclick="overlayVo('+buskingzoneList.user_no+')">';
 
 	if(sumimg.indexOf("noimg") == 0){
-    itemStr +='<img src="${pageContext.request.contextPath}/assets/image/blog/img/noimg.png" width="330px" height="180px" >';
+    itemStr +='<div id="company_box"><img src="${pageContext.request.contextPath}/assets/image/blog/img/noimg.png" width="330px" height="180px" ></div>';
     }else{
     itemStr +='<div id="company_box"><img src="${pageContext.request.contextPath }/upload/'+buskingzoneList.com_img+'"></div>';
     }
@@ -603,8 +618,8 @@ function overlay(mapOverlay,info){
 	'	</div>'+
 
 	'<table id="table">'+
-	'<tr align ="center">'+
-	'<td width="150px">장소</td>'+
+	'<tr class="table_sub">'+
+	'<td width="150px"><div class="table_div">장소</div></td>'+
 	'<td>'+
 	'	<div>'+
 	'	<select name="stage" id="stage-select" style="width:180px;height:36px; margin-bottom:10px">'+
@@ -618,8 +633,8 @@ function overlay(mapOverlay,info){
 	str +='</td>';
 	str +='</tr>';
 
-	str +='<tr align ="center">';
-	str +='<td width="150px">날짜</td>';
+	str +='<tr class="table_sub">';
+	str +='<td width="150px"><div class="table_div">날짜</div></td>';
 	str +='<td>';
 	str +='	<div>';
 	str +=' <select name="stage_date" id="stage_date" style="width:180px;height:36px; margin-bottom:10px">';
@@ -630,8 +645,8 @@ function overlay(mapOverlay,info){
 	str +='</td>';
 	str +='</tr>';
 
-	str +='<tr align ="center">';
-	str +='<td width="150px">시간</td>';
+	str +='<tr class="table_sub">';
+	str +='<td width="150px"><div class="table_div">시간</div></td>';
 	str +='<td>';
 	str +='	<div>';
 	str +=' <select name="stage_time" id="stage_time" style="width:180px;height:36px; margin-bottom:10px">';
@@ -642,38 +657,38 @@ function overlay(mapOverlay,info){
 	str +='</td>';
 	str +='</tr>';
 
-	str +='<tr align ="center">';
-	str +='<td width="150px">우천시</td><td>';
+	str +='<tr class="table_sub">';
+	str +='<td width="150px" height="40px"><div class="table_div">우천시</div></td><td>';
 	str +='<div>';
 	str +='<input type="text" class="Whether" name="rain" value="" style="width:180px; margin-bottom:10px" disabled>';
 	str +='</div>';
 	str +='</td></tr>';
 
-	str +='<tr align ="center">';
-	str +='<td width="150px">무대조명</td><td>';
+	str +='<tr class="table_sub">';
+	str +='<td width="150px" height="40px"><div class="table_div">무대조명</div></td><td>';
 	str +='<div>';
 	str +='<input type="text" class="Whether" name="light" value="" style="width:180px; margin-bottom:10px" disabled>';
 	str +='</div>';
 	str +='</td></tr>';
 
-	str +='<tr align ="center">';
-	str +='<td width="150px">주차여부</td><td>';
+	str +='<tr class="table_sub">';
+	str +='<td width="150px" height="40px"><div class="table_div">주차여부</div></td><td>';
 	str +='<div>';
 	str +='<input type="text" class="Whether" name="parking" value="" style="width:180px; margin-bottom:10px" disabled>';
 	str +='</div>';
 	str +='</td></tr>';
 
 
-	str +='<tr align ="center">';
-	str +='<td width="150px">제휴사 요청사항</td><td>';
+	str +='<tr class="table_sub">';
+	str +='<td width="150px"><div class="table_div">제휴사 요청사항</div></td><td>';
 	str +='<div>';
-	str +='<input type="text" class="Whether" name="zoneRequest" value="" style="width:180px;height:100px; margin-bottom:10px" disabled>';
+	str +='<input type="text" class="Whether" name="zoneRequest" value="" style="width:180px;height:80px; margin-bottom:10px" disabled>';
 	str +='</div>';
 	str +='</td></tr>';
 
 
-	str +='<tr align ="center">';
-	str +='<td width="150px">아티스트 요청사항</td><td>';
+	str +='<tr class="table_sub">';
+	str +='<td width="150px"><div class="table_div">Artist 요청사항</div></td><td>';
 	str +='<div>';
 	str += '<input type="text" name="artistRequest" value="" style="width:180px;height:100px; margin-bottom:10px">';
 	str +='</div>';
@@ -854,8 +869,15 @@ function relay(){
 
 };
 
+// 지도 확대, 축소 컨트롤에서 확대 버튼을 누르면 호출되어 지도를 확대하는 함수입니다
+function zoomIn() {
+    map.setLevel(map.getLevel() - 1);
+}
 
-
+// 지도 확대, 축소 컨트롤에서 축소 버튼을 누르면 호출되어 지도를 확대하는 함수입니다
+function zoomOut() {
+    map.setLevel(map.getLevel() + 1);
+}
 
 
 </script>

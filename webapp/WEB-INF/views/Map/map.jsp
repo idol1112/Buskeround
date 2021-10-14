@@ -58,17 +58,26 @@
 		#searchList .item .marker_13 {background-position: 0 -562px;}
 		#searchList .item .marker_14 {background-position: 0 -608px;}
 		#searchList .item .marker_15 {background-position: 0 -654px;}
-
+		.radius_border{border:1px solid #919191;border-radius:5px;}     
+		.custom_zoomcontrol {position:absolute;top:50px;right:10px;width:36px;height:80px;overflow:hidden;z-index:1;background-color:#f5f5f5;} 
+		.custom_zoomcontrol span {display:block;width:36px;height:40px;text-align:center;cursor:pointer;}     
+		.custom_zoomcontrol span img {width:28px;height:28px;border:none;margin-top: 7px;margin-right: 2px;}             
+		.custom_zoomcontrol span:first-child{border-bottom:1px solid #bfbfbf;} 
 		
 		#keyword{
+		border:0;
 		color:black;
 		padding: 5px;
+		border:2px solid #732991;
+		margin:10px;
 		}
 		
 		#btn_sh{
 		border: 0px solid;
 		background-color: #ffffff;
-		padding: 0px 5px 15px 5px;
+		margin-right: -15px;
+    	margin-top: -16px;
+    	background: rgba(255, 255, 255, 0.25);
 
 		}
 		
@@ -85,7 +94,8 @@
 		padding: 5px 0px 0px 5px;
 		}
 		.formsearch{
-		padding: 10px 0px 10px 0px;
+		width:344px;
+		padding: 10px 0px 0px 0px;
 		background-color: #FFFFFF;
 		}
 		
@@ -104,7 +114,8 @@
 		    padding-right:60px;
 		    box-sizing:border-box;
 		    font-weight:bold;
-		    font-size:2rem;
+		    font-size:20px;
+		    margin-left:-30px;
 		}
 		.buttonsearch {
 		    position:absolute;
@@ -166,7 +177,12 @@
 
 <div class="map_wrap">
     <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
-
+	 <!-- 지도 확대, 축소 컨트롤 div 입니다 -->
+    <div class="custom_zoomcontrol radius_border"> 
+        <span onclick="zoomIn()"><img src="${pageContext.request.contextPath}/assets/image/map/btn_plus.png" alt="확대"></span>  
+        <span onclick="zoomOut()"><img src="${pageContext.request.contextPath}/assets/image/map/btn_minus.png" alt="축소"></span>
+    </div>
+	<!------------------------>
     <div id="menu_wrap" class="bg_white scroll type1">
         <div class="option">
             <div>
@@ -390,7 +406,31 @@ content[num] = '<div class="wrap">' +
 '              </div>' +  
 '            <div class="desc">' + 
 '                <div class="ellipsis">활동명 : ${mapList.nickname}</div>' + 
-'                <div class="ellipsis">장르   : ${mapList.genre}</div>' + 
+  
+'				 <c:if test="${mapList.genre == 1}">' +
+'                <div class="ellipsis">장르   : <img src="${pageContext.request.contextPath}/assets/image/artist/icon/ballade.png"></div>' + 
+'				 </c:if>' +
+
+'				 <c:if test="${mapList.genre == 2}">' +
+'                <div class="ellipsis">장르   : <img src="${pageContext.request.contextPath}/assets/image/artist/icon/dance.png"></div>' + 
+'				 </c:if>' +
+
+'				 <c:if test="${mapList.genre == 3}">' +
+'                <div class="ellipsis">장르   : <img src="${pageContext.request.contextPath}/assets/image/artist/icon/hiphop.png"></div>' + 
+'				 </c:if>' +
+
+'				 <c:if test="${mapList.genre == 4}">' +
+'                <div class="ellipsis">장르   : <img src="${pageContext.request.contextPath}/assets/image/artist/icon/soul.png"></div>' + 
+'				 </c:if>' +
+
+'				 <c:if test="${mapList.genre == 5}">' +
+'                <div class="ellipsis">장르   : <img src="${pageContext.request.contextPath}/assets/image/artist/icon/musical.png"></div>' + 
+'				 </c:if>' +
+
+'				 <c:if test="${mapList.genre == 6}">' +
+'                <div class="ellipsis">장르   : <img src="${pageContext.request.contextPath}/assets/image/artist/icon/etc.png"></div>' + 
+'				 </c:if>' +
+
 '                <div class="jibun ellipsis">${mapList.intro}</div>' + 
 '            </div>' + 
 '        </div>' + 
@@ -444,6 +484,16 @@ function removeAllChildNods(el) {
     while (el.hasChildNodes()) {
         el.removeChild (el.lastChild);
     }
+}
+
+//지도 확대, 축소 컨트롤에서 확대 버튼을 누르면 호출되어 지도를 확대하는 함수입니다
+function zoomIn() {
+    map.setLevel(map.getLevel() - 1);
+}
+
+// 지도 확대, 축소 컨트롤에서 축소 버튼을 누르면 호출되어 지도를 확대하는 함수입니다
+function zoomOut() {
+    map.setLevel(map.getLevel() + 1);
 }
 </script>
 
