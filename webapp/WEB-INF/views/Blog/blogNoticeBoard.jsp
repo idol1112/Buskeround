@@ -148,12 +148,6 @@
 	</div>
 	<!------ ////(br_container)//// ------>
 </body>
-<script type="text/javascript">
-
-
-
-
-</script>
 
 
 </html>

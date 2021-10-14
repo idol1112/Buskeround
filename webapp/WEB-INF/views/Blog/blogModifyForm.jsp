@@ -23,6 +23,9 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/Blog/blogModify.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/Blog/blogStart.css">
 
+<!-- sweetAlert -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
 <!-- jquery -->
 <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 
@@ -112,7 +115,7 @@
 							</td>
 						</tr>
 					</table>
-					<button class="float-end" id="profilecancel" onclick="location.href=''">취소</button>
+					<button class="float-end" id="profilecancel" onclick="history.back()">취소</button>
 					<button type="submit" class="float-end" id="profilesubmit">수정</button>
 				</form>
 			</div>
@@ -168,6 +171,32 @@
 		document.querySelector("input#img_check").setAttribute("value", '2'); 
 	});
 
+	//저장 완료 alert
+	$("#profilesubmit").on("click", function(e) {
+		e.preventDefault();
+		var form = $(this).parents('form');
+		const Toast = Swal.mixin({
+	        toast: true,
+	        position: 'center-center',
+	        showConfirmButton: false,
+	        timer: 1500,
+	        timerProgressBar: true,
+	        didOpen: (toast) => {
+	            toast.addEventListener('mouseenter', Swal.stopTimer)
+	            toast.addEventListener('mouseleave', Swal.resumeTimer)
+	        }
+	    })
+
+	    Toast.fire({
+	        icon: 'success',
+	        title: '블로그 정보가 수정되었습니다.'
+	    })
+	    
+		setTimeout(function () {
+		  form.submit();
+		}, 1500);
+
+	})
 </script>
 
 </html>

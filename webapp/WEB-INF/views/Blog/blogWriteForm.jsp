@@ -26,6 +26,9 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/Blog/blogWriteForm.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/Blog/blogStart.css">
 
+<!-- sweetAlert -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
 <!-- jquery -->
 <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
@@ -81,7 +84,7 @@
 				</div>
 			  
 	          <button id="uploadbutton" onclick="history.back()" style="background-color: red; color: white; margin-left: 5px">취소</button>
-	          <button type="submit" id="uploadbutton">등록</button>
+	          <button type="submit" class="update" id="uploadbutton">등록</button>
         </form>
       </div>
 
@@ -197,6 +200,32 @@
         document.getElementById('test').innerHTML
         = fileName;
 	});
+	
+	//저장 완료 alert
+	$(".update").on("click", function(e) {
+		e.preventDefault();
+		var form = $(this).parents('form');
+		const Toast = Swal.mixin({
+	        toast: true,
+	        position: 'center-center',
+	        showConfirmButton: false,
+	        timer: 1500,
+	        timerProgressBar: true,
+	        didOpen: (toast) => {
+	            toast.addEventListener('mouseenter', Swal.stopTimer)
+	            toast.addEventListener('mouseleave', Swal.resumeTimer)
+	        }
+	    })
+
+	    Toast.fire({
+	        icon: 'success',
+	        title: '게시글이 정상적으로 저장되었습니다.'
+	    })
+		setTimeout(function () {
+		  form.submit();
+		}, 1500);
+
+	})
 	
 	
 </script>

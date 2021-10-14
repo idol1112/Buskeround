@@ -22,6 +22,9 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/Common/common.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/MyPage/mypage.css">
 
+<!-- sweetAlert -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
 <!-- jquery -->
 <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 
@@ -121,6 +124,33 @@
 		document.querySelector("img#profilepicture").setAttribute("src", '/Buskeround/assets/image/blog/icon/user.png'); 
 		document.querySelector("input#img_check").setAttribute("value", '2'); 
 	});
+	
+	//저장 완료 alert
+	$("#profilesubmit").on("click", function(e) {
+		e.preventDefault();
+		var form = $(this).parents('form');
+		const Toast = Swal.mixin({
+	        toast: true,
+	        position: 'center-center',
+	        showConfirmButton: false,
+	        timer: 1500,
+	        timerProgressBar: true,
+	        didOpen: (toast) => {
+	            toast.addEventListener('mouseenter', Swal.stopTimer)
+	            toast.addEventListener('mouseleave', Swal.resumeTimer)
+	        }
+	    })
+
+	    Toast.fire({
+	        icon: 'success',
+	        title: '프로필 정보가 수정되었습니다.'
+	    })
+	    
+		setTimeout(function () {
+		  form.submit();
+		}, 1500);
+
+	})
 
 
 </script>
