@@ -66,18 +66,18 @@
 		str += '	<div class="profile_img">';
 
 		if (result.user_img == null) {
-			str += '		<a href="${pageContext.request.contextPath}/Map/mapOne?user_no='+ result.user_no+'">';
+			str += '		<a href="${pageContext.request.contextPath}/mapOne?user_no='+ result.user_no+'">';
 			str += '		<img class="profile_user_img" src="/Buskeround/assets/image/blog/icon/user.png">';
 			str += '		</a>';
 		} else if (result.user_img != null) {
-			str += '		<a href="${pageContext.request.contextPath}/Map/map?user_no='+ result.user_no+'">';
+			str += '		<a href="${pageContext.request.contextPath}/mapOne?user_no='+ result.user_no+'">';
 			str += '		<img class="profile_user_img" src="${pageContext.request.contextPath}/upload/' + result.user_img + '">';
 			str += '		</a>';
 		}
 
 		str += '	</div>';
 		str += '	<div class="profile_name">';
-		str += '		<a href="${pageContext.request.contextPath}/Map/map?user_no='+ result.user_no+'">';
+		str += '		<a href="${pageContext.request.contextPath}/mapOne?user_no='+ result.user_no+'">';
 		str += '		<span>' + result.nickname + '</span>';
 		str += '		</a>';
 		str += '	</div>';

@@ -179,7 +179,7 @@
 	      and p.reg_date is null
           and u.user_no = b.user_no
           and u.user_no = p.user_no
-          ORDER by p.p_start desc) ot) ort
+          ORDER by p.p_start asc) ot) ort
           where rn >=1
           and rn <=10
 		]]>

@@ -62,7 +62,7 @@
 					<tr>
 						<td>${aLive.nickname}</td>
 						<td>${aLive.p_start}~</td>
-						<td>[위치 보기]</td>
+						<td><a href="${pageContext.request.contextPath}/mapOne?user_no=${aLive.user_no}">[위치 보기]</a></td>
 					</tr>
 				</c:forEach>
 
