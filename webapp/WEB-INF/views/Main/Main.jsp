@@ -173,9 +173,24 @@
         <!-- 로그인/신청 -->
         <!-- 라이브/갤러리 -->
         <div class="artist_wrap">
+        <!-- Artist Live -->
           <div class="live_wrap">
             <h2>ON AIR</h2>
+            
+            <div class="live_box">
+              <c:forEach items="${artistLiveList}" var="aList" begin="0" end="3">
+                <div class="live_item">
+                  <div class="live_item_caption">
+                    <h3>${aList.nickname}</h3>
+                    <p>${aList.p_start}</p> 
+                  </div>
+                  <img id="img_item" src="${pageContext.request.contextPath}/upload/${aList.user_img}" onclick="location.href='${pageContext.request.contextPath}/blog/blog_main/${aList.id}'" alt="" />
+                </div>
+              </c:forEach>
+            </div>
           </div>
+          
+          <!-- Gallery -->
           <div class="gallery_wrap">
             <h2>GALLERY</h2>
 

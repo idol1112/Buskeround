@@ -443,7 +443,7 @@ h2 {
 	width: 876px;
 	position: relative;
 	float: left;
-	height: 272px;
+	height: 220px;
 }
 
 .artist_wrap .gallery_wrap {
@@ -467,6 +467,7 @@ h2 {
 	padding: 0;
 }
 
+/* Gallery */
 .gallery_box {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(100px, 206px));
@@ -565,6 +566,110 @@ h2 {
 }
 
 .gallery_box .gallery_item:hover p, .gallery_box .gallery_item:hover h3
+	{
+	opacity: 1;
+	transform: translate3d(0, 0, 0);
+}
+
+/* Live */
+.live_box {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(100px, 206px));
+	grid-gap: 15px;
+	max-width: 1500px;
+	margin: 0 auto;
+	box-sizing: border-box;
+}
+
+.live_box .live_item {
+	position: relative;
+	width: 211px;
+	height: 150px;
+	background: #000;
+	cursor: pointer;
+	overflow: hidden;
+}
+
+.live_box .live_item img {
+	position: relative;
+	display: block;
+	width: 115%;
+	height: 230px;
+	object-fit: cover;
+	transition: all 350ms ease-in-out;
+	transform: translate3d(-23px, 0, 0);
+}
+
+.live_box .live_item .live_item_caption {
+	padding: 5px 20px 20px 20px;
+	font-size: 1em;
+	color: #fff;
+	text-transform: uppercase;
+}
+
+.live_box .live_item .live_item_caption, .live_box .live_item .live_item_caption>a
+	{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.live_box .live_item h3 {
+	font-weight: 600;
+	overflow: hidden;
+	font-size: 20px;
+	padding: 12px 0;
+	opacity: 0;
+	transition: opacity 0.35s, transform 0.35s;
+	transform: translate3d(10%, 0, 0);
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.live_box .live_item h3, .oo-gallery .live_item p {
+	position: relative;
+	margin: 0;
+	z-index: 1;
+	pointer-events: none;
+}
+
+.live_box .live_item p {
+	letter-spacing: 1px;
+	font-size: 12px;
+	padding: 12px 0 0 0;
+	opacity: 0;
+	transition: opacity 0.35s, transform 0.35s;
+	transform: translate3d(10%, 0, 0);
+}
+
+.live_box .live_item:hover img {
+	opacity: 0.3;
+	transform: translate3d(0, 0, 0);
+}
+
+.live_box .live_item .live_item_caption {
+	text-align: left;
+}
+
+.live_box .live_item h3::after {
+	content: "";
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 15%;
+	height: 1px;
+	background: #fff;
+	transition: transform 0.3s;
+	transform: translate3d(-100%, 0, 0);
+}
+
+.live_box .live_item:hover h3::after {
+	transform: translate3d(0, 0, 0);
+}
+
+.live_box .live_item:hover p, .live_box .live_item:hover h3
 	{
 	opacity: 1;
 	transform: translate3d(0, 0, 0);

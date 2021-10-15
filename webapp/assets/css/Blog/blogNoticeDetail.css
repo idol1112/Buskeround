@@ -90,7 +90,7 @@ a:active {text-decoration: none; color: black;}
 /* 내용Content */
 .detail-content{
   margin-top: 10px;
-  min-height: 200px;
+  min-height: 400px;
   padding: 5px;
 }
 

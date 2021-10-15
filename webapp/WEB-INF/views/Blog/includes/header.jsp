@@ -501,7 +501,7 @@
 					console.log("Live")
 					var b = document.querySelector(".profile_picture");
 					var link = ""
-					b.setAttribute("onclick", "location.href='${pageContext.request.contextPath}/Map/map?latitude=" + result.user_no + "'");
+					b.setAttribute("onclick", "location.href='${pageContext.request.contextPath}/Map/mapOne?latitude=" + result.user_no + "'");
 					b.style.border = "red solid 5px";
 					
 					

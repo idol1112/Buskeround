@@ -179,7 +179,7 @@
 	      and p.reg_date is null
           and u.user_no = b.user_no
           and u.user_no = p.user_no
-          ORDER by u.ranking_score desc, u.artist_regdate asc) ot) ort
+          ORDER by p.p_start desc) ot) ort
           where rn >=1
           and rn <=10
 		]]>
@@ -675,7 +675,7 @@
 	          
 	      FROM (	      SELECT
 	      
-	          user_no, 
+	          user_no,
 	          id,
 	          password,
 	          email,

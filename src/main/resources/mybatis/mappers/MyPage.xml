@@ -81,8 +81,7 @@
 			likes = 0,
 			fan = 0,
 			artist_regdate = sysdate,
-			live = 0,
-			ranking_score = 0
+			live = 0
 		WHERE 
 			id = #{id}
 		]]>
