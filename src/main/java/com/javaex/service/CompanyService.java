@@ -225,7 +225,7 @@ public class CompanyService {
 	
 	//버스킹존 수정
 	public int buskingZoneUpdate(BusdateVo busdateVo, List<String> sList, List<String> eList) {
-		System.out.println("CompanyService.buskingZoneInsert()");
+		System.out.println("CompanyService.buskingZoneUpdate()");
 		
 		int date_no = busdateVo.getDate_no();
 		System.out.println(date_no);

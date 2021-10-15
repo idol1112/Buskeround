@@ -93,7 +93,9 @@
                                 <td><input class="input" type="text" id="business_number" name="business_number" value="${requestScope.companyVo.business_number}"></td>
                             </tr>
                         </table>
-                        <button type="submit" class="float-end btn btn-primary btn-sm" id="profilesubmit">저장</button>
+                        <div class="btn-area">
+                        	<button type="submit" class="float-end btn btn-primary btn-sm" id="profilesubmit">저장</button>
+                        </div>
                     </form>
                 </div>
             </div>

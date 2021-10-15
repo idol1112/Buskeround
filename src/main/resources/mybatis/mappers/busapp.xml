@@ -16,6 +16,7 @@
 			        ort.nickname,
 			        ort.genre,
 			        ort.hp,
+			        ort.id,
 			        ort.user_info,
 			        ort.status
 			    from    (SELECT rownum rn,
@@ -28,6 +29,7 @@
 			            ot.nickname,
 			            ot.genre,
 			            ot.hp,
+			            ot.id,
 			            ot.user_info,
 			            ot.status
 			        from    (SELECT
@@ -40,6 +42,7 @@
 			                u.nickname,
 			                u.genre,
 			                u.hp,
+			                u.id,
 			                ba.user_info,
 			                ba.status
 			            FROM
@@ -98,6 +101,7 @@
 			    bt.end_time,
 			    u.genre,
 			    u.hp,
+			    u.id,
 			    ba.user_info,
 			    ba.status
 			FROM
@@ -133,6 +137,7 @@
 			    bt.end_time,
 			    u.genre,
 			    u.hp,
+			    u.id,
 			    ba.user_info,
 			    ba.status
 			FROM

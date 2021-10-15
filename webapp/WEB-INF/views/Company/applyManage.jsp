@@ -121,7 +121,7 @@
 									<td>${fn:substring(bus_date, 0, 10)}</td>
 									<c:set var="start_time" value="${busappVo.start_time}"/><c:set var="end_time" value="${busappVo.end_time}"/>
 									<td>${fn:substring(start_time, 11, 16)}-${fn:substring(end_time, 11, 16) }</td>
-									<td>${busappVo.nickname}</td>
+									<td><a href="${pageContext.request.contextPath}/blog/blog_main/${busappVo.id}">${busappVo.nickname}</a></td>
 									<!-- 장르 -->
 									<c:if test="${busappVo.genre == 1}">
 										<td class="articon"><img class="genre-img" src="${pageContext.request.contextPath}/assets/image/blog/icon/ballade.png" alt="발라드"></td>
@@ -258,6 +258,7 @@
 					</div>
 				</div>
 				</c:if>
+			</div>
 		</div>
 		<div class="col-xl-2"></div>
 	</div>
@@ -267,24 +268,24 @@
 	<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
 	<!------- footer -------->
 	
-	<!------------- Modal --------------->
-  <div class="modal fade" id="infoModal" role="dialog">
-    <div class="modal-dialog">
-
-      <!-- Modal content-->   
-      <div class="modal-content">
-        <div class="modal-header">
- 
-          <h4 class="modal-title"></h4>
-          <img class="delBtn close" src="${pageContext.request.contextPath}/assets/image/company/icon/delete.png">
-
-        </div>
-        <div class="modal-body">
-			<div class="modal_content" id="modal_text"></div>
-        </div>
-      </div>
-    </div>
-  </div>
+	  <!------------- Modal --------------->
+	  <div class="modal fade" id="infoModal" role="dialog">
+	    <div class="modal-dialog">
+	
+	      <!-- Modal content-->   
+	      <div class="modal-content">
+	        <div class="modal-header">
+	 
+	          <h4 class="modal-title"></h4>
+	          <img class="delBtn close" src="${pageContext.request.contextPath}/assets/image/company/icon/delete.png">
+	
+	        </div>
+	        <div class="modal-body">
+				<div class="modal_content" id="modal_text"></div>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
 </body>
 
 <script type="text/javascript">

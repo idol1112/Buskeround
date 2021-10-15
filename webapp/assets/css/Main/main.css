@@ -321,11 +321,13 @@ h2 {
     font-size: 11px;
     color: #fff;
     text-decoration: none;
+    transition: all .4s;
 }
 
 .sc_user .btn_logout:hover {
 	background: #888;
 	font-weight: bold;
+	
 }
 
 .login_box .sc_user #my_profile {
@@ -387,6 +389,7 @@ h2 {
     border: 1px solid #dae1e6;
     border-radius: 10px;
     color: #fff;
+    transition: all .4s;
 }
 
 .id_wrap .apply_wrap .artist_btn:hover {
@@ -402,6 +405,7 @@ h2 {
     border: 1px solid #dae1e6;
     border-radius: 10px;
     color: #fff;
+    transition: all .4s;
 }
 
 .id_wrap .apply_wrap .company_btn:hover {
