@@ -43,21 +43,7 @@
 		#searchList .info .jibun {padding-left:26px;background:url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_jibun.png) no-repeat;}
 		#searchList .info .tel {color:#009900;}
 		#searchList .item .markerbg {float:left;position:absolute;width:36px; height:37px;margin:10px 0 0 10px;background:url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png) no-repeat;}
-		#searchList .item .marker_1 {background-position: 0 -10px;}
-		#searchList .item .marker_2 {background-position: 0 -56px;}
-		#searchList .item .marker_3 {background-position: 0 -102px}
-		#searchList .item .marker_4 {background-position: 0 -148px;}
-		#searchList .item .marker_5 {background-position: 0 -194px;}
-		#searchList .item .marker_6 {background-position: 0 -240px;}
-		#searchList .item .marker_7 {background-position: 0 -286px;}
-		#searchList .item .marker_8 {background-position: 0 -332px;}
-		#searchList .item .marker_9 {background-position: 0 -378px;}
-		#searchList .item .marker_10 {background-position: 0 -423px;}
-		#searchList .item .marker_11 {background-position: 0 -470px;}
-		#searchList .item .marker_12 {background-position: 0 -516px;}
-		#searchList .item .marker_13 {background-position: 0 -562px;}
-		#searchList .item .marker_14 {background-position: 0 -608px;}
-		#searchList .item .marker_15 {background-position: 0 -654px;}
+
 		.radius_border{border:1px solid #919191;border-radius:5px;}     
 		.custom_zoomcontrol {position:absolute;top:50px;right:10px;width:36px;height:80px;overflow:hidden;z-index:1;background-color:#f5f5f5;} 
 		.custom_zoomcontrol span {display:block;width:36px;height:40px;text-align:center;cursor:pointer;}     
@@ -288,7 +274,7 @@ function displayPlaces(places) {
 //========================================
 
 var imageSrc = '/Buskeround/assets/image/map/makericon.png', // 마커이미지의 주소입니다    
-imageSize = new kakao.maps.Size(48, 55), // 마커이미지의 크기입니다
+imageSize = new kakao.maps.Size(48, 48), // 마커이미지의 크기입니다
 imageOption = {offset: new kakao.maps.Point(26, 40)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
 
 var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption)

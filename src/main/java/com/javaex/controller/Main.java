@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.javaex.service.ArtistService;
 import com.javaex.service.BlogService2;
+import com.javaex.service.MapService;
 
 @Controller
 public class Main {
@@ -16,6 +17,8 @@ public class Main {
   BlogService2 blogService2;
   @Autowired
   ArtistService artistService;
+  @Autowired
+  MapService mapService;
 
   @RequestMapping(value = "/Main", method = {RequestMethod.GET, RequestMethod.POST})
   public String mainPage(Model model) {
@@ -23,7 +26,8 @@ public class Main {
     
     model.addAttribute("artistLiveList", artistService.getArtistLive());
     model.addAttribute("galleryList", blogService2.getGalleryMainPage());
-
+    model.addAttribute("mapList", mapService.mapList());
+    
     return "Main/Main";
 
   }

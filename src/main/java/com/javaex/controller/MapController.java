@@ -130,9 +130,11 @@ public class MapController {
 	}
 	
 	@RequestMapping("/maptest")
-	public String mapOne() {
+	public String maptest(Model model) {
 		System.out.println("맵테스트");
-		
+		List<MapVo> mapList = mapService.mapList();
+		model.addAttribute("mapList", mapList);
+		System.out.println(mapList);
 		return "Map/maptest";
 	}
 	

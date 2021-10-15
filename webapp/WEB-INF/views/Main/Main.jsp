@@ -39,10 +39,128 @@
       <div id="conts" class="clfix">
         <!-- 맵 -->
         <div class="map">
-          <h2>
-            <a>LIVE</a>
-          </h2>
+          <h2><a>LIVE</a></h2>
+          <div id="map"></div>
+			<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=79c2ae6522e8e0df7b0592164f933676"></script>
 
+			<script>
+
+			//===============================기본 MAP 옵션=================================//
+			var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+			mapOption = { 
+			    center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+			    level: 3 // 지도의 확대 레벨 
+			}; 
+			
+			var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+			//============================================================================//
+
+			var positions = [];
+			var num = -1;
+
+
+			if (navigator.geolocation) {
+			    
+			    // GeoLocation을 이용해서 접속 위치를 얻어옵니다
+			    navigator.geolocation.getCurrentPosition(function(position) {
+			        
+			        var lat = position.coords.latitude, // 위도
+			            lon = position.coords.longitude; // 경도
+			        
+			        var locPosition = new kakao.maps.LatLng(lat, lon)
+					
+			        <c:forEach items="${mapList}" var="mapList">
+			        num += 1;
+			        positions[num] = new kakao.maps.LatLng(${mapList.latitude}, ${mapList.longitude});
+			        var data = positions[num];
+			        var content = '<div class="wrap">' + 
+			        '    <div class="info">' + 
+			        '        <div class="title">' + 
+			        '            Buskeround' +
+			        '        </div>' + 
+			        '        <div class="body">' + 
+			        '              <div class="img">' +
+			        '		<c:if test="${mapList.user_img != null}">' +
+			        '                 <img style="width:100%;height:80px;	" src="${pageContext.request.contextPath }/upload/${mapList.user_img}">' +
+			        '		</c:if>' +
+			        '		<c:if test="${mapList.user_img == null}">' +
+			        '                 <img src="/Buskeround/assets/image/blog/icon/user.png" width="73px">' +
+			        '		</c:if>' +
+			        '              </div>' +  
+			        '            <div class="desc">' + 
+			        '                <div class="ellipsis">활동명 : ${mapList.nickname}</div>' + 
+			        '                <div class="ellipsis">' + 
+			        '				 <c:if test="${mapList.genre == 1}">' +
+			        '                <div>장르   : 발라드</div>' + 
+			        '				 </c:if>' +
+			        '				 <c:if test="${mapList.genre == 2}">' +
+			        '                <div>장르   : 댄스</div>' + 
+			        '				 </c:if>' +
+			        '				 <c:if test="${mapList.genre == 3}">' +
+			        '                <div>장르   : 랩/힙합</div>' + 
+			        '				 </c:if>' +
+			        '				 <c:if test="${mapList.genre == 4}">' +
+			        '                <div>장르   : R&B/Soul</div>' + 
+			        '				 </c:if>' +
+			        '				 <c:if test="${mapList.genre == 5}">' +
+			        '                <div>장르   : 악기</div>' + 
+			        '				 </c:if>' +
+			        '				 <c:if test="${mapList.genre == 6}">' +
+			        '                <div>장르   : 기타</div>' + 
+			        '				 </c:if>' +
+			        '                </div>' + 
+			        '                <div class="jibun ellipsis">${mapList.intro}</div>' + 
+			        '            </div>' + 
+			        '        </div>' + 
+			        '    </div>' +    
+			        '</div>';
+			        
+			        displayMarker(locPosition,data,content);
+			        </c:forEach>
+			            
+			      });
+			    
+			} else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
+			    
+			    var locPosition = new kakao.maps.LatLng(33.450701, 126.570667)
+			    map.setCenter(locPosition);
+			    console.log("위치를 알수없음");
+			    //displayMarker(locPosition); 마커생성 함수
+			}
+
+		//=================== 함수 ===================//
+			function displayMarker(locPosition,data,content) {
+		
+			    // 마커를 생성합니다
+			    var marker = new kakao.maps.Marker({  
+			        map: map, 
+			        position: data
+			    }); 
+			    
+				//오버레이 생성
+			    var overlay = new kakao.maps.CustomOverlay({
+			        yAnchor: 3,
+			        position: data
+			    });
+			    
+			    overlay.setContent(content);
+			
+			    kakao.maps.event.addListener(marker, 'click', function() {
+			        overlay.setMap(map);
+			    });
+			    
+			    kakao.maps.event.addListener(map, 'click', function() {
+			        overlay.setMap(null);
+			    });
+			    
+			    // 지도 중심좌표를 접속위치로 변경합니다
+			    map.setCenter(locPosition);
+			}    
+			//==========================================//
+			
+			
+				
+		</script>
         </div>
         <!-- 맵 -->
         <!-- 뉴 아티스트 -->
