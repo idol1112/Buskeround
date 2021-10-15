@@ -171,14 +171,29 @@
   <table class="like_box">
     <!-- 좋아요&팬 버튼 -->
     <tr>
-      <td><img class="heart" src="${pageContext.request.contextPath}/assets/image/blog/icon/heart1.png"></td>
-      <td><img class="like" src="${pageContext.request.contextPath}/assets/image/blog/icon/fan2.png"></td>
+		<c:choose>
+			<c:when test="${blogVo.likeOk == true}">
+				<td><img class="heart" data-no="${blogVo.user_no}" src="${pageContext.request.contextPath}/assets/image/blog/icon/heart2.png"></td>
+			</c:when>
+			<c:otherwise>
+				<td><img class="heart" data-no="${blogVo.user_no}" src="${pageContext.request.contextPath}/assets/image/blog/icon/heart1.png"></td>
+			</c:otherwise>
+		</c:choose>
+		
+		<c:choose>
+			<c:when test="${blogVo.fanOk == true}">
+				<td><img class="like" data-no="${blogVo.user_no}" src="${pageContext.request.contextPath}/assets/image/blog/icon/fan2.png"></td>
+			</c:when>
+			<c:otherwise>
+				<td><img class="like" data-no="${blogVo.user_no}" src="${pageContext.request.contextPath}/assets/image/blog/icon/fan1.png"></td>
+			</c:otherwise>
+		</c:choose>
     </tr>
 
     <!-- 좋아요&팬 Count-->
     <tr>
-      <td class="heart_count" rowspan="2">23</td>
-      <td class="like_count" rowspan="2">4235</td>
+      <td class="heart_count" rowspan="2"><span class="likes2-${blogVo.user_no}">${blogVo.likes}</span></td>
+      <td class="like_count" rowspan="2"><span class="fan2-${blogVo.user_no}">${blogVo.fan}</span></td>
     </tr>
   </table>
 </div>
@@ -503,5 +518,111 @@
 			}
 		});
 	});
+  
+ // 팬되기 눌렀을 때
+  	$(".like").on("click",function(){
+  		console.log("팬되기 잘 들어온다")
+  		
+  		var artist_no = $(this).data("no");
+  		
+  		var thiss = $(this); 
+  		
+  		
+  		$.ajax({
+  			// 컨트롤러에서 대기중인 URL 주소이다.
+  			url : "${pageContext.request.contextPath}/Artist/Fan",
+
+  			// HTTP method type(GET, POST) 형식이다.
+  			type : "get",
+  			
+  			// Json 형태의 데이터로 보낸다.
+  			contentType : "application/json",
+
+  			// Json 형식의 데이터를 받는다.
+  			dataType : "json",
+
+
+  			data : {
+  			artist_no : ${blogVo.user_no},
+  			user_no : ${authUser.user_no}
+  			},
+
+  			// 성공일 경우 success로 들어오며, 'result'는 응답받은 데이터이다.
+  			success : function(result) {
+  				/*성공시 처리해야될 코드 작성*/
+  			var fan = $(".fan2-" + artist_no + "");
+  			if (result == false) {
+  				thiss.attr('src', '${pageContext.request.contextPath}/assets/image/artist/icon/fan2.png');
+  				var fanV = parseInt(fan.html()) + 1;
+  				fan.html(fanV);
+  				
+  			} else {
+  				thiss.attr('src', '${pageContext.request.contextPath}/assets/image/artist/icon/fan1.png');
+  				var fanV = parseInt(fan.html()) - 1;
+  				fan.html(fanV);
+
+  			}
+  				
+  			},
+
+  			// 실패할경우 error로 들어온다.
+  			error : function(XHR, status, error) {
+  				console.error(status + " : " + error);
+  			}
+  		});
+  	});
+
+
+  	// 좋아요 눌렀을 때
+  	$(".heart").on("click",function(){
+  		console.log("하트 잘 들어온다")
+  		
+  		var artist_no = $(this).data("no");
+  		
+  		var thiss = $(this); 
+  		
+  		$.ajax({
+  			// 컨트롤러에서 대기중인 URL 주소이다.
+  			url : "${pageContext.request.contextPath}/Artist/Likes",
+
+  			// HTTP method type(GET, POST) 형식이다.
+  			type : "get",
+  			
+  			// Json 형태의 데이터로 보낸다.
+  			contentType : "application/json",
+
+  			// Json 형식의 데이터를 받는다.
+  			dataType : "json",
+
+
+  			data : {
+  	  		artist_no : ${blogVo.user_no},
+  			user_no : ${authUser.user_no}
+  			},
+
+  			// 성공일 경우 success로 들어오며, 'result'는 응답받은 데이터이다.
+  			success : function(result) {
+  				/*성공시 처리해야될 코드 작성*/
+  			var likes = $(".likes2-" + artist_no + "");
+  			if (result == false) {
+  				thiss.attr('src', '${pageContext.request.contextPath}/assets/image/artist/icon/heart2.png');
+  				var likesV = parseInt(likes.html()) + 1;
+  				likes.html(likesV);
+  				
+  			} else {
+  				thiss.attr('src', '${pageContext.request.contextPath}/assets/image/artist/icon/heart1.png');
+  				var likesV = parseInt(likes.html()) - 1;
+  				likes.html(likesV);
+
+  			}
+  				
+  			},
+
+  			// 실패할경우 error로 들어온다.
+  			error : function(XHR, status, error) {
+  				console.error(status + " : " + error);
+  			}
+  		});
+  	});
 
 </script>

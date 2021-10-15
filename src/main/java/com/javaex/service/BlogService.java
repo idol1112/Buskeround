@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -17,18 +19,51 @@ import com.javaex.vo.BlogVo;
 import com.javaex.vo.NoticeVo;
 import com.javaex.vo.PostVo;
 import com.javaex.vo.ResumeVo;
+import com.javaex.vo.UserVo;
 
 @Service
 public class BlogService {
 
   @Autowired
   BlogDao blogDao;
+  @Autowired
+  HttpSession session;
 
   // 블로그 정보 가져오기
   public BlogVo selectUser(String id) {
     System.out.println("BlogService.SelectUser()");
+    BlogVo blogVo;
+    
+    UserVo userVo = (UserVo) session.getAttribute("authUser");
+	if (userVo != null) {
+	    //로그인한사람 정보.
+	    int user_no = userVo.getUser_no();
+	    
+	    blogVo =  blogDao.selectUser(id);
+	    blogVo.setArtist_no(user_no);
+	    
+	    String check = blogDao.checkFan(blogVo);
+	    
+		if (check == null) {
+			blogVo.setFanOk(false);
+		} else {
+			blogVo.setFanOk(true);
+		}
+		System.out.println(blogVo);
+		check = blogDao.checkLike(blogVo);
+		
+		if (check == null) {
+			blogVo.setLikeOk(false);
+		} else {
+			blogVo.setLikeOk(true);
+		}
+	} else {
+		blogVo =  blogDao.selectUser(id);
+	}
+	
+	System.out.println("BLOG SERVICE CHECK: " + blogVo);
 
-    return blogDao.selectUser(id);
+    return blogVo;
   }
 
   // 블로그 이력사항 가져오기

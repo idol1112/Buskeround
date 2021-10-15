@@ -247,4 +247,18 @@ public class BlogDao {
 		
 		return sqlSession.selectOne("blog.checkLive", id);
 	}
+	
+	//Check Fans
+	public String checkFan(BlogVo blogVo) {
+		System.out.println("[BlogDao.CheckFan()]");
+		
+		return sqlSession.selectOne("fanCheck", blogVo);
+	}
+	
+	//Check Like
+	public String checkLike(BlogVo blogVo) {
+		System.out.println("[BlogDao.CheckLike()]");
+		
+		return sqlSession.selectOne("likesCheck", blogVo);
+	}
 }

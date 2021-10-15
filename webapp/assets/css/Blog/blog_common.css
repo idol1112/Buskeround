@@ -344,8 +344,8 @@ a:active {
 }
 
 .heart_count {
-	padding-right: 28px;
-	text-align: right;
+    padding-right: 19px;
+    text-align: center;
 }
 
 /** 팬 되기 **/
@@ -354,8 +354,7 @@ a:active {
 }
 
 .like_count {
-	padding-right: 8px;
-	text-align: right;
+	text-align: center;
 }
 
 /** nav **/
