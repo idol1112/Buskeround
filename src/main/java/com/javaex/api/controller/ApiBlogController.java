@@ -132,28 +132,9 @@ public class ApiBlogController {
   public BlogVo blog_main(@RequestBody UserVo userVo) {
     System.out.println("[현재 위치: ApiBlogController.blog_main]");
 
-    return blogService.selectUser(userVo.getId());
+    System.out.println("블로그 메인: " + blogService2.blog_android(userVo.getId()));
 
-  }
-
-  /*** 배너 업로드(안드로이드) ***/
-  @ResponseBody
-  @RequestMapping(value = "banner/{user_no}", method = {RequestMethod.GET, RequestMethod.POST})
-  public int banner(@RequestParam(value = "file1", required = false) MultipartFile file, @PathVariable("user_no") int user_no) {
-    System.out.println("[현재 위치: BlogController2.banner]");
-
-    System.out.println(user_no);
-
-    if (file == null) {
-      System.out.println("파일이 없습니다.");
-      return blogService2.setBanner(user_no, null);
-
-    } else {
-      System.out.println("파일이 있습니다.");
-
-      return blogService2.setBanner(user_no, file);
-
-    }
+    return blogService2.blog_android(userVo.getId());
 
   }
 
@@ -176,16 +157,16 @@ public class ApiBlogController {
     }
 
   }
-  
-  //라이브 중 확인
+
+  // 라이브 중 확인
   @ResponseBody
   @RequestMapping(value = "blog_live", method = {RequestMethod.GET, RequestMethod.POST})
   public PostVo blog_live(@RequestParam("id") String id) {
-	    System.out.println("[현재 위치: ApiBlogController.blog_live]");
-	    PostVo postVo = blogService.checkLive(id);
-	    System.out.println(postVo);
-	    return postVo;
-	  }
+    System.out.println("[현재 위치: ApiBlogController.blog_live]");
+    PostVo postVo = blogService.checkLive(id);
+    System.out.println(postVo);
+    return postVo;
+  }
 }
 
 
