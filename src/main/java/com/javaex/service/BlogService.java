@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.javaex.dao.BlogDao;
 import com.javaex.vo.BlogVo;
 import com.javaex.vo.NoticeVo;
+import com.javaex.vo.PostVo;
 import com.javaex.vo.ResumeVo;
 
 @Service
@@ -290,6 +291,14 @@ public class BlogService {
 	listMap.put("next", next);
 
     return listMap;
+  }
+  
+  //Check if Live or not
+  public PostVo checkLive(String id) {
+	    System.out.println("BlogService.checkLive()");
+	    
+	    PostVo postVo = blogDao.checkLive(id);
+	    return postVo;
   }
 
 }

@@ -335,5 +335,20 @@
 				and( title || u.nickname || content) like '%'||#{search}||'%'
 			</if> 
 	</select>
+	
+	<!-- checkLive -->
+	<select id="checkLive" parameterType="String" resultType="postVo">
+		<![CDATA[
+			select live,
+				   u.user_no,
+				   longitude,
+				   latitude
+			from users u, post p
+			where u.user_no = p.user_no
+			and id = #{id}
+			and p_end is null
+			and reg_date is null	
+		]]>
+	</select>
     
 </mapper>
