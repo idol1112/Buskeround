@@ -15,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Festive&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Festive&family=Hind+Siliguri:wght@500&display=swap" rel="stylesheet">
 
 <!-- css -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/Main/main.css">
@@ -134,33 +134,33 @@
           </div>
           <div class="apply_wrap">
           	<c:if test="${authUser == null}">
-            <div class="artist_btn">
-            	<a class="btn_white" href="${pageContext.request.contextPath}/user/loginForm">아티스트등록</a>
+            <div class="artist_btn" onclick="location.href='${pageContext.request.contextPath}/user/loginForm'">
+            	아티스트등록
             </div>
-            <div class="company_btn">
-            	<a class="btn_white" href="${pageContext.request.contextPath}/user/loginForm">제휴사등록</a>
+            <div class="company_btn" onclick="location.href='${pageContext.request.contextPath}/user/loginForm'">
+            	제휴사등록<
             </div>
             </c:if>
             
             <c:if test="${authUser != null}">
 	          	<c:if test="${authUser.user_type == 1}">
-	            <div class="artist_btn">
-	            	<a class="btn_white" href="${pageContext.request.contextPath}/MyPage/mypageArtist">아티스트등록</a>
+	            <div class="artist_btn" onclick="location.href='${pageContext.request.contextPath}/MyPage/mypageArtist'">
+					아티스트등록
 	            </div>
 	            </c:if>
 	            <c:if test="${authUser.user_type == 2}">
-	            <div class="artist_btn">
-	            	<a class="btn_white" href="${pageContext.request.contextPath}/blog/blog_main/${sessionScope.authUser.id}">내 블로그</a>
+	            <div class="artist_btn" onclick="location.href='${pageContext.request.contextPath}/blog/blog_main/${sessionScope.authUser.id}'">
+					내 블로그
 	            </div>
 	            </c:if>
 	            <c:if test="${authUser.company_type == 1}">
-	            <div class="company_btn">
-	            	<a class="btn_white" href="${pageContext.request.contextPath}/Company/mypageCompany">제휴사등록</a>
+	            <div class="company_btn" onclick="location.href='${pageContext.request.contextPath}/Company/mypageCompany'">
+	            	제휴사등록
 	            </div>
 	            </c:if>
 	            <c:if test="${authUser.company_type == 2}">
-	            <div class="company_btn">
-	            	<a class="btn_white" href="${pageContext.request.contextPath}/Company/companyInfo">제휴사관리</a>
+	            <div class="company_btn" onclick="location.href='${pageContext.request.contextPath}/Company/companyInfo'">
+	            	제휴사관리
 	            </div>
 	            </c:if>
             </c:if>

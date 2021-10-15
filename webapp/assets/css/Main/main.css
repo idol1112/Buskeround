@@ -377,17 +377,13 @@ h2 {
     cursor: pointer;
 }
 
-.id_wrap .apply_wrap .btn_white {
-	color: #fff;
-}
-
 .id_wrap .apply_wrap .artist_btn {
 	float: left;
     width: 177px;
     height: 55px;
     margin-right: 4px;
     padding: 14px;
-    background-color: darkslateblue;
+    background-color: darkred;
     border: 1px solid #dae1e6;
     border-radius: 10px;
     color: #fff;
@@ -402,7 +398,7 @@ h2 {
     width: 177px;
     height: 55px;
     padding: 14px;
-    background-color: darkred;
+    background-color: darkblue;
     border: 1px solid #dae1e6;
     border-radius: 10px;
     color: #fff;
@@ -420,7 +416,8 @@ h2 {
     text-align: center;
     font-size: 45px;
     font-family: 'Festive', cursive;
-    padding: 27px 0px 20px 0px;
+	font-family: 'Hind Siliguri', sans-serif;
+    padding: 20px 0px 20px 0px;
     color: #fff;
     background-image: url(../../image/company/mainbanner.jpg);
     background-repeat: no-repeat;
