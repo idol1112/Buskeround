@@ -121,13 +121,19 @@ public class MapController {
 	
 	@RequestMapping("/mapOne")
 	public String mapOne(Model model,@RequestParam(value = "user_no", required = false, defaultValue = "0") int user_no) {
-		user_no = 3;
 		MapVo mapListOne = mapService.mapListOne(user_no);
 		System.out.println(mapListOne);
 		
 		model.addAttribute("mapListOne", mapListOne);
 		
 		return "Map/mapOne";
+	}
+	
+	@RequestMapping("/maptest")
+	public String mapOne() {
+		System.out.println("맵테스트");
+		
+		return "Map/maptest";
 	}
 	
 
