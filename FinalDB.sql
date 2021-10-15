@@ -788,6 +788,8 @@ END;
 --///////////////////////////테이블 초기화//////////////////////////////
 
 --Users(총 26명)
+--관리자
+insert into users values(0,'admin','1234','admin@naver.com','관리자',null,'관리자','010-1111-1111','male','1998-11-12','1','트랩','0',0,0,sysdate,'2','2','0');
 --김덕배씨 회원가입(제휴사1)
 insert into users values(seq_user_no.nextval,'1234','1234','1234@naver.com','김덕배','101.PNG','김덕배','010-1111-1111','male','1998-11-12','3','트랩','0',0,0,sysdate,'2','2','0');
 insert into users values(seq_user_no.nextval,'4321','4321','4321@naver.com','김창수','102.PNG',null,null,null,null,null,null,null,null,null,null,'1','2',null);
