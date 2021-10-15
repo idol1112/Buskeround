@@ -1,53 +1,201 @@
+ALTER TABLE blog
+	DROP
+		CONSTRAINT FK_users_TO_blog
+		CASCADE;
+
+ALTER TABLE company
+	DROP
+		CONSTRAINT FK_users_TO_company
+		CASCADE;
+
+ALTER TABLE buskingDate
+	DROP
+		CONSTRAINT FK_stage_TO_buskingDate
+		CASCADE;
+
+ALTER TABLE post
+	DROP
+		CONSTRAINT FK_category_TO_post
+		CASCADE;
+
+ALTER TABLE post
+	DROP
+		CONSTRAINT FK_users_TO_post
+		CASCADE;
+
+ALTER TABLE category
+	DROP
+		CONSTRAINT FK_blog_TO_category
+		CASCADE;
+
+ALTER TABLE stage
+	DROP
+		CONSTRAINT FK_company_TO_stage
+		CASCADE;
+
+ALTER TABLE fan
+	DROP
+		CONSTRAINT FK_users_TO_fan
+		CASCADE;
+
+ALTER TABLE buskingTime
+	DROP
+		CONSTRAINT FK_buskingDate_TO_buskingTime
+		CASCADE;
+
+ALTER TABLE buskingApp
+	DROP
+		CONSTRAINT FK_buskingTime_TO_buskingApp
+		CASCADE;
+
+ALTER TABLE likes
+	DROP
+		CONSTRAINT FK_users_TO_likes
+		CASCADE;
+
+ALTER TABLE likes
+	DROP
+		CONSTRAINT FK_users_TO_likes2
+		CASCADE;
+
+ALTER TABLE resume
+	DROP
+		CONSTRAINT FK_blog_TO_resume
+		CASCADE;
+
+ALTER TABLE ccnotice
+	DROP
+		CONSTRAINT FK_users_TO_ccnotice
+		CASCADE;
+
+ALTER TABLE users
+	DROP
+		PRIMARY KEY
+		CASCADE
+		KEEP INDEX;
+
+ALTER TABLE blog
+	DROP
+		PRIMARY KEY
+		CASCADE
+		KEEP INDEX;
+
+ALTER TABLE company
+	DROP
+		PRIMARY KEY
+		CASCADE
+		KEEP INDEX;
+
+ALTER TABLE buskingDate
+	DROP
+		PRIMARY KEY
+		CASCADE
+		KEEP INDEX;
+
+ALTER TABLE post
+	DROP
+		PRIMARY KEY
+		CASCADE
+		KEEP INDEX;
+
+ALTER TABLE category
+	DROP
+		PRIMARY KEY
+		CASCADE
+		KEEP INDEX;
+
+ALTER TABLE stage
+	DROP
+		PRIMARY KEY
+		CASCADE
+		KEEP INDEX;
+
+ALTER TABLE fan
+	DROP
+		PRIMARY KEY
+		CASCADE
+		KEEP INDEX;
+
+ALTER TABLE buskingTime
+	DROP
+		PRIMARY KEY
+		CASCADE
+		KEEP INDEX;
+
+ALTER TABLE buskingApp
+	DROP
+		PRIMARY KEY
+		CASCADE
+		KEEP INDEX;
+
+ALTER TABLE likes
+	DROP
+		PRIMARY KEY
+		CASCADE
+		KEEP INDEX;
+
+ALTER TABLE resume
+	DROP
+		PRIMARY KEY
+		CASCADE
+		KEEP INDEX;
+
+ALTER TABLE ccnotice
+	DROP
+		PRIMARY KEY
+		CASCADE
+		KEEP INDEX;
+
 /* 회원 */
-DROP TABLE users
+DROP TABLE users 
 	CASCADE CONSTRAINTS;
 
 /* 블로그 */
-DROP TABLE blog
+DROP TABLE blog 
 	CASCADE CONSTRAINTS;
 
 /* 제휴사 */
-DROP TABLE company
+DROP TABLE company 
 	CASCADE CONSTRAINTS;
 
 /* 공연날짜 */
-DROP TABLE buskingDate
+DROP TABLE buskingDate 
 	CASCADE CONSTRAINTS;
 
 /* 게시글 */
-DROP TABLE post
+DROP TABLE post 
 	CASCADE CONSTRAINTS;
 
 /* 카테고리 */
-DROP TABLE category
+DROP TABLE category 
 	CASCADE CONSTRAINTS;
 
 /* 공연장 */
-DROP TABLE stage
+DROP TABLE stage 
 	CASCADE CONSTRAINTS;
 
 /* 팬되기 */
-DROP TABLE fan
+DROP TABLE fan 
 	CASCADE CONSTRAINTS;
 
 /* 공연시간 */
-DROP TABLE buskingTime
+DROP TABLE buskingTime 
 	CASCADE CONSTRAINTS;
 
 /* 버스킹신청 */
-DROP TABLE buskingApp
+DROP TABLE buskingApp 
 	CASCADE CONSTRAINTS;
 
 /* 좋아요 */
-DROP TABLE likes
+DROP TABLE likes 
 	CASCADE CONSTRAINTS;
 
 /* 이력사항 */
-DROP TABLE resume
+DROP TABLE resume 
 	CASCADE CONSTRAINTS;
 
 /* 공지사항 */
-DROP TABLE ccnotice
+DROP TABLE ccnotice 
 	CASCADE CONSTRAINTS;
 
 /** 시퀀스 삭제 **/
@@ -160,7 +308,7 @@ CREATE TABLE users (
 	artist_regdate DATE, /* 아티스트등록일 */
 	user_type CHAR(1), /* 회원구분 */
 	company_type CHAR(1), /* 제휴사여부 */
-	ranking_score NUMBER /* 아티스트 점수 */
+	ranking_score VARCHAR(1000) AS (fan * 0.3 + likes * 0.7) /* 아티스트 점수 */
 );
 
 COMMENT ON TABLE users IS '회원';
@@ -222,7 +370,8 @@ CREATE TABLE blog (
 	banner VARCHAR2(1000), /* 대문이미지 */
 	y_url VARCHAR2(100), /* 유튜브주소 */
 	f_url VARCHAR2(100), /* 페이스북주소 */
-	i_url VARCHAR2(100) /* 인스타주소 */
+	i_url VARCHAR2(100), /* 인스타주소 */
+	hit NUMBER /* 방문수 */
 );
 
 COMMENT ON TABLE blog IS '블로그';
@@ -238,6 +387,8 @@ COMMENT ON COLUMN blog.y_url IS '유튜브주소';
 COMMENT ON COLUMN blog.f_url IS '페이스북주소';
 
 COMMENT ON COLUMN blog.i_url IS '인스타주소';
+
+COMMENT ON COLUMN blog.hit IS '방문수';
 
 CREATE UNIQUE INDEX PK_blog
 	ON blog (
@@ -656,7 +807,7 @@ ALTER TABLE company
 		)
 		REFERENCES users (
 			user_no
-		)ON DELETE CASCADE;
+		);
 
 ALTER TABLE buskingDate
 	ADD
@@ -666,7 +817,7 @@ ALTER TABLE buskingDate
 		)
 		REFERENCES stage (
 			stage_no
-		)ON DELETE CASCADE;
+		);
 
 ALTER TABLE post
 	ADD
@@ -706,7 +857,7 @@ ALTER TABLE stage
 		)
 		REFERENCES company (
 			user_no
-		)ON DELETE CASCADE;
+		);
 
 ALTER TABLE fan
 	ADD
@@ -726,7 +877,7 @@ ALTER TABLE buskingTime
 		)
 		REFERENCES buskingDate (
 			date_no
-		)ON DELETE CASCADE;
+		);
 
 ALTER TABLE buskingApp
 	ADD
@@ -736,7 +887,7 @@ ALTER TABLE buskingApp
 		)
 		REFERENCES buskingTime (
 			time_no
-		)ON DELETE CASCADE;
+		);
 
 ALTER TABLE likes
 	ADD
@@ -788,62 +939,61 @@ END;
 --///////////////////////////테이블 초기화//////////////////////////////
 
 --Users(총 26명)
-
 --관리자
-insert into users values(0,'admin','1234','admin@naver.com','관리자',null,'관리자','010-1111-1111','male','1998-11-12','1','트랩','0',0,0,sysdate,'2','2','0');
+insert into users(user_no, id, password, email, nickname, user_img, name, hp, gender, birthday, genre, genre_type, live, fan, likes, artist_regdate, user_type, company_type) values(0,'admin','1234','admin@naver.com','관리자',null,'관리자','010-1111-1111','male','1998-11-12','1','트랩','0',0,0,sysdate,'2','2');
 
 --김덕배씨 회원가입(제휴사1)
-insert into users values(seq_user_no.nextval,'1234','1234','1234@naver.com','김덕배','101.PNG','김덕배','010-1111-1111','male','1998-11-12','3','트랩','0',0,0,sysdate,'2','2','0');
-insert into users values(seq_user_no.nextval,'4321','4321','4321@naver.com','김창수','102.PNG',null,null,null,null,null,null,null,null,null,null,'1','2',null);
-insert into users values(seq_user_no.nextval,'1111','1111','1111@naver.com','박수현','103.PNG',null,null,null,null,null,null,null,null,null,null,'1','2',null);
-insert into users values(seq_user_no.nextval,'1112','1112','1112@naver.com','고라파덕','104.PNG',null,null,null,null,null,null,null,null,null,null,'1','2',null);
-insert into users values(seq_user_no.nextval,'1113','1113','1113@naver.com','비에고','105.PNG',null,null,null,null,null,null,null,null,null,null,'1','2',null);
-insert into users values(seq_user_no.nextval,'1114','1114','1114@naver.com','아칼리','106.PNG',null,null,null,null,null,null,null,null,null,null,'1','2',null);
+insert into users(user_no, id, password, email, nickname, user_img, name, hp, gender, birthday, genre, genre_type, live, fan, likes, artist_regdate, user_type, company_type) values(seq_user_no.nextval,'1234','1234','1234@naver.com','김덕배','101.PNG','김덕배','010-1111-1111','male','1998-11-12','3','트랩','0',0,0,sysdate,'2','2');
+insert into users(user_no, id, password, email, nickname, user_img, name, hp, gender, birthday, genre, genre_type, live, fan, likes, artist_regdate, user_type, company_type) values(seq_user_no.nextval,'4321','4321','4321@naver.com','김창수','102.PNG',null,null,null,null,null,null,null,null,null,null,'1','2');
+insert into users(user_no, id, password, email, nickname, user_img, name, hp, gender, birthday, genre, genre_type, live, fan, likes, artist_regdate, user_type, company_type) values(seq_user_no.nextval,'1111','1111','1111@naver.com','박수현','103.PNG',null,null,null,null,null,null,null,null,null,null,'1','2');
+insert into users(user_no, id, password, email, nickname, user_img, name, hp, gender, birthday, genre, genre_type, live, fan, likes, artist_regdate, user_type, company_type) values(seq_user_no.nextval,'1112','1112','1112@naver.com','고라파덕','104.PNG',null,null,null,null,null,null,null,null,null,null,'1','2');
+insert into users(user_no, id, password, email, nickname, user_img, name, hp, gender, birthday, genre, genre_type, live, fan, likes, artist_regdate, user_type, company_type) values(seq_user_no.nextval,'1113','1113','1113@naver.com','비에고','105.PNG',null,null,null,null,null,null,null,null,null,null,'1','2');
+insert into users(user_no, id, password, email, nickname, user_img, name, hp, gender, birthday, genre, genre_type, live, fan, likes, artist_regdate, user_type, company_type) values(seq_user_no.nextval,'1114','1114','1114@naver.com','아칼리','106.PNG',null,null,null,null,null,null,null,null,null,null,'1','2');
 
 --아티스트들 생성
-insert INTO users VALUES (seq_user_no.nextval, 'aaa', '1234', 'aaa@naver.com', '츄', '10.PNG', '김밥통', '010-1234-1234', null, '19980505', '2', '왁킹댄스', '1', 15, 15, sysdate, '2', '1', 30);
-insert INTO users VALUES (seq_user_no.nextval, 'bbb', '1234', 'bbb@naver.com', '워너비', '1.PNG', '홍길동', '010-0000-0000', 'male', '20000101', '1', '솔로', '1', 10, 40, sysdate, '2', '1', 50);
-insert INTO users VALUES (seq_user_no.nextval, 'ccc', '1234', 'ccc@naver.com', '박서준', '8.PNG', '박서준', '010-1234-5000', 'male', '19970216', '1', '솔로', '1', 60, 40, sysdate, '2', '1', 100);
-insert INTO users VALUES (seq_user_no.nextval, 'ddd', '1234', 'ddd@naver.com', '제니', '52.PNG', '김제니', '010-9978-0345', 'female', '19960520', '2', '솔로가수', '1', 55, 30, sysdate, '2', '1', 85);
-insert INTO users VALUES (seq_user_no.nextval, 'eee', '1234', 'eee@naver.com', '이여름', '53.PNG', '이여름', '010-6720-0080', 'female', '19981109', '5', '솔로', '1', 67, 20, sysdate, '2', '1', 87);
-insert INTO users VALUES (seq_user_no.nextval, 'fff', '1234', 'fff@naver.com', '김동률', '41.PNG', '김동률', '010-2998-0000', 'male', '20000101', '1', '솔로', '1', 67, 15, sysdate, '2', '1', 82);
-insert INTO users VALUES (seq_user_no.nextval, 'ggg', '1234', 'ggg@naver.com', 'ROSE', '20.PNG', '박채영', '010-3212-1065', 'female', '19960211', '4', 'KPOP', '1', 89, 20, sysdate, '2', '1', 109);
-insert INTO users VALUES (seq_user_no.nextval, 'hhh', '1234', 'hhh@naver.com', '김현우', '13.PNG', '김현우', '010-1343-6674', 'male', '19950616', '1', '솔로', '1', 40, 18, sysdate, '2', '1', 58);
-insert INTO users VALUES (seq_user_no.nextval, 'iii', '1234', 'iii@naver.com', '정국', '9.PNG', '전정국', '010-7756-3490', 'male', '19970905', '2', '솔로', '1', 32, 30, sysdate, '2', '1', 62);
-insert INTO users VALUES (seq_user_no.nextval, 'jjj', '1234', 'jjj@naver.com', '박혜원', '43.PNG', '박혜원', '010-3662-7730', null, '20020320', '5', '통기타솔로', '1', 14, 10, sysdate, '2', '1', 24);
-insert INTO users VALUES (seq_user_no.nextval, 'kkk', '1234', 'kkk@naver.com', '양요섭', '48.PNG', '양요섭', '010-2723-4377', null, '19960129', '1', '발라드가수', '1', 45, 44, sysdate, '2', '1', 89);
-insert INTO users VALUES (seq_user_no.nextval, 'lll', '1234', 'lll@naver.com', 'TWICE', '44.PNG', '김나연', '010-5512-8530', 'female', '19961209', '3', '솔로', '1', 50, 34, sysdate, '2', '1', 84);
-insert INTO users VALUES (seq_user_no.nextval, 'mmm', '1234', 'mmm@naver.com', '이무진', '17.PNG', '이무진', '010-9096-1137', 'male', '19991020', '6', '카드마술', '1', 26, 20, sysdate, '2', '1', 46);
-insert INTO users VALUES (seq_user_no.nextval, 'nnn', '1234', 'nnn@naver.com', '사나', '16.PNG', '박사나', '010-3677-8989', 'female', '20020309', '2', '솔로', '1', 15, 10, sysdate, '2', '1', 25);
-insert INTO users VALUES (seq_user_no.nextval, 'ooo', '1234', 'ooo@naver.com', '김선호', '4.PNG', '김선호', '010-3677-8989', 'male', '20010628', '4', '솔로', '1', 37, 49, sysdate, '2', '1', 86);
-insert INTO users VALUES (seq_user_no.nextval, 'zzz', '1234', 'zzz@naver.com', '김동호', '6.PNG', '김동호', '010-2998-0001', 'male', '20000101', '1', '솔로', '1', 67, 50, sysdate, '2', '1', 117);
-insert INTO users VALUES (seq_user_no.nextval, 'PPP', '1234', 'PPP@naver.com', 'ICON', '49.PNG', '박정진', '010-5656-3788', 'male', '19950326', '3', '힙합', '1', 20, 55, sysdate, '2', '1', 77);
-insert INTO users VALUES (seq_user_no.nextval, 'qqq', '1234', 'qqq@naver.com', '이제훈', '38.PNG', '이제훈', '010-7749-0881', 'male', '19980419', '5', '베이스', '1', 22, 26, sysdate, '2', '1', 46);
-insert INTO users VALUES (seq_user_no.nextval, 'rrr', '1234', 'rrr@naver.com', '홀리뱅', '14.PNG', '홀리뱅', '010-2280-1445', 'female', '19940513', '6', '행위예술', '1', 49, 32, sysdate, '2', '1', 81);
-insert INTO users VALUES (seq_user_no.nextval, 'sss', '1234', 'sss@naver.com', '미노이', '11.PNG', '이민영', '010-0007-7654', 'female', '19961124', '4', '알앤비', '1', 33, 10, sysdate, '2', '1', 43);
+insert INTO users(user_no, id, password, email, nickname, user_img, name, hp, gender, birthday, genre, genre_type, live, fan, likes, artist_regdate, user_type, company_type) VALUES (seq_user_no.nextval, 'aaa', '1234', 'aaa@naver.com', '츄', '10.PNG', '김밥통', '010-1234-1234', null, '19980505', '2', '왁킹댄스', '1', 15, 15, sysdate, '2', '1');
+insert INTO users(user_no, id, password, email, nickname, user_img, name, hp, gender, birthday, genre, genre_type, live, fan, likes, artist_regdate, user_type, company_type) VALUES (seq_user_no.nextval, 'bbb', '1234', 'bbb@naver.com', '워너비', '1.PNG', '홍길동', '010-0000-0000', 'male', '20000101', '1', '솔로', '1', 10, 40, sysdate, '2', '1');
+insert INTO users(user_no, id, password, email, nickname, user_img, name, hp, gender, birthday, genre, genre_type, live, fan, likes, artist_regdate, user_type, company_type) VALUES (seq_user_no.nextval, 'ccc', '1234', 'ccc@naver.com', '박서준', '8.PNG', '박서준', '010-1234-5000', 'male', '19970216', '1', '솔로', '1', 60, 40, sysdate, '2', '1');
+insert INTO users(user_no, id, password, email, nickname, user_img, name, hp, gender, birthday, genre, genre_type, live, fan, likes, artist_regdate, user_type, company_type) VALUES (seq_user_no.nextval, 'ddd', '1234', 'ddd@naver.com', '제니', '52.PNG', '김제니', '010-9978-0345', 'female', '19960520', '2', '솔로가수', '1', 55, 30, sysdate, '2', '1');
+insert INTO users(user_no, id, password, email, nickname, user_img, name, hp, gender, birthday, genre, genre_type, live, fan, likes, artist_regdate, user_type, company_type) VALUES (seq_user_no.nextval, 'eee', '1234', 'eee@naver.com', '이여름', '53.PNG', '이여름', '010-6720-0080', 'female', '19981109', '5', '솔로', '1', 67, 20, sysdate, '2', '1');
+insert INTO users(user_no, id, password, email, nickname, user_img, name, hp, gender, birthday, genre, genre_type, live, fan, likes, artist_regdate, user_type, company_type) VALUES (seq_user_no.nextval, 'fff', '1234', 'fff@naver.com', '김동률', '41.PNG', '김동률', '010-2998-0000', 'male', '20000101', '1', '솔로', '1', 67, 15, sysdate, '2', '1');
+insert INTO users(user_no, id, password, email, nickname, user_img, name, hp, gender, birthday, genre, genre_type, live, fan, likes, artist_regdate, user_type, company_type) VALUES (seq_user_no.nextval, 'ggg', '1234', 'ggg@naver.com', 'ROSE', '20.PNG', '박채영', '010-3212-1065', 'female', '19960211', '4', 'KPOP', '1', 89, 20, sysdate, '2', '1');
+insert INTO users(user_no, id, password, email, nickname, user_img, name, hp, gender, birthday, genre, genre_type, live, fan, likes, artist_regdate, user_type, company_type) VALUES (seq_user_no.nextval, 'hhh', '1234', 'hhh@naver.com', '김현우', '13.PNG', '김현우', '010-1343-6674', 'male', '19950616', '1', '솔로', '1', 40, 18, sysdate, '2', '1');
+insert INTO users(user_no, id, password, email, nickname, user_img, name, hp, gender, birthday, genre, genre_type, live, fan, likes, artist_regdate, user_type, company_type) VALUES (seq_user_no.nextval, 'iii', '1234', 'iii@naver.com', '정국', '9.PNG', '전정국', '010-7756-3490', 'male', '19970905', '2', '솔로', '1', 32, 30, sysdate, '2', '1');
+insert INTO users(user_no, id, password, email, nickname, user_img, name, hp, gender, birthday, genre, genre_type, live, fan, likes, artist_regdate, user_type, company_type) VALUES (seq_user_no.nextval, 'jjj', '1234', 'jjj@naver.com', '박혜원', '43.PNG', '박혜원', '010-3662-7730', null, '20020320', '5', '통기타솔로', '1', 14, 10, sysdate, '2', '1');
+insert INTO users(user_no, id, password, email, nickname, user_img, name, hp, gender, birthday, genre, genre_type, live, fan, likes, artist_regdate, user_type, company_type) VALUES (seq_user_no.nextval, 'kkk', '1234', 'kkk@naver.com', '양요섭', '48.PNG', '양요섭', '010-2723-4377', null, '19960129', '1', '발라드가수', '1', 45, 44, sysdate, '2', '1');
+insert INTO users(user_no, id, password, email, nickname, user_img, name, hp, gender, birthday, genre, genre_type, live, fan, likes, artist_regdate, user_type, company_type) VALUES (seq_user_no.nextval, 'lll', '1234', 'lll@naver.com', 'TWICE', '44.PNG', '김나연', '010-5512-8530', 'female', '19961209', '3', '솔로', '1', 50, 34, sysdate, '2', '1');
+insert INTO users(user_no, id, password, email, nickname, user_img, name, hp, gender, birthday, genre, genre_type, live, fan, likes, artist_regdate, user_type, company_type) VALUES (seq_user_no.nextval, 'mmm', '1234', 'mmm@naver.com', '이무진', '17.PNG', '이무진', '010-9096-1137', 'male', '19991020', '6', '카드마술', '1', 26, 20, sysdate, '2', '1');
+insert INTO users(user_no, id, password, email, nickname, user_img, name, hp, gender, birthday, genre, genre_type, live, fan, likes, artist_regdate, user_type, company_type) VALUES (seq_user_no.nextval, 'nnn', '1234', 'nnn@naver.com', '사나', '16.PNG', '박사나', '010-3677-8989', 'female', '20020309', '2', '솔로', '1', 15, 10, sysdate, '2', '1');
+insert INTO users(user_no, id, password, email, nickname, user_img, name, hp, gender, birthday, genre, genre_type, live, fan, likes, artist_regdate, user_type, company_type) VALUES (seq_user_no.nextval, 'ooo', '1234', 'ooo@naver.com', '김선호', '4.PNG', '김선호', '010-3677-8989', 'male', '20010628', '4', '솔로', '1', 37, 49, sysdate, '2', '1');
+insert INTO users(user_no, id, password, email, nickname, user_img, name, hp, gender, birthday, genre, genre_type, live, fan, likes, artist_regdate, user_type, company_type) VALUES (seq_user_no.nextval, 'zzz', '1234', 'zzz@naver.com', '김동호', '6.PNG', '김동호', '010-2998-0001', 'male', '20000101', '1', '솔로', '1', 67, 50, sysdate, '2', '1');
+insert INTO users(user_no, id, password, email, nickname, user_img, name, hp, gender, birthday, genre, genre_type, live, fan, likes, artist_regdate, user_type, company_type) VALUES (seq_user_no.nextval, 'PPP', '1234', 'PPP@naver.com', 'ICON', '49.PNG', '박정진', '010-5656-3788', 'male', '19950326', '3', '힙합', '1', 20, 55, sysdate, '2', '1');
+insert INTO users(user_no, id, password, email, nickname, user_img, name, hp, gender, birthday, genre, genre_type, live, fan, likes, artist_regdate, user_type, company_type) VALUES (seq_user_no.nextval, 'qqq', '1234', 'qqq@naver.com', '이제훈', '38.PNG', '이제훈', '010-7749-0881', 'male', '19980419', '5', '베이스', '1', 22, 26, sysdate, '2', '1');
+insert INTO users(user_no, id, password, email, nickname, user_img, name, hp, gender, birthday, genre, genre_type, live, fan, likes, artist_regdate, user_type, company_type) VALUES (seq_user_no.nextval, 'rrr', '1234', 'rrr@naver.com', '홀리뱅', '14.PNG', '홀리뱅', '010-2280-1445', 'female', '19940513', '6', '행위예술', '1', 49, 32, sysdate, '2', '1');
+insert INTO users(user_no, id, password, email, nickname, user_img, name, hp, gender, birthday, genre, genre_type, live, fan, likes, artist_regdate, user_type, company_type) VALUES (seq_user_no.nextval, 'sss', '1234', 'sss@naver.com', '미노이', '11.PNG', '이민영', '010-0007-7654', 'female', '19961124', '4', '알앤비', '1', 33, 10, sysdate, '2', '1');
 
 --블로그 생성
-insert into blog values(1, '안녕하세요 김덕배의 블로그에 오신것을 환영합니다.', null, 'https://www.youtube.com/', 'https://www.facebook.com/', 'https://www.instagram.com/');
-insert into blog values(7, '안녕하세요 이달의 소녀의 블로그에 오신것을 환영합니다.', null, 'https://www.youtube.com/', 'https://www.facebook.com/', 'https://www.instagram.com/');
-insert into blog values(8, '안녕하세요 워너비의 블로그에 오신것을 환영합니다.', null, 'https://www.youtube.com/', 'https://www.facebook.com/', 'https://www.instagram.com/');
-insert into blog values(9, '안녕하세요 박서준의 블로그에 오신것을 환영합니다.', null, 'https://www.youtube.com/', 'https://www.facebook.com/', 'https://www.instagram.com/');
-insert into blog values(10, '안녕하세요 재니의 블로그에 오신것을 환영합니다.', null, 'https://www.youtube.com/', 'https://www.facebook.com/', 'https://www.instagram.com/');
-insert into blog values(11, '안녕하세요 이여름의 블로그에 오신것을 환영합니다.', null, 'https://www.youtube.com/', 'https://www.facebook.com/', 'https://www.instagram.com/');
-insert into blog values(12, '안녕하세요 김동률의 블로그에 오신것을 환영합니다.', null, 'https://www.youtube.com/', 'https://www.facebook.com/', 'https://www.instagram.com/');
-insert into blog values(13, '안녕하세요 ROSE의 블로그에 오신것을 환영합니다.', null, 'https://www.youtube.com/', 'https://www.facebook.com/', 'https://www.instagram.com/');
-insert into blog values(14, '안녕하세요 김현우의 블로그에 오신것을 환영합니다.', null, 'https://www.youtube.com/', 'https://www.facebook.com/', 'https://www.instagram.com/');
-insert into blog values(15, '안녕하세요 정국의 블로그에 오신것을 환영합니다.', null, 'https://www.youtube.com/', 'https://www.facebook.com/', 'https://www.instagram.com/');
-insert into blog values(16, '안녕하세요 박혜원의 블로그에 오신것을 환영합니다.', null, 'https://www.youtube.com/', 'https://www.facebook.com/', 'https://www.instagram.com/');
-insert into blog values(17, '안녕하세요 양요섭의 블로그에 오신것을 환영합니다.', null, 'https://www.youtube.com/', 'https://www.facebook.com/', 'https://www.instagram.com/');
-insert into blog values(18, '안녕하세요 TWICE의 블로그에 오신것을 환영합니다.', null, 'https://www.youtube.com/', 'https://www.facebook.com/', 'https://www.instagram.com/');
-insert into blog values(19, '안녕하세요 이무진의 블로그에 오신것을 환영합니다.', null, 'https://www.youtube.com/', 'https://www.facebook.com/', 'https://www.instagram.com/');
-insert into blog values(20, '안녕하세요 사나의 블로그에 오신것을 환영합니다.', null, 'https://www.youtube.com/', 'https://www.facebook.com/', 'https://www.instagram.com/');
-insert into blog values(21, '안녕하세요 김선호의 블로그에 오신것을 환영합니다.', null, 'https://www.youtube.com/', 'https://www.facebook.com/', 'https://www.instagram.com/');
-insert into blog values(22, '안녕하세요 김동호의 블로그에 오신것을 환영합니다.', null, 'https://www.youtube.com/', 'https://www.facebook.com/', 'https://www.instagram.com/');
-insert into blog values(23, '안녕하세요 ICON의 블로그에 오신것을 환영합니다.', null, 'https://www.youtube.com/', 'https://www.facebook.com/', 'https://www.instagram.com/');
-insert into blog values(24, '안녕하세요 이제훈의 블로그에 오신것을 환영합니다.', null, 'https://www.youtube.com/', 'https://www.facebook.com/', 'https://www.instagram.com/');
-insert into blog values(25, '안녕하세요 홀리뱅(HOLLYBANG)의 블로그에 오신것을 환영합니다.', null, 'https://www.youtube.com/', 'https://www.facebook.com/', 'https://www.instagram.com/');
-insert into blog values(26, '안녕하세요 미노이(MENOI)의 블로그에 오신것을 환영합니다.', null, 'https://www.youtube.com/', 'https://www.facebook.com/', 'https://www.instagram.com/');
+insert into blog values(1, '안녕하세요 김덕배의 블로그에 오신것을 환영합니다.', null, 'https://www.youtube.com/', 'https://www.facebook.com/', 'https://www.instagram.com/', 0);
+insert into blog values(7, '안녕하세요 이달의 소녀의 블로그에 오신것을 환영합니다.', null, 'https://www.youtube.com/', 'https://www.facebook.com/', 'https://www.instagram.com/', 0);
+insert into blog values(8, '안녕하세요 워너비의 블로그에 오신것을 환영합니다.', null, 'https://www.youtube.com/', 'https://www.facebook.com/', 'https://www.instagram.com/', 0);
+insert into blog values(9, '안녕하세요 박서준의 블로그에 오신것을 환영합니다.', null, 'https://www.youtube.com/', 'https://www.facebook.com/', 'https://www.instagram.com/', 0);
+insert into blog values(10, '안녕하세요 재니의 블로그에 오신것을 환영합니다.', null, 'https://www.youtube.com/', 'https://www.facebook.com/', 'https://www.instagram.com/', 0);
+insert into blog values(11, '안녕하세요 이여름의 블로그에 오신것을 환영합니다.', null, 'https://www.youtube.com/', 'https://www.facebook.com/', 'https://www.instagram.com/', 0);
+insert into blog values(12, '안녕하세요 김동률의 블로그에 오신것을 환영합니다.', null, 'https://www.youtube.com/', 'https://www.facebook.com/', 'https://www.instagram.com/', 0);
+insert into blog values(13, '안녕하세요 ROSE의 블로그에 오신것을 환영합니다.', null, 'https://www.youtube.com/', 'https://www.facebook.com/', 'https://www.instagram.com/', 0);
+insert into blog values(14, '안녕하세요 김현우의 블로그에 오신것을 환영합니다.', null, 'https://www.youtube.com/', 'https://www.facebook.com/', 'https://www.instagram.com/', 0);
+insert into blog values(15, '안녕하세요 정국의 블로그에 오신것을 환영합니다.', null, 'https://www.youtube.com/', 'https://www.facebook.com/', 'https://www.instagram.com/', 0);
+insert into blog values(16, '안녕하세요 박혜원의 블로그에 오신것을 환영합니다.', null, 'https://www.youtube.com/', 'https://www.facebook.com/', 'https://www.instagram.com/', 0);
+insert into blog values(17, '안녕하세요 양요섭의 블로그에 오신것을 환영합니다.', null, 'https://www.youtube.com/', 'https://www.facebook.com/', 'https://www.instagram.com/', 0);
+insert into blog values(18, '안녕하세요 TWICE의 블로그에 오신것을 환영합니다.', null, 'https://www.youtube.com/', 'https://www.facebook.com/', 'https://www.instagram.com/', 0);
+insert into blog values(19, '안녕하세요 이무진의 블로그에 오신것을 환영합니다.', null, 'https://www.youtube.com/', 'https://www.facebook.com/', 'https://www.instagram.com/', 0);
+insert into blog values(20, '안녕하세요 사나의 블로그에 오신것을 환영합니다.', null, 'https://www.youtube.com/', 'https://www.facebook.com/', 'https://www.instagram.com/', 0);
+insert into blog values(21, '안녕하세요 김선호의 블로그에 오신것을 환영합니다.', null, 'https://www.youtube.com/', 'https://www.facebook.com/', 'https://www.instagram.com/', 0);
+insert into blog values(22, '안녕하세요 김동호의 블로그에 오신것을 환영합니다.', null, 'https://www.youtube.com/', 'https://www.facebook.com/', 'https://www.instagram.com/', 0);
+insert into blog values(23, '안녕하세요 ICON의 블로그에 오신것을 환영합니다.', null, 'https://www.youtube.com/', 'https://www.facebook.com/', 'https://www.instagram.com/', 0);
+insert into blog values(24, '안녕하세요 이제훈의 블로그에 오신것을 환영합니다.', null, 'https://www.youtube.com/', 'https://www.facebook.com/', 'https://www.instagram.com/', 0);
+insert into blog values(25, '안녕하세요 홀리뱅(HOLLYBANG)의 블로그에 오신것을 환영합니다.', null, 'https://www.youtube.com/', 'https://www.facebook.com/', 'https://www.instagram.com/', 0);
+insert into blog values(26, '안녕하세요 미노이(MENOI)의 블로그에 오신것을 환영합니다.', null, 'https://www.youtube.com/', 'https://www.facebook.com/', 'https://www.instagram.com/', 0);
 
 
 --카테고리

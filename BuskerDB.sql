@@ -1,3 +1,151 @@
+ALTER TABLE blog
+	DROP
+		CONSTRAINT FK_users_TO_blog
+		CASCADE;
+
+ALTER TABLE company
+	DROP
+		CONSTRAINT FK_users_TO_company
+		CASCADE;
+
+ALTER TABLE buskingDate
+	DROP
+		CONSTRAINT FK_stage_TO_buskingDate
+		CASCADE;
+
+ALTER TABLE post
+	DROP
+		CONSTRAINT FK_category_TO_post
+		CASCADE;
+
+ALTER TABLE post
+	DROP
+		CONSTRAINT FK_users_TO_post
+		CASCADE;
+
+ALTER TABLE category
+	DROP
+		CONSTRAINT FK_blog_TO_category
+		CASCADE;
+
+ALTER TABLE stage
+	DROP
+		CONSTRAINT FK_company_TO_stage
+		CASCADE;
+
+ALTER TABLE fan
+	DROP
+		CONSTRAINT FK_users_TO_fan
+		CASCADE;
+
+ALTER TABLE buskingTime
+	DROP
+		CONSTRAINT FK_buskingDate_TO_buskingTime
+		CASCADE;
+
+ALTER TABLE buskingApp
+	DROP
+		CONSTRAINT FK_buskingTime_TO_buskingApp
+		CASCADE;
+
+ALTER TABLE likes
+	DROP
+		CONSTRAINT FK_users_TO_likes
+		CASCADE;
+
+ALTER TABLE likes
+	DROP
+		CONSTRAINT FK_users_TO_likes2
+		CASCADE;
+
+ALTER TABLE resume
+	DROP
+		CONSTRAINT FK_blog_TO_resume
+		CASCADE;
+
+ALTER TABLE ccnotice
+	DROP
+		CONSTRAINT FK_users_TO_ccnotice
+		CASCADE;
+
+ALTER TABLE users
+	DROP
+		PRIMARY KEY
+		CASCADE
+		KEEP INDEX;
+
+ALTER TABLE blog
+	DROP
+		PRIMARY KEY
+		CASCADE
+		KEEP INDEX;
+
+ALTER TABLE company
+	DROP
+		PRIMARY KEY
+		CASCADE
+		KEEP INDEX;
+
+ALTER TABLE buskingDate
+	DROP
+		PRIMARY KEY
+		CASCADE
+		KEEP INDEX;
+
+ALTER TABLE post
+	DROP
+		PRIMARY KEY
+		CASCADE
+		KEEP INDEX;
+
+ALTER TABLE category
+	DROP
+		PRIMARY KEY
+		CASCADE
+		KEEP INDEX;
+
+ALTER TABLE stage
+	DROP
+		PRIMARY KEY
+		CASCADE
+		KEEP INDEX;
+
+ALTER TABLE fan
+	DROP
+		PRIMARY KEY
+		CASCADE
+		KEEP INDEX;
+
+ALTER TABLE buskingTime
+	DROP
+		PRIMARY KEY
+		CASCADE
+		KEEP INDEX;
+
+ALTER TABLE buskingApp
+	DROP
+		PRIMARY KEY
+		CASCADE
+		KEEP INDEX;
+
+ALTER TABLE likes
+	DROP
+		PRIMARY KEY
+		CASCADE
+		KEEP INDEX;
+
+ALTER TABLE resume
+	DROP
+		PRIMARY KEY
+		CASCADE
+		KEEP INDEX;
+
+ALTER TABLE ccnotice
+	DROP
+		PRIMARY KEY
+		CASCADE
+		KEEP INDEX;
+
 /* 회원 */
 DROP TABLE users 
 	CASCADE CONSTRAINTS;
@@ -160,7 +308,7 @@ CREATE TABLE users (
 	artist_regdate DATE, /* 아티스트등록일 */
 	user_type CHAR(1), /* 회원구분 */
 	company_type CHAR(1), /* 제휴사여부 */
-	ranking_score NUMBER /* 아티스트 점수 */
+	ranking_score VARCHAR(1000) AS (fan * 0.3 + likes * 0.7) /* 아티스트 점수 */
 );
 
 COMMENT ON TABLE users IS '회원';
@@ -222,7 +370,8 @@ CREATE TABLE blog (
 	banner VARCHAR2(1000), /* 대문이미지 */
 	y_url VARCHAR2(100), /* 유튜브주소 */
 	f_url VARCHAR2(100), /* 페이스북주소 */
-	i_url VARCHAR2(100) /* 인스타주소 */
+	i_url VARCHAR2(100), /* 인스타주소 */
+	hit NUMBER /* 방문수 */
 );
 
 COMMENT ON TABLE blog IS '블로그';
@@ -238,6 +387,8 @@ COMMENT ON COLUMN blog.y_url IS '유튜브주소';
 COMMENT ON COLUMN blog.f_url IS '페이스북주소';
 
 COMMENT ON COLUMN blog.i_url IS '인스타주소';
+
+COMMENT ON COLUMN blog.hit IS '방문수';
 
 CREATE UNIQUE INDEX PK_blog
 	ON blog (
@@ -656,7 +807,7 @@ ALTER TABLE company
 		)
 		REFERENCES users (
 			user_no
-		)ON DELETE CASCADE;
+		);
 
 ALTER TABLE buskingDate
 	ADD
@@ -666,7 +817,7 @@ ALTER TABLE buskingDate
 		)
 		REFERENCES stage (
 			stage_no
-		)ON DELETE CASCADE;
+		);
 
 ALTER TABLE post
 	ADD
@@ -706,7 +857,7 @@ ALTER TABLE stage
 		)
 		REFERENCES company (
 			user_no
-		)ON DELETE CASCADE;
+		);
 
 ALTER TABLE fan
 	ADD
@@ -726,7 +877,7 @@ ALTER TABLE buskingTime
 		)
 		REFERENCES buskingDate (
 			date_no
-		)ON DELETE CASCADE;
+		);
 
 ALTER TABLE buskingApp
 	ADD
@@ -736,7 +887,7 @@ ALTER TABLE buskingApp
 		)
 		REFERENCES buskingTime (
 			time_no
-		)ON DELETE CASCADE;
+		);
 
 ALTER TABLE likes
 	ADD
@@ -784,5 +935,6 @@ CREATE FUNCTION get_seq RETURN NUMBER IS
 BEGIN
   RETURN seq_resume_no.nextval;
 END;
+
 
 /*///////////////////////////테이블 초기화//////////////////////////////*/
