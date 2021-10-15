@@ -15,14 +15,15 @@ public class BusappVo {
 	private String user_info;
 	private String status;
 	private String stage_no;
+	private String id;
 	
 	//생성자
 	public BusappVo() {
 		super();
 	}
-	
+
 	public BusappVo(int user_no, int apply_no, String stage_name, String bus_date, String start_time, String end_time,
-			String nickname, String genre, String hp, String user_info, String status, String stage_no) {
+			String nickname, String genre, String hp, String user_info, String status, String stage_no, String id) {
 		super();
 		this.user_no = user_no;
 		this.apply_no = apply_no;
@@ -36,7 +37,11 @@ public class BusappVo {
 		this.user_info = user_info;
 		this.status = status;
 		this.stage_no = stage_no;
+		this.id = id;
 	}
+
+
+
 
 	//메소드 g-s
 	public int getUser_no() {
@@ -135,12 +140,20 @@ public class BusappVo {
 		this.stage_no = stage_no;
 	}
 
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
 	//메소드
 	@Override
 	public String toString() {
 		return "BusappVo [user_no=" + user_no + ", apply_no=" + apply_no + ", stage_name=" + stage_name + ", bus_date="
 				+ bus_date + ", start_time=" + start_time + ", end_time=" + end_time + ", nickname=" + nickname
 				+ ", genre=" + genre + ", hp=" + hp + ", user_info=" + user_info + ", status=" + status + ", stage_no="
-				+ stage_no + "]";
+				+ stage_no + ", id=" + id + "]";
 	}
 }

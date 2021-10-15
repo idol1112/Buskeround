@@ -335,5 +335,44 @@
 				and( title || u.nickname || content) like '%'||#{search}||'%'
 			</if> 
 	</select>
+	
+	<!-- checkLive -->
+	<select id="checkLive" parameterType="String" resultType="postVo">
+		<![CDATA[
+			select live,
+				   u.user_no,
+				   longitude,
+				   latitude
+			from users u, post p
+			where u.user_no = p.user_no
+			and id = #{id}
+			and p_end is null
+			and reg_date is null	
+		]]>
+	</select>
+	
+	<!-- Fan Check -->
+	<select id="fanCheck" resultType="String" parameterType="BlogVo">
+	<![CDATA[
+		SELECT
+		    user_no
+		FROM
+		fan
+		where user_no = #{artist_no}
+		and artist_no =  #{user_no}
+	]]>
+	</select>
+	
+	<!-- Like Check -->
+	<select id="likesCheck" resultType="String" parameterType="BlogVo">
+	<![CDATA[
+		SELECT
+		    user_no
+		FROM
+		likes
+		where user_no = #{artist_no}
+		and artist_no =  #{user_no}
+	]]>
+	</select>
     
 </mapper>

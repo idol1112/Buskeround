@@ -176,7 +176,16 @@ public class ApiBlogController {
     }
 
   }
-
+  
+  //라이브 중 확인
+  @ResponseBody
+  @RequestMapping(value = "blog_live", method = {RequestMethod.GET, RequestMethod.POST})
+  public PostVo blog_live(@RequestParam("id") String id) {
+	    System.out.println("[현재 위치: ApiBlogController.blog_live]");
+	    PostVo postVo = blogService.checkLive(id);
+	    System.out.println(postVo);
+	    return postVo;
+	  }
 }
 
 

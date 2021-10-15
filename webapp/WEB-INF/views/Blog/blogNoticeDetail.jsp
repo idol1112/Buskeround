@@ -26,6 +26,9 @@
 <!-- jquery -->
 <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 
+<!-- sweetAlert -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
 </head>
 
 <body>
@@ -56,7 +59,7 @@
           <span>조회 ${noticeVo.hit}</span>
 
 		  <c:if test="${blogVo.user_no == authUser.user_no}">
-    	      <button id="deletebutton" onclick="location.href='${pageContext.request.contextPath}/blog/deletePost/${blogVo.id}?no=${noticeVo.post_no}'">삭제</button>
+    	      <button id="deletebutton">삭제</button>
 	          <button id="modifybutton" onclick="location.href='${pageContext.request.contextPath}/blog/updatePostForm/${blogVo.id}?no=${noticeVo.post_no}'">수정</button>
 		  </c:if>
         </div>
@@ -103,5 +106,34 @@
   </div>
   <!------ ////(br_container)//// ------>
 </body>
+<script type="text/javascript">
+
+function noticeDelete() {
+
+	location.href =	"${pageContext.request.contextPath}/blog/deletePost/${blogVo.id}?no=${noticeVo.post_no}";
+
+}
+
+//게시글 삭제 이벤트
+$().ready(function () {
+	$("#deletebutton").click(function () {
+		Swal.fire({
+			title: '정말로 삭제하시겠습니까?',
+			text: "게시글을 삭제하시겠습니까?",
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			confirmButtonText: '확인',
+			cancelButtonText: '취소'
+		}).then((result) => {
+			if (result.isConfirmed) {
+				noticeDelete();
+			} 
+		})
+	});
+});
+
+</script>
 
 </html>

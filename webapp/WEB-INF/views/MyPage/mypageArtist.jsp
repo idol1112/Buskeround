@@ -160,7 +160,7 @@
 										<button type="submit" class="float-end btn-primary btn-sm" id="profilesubmit">등록</button>
 									</c:when>
 									<c:otherwise>
-										<button type="submit" class="float-end btn-primary btn-sm" id="profilesubmit">수정</button>
+										<button type="submit" class="float-end btn-primary btn-sm" id="profileupdate">수정</button>
 									</c:otherwise>
 							</c:choose>
 						</form>
@@ -289,6 +289,33 @@ $("#profilesubmit").on("click", function(e) {
 		} 
 	})
 })
+
+//저장 완료 alert
+$("#profileupdate").on("click", function(e) {
+	e.preventDefault();
+	var form = $(this).parents('form');
+	const Toast = Swal.mixin({
+        toast: true,
+        position: 'center-center',
+        showConfirmButton: false,
+        timer: 1500,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+    })
+
+    Toast.fire({
+        icon: 'success',
+        title: '아티스트 정보가 수정되었습니다.'
+    })
+	setTimeout(function () {
+	  form.submit();
+	}, 1500);
+
+})
+
 
 //datepicker
 $("#datepicker").datepicker({

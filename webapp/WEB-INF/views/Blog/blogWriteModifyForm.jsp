@@ -58,7 +58,7 @@
           </textarea>
 		  
 		  <button id="uploadbutton" onclick="history.back()" style="background-color: red; color: white; margin-left: 5px">취소</button>
-          <button type="submit" id="uploadbutton">수정</button>
+          <button type="submit" class="update" id="uploadbutton">수정</button>
         </form>
       </div>
     </div>
@@ -149,5 +149,31 @@
 	
 		return true;
 	});
+	
+	//저장 완료 alert
+	$(".update").on("click", function(e) {
+		e.preventDefault();
+		var form = $(this).parents('form');
+		const Toast = Swal.mixin({
+	        toast: true,
+	        position: 'center-center',
+	        showConfirmButton: false,
+	        timer: 1500,
+	        timerProgressBar: true,
+	        didOpen: (toast) => {
+	            toast.addEventListener('mouseenter', Swal.stopTimer)
+	            toast.addEventListener('mouseleave', Swal.resumeTimer)
+	        }
+	    })
+
+	    Toast.fire({
+	        icon: 'success',
+	        title: '게시글이 정상적으로 수정되었습니다.'
+	    })
+		setTimeout(function () {
+		  form.submit();
+		}, 1500);
+
+	})
     </script>
 </html>

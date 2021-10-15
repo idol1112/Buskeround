@@ -696,7 +696,7 @@
               ranking_score
 	          
 	      FROM users
-	      where users.live = 1 
+	      where users.live = 1
           ORDER by users.ranking_score desc, users.artist_regdate asc) ot) ort
           where rn >=1
           and rn <=6

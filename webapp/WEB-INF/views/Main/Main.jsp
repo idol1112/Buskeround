@@ -15,6 +15,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Festive&family=Hind+Siliguri:wght@500&display=swap" rel="stylesheet">
 
 <!-- css -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/Main/main.css">
@@ -91,21 +92,81 @@
         <div class="id_wrap">
           <div class="login_wrap">
             <div class="login_box">
+              
+              <!-- 로그인 전 -->
+              <c:if test="${authUser == null}">
               <p class="login_msg">버스커라운드를 더 편리하게 이용하세요.</p>
-              <a class="link_login" href="#">Buskeround 로그인</a>
+              <a class="link_login" href="${pageContext.request.contextPath}/user/loginForm">Buskeround 로그인</a>
               <div class="sub_area">
+              	<div class="look_box">
+              		<a href="#" class="link_look id_hv">아이디</a>
+              		<a href="#" class="link_look pw_hv">비밀번호찾기</a>
+              	
+              	</div>
                 <div class="link_join">
-                  <a href="#">회원가입</a>
+                  <a class="jn_hv" href="${pageContext.request.contextPath}/user/agreement">회원가입</a>
                 </div>
-
               </div>
+              </c:if>
+              <!-- 로그인 전 -->
+              <!-- 로그인 후 -->
+              <c:if test="${authUser != null}">
+              <div class="sc_user">
+              	<a href="${pageContext.request.contextPath}/user/logout" class="btn_logout">로그아웃</a>
+              	<c:if test="${authUser.user_img == null}">
+	          	<img id="my_profile" src="/Buskeround/assets/image/blog/icon/user.png">
+          		</c:if>
+          		<c:if test="${authUser.user_img != null}">
+	          	<img id="my_profile" src="${pageContext.request.contextPath}/upload/${sessionScope.authUser.user_img}">
+          		</c:if>
+          		<div class="user_info">
+	          		<div class="info_box">
+	          			<a href="${pageContext.request.contextPath}/blog/blog_main/${sessionScope.authUser.id}">${authUser.nickname}님</a>
+	          		</div>
+	          		<div class="new_box">
+	          			<a class="mypage" href="${pageContext.request.contextPath}/MyPage/profileModify">마이페이지</a>
+	          			<a class="fan-list" href="${pageContext.request.contextPath}/Artist/ArtistFanList">팬등록리스트</a>
+	          		</div>
+	          	</div>
+              </div>
+              </c:if>
             </div>
           </div>
           <div class="apply_wrap">
-            <h2>제휴사/아티스트 신청구역</h2>
+          	<c:if test="${authUser == null}">
+            <div class="artist_btn" onclick="location.href='${pageContext.request.contextPath}/user/loginForm'">
+            	아티스트등록
+            </div>
+            <div class="company_btn" onclick="location.href='${pageContext.request.contextPath}/user/loginForm'">
+            	제휴사등록
+            </div>
+            </c:if>
+            
+            <c:if test="${authUser != null}">
+	          	<c:if test="${authUser.user_type == 1}">
+	            <div class="artist_btn" onclick="location.href='${pageContext.request.contextPath}/MyPage/mypageArtist'">
+					아티스트등록
+	            </div>
+	            </c:if>
+	            <c:if test="${authUser.user_type == 2}">
+	            <div class="artist_btn" onclick="location.href='${pageContext.request.contextPath}/blog/blog_main/${sessionScope.authUser.id}'">
+					내 블로그
+	            </div>
+	            </c:if>
+	            <c:if test="${authUser.company_type == 1}">
+	            <div class="company_btn" onclick="location.href='${pageContext.request.contextPath}/Company/mypageCompany'">
+	            	제휴사등록
+	            </div>
+	            </c:if>
+	            <c:if test="${authUser.company_type == 2}">
+	            <div class="company_btn" onclick="location.href='${pageContext.request.contextPath}/Company/companyInfo'">
+	            	제휴사관리
+	            </div>
+	            </c:if>
+            </c:if>
           </div>
           <div class="photo_wrap">
-            <h2>아무 사진 구역</h2>
+              BUSKEROUND
           </div>
 
         </div>

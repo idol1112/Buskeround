@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.javaex.vo.BlogVo;
 import com.javaex.vo.MypageVo;
 import com.javaex.vo.NoticeVo;
+import com.javaex.vo.PostVo;
 import com.javaex.vo.ResumeVo;
 
 @Repository
@@ -238,5 +239,26 @@ public class BlogDao {
 		System.out.println("맵 마지막 출력: " + searchvalue);
 		
 		return sqlSession.selectOne("blog.selectTotalCnt", searchvalue);
+	}
+	
+	//포스트 수정
+	public PostVo checkLive(String id) { 
+		System.out.println("DAO");
+		
+		return sqlSession.selectOne("blog.checkLive", id);
+	}
+	
+	//Check Fans
+	public String checkFan(BlogVo blogVo) {
+		System.out.println("[BlogDao.CheckFan()]");
+		
+		return sqlSession.selectOne("fanCheck", blogVo);
+	}
+	
+	//Check Like
+	public String checkLike(BlogVo blogVo) {
+		System.out.println("[BlogDao.CheckLike()]");
+		
+		return sqlSession.selectOne("likesCheck", blogVo);
 	}
 }
