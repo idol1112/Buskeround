@@ -15,10 +15,24 @@
 			AND p_end is null
 		]]>
 	</select>
+	
+	<select id="mapListOne" parameterType="int" resultType="MapVo">
+		<![CDATA[
+			select p.latitude,p.longitude,u.nickname,u.genre,u.user_img,b.intro,p.p_img,p.address,u.user_no,u.id
+			from
+			post      p,
+			users 	  u,
+			blog	  b
+			WHERE p.user_no = u.user_no
+			AND b.user_no = u.user_no
+			AND p_end is null
+			AND p.user_no = #{user_no}
+		]]>
+	</select>
 
 	<select id="findMap" parameterType="map" resultType="MapVo">
 		<![CDATA[
-			SELECT p.latitude,p.longitude,u.nickname,p.address,u.user_img,p.p_img
+			SELECT p.latitude,p.longitude,u.nickname,p.address,u.user_img,p.p_img,u.id
 			FROM
 			post      p,
 			users 	  u
