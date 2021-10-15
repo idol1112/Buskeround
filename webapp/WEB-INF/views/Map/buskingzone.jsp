@@ -204,6 +204,12 @@
 		#com_name{
 			text-align: center;font-size:30px; font-weight: bold;
 		}
+		
+		.artborder{
+		border-bottom: 1px solid;
+		width: 178px;
+		margin: 4px;
+		}
 
 	.button_application {
 	  background-color: #732991;
@@ -650,21 +656,21 @@ function overlay(mapOverlay,info){
 
 	str +='<tr class="table_sub">';
 	str +='<td width="150px" height="40px"><div class="table_div">우천시</div></td><td>';
-	str +='<div>';
+	str +='<div class="artborder">';
 	str +='<input type="text" class="Whether" name="rain" value="" style="width:180px; margin-bottom:10px" disabled>';
 	str +='</div>';
 	str +='</td></tr>';
 
 	str +='<tr class="table_sub">';
 	str +='<td width="150px" height="40px"><div class="table_div">무대조명</div></td><td>';
-	str +='<div>';
+	str +='<div class="artborder">';
 	str +='<input type="text" class="Whether" name="light" value="" style="width:180px; margin-bottom:10px" disabled>';
 	str +='</div>';
 	str +='</td></tr>';
 
 	str +='<tr class="table_sub">';
 	str +='<td width="150px" height="40px"><div class="table_div">주차여부</div></td><td>';
-	str +='<div>';
+	str +='<div class="artborder">';
 	str +='<input type="text" class="Whether" name="parking" value="" style="width:180px; margin-bottom:10px" disabled>';
 	str +='</div>';
 	str +='</td></tr>';
@@ -672,7 +678,7 @@ function overlay(mapOverlay,info){
 
 	str +='<tr class="table_sub">';
 	str +='<td width="150px"><div class="table_div">제휴사 요청사항</div></td><td>';
-	str +='<div>';
+	str +='<div class="artborder">';
 	str +='<input type="text" class="Whether" name="zoneRequest" value="" style="width:180px;height:80px; margin-bottom:10px" disabled>';
 	str +='</div>';
 	str +='</td></tr>';
@@ -681,7 +687,7 @@ function overlay(mapOverlay,info){
 	str +='<tr class="table_sub">';
 	str +='<td width="150px"><div class="table_div">Artist 요청사항</div></td><td>';
 	str +='<div>';
-	str += '<input type="text" name="artistRequest" value="" style="width:180px;height:100px; margin-bottom:10px">';
+	str += '<input type="text" name="artistRequest" value="" style="width:180px;height:100px; margin-bottom:10px;margin-left:4px;">';
 	str +='</div>';
 	str +='</td></tr>';
 
