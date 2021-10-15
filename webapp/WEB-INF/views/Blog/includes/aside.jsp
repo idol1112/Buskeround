@@ -65,15 +65,21 @@
 		str += '<div class="side_nav">';
 		str += '	<div class="profile_img">';
 
-		if (${UserVo.user_img == null}) {
+		if (result.user_img == null) {
+			str += '		<a href="${pageContext.request.contextPath}/Map/map?user_no='+ result.user_no+'">';
 			str += '		<img class="profile_user_img" src="/Buskeround/assets/image/blog/icon/user.png">';
-		} else if (${UserVo.user_img != null}) {
-			str += '		<img class="profile_user_img" src="${pageContext.request.contextPath}/upload/${UserVo.user_img}">';
+			str += '		</a>';
+		} else if (result.user_img != null) {
+			str += '		<a href="${pageContext.request.contextPath}/Map/map?user_no='+ result.user_no+'">';
+			str += '		<img class="profile_user_img" src="${pageContext.request.contextPath}/upload/' + result.user_img + '">';
+			str += '		</a>';
 		}
 
 		str += '	</div>';
 		str += '	<div class="profile_name">';
+		str += '		<a href="${pageContext.request.contextPath}/Map/map?user_no='+ result.user_no+'">';
 		str += '		<span>' + result.nickname + '</span>';
+		str += '		</a>';
 		str += '	</div>';
 		str += '	<div class="live_on"></div>';
 		str += '	<div class="profile_genre">';

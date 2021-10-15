@@ -71,17 +71,16 @@
     </c:if>
   </c:otherwise>
 </c:choose>
-
 </div>
 
 <!---- 프로필 박스 ---->
 <div class="profile_box">
   <div class="main_profile">
     <c:if test="${blogVo.user_img == null}">
-      <img src="/Buskeround/assets/image/blog/icon/user.png">
+      <img class="profile_picture" src="/Buskeround/assets/image/blog/icon/user.png">
     </c:if>
     <c:if test="${blogVo.user_img != null}">
-      <img src="${pageContext.request.contextPath}/upload/${blogVo.user_img}">
+      <img class="profile_picture" src="${pageContext.request.contextPath}/upload/${blogVo.user_img}">
     </c:if>
   </div>
 
@@ -456,5 +455,53 @@
   $(".close").on("click", function() {
     $("#exampleModal").modal('hide');
   });
+  
+  //라이브시 Red border
+  	$(document).ready(function() {
+  		
+		$.ajax({
+			// 컨트롤러에서 대기중인 URL 주소이다.
+			url : "${pageContext.request.contextPath}/api/blog/blog_live",
+
+			// HTTP method type(GET, POST) 형식이다.
+			type : "get",
+
+			// Json 형태의 데이터로 보낸다.
+			contentType : "application/json",
+
+			// Json 형식의 데이터를 받는다.
+			dataType : "json",
+			
+			data : {
+				id : ${blogVo.id}
+				},
+
+			// 성공일 경우 success로 들어오며, 'result'는 응답받은 데이터이다.
+			success : function(result) {
+				/*성공시 처리해야될 코드 작성*/
+
+				console.log(result);
+				
+				if (result.live == 1){
+					console.log("Live")
+					var b = document.querySelector(".profile_picture");
+					var link = ""
+					b.setAttribute("onclick", "location.href='${pageContext.request.contextPath}/Map/map?latitude=" + result.user_no + "'");
+					b.style.border = "red solid 5px";
+					
+					
+				} else {
+					console.log("Not Live")
+				}
+
+
+			},
+
+			// 실패할경우 error로 들어온다.
+			error : function(XHR, status, error) {
+				console.error(status + " : " + error);
+			}
+		});
+	});
 
 </script>

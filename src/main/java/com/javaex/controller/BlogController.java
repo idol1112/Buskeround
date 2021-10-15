@@ -46,14 +46,17 @@ public class BlogController {
     // 해더 정보 가져오기
     BlogVo blogVo = blogService.selectUser(id);
     model.addAttribute(blogVo);
+    System.out.println("해더정보 가져오기 완료");
 
     // 이력사항 가져오기
     List<ResumeVo> resumeList = blogService.getResumeList(id);
     model.addAttribute("resumeList", resumeList);
+    System.out.println("이력사항 가져오기 완료");
 
     // Aside 리스트
     model.addAttribute("BlogLive", artistService.getBlogLive());
     System.out.println("아티스트 라이브 리스트: " + artistService.getBlogLive());
+    System.out.println("어사이드");
     
     //공지사항 + 방명록 리스트
     // 서치 값 맵에 담기
