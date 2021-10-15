@@ -656,7 +656,7 @@ ALTER TABLE company
 		)
 		REFERENCES users (
 			user_no
-		);
+		)ON DELETE CASCADE;
 
 ALTER TABLE buskingDate
 	ADD
@@ -666,7 +666,7 @@ ALTER TABLE buskingDate
 		)
 		REFERENCES stage (
 			stage_no
-		);
+		)ON DELETE CASCADE;
 
 ALTER TABLE post
 	ADD
@@ -706,7 +706,7 @@ ALTER TABLE stage
 		)
 		REFERENCES company (
 			user_no
-		);
+		)ON DELETE CASCADE;
 
 ALTER TABLE fan
 	ADD
@@ -726,7 +726,7 @@ ALTER TABLE buskingTime
 		)
 		REFERENCES buskingDate (
 			date_no
-		);
+		)ON DELETE CASCADE;
 
 ALTER TABLE buskingApp
 	ADD
@@ -736,7 +736,7 @@ ALTER TABLE buskingApp
 		)
 		REFERENCES buskingTime (
 			time_no
-		);
+		)ON DELETE CASCADE;
 
 ALTER TABLE likes
 	ADD

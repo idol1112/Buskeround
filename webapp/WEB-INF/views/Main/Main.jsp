@@ -138,7 +138,7 @@
             	아티스트등록
             </div>
             <div class="company_btn" onclick="location.href='${pageContext.request.contextPath}/user/loginForm'">
-            	제휴사등록<
+            	제휴사등록
             </div>
             </c:if>
             
