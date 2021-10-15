@@ -15,6 +15,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Festive&display=swap" rel="stylesheet">
 
 <!-- css -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/Main/main.css">
@@ -98,12 +99,12 @@
               <a class="link_login" href="${pageContext.request.contextPath}/user/loginForm">Buskeround 로그인</a>
               <div class="sub_area">
               	<div class="look_box">
-              		<a href="#" class="link_look">아이디</a>
-              		<a href="#" class="link_look">비밀번호찾기</a>
+              		<a href="#" class="link_look id_hv">아이디</a>
+              		<a href="#" class="link_look pw_hv">비밀번호찾기</a>
               	
               	</div>
                 <div class="link_join">
-                  <a href="${pageContext.request.contextPath}/user/agreement">회원가입</a>
+                  <a class="jn_hv" href="${pageContext.request.contextPath}/user/agreement">회원가입</a>
                 </div>
               </div>
               </c:if>
@@ -132,10 +133,40 @@
             </div>
           </div>
           <div class="apply_wrap">
-            <h2>제휴사/아티스트 신청구역</h2>
+          	<c:if test="${authUser == null}">
+            <div class="artist_btn">
+            	<a class="btn_white" href="${pageContext.request.contextPath}/user/loginForm">아티스트등록</a>
+            </div>
+            <div class="company_btn">
+            	<a class="btn_white" href="${pageContext.request.contextPath}/user/loginForm">제휴사등록</a>
+            </div>
+            </c:if>
+            
+            <c:if test="${authUser != null}">
+	          	<c:if test="${authUser.user_type == 1}">
+	            <div class="artist_btn">
+	            	<a class="btn_white" href="${pageContext.request.contextPath}/MyPage/mypageArtist">아티스트등록</a>
+	            </div>
+	            </c:if>
+	            <c:if test="${authUser.user_type == 2}">
+	            <div class="artist_btn">
+	            	<a class="btn_white" href="${pageContext.request.contextPath}/blog/blog_main/${sessionScope.authUser.id}">내 블로그</a>
+	            </div>
+	            </c:if>
+	            <c:if test="${authUser.company_type == 1}">
+	            <div class="company_btn">
+	            	<a class="btn_white" href="${pageContext.request.contextPath}/Company/mypageCompany">제휴사등록</a>
+	            </div>
+	            </c:if>
+	            <c:if test="${authUser.company_type == 2}">
+	            <div class="company_btn">
+	            	<a class="btn_white" href="${pageContext.request.contextPath}/Company/companyInfo">제휴사관리</a>
+	            </div>
+	            </c:if>
+            </c:if>
           </div>
           <div class="photo_wrap">
-            <h2>아무 사진 구역</h2>
+              BUSKEROUND
           </div>
 
         </div>
