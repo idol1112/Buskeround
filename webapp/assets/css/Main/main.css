@@ -327,7 +327,7 @@ h2 {
 .sc_user .btn_logout:hover {
 	background: #888;
 	font-weight: bold;
-	
+
 }
 
 .login_box .sc_user #my_profile {
@@ -489,9 +489,7 @@ h2 {
 .gallery_box .gallery_item img {
 	position: relative;
 	display: block;
-	width: 115%;
-	height: 300px;
-	object-fit: cover;
+	width: 135%;
 	transition: all 350ms ease-in-out;
 	transform: translate3d(-23px, 0, 0);
 }
@@ -593,8 +591,7 @@ h2 {
 .live_box .live_item img {
 	position: relative;
 	display: block;
-	width: 115%;
-	height: 230px;
+	width: 112%;
 	object-fit: cover;
 	transition: all 350ms ease-in-out;
 	transform: translate3d(-23px, 0, 0);

@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import com.javaex.vo.BlogVo;
 import com.javaex.vo.PostVo;
 
 @Repository
@@ -138,6 +139,26 @@ public class BlogDao2 {
     System.out.println("[사용 메소드: BlogDao2.getGalleryMainPage()]");
 
     return sqlSession.selectList("post.getGalleryMainPage");
+
+  }
+
+  /*** 블로그 정보 가져오기(안드로이드) ***/
+  public BlogVo blog_android(String id) {
+    System.out.println("[사용 메소드: BlogDao2.blog_android()]");
+
+    // User_no 가져오기
+    int user_no = sqlSession.selectOne("blog.getUserNo", id);
+
+    // BlogVo
+    BlogVo blogVo = sqlSession.selectOne("post.blog_android", user_no);
+
+    if (blogVo == null) {
+      return sqlSession.selectOne("post.blog_android2", user_no);
+
+    } else {
+      return sqlSession.selectOne("post.blog_android", user_no);
+
+    }
 
   }
 

@@ -46,12 +46,16 @@ public class ApiUserController {
 
     UserVo authUser = userService.loginMobile(userVo);
 
+    System.out.println("로그인 후: " + authUser);
+
 
     if (authUser != null) {
       System.out.println("[" + authUser.getNickname() + "] 님이 로그인 하셨습니다.");
 
       session.setAttribute("authUser", authUser);
       UserVo userLsit = (UserVo) session.getAttribute("authUser");
+
+      System.out.println("userLsit: " + userLsit);
 
       return userLsit;
 

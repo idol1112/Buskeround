@@ -295,29 +295,6 @@
 		]]>
 	</update>
 
-	<!-- 배너 변경 -->
-	<update id="setBanner" parameterType="map">
-		<![CDATA[
-			UPDATE blog
-			SET
-		]]>
-
-		<choose>
-			<when test="p_img == null">
-				banner = null
-			</when>
-
-			<otherwise>
-				banner = #{p_img}
-			</otherwise>
-		</choose>
-
-		<![CDATA[
-			WHERE
-			    user_no = #{user_no}
-		]]>
-	</update>
-
 	<!-- 프로필 이미지 변경 -->
 	<update id="setProfile" parameterType="map">
 		<![CDATA[
@@ -385,6 +362,59 @@
 			WHERE
 			        rn >= 1
 			    AND rn <= 4
+		]]>
+	</select>
+
+	<!-- 블로그 정보 가져오기 방명록 OK (안드로이드) -->
+	<select id="blog_android" resultType="BlogVo" parameterType="int">
+		<![CDATA[
+			SELECT
+			    u.user_no,
+			    u.id,
+			    u.nickname,
+			    u.user_img,
+			    u.genre,
+			    u.live,
+			    u.fan,
+			    u.likes,
+			    p.count
+			FROM
+			    users  u,
+			    (
+			        SELECT
+			            COUNT(*) count,
+			            p.user_no
+			        FROM
+			            post      p,
+			            category  c
+			        WHERE
+			                p.category_no = c.category_no
+			            AND p.user_no = #{user_no}
+			            AND c.category_type = 4
+			        GROUP BY
+			            p.user_no
+			    )      p
+			WHERE
+			    u.user_no = #{user_no}
+		]]>
+	</select>
+
+	<!-- 블로그 정보 가져오기 방명록 No (안드로이드) -->
+	<select id="blog_android2" resultType="BlogVo" parameterType="int">
+		<![CDATA[
+			SELECT
+			    user_no,
+			    id,
+			    nickname,
+			    user_img,
+			    genre,
+			    live,
+			    fan,
+			    likes
+			FROM
+			    users
+			WHERE
+			    user_no = #{user_no}
 		]]>
 	</select>
 
