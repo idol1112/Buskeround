@@ -26,12 +26,14 @@ public class MapController {
 	@RequestMapping("/Map/map")
 	public String mapList(Model model) throws JsonProcessingException {
 		System.out.println("맵컨트롤러-맵리스트");
-		List<MapVo> mapList = mapService.mapList();
-		model.addAttribute("mapList", mapList);
-		System.out.println(mapList);
-		
-		return "Map/map";
-	}
+
+			System.out.println("넘버값없으면 실행");
+			List<MapVo> mapList = mapService.mapList();
+			model.addAttribute("mapList", mapList);
+			
+			return "Map/map";
+		}
+	
 	
 	//에이작스 위치기반 리스트테이터 받기
 	@ResponseBody
@@ -115,11 +117,17 @@ public class MapController {
 		
 		return "1";
 	}
-	@RequestMapping("/maptest")
-	public String maptest() {
-		System.out.println("맵테스트");
+	
+	
+	@RequestMapping("/mapOne")
+	public String mapOne(Model model,@RequestParam(value = "user_no", required = false, defaultValue = "0") int user_no) {
+		user_no = 3;
+		MapVo mapListOne = mapService.mapListOne(user_no);
+		System.out.println(mapListOne);
 		
-		return "Map/maptest";
+		model.addAttribute("mapListOne", mapListOne);
+		
+		return "Map/mapOne";
 	}
 	
 

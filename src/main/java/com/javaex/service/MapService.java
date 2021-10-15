@@ -17,11 +17,13 @@ public class MapService {
 	@Autowired
 	MapDao mapDao;
 	
+	//공연 정보 여러개받기
 	public List<MapVo> mapList() {
 		System.out.println("맵서비스-맵리스트");
 		List<MapVo> mapList = mapDao.mapList();
 		return mapList;
 	}
+	
 	
 	public List<MapVo> mapfind(double nlat,double nlng,double slat,double slng) {
 		System.out.println("맵찾기-서비스");
@@ -109,6 +111,12 @@ public class MapService {
 	public List<BuskingzoneVo> buskingzoneLists() {
 		List<BuskingzoneVo> buskingzoneList = mapDao.buskingzoneList();
 		return buskingzoneList;
+	}
+	
+	//공연 정보 1개받기
+	public MapVo mapListOne(int user_no) {
+		System.out.println("공연정보1개받기 - 서비스");
+		return mapDao.mapListOne(user_no);
 	}
 	
 	

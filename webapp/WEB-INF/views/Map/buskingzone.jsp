@@ -18,7 +18,7 @@
 	    .info .close {position: absolute;top: 10px;right: 10px;color: #888;width: 17px;height: 17px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');}
 	    .info .close:hover {cursor: pointer;}
 	    .info .body {position: relative;overflow: hidden;}
-	    .info .desc {position: relative;margin: 13px 0 0 90px;height: 75px;}
+	    .info .desc {position: relative;margin: 13px 0 0 100px;height: 75px;}
 
 	    .desc .jibun {font-size: 11px;color: #888;margin-top: -2px;}
 	    .info .img {position: absolute;top: 6px;left: 5px;width: 83px;height: 71px;border: 1px solid #ddd;color: #888;overflow: hidden;}
@@ -34,7 +34,7 @@
 		#menu_wrap .option p {margin:10px 0;}
 		#menu_wrap .option button {margin-left:5px;}
 
-		#overlayweb_table {position:absolute;top:0px;left:365px;width:360px;height:100%;z-index: 1;background-color:White; margin-left: -10px;}
+		#overlayweb_table {position:absolute;top:0px;left:365px;width:360px;height:100%;z-index: 1;background-color:White; margin-left: -10px;border-left: 3px solid #bfbfbf;}
 
 		#searchList li {list-style: none;}
 		#searchList .item {position:relative;overflow: hidden;cursor: pointer;min-height: 65px;}
@@ -44,22 +44,8 @@
 		#searchList .info .gray {color:#8a8a8a;}
 		#searchList .info .jibun {padding-left:26px;background:url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_jibun.png) no-repeat;}
 		#searchList .info .tel {color:#009900;}
-		#searchList .item .markerbg {float:left;position:absolute;width:36px; height:37px;margin:10px 0 0 10px;background:url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png) no-repeat;}
-		#searchList .item .marker_1 {background-position: 0 -10px;}
-		#searchList .item .marker_2 {background-position: 0 -56px;}
-		#searchList .item .marker_3 {background-position: 0 -102px}
-		#searchList .item .marker_4 {background-position: 0 -148px;}
-		#searchList .item .marker_5 {background-position: 0 -194px;}
-		#searchList .item .marker_6 {background-position: 0 -240px;}
-		#searchList .item .marker_7 {background-position: 0 -286px;}
-		#searchList .item .marker_8 {background-position: 0 -332px;}
-		#searchList .item .marker_9 {background-position: 0 -378px;}
-		#searchList .item .marker_10 {background-position: 0 -423px;}
-		#searchList .item .marker_11 {background-position: 0 -470px;}
-		#searchList .item .marker_12 {background-position: 0 -516px;}
-		#searchList .item .marker_13 {background-position: 0 -562px;}
-		#searchList .item .marker_14 {background-position: 0 -608px;}
-		#searchList .item .marker_15 {background-position: 0 -654px;}
+		#searchList .item .markerbg {float:left;position:absolute;width:36px;margin:10px 0 0 10px;background:url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png) no-repeat;}
+
 		.radius_border{border:1px solid #919191;border-radius:5px;}     
 		.custom_zoomcontrol {position:absolute;top:50px;right:10px;width:36px;height:80px;overflow:hidden;z-index:1;background-color:#f5f5f5;} 
 		.custom_zoomcontrol span {display:block;width:36px;height:40px;text-align:center;cursor:pointer;}     
@@ -98,6 +84,7 @@
           height: 230px;
           object-fit:contain;
           margin-top: 10px;
+         
         }
 
 		#keyword{
@@ -295,8 +282,8 @@
             <div>
                 <form onsubmit="searchPlaces(); return false;" class="formsearch">
                 	<div class="boxsearch">
-                    <input type="text" value="강남역" id="keyword" class="inputsearch" placeholder="장소 입력">
-                    <button type="submit" id="btn_sh" class="buttonsearch"><img src="/Buskeround/assets/image/map/searchbtn.png" width="35px" height="35px"></button>
+                    <input type="text" value="" id="keyword" class="inputsearch" placeholder="장소 입력">
+                    <button type="submit" id="btn_sh" class="buttonsearch"><img src="/Buskeround/assets/image/artist/icon/search.png" width="35px" height="35px"></button>
                     <img src="${pageContext.request.contextPath}/assets/image/map/busr.png" style="width:353px">
                     </div>
                 </form>
@@ -314,6 +301,13 @@
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=79c2ae6522e8e0df7b0592164f933676&libraries=services"></script>
 <script>
+
+var imageSrc = '/Buskeround/assets/image/map/makericon.png', // 마커이미지의 주소입니다    
+imageSize = new kakao.maps.Size(48, 55), // 마커이미지의 크기입니다
+imageOption = {offset: new kakao.maps.Point(26, 40)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+
+var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption)
+
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div
     mapOption = {
         center: new kakao.maps.LatLng(37.49699749185255, 127.02445040286854), // 지도의 중심좌표
@@ -333,10 +327,11 @@ searchPlaces();
 function searchPlaces() {
 
     var keyword = document.getElementById('keyword').value;
-
+	
+    
     if (!keyword.replace(/^\s+|\s+$/g, '')) {
-        alert('키워드를 입력해주세요!');
-        return false;
+
+    	keyword += "강남역";
     }
 
     // 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
@@ -386,10 +381,6 @@ function displayPlaces(places) {
     map.setBounds(bounds);
 }
 
-
-//kakao.maps.event.addListener(map, 'idle', function() {
-//========================================
-
 kakao.maps.event.addListener(map, 'idle', function() {
 
     // 지도의 중심좌표를 얻어옵니다
@@ -397,7 +388,6 @@ kakao.maps.event.addListener(map, 'idle', function() {
 	//console.log("중심좌표!"+ latlngg);
 
 	var boundss = map.getBounds();
-	console.log(boundss);
 	var neLatLng = boundss.getNorthEast();
     var nlat = neLatLng.getLat();
     var nlng = neLatLng.getLng();
@@ -548,7 +538,8 @@ function displayMarker(locPosition,data,content,userNo,contentbox) {
     // 마커를 생성합니다
     var marker = new kakao.maps.Marker({
         map: map,
-        position: data
+        position: data,
+        image: markerImage
     });
 
     var overlay = new kakao.maps.CustomOverlay({

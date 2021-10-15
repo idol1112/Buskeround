@@ -15,12 +15,13 @@ public class MapDao {
 
 	@Autowired
 	SqlSession sqlSession;
-	
+	//공연 정보 여러개
 	public List<MapVo> mapList() {
 		System.out.println("맵다오-맵리스트");
 		List<MapVo> mapList = sqlSession.selectList("map.mapList");
 		return mapList;
 	}
+	
 	
 	public List<MapVo> mapfind(Map<String, Double> findMap) {
 		System.out.println("맵찾기-다오");
@@ -82,6 +83,12 @@ public class MapDao {
 	public List<BuskingzoneVo> buskingzoneList() {
 		List<BuskingzoneVo> buskingzoneList = sqlSession.selectList("buskingzone.buskingList");
 		return buskingzoneList;
+	}
+	
+	//공연 정보 1개
+	public MapVo mapListOne(int user_no) {
+		System.out.println("공연정보1개받기 - 다오");
+		return sqlSession.selectOne("map.mapListOne", user_no);
 	}
 	
 }
