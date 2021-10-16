@@ -103,7 +103,7 @@ label[for=facebookupload]{
 }
 
 .custom-file-label{
-	width: 100%;
+	width: 95%;
 }
 
 .custom-file-input{
@@ -111,5 +111,5 @@ label[for=facebookupload]{
 }
 
 .custom-file {
-	width: 92%;
+	width: 89%;
 }

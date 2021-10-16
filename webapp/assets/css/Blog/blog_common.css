@@ -398,3 +398,16 @@ a:active {
 	backface-visibility: hidden;
 	transform: translateZ(0);
 }
+
+.artist_chart tr{
+	padding: 5px, 0px, 5px, 0px;
+}
+
+.rank{
+	display: block;
+    font-size: 16px;
+    font-weight: 400;
+    color: #3A3635;
+    line-height: 16px;
+    text-align: center;
+}

@@ -71,7 +71,7 @@
 										<td><input required class="input" type="text" id="hp" name="hp" placeholder="연락처를 입력해주세요."></td>
 									</tr>
 									<tr>
-										<td class="table-head"><label for="gender">성별</label></td>
+										<td class="table-head"><label class="required" for="gender">성별</label></td>
 										<td>
 											<input class="radio" type="radio" name="gender" id="male" value="male"><span class="radiolabel"><label for="male">남</label> </span>
 											<input type="radio" name="gender" id="female" value="female"><span class="radiolabel"><label for="female">여</label></span>
@@ -255,13 +255,13 @@ $("#artistModify").on("submit", function() {
 		return false;
 	}
 
-	if ($("[name=gender]").val().length < 1) {
+	if ($(":radio[name=gender]:checked").length < 1) {
 		alert("성별을 선택해주세요.");
 
 		return false;
 	}
 	
-	if ($("[name=genre]").val().length < 1) {
+	if ($(":radio[name=genre]:checked").length < 1) {
 		alert("퍼포먼스/장르를 선택해주세요.");
 
 		return false;
@@ -321,9 +321,6 @@ $("#profileupdate").on("click", function(e) {
 $("#datepicker").datepicker({
 	language: 'ko'
 }); 
-
-
-jQuery('input[type="date"]').live('click', function(e) {e.preventDefault();}).datepicker();
 
 </script>
 

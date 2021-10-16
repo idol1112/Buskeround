@@ -443,7 +443,7 @@ h2 {
 	width: 876px;
 	position: relative;
 	float: left;
-	height: 220px;
+	height: 225px;
 }
 
 .artist_wrap .gallery_wrap {
@@ -456,7 +456,7 @@ h2 {
 }
 
 .artist_rank {
-	width: 334px;
+	width: 341px;
 	float: left;
 	margin-left: 24px;
 	height: 554px;
@@ -709,3 +709,85 @@ h2 {
 		 min-height:300px;
 		 overflow:hidden;
 		}
+		
+
+		
+.rank_img {
+	width: 67px;
+	image-rendering: -webkit-optimize-contrast;
+	margin-right: 15px;
+ }
+ 
+ 
+.artist_chart tr td{
+	padding-top: 7px;
+	padding-bottom: 7px;
+	
+}
+
+.artist_rank tr:first-child .rank {
+	font-weight: bold;
+	color: #a13dff;
+}
+
+.artist_rank tr:nth-child(2) .rank {
+	font-weight: bold;
+	color: #a13dff;
+}
+
+.artist_rank tr:nth-child(3) .rank {
+	font-weight: bold;
+	color: #a13dff;
+}
+
+.artist_chart tr:first-child{
+	border-top: 3px solid black;
+}
+
+.artist_chart tr{
+	border-bottom: 1px solid lightgray;
+}
+
+.rank{
+	display: block;
+    font-size: 15px;
+    font-weight: 400;
+    color: #3A3635;
+    line-height: 16px;
+    text-align: center;
+    font-family: 'Brush Script MT', cursive;
+}
+
+.active{
+	height: 65px;
+	background-color: #f8f9fb;
+}
+
+.active .rank{
+	font-size: 24px;
+}
+
+.active .artist_name{
+	font-size: 13px;
+	font-weight: bold;
+}
+
+.artist_genre{
+	text-align: right;
+}
+
+.prof_img1{
+	image-rendering: -webkit-optimize-contrast;
+	width: 50px;
+	margin-right: 10px;
+}
+
+.prof_img{
+	image-rendering: -webkit-optimize-contrast;
+	width: 50px;
+	margin-right: 10px;
+}
+
+.artist_name{
+	font-size: 13px;
+}

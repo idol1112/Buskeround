@@ -26,6 +26,7 @@ public class Main {
     
     model.addAttribute("artistLiveList", artistService.getArtistLive());
     model.addAttribute("galleryList", blogService2.getGalleryMainPage());
+    model.addAttribute("artistRankingList", artistService.getArtistList());
     model.addAttribute("mapList", mapService.mapList());
     
     return "Main/Main";

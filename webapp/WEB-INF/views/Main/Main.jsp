@@ -329,7 +329,69 @@
         <!-- 라이브/갤러리 -->
         <!-- 아티스트 랭킹 -->
         <div class="artist_rank">
-          <h2>RANK</h2>
+          <h2>BUSKER CHART</h2>
+          <table class="artist_chart" style="width: 100%">
+          	<tbody>
+          		<c:forEach items="${artistRankingList}" var="aList" begin="0" end="0">
+          		<tr class="artist_row active">
+          			<td style="width: 20%;"> <strong class="rank">${aList.rn}</strong></td>
+          			<td style="width: 40%;" class="artist_name"><a href="${pageContext.request.contextPath}/blog/blog_main/${aList.id}"><img class="prof_img1" src="${pageContext.request.contextPath}/upload/${aList.user_img}">${aList.nickname}</a></td>
+          			    <c:if test="${aList.genre == 1}">
+					        <td style="width: 40%;" class="artist_genre"><img class="rank_img" src="${pageContext.request.contextPath}/assets/image/blog/icon/ballade.png"></td>
+					    </c:if>
+					
+					    <c:if test="${aList.genre == 2}">
+					        <td style="width: 40%;" class="artist_genre"><img class="rank_img" src="${pageContext.request.contextPath}/assets/image/blog/icon/dance.png"></td>
+					    </c:if>
+					
+					    <c:if test="${aList.genre == 3}">
+					        <td style="width: 40%;" class="artist_genre"><img class="rank_img" src="${pageContext.request.contextPath}/assets/image/blog/icon/hiphop.png"></td>
+					    </c:if>
+					
+					    <c:if test="${aList.genre == 4}">
+					        <td style="width: 40%;" class="artist_genre"><img class="rank_img" src="${pageContext.request.contextPath}/assets/image/blog/icon/soul.png"></td>
+					    </c:if>
+					
+					    <c:if test="${aList.genre == 5}">
+					        <td style="width: 40%;" class="artist_genre"><img class="rank_img" src="${pageContext.request.contextPath}/assets/image/blog/icon/musical.png"></td>
+					    </c:if>
+					
+					    <c:if test="${aList.genre == 6}">
+					        <td style="width: 40%;" class="artist_genre"><img class="rank_img" src="${pageContext.request.contextPath}/assets/image/blog/icon/etc.png"></td>
+					    </c:if>
+          			
+          		</c:forEach>
+          		<c:forEach items="${artistRankingList}" var="aList" begin="1" end="9">
+          		<tr class="artist_row">
+          			<td style="width: 20%;"> <strong class="rank">${aList.rn}</strong></td>
+          			<td style="width: 40%;" class="artist_name"><a href="${pageContext.request.contextPath}/blog/blog_main/${aList.id}"><img class="prof_img" src="${pageContext.request.contextPath}/upload/${aList.user_img}">${aList.nickname}</a></td>
+         			    <c:if test="${aList.genre == 1}">
+					        <td style="width: 40%;" class="artist_genre"><img class="rank_img" src="${pageContext.request.contextPath}/assets/image/blog/icon/ballade.png"></td>
+					    </c:if>
+					
+					    <c:if test="${aList.genre == 2}">
+					        <td style="width: 40%;" class="artist_genre"><img class="rank_img" src="${pageContext.request.contextPath}/assets/image/blog/icon/dance.png"></td>
+					    </c:if>
+					
+					    <c:if test="${aList.genre == 3}">
+					        <td style="width: 40%;" class="artist_genre"><img class="rank_img" src="${pageContext.request.contextPath}/assets/image/blog/icon/hiphop.png"></td>
+					    </c:if>
+					
+					    <c:if test="${aList.genre == 4}">
+					        <td style="width: 40%;" class="artist_genre"><img class="rank_img" src="${pageContext.request.contextPath}/assets/image/blog/icon/soul.png"></td>
+					    </c:if>
+					
+					    <c:if test="${aList.genre == 5}">
+					        <td style="width: 40%;" class="artist_genre"><img class="rank_img" src="${pageContext.request.contextPath}/assets/image/blog/icon/musical.png"></td>
+					    </c:if>
+					
+					    <c:if test="${aList.genre == 6}">
+					        <td style="width: 40%;" class="artist_genre"><img class="rank_img" src="${pageContext.request.contextPath}/assets/image/blog/icon/etc.png"></td>
+					    </c:if>
+          		</tr>
+          		</c:forEach>
+          	</tbody>
+          </table>
         </div>
         <!-- 아티스트 랭킹 -->
       </div>
@@ -409,5 +471,24 @@ function gallery_item(post_no) {
 	$("#btn_close").on("click", function() {
 		$("#img_modal").modal('hide');
 	});
+	
+	
+	// Busker Chart
+	  $(".artist_row").hover(function () {
+		    		
+    		$(function() {
+    			  $(".artist_row").on("mouseover", function(e){
+    			    $(".artist_row").removeClass("active");
+    			    $(".artist_row").find('img').hide();
+    			    $(".rank_img").show();
+    			    $(this).addClass("active");
+    			    $(this).find('img').show();
+    			  })
+   			});
+	  });
+	
+	  $(document).ready(function(){
+		     $(".prof_img").hide(); 
+	  });
 </script>
 </html>
