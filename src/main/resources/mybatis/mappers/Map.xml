@@ -27,6 +27,7 @@
 			AND b.user_no = u.user_no
 			AND p_end is null
 			AND p.user_no = #{user_no}
+			AND p.reg_date is null
 		]]>
 	</select>
 

@@ -72,7 +72,6 @@ public class MapDao {
 	
 	//아티스트 공연신청
 	public String buskingApp(Map<String, Object> buskingApp) {
-		System.out.println("서비스-공연신청");
 		
 		sqlSession.insert("buskingzone.buskingApp",buskingApp);
 		

@@ -113,9 +113,7 @@ public class MapController {
 	@RequestMapping("/buskingApp")
 	public String buskingApp(@RequestParam("user_no") int user_no, @RequestParam("time_no") int time_no, @RequestParam("artistRequest") String artistRequest) {
 		
-		mapService.buskingApp(user_no,time_no,artistRequest);
-		
-		return "1";
+		return mapService.buskingApp(user_no,time_no,artistRequest);
 	}
 	
 	
