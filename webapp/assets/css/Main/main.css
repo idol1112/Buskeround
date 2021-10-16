@@ -412,16 +412,20 @@ h2 {
 	background: #888;
 }
 
+@font-face {
+	font-family: abster;
+	src:url(font/abster-webfont.woff) format('woff');
+}
+
 .id_wrap .photo_wrap {
 	position: relative;
     width: 358px;
     height: 111px;
     margin-top: 5px;
     text-align: center;
-    font-size: 45px;
-    font-family: 'Festive', cursive;
-	font-family: 'Hind Siliguri', sans-serif;
-    padding: 20px 0px 20px 0px;
+    font-size: 46px;
+    font-family: abster;
+    padding: 22px 0px 20px 5px;
     color: #fff;
     background-image: url(../../image/company/mainbanner.jpg);
     background-repeat: no-repeat;
