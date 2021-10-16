@@ -228,8 +228,8 @@
 					</table>
 				</div>
 				<div class="btn-area">
-					<button id="acceptBtn" type="button" class="btn-primary btn-sm">수락</button>
-					<button id="refuseBtn" type="button" class="btn-danger btn-sm">거절</button>
+					<button id="refuseBtn" type="button" class="float-end btn btn-danger btn-sm btn-size">거절</button>
+					<button id="acceptBtn" type="button" class="float-end btn btn-primary btn-sm btn-nm">수락</button>
 				</div>
 				<!-- 페이징 -->
 				<c:if test="${fn:length(listMap.applyList) != 0}">
@@ -381,6 +381,7 @@ $("#refuseBtn").on("click", function(e) {
 //상세정보 클릭
 function user_info(apply_no) {
 	console.log(apply_no);
+	$(".modal_content").empty();
 	
 	$.ajax({
 		// 컨트롤러에서 대기중인 URL 주소이다.
@@ -412,7 +413,6 @@ function user_info(apply_no) {
 //모달창 끄기
 $(".close").on("click", function() {
   	$("#infoModal").modal('hide');
-  	$(".modal_content").empty();
   });
 
 datePickerSet($("#datepicker1"), $("#datepicker2"), true); //다중은 시작하는 달력 먼저, 끝달력 2번째

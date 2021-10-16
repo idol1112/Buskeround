@@ -339,3 +339,15 @@ input[type="file"] {
 .plan_nickname {
 	margin-left: 5px;
 }
+
+.btn-size {
+	font-size: 12px;
+    border-radius: 5px;
+    margin: 10px 22px 10px 3px;
+}
+
+.btn-nm {
+	margin: 10px 0px;
+	font-size: 12px;
+    border-radius: 5px;
+}

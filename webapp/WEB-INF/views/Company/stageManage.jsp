@@ -111,7 +111,7 @@
                             </tr>
                         </table>
                         <div class="btn-area">
-                        	<button type="submit" class="float-end btn btn-primary btn-sm" id="stageInsbtn">저장</button>
+                        	<button type="submit" class="float-end btn btn-primary btn-sm btn-size" id="stageInsbtn">저장</button>
                         </div>
                     </form>
                 </div>

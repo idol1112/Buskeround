@@ -33,7 +33,7 @@
 	<style>
 	.map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
 	.map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
-	.map_wrap {width:100%;height:500px;}
+	.map_wrap {width: 100%;height: 500px;}
 	#menu_wrap {position:absolute;top:0;left:0;width:300px;margin:10px 0 30px 10px;padding:5px;overflow-y:auto;background:rgba(255, 255, 255, 0.7);z-index: 1;font-size:12px;border-radius: 10px;}
 	#keyword {width:240px;}
 	</style>
@@ -53,20 +53,22 @@
 					<h5>제휴사 등록</h5>
 				</div>
 				<div id="mypage-right-content">
-					<form action="${pageContext.request.contextPath}/Company/companyInsert" method="post" enctype="multipart/form-data">
+					<form id="companyInsert" action="${pageContext.request.contextPath}/Company/companyInsert" method="post" enctype="multipart/form-data">
 						<input type="hidden" name="user_no" value="${sessionScope.authUser.user_no}">
 						<input type="hidden" id="latitude" name="latitude">
 						<input type="hidden" id="longitude" name="longitude">
 						<input type="hidden" name="company_type" value="2"> 
 							<table>
 								<tr>
-									<td class="table-head"><label for="profilepicture">회사 로고</label></td>
+									<td class="table-head"><label class="required" for="profilepicture">회사 로고</label></td>
 									<td><img id="profilepicture" src="${pageContext.request.contextPath}/assets/image/company/default.png"><br>
 										<label id="profilepicturechange" class="btn-success btn-sm">
 										    <input type="file" name="com_img" accept="image/*" onchange="setThumbnail(event);"/>
 										    변경
 										</label>
-										<label id="profilepicturedelete" class="btn-danger btn-sm">삭제</label>
+										<label id="profilepicturedelete" class="btn-danger btn-sm">
+											취소
+										</label>
 									</td>
 								</tr>
 								<tr>
@@ -251,7 +253,8 @@ $("#btnsch").on("click", function(){
 	
 	searchPlaces(keyword);
 });
-	
+map.relayout();
+
 });
 
 //모달창 끄기
@@ -275,6 +278,60 @@ function setThumbnail(event) {
 	
 	reader.readAsDataURL(event.target.files[0]); 
 	}
+
+//등록/수정 클릭
+$("#companyInsert").on("submit", function() {
+	console.log("서브밋")
+	var fileCheck = $("[name=com_img]").val();
+	if (!fileCheck) {
+		alert("회사 로고를 입력해주세요.");
+
+		return false;
+	}
+
+	if ($("[name=com_name]").val().length < 1) {
+		alert("건물명을 입력해주세요.");
+
+		return false;
+	}
+
+	if ($("[name=address]").val().length < 1) {
+		alert("주소를 입력후 위치를 설정해주세요.");
+
+		return false;
+	}
+	
+	if (!$("[name=latitude]").val()) {
+		alert("위치 설정에서 마커를 찍어주세요.");
+
+		return false;
+	}
+	
+	if (!$("[name=longitude]").val()) {
+		alert("위치 설정에서 마커를 찍어주세요.");
+
+		return false;
+	}
+
+	if ($("[name=com_number]").val().length < 1) {
+		alert("연락처를 입력해 주세요.");
+		return false;
+	}
+	
+	if ($("[name=ceo_name]").val().length < 1) {
+		alert("대표자명을 입력해 주세요.");
+
+		return false;
+	}
+	
+	if ($("[name=business_number]").val().length < 1) {
+		alert("사업자번호를 입력해 주세요.");
+
+		return false;
+	}
+
+	return true;
+});
 	
 $("#profilesubmit").on("click", function(e) {
 	e.preventDefault();

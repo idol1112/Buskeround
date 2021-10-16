@@ -112,8 +112,8 @@
                             </tr>
                         </table>
                         <div class="btn-area">
-	                        <input type="button" class="float-end btn btn-danger btn-sm" id="delBtn" value="삭제">
-	                        <button type="submit" class="float-end btn btn-primary btn-sm" id="insBtn">저장</button>
+	                        <input type="button" class="float-end btn btn-danger btn-sm btn-size" id="delBtn" value="삭제">
+	                        <button type="submit" class="float-end btn btn-primary btn-sm btn-nm" id="insBtn">저장</button>
                         </div>
                     </form>
                 </div>

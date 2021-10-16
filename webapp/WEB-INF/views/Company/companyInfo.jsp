@@ -56,19 +56,19 @@
                     <h5>제휴사 정보</h5>
                 </div>
                 <div id="mypage-right-content">
-                    <form action="${pageContext.request.contextPath}/Company/companyModify" method="POST" enctype="multipart/form-data">
+                    <form id="companyModify" action="${pageContext.request.contextPath}/Company/companyModify" method="POST" enctype="multipart/form-data">
                     	<input type="hidden" name="user_no" value="${requestScope.companyVo.user_no}">
                     	<input type="hidden" name="used_img" value="${requestScope.companyVo.com_img}">
                         <table>
                             <tr>
-                                <td class="table-head"><label for="profilepicture">회사 로고</label></td>
+                                <td class="table-head"><label class="required" for="profilepicture">회사 로고</label></td>
                                 <td><img id="profilepicture" src="${pageContext.request.contextPath}/upload/${requestScope.companyVo.com_img}"><br>
 									<label id="profilepicturechange" class="btn-success btn-sm">
 										<input type="file" name="com_img" accept="image/*" onchange="setThumbnail(event);"/>
 										변경
 									</label>
 									<label id="profilepicturedelete" class="btn-danger btn-sm">
-									취소
+										취소
 									</label>
 								</td>
                             </tr>
@@ -132,6 +132,48 @@
 		console.log(img);
 		
 		document.querySelector("img#profilepicture").setAttribute("src", img); 
+	});
+	
+	//등록/수정 클릭
+	$("#companyModify").on("submit", function() {
+		console.log("서브밋")
+		var fileCheck = $("[name=com_img]").val();
+		if (!fileCheck) {
+			alert("회사 로고를 입력해주세요.");
+
+			return false;
+		}
+
+		if ($("[name=com_name]").val().length < 1) {
+			alert("건물명을 입력해주세요.");
+
+			return false;
+		}
+
+		if ($("[name=address]").val().length < 1) {
+			alert("주소를 입력해주세요.");
+
+			return false;
+		}
+
+		if ($("[name=com_number]").val().length < 1) {
+			alert("연락처를 입력해 주세요.");
+			return false;
+		}
+		
+		if ($("[name=ceo_name]").val().length < 1) {
+			alert("대표자명을 입력해 주세요.");
+
+			return false;
+		}
+		
+		if ($("[name=business_number]").val().length < 1) {
+			alert("사업자번호를 입력해 주세요.");
+
+			return false;
+		}
+
+		return true;
 	});
 	
 	//제휴사 저장 이벤트
