@@ -129,6 +129,25 @@
 	$("#profilesubmit").on("click", function(e) {
 		e.preventDefault();
 		var form = $(this).parents('form');
+		
+		if ($("[name=nickname]").val().length < 1) {
+			alert("닉네임을 입력해 주세요.");
+
+			return false;
+		}
+
+		if ($("[name=email]").val().length < 1) {
+			alert("이메일을 입력해 주세요.");
+
+			return false;
+		}
+
+		if ($("[name=password]").val().length < 1) {
+			alert("페스워드를 입력해 주세요.");
+
+			return false;
+		}
+		
 		const Toast = Swal.mixin({
 	        toast: true,
 	        position: 'center-center',

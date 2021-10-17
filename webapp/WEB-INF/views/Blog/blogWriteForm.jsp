@@ -153,29 +153,6 @@
             console.error( error );
         } );
 
-	$('.testing').on("submit", function() {
-		console.log("서브밋")
-	
-		if ($("[name=category_type]").val() == null) {
-			alert("카테고리를 선택해주세요.");
-	
-			return false;
-		}
-		
-		if ($("[name=title]").val().length < 1) {
-			alert("제목을 입력해주세요.");
-
-			return false;
-		}
-		
-		if ($("[name=content]").val().length < 1) {
-			alert("게시글 내용을 입력해주세요.");
-
-			return false;
-		}
-	
-		return true;
-	});
 	
     $('.custom-file').hide();
 	
@@ -204,6 +181,25 @@
 	//저장 완료 alert
 	$(".update").on("click", function(e) {
 		e.preventDefault();
+		
+		if ($("[name=category_type]").val() == null) {
+			alert("카테고리를 선택해주세요.");
+	
+			return false;
+		}
+		
+		if ($("[name=title]").val().length < 1) {
+			alert("제목을 입력해주세요.");
+
+			return false;
+		}
+		
+		if ($("[name=content]").val().length < 1) {
+			alert("게시글 내용을 입력해주세요.");
+
+			return false;
+		}
+		
 		var form = $(this).parents('form');
 		const Toast = Swal.mixin({
 	        toast: true,

@@ -47,7 +47,7 @@
 			</div>
 
 			<div class="modify-form">
-				<form action="${pageContext.request.contextPath}/blog/modify" method="POST" enctype="multipart/form-data">
+				<form id="artistModify" action="${pageContext.request.contextPath}/blog/modify" method="POST" enctype="multipart/form-data">
 					<input type="hidden" name="user_no" value="${blogVo.user_no}">
 					<input type="hidden" name="id" value="${blogVo.id}">
 					<input id="img_check" type="hidden" name="img_check" value="0">
@@ -115,7 +115,7 @@
 							</td>
 						</tr>
 					</table>
-					<button class="float-end" id="profilecancel" onclick="history.back()">취소</button>
+					<button class="float-end" id="profilecancel" onclick="history.back()" style="background-color: red; color:white;">취소</button>
 					<button type="submit" class="float-end" id="profilesubmit">수정</button>
 				</form>
 			</div>
@@ -170,11 +170,17 @@
 		document.querySelector("img#bannerImg").setAttribute("src", '/Buskeround/assets/image/blog/img/defaultbanner.jpg'); 
 		document.querySelector("input#img_check").setAttribute("value", '2'); 
 	});
-
-	//저장 완료 alert
+	
 	$("#profilesubmit").on("click", function(e) {
 		e.preventDefault();
 		var form = $(this).parents('form');
+		
+		if ($("[name=nickname]").val().length < 1) {
+			alert("활동명을 입력해 주세요.");
+
+			return false;
+		}
+		
 		const Toast = Swal.mixin({
 	        toast: true,
 	        position: 'center-center',
@@ -197,6 +203,7 @@
 		}, 1500);
 
 	})
+		
 </script>
 
 </html>

@@ -134,7 +134,7 @@
   </table>
 
   <!---- 이력사항 ---->
-  <c:if test="${fn:length(resumeList) > 1}">
+  <c:if test="${fn:length(resumeList) > 0}">
     <table class="profile_his">
       <tr>
         <td class="history"><img src="${pageContext.request.contextPath}/assets/image/blog/icon/resume.png"></td>

@@ -228,9 +228,10 @@ $("[name=nickname]").keyup(function() {
 		});
 	});
 
-// 등록/수정 클릭
-$("#artistModify").on("submit", function() {
-	console.log("서브밋")
+$("#profilesubmit").on("click", function(e) {
+	e.preventDefault();
+	var form = $(this).parents('form');
+	
 	if (nick_check === false) {
 		alert("다른 활동명을 입력해주세요.");
 
@@ -266,13 +267,6 @@ $("#artistModify").on("submit", function() {
 
 		return false;
 	}
-
-	return true;
-});
-
-$("#profilesubmit").on("click", function(e) {
-	e.preventDefault();
-	var form = $(this).parents('form');
 	
 	Swal.fire({
 		title: '아티스트 등록',
@@ -294,6 +288,43 @@ $("#profilesubmit").on("click", function(e) {
 $("#profileupdate").on("click", function(e) {
 	e.preventDefault();
 	var form = $(this).parents('form');
+	
+	if (nick_check === false) {
+		alert("다른 활동명을 입력해주세요.");
+
+		return false;
+	}
+
+	if ($("[name=nickname]").val().length < 1) {
+		alert("활동명을 입력해 주세요.");
+
+		return false;
+	}
+
+	if ($("[name=name]").val().length < 1) {
+		alert("이름을 입력해 주세요.");
+
+		return false;
+	}
+
+	if ($("[name=hp]").val().length < 1) {
+		alert("연락처를 입력해 주세요.");
+
+		return false;
+	}
+
+	if ($(":radio[name=gender]:checked").length < 1) {
+		alert("성별을 선택해주세요.");
+
+		return false;
+	}
+	
+	if ($(":radio[name=genre]:checked").length < 1) {
+		alert("퍼포먼스/장르를 선택해주세요.");
+
+		return false;
+	}
+	
 	const Toast = Swal.mixin({
         toast: true,
         position: 'center-center',
@@ -310,6 +341,7 @@ $("#profileupdate").on("click", function(e) {
         icon: 'success',
         title: '아티스트 정보가 수정되었습니다.'
     })
+    
 	setTimeout(function () {
 	  form.submit();
 	}, 1500);
