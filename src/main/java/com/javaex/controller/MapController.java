@@ -118,7 +118,8 @@ public class MapController {
 	
 	
 	@RequestMapping("/mapOne")
-	public String mapOne(Model model,@RequestParam(value = "user_no", required = false, defaultValue = "0") int user_no) {
+	public String mapOne(Model model,@RequestParam("user_no") int user_no) {
+		System.out.println("넘버값"+user_no);
 		MapVo mapListOne = mapService.mapListOne(user_no);
 		System.out.println(mapListOne);
 		

@@ -195,7 +195,7 @@
  		<a href="${pageContext.request.contextPath}/blog/blog_main/${mapListOne.id}"><img src="${mapListOne.p_img}" width="350" height="250"></a>
 		</c:if>
 		
-		<c:if test="${fn:indexOf(mapListOne.p_img,'https') == -1}">
+		<c:if test="${fn:indexOf(mapListOne.p_img,'https') == -1 && mapListOne.p_img ne 'noimg.png'}">
 		<a href="${pageContext.request.contextPath}/blog/blog_main/${mapListOne.id}"><img src="${pageContext.request.contextPath }/upload/${mapListOne.p_img}" width="350" height="250"></a>
 		</c:if>
 
