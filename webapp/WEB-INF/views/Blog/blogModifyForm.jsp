@@ -115,7 +115,7 @@
 							</td>
 						</tr>
 					</table>
-					<button class="float-end" id="profilecancel" onclick="history.back()" style="background-color: red; color:white;">취소</button>
+					<button class="float-end" id="profilecancel" onclick="history.back(); return false;" style="background-color: red; color:white;">취소</button>
 					<button type="submit" class="float-end" id="profilesubmit">수정</button>
 				</form>
 			</div>
