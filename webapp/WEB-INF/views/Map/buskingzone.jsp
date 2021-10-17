@@ -35,7 +35,13 @@
 		#menu_wrap .option button {margin-left:5px;}
 
 		#overlayweb_table {position:absolute;top:0px;left:365px;width:360px;height:100%;z-index: 1;background-color:White; margin-left: -10px;border-left: 3px solid #bfbfbf;}
-
+		.overlayweb_table {    overflow: scroll; -ms-overflow-style: none;}
+		
+		.overlayweb_table::-webkit-scrollbar { 
+    	display: none;
+    	width: 0 !important;
+		}
+		
 		#searchList li {list-style: none;}
 		#searchList .item {position:relative;overflow: hidden;cursor: pointer;min-height: 65px;}
 		#searchList .item span {display: block;margin-top:4px;}
@@ -597,7 +603,7 @@ function removeAllChildNods(el) {
 }
 function overlay(mapOverlay,info){
 
-	var str ='<div id="overlayweb_table">'+
+	var str ='<div id="overlayweb_table" class="overlayweb_table">'+
 	'<input type="hidden" name="company_no" value="'+mapOverlay.overlayList.user_no+'">'+
 	'<input type="hidden" name="time_no" value="">'+
 	'	<div>'+
