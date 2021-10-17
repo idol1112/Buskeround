@@ -205,7 +205,7 @@
 		</div>
 		
 		</div>
-		<button class="favorite styled" type="button">다른 아티스트 찾기</button>
+		<a href="${pageContext.request.contextPath}/Map/map"><button class="favorite styled" type="button">다른 아티스트 찾기</button></a>
 		
         
     </div>
