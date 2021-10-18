@@ -101,6 +101,7 @@
 			    u.password,
 			    u.user_img,
 			    u.live,
+			    u.genre,
 			    b.intro,
 			    b.banner,
 			    b.y_url

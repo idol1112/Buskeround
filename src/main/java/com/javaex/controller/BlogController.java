@@ -32,14 +32,14 @@ public class BlogController {
 
   @Autowired
   BlogService2 blogService2;
-  
+
   ////////////////////////////////////////////////////////////////////////////////////////
   //블로그 메인
   ////////////////////////////////////////////////////////////////////////////////////////
 
   @RequestMapping(value = "blog_main/{id}", method = {RequestMethod.GET, RequestMethod.POST})
   public String blog_main(@PathVariable("id") String id, Model model,
-						  @RequestParam(value = "keyword", required = false) String keyword, 
+						  @RequestParam(value = "keyword", required = false) String keyword,
 					      @RequestParam(value = "crtPage", required = false, defaultValue = "1") int crtPage) {
     System.out.println("[BlogController.blog_main()]");
 
@@ -47,6 +47,9 @@ public class BlogController {
     BlogVo blogVo = blogService.selectUser(id);
     model.addAttribute(blogVo);
     System.out.println("해더정보 가져오기 완료");
+
+    // 블로그 hit
+    blogService2.blog_hit(id);
 
     // 이력사항 가져오기
     List<ResumeVo> resumeList = blogService.getResumeList(id);
@@ -57,14 +60,14 @@ public class BlogController {
     model.addAttribute("BlogLive", artistService.getBlogLive());
     System.out.println("아티스트 라이브 리스트: " + artistService.getBlogLive());
     System.out.println("어사이드");
-    
+
     //공지사항 + 방명록 리스트
     // 서치 값 맵에 담기
     Map<String, Object> searchvalue = new HashMap<String, Object>();
     searchvalue.put("search", keyword); searchvalue.put("id", id); searchvalue.put("crtPage", crtPage);
     Map<String, Object> noticeMap = blogService.noticeList(searchvalue);
     model.addAttribute("noticeMap", noticeMap);
-    
+
     searchvalue.put("search", keyword); searchvalue.put("id", id); searchvalue.put("crtPage", crtPage);
     Map<String, Object> boardMap = blogService.boardList(searchvalue);
     model.addAttribute("boardMap", boardMap);
@@ -157,7 +160,7 @@ public class BlogController {
     // 해더 정보 가져오기
     BlogVo blogVo = blogService.selectUser(id);
     model.addAttribute(blogVo);
-    
+
     // 이력사항 가져오기
     List<ResumeVo> resumeList = blogService.getResumeList(id);
     model.addAttribute("resumeList", resumeList);
@@ -171,16 +174,16 @@ public class BlogController {
 
   //리스트 가져오기
   @RequestMapping(value = "blog_notice/{id}", method = {RequestMethod.GET, RequestMethod.POST})
-  public String blog_noticeboard(@PathVariable("id") String id, 
-								 @RequestParam(value = "keyword", required = false) String keyword, 
-								 @RequestParam(value = "crtPage", required = false, defaultValue = "1") int crtPage, 
+  public String blog_noticeboard(@PathVariable("id") String id,
+								 @RequestParam(value = "keyword", required = false) String keyword,
+								 @RequestParam(value = "crtPage", required = false, defaultValue = "1") int crtPage,
 								 Model model) {
     System.out.println("[TestingController.blog_notice()]");
 
     // 해더 정보 가져오기
     BlogVo blogVo = blogService.selectUser(id);
     model.addAttribute(blogVo);
-    
+
     // 이력사항 가져오기
     List<ResumeVo> resumeList = blogService.getResumeList(id);
     model.addAttribute("resumeList", resumeList);
@@ -202,7 +205,7 @@ public class BlogController {
   // 공지사항 하나 가져오기.
   @RequestMapping(value = "blog_noticeDetail/{id}", method = {RequestMethod.GET, RequestMethod.POST})
   public String blog_noticeDetail(@PathVariable("id") String id, @RequestParam("no") int no,
-							      @RequestParam(value = "keyword", required = false) String keyword, 
+							      @RequestParam(value = "keyword", required = false) String keyword,
 							      @RequestParam(value = "crtPage", required = false, defaultValue = "1") int crtPage,
 							      Model model) {
     System.out.println("[TestingController.blog_notice()]");
@@ -210,7 +213,7 @@ public class BlogController {
     // 해더 정보 가져오기
     BlogVo blogVo = blogService.selectUser(id);
     model.addAttribute("blogVo", blogVo);
-    
+
     // 이력사항 가져오기
     List<ResumeVo> resumeList = blogService.getResumeList(id);
     model.addAttribute("resumeList", resumeList);
@@ -233,52 +236,52 @@ public class BlogController {
 
     return "Blog/blogNoticeDetail";
   }
-  
+
   //포스트 수정 폼
   @RequestMapping(value = "updatePostForm/{id}", method = {RequestMethod.GET, RequestMethod.POST})
-  public String blog_updateForm(@PathVariable("id") String id, 
+  public String blog_updateForm(@PathVariable("id") String id,
 		  						@RequestParam("no") int no,
 		  						Model model) {
 	  System.out.println("[TestingController.blog_updateForm()]");
-	  
+
 	  // 해더 정보 가져오기
 	  BlogVo blogVo = blogService.selectUser(id);
 	  model.addAttribute("blogVo", blogVo);
-	  
+
 	  // 이력사항 가져오기
 	  List<ResumeVo> resumeList = blogService.getResumeList(id);
 	  model.addAttribute("resumeList", resumeList);
-	  
+
 	  NoticeVo noticeVo = blogService.getNotice(no);
 	  model.addAttribute("noticeVo", noticeVo);
-	  
+
 	  return "Blog/blogWriteModifyForm";
   }
-  
+
   //포스트 수정
   @RequestMapping(value = "modifyPost/{id}", method = {RequestMethod.GET, RequestMethod.POST})
-  public String blog_deletePost(@PathVariable("id") String id, 
+  public String blog_deletePost(@PathVariable("id") String id,
 		  						@ModelAttribute NoticeVo noticeVo ) {
 	  System.out.println("[TestingController.blog_modifyPost()]");
-	  
+
 	  blogService.modifyPost(noticeVo);
-	  
+
 	  return "redirect:/blog/blog_main/" + id;
   }
-  
-  
+
+
   //포스트 삭제
   @RequestMapping(value = "deletePost/{id}", method = {RequestMethod.GET, RequestMethod.POST})
-  public String blog_deletePost(@PathVariable("id") String id, 
+  public String blog_deletePost(@PathVariable("id") String id,
 		  						@RequestParam("no") int no) {
 	  System.out.println("[TestingController.blog_deleteform()]");
-	  
+
 	  blogService.deletePost(no);
-	  
+
 	  return "redirect:/blog/blog_main/" + id;
   }
-  
-  
+
+
   //입력 폼
   @RequestMapping(value = "blog_write/{id}", method = {RequestMethod.GET, RequestMethod.POST})
   public String blog_writeform(@PathVariable("id") String id, Model model) {
@@ -287,7 +290,7 @@ public class BlogController {
     // 해더 정보 가져오기
     BlogVo blogVo = blogService.selectUser(id);
     model.addAttribute(blogVo);
-    
+
     // 이력사항 가져오기
     List<ResumeVo> resumeList = blogService.getResumeList(id);
     model.addAttribute("resumeList", resumeList);
@@ -297,31 +300,32 @@ public class BlogController {
 
   //입력 기능
   @RequestMapping(value = "writePost/{id}", method = {RequestMethod.GET, RequestMethod.POST})
-  public String blog_writeform(@PathVariable("id") String id, 
+  public String blog_writeform(@PathVariable("id") String id,
 		  					   @ModelAttribute NoticeVo noticeVo,
 		  					   @RequestParam ("category") int category,
 		  					   @RequestParam(value = "file1", required = false, defaultValue = "0") MultipartFile file) {
     System.out.println("[TestingController.writePost()]");
     System.out.println("파일이 들어오는지: " + file.getOriginalFilename());
     System.out.println("들어온 정보: " + noticeVo);
+    System.out.println("들어온 카테고리: " + category);
 
     if (file.isEmpty()) {
     	blogService.writePost(noticeVo, category);
     } else {
     	blogService.writePostImg(noticeVo, file, category);
     }
-    
+
     return "redirect:/blog/blog_main/" + id;
   }
-  
+
   ////////////////////////////////////////////////////////////////////////////////////////
   //방명록
   ////////////////////////////////////////////////////////////////////////////////////////
-  
+
   //폼
   @RequestMapping(value = "blog_guestbook/{id}", method = {RequestMethod.GET, RequestMethod.POST})
   public String blog_guestbook(@PathVariable("id") String id,
-						       @RequestParam(value = "keyword", required = false) String keyword, 
+						       @RequestParam(value = "keyword", required = false) String keyword,
 						       @RequestParam(value = "crtPage", required = false, defaultValue = "1") int crtPage,
 						       Model model) {
     System.out.println("[TestingController.blog_guestbook()]");
@@ -329,11 +333,11 @@ public class BlogController {
     // 해더 정보 가져오기
     BlogVo blogVo = blogService.selectUser(id);
     model.addAttribute(blogVo);
-    
+
     // 이력사항 가져오기
     List<ResumeVo> resumeList = blogService.getResumeList(id);
     model.addAttribute("resumeList", resumeList);
-    
+
     // 서치 값 맵에 담기(리스트)
     Map<String, Object> searchvalue = new HashMap<String, Object>();
     searchvalue.put("search", keyword);

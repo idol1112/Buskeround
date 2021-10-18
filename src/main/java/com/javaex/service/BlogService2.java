@@ -252,5 +252,58 @@ public class BlogService2 {
 
   }
 
+  /*** 블로그 hit ***/
+  public int blog_hit(String id) {
+
+    return blogDao2.blog_hit(id);
+  }
+
+  /*** 공지사항 최신순 가져오기(안드로이드) ***/
+  public List<PostVo> getNoticeList(int user_no) {
+
+    return blogDao2.getNoticeList(user_no);
+
+  }
+
+  /*** 공지사항 1개 가져오기(안드로이드) ***/
+  public PostVo selectNotice(int post_no) {
+
+    blogDao.updateHit(post_no);
+
+    return blogDao2.selectNotice(post_no);
+
+  }
+
+  /*** 타임라인 최신순 가져오기(안드로이드) ***/
+  public List<PostVo> gettimelineList(int user_no) {
+
+    return blogDao2.getTimelineList(user_no);
+
+  }
+
+  /*** 갤러리 최신순 가져오기(안드로이드) ***/
+  public List<PostVo> getGalleryList(int user_no) {
+
+    return blogDao2.getGalleryList(user_no);
+
+  }
+
+  /*** 갤러리 1개 가져오기(안드로이드) ***/
+  public PostVo selectGallery(int post_no) {
+
+    blogDao.updateHit(post_no);
+
+    return blogDao2.selectGallery(post_no);
+
+  }
+
+  /*** 방명록 최신순 가져오기(안드로이드) ***/
+  public List<PostVo> getCommentList(int user_no) {
+
+
+
+    return blogDao2.getCommentList(user_no);
+
+  }
 
 }

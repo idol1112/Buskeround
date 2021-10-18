@@ -17,6 +17,7 @@ import com.javaex.service.ArtistService;
 import com.javaex.service.BlogService;
 import com.javaex.service.BlogService2;
 import com.javaex.vo.BlogVo;
+import com.javaex.vo.NoticeVo;
 import com.javaex.vo.PostVo;
 import com.javaex.vo.UserVo;
 
@@ -132,7 +133,8 @@ public class ApiBlogController {
   public BlogVo blog_main(@RequestBody UserVo userVo) {
     System.out.println("[현재 위치: ApiBlogController.blog_main]");
 
-    System.out.println("블로그 메인: " + blogService2.blog_android(userVo.getId()));
+    // 블로그 hit
+    blogService2.blog_hit(userVo.getId());
 
     return blogService2.blog_android(userVo.getId());
 
@@ -153,6 +155,93 @@ public class ApiBlogController {
     } else {
       System.out.println("파일이 있습니다.");
       return blogService2.setProfile(user_no, file);
+
+    }
+
+  }
+
+  /*** 공지사항 가져오기(안드로이드) ***/
+  @ResponseBody
+  @RequestMapping(value = "noticeList/{user_no}", method = {RequestMethod.GET, RequestMethod.POST})
+  public List<PostVo> noticeList(@PathVariable("user_no") int user_no) {
+    System.out.println("[현재 위치: BlogController2.noticeList]");
+
+    return blogService2.getNoticeList(user_no);
+
+  }
+
+  /*** 공지사항 1개 가져오기(안드로이드) ***/
+  @ResponseBody
+  @RequestMapping(value = "noticeRead/{post_no}", method = {RequestMethod.GET, RequestMethod.POST})
+  public PostVo noticeRead(@PathVariable("post_no") int post_no) {
+    System.out.println("[현재 위치: BlogController2.noticeRead]");
+
+    return blogService2.selectNotice(post_no);
+
+  }
+
+  /*** 타임라인 가져오기(안드로이드) ***/
+  @ResponseBody
+  @RequestMapping(value = "timelineList/{user_no}", method = {RequestMethod.GET, RequestMethod.POST})
+  public List<PostVo> timelineList(@PathVariable("user_no") int user_no) {
+    System.out.println("[현재 위치: BlogController2.timelineList]");
+
+    return blogService2.gettimelineList(user_no);
+
+  }
+
+  /*** 갤러리 가져오기(안드로이드) ***/
+  @ResponseBody
+  @RequestMapping(value = "galleryList/{user_no}", method = {RequestMethod.GET, RequestMethod.POST})
+  public List<PostVo> galleryList(@PathVariable("user_no") int user_no) {
+    System.out.println("[현재 위치: BlogController2.galleryList]");
+
+    return blogService2.getGalleryList(user_no);
+
+  }
+
+  /*** 갤러리 1개 가져오기(안드로이드) ***/
+  @ResponseBody
+  @RequestMapping(value = "galleryRead/{post_no}", method = {RequestMethod.GET, RequestMethod.POST})
+  public PostVo galleryRead(@PathVariable("post_no") int post_no) {
+    System.out.println("[현재 위치: BlogController2.galleryRead]");
+
+    return blogService2.selectGallery(post_no);
+
+  }
+
+  /*** 방명록 가져오기 ***/
+  @ResponseBody
+  @RequestMapping(value = "commentList/{user_no}", method = {RequestMethod.GET, RequestMethod.POST})
+  public List<PostVo> commentList(@PathVariable("user_no") int user_no) {
+    System.out.println("[현재 위치: BlogController2.commentList]");
+
+    return blogService2.getCommentList(user_no);
+
+  }
+
+  /*** 글 삭제(안드로이드) ***/
+  @RequestMapping(value = "deletePost/{post_no}", method = {RequestMethod.GET, RequestMethod.POST})
+  public void blog_deleteGallery(@PathVariable("post_no") int post_no) {
+    System.out.println("[현재 위치: BlogController2.blog_deleteGallery]");
+
+    blogService.deletePost(post_no);
+
+  }
+
+  /*** 방명록/공지사항 등록(안드로이드) ***/
+  @ResponseBody
+  @RequestMapping(value = "writePost/{id}", method = {RequestMethod.GET, RequestMethod.POST})
+  public void writePost(@RequestParam(value = "file1", required = false) MultipartFile file, @PathVariable("id") String id,
+      @RequestBody NoticeVo noticeVo) {
+    System.out.println("[현재 위치: BlogController2.profile]");
+
+    if (file == null) {
+      System.out.println("파일이 없습니다.");
+      blogService.writePost(noticeVo, noticeVo.getUser_no());
+
+    } else {
+      System.out.println("파일이 있습니다.");
 
     }
 

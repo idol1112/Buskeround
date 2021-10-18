@@ -7,6 +7,8 @@ public class PostVo {
   private int live;
   private int post_no;
   private int category;
+  private String nickname;
+  private String user_img;
   private String title;
   private String content;
   private String reg_date;
@@ -25,13 +27,15 @@ public class PostVo {
     super();
   }
 
-  public PostVo(int user_no, int live, int post_no, int category, String title, String content, String reg_date, double latitude, double longitude,
-      String p_start, String p_end, String p_img, String live_url, int hit, String address, int rn) {
+  public PostVo(int user_no, int live, int post_no, int category, String nickname, String user_img, String title, String content, String reg_date,
+      double latitude, double longitude, String p_start, String p_end, String p_img, String live_url, int hit, String address, int rn) {
     super();
     this.user_no = user_no;
     this.live = live;
     this.post_no = post_no;
     this.category = category;
+    this.nickname = nickname;
+    this.user_img = user_img;
     this.title = title;
     this.content = content;
     this.reg_date = reg_date;
@@ -49,6 +53,22 @@ public class PostVo {
   // 메소드 - GS
   public int getUser_no() {
     return user_no;
+  }
+
+  public String getNickname() {
+    return nickname;
+  }
+
+  public void setNickname(String nickname) {
+    this.nickname = nickname;
+  }
+
+  public String getUser_img() {
+    return user_img;
+  }
+
+  public void setUser_img(String user_img) {
+    this.user_img = user_img;
   }
 
   public int getRn() {
@@ -178,10 +198,10 @@ public class PostVo {
   // 메소드 - 일반
   @Override
   public String toString() {
-    return "PostVo [user_no=" + user_no + ", live=" + live + ", post_no=" + post_no + ", category=" + category + ", title=" + title + ", content="
-        + content + ", reg_date=" + reg_date + ", latitude=" + latitude + ", longitude=" + longitude + ", p_start=" + p_start + ", p_end=" + p_end
-        + ", p_img=" + p_img + ", live_url=" + live_url + ", hit=" + hit + ", address=" + address + ", rn=" + rn + "]";
+    return "PostVo [user_no=" + user_no + ", live=" + live + ", post_no=" + post_no + ", category=" + category + ", nickname=" + nickname
+        + ", user_img=" + user_img + ", title=" + title + ", content=" + content + ", reg_date=" + reg_date + ", latitude=" + latitude
+        + ", longitude=" + longitude + ", p_start=" + p_start + ", p_end=" + p_end + ", p_img=" + p_img + ", live_url=" + live_url + ", hit=" + hit
+        + ", address=" + address + ", rn=" + rn + "]";
   }
-
 
 }

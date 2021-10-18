@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import com.javaex.vo.BlogVo;
+import com.javaex.vo.NoticeVo;
 import com.javaex.vo.PostVo;
 
 @Repository
@@ -159,6 +160,68 @@ public class BlogDao2 {
       return sqlSession.selectOne("post.blog_android", user_no);
 
     }
+
+  }
+
+  /*** 블로그 hit ***/
+  public int blog_hit(String id) {
+    System.out.println("[사용 메소드: BlogDao2.blog_hit()]");
+
+    // User_no 가져오기
+    int user_no = sqlSession.selectOne("blog.getUserNo", id);
+
+    return sqlSession.update("blog.blog_hit", user_no);
+  }
+
+  /*** 공지사항 최신순 가져오기(안드로이드) ***/
+  public List<PostVo> getNoticeList(int user_no) {
+    System.out.println("[사용 메소드: BlogDao2.getNoticeList()]");
+
+    return sqlSession.selectList("post.getNoticeList", user_no);
+
+  }
+
+  /*** 공지사항 1개 가져오기(안드로이드) ***/
+  public PostVo selectNotice(int post_no) {
+    System.out.println("[사용 메소드: BlogDao2.selectNotice()]");
+
+    return sqlSession.selectOne("post.selectNotice", post_no);
+
+  }
+
+  /*** 타임라인 최신순 가져오기(안드로이드) ***/
+  public List<PostVo> getTimelineList(int user_no) {
+    System.out.println("[사용 메소드: BlogDao2.getTimelineList()]");
+
+    return sqlSession.selectList("post.getTimelineList", user_no);
+
+  }
+
+  /*** 갤러리 최신순 가져오기(안드로이드) ***/
+  public List<PostVo> getGalleryList(int user_no) {
+    System.out.println("[사용 메소드: BlogDao2.getGalleryList()]");
+
+    return sqlSession.selectList("post.getGalleryList", user_no);
+
+  }
+
+  /*** 갤러리 1개 가져오기(안드로이드) ***/
+  public PostVo selectGallery(int post_no) {
+    System.out.println("[사용 메소드: BlogDao2.selectGallery()]");
+
+    return sqlSession.selectOne("post.selectGallery", post_no);
+
+  }
+
+  /*** 방명록 최신순 가져오기(안드로이드) ***/
+  public List<PostVo> getCommentList(int user_no) {
+    System.out.println("[사용 메소드: BlogDao2.getCommentList()]");
+
+    NoticeVo noticeVo = new NoticeVo();
+    noticeVo.setUser_no(user_no);
+    noticeVo.setCategory_type(4);
+
+    return sqlSession.selectList("post.selectComment", sqlSession.selectOne("blog.categoryNo", noticeVo));
 
   }
 

@@ -377,22 +377,30 @@
 			    u.live,
 			    u.fan,
 			    u.likes,
-			    p.count
+			    p.hit,
+			    p.count,
+			    p.intro
 			FROM
 			    users  u,
 			    (
 			        SELECT
 			            COUNT(*) count,
-			            p.user_no
+			            p.user_no,
+			            b.hit,
+			            b.intro
 			        FROM
 			            post      p,
-			            category  c
+			            category  c,
+			            blog      b
 			        WHERE
-			                p.category_no = c.category_no
+			                c.user_no = b.user_no
+			            AND p.category_no = c.category_no
 			            AND p.user_no = #{user_no}
 			            AND c.category_type = 4
 			        GROUP BY
-			            p.user_no
+			            p.user_no,
+			            b.hit,
+			            b.intro
 			    )      p
 			WHERE
 			    u.user_no = #{user_no}
@@ -403,19 +411,156 @@
 	<select id="blog_android2" resultType="BlogVo" parameterType="int">
 		<![CDATA[
 			SELECT
-			    user_no,
-			    id,
-			    nickname,
-			    user_img,
-			    genre,
-			    live,
-			    fan,
-			    likes
+			    u.user_no,
+			    u.id,
+			    u.nickname,
+			    u.user_img,
+			    u.genre,
+			    u.live,
+			    u.fan,
+			    u.likes,
+			    b.hit,
+			    b.intro
 			FROM
-			    users
+			    users  u,
+			    blog   b
 			WHERE
-			    user_no = #{user_no}
+			        u.user_no = b.user_no
+			    AND u.user_no = #{user_no}
 		]]>
+	</select>
+
+	<!-- 공지사항 가져오기(안드로이드) -->
+	<select id="getNoticeList" resultType="PostVo" parameterType="int">
+		<![CDATA[
+			SELECT
+			    p.post_no,
+			    p.user_no,
+			    p.title,
+			    p.content,
+			    to_char(p.reg_date, 'YYYY-MM-DD') reg_date,
+			    p.hit
+			FROM
+			    post      p,
+			    category  c
+			WHERE
+			        p.category_no = c.category_no
+			    AND p.user_no = #{user_no}
+			    AND c.category_type = 1
+			ORDER BY
+				p.reg_date DESC
+		]]>
+	</select>
+
+	<!-- 타임라인 가져오기(안드로이드) -->
+	<select id="getTimelineList" resultType="PostVo" parameterType="int">
+		<![CDATA[
+			SELECT
+			    p.post_no,
+			    p.user_no,
+			    p.title,
+			    to_char(p.p_start, 'YYYY. MM. DD"("dy")"') p_start,
+			    p.p_img,
+			    p.live_url
+			FROM
+			    post      p,
+			    category  c
+			WHERE
+			        p.category_no = c.category_no
+			    AND p.user_no = #{user_no}
+			    AND c.category_type = 2
+			ORDER BY
+			    p.p_start DESC
+		]]>
+	</select>
+
+	<!-- 갤러리 가져오기(안드로이드) -->
+	<select id="getGalleryList" resultType="PostVo" parameterType="int">
+		<![CDATA[
+			SELECT
+			    p.post_no,
+			    p.user_no,
+			    p.title,
+			    to_char(p.reg_date, 'YYYY. MM. DD"("dy")"') reg_date,
+			    p.p_img,
+			    p.live_url,
+			    p.hit
+			FROM
+			    post      p,
+			    category  c
+			WHERE
+			        p.category_no = c.category_no
+			    AND p.user_no = #{user_no}
+			    AND c.category_type = 3
+   			ORDER BY
+			    p.reg_date DESC
+		]]>
+	</select>
+
+	<!-- 공지사항 1개 가져오기 -->
+	<select id="selectNotice" parameterType="int" resultType="PostVo">
+    	<![CDATA[
+			SELECT
+			    p.post_no,
+			    u.user_no,
+			    p.title,
+			    u.nickname,
+			    to_char(reg_date, 'YYYY-MM-DD') reg_date,
+			    u.user_img,
+			    p.hit,
+			    p.content
+			FROM
+			    users  u,
+			    post   p
+			WHERE
+			        u.user_no = p.user_no
+			    AND post_no = #{post_no}
+    	]]>
+	</select>
+
+	<!-- 갤러리 1개 가져오기 -->
+	<select id="selectGallery" parameterType="int" resultType="PostVo">
+    	<![CDATA[
+			SELECT
+			    p.post_no,
+			    u.user_no,
+			    p.title,
+			    u.nickname,
+			    to_char(reg_date, 'YYYY-MM-DD') reg_date,
+			    u.user_img,
+			    p.p_img,
+			    p.hit,
+			    p.content
+			FROM
+			    users  u,
+			    post   p
+			WHERE
+			        u.user_no = p.user_no
+			    AND post_no = #{post_no}
+    	]]>
+	</select>
+
+	<!-- 방명록 1개 가져오기 -->
+	<select id="selectComment" parameterType="int" resultType="PostVo">
+    	<![CDATA[
+			SELECT
+				u.nickname,
+				u.user_img,
+			    p.post_no,
+			    p.user_no,
+			    p.title,
+			    p.content,
+			    to_char(p.reg_date, 'YYYY-MM-DD') reg_date,
+			    p.hit
+			FROM
+			    users  u,
+			    post   p
+			WHERE
+			        u.user_no = p.user_no
+			    AND p.category_no = #{no}
+			ORDER BY
+			    p.post_no DESC
+    	]]>
 	</select>
 
 

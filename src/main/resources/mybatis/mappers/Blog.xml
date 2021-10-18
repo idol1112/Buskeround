@@ -21,7 +21,7 @@
 	 	]]>
 
 	</insert>
-	
+
 	<!-- Create Category공지사항 -->
 	<insert id="createCategoryNotice" parameterType="int">
 
@@ -31,7 +31,7 @@
 	 	]]>
 
 	</insert>
-	
+
 	<!-- Create Category타임라인 -->
 	<insert id="createCategoryTimeline" parameterType="int">
 
@@ -41,7 +41,7 @@
 	 	]]>
 
 	</insert>
-	
+
 	<!-- Create Category갤러리 -->
 	<insert id="createCategoryGallery" parameterType="int">
 
@@ -51,8 +51,8 @@
 	 	]]>
 
 	</insert>
-	
-	<!-- Create Category방명록-->
+
+	<!-- Create Category방명록 -->
 	<insert id="createCategoryGuestbook" parameterType="int">
 
 		<![CDATA[
@@ -61,7 +61,7 @@
 	 	]]>
 
 	</insert>
-	
+
 	<!-- Select Blog -->
 	<select id="selectBlog" parameterType="String" resultType="BlogVo">
 		<![CDATA[
@@ -87,70 +87,70 @@
 			    AND id = #{id}
 	 	]]>
 	</select>
-	
+
 	<!-- Blog(Users) Modify -->
 	<update id="usersModify" parameterType="BlogVo">
-		
+
 		<![CDATA[
-		UPDATE users 
-		SET 
+		UPDATE users
+		SET
 			nickname = #{nickname}
-		WHERE 
+		WHERE
 			user_no = #{user_no}
 		]]>
-		
+
 	</update>
-	
-	<!-- Blog(Blog) Modify 이미지--> 
+
+	<!-- Blog(Blog) Modify 이미지 -->
 	<update id="blogModifyImg" parameterType="BlogVo">
-		
+
 		<![CDATA[
-		UPDATE blog 
-		SET 
+		UPDATE blog
+		SET
 			intro = #{intro},
 			banner = #{banner},
 			y_url = #{y_url},
 			i_url = #{i_url},
 			f_url = #{f_url}
-		WHERE 
+		WHERE
 			user_no = #{user_no}
 		]]>
-		
+
 	</update>
-	<!-- Blog(Blog) Modify 이미지 없음-->
+	<!-- Blog(Blog) Modify 이미지 없음 -->
 	<update id="blogModify" parameterType="BlogVo">
-		
+
 		<![CDATA[
-		UPDATE blog 
-		SET 
+		UPDATE blog
+		SET
 			intro = #{intro},
 			y_url = #{y_url},
 			i_url = #{i_url},
 			f_url = #{f_url}
-		WHERE 
+		WHERE
 			user_no = #{user_no}
 		]]>
-		
+
 	</update>
-	
+
 	<!-- Blog(Blog) Modify 이미지삭제 -->
 	<update id="blogModifyDeleteImg" parameterType="BlogVo">
-		
+
 		<![CDATA[
-		UPDATE blog 
-		SET 
+		UPDATE blog
+		SET
 			intro = #{intro},
 			banner = null,
 			y_url = #{y_url},
 			i_url = #{i_url},
 			f_url = #{f_url}
-		WHERE 
+		WHERE
 			user_no = #{user_no}
 		]]>
-		
+
 	</update>
-	
-	<!--  이력사항 리스트 출력 -->
+
+	<!-- 이력사항 리스트 출력 -->
 	<select id="selectResume" resultType="ResumeVo">
 
 		<![CDATA[
@@ -161,45 +161,45 @@
 		where user_no = #{user_no}
 		]]>
 	</select>
-	
+
 	<!-- 이력사항 -->
 	<insert id="resumeInsert" parameterType="java.util.List">
-	
+
 		<![CDATA[
-		INSERT ALL	
+		INSERT ALL
 		]]>
-		
-        <foreach collection="list"  item="index">
+
+		<foreach collection="list" item="index">
            <![CDATA[
 		   INTO resume (resume_no, user_no, resume_content) VALUES (get_seq, #{index.user_no}, #{index.resume_content})
 		   ]]>
-       	</foreach>
-       
+		</foreach>
+
        <![CDATA[
        SELECT 1 FROM DUAL
        ]]>
-    </insert>
-    
-    <!-- 이력삭제 -->
-    <delete id="resumeDelete" parameterType="int">
+	</insert>
+
+	<!-- 이력삭제 -->
+	<delete id="resumeDelete" parameterType="int">
     <![CDATA[
   	  	DELETE FROM resume
 		WHERE user_no = #{user_no}
     ]]>
-    </delete>
-    
-    <!-- Category_no 가져오기 -->
-   	<select id="categoryNo" parameterType="NoticeVo" resultType="int">
+	</delete>
+
+	<!-- Category_no 가져오기 -->
+	<select id="categoryNo" parameterType="NoticeVo" resultType="int">
 	    <![CDATA[
 		    select category_no
 		    from category
 		    where user_no = #{user_no}
 		    and category_type = #{category_type}
 	    ]]>
-    </select>
-    
-    <!-- 공지사항/방명록 등록 -->
-    <insert id="postInsert" parameterType="NoticeVo">
+	</select>
+
+	<!-- 공지사항/방명록 등록 -->
+	<insert id="postInsert" parameterType="NoticeVo">
 		<![CDATA[
 		INSERT INTO post (
 				    post_no,
@@ -209,11 +209,11 @@
 				    content,
 				    reg_date,
 		]]>
-				    <if test="p_img != null">
-				    p_img,
-				    </if>
+		<if test="p_img != null">
+			p_img,
+		</if>
 		<![CDATA[
-				    
+
 				    hit
 				) VALUES (
 				    seq_post_no.NEXTVAL,
@@ -223,17 +223,17 @@
 				    #{content},
 				    sysdate,
 		]]>
-				    <if test="p_img != null">
-				    #{p_img},
-				    </if>
+		<if test="p_img != null">
+			#{p_img},
+		</if>
 		<![CDATA[
 				    0
 				)
 		]]>
-    </insert>
-    
-    <!-- 공지사항 리스트 가져오기 -->
-    <select id="noticeList" resultType="NoticeVo" parameterType="map">
+	</insert>
+
+	<!-- 공지사항 리스트 가져오기 -->
+	<select id="noticeList" resultType="NoticeVo" parameterType="map">
 		<![CDATA[
 			select ort.rn,
 			       ort.post_no,
@@ -268,17 +268,17 @@
 			        where u.user_no = p.user_no
 			        and category_no = #{category_no}
 			]]>
-				<if test="search != null">
-					and( title || u.nickname || content) like '%'||#{search}||'%'
-				</if> 
+		<if test="search != null">
+			and( title || u.nickname || content) like '%'||#{search}||'%'
+		</if>
 			<![CDATA[
 			        order by post_no desc)ot)ort
 			where rn>=#{startRnum}
 			and rn <=#{endRnum}
 			]]>
-    </select>
-    
-    <!-- 조회수 updateHit -->
+	</select>
+
+	<!-- 조회수 updateHit -->
 	<update id='updateHit' parameterType="int">
 		<![CDATA[
 		update post
@@ -286,9 +286,9 @@
 		where post_no = #{no}
 		]]>
 	</update>
-    
-    <!-- 공지사항 1개 가져오기 -->
-    <select id="selectNotice" parameterType="int" resultType="NoticeVo">
+
+	<!-- 공지사항 1개 가져오기 -->
+	<select id="selectNotice" parameterType="int" resultType="NoticeVo">
     	<![CDATA[
     		select post_no,
 	               category_no,
@@ -303,17 +303,17 @@
 	        where u.user_no = p.user_no
 	        and post_no = #{no}
     	]]>
-    </select>
-    
-    <!-- 삭제 -->
-    <delete id="deletePost" parameterType="int">
+	</select>
+
+	<!-- 삭제 -->
+	<delete id="deletePost" parameterType="int">
     	<![CDATA[
     		delete from post
 			where post_no = #{no}
     	]]>
-    </delete>
-    
-    <!-- 수정 -->
+	</delete>
+
+	<!-- 수정 -->
 	<update id="modifyPost" parameterType="NoticeVo">
     	<![CDATA[
     		update post
@@ -322,7 +322,7 @@
 			where post_no = #{post_no}
     	]]>
 	</update>
-	
+
 	<!-- Select Total Count -->
 	<select id="selectTotalCnt" resultType="int" parameterType="map">
 		<![CDATA[
@@ -331,11 +331,11 @@
 			where u.user_no = p.user_no
 			and category_no = #{category_no}
 		]]>
-			<if test="search != null">
-				and( title || u.nickname || content) like '%'||#{search}||'%'
-			</if> 
+		<if test="search != null">
+			and( title || u.nickname || content) like '%'||#{search}||'%'
+		</if>
 	</select>
-	
+
 	<!-- checkLive -->
 	<select id="checkLive" parameterType="String" resultType="postVo">
 		<![CDATA[
@@ -347,10 +347,10 @@
 			where u.user_no = p.user_no
 			and id = #{id}
 			and p_end is null
-			and reg_date is null	
+			and reg_date is null
 		]]>
 	</select>
-	
+
 	<!-- Fan Check -->
 	<select id="fanCheck" resultType="String" parameterType="BlogVo">
 	<![CDATA[
@@ -362,7 +362,7 @@
 		and artist_no =  #{user_no}
 	]]>
 	</select>
-	
+
 	<!-- Like Check -->
 	<select id="likesCheck" resultType="String" parameterType="BlogVo">
 	<![CDATA[
@@ -374,5 +374,16 @@
 		and artist_no =  #{user_no}
 	]]>
 	</select>
-    
+
+	<!-- 블로그 Hit -->
+	<update id="blog_hit" parameterType="int">
+    	<![CDATA[
+			UPDATE blog
+			SET
+			    hit = hit + 1
+			WHERE
+			    user_no = #{user_no}
+    	]]>
+	</update>
+
 </mapper>

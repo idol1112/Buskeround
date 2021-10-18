@@ -20,6 +20,7 @@ public class BlogVo {
   private int artist_no;
   private int live;
   private int count;
+  private int hit;
 
   // Constructor
   public BlogVo() {
@@ -27,7 +28,7 @@ public class BlogVo {
   }
 
   public BlogVo(int user_no, String id, String nickname, String user_img, int genre, String intro, String banner, String y_url, String f_url,
-      String i_url, int likes, boolean likeOk, int fan, boolean fanOk, int artist_no, int live, int count) {
+      String i_url, int likes, boolean likeOk, int fan, boolean fanOk, int artist_no, int live, int count, int hit) {
     super();
     this.user_no = user_no;
     this.id = id;
@@ -46,11 +47,22 @@ public class BlogVo {
     this.artist_no = artist_no;
     this.live = live;
     this.count = count;
+    this.hit = hit;
   }
+
+
 
   // Method G/S
   public int getUser_no() {
     return user_no;
+  }
+
+  public int getHit() {
+    return hit;
+  }
+
+  public void setHit(int hit) {
+    this.hit = hit;
   }
 
   public int getCount() {
@@ -185,12 +197,14 @@ public class BlogVo {
     this.live = live;
   }
 
+
   // Method - Ordinary
   @Override
   public String toString() {
     return "BlogVo [user_no=" + user_no + ", id=" + id + ", nickname=" + nickname + ", user_img=" + user_img + ", genre=" + genre + ", intro=" + intro
         + ", banner=" + banner + ", y_url=" + y_url + ", f_url=" + f_url + ", i_url=" + i_url + ", likes=" + likes + ", likeOk=" + likeOk + ", fan="
-        + fan + ", fanOk=" + fanOk + ", artist_no=" + artist_no + ", live=" + live + ", count=" + count + "]";
+        + fan + ", fanOk=" + fanOk + ", artist_no=" + artist_no + ", live=" + live + ", count=" + count + ", hit=" + hit + "]";
   }
+
 
 }
