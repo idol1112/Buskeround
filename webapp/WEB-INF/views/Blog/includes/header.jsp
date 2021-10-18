@@ -231,7 +231,7 @@
         <div class="thumbnail">
           <div class="img_box">
             <label for="picture">사진 업로드</label>
-            <input type="file" id="file1" name="file1">
+            <input type="file" id="file2" name="file1">
           </div>
         </div>
       </div>
@@ -488,7 +488,7 @@
 			dataType : "json",
 			
 			data : {
-				id : ${blogVo.id}
+				id : "${blogVo.id}"
 				},
 
 			// 성공일 경우 success로 들어오며, 'result'는 응답받은 데이터이다.

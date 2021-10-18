@@ -157,7 +157,7 @@ a:active {text-decoration: none; color: black;}
 	margin-left: 2px;
 }
 
-input[type="file"] {
+#file1 {
     display: none;
 }
 
