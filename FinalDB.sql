@@ -308,7 +308,7 @@ CREATE TABLE users (
 	artist_regdate DATE, /* 아티스트등록일 */
 	user_type CHAR(1), /* 회원구분 */
 	company_type CHAR(1), /* 제휴사여부 */
-	ranking_score VARCHAR(1000) AS (fan * 0.3 + likes * 0.7) /* 아티스트 점수 */
+	ranking_score NUMBER AS (fan * 0.3 + likes * 0.7) /* 아티스트 점수 */
 );
 
 COMMENT ON TABLE users IS '회원';
@@ -951,7 +951,7 @@ insert into users(user_no, id, password, email, nickname, user_img, name, hp, ge
 insert into users(user_no, id, password, email, nickname, user_img, name, hp, gender, birthday, genre, genre_type, live, fan, likes, artist_regdate, user_type, company_type) values(seq_user_no.nextval,'1114','1114','1114@naver.com','아칼리','106.PNG',null,null,null,null,null,null,null,null,null,null,'1','2');
 
 --아티스트들 생성
-insert INTO users(user_no, id, password, email, nickname, user_img, name, hp, gender, birthday, genre, genre_type, live, fan, likes, artist_regdate, user_type, company_type) VALUES (seq_user_no.nextval, 'busker', 'busker123', 'busker@naver.com', '장범준', '10.PNG', '장범준', '010-1204-0235', 'male', '1989-05-16', '1', '인디밴드', '1', 251, 78, sysdate, '2', '1');
+insert INTO users(user_no, id, password, email, nickname, user_img, name, hp, gender, birthday, genre, genre_type, live, fan, likes, artist_regdate, user_type, company_type) VALUES (seq_user_no.nextval, 'busker', 'busker123', 'busker@naver.com', '장범준', '10.jpg', '장범준', '010-1204-0235', 'male', '1989-05-16', '1', '인디밴드', '1', 251, 78, sysdate, '2', '1');
 insert INTO users(user_no, id, password, email, nickname, user_img, name, hp, gender, birthday, genre, genre_type, live, fan, likes, artist_regdate, user_type, company_type) VALUES (seq_user_no.nextval, 'bbb', '1234', 'bbb@naver.com', '워너비', '1.PNG', '홍길동', '010-0000-0000', 'male', '20000101', '1', '솔로', '1', 10, 40, sysdate, '2', '1');
 insert INTO users(user_no, id, password, email, nickname, user_img, name, hp, gender, birthday, genre, genre_type, live, fan, likes, artist_regdate, user_type, company_type) VALUES (seq_user_no.nextval, 'ccc', '1234', 'ccc@naver.com', '박서준', '8.PNG', '박서준', '010-1234-5000', 'male', '19970216', '1', '솔로', '1', 60, 40, sysdate, '2', '1');
 insert INTO users(user_no, id, password, email, nickname, user_img, name, hp, gender, birthday, genre, genre_type, live, fan, likes, artist_regdate, user_type, company_type) VALUES (seq_user_no.nextval, 'ddd', '1234', 'ddd@naver.com', '제니', '52.PNG', '김제니', '010-9978-0345', 'female', '19960520', '2', '솔로가수', '1', 55, 30, sysdate, '2', '1');
@@ -1170,7 +1170,6 @@ INSERT INTO post VALUES (seq_post_no.NEXTVAL, 6, 7, '안녕하세요', NULL, NUL
 INSERT INTO post VALUES (seq_post_no.NEXTVAL, 6, 7, '안녕하세요', NULL, NULL, 33.451486, 126.571199, TO_DATE('2021-10-09 10:26:11','YYYY-MM-DD HH24:MI:SS'), sysdate, 'noimg.png', 'oAS7kmob78s', '하이미디어', NULL);
 INSERT INTO post VALUES (seq_post_no.NEXTVAL, 6, 7, '안녕하세요', NULL, NULL, 33.451549, 126.569021, TO_DATE('2021-10-10 10:26:11','YYYY-MM-DD HH24:MI:SS'), sysdate, 'noimg.png', 'eCyDlclVFSw', '하이미디어', NULL);
 INSERT INTO post VALUES (seq_post_no.NEXTVAL, 6, 7, '안녕하세요', NULL, NULL, 37.49811799802361, 127.02750588725261, TO_DATE('2021-09-01 10:38:11','YYYY-MM-DD HH24:MI:SS'), NULL, 'noimg.png', 'L9AkhIvINKc', '하이미디어', NULL);
-INSERT INTO post VALUES (seq_post_no.NEXTVAL, 6, 7, '안녕하세요', NULL, NULL, 37.49815799802361, 127.02757588725261, TO_DATE('2021-09-01 10:38:11','YYYY-MM-DD HH24:MI:SS'), NULL, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
 INSERT INTO post VALUES (seq_post_no.NEXTVAL, 10, 8, '안녕하세요', NULL, NULL, 37.49809780929831, 127.02651378673552, TO_DATE('2021-09-01 11:06:11','YYYY-MM-DD HH24:MI:SS'), NULL, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
 INSERT INTO post VALUES (seq_post_no.NEXTVAL, 14, 9, '안녕하세요', NULL, NULL, 37.49730915211319, 127.02778535605314, TO_DATE('2021-09-01 12:00:11','YYYY-MM-DD HH24:MI:SS'), NULL, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
 INSERT INTO post VALUES (seq_post_no.NEXTVAL, 18, 10, '안녕하세요', NULL, NULL, 37.49630705835774, 127.02798383651613, TO_DATE('2021-09-01 13:31:11','YYYY-MM-DD HH24:MI:SS'), NULL, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
@@ -1377,8 +1376,8 @@ INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) 
 
 -- 제휴사 등록
 insert into company values(1,'101.PNG','신촌 CGV','서울 서대문구 신촌로 129 아트레온','1544-1122','김덕배','104-81-45690',37.49879182639053, 127.02664971809797);
-insert into company values(2,'102.PNG','신라호텔','서울특별시 중구 동호로 249','02-2233-3131','김창덕','101-11-37840',37.5577797894265,127.00762909337426);
-insert into company values(3,'103.PNG','스타벅스','서울특별시 강남구 강남대로 390','02-1111-1111','박수현','104-52-37620',37.497960743833886,127.0285145402949);
+insert into company values(2,'102.PNG','신라호텔','서울특별시 중구 동호로 249','02-2233-3131','김창덕','101-11-37840',37.497960743833886,127.0285145402949);
+insert into company values(3,'103.PNG','스타벅스','서울특별시 강남구 강남대로 390','02-1111-1111','박수현','104-52-37620',37.5577797894265,127.00762909337426);
 insert into company values(4,'104.PNG','시그니엘','서울특별시 송파구 올림픽로 300 롯데월드타워','02-2222-2222','고라파덕','137-98-32340',37.51319142112977,127.10195564589539);
 insert into company values(5,'105.PNG','에버랜드','경기도 용인시 처인구 포곡읍 에버랜드로 199','02-3333-3333','비에고','199-99-99999',37.29355565476383,127.19979467916205);
 insert into company values(6,'106.PNG','하이미디어','서울특별시 서초구 강남대로 405 통영빌딩','02-4444-4444','아칼리','127-445-30293',37.55649812100385,126.94032867686857);
