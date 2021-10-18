@@ -147,55 +147,55 @@ ALTER TABLE ccnotice
 		KEEP INDEX;
 
 /* 회원 */
-DROP TABLE users 
+DROP TABLE users
 	CASCADE CONSTRAINTS;
 
 /* 블로그 */
-DROP TABLE blog 
+DROP TABLE blog
 	CASCADE CONSTRAINTS;
 
 /* 제휴사 */
-DROP TABLE company 
+DROP TABLE company
 	CASCADE CONSTRAINTS;
 
 /* 공연날짜 */
-DROP TABLE buskingDate 
+DROP TABLE buskingDate
 	CASCADE CONSTRAINTS;
 
 /* 게시글 */
-DROP TABLE post 
+DROP TABLE post
 	CASCADE CONSTRAINTS;
 
 /* 카테고리 */
-DROP TABLE category 
+DROP TABLE category
 	CASCADE CONSTRAINTS;
 
 /* 공연장 */
-DROP TABLE stage 
+DROP TABLE stage
 	CASCADE CONSTRAINTS;
 
 /* 팬되기 */
-DROP TABLE fan 
+DROP TABLE fan
 	CASCADE CONSTRAINTS;
 
 /* 공연시간 */
-DROP TABLE buskingTime 
+DROP TABLE buskingTime
 	CASCADE CONSTRAINTS;
 
 /* 버스킹신청 */
-DROP TABLE buskingApp 
+DROP TABLE buskingApp
 	CASCADE CONSTRAINTS;
 
 /* 좋아요 */
-DROP TABLE likes 
+DROP TABLE likes
 	CASCADE CONSTRAINTS;
 
 /* 이력사항 */
-DROP TABLE resume 
+DROP TABLE resume
 	CASCADE CONSTRAINTS;
 
 /* 공지사항 */
-DROP TABLE ccnotice 
+DROP TABLE ccnotice
 	CASCADE CONSTRAINTS;
 
 /** 시퀀스 삭제 **/
@@ -951,7 +951,7 @@ insert into users(user_no, id, password, email, nickname, user_img, name, hp, ge
 insert into users(user_no, id, password, email, nickname, user_img, name, hp, gender, birthday, genre, genre_type, live, fan, likes, artist_regdate, user_type, company_type) values(seq_user_no.nextval,'1114','1114','1114@naver.com','아칼리','106.PNG',null,null,null,null,null,null,null,null,null,null,'1','2');
 
 --아티스트들 생성
-insert INTO users(user_no, id, password, email, nickname, user_img, name, hp, gender, birthday, genre, genre_type, live, fan, likes, artist_regdate, user_type, company_type) VALUES (seq_user_no.nextval, 'aaa', '1234', 'aaa@naver.com', '츄', '10.PNG', '김밥통', '010-1234-1234', null, '19980505', '2', '왁킹댄스', '1', 15, 15, sysdate, '2', '1');
+insert INTO users(user_no, id, password, email, nickname, user_img, name, hp, gender, birthday, genre, genre_type, live, fan, likes, artist_regdate, user_type, company_type) VALUES (seq_user_no.nextval, 'busker', 'busker123', 'busker@naver.com', '장범준', '10.PNG', '장범준', '010-1204-0235', 'male', '1989-05-16', '1', '인디밴드', '1', 251, 78, sysdate, '2', '1');
 insert INTO users(user_no, id, password, email, nickname, user_img, name, hp, gender, birthday, genre, genre_type, live, fan, likes, artist_regdate, user_type, company_type) VALUES (seq_user_no.nextval, 'bbb', '1234', 'bbb@naver.com', '워너비', '1.PNG', '홍길동', '010-0000-0000', 'male', '20000101', '1', '솔로', '1', 10, 40, sysdate, '2', '1');
 insert INTO users(user_no, id, password, email, nickname, user_img, name, hp, gender, birthday, genre, genre_type, live, fan, likes, artist_regdate, user_type, company_type) VALUES (seq_user_no.nextval, 'ccc', '1234', 'ccc@naver.com', '박서준', '8.PNG', '박서준', '010-1234-5000', 'male', '19970216', '1', '솔로', '1', 60, 40, sysdate, '2', '1');
 insert INTO users(user_no, id, password, email, nickname, user_img, name, hp, gender, birthday, genre, genre_type, live, fan, likes, artist_regdate, user_type, company_type) VALUES (seq_user_no.nextval, 'ddd', '1234', 'ddd@naver.com', '제니', '52.PNG', '김제니', '010-9978-0345', 'female', '19960520', '2', '솔로가수', '1', 55, 30, sysdate, '2', '1');
@@ -974,7 +974,7 @@ insert INTO users(user_no, id, password, email, nickname, user_img, name, hp, ge
 
 --블로그 생성
 insert into blog values(1, '안녕하세요 김덕배의 블로그에 오신것을 환영합니다.', null, 'https://www.youtube.com/', 'https://www.facebook.com/', 'https://www.instagram.com/', 0);
-insert into blog values(7, '안녕하세요 이달의 소녀의 블로그에 오신것을 환영합니다.', null, 'https://www.youtube.com/', 'https://www.facebook.com/', 'https://www.instagram.com/', 0);
+insert into blog values(7, '안녕하세요. 장범준의 블로그에 오신 것을 환영합니다.', null, 'https://www.youtube.com/channel/UCxd9m2kFCFN1nIWB8ZOscqg', 'https://www.facebook.com/', 'https://www.instagram.com/', 0);
 insert into blog values(8, '안녕하세요 워너비의 블로그에 오신것을 환영합니다.', null, 'https://www.youtube.com/', 'https://www.facebook.com/', 'https://www.instagram.com/', 0);
 insert into blog values(9, '안녕하세요 박서준의 블로그에 오신것을 환영합니다.', null, 'https://www.youtube.com/', 'https://www.facebook.com/', 'https://www.instagram.com/', 0);
 insert into blog values(10, '안녕하세요 재니의 블로그에 오신것을 환영합니다.', null, 'https://www.youtube.com/', 'https://www.facebook.com/', 'https://www.instagram.com/', 0);
@@ -1083,113 +1083,102 @@ insert into category values(seq_cate_no.nextval, 26, 3, '갤러리');
 insert into category values(seq_cate_no.nextval, 26, 4, '방명록');
 
 --이력사항
-insert into resume values(seq_resume_no.nextval, 1, '2000년 그래미 어워즈 수상');
-insert into resume values(seq_resume_no.nextval, 1, '2014 대한민국 연예예술상');
-insert into resume values(seq_resume_no.nextval, 1, '2015 골든디스크 어워즈');
-insert into resume values(seq_resume_no.nextval, 1, '2015 대한민국 연예대상');
-insert into resume values(seq_resume_no.nextval, 1, '2019 하이원 서울가요대상');
-insert into resume values(seq_resume_no.nextval, 1, '제9회 가온 차트 K-POP');
+insert into resume values(seq_resume_no.nextval, 7, '2000년 그래미 어워즈 수상');
+insert into resume values(seq_resume_no.nextval, 7, '2014 대한민국 연예예술상');
+insert into resume values(seq_resume_no.nextval, 7, '2015 골든디스크 어워즈');
+insert into resume values(seq_resume_no.nextval, 7, '2015 대한민국 연예대상');
 
 --공지사항
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 1, 1, 'Title 제목 공지사항 테스팅: 2021-10-22 공연 예정 공지.', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 1, 1, 'Title 제목 공지사항 테스팅: 2021-10-22 공연 예정 공지.', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 1, 1, 'Title 제목 공지사항 테스팅: 2021-10-22 공연 예정 공지.', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 1, 1, 'Title 제목 공지사항 테스팅: 2021-10-22 공연 예정 공지.', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 1, 1, 'Title 제목 공지사항 테스팅: 2021-10-22 공연 예정 공지.', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 1, 1, 'Title 제목 공지사항 테스팅: 2021-10-22 공연 예정 공지.', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 1, 1, 'Title 제목 공지사항 테스팅: 2021-10-22 공연 예정 공지.', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 1, 1, 'Title 제목 공지사항 테스팅: 2021-10-22 공연 예정 공지.', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 1, 1, 'Title 제목 공지사항 테스팅: 2021-10-22 공연 예정 공지.', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 1, 1, 'Title 제목 공지사항 테스팅: 2021-10-22 공연 예정 공지.', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 1, 1, 'Title 제목 공지사항 테스팅: 2021-10-22 공연 예정 공지.', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 1, 1, 'Title 제목 공지사항 테스팅: 2021-10-22 공연 예정 공지.', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 1, 1, 'Title 제목 공지사항 테스팅: 2021-10-22 공연 예정 공지.', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 1, 1, 'Title 제목 공지사항 테스팅: 2021-10-22 공연 예정 공지.', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 1, 1, 'Title 제목 공지사항 테스팅: 2021-10-22 공연 예정 공지.', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 1, 1, 'Title 제목 공지사항 테스팅: 2021-10-22 공연 예정 공지.', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 1, 1, 'Title 제목 공지사항 테스팅: 2021-10-22 공연 예정 공지.', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 1, 1, 'Title 제목 공지사항 테스팅: 2021-10-22 공연 예정 공지.', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 1, 1, 'Title 제목 공지사항 테스팅: 2021-10-22 공연 예정 공지.', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 1, 1, 'Title 제목 공지사항 테스팅: 2021-10-22 공연 예정 공지.', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 1, 1, 'Title 제목 공지사항 테스팅: 2021-10-22 공연 예정 공지.', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 1, 1, 'Title 제목 공지사항 테스팅: 2021-10-22 공연 예정 공지.', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 1, 1, 'Title 제목 공지사항 테스팅: 2021-10-22 공연 예정 공지.', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 1, 1, 'Title 제목 공지사항 테스팅: 2021-10-22 공연 예정 공지.', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 1, 1, 'Title 제목 공지사항 테스팅: 2021-10-22 공연 예정 공지.', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 1, 1, 'Title 제목 공지사항 테스팅: 2021-10-22 공연 예정 공지.', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 1, 1, 'Title 제목 공지사항 테스팅: 2021-10-22 공연 예정 공지.', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 1, 1, 'Title 제목 공지사항 테스팅: 2021-10-22 공연 예정 공지.', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 1, 1, 'Title 제목 공지사항 테스팅: 2021-10-22 공연 예정 공지.', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 1, 1, 'Title 제목 공지사항 테스팅: 2021-10-22 공연 예정 공지.', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 1, 1, 'Title 제목 공지사항 테스팅: 2021-10-22 공연 예정 공지.', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 1, 1, 'Title 제목 공지사항 테스팅: 2021-10-22 공연 예정 공지.', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 1, 1, 'Title 제목 공지사항 테스팅: 2021-10-22 공연 예정 공지.', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 1, 1, 'Title 제목 공지사항 테스팅: 2021-10-22 공연 예정 공지.', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 1, 1, 'Title 제목 공지사항 테스팅: 2021-10-22 공연 예정 공지.', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 1, 1, 'Title 제목 공지사항 테스팅: 2021-10-22 공연 예정 공지.', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 1, 1, 'Title 제목 공지사항 테스팅: 2021-10-22 공연 예정 공지.', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 1, 1, 'Title 제목 공지사항 테스팅: 2021-10-22 공연 예정 공지.', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 1, 1, 'Title 제목 공지사항 테스팅: 2021-10-22 공연 예정 공지.', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 1, 1, 'Title 제목 공지사항 테스팅: 2021-10-22 공연 예정 공지.', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 1, 1, 'Title 제목 공지사항 테스팅: 2021-10-22 공연 예정 공지.', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 1, 1, 'Title 제목 공지사항 테스팅: 2021-10-22 공연 예정 공지.', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 1, 1, 'Title 제목 공지사항 테스팅: 2021-10-22 공연 예정 공지.', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 1, 1, 'Title 제목 공지사항 테스팅: 2021-10-22 공연 예정 공지.', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 1, 1, 'Title 제목 공지사항 테스팅: 2021-10-22 공연 예정 공지.', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 1, 1, 'Title 제목 공지사항 테스팅: 2021-10-22 공연 예정 공지.', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 1, 1, 'Title 제목 공지사항 테스팅: 2021-10-22 공연 예정 공지.', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 1, 1, 'Title 제목 공지사항 테스팅: 2021-10-22 공연 예정 공지.', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 1, 1, 'Title 제목 공지사항 테스팅: 2021-10-22 공연 예정 공지.', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 1, 1, 'Title 제목 공지사항 테스팅: 2021-10-22 공연 예정 공지.', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 1, 1, 'Title 제목 공지사항 테스팅: 2021-10-22 공연 예정 공지.', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 1, 1, 'Title 제목 공지사항 테스팅: 2021-10-22 공연 예정 공지.', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 1, 1, 'Title 제목 공지사항 테스팅: 2021-10-22 공연 예정 공지.', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 1, 1, 'Title 제목 공지사항 테스팅: 2021-10-22 공연 예정 공지.', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 1, 1, 'Title 제목 공지사항 테스팅: 2021-10-22 공연 예정 공지.', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 1, 1, 'Title 제목 공지사항 테스팅: 2021-10-22 공연 예정 공지.', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 1, 1, 'Title 제목 공지사항 테스팅: 2021-10-22 공연 예정 공지.', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 1, 1, 'Title 제목 공지사항 테스팅: 2021-10-22 공연 예정 공지.', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 1, 1, 'Title 제목 공지사항 테스팅: 2021-10-22 공연 예정 공지.', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 1, 1, 'Title 제목 공지사항 테스팅: 2021-10-22 공연 예정 공지.', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 1, 1, 'Title 제목 공지사항 테스팅: 2021-10-22 공연 예정 공지.', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 1, 1, 'Title 제목 공지사항 테스팅: 2021-10-22 공연 예정 공지.', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 1, 1, 'Title 제목 공지사항 테스팅: 2021-10-22 공연 예정 공지.', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 1, 1, 'Title 제목 공지사항 테스팅: 2021-10-22 공연 예정 공지.', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 1, 1, 'Title 제목 공지사항 테스팅: 2021-10-22 공연 예정 공지.', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 1, 1, 'Title 제목 공지사항 테스팅: 2021-10-22 공연 예정 공지.', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 1, 1, 'Title 제목 공지사항 테스팅: 2021-10-22 공연 예정 공지.', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 1, 1, 'Title 제목 공지사항 테스팅: 2021-10-22 공연 예정 공지.', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 5, 7, '아르코예술극장 개관 40주년 기념 아카이브 프로젝트 <밤의 플랫폼>', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 5, 7, '아르코예술극장 개관 40주년 기념 아카이브 프로젝트 <밤의 플랫폼>', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 5, 7, '아르코예술극장 개관 40주년 기념 아카이브 프로젝트 <밤의 플랫폼>', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 5, 7, '아르코예술극장 개관 40주년 기념 아카이브 프로젝트 <밤의 플랫폼>', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 5, 7, '아르코예술극장 개관 40주년 기념 아카이브 프로젝트 <밤의 플랫폼>', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 5, 7, '아르코예술극장 개관 40주년 기념 아카이브 프로젝트 <밤의 플랫폼>', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 5, 7, '아르코예술극장 개관 40주년 기념 아카이브 프로젝트 <밤의 플랫폼>', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 5, 7, '아르코예술극장 개관 40주년 기념 아카이브 프로젝트 <밤의 플랫폼>', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 5, 7, '아르코예술극장 개관 40주년 기념 아카이브 프로젝트 <밤의 플랫폼>', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 5, 7, '아르코예술극장 개관 40주년 기념 아카이브 프로젝트 <밤의 플랫폼>', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 5, 7, '아르코예술극장 개관 40주년 기념 아카이브 프로젝트 <밤의 플랫폼>', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 5, 7, '아르코예술극장 개관 40주년 기념 아카이브 프로젝트 <밤의 플랫폼>', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 5, 7, '아르코예술극장 개관 40주년 기념 아카이브 프로젝트 <밤의 플랫폼>', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 5, 7, '아르코예술극장 개관 40주년 기념 아카이브 프로젝트 <밤의 플랫폼>', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 5, 7, '아르코예술극장 개관 40주년 기념 아카이브 프로젝트 <밤의 플랫폼>', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 5, 7, '아르코예술극장 개관 40주년 기념 아카이브 프로젝트 <밤의 플랫폼>', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 5, 7, '아르코예술극장 개관 40주년 기념 아카이브 프로젝트 <밤의 플랫폼>', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 5, 7, '아르코예술극장 개관 40주년 기념 아카이브 프로젝트 <밤의 플랫폼>', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 5, 7, '아르코예술극장 개관 40주년 기념 아카이브 프로젝트 <밤의 플랫폼>', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 5, 7, '아르코예술극장 개관 40주년 기념 아카이브 프로젝트 <밤의 플랫폼>', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 5, 7, '아르코예술극장 개관 40주년 기념 아카이브 프로젝트 <밤의 플랫폼>', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 5, 7, '아르코예술극장 개관 40주년 기념 아카이브 프로젝트 <밤의 플랫폼>', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 5, 7, '아르코예술극장 개관 40주년 기념 아카이브 프로젝트 <밤의 플랫폼>', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 5, 7, '아르코예술극장 개관 40주년 기념 아카이브 프로젝트 <밤의 플랫폼>', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 5, 7, '아르코예술극장 개관 40주년 기념 아카이브 프로젝트 <밤의 플랫폼>', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 5, 7, '아르코예술극장 개관 40주년 기념 아카이브 프로젝트 <밤의 플랫폼>', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 5, 7, '아르코예술극장 개관 40주년 기념 아카이브 프로젝트 <밤의 플랫폼>', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 5, 7, '아르코예술극장 개관 40주년 기념 아카이브 프로젝트 <밤의 플랫폼>', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 5, 7, '아르코예술극장 개관 40주년 기념 아카이브 프로젝트 <밤의 플랫폼>', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 5, 7, '아르코예술극장 개관 40주년 기념 아카이브 프로젝트 <밤의 플랫폼>', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 5, 7, '아르코예술극장 개관 40주년 기념 아카이브 프로젝트 <밤의 플랫폼>', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 5, 7, '아르코예술극장 개관 40주년 기념 아카이브 프로젝트 <밤의 플랫폼>', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 5, 7, '아르코예술극장 개관 40주년 기념 아카이브 프로젝트 <밤의 플랫폼>', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 5, 7, '아르코예술극장 개관 40주년 기념 아카이브 프로젝트 <밤의 플랫폼>', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 5, 7, '아르코예술극장 개관 40주년 기념 아카이브 프로젝트 <밤의 플랫폼>', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 5, 7, '아르코예술극장 개관 40주년 기념 아카이브 프로젝트 <밤의 플랫폼>', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 5, 7, '아르코예술극장 개관 40주년 기념 아카이브 프로젝트 <밤의 플랫폼>', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 5, 7, '아르코예술극장 개관 40주년 기념 아카이브 프로젝트 <밤의 플랫폼>', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 5, 7, '아르코예술극장 개관 40주년 기념 아카이브 프로젝트 <밤의 플랫폼>', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 5, 7, '아르코예술극장 개관 40주년 기념 아카이브 프로젝트 <밤의 플랫폼>', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 5, 7, '아르코예술극장 개관 40주년 기념 아카이브 프로젝트 <밤의 플랫폼>', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 5, 7, '아르코예술극장 개관 40주년 기념 아카이브 프로젝트 <밤의 플랫폼>', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 5, 7, '아르코예술극장 개관 40주년 기념 아카이브 프로젝트 <밤의 플랫폼>', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 5, 7, '아르코예술극장 개관 40주년 기념 아카이브 프로젝트 <밤의 플랫폼>', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 5, 7, '아르코예술극장 개관 40주년 기념 아카이브 프로젝트 <밤의 플랫폼>', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 5, 7, '아르코예술극장 개관 40주년 기념 아카이브 프로젝트 <밤의 플랫폼>', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 5, 7, '아르코예술극장 개관 40주년 기념 아카이브 프로젝트 <밤의 플랫폼>', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 5, 7, '아르코예술극장 개관 40주년 기념 아카이브 프로젝트 <밤의 플랫폼>', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 5, 7, '아르코예술극장 개관 40주년 기념 아카이브 프로젝트 <밤의 플랫폼>', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 5, 7, '아르코예술극장 개관 40주년 기념 아카이브 프로젝트 <밤의 플랫폼>', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 5, 7, '아르코예술극장 개관 40주년 기념 아카이브 프로젝트 <밤의 플랫폼>', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 5, 7, '아르코예술극장 개관 40주년 기념 아카이브 프로젝트 <밤의 플랫폼>', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 5, 7, '아르코예술극장 개관 40주년 기념 아카이브 프로젝트 <밤의 플랫폼>', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 5, 7, '아르코예술극장 개관 40주년 기념 아카이브 프로젝트 <밤의 플랫폼>', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 5, 7, '아르코예술극장 개관 40주년 기념 아카이브 프로젝트 <밤의 플랫폼>', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 5, 7, '아르코예술극장 개관 40주년 기념 아카이브 프로젝트 <밤의 플랫폼>', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 5, 7, '아르코예술극장 개관 40주년 기념 아카이브 프로젝트 <밤의 플랫폼>', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 5, 7, '아르코예술극장 개관 40주년 기념 아카이브 프로젝트 <밤의 플랫폼>', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 5, 7, '아르코예술극장 개관 40주년 기념 아카이브 프로젝트 <밤의 플랫폼>', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 5, 7, '아르코예술극장 개관 40주년 기념 아카이브 프로젝트 <밤의 플랫폼>', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 5, 7, '아르코예술극장 개관 40주년 기념 아카이브 프로젝트 <밤의 플랫폼>', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 5, 7, '아르코예술극장 개관 40주년 기념 아카이브 프로젝트 <밤의 플랫폼>', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 5, 7, '아르코예술극장 개관 40주년 기념 아카이브 프로젝트 <밤의 플랫폼>', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 5, 7, '아르코예술극장 개관 40주년 기념 아카이브 프로젝트 <밤의 플랫폼>', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 5, 7, '아르코예술극장 개관 40주년 기념 아카이브 프로젝트 <밤의 플랫폼>', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 5, 7, '아르코예술극장 개관 40주년 기념 아카이브 프로젝트 <밤의 플랫폼>', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 5, 7, '아르코예술극장 개관 40주년 기념 아카이브 프로젝트 <밤의 플랫폼>', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 5, 7, '아르코예술극장 개관 40주년 기념 아카이브 프로젝트 <밤의 플랫폼>', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
 
 --Post (timeline)
-INSERT INTO post VALUES (seq_post_no.NEXTVAL, 2, 1, '안녕하세요', NULL, NULL, 33.451486, 126.571199, TO_DATE('2021-10-01 10:26:11','YYYY-MM-DD HH24:MI:SS'), sysdate, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
-INSERT INTO post VALUES (seq_post_no.NEXTVAL, 2, 1, '안녕하세요', NULL, NULL, 33.451549, 126.569021, TO_DATE('2021-10-02 10:26:11','YYYY-MM-DD HH24:MI:SS'), sysdate, 'noimg.png', '1c8dBrt-OUg', '하이미디어', NULL);
-INSERT INTO post VALUES (seq_post_no.NEXTVAL, 2, 1, '안녕하세요', NULL, NULL, 33.453160, 126.569815, TO_DATE('2021-10-03 10:26:11','YYYY-MM-DD HH24:MI:SS'), sysdate, 'noimg.png', 'tVW9XcC34aA', '하이미디어', NULL);
-INSERT INTO post VALUES (seq_post_no.NEXTVAL, 2, 1, '안녕하세요', NULL, NULL, 33.454189, 126.571843, TO_DATE('2021-10-04 10:26:11','YYYY-MM-DD HH24:MI:SS'), sysdate, 'noimg.png', 'IJgRq9LJu8g', '하이미디어', NULL);
-INSERT INTO post VALUES (seq_post_no.NEXTVAL, 2, 1, '안녕하세요', NULL, NULL, 33.454977, 126.569000, TO_DATE('2021-10-05 10:26:11','YYYY-MM-DD HH24:MI:SS'), sysdate, 'noimg.png', 'vYw6-1znJ8o', '하이미디어', NULL);
-INSERT INTO post VALUES (seq_post_no.NEXTVAL, 2, 1, '안녕하세요', NULL, NULL, 33.453187, 126.566779, TO_DATE('2021-10-06 10:26:11','YYYY-MM-DD HH24:MI:SS'), sysdate, 'noimg.png', 'B61nm9OHt5A', '하이미디어', NULL);
-INSERT INTO post VALUES (seq_post_no.NEXTVAL, 2, 1, '안녕하세요', NULL, NULL, 33.449633, 126.570597, TO_DATE('2021-10-07 10:26:11','YYYY-MM-DD HH24:MI:SS'), sysdate, 'noimg.png', '0OPQxgtarQk', '하이미디어', NULL);
-INSERT INTO post VALUES (seq_post_no.NEXTVAL, 2, 1, '안녕하세요', NULL, NULL, 33.448344, 126.573828, TO_DATE('2021-10-08 10:26:11','YYYY-MM-DD HH24:MI:SS'), sysdate, 'noimg.png', 'VoNhIx-roLQ', '하이미디어', NULL);
-INSERT INTO post VALUES (seq_post_no.NEXTVAL, 2, 1, '안녕하세요', NULL, NULL, 33.451486, 126.571199, TO_DATE('2021-10-09 10:26:11','YYYY-MM-DD HH24:MI:SS'), sysdate, 'noimg.png', '_RQNlbwJfIM', '하이미디어', NULL);
-INSERT INTO post VALUES (seq_post_no.NEXTVAL, 2, 1, '안녕하세요', NULL, NULL, 33.451549, 126.569021, TO_DATE('2021-10-10 10:26:11','YYYY-MM-DD HH24:MI:SS'), sysdate, 'noimg.png', 'wLo3B9yF2tA', '하이미디어', NULL);
-INSERT INTO post VALUES (seq_post_no.NEXTVAL, 2, 1, '안녕하세요', NULL, NULL, 33.453160, 126.569815, TO_DATE('2021-10-11 10:26:11','YYYY-MM-DD HH24:MI:SS'), sysdate, 'noimg.png', '48y7mAQGxzM', '하이미디어', NULL);
-INSERT INTO post VALUES (seq_post_no.NEXTVAL, 2, 1, '안녕하세요', NULL, NULL, 33.454189, 126.571843, TO_DATE('2021-10-12 10:26:11','YYYY-MM-DD HH24:MI:SS'), sysdate, 'noimg.png', 'Iu-NVopNDKU', '하이미디어', NULL);
-INSERT INTO post VALUES (seq_post_no.NEXTVAL, 2, 1, '안녕하세요', NULL, NULL, 33.454977, 126.569000, TO_DATE('2021-10-13 10:26:11','YYYY-MM-DD HH24:MI:SS'), sysdate, 'noimg.png', 'KQIsk0ba5q0', '하이미디어', NULL);
-INSERT INTO post VALUES (seq_post_no.NEXTVAL, 2, 1, '안녕하세요', NULL, NULL, 33.453187, 126.566779, TO_DATE('2021-10-14 10:26:11','YYYY-MM-DD HH24:MI:SS'), sysdate, 'noimg.png', 'kkjhqJ55I1I', '하이미디어', NULL);
-INSERT INTO post VALUES (seq_post_no.NEXTVAL, 2, 1, '안녕하세요', NULL, NULL, 33.449633, 126.570597, TO_DATE('2021-10-15 10:26:11','YYYY-MM-DD HH24:MI:SS'), sysdate, 'noimg.png', 'wEJd2RyGm8Q', '하이미디어', NULL);
-INSERT INTO post VALUES (seq_post_no.NEXTVAL, 2, 1, '안녕하세요', NULL, NULL, 33.448344, 126.573828, TO_DATE('2021-10-16 10:26:11','YYYY-MM-DD HH24:MI:SS'), sysdate, 'noimg.png', 'g0cDp07uYP0', '하이미디어', NULL);
-INSERT INTO post VALUES (seq_post_no.NEXTVAL, 2, 1, '안녕하세요', NULL, NULL, 33.448344, 126.573828, TO_DATE('2021-10-17 10:26:11','YYYY-MM-DD HH24:MI:SS'), sysdate, 'noimg.png', 'deUgUoJ4z5I', '하이미디어', NULL);
-INSERT INTO post VALUES (seq_post_no.NEXTVAL, 2, 1, '안녕하세요', NULL, NULL, 33.448344, 126.573828, TO_DATE('2021-10-18 10:26:11','YYYY-MM-DD HH24:MI:SS'), sysdate, 'noimg.png', 'Sv-BxH3SVS8', '하이미디어', NULL);
-INSERT INTO post VALUES (seq_post_no.NEXTVAL, 2, 1, '안녕하세요', NULL, NULL, 33.448344, 126.573828, TO_DATE('2021-10-19 10:26:11','YYYY-MM-DD HH24:MI:SS'), sysdate, 'noimg.png', '-8TfZKtLnf0', '하이미디어', NULL);
-INSERT INTO post VALUES (seq_post_no.NEXTVAL, 2, 1, '안녕하세요', NULL, NULL, 33.448344, 126.573828, TO_DATE('2021-10-20 10:26:11','YYYY-MM-DD HH24:MI:SS'), sysdate, 'noimg.png', 'yO28Z5_Eyls', '하이미디어', NULL);
-INSERT INTO post VALUES (seq_post_no.NEXTVAL, 6, 7, '안녕하세요', NULL, NULL, 33.451486, 126.571199, TO_DATE('2021-09-01 10:38:11','YYYY-MM-DD HH24:MI:SS'), NULL, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
-INSERT INTO post VALUES (seq_post_no.NEXTVAL, 10, 8, '안녕하세요', NULL, NULL, 33.451549, 126.569021, TO_DATE('2021-09-01 11:06:11','YYYY-MM-DD HH24:MI:SS'), NULL, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
-INSERT INTO post VALUES (seq_post_no.NEXTVAL, 14, 9, '안녕하세요', NULL, NULL, 33.453160, 126.569815, TO_DATE('2021-09-01 12:00:11','YYYY-MM-DD HH24:MI:SS'), NULL, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
-INSERT INTO post VALUES (seq_post_no.NEXTVAL, 18, 10, '안녕하세요', NULL, NULL, 33.454189, 126.571843, TO_DATE('2021-09-01 13:31:11','YYYY-MM-DD HH24:MI:SS'), NULL, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
-INSERT INTO post VALUES (seq_post_no.NEXTVAL, 22, 11, '안녕하세요', NULL, NULL, 33.454977, 126.569000, TO_DATE('2021-09-01 14:58:11','YYYY-MM-DD HH24:MI:SS'), NULL, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
-INSERT INTO post VALUES (seq_post_no.NEXTVAL, 26, 12, '안녕하세요', NULL, NULL, 33.453187, 126.566779, TO_DATE('2021-09-01 16:41:11','YYYY-MM-DD HH24:MI:SS'), NULL, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
-INSERT INTO post VALUES (seq_post_no.NEXTVAL, 30, 13, '안녕하세요', NULL, NULL, 33.449633, 126.570597, TO_DATE('2021-09-01 17:45:11','YYYY-MM-DD HH24:MI:SS'), NULL, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
-INSERT INTO post VALUES (seq_post_no.NEXTVAL, 34, 14, '안녕하세요', NULL, NULL, 33.448344, 126.573828, TO_DATE('2021-09-01 21:29:11','YYYY-MM-DD HH24:MI:SS'), NULL, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
-INSERT INTO post VALUES (seq_post_no.NEXTVAL, 38, 15, '안녕하세요', NULL, NULL, 33.448944, 126.569601, TO_DATE('2021-09-01 23:05:11','YYYY-MM-DD HH24:MI:SS'), NULL, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
+INSERT INTO post VALUES (seq_post_no.NEXTVAL, 6, 7, '안녕하세요', NULL, NULL, 33.451486, 126.571199, TO_DATE('2021-10-01 10:26:11','YYYY-MM-DD HH24:MI:SS'), sysdate, 'noimg.png', 'w9JE8b-84UI', '하이미디어', NULL);
+INSERT INTO post VALUES (seq_post_no.NEXTVAL, 6, 7, '안녕하세요', NULL, NULL, 33.451549, 126.569021, TO_DATE('2021-10-02 10:26:11','YYYY-MM-DD HH24:MI:SS'), sysdate, 'noimg.png', 'L9AkhIvINKc', '하이미디어', NULL);
+INSERT INTO post VALUES (seq_post_no.NEXTVAL, 6, 7, '안녕하세요', NULL, NULL, 33.453160, 126.569815, TO_DATE('2021-10-03 10:26:11','YYYY-MM-DD HH24:MI:SS'), sysdate, 'noimg.png', 'RRwfLIvyspw', '하이미디어', NULL);
+INSERT INTO post VALUES (seq_post_no.NEXTVAL, 6, 7, '안녕하세요', NULL, NULL, 33.454189, 126.571843, TO_DATE('2021-10-04 10:26:11','YYYY-MM-DD HH24:MI:SS'), sysdate, 'noimg.png', 'Dz5NUfDE5zQ', '하이미디어', NULL);
+INSERT INTO post VALUES (seq_post_no.NEXTVAL, 6, 7, '안녕하세요', NULL, NULL, 33.454977, 126.569000, TO_DATE('2021-10-05 10:26:11','YYYY-MM-DD HH24:MI:SS'), sysdate, 'noimg.png', 'IBOGW1kuYC0', '하이미디어', NULL);
+INSERT INTO post VALUES (seq_post_no.NEXTVAL, 6, 7, '안녕하세요', NULL, NULL, 33.453187, 126.566779, TO_DATE('2021-10-06 10:26:11','YYYY-MM-DD HH24:MI:SS'), sysdate, 'noimg.png', 'EBTpCCu2_yw', '하이미디어', NULL);
+INSERT INTO post VALUES (seq_post_no.NEXTVAL, 6, 7, '안녕하세요', NULL, NULL, 33.449633, 126.570597, TO_DATE('2021-10-07 10:26:11','YYYY-MM-DD HH24:MI:SS'), sysdate, 'noimg.png', 'pnaQ9CbE6P0', '하이미디어', NULL);
+INSERT INTO post VALUES (seq_post_no.NEXTVAL, 6, 7, '안녕하세요', NULL, NULL, 33.448344, 126.573828, TO_DATE('2021-10-08 10:26:11','YYYY-MM-DD HH24:MI:SS'), sysdate, 'noimg.png', 'yj69PMgnF64', '하이미디어', NULL);
+INSERT INTO post VALUES (seq_post_no.NEXTVAL, 6, 7, '안녕하세요', NULL, NULL, 33.451486, 126.571199, TO_DATE('2021-10-09 10:26:11','YYYY-MM-DD HH24:MI:SS'), sysdate, 'noimg.png', 'oAS7kmob78s', '하이미디어', NULL);
+INSERT INTO post VALUES (seq_post_no.NEXTVAL, 6, 7, '안녕하세요', NULL, NULL, 33.451549, 126.569021, TO_DATE('2021-10-10 10:26:11','YYYY-MM-DD HH24:MI:SS'), sysdate, 'noimg.png', 'eCyDlclVFSw', '하이미디어', NULL);
+INSERT INTO post VALUES (seq_post_no.NEXTVAL, 6, 7, '안녕하세요', NULL, NULL, 37.49811799802361, 127.02750588725261, TO_DATE('2021-09-01 10:38:11','YYYY-MM-DD HH24:MI:SS'), NULL, 'noimg.png', 'L9AkhIvINKc', '하이미디어', NULL);
+INSERT INTO post VALUES (seq_post_no.NEXTVAL, 6, 7, '안녕하세요', NULL, NULL, 37.49815799802361, 127.02757588725261, TO_DATE('2021-09-01 10:38:11','YYYY-MM-DD HH24:MI:SS'), NULL, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
+INSERT INTO post VALUES (seq_post_no.NEXTVAL, 10, 8, '안녕하세요', NULL, NULL, 37.49809780929831, 127.02651378673552, TO_DATE('2021-09-01 11:06:11','YYYY-MM-DD HH24:MI:SS'), NULL, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
+INSERT INTO post VALUES (seq_post_no.NEXTVAL, 14, 9, '안녕하세요', NULL, NULL, 37.49730915211319, 127.02778535605314, TO_DATE('2021-09-01 12:00:11','YYYY-MM-DD HH24:MI:SS'), NULL, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
+INSERT INTO post VALUES (seq_post_no.NEXTVAL, 18, 10, '안녕하세요', NULL, NULL, 37.49630705835774, 127.02798383651613, TO_DATE('2021-09-01 13:31:11','YYYY-MM-DD HH24:MI:SS'), NULL, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
+INSERT INTO post VALUES (seq_post_no.NEXTVAL, 22, 11, '안녕하세요', NULL, NULL, 37.49792471732428, 127.02933711240016, TO_DATE('2021-09-01 14:58:11','YYYY-MM-DD HH24:MI:SS'), NULL, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
+INSERT INTO post VALUES (seq_post_no.NEXTVAL, 26, 12, '안녕하세요', NULL, NULL, 37.49874069129444, 127.02991451011066, TO_DATE('2021-09-01 16:41:11','YYYY-MM-DD HH24:MI:SS'), NULL, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
+INSERT INTO post VALUES (seq_post_no.NEXTVAL, 30, 13, '안녕하세요', NULL, NULL, 37.499026995837525, 127.02958972389848, TO_DATE('2021-09-01 17:45:11','YYYY-MM-DD HH24:MI:SS'), NULL, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
+INSERT INTO post VALUES (seq_post_no.NEXTVAL, 34, 14, '안녕하세요', NULL, NULL, 37.49892678937231, 127.02847101583437, TO_DATE('2021-09-01 21:29:11','YYYY-MM-DD HH24:MI:SS'), NULL, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
+INSERT INTO post VALUES (seq_post_no.NEXTVAL, 38, 15, '안녕하세요', NULL, NULL, 37.49938487497267, 127.02747861351945, TO_DATE('2021-09-01 23:05:11','YYYY-MM-DD HH24:MI:SS'), NULL, 'noimg.png', 'nQoRw_5ning', '하이미디어', NULL);
 
 --갤러리
 INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, p_img, hit) VALUES (seq_post_no.NEXTVAL, 3, 1, 'Title 제목 갤러리 테스팅: 2021-10-11 공연 사진.', 'Content Testing 123 내용 테스팅 123', sysdate, null, 0);
@@ -1288,93 +1277,112 @@ INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, p_img
 INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, p_img, hit) VALUES (seq_post_no.NEXTVAL, 3, 1, 'Title 제목 갤러리 테스팅: 2021-10-11 공연 사진.', 'Content Testing 123 내용 테스팅 123', sysdate, null, 0);
 INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, p_img, hit) VALUES (seq_post_no.NEXTVAL, 3, 1, 'Title 제목 갤러리 테스팅: 2021-10-11 공연 사진.', 'Content Testing 123 내용 테스팅 123', sysdate, null, 0);
 INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, p_img, hit) VALUES (seq_post_no.NEXTVAL, 3, 1, 'Title 제목 갤러리 테스팅: 2021-10-11 공연 사진.', 'Content Testing 123 내용 테스팅 123', sysdate, null, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, p_img, hit) VALUES (seq_post_no.NEXTVAL, 3, 1, 'Title 제목 갤러리 테스팅: 2021-10-11 공연 사진.', 'Content Testing 123 내용 테스팅 123', TO_DATE('2021-10-21 10:26:11','YYYY-MM-DD HH24:MI:SS'), '1000.jpg', 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, p_img, hit) VALUES (seq_post_no.NEXTVAL, 3, 1, 'Title 제목 갤러리 테스팅: 2021-10-11 공연 사진.', 'Content Testing 123 내용 테스팅 123', TO_DATE('2021-10-22 10:26:11','YYYY-MM-DD HH24:MI:SS'), '1001.jpg', 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, p_img, hit) VALUES (seq_post_no.NEXTVAL, 3, 1, 'Title 제목 갤러리 테스팅: 2021-10-11 공연 사진.', 'Content Testing 123 내용 테스팅 123', TO_DATE('2021-10-23 10:26:11','YYYY-MM-DD HH24:MI:SS'), '1002.jpg', 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, p_img, hit) VALUES (seq_post_no.NEXTVAL, 3, 1, 'Title 제목 갤러리 테스팅: 2021-10-11 공연 사진.', 'Content Testing 123 내용 테스팅 123', TO_DATE('2021-10-24 10:26:11','YYYY-MM-DD HH24:MI:SS'), '1003.jpg', 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, p_img, hit) VALUES (seq_post_no.NEXTVAL, 3, 1, 'Title 제목 갤러리 테스팅: 2021-10-11 공연 사진.', 'Content Testing 123 내용 테스팅 123', TO_DATE('2021-10-25 10:26:11','YYYY-MM-DD HH24:MI:SS'), '1004.jpg', 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, p_img, hit) VALUES (seq_post_no.NEXTVAL, 3, 1, 'Title 제목 갤러리 테스팅: 2021-10-11 공연 사진.', 'Content Testing 123 내용 테스팅 123', TO_DATE('2021-10-26 10:26:11','YYYY-MM-DD HH24:MI:SS'), '1005.jpg', 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, p_img, hit) VALUES (seq_post_no.NEXTVAL, 3, 1, 'Title 제목 갤러리 테스팅: 2021-10-11 공연 사진.', 'Content Testing 123 내용 테스팅 123', TO_DATE('2021-10-27 10:26:11','YYYY-MM-DD HH24:MI:SS'), '1006.jpg', 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, p_img, hit) VALUES (seq_post_no.NEXTVAL, 3, 1, 'Title 제목 갤러리 테스팅: 2021-10-11 공연 사진.', 'Content Testing 123 내용 테스팅 123', TO_DATE('2021-10-28 10:26:11','YYYY-MM-DD HH24:MI:SS'), '1007.jpg', 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, p_img, hit) VALUES (seq_post_no.NEXTVAL, 3, 1, 'Title 제목 갤러리 테스팅: 2021-10-11 공연 사진.', 'Content Testing 123 내용 테스팅 123', TO_DATE('2021-10-29 10:26:11','YYYY-MM-DD HH24:MI:SS'), '1008.jpg', 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, p_img, hit) VALUES (seq_post_no.NEXTVAL, 3, 1, 'Title 제목 갤러리 테스팅: 2021-10-11 공연 사진.', 'Content Testing 123 내용 테스팅 123', TO_DATE('2021-10-30 10:26:11','YYYY-MM-DD HH24:MI:SS'), '1009.jpg', 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, p_img, hit) VALUES (seq_post_no.NEXTVAL, 3, 1, 'Title 제목 갤러리 테스팅: 2021-10-11 공연 사진.', 'Content Testing 123 내용 테스팅 123', TO_DATE('2021-10-31 10:26:11','YYYY-MM-DD HH24:MI:SS'), '1010.jpg', 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, p_img, hit) VALUES (seq_post_no.NEXTVAL, 3, 1, 'Title 제목 갤러리 테스팅: 2021-10-11 공연 사진.', 'Content Testing 123 내용 테스팅 123', TO_DATE('2021-11-01 10:26:11','YYYY-MM-DD HH24:MI:SS'), '1011.jpg', 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, p_img, hit) VALUES (seq_post_no.NEXTVAL, 7, 7, '2021-10-11 공연 사진.', 'Content Testing 123 내용 테스팅 123', TO_DATE('2021-10-21 10:26:11','YYYY-MM-DD HH24:MI:SS'), '1000.png', 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, p_img, hit) VALUES (seq_post_no.NEXTVAL, 7, 7, '2021-10-12 공연 사진.', 'Content Testing 123 내용 테스팅 123', TO_DATE('2021-10-22 10:26:11','YYYY-MM-DD HH24:MI:SS'), '1001.png', 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, p_img, hit) VALUES (seq_post_no.NEXTVAL, 7, 7, '2021-10-13 공연 사진.', 'Content Testing 123 내용 테스팅 123', TO_DATE('2021-10-23 10:26:11','YYYY-MM-DD HH24:MI:SS'), '1002.png', 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, p_img, hit) VALUES (seq_post_no.NEXTVAL, 7, 7, '2021-10-14 공연 사진.', 'Content Testing 123 내용 테스팅 123', TO_DATE('2021-10-24 10:26:11','YYYY-MM-DD HH24:MI:SS'), '1003.png', 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, p_img, hit) VALUES (seq_post_no.NEXTVAL, 7, 7, '2021-10-15 공연 사진.', 'Content Testing 123 내용 테스팅 123', TO_DATE('2021-10-25 10:26:11','YYYY-MM-DD HH24:MI:SS'), '1004.png', 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, p_img, hit) VALUES (seq_post_no.NEXTVAL, 7, 7, '2021-10-16 공연 사진.', 'Content Testing 123 내용 테스팅 123', TO_DATE('2021-10-26 10:26:11','YYYY-MM-DD HH24:MI:SS'), '1005.png', 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, p_img, hit) VALUES (seq_post_no.NEXTVAL, 7, 7, '2021-10-17 공연 사진.', 'Content Testing 123 내용 테스팅 123', TO_DATE('2021-10-27 10:26:11','YYYY-MM-DD HH24:MI:SS'), '1006.png', 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, p_img, hit) VALUES (seq_post_no.NEXTVAL, 7, 7, '2021-10-18 공연 사진.', 'Content Testing 123 내용 테스팅 123', TO_DATE('2021-10-28 10:26:11','YYYY-MM-DD HH24:MI:SS'), '1007.png', 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, p_img, hit) VALUES (seq_post_no.NEXTVAL, 7, 7, '2021-10-19 공연 사진.', 'Content Testing 123 내용 테스팅 123', TO_DATE('2021-10-29 10:26:11','YYYY-MM-DD HH24:MI:SS'), '1000.png', 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, p_img, hit) VALUES (seq_post_no.NEXTVAL, 7, 7, '2021-10-20 공연 사진.', 'Content Testing 123 내용 테스팅 123', TO_DATE('2021-10-30 10:26:11','YYYY-MM-DD HH24:MI:SS'), '1001.png', 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, p_img, hit) VALUES (seq_post_no.NEXTVAL, 7, 7, '2021-10-21 공연 사진.', 'Content Testing 123 내용 테스팅 123', TO_DATE('2021-10-31 10:26:11','YYYY-MM-DD HH24:MI:SS'), '1002.png', 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, p_img, hit) VALUES (seq_post_no.NEXTVAL, 7, 7, '2021-10-22 공연 사진.', 'Content Testing 123 내용 테스팅 123', TO_DATE('2021-11-01 10:26:11','YYYY-MM-DD HH24:MI:SS'), '1003.png', 0);
 
 --방명록
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 4, 1, '방명록 테스팅: 김덕배님 응원합니다! 사랑해요!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 4, 1, '방명록 테스팅: 김덕배님 응원합니다! 사랑해요!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 4, 1, '방명록 테스팅: 김덕배님 응원합니다! 사랑해요!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 4, 1, '방명록 테스팅: 김덕배님 응원합니다! 사랑해요!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 4, 1, '방명록 테스팅: 김덕배님 응원합니다! 사랑해요!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 4, 1, '방명록 테스팅: 김덕배님 응원합니다! 사랑해요!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 4, 1, '방명록 테스팅: 김덕배님 응원합니다! 사랑해요!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 4, 1, '방명록 테스팅: 김덕배님 응원합니다! 사랑해요!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 4, 1, '방명록 테스팅: 김덕배님 응원합니다! 사랑해요!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 4, 1, '방명록 테스팅: 김덕배님 응원합니다! 사랑해요!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 4, 1, '방명록 테스팅: 김덕배님 응원합니다! 사랑해요!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 4, 1, '방명록 테스팅: 김덕배님 응원합니다! 사랑해요!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 4, 1, '방명록 테스팅: 김덕배님 응원합니다! 사랑해요!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 4, 1, '방명록 테스팅: 김덕배님 응원합니다! 사랑해요!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 4, 1, '방명록 테스팅: 김덕배님 응원합니다! 사랑해요!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 4, 1, '방명록 테스팅: 김덕배님 응원합니다! 사랑해요!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 4, 1, '방명록 테스팅: 김덕배님 응원합니다! 사랑해요!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 4, 1, '방명록 테스팅: 김덕배님 응원합니다! 사랑해요!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 4, 1, '방명록 테스팅: 김덕배님 응원합니다! 사랑해요!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 4, 1, '방명록 테스팅: 김덕배님 응원합니다! 사랑해요!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 4, 1, '방명록 테스팅: 김덕배님 응원합니다! 사랑해요!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 4, 1, '방명록 테스팅: 김덕배님 응원합니다! 사랑해요!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 4, 1, '방명록 테스팅: 김덕배님 응원합니다! 사랑해요!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 4, 1, '방명록 테스팅: 김덕배님 응원합니다! 사랑해요!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 4, 1, '방명록 테스팅: 김덕배님 응원합니다! 사랑해요!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 4, 1, '방명록 테스팅: 김덕배님 응원합니다! 사랑해요!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 4, 1, '방명록 테스팅: 김덕배님 응원합니다! 사랑해요!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 4, 1, '방명록 테스팅: 김덕배님 응원합니다! 사랑해요!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 4, 1, '방명록 테스팅: 김덕배님 응원합니다! 사랑해요!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 4, 1, '방명록 테스팅: 김덕배님 응원합니다! 사랑해요!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 4, 1, '방명록 테스팅: 김덕배님 응원합니다! 사랑해요!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 4, 1, '방명록 테스팅: 김덕배님 응원합니다! 사랑해요!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 4, 1, '방명록 테스팅: 김덕배님 응원합니다! 사랑해요!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 4, 1, '방명록 테스팅: 김덕배님 응원합니다! 사랑해요!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 4, 1, '방명록 테스팅: 김덕배님 응원합니다! 사랑해요!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 4, 1, '방명록 테스팅: 김덕배님 응원합니다! 사랑해요!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 4, 1, '방명록 테스팅: 김덕배님 응원합니다! 사랑해요!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 4, 1, '방명록 테스팅: 김덕배님 응원합니다! 사랑해요!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 4, 1, '방명록 테스팅: 김덕배님 응원합니다! 사랑해요!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 4, 1, '방명록 테스팅: 김덕배님 응원합니다! 사랑해요!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 4, 1, '방명록 테스팅: 김덕배님 응원합니다! 사랑해요!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 4, 1, '방명록 테스팅: 김덕배님 응원합니다! 사랑해요!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 4, 1, '방명록 테스팅: 김덕배님 응원합니다! 사랑해요!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 4, 1, '방명록 테스팅: 김덕배님 응원합니다! 사랑해요!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 4, 1, '방명록 테스팅: 김덕배님 응원합니다! 사랑해요!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 4, 1, '방명록 테스팅: 김덕배님 응원합니다! 사랑해요!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 4, 1, '방명록 테스팅: 김덕배님 응원합니다! 사랑해요!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 4, 1, '방명록 테스팅: 김덕배님 응원합니다! 사랑해요!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 4, 1, '방명록 테스팅: 김덕배님 응원합니다! 사랑해요!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 4, 1, '방명록 테스팅: 김덕배님 응원합니다! 사랑해요!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 4, 1, '방명록 테스팅: 김덕배님 응원합니다! 사랑해요!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 4, 1, '방명록 테스팅: 김덕배님 응원합니다! 사랑해요!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 4, 1, '방명록 테스팅: 김덕배님 응원합니다! 사랑해요!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 4, 1, '방명록 테스팅: 김덕배님 응원합니다! 사랑해요!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 4, 1, '방명록 테스팅: 김덕배님 응원합니다! 사랑해요!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 4, 1, '방명록 테스팅: 김덕배님 응원합니다! 사랑해요!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 4, 1, '방명록 테스팅: 김덕배님 응원합니다! 사랑해요!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 4, 1, '방명록 테스팅: 김덕배님 응원합니다! 사랑해요!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 4, 1, '방명록 테스팅: 김덕배님 응원합니다! 사랑해요!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 4, 1, '방명록 테스팅: 김덕배님 응원합니다! 사랑해요!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 4, 1, '방명록 테스팅: 김덕배님 응원합니다! 사랑해요!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 4, 1, '방명록 테스팅: 김덕배님 응원합니다! 사랑해요!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 4, 1, '방명록 테스팅: 김덕배님 응원합니다! 사랑해요!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
-INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 4, 1, '방명록 테스팅: 김덕배님 응원합니다! 사랑해요!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
+INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) VALUES (seq_post_no.NEXTVAL, 8, 7, '장범준님 응원합니다!!!', 'Content Testing 123 내용 테스팅 123', sysdate, 0);
 
---제휴사
+
+
 -- 제휴사 등록
-insert into company values(1,'101.PNG','신촌 CGV','서울 서대문구 신촌로 129 아트레온','1544-1122','김덕배','104-81-45690',37.55649812100385,126.94032867686857);
+insert into company values(1,'101.PNG','신촌 CGV','서울 서대문구 신촌로 129 아트레온','1544-1122','김덕배','104-81-45690',37.49879182639053, 127.02664971809797);
 insert into company values(2,'102.PNG','신라호텔','서울특별시 중구 동호로 249','02-2233-3131','김창덕','101-11-37840',37.5577797894265,127.00762909337426);
 insert into company values(3,'103.PNG','스타벅스','서울특별시 강남구 강남대로 390','02-1111-1111','박수현','104-52-37620',37.497960743833886,127.0285145402949);
 insert into company values(4,'104.PNG','시그니엘','서울특별시 송파구 올림픽로 300 롯데월드타워','02-2222-2222','고라파덕','137-98-32340',37.51319142112977,127.10195564589539);
 insert into company values(5,'105.PNG','에버랜드','경기도 용인시 처인구 포곡읍 에버랜드로 199','02-3333-3333','비에고','199-99-99999',37.29355565476383,127.19979467916205);
-insert into company values(6,'106.PNG','하이미디어','서울특별시 서초구 강남대로 405 통영빌딩','02-4444-4444','아칼리','127-445-30293',37.49879182639053, 127.02664971809797);
+insert into company values(6,'106.PNG','하이미디어','서울특별시 서초구 강남대로 405 통영빌딩','02-4444-4444','아칼리','127-445-30293',37.55649812100385,126.94032867686857);
+
 --공연장 등록
 insert into stage values(SEQ_STAGE_NO.nextval,1,'7층 스테이지','1','1','1');
 insert into stage values(SEQ_STAGE_NO.nextval,1,'8층 카페','0','0','1');
