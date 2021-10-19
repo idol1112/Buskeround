@@ -134,6 +134,7 @@
   </table>
 
   <!---- 이력사항 ---->
+  <c:if test="${resumeList[0].resume_content != null}">
   <c:if test="${fn:length(resumeList) > 0}">
     <table class="profile_his">
       <tr>
@@ -165,6 +166,7 @@
         </c:if>
       </tr>
     </table>
+  </c:if>
   </c:if>
 
   <!---- 좋아요&팬 박스 ---->
