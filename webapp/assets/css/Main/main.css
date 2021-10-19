@@ -706,27 +706,27 @@ h2 {
 	    .info .img {position: absolute;top: 6px;left: 5px;border-radius: 100%;width: 83px;height: 80px;color: #888;overflow: hidden;}
 	    .info:after {content: '';position: absolute;margin-left: -12px;left: 50%;bottom: 0;width: 22px;height: 12px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
 	    .info .link {color: #5085BB;}
-	    
+
 		#map{
 		 width:554px;
 		 height:316px;
 		 min-height:300px;
 		 overflow:hidden;
 		}
-		
 
-		
+
+
 .rank_img {
 	width: 67px;
 	image-rendering: -webkit-optimize-contrast;
 	margin-right: 15px;
  }
- 
- 
+
+
 .artist_chart tr td{
 	padding-top: 7px;
 	padding-bottom: 7px;
-	
+
 }
 
 .artist_rank tr:first-child .rank {
@@ -759,7 +759,6 @@ h2 {
     color: #3A3635;
     line-height: 16px;
     text-align: center;
-    font-family: 'Brush Script MT', cursive;
 }
 
 .active{
