@@ -5,7 +5,9 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>=_=;;</title>
+<title>Buskeround</title>
+<!-- Title Icon -->
+<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/assets/image/common/title.jpg">
 
     <style>
     	body {overflow:hidden}
