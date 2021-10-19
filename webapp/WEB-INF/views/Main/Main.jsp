@@ -48,42 +48,42 @@
 			<script>
 
 			//===============================기본 MAP 옵션=================================//
-			var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-			mapOption = { 
+			var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+			mapOption = {
 			    center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-			    level: 3 // 지도의 확대 레벨 
-			}; 
-			
+			    level: 3 // 지도의 확대 레벨
+			};
+
 			var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 
-			var imageSrc = '/Buskeround/assets/image/map/makericon.png', // 마커이미지의 주소입니다    
+			var imageSrc = '/Buskeround/assets/image/map/makericon.png', // 마커이미지의 주소입니다
 			imageSize = new kakao.maps.Size(48, 48), // 마커이미지의 크기입니다
 			imageOption = {offset: new kakao.maps.Point(26, 40)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
-			
+
 			var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption)
 			//============================================================================//
-			
+
 			var positions = [];
 			var num = -1;
 
 
 
-			        
+
 			        var lat = 37.49771173238123
 			            lon = 127.02675145777664
-			        
+
 			        var locPosition = new kakao.maps.LatLng(lat, lon)
-					
+
 			        <c:forEach items="${mapList}" var="mapList">
 			        num += 1;
 			        positions[num] = new kakao.maps.LatLng(${mapList.latitude}, ${mapList.longitude});
 			        var data = positions[num];
-			        var content = '<div class="wrap">' + 
-			        '    <div class="info">' + 
-			        '        <div class="title">' + 
+			        var content = '<div class="wrap">' +
+			        '    <div class="info">' +
+			        '        <div class="title">' +
 			        '            Buskeround' +
-			        '        </div>' + 
-			        '        <div class="body">' + 
+			        '        </div>' +
+			        '        <div class="body">' +
 			        '              <div class="img">' +
 			        '		<c:if test="${mapList.user_img != null}">' +
 			        '                 <img style="width:100%;height:80px;	" src="${pageContext.request.contextPath }/upload/${mapList.user_img}">' +
@@ -91,72 +91,72 @@
 			        '		<c:if test="${mapList.user_img == null}">' +
 			        '                 <img src="/Buskeround/assets/image/blog/icon/user.png" width="73px">' +
 			        '		</c:if>' +
-			        '              </div>' +  
-			        '            <div class="desc">' + 
-			        '                <div class="ellipsis">활동명 : ${mapList.nickname}</div>' + 
-			        '                <div class="ellipsis">' + 
+			        '              </div>' +
+			        '            <div class="desc">' +
+			        '                <div class="ellipsis">활동명 : ${mapList.nickname}</div>' +
+			        '                <div class="ellipsis">' +
 			        '				 <c:if test="${mapList.genre == 1}">' +
-			        '                <div>장르   : 발라드</div>' + 
+			        '                <div>장르   : 발라드</div>' +
 			        '				 </c:if>' +
 			        '				 <c:if test="${mapList.genre == 2}">' +
-			        '                <div>장르   : 댄스</div>' + 
+			        '                <div>장르   : 댄스</div>' +
 			        '				 </c:if>' +
 			        '				 <c:if test="${mapList.genre == 3}">' +
-			        '                <div>장르   : 랩/힙합</div>' + 
+			        '                <div>장르   : 랩/힙합</div>' +
 			        '				 </c:if>' +
 			        '				 <c:if test="${mapList.genre == 4}">' +
-			        '                <div>장르   : R&B/Soul</div>' + 
+			        '                <div>장르   : R&B/Soul</div>' +
 			        '				 </c:if>' +
 			        '				 <c:if test="${mapList.genre == 5}">' +
-			        '                <div>장르   : 악기</div>' + 
+			        '                <div>장르   : 악기</div>' +
 			        '				 </c:if>' +
 			        '				 <c:if test="${mapList.genre == 6}">' +
-			        '                <div>장르   : 기타</div>' + 
+			        '                <div>장르   : 기타</div>' +
 			        '				 </c:if>' +
-			        '                </div>' + 
-			        '                <div class="jibun ellipsis">${mapList.intro}</div>' + 
-			        '            </div>' + 
-			        '        </div>' + 
-			        '    </div>' +    
+			        '                </div>' +
+			        '                <div class="jibun ellipsis">${mapList.intro}</div>' +
+			        '            </div>' +
+			        '        </div>' +
+			        '    </div>' +
 			        '</div>';
-			        
+
 			        displayMarker(locPosition,data,content);
 			        </c:forEach>
 
 
 		//=================== 함수 ===================//
 			function displayMarker(locPosition,data,content) {
-		
+
 			    // 마커를 생성합니다
-			    var marker = new kakao.maps.Marker({  
-			        map: map, 
+			    var marker = new kakao.maps.Marker({
+			        map: map,
 			        position: data,
 			        image: markerImage
-			    }); 
-			    
+			    });
+
 				//오버레이 생성
 			    var overlay = new kakao.maps.CustomOverlay({
 			        yAnchor: 3,
 			        position: data
 			    });
-			    
+
 			    overlay.setContent(content);
-			
+
 			    kakao.maps.event.addListener(marker, 'click', function() {
 			        overlay.setMap(map);
 			    });
-			    
+
 			    kakao.maps.event.addListener(map, 'click', function() {
 			        overlay.setMap(null);
 			    });
-			    
+
 			    // 지도 중심좌표를 접속위치로 변경합니다
 			    map.setCenter(locPosition);
-			}    
+			}
 			//==========================================//
-			
-			
-				
+
+
+
 		</script>
         </div>
         <!-- 맵 -->
@@ -185,7 +185,7 @@
                 <img src="${pageContext.request.contextPath}/assets/image/artist/img/4.PNG" class="d-block w-100" style="width: 285px; height: 380px; object-fit: cover;">
               </div>
               <div class="carousel-item" data-bs-interval="3000">
-                <img src="${pageContext.request.contextPath}/assets/image/artist/img/5.PNG" class="d-block w-100" style="width: 285px; height: 380px; object-fit: cover;">
+                <img src="${pageContext.request.contextPath}/assets/image/artist/img/7.PNG" class="d-block w-100" style="width: 285px; height: 380px; object-fit: cover;">
               </div>
               <div class="carousel-item" data-bs-interval="3000">
                 <img src="${pageContext.request.contextPath}/assets/image/artist/img/6.PNG" class="d-block w-100" style="width: 285px; height: 380px; object-fit: cover;">
@@ -207,7 +207,7 @@
         <div class="id_wrap">
           <div class="login_wrap">
             <div class="login_box">
-              
+
               <!-- 로그인 전 -->
               <c:if test="${authUser == null}">
               <p class="login_msg">버스커라운드를 더 편리하게 이용하세요.</p>
@@ -216,7 +216,7 @@
               	<div class="look_box">
               		<a href="#" class="link_look id_hv">아이디</a>
               		<a href="#" class="link_look pw_hv">비밀번호찾기</a>
-              	
+
               	</div>
                 <div class="link_join">
                   <a class="jn_hv" href="${pageContext.request.contextPath}/user/agreement">회원가입</a>
@@ -256,7 +256,7 @@
             	제휴사등록
             </div>
             </c:if>
-            
+
             <c:if test="${authUser != null}">
 	          	<c:if test="${authUser.user_type == 1}">
 	            <div class="artist_btn" onclick="location.href='${pageContext.request.contextPath}/MyPage/mypageArtist'">
@@ -291,20 +291,20 @@
         <!-- Artist Live -->
           <div class="live_wrap">
             <h2>ON AIR</h2>
-            
+
             <div class="live_box">
               <c:forEach items="${artistLiveList}" var="aList" begin="0" end="3">
                 <div class="live_item">
                   <div class="live_item_caption">
                     <h3>${aList.nickname}</h3>
-                    <p>${aList.p_start}</p> 
+                    <p>${aList.p_start}</p>
                   </div>
                   <img id="img_item" src="${pageContext.request.contextPath}/upload/${aList.user_img}" onclick="location.href='${pageContext.request.contextPath}/blog/blog_main/${aList.id}'" alt="" />
                 </div>
               </c:forEach>
             </div>
           </div>
-          
+
           <!-- Gallery -->
           <div class="gallery_wrap">
             <h2>GALLERY</h2>
@@ -336,27 +336,27 @@
           			    <c:if test="${aList.genre == 1}">
 					        <td style="width: 40%;" class="artist_genre"><img class="rank_img" src="${pageContext.request.contextPath}/assets/image/blog/icon/ballade.png"></td>
 					    </c:if>
-					
+
 					    <c:if test="${aList.genre == 2}">
 					        <td style="width: 40%;" class="artist_genre"><img class="rank_img" src="${pageContext.request.contextPath}/assets/image/blog/icon/dance.png"></td>
 					    </c:if>
-					
+
 					    <c:if test="${aList.genre == 3}">
 					        <td style="width: 40%;" class="artist_genre"><img class="rank_img" src="${pageContext.request.contextPath}/assets/image/blog/icon/hiphop.png"></td>
 					    </c:if>
-					
+
 					    <c:if test="${aList.genre == 4}">
 					        <td style="width: 40%;" class="artist_genre"><img class="rank_img" src="${pageContext.request.contextPath}/assets/image/blog/icon/soul.png"></td>
 					    </c:if>
-					
+
 					    <c:if test="${aList.genre == 5}">
 					        <td style="width: 40%;" class="artist_genre"><img class="rank_img" src="${pageContext.request.contextPath}/assets/image/blog/icon/musical.png"></td>
 					    </c:if>
-					
+
 					    <c:if test="${aList.genre == 6}">
 					        <td style="width: 40%;" class="artist_genre"><img class="rank_img" src="${pageContext.request.contextPath}/assets/image/blog/icon/etc.png"></td>
 					    </c:if>
-          			
+
           		</c:forEach>
           		<c:forEach items="${artistRankingList}" var="aList" begin="1" end="9">
           		<tr class="artist_row">
@@ -365,23 +365,23 @@
          			    <c:if test="${aList.genre == 1}">
 					        <td style="width: 40%;" class="artist_genre"><img class="rank_img" src="${pageContext.request.contextPath}/assets/image/blog/icon/ballade.png"></td>
 					    </c:if>
-					
+
 					    <c:if test="${aList.genre == 2}">
 					        <td style="width: 40%;" class="artist_genre"><img class="rank_img" src="${pageContext.request.contextPath}/assets/image/blog/icon/dance.png"></td>
 					    </c:if>
-					
+
 					    <c:if test="${aList.genre == 3}">
 					        <td style="width: 40%;" class="artist_genre"><img class="rank_img" src="${pageContext.request.contextPath}/assets/image/blog/icon/hiphop.png"></td>
 					    </c:if>
-					
+
 					    <c:if test="${aList.genre == 4}">
 					        <td style="width: 40%;" class="artist_genre"><img class="rank_img" src="${pageContext.request.contextPath}/assets/image/blog/icon/soul.png"></td>
 					    </c:if>
-					
+
 					    <c:if test="${aList.genre == 5}">
 					        <td style="width: 40%;" class="artist_genre"><img class="rank_img" src="${pageContext.request.contextPath}/assets/image/blog/icon/musical.png"></td>
 					    </c:if>
-					
+
 					    <c:if test="${aList.genre == 6}">
 					        <td style="width: 40%;" class="artist_genre"><img class="rank_img" src="${pageContext.request.contextPath}/assets/image/blog/icon/etc.png"></td>
 					    </c:if>
@@ -468,11 +468,11 @@ function gallery_item(post_no) {
 	$("#btn_close").on("click", function() {
 		$("#img_modal").modal('hide');
 	});
-	
-	
+
+
 	// Busker Chart
 	  $(".artist_row").hover(function () {
-		    		
+
     		$(function() {
     			  $(".artist_row").on("mouseover", function(e){
     			    $(".artist_row").removeClass("active");
@@ -483,9 +483,9 @@ function gallery_item(post_no) {
     			  })
    			});
 	  });
-	
+
 	  $(document).ready(function(){
-		     $(".prof_img").hide(); 
+		     $(".prof_img").hide();
 	  });
 </script>
 </html>

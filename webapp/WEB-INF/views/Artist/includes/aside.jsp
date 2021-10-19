@@ -30,7 +30,7 @@
 						<img src="${pageContext.request.contextPath}/assets/image/artist/img/4.PNG" class="d-block w-100" style="width: 285px; height: 380px; object-fit: cover;">
 					</div>
 					<div class="carousel-item" data-bs-interval="3000">
-						<img src="${pageContext.request.contextPath}/assets/image/artist/img/5.PNG" class="d-block w-100" style="width: 285px; height: 380px; object-fit: cover;">
+						<img src="${pageContext.request.contextPath}/assets/image/artist/img/7.PNG" class="d-block w-100" style="width: 285px; height: 380px; object-fit: cover;">
 					</div>
 					<div class="carousel-item" data-bs-interval="3000">
 						<img src="${pageContext.request.contextPath}/assets/image/artist/img/6.PNG" class="d-block w-100" style="width: 285px; height: 380px; object-fit: cover;">
@@ -53,7 +53,7 @@
 		<div class="rightsection-02-01">
 			<h3>NOW LIVE</h3>
 			<div>
-				
+
 			</div>
 		</div>
 		<table>
