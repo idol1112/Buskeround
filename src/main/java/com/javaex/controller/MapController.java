@@ -136,7 +136,6 @@ public class MapController {
 		System.out.println(mapList);
 		return "Map/maptest";
 	}
-	
 
 	
 }
