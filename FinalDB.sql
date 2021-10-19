@@ -941,9 +941,8 @@ END;
 --Users(총 26명)
 --관리자
 insert into users(user_no, id, password, email, nickname, user_img, name, hp, gender, birthday, genre, genre_type, live, fan, likes, artist_regdate, user_type, company_type) values(0,'admin','1234','admin@naver.com','관리자',null,'관리자','010-1111-1111','male','1998-11-12','1','트랩','0',0,0,sysdate,'2','2');
-
---김덕배씨 회원가입(제휴사1)
-insert into users(user_no, id, password, email, nickname, user_img, name, hp, gender, birthday, genre, genre_type, live, fan, likes, artist_regdate, user_type, company_type) values(seq_user_no.nextval,'1234','1234','1234@naver.com','김덕배','101.PNG','김덕배','010-1111-1111','male','1998-11-12','3','트랩','0',0,0,sysdate,'2','2');
+--마동석씨 회원가입(제휴사1)
+insert into users(user_no, id, password, email, nickname, user_img, name, hp, gender, birthday, genre, genre_type, live, fan, likes, artist_regdate, user_type, company_type) values(seq_user_no.nextval,'1234','1234','1234@naver.com','마동석','101.PNG','마동석','010-1111-1111','male','1998-11-12','3','트랩','0',0,0,sysdate,'2','2');
 insert into users(user_no, id, password, email, nickname, user_img, name, hp, gender, birthday, genre, genre_type, live, fan, likes, artist_regdate, user_type, company_type) values(seq_user_no.nextval,'4321','4321','4321@naver.com','김창수','102.PNG',null,null,null,null,null,null,null,null,null,null,'1','2');
 insert into users(user_no, id, password, email, nickname, user_img, name, hp, gender, birthday, genre, genre_type, live, fan, likes, artist_regdate, user_type, company_type) values(seq_user_no.nextval,'1111','1111','1111@naver.com','박수현','103.PNG',null,null,null,null,null,null,null,null,null,null,'1','2');
 insert into users(user_no, id, password, email, nickname, user_img, name, hp, gender, birthday, genre, genre_type, live, fan, likes, artist_regdate, user_type, company_type) values(seq_user_no.nextval,'1112','1112','1112@naver.com','고라파덕','104.PNG',null,null,null,null,null,null,null,null,null,null,'1','2');
@@ -973,7 +972,7 @@ insert INTO users(user_no, id, password, email, nickname, user_img, name, hp, ge
 insert INTO users(user_no, id, password, email, nickname, user_img, name, hp, gender, birthday, genre, genre_type, live, fan, likes, artist_regdate, user_type, company_type) VALUES (seq_user_no.nextval, 'sss', '1234', 'sss@naver.com', '미노이', '11.PNG', '이민영', '010-0007-7654', 'female', '19961124', '4', '알앤비', '0', 33, 10, sysdate, '2', '1');
 
 --블로그 생성
-insert into blog values(1, '안녕하세요 김덕배의 블로그에 오신것을 환영합니다.', null, 'https://www.youtube.com/', 'https://www.facebook.com/', 'https://www.instagram.com/', 0);
+insert into blog values(1, '안녕하세요 마동석의 블로그에 오신것을 환영합니다.', null, 'https://www.youtube.com/', 'https://www.facebook.com/', 'https://www.instagram.com/', 0);
 insert into blog values(7, '안녕하세요. 장범준의 블로그에 오신 것을 환영합니다.', null, 'https://www.youtube.com/channel/UCxd9m2kFCFN1nIWB8ZOscqg', 'https://www.facebook.com/', 'https://www.instagram.com/', 3945);
 insert into blog values(8, '안녕하세요 워너비의 블로그에 오신것을 환영합니다.', null, 'https://www.youtube.com/', 'https://www.facebook.com/', 'https://www.instagram.com/', 0);
 insert into blog values(9, '안녕하세요 박서준의 블로그에 오신것을 환영합니다.', null, 'https://www.youtube.com/', 'https://www.facebook.com/', 'https://www.instagram.com/', 0);
@@ -1357,7 +1356,7 @@ INSERT INTO post (post_no, category_no, user_no, title, content, reg_date, hit) 
 
 
 -- 제휴사 등록
-insert into company values(1,'101.PNG','신촌 CGV','서울 서대문구 신촌로 129 아트레온','1544-1122','김덕배','104-81-45690',37.49879182639053, 127.02664971809797);
+insert into company values(1,'101.PNG','신촌 CGV','서울 서대문구 신촌로 129 아트레온','1544-1122','마동석','104-81-45690',37.49879182639053, 127.02664971809797);
 insert into company values(2,'102.PNG','신라호텔','서울특별시 중구 동호로 249','02-2233-3131','김창덕','101-11-37840',37.497960743833886,127.0285145402949);
 insert into company values(3,'103.PNG','스타벅스','서울특별시 강남구 강남대로 390','02-1111-1111','박수현','104-52-37620',37.5577797894265,127.00762909337426);
 insert into company values(4,'104.PNG','시그니엘','서울특별시 송파구 올림픽로 300 롯데월드타워','02-2222-2222','고라파덕','137-98-32340',37.51319142112977,127.10195564589539);
