@@ -41,22 +41,22 @@
 
         <form action="${pageContext.request.contextPath}/user/join" id="joinForm">
           <p>아이디</p>
-          <input type="text" name="id">
+          <input type="text" name="id" value="buskerbusker">
           <span id="id_chk">중복된 아이디가 있습니다.</span>
           <br>
           <span>아이디는 변경할 수 없으니, 유의하세요.</span>
 
           <p>비밀번호</p>
-          <input type="password" name="password">
+          <input type="password" name="password" value="busker123">
           <br>
-          <input type="password" name="passwordChk">
+          <input type="password" name="passwordChk" value="busker123">
           <span id="pwChk">비밀번호가 일치하지 않습니다.</span>
 
           <p>이메일</p>
-          <input type="email" name="email">
+          <input type="email" name="email" value="busker@naver.com">
 
           <p>닉네임</p>
-          <input type="text" name="nickname">
+          <input type="text" name="nickname" value="버스커버스커">
           <span id="nick_chk">중복된 닉네임이 있습니다.</span>
 
           <div class="btn_agree">
@@ -189,7 +189,7 @@
 	// 확인 버튼 눌렀을 때
 	$("#joinForm").on("submit", function() {
 
-		if (id_flog != true) {
+/* 		if (id_flog != true) {
 			alert("아이디 중복체크를 해주세요.");
 
 			return false;
@@ -199,7 +199,7 @@
 			alert("닉네임 중복체크를 해주세요.");
 
 			return false;
-		}
+		} */
 
 		if ($("[name=id]").val().length < 1) {
 			alert("아이디를 입력해 주세요.");

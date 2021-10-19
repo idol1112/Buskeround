@@ -39,9 +39,9 @@
         </div>
 
         <form action="${pageContext.request.contextPath}/user/login" method="post">
-          <input type="text" placeholder="Id" name="id">
+          <input type="text" placeholder="Id" name="id" value="buskerbusker">
 
-          <input type="password" placeholder="Password" name="password">
+          <input type="password" placeholder="Password" name="password" value="busker123">
           <c:if test="${param.result == 'fail'}">
             <span style="font: 14px; color: red; , font-weight: bold;">아이디 또는 비밀번호를 확인해 주세요.</span>
           </c:if>
