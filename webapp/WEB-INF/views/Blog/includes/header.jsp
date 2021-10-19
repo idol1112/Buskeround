@@ -181,7 +181,7 @@
 				<td><img class="heart" data-no="${blogVo.user_no}" src="${pageContext.request.contextPath}/assets/image/blog/icon/heart1.png"></td>
 			</c:otherwise>
 		</c:choose>
-		
+
 		<c:choose>
 			<c:when test="${blogVo.fanOk == true}">
 				<td><img class="like" data-no="${blogVo.user_no}" src="${pageContext.request.contextPath}/assets/image/blog/icon/fan2.png"></td>
@@ -233,7 +233,7 @@
         <div class="thumbnail">
           <div class="img_box">
             <label for="picture">사진 업로드</label>
-            <input type="file" id="file2" name="file1">
+            <input type="file" id="file1" name="file1">
           </div>
         </div>
       </div>
@@ -249,7 +249,6 @@
 </div>
 </body>
 
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=79c2ae6522e8e0df7b0592164f933676"></script>
 <script type="text/javascript">
 
   //SNS 연결
@@ -406,8 +405,11 @@
       success : function(result) {
         /*성공시 처리해야될 코드 작성*/
 
+        console.log(result);
+
         if (result === 1) {
             var form = new FormData();
+
             form.append( "file1", $("#file1")[0].files[0] );
 
              jQuery.ajax({
@@ -436,6 +438,8 @@
           	});
 		}
 
+        location.reload();
+
       },
 
       // 실패할경우 error로 들어온다.
@@ -449,10 +453,10 @@
   $(".close").on("click", function() {
     $("#exampleModal").modal('hide');
   });
-  
+
   //라이브시 Red border
   	$(document).ready(function() {
-  		
+
 		$.ajax({
 			// 컨트롤러에서 대기중인 URL 주소이다.
 			url : "${pageContext.request.contextPath}/api/blog/blog_live",
@@ -460,12 +464,6 @@
 			// HTTP method type(GET, POST) 형식이다.
 			type : "get",
 
-			// Json 형태의 데이터로 보낸다.
-			contentType : "application/json",
-
-			// Json 형식의 데이터를 받는다.
-			dataType : "json",
-			
 			data : {
 				id : "${blogVo.id}"
 				},
@@ -475,15 +473,15 @@
 				/*성공시 처리해야될 코드 작성*/
 
 				console.log(result);
-				
+
 				if (result.live == 1){
 					console.log("Live")
 					var b = document.querySelector(".profile_picture");
 					var link = ""
 					b.setAttribute("onclick", "location.href='${pageContext.request.contextPath}/mapOne?user_no=" + result.user_no + "'");
 					b.style.border = "red solid 5px";
-					
-					
+
+
 				} else {
 					console.log("Not Live")
 				}
@@ -497,23 +495,23 @@
 			}
 		});
 	});
-  
+
  // 팬되기 눌렀을 때
   	$(".like").on("click",function(){
   		console.log("팬되기 잘 들어온다")
-  		
+
   		var artist_no = $(this).data("no");
-  		
-  		var thiss = $(this); 
-  		
-  		
+
+  		var thiss = $(this);
+
+
   		$.ajax({
   			// 컨트롤러에서 대기중인 URL 주소이다.
   			url : "${pageContext.request.contextPath}/Artist/Fan",
 
   			// HTTP method type(GET, POST) 형식이다.
   			type : "get",
-  			
+
   			// Json 형태의 데이터로 보낸다.
   			contentType : "application/json",
 
@@ -534,14 +532,14 @@
   				thiss.attr('src', '${pageContext.request.contextPath}/assets/image/artist/icon/fan2.png');
   				var fanV = parseInt(fan.html()) + 1;
   				fan.html(fanV);
-  				
+
   			} else {
   				thiss.attr('src', '${pageContext.request.contextPath}/assets/image/artist/icon/fan1.png');
   				var fanV = parseInt(fan.html()) - 1;
   				fan.html(fanV);
 
   			}
-  				
+
   			},
 
   			// 실패할경우 error로 들어온다.
@@ -555,18 +553,18 @@
   	// 좋아요 눌렀을 때
   	$(".heart").on("click",function(){
   		console.log("하트 잘 들어온다")
-  		
+
   		var artist_no = $(this).data("no");
-  		
-  		var thiss = $(this); 
-  		
+
+  		var thiss = $(this);
+
   		$.ajax({
   			// 컨트롤러에서 대기중인 URL 주소이다.
   			url : "${pageContext.request.contextPath}/Artist/Likes",
 
   			// HTTP method type(GET, POST) 형식이다.
   			type : "get",
-  			
+
   			// Json 형태의 데이터로 보낸다.
   			contentType : "application/json",
 
@@ -587,14 +585,14 @@
   				thiss.attr('src', '${pageContext.request.contextPath}/assets/image/artist/icon/heart2.png');
   				var likesV = parseInt(likes.html()) + 1;
   				likes.html(likesV);
-  				
+
   			} else {
   				thiss.attr('src', '${pageContext.request.contextPath}/assets/image/artist/icon/heart1.png');
   				var likesV = parseInt(likes.html()) - 1;
   				likes.html(likesV);
 
   			}
-  				
+
   			},
 
   			// 실패할경우 error로 들어온다.
