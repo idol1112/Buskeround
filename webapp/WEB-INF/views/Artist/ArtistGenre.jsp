@@ -99,18 +99,7 @@
 										<img src="${pageContext.request.contextPath}/upload/${gList.user_img}" style="width: 70px; height: 70px; border-radius: 70%; object-fit: cover;">
 									</c:if></td>
 								<td>
-									<div><a href="${pageContext.request.contextPath}/blog/blog_main/${gList.id}">${gList.nickname}</a></div>
-									<div>
-										<c:if test="${nList.y_url != null}">
-											<img src="${pageContext.request.contextPath}/assets/image/artist/icon/youtube.png" style="width: 20px">
-										</c:if>
-										<c:if test="${nList.f_url != null}">
-											<img src="${pageContext.request.contextPath}/assets/image/artist/icon/facebook.png" style="width: 20px">
-										</c:if>
-										<c:if test="${nList.i_url != null}">
-											<img src="${pageContext.request.contextPath}/assets/image/artist/icon/insta.png" style="width: 20px">
-										</c:if>
-									</div>
+									<a href="${pageContext.request.contextPath}/blog/blog_main/${gList.id}">${gList.nickname}</a>
 								</td>
 								<!-- 장르 -->
 								<c:if test="${gList.genre == 1}">
