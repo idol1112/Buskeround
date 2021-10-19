@@ -55,8 +55,14 @@
 			}; 
 			
 			var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-			//============================================================================//
 
+			var imageSrc = '/Buskeround/assets/image/map/makericon.png', // 마커이미지의 주소입니다    
+			imageSize = new kakao.maps.Size(48, 48), // 마커이미지의 크기입니다
+			imageOption = {offset: new kakao.maps.Point(26, 40)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+			
+			var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption)
+			//============================================================================//
+			
 			var positions = [];
 			var num = -1;
 
@@ -124,7 +130,8 @@
 			    // 마커를 생성합니다
 			    var marker = new kakao.maps.Marker({  
 			        map: map, 
-			        position: data
+			        position: data,
+			        image: markerImage
 			    }); 
 			    
 				//오버레이 생성
