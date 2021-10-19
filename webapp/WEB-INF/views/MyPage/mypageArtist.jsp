@@ -66,27 +66,27 @@
 									</tr>
 									<tr>
 										<td class="table-head"><label class="required" for="name">이름</label></td>
-										<td><input required class="input" type="text" id="name" name="name" placeholder="이름을 입력해주세요."></td>
+										<td><input required class="input" type="text" id="name" name="name" placeholder="이름을 입력해주세요." value="장범준"></td>
 									</tr>
 									<tr>
 										<td class="table-head"><label class="required" for="hp">연락처</label></td>
-										<td><input required class="input" type="text" id="hp" name="hp" placeholder="연락처를 입력해주세요."></td>
+										<td><input required class="input" type="text" id="hp" name="hp" placeholder="연락처를 입력해주세요." value="010-8732-4204"></td>
 									</tr>
 									<tr>
 										<td class="table-head"><label class="required" for="gender">성별</label></td>
 										<td>
-											<input class="radio" type="radio" name="gender" id="male" value="male"><span class="radiolabel"><label for="male">남</label> </span>
+											<input class="radio" type="radio" name="gender" id="male" value="male" checked><span class="radiolabel"><label for="male">남</label> </span>
 											<input type="radio" name="gender" id="female" value="female"><span class="radiolabel"><label for="female">여</label></span>
 									</td>
 									</tr>
 									<tr>
 										<td class="table-head"><label for="datepicker">생년월일</label></td>
-										<td><input class="input" type="date" id="datepicker" autocomplete="off" name="birthday"/></td>
+										<td><input class="input" type="date" id="datepicker" autocomplete="off" name="birthday" value="1989-05-16"/></td>
 									</tr>
 									<tr>
 										<td class="table-head"><label class="required" for="genre">퍼포먼스/장르</label></td>
 										<td>
-											<input class="radio" id="1" type="radio" name="genre" value="1" ><span class="radiolabel"><label for="1">발라드</label></span>
+											<input class="radio" id="1" type="radio" name="genre" value="1" checked><span class="radiolabel"><label for="1">발라드</label></span>
 											<input class="radio" id="2" type="radio" name="genre" value="2" ><span class="radiolabel"><label for="2">댄스</label></span>
 											<input class="radio" id="3" type="radio" name="genre" value="3" ><span class="radiolabel"><label for="3">랩/힙합</label></span>
 											<input class="radio" id="4" type="radio" name="genre" value="4" ><span class="radiolabel"><label for="4">R&B소울</label></span><br><br> 
@@ -96,7 +96,7 @@
 									</tr>
 									<tr>
 										<td class="table-head"><label for="genre_type">장르유형</label></td>
-										<td><input class="input" type="text" id="genre_type" name="genre_type" placeholder="장르유형을 입력해주세요"></td>
+										<td><input class="input" type="text" id="genre_type" name="genre_type" placeholder="장르유형을 입력해주세요" value="인디밴드"></td>
 									</tr>
 								</table>
 								
