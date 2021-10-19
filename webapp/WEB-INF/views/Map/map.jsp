@@ -204,10 +204,7 @@ var mapContainer = document.getElementById('map'), // 지도의 중심좌표
 
 var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 
-function relayout() {    
-    
-    map.relayout();
-}
+
 
 //========================================
 //장소 검색 객체를 생성합니다

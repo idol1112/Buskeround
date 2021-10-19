@@ -61,13 +61,10 @@
 			var num = -1;
 
 
-			if (navigator.geolocation) {
-			    
-			    // GeoLocation을 이용해서 접속 위치를 얻어옵니다
-			    navigator.geolocation.getCurrentPosition(function(position) {
+
 			        
-			        var lat = position.coords.latitude, // 위도
-			            lon = position.coords.longitude; // 경도
+			        var lat = 37.49771173238123
+			            lon = 127.02675145777664
 			        
 			        var locPosition = new kakao.maps.LatLng(lat, lon)
 					
@@ -119,16 +116,7 @@
 			        
 			        displayMarker(locPosition,data,content);
 			        </c:forEach>
-			            
-			      });
-			    
-			} else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
-			    
-			    var locPosition = new kakao.maps.LatLng(33.450701, 126.570667)
-			    map.setCenter(locPosition);
-			    console.log("위치를 알수없음");
-			    //displayMarker(locPosition); 마커생성 함수
-			}
+
 
 		//=================== 함수 ===================//
 			function displayMarker(locPosition,data,content) {
