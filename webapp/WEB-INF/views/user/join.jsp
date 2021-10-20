@@ -56,7 +56,7 @@
           <input type="email" name="email" value="busker@naver.com">
 
           <p>닉네임</p>
-          <input type="text" name="nickname" value="버스커버스커">
+          <input type="text" name="nickname" value="버스커">
           <span id="nick_chk">중복된 닉네임이 있습니다.</span>
 
           <div class="btn_agree">
