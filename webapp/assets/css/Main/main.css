@@ -423,11 +423,11 @@ h2 {
     height: 111px;
     margin-top: 5px;
     text-align: center;
-    font-size: 46px;
-    font-family: abster;
-    padding: 22px 0px 20px 5px;
+	font-size: 42px;
+    font-family: 'Andada Pro', serif;
+    padding: 25px 0px 20px 5px;
     color: #fff;
-    background-image: url(../../image/company/mainbanner.jpg);
+    background-image: url(../../image/company/mainbanner3.jpg);
     background-repeat: no-repeat;
     background-size: cover;
 }

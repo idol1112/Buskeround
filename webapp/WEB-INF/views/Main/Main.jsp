@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Festive&family=Hind+Siliguri:wght@500&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Andada+Pro&display=swap" rel="stylesheet">
 <!-- css -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/Main/main.css">
 
